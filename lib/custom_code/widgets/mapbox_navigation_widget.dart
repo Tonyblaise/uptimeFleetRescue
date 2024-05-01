@@ -9,8 +9,6 @@ import 'package:flutter/material.dart';
 // Begin custom widget code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-import 'package:uptimefleet/backend/api_requests/api_calls.dart';
-
 // import '/service_provider/service_updates_component_s_p/service_updates_component_s_p_widget.dart'; // Imports other custom widgets
 
 import 'dart:async';
@@ -132,8 +130,8 @@ class _MapboxNavigationWidgetState extends State<MapboxNavigationWidget> {
         if (progressEvent.currentStepInstruction != null) {
           _instruction = progressEvent.currentStepInstruction;
           widget.updatePosition(
-              duration:
-                  "${(_durationRemaining! / 60).toStringAsFixed(0)} minutes");
+              "${(_durationRemaining! / 60).toStringAsFixed(0)} minutes",
+              "${(_distanceRemaining! * 0.000621371).toStringAsFixed(1)} miles");
         }
         break;
       case MapBoxEvent.route_building:
