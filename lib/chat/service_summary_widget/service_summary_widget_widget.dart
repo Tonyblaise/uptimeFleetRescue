@@ -6,7 +6,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/service_provider/service_updates_component_s_p/service_updates_component_s_p_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
-import '/flutter_flow/permissions_util.dart';
 import 'package:flutter/material.dart';
 import 'service_summary_widget_model.dart';
 export 'service_summary_widget_model.dart';
@@ -61,8 +60,6 @@ class ServiceSummaryWidgetWidget extends StatefulWidget {
 class _ServiceSummaryWidgetWidgetState
     extends State<ServiceSummaryWidgetWidget> {
   late ServiceSummaryWidgetModel _model;
-
-  LatLng? currentUserLocationValue;
 
   @override
   void setState(VoidCallback callback) {
@@ -776,13 +773,6 @@ class _ServiceSummaryWidgetWidgetState
                                   Expanded(
                                     child: FFButtonWidget(
                                       onPressed: () async {
-                                        currentUserLocationValue =
-                                            await getCurrentUserLocation(
-                                                defaultLocation:
-                                                    const LatLng(0.0, 0.0));
-                                        await requestPermission(
-                                            locationPermission);
-
                                         await currentUserReference!
                                             .update(createUsersRecordData(
                                           activeRequest: widget.firebaseId,
@@ -811,30 +801,6 @@ class _ServiceSummaryWidgetWidgetState
                                             .update(createRequestRecordData(
                                           status: 'inProgress',
                                         ));
-
-                                        context.pushNamed(
-                                          'navigate',
-                                          queryParameters: {
-                                            'originLat': serializeParam(
-                                              functions.getLat(
-                                                  currentUserLocationValue!),
-                                              ParamType.double,
-                                            ),
-                                            'originLng': serializeParam(
-                                              functions.getLng(
-                                                  currentUserLocationValue!),
-                                              ParamType.double,
-                                            ),
-                                            'destinationLat': serializeParam(
-                                              widget.locationLat,
-                                              ParamType.double,
-                                            ),
-                                            'destinationLng': serializeParam(
-                                              widget.locationLng,
-                                              ParamType.double,
-                                            ),
-                                          }.withoutNulls,
-                                        );
                                       },
                                       text: 'Start Job',
                                       options: FFButtonOptions(
