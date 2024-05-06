@@ -44,19 +44,19 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
     _model = createModel(context, () => VehicleConfirmationModel());
 
     _model.textController1 ??= TextEditingController();
-    _model.textFieldFocusNode1 ??= FocusNode();
+    _model.textFieldFocusNode ??= FocusNode();
 
-    _model.textController2 ??= TextEditingController(
+    _model.textFieldColorTextController ??= TextEditingController(
         text: (functions.checkNull(_model.color) ? true : false)
             ? _model.color
             : '  ');
-    _model.textFieldFocusNode2 ??= FocusNode();
+    _model.textFieldColorFocusNode ??= FocusNode();
 
-    _model.textController3 ??= TextEditingController(
-        text: (functions.checkNull(_model.color) ? true : false)
+    _model.textFieldDetailsTextController ??= TextEditingController(
+        text: (functions.checkNull(_model.details) ? true : false)
             ? _model.details
             : '  ');
-    _model.textFieldFocusNode3 ??= FocusNode();
+    _model.textFieldDetailsFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -233,7 +233,7 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                               controller:
                                                   _model.textController1,
                                               focusNode:
-                                                  _model.textFieldFocusNode1,
+                                                  _model.textFieldFocusNode,
                                               autofocus: true,
                                               obscureText: false,
                                               decoration: InputDecoration(
@@ -375,14 +375,13 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                   );
                                                   _model.apiCallMade = true;
                                                   _model.details =
-                                                      UptimeFleetAppGroup
-                                                          .getVehiclesCall
-                                                          .details(
-                                                            (_model.vehicle
-                                                                    ?.jsonBody ??
-                                                                ''),
-                                                          )
-                                                          .toString();
+                                                      '${UptimeFleetAppGroup.getVehiclesCall.make(
+                                                    (_model.vehicle?.jsonBody ??
+                                                        ''),
+                                                  )}${UptimeFleetAppGroup.getVehiclesCall.model(
+                                                    (_model.vehicle?.jsonBody ??
+                                                        ''),
+                                                  )}';
                                                 });
                                               } else {
                                                 if (getJsonField(
@@ -522,9 +521,9 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                                 0.0, 4.0),
                                                     child: TextFormField(
                                                       controller: _model
-                                                          .textController2,
+                                                          .textFieldColorTextController,
                                                       focusNode: _model
-                                                          .textFieldFocusNode2,
+                                                          .textFieldColorFocusNode,
                                                       autofocus: true,
                                                       obscureText: false,
                                                       decoration:
@@ -621,7 +620,7 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                                     .normal,
                                                           ),
                                                       validator: _model
-                                                          .textController2Validator
+                                                          .textFieldColorTextControllerValidator
                                                           .asValidator(context),
                                                     ),
                                                   ),
@@ -664,15 +663,15 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                                 0.0, 4.0),
                                                     child: TextFormField(
                                                       controller: _model
-                                                          .textController3,
+                                                          .textFieldDetailsTextController,
                                                       focusNode: _model
-                                                          .textFieldFocusNode3,
+                                                          .textFieldDetailsFocusNode,
                                                       autofocus: true,
                                                       obscureText: false,
                                                       decoration:
                                                           InputDecoration(
                                                         hintText:
-                                                            'Enter vehicle’s color',
+                                                            'Enter vehicle’s details',
                                                         hintStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -763,7 +762,7 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                                     .normal,
                                                           ),
                                                       validator: _model
-                                                          .textController3Validator
+                                                          .textFieldDetailsTextControllerValidator
                                                           .asValidator(context),
                                                     ),
                                                   ),
@@ -802,10 +801,10 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                   child: FlutterFlowDropDown<
                                                       String>(
                                                     controller: _model
-                                                            .dropDownValueController ??=
+                                                            .dropDownStateValueController ??=
                                                         FormFieldController<
                                                             String>(
-                                                      _model.dropDownValue ??=
+                                                      _model.dropDownStateValue ??=
                                                           (functions.checkNull(
                                                                       _model
                                                                           .state)
@@ -877,7 +876,7 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                     ],
                                                     onChanged: (val) =>
                                                         setState(() => _model
-                                                                .dropDownValue =
+                                                                .dropDownStateValue =
                                                             val),
                                                     width: 300.0,
                                                     height: 52.0,
@@ -1293,10 +1292,11 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                             .call(
                                                       licensePlate: _model
                                                           .textController1.text,
-                                                      state:
-                                                          _model.dropDownValue,
+                                                      state: _model
+                                                          .dropDownStateValue,
                                                       color: _model
-                                                          .textController2.text,
+                                                          .textFieldColorTextController
+                                                          .text,
                                                       id: _model.vehicleId,
                                                     );
 

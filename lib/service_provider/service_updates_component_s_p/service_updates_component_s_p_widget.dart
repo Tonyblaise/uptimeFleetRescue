@@ -436,10 +436,13 @@ class _ServiceUpdatesComponentSPWidgetState
                                           );
                                         },
                                         child: Container(
-                                          width: double.infinity,
+                                          width: 160.0,
+                                          height: 50.0,
                                           decoration: BoxDecoration(
                                             color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
+                                                .alternate,
+                                            borderRadius:
+                                                BorderRadius.circular(24.0),
                                           ),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
@@ -1235,31 +1238,36 @@ class _ServiceUpdatesComponentSPWidgetState
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
                                   ),
-                                  child: SizedBox(
-                                    width: double.infinity,
-                                    height: 60.0,
-                                    child:
-                                        custom_widgets.MapboxNavigationWidget(
-                                      width: double.infinity,
-                                      height: 60.0,
-                                      originLat: functions
-                                          .getLat(currentUserLocationValue!),
-                                      originLng: functions
-                                          .getLng(currentUserLocationValue!),
-                                      destinationLat: functions.getLat(
-                                          containerRequestRecord.location!),
-                                      destinationLng: functions.getLng(
-                                          containerRequestRecord.location!),
-                                      chat: widget.chat!,
-                                      request: containerRequestRecord.reference,
-                                      updatePosition:
-                                          (duration, distance) async {
-                                        await widget.request!
-                                            .update(createRequestRecordData(
-                                          duration: duration,
-                                          distance: distance,
-                                        ));
-                                      },
+                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                  child: Align(
+                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                    child: SizedBox(
+                                      width: 160.0,
+                                      height: 80.0,
+                                      child:
+                                          custom_widgets.MapboxNavigationWidget(
+                                        width: 160.0,
+                                        height: 80.0,
+                                        originLat: functions
+                                            .getLat(currentUserLocationValue!),
+                                        originLng: functions
+                                            .getLng(currentUserLocationValue!),
+                                        destinationLat: functions.getLat(
+                                            containerRequestRecord.location!),
+                                        destinationLng: functions.getLng(
+                                            containerRequestRecord.location!),
+                                        chat: widget.chat!,
+                                        request:
+                                            containerRequestRecord.reference,
+                                        updatePosition:
+                                            (duration, distance) async {
+                                          await widget.request!
+                                              .update(createRequestRecordData(
+                                            duration: duration,
+                                            distance: distance,
+                                          ));
+                                        },
+                                      ),
                                     ),
                                   ),
                                 ),

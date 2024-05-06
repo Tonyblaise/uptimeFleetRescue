@@ -202,14 +202,6 @@ final parametersBuilderMap =
           'driver': getParameter<bool>(data, 'driver'),
         },
       ),
-  'navigate': (data) async => ParameterData(
-        allParams: {
-          'originLat': getParameter<double>(data, 'originLat'),
-          'originLng': getParameter<double>(data, 'originLng'),
-          'destinationLat': getParameter<double>(data, 'destinationLat'),
-          'destinationLng': getParameter<double>(data, 'destinationLng'),
-        },
-      ),
   'testtt': ParameterData.none(),
 };
 

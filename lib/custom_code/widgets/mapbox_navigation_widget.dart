@@ -9,8 +9,6 @@ import 'package:flutter/material.dart';
 // Begin custom widget code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-import 'package:uptimefleet/backend/api_requests/api_calls.dart';
-
 // import '/service_provider/service_updates_component_s_p/service_updates_component_s_p_widget.dart'; // Imports other custom widgets
 
 import 'dart:async';
@@ -96,29 +94,28 @@ class _MapboxNavigationWidgetState extends State<MapboxNavigationWidget> {
         latitude: widget.destinationLat,
         longitude: widget.destinationLng,
         isSilent: false);
-    return ElevatedButton(
-      child: const Text("Start Navigation"),
-      style: ElevatedButton.styleFrom(
-        backgroundColor: Color(0x0CCA4A), // Set background color in hex format
-        minimumSize: Size(150, 56), // Set width and leave height flexible
-        textStyle: TextStyle(color: Colors.white, fontSize: 16),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(18),
+    return Container(
+      height: 56,
+      child: ElevatedButton(
+        onPressed: () async {
+          var wayPoints = <WayPoint>[];
+          wayPoints.add(_home);
+          wayPoints.add(_store);
+          var opt = MapBoxOptions.from(_navigationOption);
+          opt.simulateRoute = false;
+          opt.voiceInstructionsEnabled = true;
+          opt.bannerInstructionsEnabled = true;
+          opt.units = VoiceUnits.metric;
+          opt.language = "en";
+          await MapBoxNavigation.instance
+              .startNavigation(wayPoints: wayPoints, options: opt);
+        },
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Color.fromRGBO(0, 204, 170, 1.0),
+          foregroundColor: Colors.white,
         ),
+        child: Text('Start Navigation'),
       ),
-      onPressed: () async {
-        var wayPoints = <WayPoint>[];
-        wayPoints.add(_home);
-        wayPoints.add(_store);
-        var opt = MapBoxOptions.from(_navigationOption);
-        opt.simulateRoute = false;
-        opt.voiceInstructionsEnabled = true;
-        opt.bannerInstructionsEnabled = true;
-        opt.units = VoiceUnits.metric;
-        opt.language = "en";
-        await MapBoxNavigation.instance
-            .startNavigation(wayPoints: wayPoints, options: opt);
-      },
     );
   }
 

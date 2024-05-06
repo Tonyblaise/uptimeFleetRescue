@@ -4,6 +4,7 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/pages/chat/empty_state_simple/empty_state_simple_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
@@ -240,214 +241,110 @@ class _SelectVehicleWidgetState extends State<SelectVehicleWidget> {
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Flexible(
-                              child: Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
-                                child: InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    Navigator.pop(context);
-                                  },
-                                  child: Container(
-                                    height: 56.0,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(18.0),
-                                      border: Border.all(
-                                        color: const Color(0xFF0CCA4A),
-                                      ),
+                            FFButtonWidget(
+                              onPressed: () async {
+                                Navigator.pop(context);
+                              },
+                              text: 'Cancel',
+                              options: FFButtonOptions(
+                                width: 120.0,
+                                height: 40.0,
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    24.0, 0.0, 24.0, 0.0),
+                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                color: FlutterFlowTheme.of(context).primary,
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .titleSmall
+                                    .override(
+                                      fontFamily: 'Yantramanav',
+                                      color: FlutterFlowTheme.of(context).error,
+                                      letterSpacing: 0.0,
                                     ),
-                                    child: Align(
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
-                                      child: Text(
-                                        'Cancel',
-                                        style: FlutterFlowTheme.of(context)
-                                            .titleSmall
-                                            .override(
-                                              fontFamily: 'Yantramanav',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .tertiary,
-                                              letterSpacing: 0.0,
-                                            ),
-                                      ),
-                                    ),
-                                  ),
+                                elevation: 3.0,
+                                borderSide: const BorderSide(
+                                  color: Colors.transparent,
+                                  width: 1.0,
                                 ),
+                                borderRadius: BorderRadius.circular(100.0),
                               ),
                             ),
-                            if (UptimeFleetAppGroup.getTechnicianVehiclesCall
-                                        .licensePlate(
-                                          containerGetTechnicianVehiclesResponse
-                                              .jsonBody,
-                                        )
-                                        ?.first !=
-                                    null &&
-                                UptimeFleetAppGroup.getTechnicianVehiclesCall
-                                        .licensePlate(
-                                          containerGetTechnicianVehiclesResponse
-                                              .jsonBody,
-                                        )
-                                        ?.first !=
-                                    '')
-                              Expanded(
-                                child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      10.0, 0.0, 0.0, 0.0),
-                                  child: InkWell(
-                                    splashColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    hoverColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTap: () async {
-                                      _model.vehicles =
-                                          await UptimeFleetAppGroup
-                                              .getTechnicianVehiclesCall
-                                              .call(
-                                        technicianId: valueOrDefault(
-                                            currentUserDocument?.technicianId,
-                                            ''),
-                                      );
-                                      if ((_model.vehicles?.succeeded ??
-                                          true)) {
-                                        _model.apiResultpgx =
-                                            await UptimeFleetAppGroup
-                                                .updateTechnicianCall
-                                                .call(
-                                          activeVehiceId: UptimeFleetAppGroup
-                                              .getTechnicianVehiclesCall
-                                              .id(
-                                                (_model.vehicles?.jsonBody ??
-                                                    ''),
-                                              )
-                                              ?.where((e) =>
-                                                  e == _model.dropDownValue)
-                                              .toList()
-                                              .first,
-                                          technicianId: valueOrDefault(
-                                              currentUserDocument?.technicianId,
-                                              ''),
-                                        );
-                                        if ((_model.apiResultpgx?.succeeded ??
-                                            true)) {
-                                          await currentUserReference!
-                                              .update(createUsersRecordData(
-                                            activeVehicle: UptimeFleetAppGroup
-                                                .getTechnicianVehiclesCall
-                                                .id(
-                                                  (_model.vehicles?.jsonBody ??
-                                                      ''),
-                                                )
-                                                ?.where((e) =>
-                                                    e == _model.dropDownValue)
-                                                .toList()
-                                                .first,
-                                          ));
-                                          ScaffoldMessenger.of(context)
-                                              .showSnackBar(
-                                            SnackBar(
-                                              content: Text(
-                                                'Entry updated successfully!',
-                                                style: TextStyle(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryText,
-                                                ),
-                                              ),
-                                              duration:
-                                                  const Duration(milliseconds: 4000),
-                                              backgroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondary,
-                                            ),
-                                          );
-                                          Navigator.pop(context);
-                                        } else {
-                                          ScaffoldMessenger.of(context)
-                                              .showSnackBar(
-                                            SnackBar(
-                                              content: Text(
-                                                'Something went wrong. Please try again later',
-                                                style: TextStyle(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryText,
-                                                ),
-                                              ),
-                                              duration:
-                                                  const Duration(milliseconds: 4000),
-                                              backgroundColor:
-                                                  const Color(0xFFF50833),
-                                            ),
-                                          );
-                                        }
-                                      } else {
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(
-                                          SnackBar(
-                                            content: Text(
-                                              'Something went wrong. Please try again later',
-                                              style: TextStyle(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                              ),
-                                            ),
-                                            duration:
-                                                const Duration(milliseconds: 4000),
-                                            backgroundColor: const Color(0xFFF50833),
-                                          ),
-                                        );
-                                      }
-
-                                      setState(() {});
-                                    },
-                                    child: Container(
-                                      height: 56.0,
-                                      constraints: BoxConstraints(
-                                        maxWidth:
-                                            MediaQuery.sizeOf(context).width *
-                                                0.9,
-                                      ),
-                                      decoration: BoxDecoration(
-                                        gradient: const LinearGradient(
-                                          colors: [
-                                            Color(0xFF7DEFA2),
-                                            Color(0xFF0CCA4A)
-                                          ],
-                                          stops: [0.0, 1.0],
-                                          begin:
-                                              AlignmentDirectional(0.0, -1.0),
-                                          end: AlignmentDirectional(0, 1.0),
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(18.0),
-                                        border: Border.all(
+                            FFButtonWidget(
+                              onPressed: () async {
+                                _model.apiResultpgxCopy =
+                                    await UptimeFleetAppGroup
+                                        .updateTechnicianCall
+                                        .call(
+                                  activeVehiceId: _model.dropDownValue,
+                                  technicianId: valueOrDefault(
+                                      currentUserDocument?.technicianId, ''),
+                                );
+                                if ((_model.apiResultpgxCopy?.succeeded ??
+                                    true)) {
+                                  await currentUserReference!
+                                      .update(createUsersRecordData(
+                                    activeVehicle: _model.dropDownValue,
+                                  ));
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        'Entry updated successfully!',
+                                        style: TextStyle(
                                           color: FlutterFlowTheme.of(context)
-                                              .tertiary,
+                                              .primaryText,
                                         ),
                                       ),
-                                      child: Align(
-                                        alignment:
-                                            const AlignmentDirectional(0.0, 0.0),
-                                        child: Text(
-                                          'Confirm',
-                                          style: FlutterFlowTheme.of(context)
-                                              .titleSmall
-                                              .override(
-                                                fontFamily: 'Yantramanav',
-                                                color: Colors.white,
-                                                letterSpacing: 0.0,
-                                              ),
-                                        ),
-                                      ),
+                                      duration: const Duration(milliseconds: 4000),
+                                      backgroundColor:
+                                          FlutterFlowTheme.of(context)
+                                              .secondary,
                                     ),
-                                  ),
+                                  );
+                                  Navigator.pop(context);
+                                } else {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        'Something went wrong. Please try again later',
+                                        style: TextStyle(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                        ),
+                                      ),
+                                      duration: const Duration(milliseconds: 4000),
+                                      backgroundColor: const Color(0xFFF50833),
+                                    ),
+                                  );
+                                }
+
+                                setState(() {});
+                              },
+                              text: 'Confirm',
+                              options: FFButtonOptions(
+                                width: 120.0,
+                                height: 40.0,
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    24.0, 0.0, 24.0, 0.0),
+                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                color: FlutterFlowTheme.of(context).tertiary,
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .titleSmall
+                                    .override(
+                                      fontFamily: 'Yantramanav',
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      letterSpacing: 0.0,
+                                    ),
+                                elevation: 3.0,
+                                borderSide: const BorderSide(
+                                  color: Colors.transparent,
+                                  width: 1.0,
                                 ),
+                                borderRadius: BorderRadius.circular(18.0),
                               ),
-                          ],
+                            ),
+                          ].divide(const SizedBox(width: 10.0)),
                         ),
                       ),
                     ),

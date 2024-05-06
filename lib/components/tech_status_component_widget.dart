@@ -302,24 +302,22 @@ class _TechStatusComponentWidgetState extends State<TechStatusComponentWidget> {
                                                   .secondary,
                                         ),
                                       );
-                                      if (_model.switchValue != null) {
-                                        await actions.mainAction(
-                                          (lat, lng) async {
-                                            _model.apiResultksz =
-                                                await UptimeFleetAppGroup
-                                                    .updateTechnicianPositionCall
-                                                    .call(
-                                              lat: lat,
-                                              lng: lng,
-                                              technicianId: valueOrDefault(
-                                                  currentUserDocument
-                                                      ?.technicianId,
-                                                  ''),
-                                            );
-                                          },
-                                        );
-                                      }
-                                    } else {
+                                      await actions.mainAction(
+                                        (lat, lng) async {
+                                          _model.apiResultksz =
+                                              await UptimeFleetAppGroup
+                                                  .updateTechnicianPositionCall
+                                                  .call(
+                                            lat: lat,
+                                            lng: lng,
+                                            technicianId: valueOrDefault(
+                                                currentUserDocument
+                                                    ?.technicianId,
+                                                ''),
+                                          );
+                                        },
+                                      );
+                                                                        } else {
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(
                                         SnackBar(

@@ -1028,8 +1028,8 @@ class GetTechnicianVehiclesCall {
 
 class GetVehiclesCall {
   Future<ApiCallResponse> call({
-    String? vehicleRegNo = 'Kdj991c',
-    String? driverId = '1708270748717x347590476241924860',
+    String? vehicleRegNo = 'FP109109',
+    String? driverId = '1713279447271x597049753416744300',
     String? accessToken = '1707139937267x678517623997244500',
   }) async {
     return ApiManager.instance.makeApiCall(
@@ -1079,6 +1079,14 @@ class GetVehiclesCall {
         response,
         r'''$.response.vehicle.details''',
       );
+  String? model(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.response.vehicle.model''',
+      ));
+  String? make(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.response.vehicle.make''',
+      ));
 }
 
 class UpdateVehicleCall {
@@ -1542,8 +1550,8 @@ class DeleteAccountCall {
 class UpdateTechnicianCall {
   Future<ApiCallResponse> call({
     String? technicianId = '1708270804093x206021699018692930',
-    String? token = 'technicianToken',
     String? activeVehiceId = '1709221980915x854794289578496500',
+    String? token = '',
     String? accessToken = '1707139937267x678517623997244500',
   }) async {
     final ffApiRequestBody = '''

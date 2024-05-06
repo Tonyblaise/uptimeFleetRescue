@@ -29,7 +29,7 @@ class VehicleConfirmationModel
   final formKey2 = GlobalKey<FormState>();
   final formKey1 = GlobalKey<FormState>();
   // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode1;
+  FocusNode? textFieldFocusNode;
   TextEditingController? textController1;
   String? Function(BuildContext, String?)? textController1Validator;
   String? _textController1Validator(BuildContext context, String? val) {
@@ -46,11 +46,13 @@ class VehicleConfirmationModel
 
   // Stores action output result for [Backend Call - API (Get vehicles)] action in Button widget.
   ApiCallResponse? vehicle;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode2;
-  TextEditingController? textController2;
-  String? Function(BuildContext, String?)? textController2Validator;
-  String? _textController2Validator(BuildContext context, String? val) {
+  // State field(s) for TextFieldColor widget.
+  FocusNode? textFieldColorFocusNode;
+  TextEditingController? textFieldColorTextController;
+  String? Function(BuildContext, String?)?
+      textFieldColorTextControllerValidator;
+  String? _textFieldColorTextControllerValidator(
+      BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
     }
@@ -58,13 +60,14 @@ class VehicleConfirmationModel
     return null;
   }
 
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode3;
-  TextEditingController? textController3;
-  String? Function(BuildContext, String?)? textController3Validator;
-  // State field(s) for DropDown widget.
-  String? dropDownValue;
-  FormFieldController<String>? dropDownValueController;
+  // State field(s) for TextFieldDetails widget.
+  FocusNode? textFieldDetailsFocusNode;
+  TextEditingController? textFieldDetailsTextController;
+  String? Function(BuildContext, String?)?
+      textFieldDetailsTextControllerValidator;
+  // State field(s) for DropDownState widget.
+  String? dropDownStateValue;
+  FormFieldController<String>? dropDownStateValueController;
   bool isDataUploading1 = false;
   FFUploadedFile uploadedLocalFile1 =
       FFUploadedFile(bytes: Uint8List.fromList([]));
@@ -89,21 +92,22 @@ class VehicleConfirmationModel
   @override
   void initState(BuildContext context) {
     textController1Validator = _textController1Validator;
-    textController2Validator = _textController2Validator;
+    textFieldColorTextControllerValidator =
+        _textFieldColorTextControllerValidator;
     emptyImageModel = createModel(context, () => EmptyImageModel());
   }
 
   @override
   void dispose() {
     unfocusNode.dispose();
-    textFieldFocusNode1?.dispose();
+    textFieldFocusNode?.dispose();
     textController1?.dispose();
 
-    textFieldFocusNode2?.dispose();
-    textController2?.dispose();
+    textFieldColorFocusNode?.dispose();
+    textFieldColorTextController?.dispose();
 
-    textFieldFocusNode3?.dispose();
-    textController3?.dispose();
+    textFieldDetailsFocusNode?.dispose();
+    textFieldDetailsTextController?.dispose();
 
     emptyImageModel.dispose();
   }

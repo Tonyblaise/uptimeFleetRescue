@@ -339,28 +339,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'navigate',
-              path: 'navigate',
-              builder: (context, params) => NavigateWidget(
-                originLat: params.getParam(
-                  'originLat',
-                  ParamType.double,
-                ),
-                originLng: params.getParam(
-                  'originLng',
-                  ParamType.double,
-                ),
-                destinationLat: params.getParam(
-                  'destinationLat',
-                  ParamType.double,
-                ),
-                destinationLng: params.getParam(
-                  'destinationLng',
-                  ParamType.double,
-                ),
-              ),
-            ),
-            FFRoute(
               name: 'testtt',
               path: 'testtt',
               builder: (context, params) => const TestttWidget(),

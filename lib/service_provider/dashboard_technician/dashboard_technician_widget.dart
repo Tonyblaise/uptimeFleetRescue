@@ -9,6 +9,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/instant_timer.dart';
 import '/pages/chat/empty_state_simple/empty_state_simple_widget.dart';
 import '/service_provider/bottom_bar/bottom_bar_widget.dart';
+import '/service_provider/select_vehicle/select_vehicle_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/permissions_util.dart';
 import 'package:flutter/material.dart';
@@ -292,9 +293,8 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                                                     ? FlutterFlowTheme.of(
                                                                             context)
                                                                         .tertiary
-                                                                    : FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .accent4,
+                                                                    : const Color(
+                                                                        0xAAFFFFFF),
                                                                 shape: BoxShape
                                                                     .circle,
                                                               ),
@@ -322,7 +322,7 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                                                 width: MediaQuery.sizeOf(
                                                                             context)
                                                                         .width *
-                                                                    0.9,
+                                                                    0.85,
                                                                 decoration:
                                                                     BoxDecoration(
                                                                   borderRadius:
@@ -357,32 +357,60 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                                                             20.0,
                                                                             0.0),
                                                                         child:
-                                                                            Container(
-                                                                          width:
-                                                                              double.infinity,
-                                                                          decoration:
-                                                                              const BoxDecoration(),
+                                                                            InkWell(
+                                                                          splashColor:
+                                                                              Colors.transparent,
+                                                                          focusColor:
+                                                                              Colors.transparent,
+                                                                          hoverColor:
+                                                                              Colors.transparent,
+                                                                          highlightColor:
+                                                                              Colors.transparent,
+                                                                          onTap:
+                                                                              () async {
+                                                                            await showModalBottomSheet(
+                                                                              isScrollControlled: true,
+                                                                              backgroundColor: Colors.transparent,
+                                                                              enableDrag: false,
+                                                                              context: context,
+                                                                              builder: (context) {
+                                                                                return GestureDetector(
+                                                                                  onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
+                                                                                  child: Padding(
+                                                                                    padding: MediaQuery.viewInsetsOf(context),
+                                                                                    child: const SelectVehicleWidget(),
+                                                                                  ),
+                                                                                );
+                                                                              },
+                                                                            ).then((value) =>
+                                                                                safeSetState(() {}));
+                                                                          },
                                                                           child:
-                                                                              Row(
-                                                                            mainAxisSize:
-                                                                                MainAxisSize.max,
-                                                                            mainAxisAlignment:
-                                                                                MainAxisAlignment.spaceBetween,
-                                                                            children: [
-                                                                              Text(
-                                                                                'Active Vehicle',
-                                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                      fontFamily: 'Yantramanav',
-                                                                                      fontSize: 24.0,
-                                                                                      letterSpacing: 0.0,
-                                                                                    ),
-                                                                              ),
-                                                                              Icon(
-                                                                                Icons.switch_right_rounded,
-                                                                                color: FlutterFlowTheme.of(context).secondaryText,
-                                                                                size: 24.0,
-                                                                              ),
-                                                                            ],
+                                                                              Container(
+                                                                            width:
+                                                                                double.infinity,
+                                                                            decoration:
+                                                                                const BoxDecoration(),
+                                                                            child:
+                                                                                Row(
+                                                                              mainAxisSize: MainAxisSize.max,
+                                                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                              children: [
+                                                                                Text(
+                                                                                  'Active Vehicle',
+                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                        fontFamily: 'Yantramanav',
+                                                                                        fontSize: 24.0,
+                                                                                        letterSpacing: 0.0,
+                                                                                      ),
+                                                                                ),
+                                                                                Icon(
+                                                                                  Icons.switch_right_rounded,
+                                                                                  color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                  size: 24.0,
+                                                                                ),
+                                                                              ],
+                                                                            ),
                                                                           ),
                                                                         ),
                                                                       ),
@@ -427,36 +455,7 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                                                                           ),
                                                                                     ),
                                                                                     Text(
-                                                                                      'Add an image of the service',
-                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                            fontFamily: 'Yantramanav',
-                                                                                            color: const Color(0xFF64748B),
-                                                                                            fontSize: 16.0,
-                                                                                            letterSpacing: 0.0,
-                                                                                          ),
-                                                                                    ),
-                                                                                  ],
-                                                                                ),
-                                                                              ),
-                                                                              Container(
-                                                                                width: double.infinity,
-                                                                                decoration: const BoxDecoration(),
-                                                                                child: Column(
-                                                                                  mainAxisSize: MainAxisSize.max,
-                                                                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                  children: [
-                                                                                    Text(
-                                                                                      'Vehicle Information',
-                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                            fontFamily: 'Yantramanav',
-                                                                                            color: Colors.black,
-                                                                                            fontSize: 16.0,
-                                                                                            letterSpacing: 0.0,
-                                                                                            fontWeight: FontWeight.bold,
-                                                                                          ),
-                                                                                    ),
-                                                                                    Text(
-                                                                                      'Add an image of the service',
+                                                                                      valueOrDefault(currentUserDocument?.activeVehicle, ''),
                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                             fontFamily: 'Yantramanav',
                                                                                             color: const Color(0xFF64748B),

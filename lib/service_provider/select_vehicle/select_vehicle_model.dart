@@ -13,10 +13,8 @@ class SelectVehicleModel extends FlutterFlowModel<SelectVehicleWidget> {
   FormFieldController<String>? dropDownValueController;
   // Model for empty_state_Simple component.
   late EmptyStateSimpleModel emptyStateSimpleModel;
-  // Stores action output result for [Backend Call - API (Get technician vehicles)] action in Container widget.
-  ApiCallResponse? vehicles;
-  // Stores action output result for [Backend Call - API (Update technician)] action in Container widget.
-  ApiCallResponse? apiResultpgx;
+  // Stores action output result for [Backend Call - API (Update technician)] action in Button widget.
+  ApiCallResponse? apiResultpgxCopy;
 
   @override
   void initState(BuildContext context) {

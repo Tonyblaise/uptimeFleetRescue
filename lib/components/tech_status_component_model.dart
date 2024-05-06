@@ -8,7 +8,7 @@ class TechStatusComponentModel
   ///  State fields for stateful widgets in this component.
 
   // State field(s) for Switch widget.
-  bool? switchValue;
+  bool switchValue = true;
   // Stores action output result for [Backend Call - API (Update tech status)] action in Container widget.
   ApiCallResponse? apiResult5nw;
   // Stores action output result for [Backend Call - API (Update technician position)] action in Container widget.
