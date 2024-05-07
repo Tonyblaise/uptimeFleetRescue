@@ -1097,6 +1097,7 @@ class UpdateVehicleCall {
     String? color = 'Blue',
     String? image =
         'https://s3.amazonaws.com/appforest_uf/f1633437780404x920214512569844000/account.png',
+    String? notes = '',
     String? accessToken = '1707139937267x678517623997244500',
   }) async {
     final ffApiRequestBody = '''
@@ -1105,7 +1106,8 @@ class UpdateVehicleCall {
   "licensePlate": "$licensePlate",
   "state": "$state",
   "color": "$color",
-  "image": "$image"
+  "image": "$image",
+  "notes": "$notes"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Update vehicle',

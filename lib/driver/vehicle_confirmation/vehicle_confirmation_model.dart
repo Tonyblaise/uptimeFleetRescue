@@ -46,6 +46,9 @@ class VehicleConfirmationModel
 
   // Stores action output result for [Backend Call - API (Get vehicles)] action in Button widget.
   ApiCallResponse? vehicle;
+  // State field(s) for DropDownState widget.
+  String? dropDownStateValue;
+  FormFieldController<String>? dropDownStateValueController;
   // State field(s) for TextFieldColor widget.
   FocusNode? textFieldColorFocusNode;
   TextEditingController? textFieldColorTextController;
@@ -60,14 +63,11 @@ class VehicleConfirmationModel
     return null;
   }
 
-  // State field(s) for TextFieldDetails widget.
-  FocusNode? textFieldDetailsFocusNode;
-  TextEditingController? textFieldDetailsTextController;
+  // State field(s) for TextFieldNotes widget.
+  FocusNode? textFieldNotesFocusNode;
+  TextEditingController? textFieldNotesTextController;
   String? Function(BuildContext, String?)?
-      textFieldDetailsTextControllerValidator;
-  // State field(s) for DropDownState widget.
-  String? dropDownStateValue;
-  FormFieldController<String>? dropDownStateValueController;
+      textFieldNotesTextControllerValidator;
   bool isDataUploading1 = false;
   FFUploadedFile uploadedLocalFile1 =
       FFUploadedFile(bytes: Uint8List.fromList([]));
@@ -106,8 +106,8 @@ class VehicleConfirmationModel
     textFieldColorFocusNode?.dispose();
     textFieldColorTextController?.dispose();
 
-    textFieldDetailsFocusNode?.dispose();
-    textFieldDetailsTextController?.dispose();
+    textFieldNotesFocusNode?.dispose();
+    textFieldNotesTextController?.dispose();
 
     emptyImageModel.dispose();
   }

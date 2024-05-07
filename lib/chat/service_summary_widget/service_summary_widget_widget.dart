@@ -801,6 +801,9 @@ class _ServiceSummaryWidgetWidgetState
                                             .update(createRequestRecordData(
                                           status: 'inProgress',
                                         ));
+
+                                        context
+                                            .pushNamed('dashboardTechnician');
                                       },
                                       text: 'Start Job',
                                       options: FFButtonOptions(

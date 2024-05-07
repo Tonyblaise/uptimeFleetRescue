@@ -5,10 +5,14 @@ import 'package:flutter/material.dart';
 
 class TechStatusComponentModel
     extends FlutterFlowModel<TechStatusComponentWidget> {
+  ///  Local state fields for this component.
+
+  bool onDuty = false;
+
   ///  State fields for stateful widgets in this component.
 
   // State field(s) for Switch widget.
-  bool switchValue = true;
+  bool? switchValue;
   // Stores action output result for [Backend Call - API (Update tech status)] action in Container widget.
   ApiCallResponse? apiResult5nw;
   // Stores action output result for [Backend Call - API (Update technician position)] action in Container widget.

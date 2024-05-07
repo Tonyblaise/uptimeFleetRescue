@@ -294,7 +294,7 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                                                             context)
                                                                         .tertiary
                                                                     : const Color(
-                                                                        0xAAFFFFFF),
+                                                                        0xFFB3B3B3),
                                                                 shape: BoxShape
                                                                     .circle,
                                                               ),
@@ -521,6 +521,8 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                                                           'No active vehicle selected',
                                                                       body:
                                                                           'Click here to update active vehicle',
+                                                                      buttonVisible:
+                                                                          true,
                                                                       action:
                                                                           () async {},
                                                                     ),

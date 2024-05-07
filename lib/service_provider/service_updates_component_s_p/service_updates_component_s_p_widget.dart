@@ -1243,11 +1243,11 @@ class _ServiceUpdatesComponentSPWidgetState
                                     alignment: const AlignmentDirectional(0.0, 0.0),
                                     child: SizedBox(
                                       width: 160.0,
-                                      height: 80.0,
+                                      height: 60.0,
                                       child:
                                           custom_widgets.MapboxNavigationWidget(
                                         width: 160.0,
-                                        height: 80.0,
+                                        height: 60.0,
                                         originLat: functions
                                             .getLat(currentUserLocationValue!),
                                         originLng: functions

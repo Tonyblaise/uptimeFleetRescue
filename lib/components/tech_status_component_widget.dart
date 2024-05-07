@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'tech_status_component_model.dart';
 export 'tech_status_component_model.dart';
 
@@ -29,6 +30,14 @@ class _TechStatusComponentWidgetState extends State<TechStatusComponentWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => TechStatusComponentModel());
+
+    // On component load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      setState(() {
+        _model.onDuty =
+            valueOrDefault<bool>(currentUserDocument?.onDuty, false);
+      });
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -149,21 +158,15 @@ class _TechStatusComponentWidgetState extends State<TechStatusComponentWidget> {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceAround,
                                     children: [
-                                      AuthUserStreamWidget(
-                                        builder: (context) => Text(
-                                          valueOrDefault<bool>(
-                                                  currentUserDocument?.onDuty,
-                                                  false)
-                                              ? 'On Duty'
-                                              : 'Off Duty',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Yantramanav',
-                                                fontSize: 18.0,
-                                                letterSpacing: 0.0,
-                                              ),
-                                        ),
+                                      Text(
+                                        _model.onDuty ? 'On Duty' : 'Off Duty',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Yantramanav',
+                                              fontSize: 18.0,
+                                              letterSpacing: 0.0,
+                                            ),
                                       ),
                                       AuthUserStreamWidget(
                                         builder: (context) => Switch.adaptive(
@@ -174,6 +177,11 @@ class _TechStatusComponentWidgetState extends State<TechStatusComponentWidget> {
                                           onChanged: (newValue) async {
                                             setState(() =>
                                                 _model.switchValue = newValue);
+                                            if (newValue) {
+                                              setState(() {
+                                                _model.onDuty = false;
+                                              });
+                                            }
                                           },
                                           activeColor:
                                               FlutterFlowTheme.of(context)
@@ -272,7 +280,7 @@ class _TechStatusComponentWidgetState extends State<TechStatusComponentWidget> {
                                         await UptimeFleetAppGroup
                                             .updateTechStatusCall
                                             .call(
-                                      onDuty: _model.switchValue,
+                                      onDuty: _model.onDuty,
                                       technicianId: valueOrDefault(
                                           currentUserDocument?.technicianId,
                                           ''),
@@ -281,7 +289,7 @@ class _TechStatusComponentWidgetState extends State<TechStatusComponentWidget> {
                                         true)) {
                                       await currentUserReference!
                                           .update(createUsersRecordData(
-                                        onDuty: _model.switchValue,
+                                        onDuty: _model.onDuty,
                                       ));
                                       Navigator.pop(context);
                                       ScaffoldMessenger.of(context)
