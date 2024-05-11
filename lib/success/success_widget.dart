@@ -106,7 +106,7 @@ class _SuccessWidgetState extends State<SuccessWidget> {
             Padding(
               padding: const EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 0.0),
               child: Text(
-                'Your job has been marked as complete. Thank you fo using Uptime Fleet',
+                'Your job has been marked as complete. Thank you for using Uptime Fleet',
                 textAlign: TextAlign.center,
                 style: FlutterFlowTheme.of(context).labelLarge.override(
                       fontFamily: 'Yantramanav',

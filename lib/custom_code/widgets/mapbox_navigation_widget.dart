@@ -26,6 +26,7 @@ class MapboxNavigationWidget extends StatefulWidget {
     required this.chat,
     required this.request,
     required this.updatePosition,
+    required this.driverName,
   });
 
   final double? width;
@@ -35,6 +36,7 @@ class MapboxNavigationWidget extends StatefulWidget {
   final double destinationLat;
   final double destinationLng;
   final String chat;
+  final String driverName;
   final DocumentReference request;
   final Future Function(String duration, String distance) updatePosition;
 
@@ -84,13 +86,13 @@ class _MapboxNavigationWidgetState extends State<MapboxNavigationWidget> {
   @override
   Widget build(BuildContext context) {
     final _home = WayPoint(
-        name: "Home",
+        name: widget.driverName,
         latitude: widget.originLat,
         longitude: widget.originLng,
         isSilent: false);
 
     final _store = WayPoint(
-        name: "Store",
+        name: "Your Location",
         latitude: widget.destinationLat,
         longitude: widget.destinationLng,
         isSilent: false);

@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/service_provider/service_updates_component_s_p/service_updates_component_s_p_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'service_summary_widget_model.dart';
 export 'service_summary_widget_model.dart';
 
@@ -256,22 +257,43 @@ class _ServiceSummaryWidgetWidgetState
                                                             FontWeight.bold,
                                                       ),
                                                 ),
-                                                Text(
-                                                  valueOrDefault<String>(
-                                                    widget.driverPhoneNumber,
-                                                    'N/A',
-                                                  ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Yantramanav',
-                                                        color:
-                                                            const Color(0xFF64748B),
-                                                        fontSize: 16.0,
-                                                        letterSpacing: 0.0,
+                                                InkWell(
+                                                  splashColor:
+                                                      Colors.transparent,
+                                                  focusColor:
+                                                      Colors.transparent,
+                                                  hoverColor:
+                                                      Colors.transparent,
+                                                  highlightColor:
+                                                      Colors.transparent,
+                                                  onTap: () async {
+                                                    await launchUrl(Uri(
+                                                      scheme: 'tel',
+                                                      path: valueOrDefault<
+                                                          String>(
+                                                        widget
+                                                            .driverPhoneNumber,
+                                                        'N/A',
                                                       ),
+                                                    ));
+                                                  },
+                                                  child: Text(
+                                                    valueOrDefault<String>(
+                                                      widget.driverPhoneNumber,
+                                                      'N/A',
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Yantramanav',
+                                                          color:
+                                                              const Color(0xFF64748B),
+                                                          fontSize: 16.0,
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                  ),
                                                 ),
                                               ],
                                             ),
@@ -479,49 +501,50 @@ class _ServiceSummaryWidgetWidgetState
                                               ],
                                             ),
                                           ),
-                                          Container(
-                                            width: double.infinity,
-                                            decoration: const BoxDecoration(),
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  'Drop Off Location',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Yantramanav',
-                                                        color: Colors.black,
-                                                        fontSize: 16.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                      ),
-                                                ),
-                                                Text(
-                                                  functions.checkNull(
-                                                          widget.dropOff)
-                                                      ? 'N/A'
-                                                      : widget.dropOff!,
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Yantramanav',
-                                                        color:
-                                                            const Color(0xFF64748B),
-                                                        fontSize: 16.0,
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                                ),
-                                              ],
+                                          if (widget.eventType == 'Tow')
+                                            Container(
+                                              width: double.infinity,
+                                              decoration: const BoxDecoration(),
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    'Drop Off Location',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Yantramanav',
+                                                          color: Colors.black,
+                                                          fontSize: 16.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                        ),
+                                                  ),
+                                                  Text(
+                                                    functions.checkNull(
+                                                            widget.dropOff)
+                                                        ? 'N/A'
+                                                        : widget.dropOff!,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Yantramanav',
+                                                          color:
+                                                              const Color(0xFF64748B),
+                                                          fontSize: 16.0,
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                  ),
+                                                ],
+                                              ),
                                             ),
-                                          ),
                                         ].divide(const SizedBox(height: 10.0)),
                                       ),
                                     ),

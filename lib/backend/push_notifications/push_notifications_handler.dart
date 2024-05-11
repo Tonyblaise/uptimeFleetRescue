@@ -202,7 +202,13 @@ final parametersBuilderMap =
           'driver': getParameter<bool>(data, 'driver'),
         },
       ),
-  'testtt': ParameterData.none(),
+  'tech_enroute': (data) async => ParameterData(
+        allParams: {
+          'chat': await getDocumentParameter<ChatsRecord>(
+              data, 'chat', ChatsRecord.fromSnapshot),
+          'request': getParameter<DocumentReference>(data, 'request'),
+        },
+      ),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

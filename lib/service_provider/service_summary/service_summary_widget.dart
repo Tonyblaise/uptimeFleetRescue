@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'service_summary_model.dart';
 export 'service_summary_model.dart';
 
@@ -251,25 +252,49 @@ class _ServiceSummaryWidgetState extends State<ServiceSummaryWidget> {
                                                               FontWeight.bold,
                                                         ),
                                               ),
-                                              Text(
-                                                valueOrDefault<String>(
-                                                  UptimeFleetAppGroup
-                                                      .getRequestCall
-                                                      .driverPhoneNumber(
-                                                    containerGetRequestResponse
-                                                        .jsonBody,
-                                                  ),
-                                                  ' N/A',
-                                                ),
-                                                style: FlutterFlowTheme.of(
-                                                        context)
-                                                    .bodyMedium
-                                                    .override(
-                                                      fontFamily: 'Yantramanav',
-                                                      color: const Color(0xFF64748B),
-                                                      fontSize: 16.0,
-                                                      letterSpacing: 0.0,
+                                              InkWell(
+                                                splashColor: Colors.transparent,
+                                                focusColor: Colors.transparent,
+                                                hoverColor: Colors.transparent,
+                                                highlightColor:
+                                                    Colors.transparent,
+                                                onTap: () async {
+                                                  await launchUrl(Uri(
+                                                    scheme: 'tel',
+                                                    path:
+                                                        valueOrDefault<String>(
+                                                      UptimeFleetAppGroup
+                                                          .getRequestCall
+                                                          .driverPhoneNumber(
+                                                        containerGetRequestResponse
+                                                            .jsonBody,
+                                                      ),
+                                                      ' N/A',
                                                     ),
+                                                  ));
+                                                },
+                                                child: Text(
+                                                  valueOrDefault<String>(
+                                                    UptimeFleetAppGroup
+                                                        .getRequestCall
+                                                        .driverPhoneNumber(
+                                                      containerGetRequestResponse
+                                                          .jsonBody,
+                                                    ),
+                                                    ' N/A',
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Yantramanav',
+                                                        color:
+                                                            const Color(0xFF64748B),
+                                                        fontSize: 16.0,
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                ),
                                               ),
                                             ],
                                           ),

@@ -1259,6 +1259,8 @@ class _ServiceUpdatesComponentSPWidgetState
                                         chat: widget.chat!,
                                         request:
                                             containerRequestRecord.reference,
+                                        driverName:
+                                            containerRequestRecord.driverName,
                                         updatePosition:
                                             (duration, distance) async {
                                           await widget.request!

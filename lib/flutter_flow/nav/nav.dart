@@ -339,9 +339,23 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'testtt',
-              path: 'testtt',
-              builder: (context, params) => const TestttWidget(),
+              name: 'tech_enroute',
+              path: 'techEnroute',
+              asyncParams: {
+                'chat': getDoc(['chats'], ChatsRecord.fromSnapshot),
+              },
+              builder: (context, params) => TechEnrouteWidget(
+                chat: params.getParam(
+                  'chat',
+                  ParamType.Document,
+                ),
+                request: params.getParam(
+                  'request',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['request'],
+                ),
+              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
@@ -603,4 +617,14 @@ class RootPageContext {
         value: RootPageContext(true, errorRoute),
         child: child,
       );
+}
+
+extension GoRouterLocationExtension on GoRouter {
+  String getCurrentLocation() {
+    final RouteMatch lastMatch = routerDelegate.currentConfiguration.last;
+    final RouteMatchList matchList = lastMatch is ImperativeRouteMatch
+        ? lastMatch.matches
+        : routerDelegate.currentConfiguration;
+    return matchList.uri.toString();
+  }
 }

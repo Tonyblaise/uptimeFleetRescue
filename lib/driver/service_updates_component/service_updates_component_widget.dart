@@ -2,7 +2,6 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/driver/cancel_request/cancel_request_widget.dart';
 import '/driver/complete_request/complete_request_widget.dart';
-import '/driver/your_tech_enroute/your_tech_enroute_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -304,22 +303,22 @@ class _ServiceUpdatesComponentWidgetState
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
                                   if (widget.request?.status == 'inProgress') {
-                                    await showModalBottomSheet(
-                                      isScrollControlled: true,
-                                      backgroundColor: Colors.transparent,
-                                      enableDrag: false,
-                                      context: context,
-                                      builder: (context) {
-                                        return Padding(
-                                          padding:
-                                              MediaQuery.viewInsetsOf(context),
-                                          child: YourTechEnrouteWidget(
-                                            request: widget.request!,
-                                            chat: containerChatsRecord,
-                                          ),
-                                        );
+                                    context.pushNamed(
+                                      'tech_enroute',
+                                      queryParameters: {
+                                        'chat': serializeParam(
+                                          containerChatsRecord,
+                                          ParamType.Document,
+                                        ),
+                                        'request': serializeParam(
+                                          widget.request?.reference,
+                                          ParamType.DocumentReference,
+                                        ),
+                                      }.withoutNulls,
+                                      extra: <String, dynamic>{
+                                        'chat': containerChatsRecord,
                                       },
-                                    ).then((value) => safeSetState(() {}));
+                                    );
                                   }
                                 },
                                 child: Container(

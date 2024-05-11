@@ -42,4 +42,4 @@ export '/chat/image_details_1/image_details1_widget.dart'
     show ImageDetails1Widget;
 export '/previous_jobs/previous_jobs_widget.dart' show PreviousJobsWidget;
 export '/success/success_widget.dart' show SuccessWidget;
-export '/testtt/testtt_widget.dart' show TestttWidget;
+export '/tech_enroute/tech_enroute_widget.dart' show TechEnrouteWidget;
