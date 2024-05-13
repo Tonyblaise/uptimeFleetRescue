@@ -179,7 +179,8 @@ class _TechStatusComponentWidgetState extends State<TechStatusComponentWidget> {
                                                 _model.switchValue = newValue);
                                             if (newValue) {
                                               setState(() {
-                                                _model.onDuty = false;
+                                                _model.onDuty =
+                                                    _model.switchValue!;
                                               });
                                             }
                                           },
