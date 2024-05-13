@@ -168,35 +168,34 @@ class _TechStatusComponentWidgetState extends State<TechStatusComponentWidget> {
                                               letterSpacing: 0.0,
                                             ),
                                       ),
-                                      AuthUserStreamWidget(
-                                        builder: (context) => Switch.adaptive(
-                                          value: _model.switchValue ??=
-                                              valueOrDefault<bool>(
-                                                  currentUserDocument?.onDuty,
-                                                  false),
-                                          onChanged: (newValue) async {
-                                            setState(() =>
-                                                _model.switchValue = newValue);
-                                            if (newValue) {
-                                              setState(() {
-                                                _model.onDuty =
-                                                    _model.switchValue!;
-                                              });
-                                            }
-                                          },
-                                          activeColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .tertiary,
-                                          activeTrackColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .accent1,
-                                          inactiveTrackColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .alternate,
-                                          inactiveThumbColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .secondaryText,
-                                        ),
+                                      Switch.adaptive(
+                                        value: _model.switchValue ??=
+                                            _model.onDuty,
+                                        onChanged: (newValue) async {
+                                          setState(() =>
+                                              _model.switchValue = newValue);
+                                          if (newValue) {
+                                            setState(() {
+                                              _model.onDuty = true;
+                                            });
+                                          } else {
+                                            setState(() {
+                                              _model.onDuty = false;
+                                            });
+                                          }
+                                        },
+                                        activeColor:
+                                            FlutterFlowTheme.of(context)
+                                                .tertiary,
+                                        activeTrackColor:
+                                            FlutterFlowTheme.of(context)
+                                                .accent1,
+                                        inactiveTrackColor:
+                                            FlutterFlowTheme.of(context)
+                                                .alternate,
+                                        inactiveThumbColor:
+                                            FlutterFlowTheme.of(context)
+                                                .secondaryText,
                                       ),
                                     ].divide(const SizedBox(width: 10.0)),
                                   ),
