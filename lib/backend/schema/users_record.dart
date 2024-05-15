@@ -154,6 +154,11 @@ class UsersRecord extends FirestoreRecord {
   bool hasDriverFleetManagerMessageThreadIdFirebaseId() =>
       _driverFleetManagerMessageThreadIdFirebaseId != null;
 
+  // "techProfile" field.
+  bool? _techProfile;
+  bool get techProfile => _techProfile ?? false;
+  bool hasTechProfile() => _techProfile != null;
+
   void _initializeFields() {
     _companyId = snapshotData['companyId'] as String?;
     _companyName = snapshotData['companyName'] as String?;
@@ -188,6 +193,7 @@ class UsersRecord extends FirestoreRecord {
     _driverFleetManagerMessageThreadIdFirebaseId =
         snapshotData['driverFleetManagerMessageThreadIdFirebaseId']
             as DocumentReference?;
+    _techProfile = snapshotData['techProfile'] as bool?;
   }
 
   static CollectionReference get collection =>
@@ -250,6 +256,7 @@ Map<String, dynamic> createUsersRecordData({
   String? activeRequestBubble,
   DocumentReference? driverSupportMessageThreadIdFirebase,
   DocumentReference? driverFleetManagerMessageThreadIdFirebaseId,
+  bool? techProfile,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -281,6 +288,7 @@ Map<String, dynamic> createUsersRecordData({
           driverSupportMessageThreadIdFirebase,
       'driverFleetManagerMessageThreadIdFirebaseId':
           driverFleetManagerMessageThreadIdFirebaseId,
+      'techProfile': techProfile,
     }.withoutNulls,
   );
 
@@ -321,7 +329,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.driverSupportMessageThreadIdFirebase ==
             e2?.driverSupportMessageThreadIdFirebase &&
         e1?.driverFleetManagerMessageThreadIdFirebaseId ==
-            e2?.driverFleetManagerMessageThreadIdFirebaseId;
+            e2?.driverFleetManagerMessageThreadIdFirebaseId &&
+        e1?.techProfile == e2?.techProfile;
   }
 
   @override
@@ -351,7 +360,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.technicianLastUpdatedLocation,
         e?.activeRequestBubble,
         e?.driverSupportMessageThreadIdFirebase,
-        e?.driverFleetManagerMessageThreadIdFirebaseId
+        e?.driverFleetManagerMessageThreadIdFirebaseId,
+        e?.techProfile
       ]);
 
   @override

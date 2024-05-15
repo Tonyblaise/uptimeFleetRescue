@@ -1,5 +1,4 @@
 import '/components/page_title_widget.dart';
-import '/components/tech_status_component_widget.dart';
 import '/components/user_details_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -117,11 +116,6 @@ class _TechStatusWidgetState extends State<TechStatusWidget> {
                 ),
                 Container(
                   decoration: const BoxDecoration(),
-                  child: wrapWithModel(
-                    model: _model.techStatusComponentModel,
-                    updateCallback: () => setState(() {}),
-                    child: const TechStatusComponentWidget(),
-                  ),
                 ),
                 wrapWithModel(
                   model: _model.bottomBarModel,

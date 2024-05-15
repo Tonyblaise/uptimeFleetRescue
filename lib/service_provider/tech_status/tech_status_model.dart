@@ -1,5 +1,4 @@
 import '/components/page_title_widget.dart';
-import '/components/tech_status_component_widget.dart';
 import '/components/user_details_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/service_provider/bottom_bar/bottom_bar_widget.dart';
@@ -14,8 +13,6 @@ class TechStatusModel extends FlutterFlowModel<TechStatusWidget> {
   late UserDetailsModel userDetailsModel;
   // Model for pageTitle component.
   late PageTitleModel pageTitleModel;
-  // Model for techStatusComponent component.
-  late TechStatusComponentModel techStatusComponentModel;
   // Model for bottom_bar component.
   late BottomBarModel bottomBarModel;
 
@@ -23,8 +20,6 @@ class TechStatusModel extends FlutterFlowModel<TechStatusWidget> {
   void initState(BuildContext context) {
     userDetailsModel = createModel(context, () => UserDetailsModel());
     pageTitleModel = createModel(context, () => PageTitleModel());
-    techStatusComponentModel =
-        createModel(context, () => TechStatusComponentModel());
     bottomBarModel = createModel(context, () => BottomBarModel());
   }
 
@@ -33,7 +28,6 @@ class TechStatusModel extends FlutterFlowModel<TechStatusWidget> {
     unfocusNode.dispose();
     userDetailsModel.dispose();
     pageTitleModel.dispose();
-    techStatusComponentModel.dispose();
     bottomBarModel.dispose();
   }
 }

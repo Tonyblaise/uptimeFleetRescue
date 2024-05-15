@@ -170,9 +170,12 @@ class _BottomBarWidgetState extends State<BottomBarWidget> {
                         builder: (context) {
                           return Padding(
                             padding: MediaQuery.viewInsetsOf(context),
-                            child: const SizedBox(
+                            child: SizedBox(
                               height: 300.0,
-                              child: TechStatusComponentWidget(),
+                              child: TechStatusComponentWidget(
+                                onDuty: valueOrDefault<bool>(
+                                    currentUserDocument?.onDuty, false),
+                              ),
                             ),
                           );
                         },

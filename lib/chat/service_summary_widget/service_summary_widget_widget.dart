@@ -1,4 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/driver/cancel_request/cancel_request_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -824,9 +825,18 @@ class _ServiceSummaryWidgetWidgetState
                                             .update(createRequestRecordData(
                                           status: 'inProgress',
                                         ));
+                                        _model.apiResultoan =
+                                            await UptimeFleetAppGroup
+                                                .updateRequestCall
+                                                .call(
+                                          id: widget.bubbleId,
+                                          status: 'inProgress',
+                                        );
 
                                         context
                                             .pushNamed('dashboardTechnician');
+
+                                        setState(() {});
                                       },
                                       text: 'Start Job',
                                       options: FFButtonOptions(

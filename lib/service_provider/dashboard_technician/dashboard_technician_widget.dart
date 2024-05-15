@@ -225,10 +225,16 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                                               padding: MediaQuery
                                                                   .viewInsetsOf(
                                                                       context),
-                                                              child: const SizedBox(
+                                                              child: SizedBox(
                                                                 height: 300.0,
                                                                 child:
-                                                                    TechStatusComponentWidget(),
+                                                                    TechStatusComponentWidget(
+                                                                  onDuty: valueOrDefault<
+                                                                          bool>(
+                                                                      currentUserDocument
+                                                                          ?.onDuty,
+                                                                      false),
+                                                                ),
                                                               ),
                                                             ),
                                                           );
