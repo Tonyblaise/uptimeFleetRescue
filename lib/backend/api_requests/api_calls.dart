@@ -333,6 +333,7 @@ class CreateARequestCall {
     String? chatId = '',
     String? firebaseId = '',
     String? driverImage = '',
+    String? driverTechnician = '',
     String? accessToken = '1707139937267x678517623997244500',
   }) async {
     final ffApiRequestBody = '''
@@ -347,7 +348,8 @@ class CreateARequestCall {
   "support_review": $supportReview,
   "chatId": "$chatId",
   "firebaseId": "$firebaseId",
-  "driverImage": "$driverImage"
+  "driverImage": "$driverImage",
+  "driverId":"$driverTechnician"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Create a request',

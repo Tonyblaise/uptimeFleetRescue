@@ -1370,6 +1370,11 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                             .id,
                                                         driverImage:
                                                             _model.image,
+                                                        driverTechnician:
+                                                            valueOrDefault(
+                                                                currentUserDocument
+                                                                    ?.technicianId,
+                                                                ''),
                                                       );
                                                       if ((_model
                                                               .apiResulty8vCopy
