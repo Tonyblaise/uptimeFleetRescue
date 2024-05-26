@@ -113,10 +113,10 @@ class _MapboxNavigationWidgetState extends State<MapboxNavigationWidget> {
               .startNavigation(wayPoints: wayPoints, options: opt);
         },
         style: ElevatedButton.styleFrom(
-          backgroundColor: Color.fromRGBO(0, 204, 170, 1.0),
+          backgroundColor: Color.fromRGBO(51, 51, 51, 1),
           foregroundColor: Colors.white,
         ),
-        child: Text('Start Navigation'),
+        child: Text('Go To Navigation'),
       ),
     );
   }

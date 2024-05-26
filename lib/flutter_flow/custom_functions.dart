@@ -119,3 +119,8 @@ int? addOne(int? number) {
   // add one to a number
   return number != null ? number + 1 : null;
 }
+
+String? newCustomFunction(String? text) {
+  // make string uppercase
+  return text?.toUpperCase();
+}

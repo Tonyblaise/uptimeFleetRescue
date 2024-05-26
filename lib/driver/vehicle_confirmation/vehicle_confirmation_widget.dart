@@ -982,6 +982,7 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                             final selectedMedia =
                                                                 await selectMediaWithSourceBottomSheet(
                                                               context: context,
+                                                              imageQuality: 76,
                                                               allowPhoto: true,
                                                             );
                                                             if (selectedMedia !=
@@ -1070,7 +1071,7 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
 
                                                             setState(() {
                                                               _model.image = _model
-                                                                  .uploadedFileUrl2;
+                                                                  .uploadedFileUrl1;
                                                             });
                                                           },
                                                           child: ClipRRect(
@@ -1112,6 +1113,7 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                     final selectedMedia =
                                                         await selectMediaWithSourceBottomSheet(
                                                       context: context,
+                                                      imageQuality: 75,
                                                       allowPhoto: true,
                                                     );
                                                     if (selectedMedia != null &&

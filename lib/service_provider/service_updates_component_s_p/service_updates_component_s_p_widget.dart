@@ -450,7 +450,7 @@ class _ServiceUpdatesComponentSPWidgetState
                                                 MainAxisAlignment.center,
                                             children: [
                                               Text(
-                                                'View Details',
+                                                'View Job Details',
                                                 style: FlutterFlowTheme.of(
                                                         context)
                                                     .bodyMedium
@@ -1043,7 +1043,7 @@ class _ServiceUpdatesComponentSPWidgetState
                                                         const AlignmentDirectional(
                                                             0.0, 0.0),
                                                     child: Text(
-                                                      'Cancel',
+                                                      'Cancel this job',
                                                       style: FlutterFlowTheme
                                                               .of(context)
                                                           .titleSmall
@@ -1065,86 +1065,93 @@ class _ServiceUpdatesComponentSPWidgetState
                                                       const AlignmentDirectional(
                                                           1.0, -1.0),
                                                   children: [
-                                                    FFButtonWidget(
-                                                      onPressed: () async {
-                                                        if (containerChatsRecord
-                                                                .lastMessageUser ==
-                                                            currentUserReference) {
-                                                          await containerChatsRecord
-                                                              .reference
-                                                              .update(
-                                                                  createChatsRecordData(
-                                                            lastMessageRead:
-                                                                true,
-                                                          ));
-                                                        }
+                                                    Align(
+                                                      alignment:
+                                                          const AlignmentDirectional(
+                                                              0.0, 0.0),
+                                                      child: FFButtonWidget(
+                                                        onPressed: () async {
+                                                          if (containerChatsRecord
+                                                                  .lastMessageUser ==
+                                                              currentUserReference) {
+                                                            await containerChatsRecord
+                                                                .reference
+                                                                .update(
+                                                                    createChatsRecordData(
+                                                              lastMessageRead:
+                                                                  true,
+                                                            ));
+                                                          }
 
-                                                        context.pushNamed(
-                                                          'chat_2_Details_1',
-                                                          queryParameters: {
-                                                            'chatRef':
-                                                                serializeParam(
-                                                              containerChatsRecord,
-                                                              ParamType
-                                                                  .Document,
-                                                            ),
-                                                            'driver':
-                                                                serializeParam(
-                                                              false,
-                                                              ParamType.bool,
-                                                            ),
-                                                          }.withoutNulls,
-                                                          extra: <String,
-                                                              dynamic>{
-                                                            'chatRef':
+                                                          context.pushNamed(
+                                                            'chat_2_Details_1',
+                                                            queryParameters: {
+                                                              'chatRef':
+                                                                  serializeParam(
                                                                 containerChatsRecord,
-                                                          },
-                                                        );
-                                                      },
-                                                      text: 'Chat Driver',
-                                                      options: FFButtonOptions(
-                                                        width: 160.0,
-                                                        height: 56.0,
-                                                        padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    24.0,
-                                                                    0.0,
-                                                                    24.0,
-                                                                    0.0),
-                                                        iconPadding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .tertiary,
-                                                        textStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .titleSmall
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Yantramanav',
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primary,
-                                                                  letterSpacing:
+                                                                ParamType
+                                                                    .Document,
+                                                              ),
+                                                              'driver':
+                                                                  serializeParam(
+                                                                false,
+                                                                ParamType.bool,
+                                                              ),
+                                                            }.withoutNulls,
+                                                            extra: <String,
+                                                                dynamic>{
+                                                              'chatRef':
+                                                                  containerChatsRecord,
+                                                            },
+                                                          );
+                                                        },
+                                                        text: 'Chat Driver',
+                                                        options:
+                                                            FFButtonOptions(
+                                                          width: 160.0,
+                                                          height: 56.0,
+                                                          padding:
+                                                              const EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      24.0,
                                                                       0.0,
-                                                                ),
-                                                        elevation: 3.0,
-                                                        borderSide: const BorderSide(
-                                                          color: Colors
-                                                              .transparent,
-                                                          width: 1.0,
+                                                                      24.0,
+                                                                      0.0),
+                                                          iconPadding:
+                                                              const EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .tertiary,
+                                                          textStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmall
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Yantramanav',
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primary,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                  ),
+                                                          elevation: 3.0,
+                                                          borderSide:
+                                                              const BorderSide(
+                                                            color: Colors
+                                                                .transparent,
+                                                            width: 1.0,
+                                                          ),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      18.0),
                                                         ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(18.0),
                                                       ),
                                                     ),
                                                     Builder(
@@ -1242,12 +1249,12 @@ class _ServiceUpdatesComponentSPWidgetState
                                   child: Align(
                                     alignment: const AlignmentDirectional(0.0, 0.0),
                                     child: SizedBox(
-                                      width: 160.0,
-                                      height: 60.0,
+                                      width: 170.0,
+                                      height: 56.0,
                                       child:
                                           custom_widgets.MapboxNavigationWidget(
-                                        width: 160.0,
-                                        height: 60.0,
+                                        width: 170.0,
+                                        height: 56.0,
                                         originLat: functions
                                             .getLat(currentUserLocationValue!),
                                         originLng: functions

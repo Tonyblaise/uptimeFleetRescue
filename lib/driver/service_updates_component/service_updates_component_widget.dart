@@ -994,7 +994,7 @@ class _ServiceUpdatesComponentWidgetState
                                             alignment:
                                                 const AlignmentDirectional(0.0, 0.0),
                                             child: Text(
-                                              'Cancel',
+                                              'Cancel this job',
                                               style: FlutterFlowTheme.of(
                                                       context)
                                                   .titleSmall
@@ -1222,7 +1222,7 @@ class _ServiceUpdatesComponentWidgetState
                                   ),
                                 ),
                               ),
-                            ].divide(const SizedBox(height: 40.0)),
+                            ].divide(const SizedBox(height: 20.0)),
                           ),
                         ),
                       ].divide(const SizedBox(height: 5.0)),
