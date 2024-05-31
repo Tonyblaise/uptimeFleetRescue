@@ -154,6 +154,7 @@ final parametersBuilderMap =
           'service': getParameter<String>(data, 'service'),
           'additionalInfo': getParameter<String>(data, 'additionalInfo'),
           'address': getParameter<String>(data, 'address'),
+          'dropOffLocation': getParameter<LatLng>(data, 'dropOffLocation'),
         },
       ),
   'onboard': (data) async => ParameterData(
@@ -207,6 +208,11 @@ final parametersBuilderMap =
           'chat': await getDocumentParameter<ChatsRecord>(
               data, 'chat', ChatsRecord.fromSnapshot),
           'request': getParameter<DocumentReference>(data, 'request'),
+        },
+      ),
+  'more_details': (data) async => ParameterData(
+        allParams: {
+          'fault': getParameter<String>(data, 'fault'),
         },
       ),
 };

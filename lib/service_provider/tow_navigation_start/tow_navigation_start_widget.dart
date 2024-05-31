@@ -1,19 +1,27 @@
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'confirm_request_model.dart';
-export 'confirm_request_model.dart';
+import 'tow_navigation_start_model.dart';
+export 'tow_navigation_start_model.dart';
 
-class ConfirmRequestWidget extends StatefulWidget {
-  const ConfirmRequestWidget({super.key});
+class TowNavigationStartWidget extends StatefulWidget {
+  const TowNavigationStartWidget({
+    super.key,
+    required this.request,
+  });
+
+  final DocumentReference? request;
 
   @override
-  State<ConfirmRequestWidget> createState() => _ConfirmRequestWidgetState();
+  State<TowNavigationStartWidget> createState() =>
+      _TowNavigationStartWidgetState();
 }
 
-class _ConfirmRequestWidgetState extends State<ConfirmRequestWidget> {
-  late ConfirmRequestModel _model;
+class _TowNavigationStartWidgetState extends State<TowNavigationStartWidget> {
+  late TowNavigationStartModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -24,7 +32,7 @@ class _ConfirmRequestWidgetState extends State<ConfirmRequestWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => ConfirmRequestModel());
+    _model = createModel(context, () => TowNavigationStartModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -72,7 +80,7 @@ class _ConfirmRequestWidgetState extends State<ConfirmRequestWidget> {
                   child: Align(
                     alignment: const AlignmentDirectional(0.0, 0.0),
                     child: Text(
-                      'Request Confirmed',
+                      'Start navigation',
                       textAlign: TextAlign.center,
                       style: FlutterFlowTheme.of(context).titleSmall.override(
                             fontFamily: 'Yantramanav',
@@ -103,7 +111,7 @@ class _ConfirmRequestWidgetState extends State<ConfirmRequestWidget> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(
-                        'Your tech assist request\nhas been confirmed.',
+                        'Start tow navigation',
                         textAlign: TextAlign.center,
                         style: FlutterFlowTheme.of(context).labelLarge.override(
                               fontFamily: 'Yantramanav',
@@ -128,50 +136,77 @@ class _ConfirmRequestWidgetState extends State<ConfirmRequestWidget> {
                   ),
                 ),
               ),
-              Align(
-                alignment: const AlignmentDirectional(0.0, 0.0),
-                child: Padding(
-                  padding:
-                      const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 20.0),
-                  child: InkWell(
-                    splashColor: Colors.transparent,
-                    focusColor: Colors.transparent,
-                    hoverColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    onTap: () async {
-                      context.pushNamed('dashboardDriver');
-                    },
-                    child: Container(
-                      width: MediaQuery.sizeOf(context).width * 0.9,
-                      height: 56.0,
-                      constraints: BoxConstraints(
-                        maxWidth: MediaQuery.sizeOf(context).width * 0.9,
-                      ),
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [
-                            FlutterFlowTheme.of(context).secondary,
-                            FlutterFlowTheme.of(context).tertiary
-                          ],
-                          stops: const [0.0, 1.0],
-                          begin: const AlignmentDirectional(0.0, -1.0),
-                          end: const AlignmentDirectional(0, 1.0),
-                        ),
-                        borderRadius: BorderRadius.circular(18.0),
-                      ),
-                      child: Align(
-                        alignment: const AlignmentDirectional(0.0, 0.0),
-                        child: Text(
-                          'Continue',
-                          style:
+              Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 20.0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Expanded(
+                      child: FFButtonWidget(
+                        onPressed: () async {
+                          Navigator.pop(context);
+                        },
+                        text: 'Cancel',
+                        options: FFButtonOptions(
+                          height: 56.0,
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              24.0, 0.0, 24.0, 0.0),
+                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          color: FlutterFlowTheme.of(context).primary,
+                          textStyle:
                               FlutterFlowTheme.of(context).titleSmall.override(
                                     fontFamily: 'Yantramanav',
+                                    color: FlutterFlowTheme.of(context).error,
                                     letterSpacing: 0.0,
                                   ),
+                          elevation: 3.0,
+                          borderSide: const BorderSide(
+                            color: Colors.transparent,
+                            width: 1.0,
+                          ),
+                          borderRadius: BorderRadius.circular(100.0),
                         ),
                       ),
                     ),
-                  ),
+                    Expanded(
+                      child: FFButtonWidget(
+                        onPressed: () async {
+                          _model.apiResultoan =
+                              await UptimeFleetAppGroup.updateRequestCall.call(
+                            id: widget.request?.id,
+                            status: 'enrouteToTowDestination',
+                          );
+
+                          context.pushNamed('dashboardTechnician');
+
+                          setState(() {});
+                        },
+                        text: 'Start Job',
+                        options: FFButtonOptions(
+                          height: 56.0,
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              24.0, 0.0, 24.0, 0.0),
+                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          color: FlutterFlowTheme.of(context).tertiary,
+                          textStyle:
+                              FlutterFlowTheme.of(context).titleSmall.override(
+                                    fontFamily: 'Yantramanav',
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    letterSpacing: 0.0,
+                                  ),
+                          elevation: 3.0,
+                          borderSide: const BorderSide(
+                            color: Colors.transparent,
+                            width: 1.0,
+                          ),
+                          borderRadius: BorderRadius.circular(18.0),
+                        ),
+                      ),
+                    ),
+                  ].divide(const SizedBox(width: 15.0)),
                 ),
               ),
             ].divide(const SizedBox(height: 32.0)),

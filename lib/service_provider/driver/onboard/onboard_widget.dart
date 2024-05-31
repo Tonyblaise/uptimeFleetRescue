@@ -37,14 +37,12 @@ class _OnboardWidgetState extends State<OnboardWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       if (widget.fleetManagerId != null && widget.fleetManagerId != '') {
-        setState(() {
-          _model.signUpType = 'fleet';
-        });
+        _model.signUpType = 'fleet';
+        setState(() {});
       } else if (widget.serviceProviderId != null &&
           widget.serviceProviderId != '') {
-        setState(() {
-          _model.signUpType = 'technician';
-        });
+        _model.signUpType = 'technician';
+        setState(() {});
       } else if ((widget.fleetManagerId == null ||
               widget.fleetManagerId == '') &&
           (widget.serviceProviderId == null ||

@@ -101,9 +101,8 @@ class _DriverChatWidgetState extends State<DriverChatWidget> {
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
-                                  setState(() {
-                                    _model.pageState = 2;
-                                  });
+                                  _model.pageState = 2;
+                                  setState(() {});
                                 },
                                 child: Container(
                                   width: double.infinity,
@@ -150,9 +149,8 @@ class _DriverChatWidgetState extends State<DriverChatWidget> {
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
-                                  setState(() {
-                                    _model.pageState = 3;
-                                  });
+                                  _model.pageState = 3;
+                                  setState(() {});
                                 },
                                 child: Container(
                                   width: 100.0,

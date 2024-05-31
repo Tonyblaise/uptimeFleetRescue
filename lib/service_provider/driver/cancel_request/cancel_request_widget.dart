@@ -54,7 +54,7 @@ class _CancelRequestWidgetState extends State<CancelRequestWidget> {
       child: Padding(
         padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
         child: Container(
-          width: MediaQuery.sizeOf(context).width * 0.9,
+          width: double.infinity,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(24.0),

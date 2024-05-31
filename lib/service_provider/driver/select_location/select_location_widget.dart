@@ -15,12 +15,14 @@ class SelectLocationWidget extends StatefulWidget {
     super.key,
     required this.service,
     this.additionalInfo,
-    required this.address,
+    this.address,
+    this.dropOffLocation,
   });
 
   final String? service;
   final String? additionalInfo;
   final String? address;
+  final LatLng? dropOffLocation;
 
   @override
   State<SelectLocationWidget> createState() => _SelectLocationWidgetState();
@@ -41,9 +43,8 @@ class _SelectLocationWidgetState extends State<SelectLocationWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       currentUserLocationValue =
           await getCurrentUserLocation(defaultLocation: const LatLng(0.0, 0.0));
-      setState(() {
-        _model.latLng = currentUserLocationValue;
-      });
+      _model.latLng = currentUserLocationValue;
+      setState(() {});
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -277,9 +278,8 @@ class _SelectLocationWidgetState extends State<SelectLocationWidget> {
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
-                                  setState(() {
-                                    _model.addressView = !_model.addressView;
-                                  });
+                                  _model.addressView = !_model.addressView;
+                                  setState(() {});
                                 },
                                 child: Container(
                                   width: double.infinity,
@@ -334,11 +334,10 @@ class _SelectLocationWidgetState extends State<SelectLocationWidget> {
                                             .toGoogleMaps()),
                                       ),
                                     );
-                                    setState(() {
-                                      _model.addressView = true;
-                                      _model.latLng =
-                                          _model.placePickerValue.latLng;
-                                    });
+                                    _model.addressView = true;
+                                    _model.latLng =
+                                        _model.placePickerValue.latLng;
+                                    setState(() {});
                                   }
                                 },
                                 child: Container(

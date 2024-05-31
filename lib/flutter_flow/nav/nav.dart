@@ -220,6 +220,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   'address',
                   ParamType.String,
                 ),
+                dropOffLocation: params.getParam(
+                  'dropOffLocation',
+                  ParamType.LatLng,
+                ),
               ),
             ),
             FFRoute(
@@ -354,6 +358,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   ParamType.DocumentReference,
                   isList: false,
                   collectionNamePath: ['request'],
+                ),
+              ),
+            ),
+            FFRoute(
+              name: 'more_details',
+              path: 'more_details',
+              builder: (context, params) => MoreDetailsWidget(
+                fault: params.getParam(
+                  'fault',
+                  ParamType.String,
                 ),
               ),
             )

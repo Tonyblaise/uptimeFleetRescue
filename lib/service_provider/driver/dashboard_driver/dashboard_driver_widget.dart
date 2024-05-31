@@ -2,10 +2,10 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/page_title_widget.dart';
 import '/components/user_details_widget.dart';
-import '/driver/allow_location/allow_location_widget.dart';
-import '/driver/service_updates_component/service_updates_component_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/service_provider/driver/allow_location/allow_location_widget.dart';
+import '/service_provider/driver/service_updates_component/service_updates_component_widget.dart';
 import '/flutter_flow/permissions_util.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -221,10 +221,9 @@ class _DashboardDriverWidgetState extends State<DashboardDriverWidget> {
                                                       highlightColor:
                                                           Colors.transparent,
                                                       onTap: () async {
-                                                        setState(() {
-                                                          _model.service =
-                                                              servicesItem.name;
-                                                        });
+                                                        _model.service =
+                                                            servicesItem.name;
+                                                        setState(() {});
                                                       },
                                                       child: Container(
                                                         width: 99.0,
@@ -546,23 +545,49 @@ class _DashboardDriverWidgetState extends State<DashboardDriverWidget> {
                                     onTap: () async {
                                       if (await getPermissionStatus(
                                           locationPermission)) {
-                                        context.pushNamed(
-                                          'selectLocation',
-                                          queryParameters: {
-                                            'service': serializeParam(
-                                              _model.service,
-                                              ParamType.String,
-                                            ),
-                                            'additionalInfo': serializeParam(
-                                              _model.textController.text,
-                                              ParamType.String,
-                                            ),
-                                            'address': serializeParam(
-                                              '',
-                                              ParamType.String,
-                                            ),
-                                          }.withoutNulls,
-                                        );
+                                        if (_model.service == 'Tow') {
+                                          context.pushNamed(
+                                            'more_details',
+                                            queryParameters: {
+                                              'fault': serializeParam(
+                                                'Tow',
+                                                ParamType.String,
+                                              ),
+                                            }.withoutNulls,
+                                          );
+                                        } else if (_model.service ==
+                                            'Lockout') {
+                                          context.pushNamed(
+                                            'more_details',
+                                            queryParameters: {
+                                              'fault': serializeParam(
+                                                'Lockout',
+                                                ParamType.String,
+                                              ),
+                                            }.withoutNulls,
+                                          );
+                                        } else if (_model.service ==
+                                            'Tire Change') {
+                                          context.pushNamed(
+                                            'more_details',
+                                            queryParameters: {
+                                              'fault': serializeParam(
+                                                'Tire Change',
+                                                ParamType.String,
+                                              ),
+                                            }.withoutNulls,
+                                          );
+                                        } else {
+                                          context.pushNamed(
+                                            'selectLocation',
+                                            queryParameters: {
+                                              'service': serializeParam(
+                                                _model.service,
+                                                ParamType.String,
+                                              ),
+                                            }.withoutNulls,
+                                          );
+                                        }
                                       } else {
                                         await showModalBottomSheet(
                                           isScrollControlled: true,

@@ -353,10 +353,9 @@ class _ChatThreadComponent1WidgetState
                             }
 
                             if (_model.uploadedFileUrl != '') {
-                              setState(() {
-                                _model.addToImagesUploaded(
-                                    _model.uploadedFileUrl);
-                              });
+                              _model
+                                  .addToImagesUploaded(_model.uploadedFileUrl);
+                              setState(() {});
                             }
                           },
                         ),
@@ -438,9 +437,8 @@ class _ChatThreadComponent1WidgetState
                                         _model.uploadedFileUrl = '';
                                       });
 
-                                      setState(() {
-                                        _model.imagesUploaded = [];
-                                      });
+                                      _model.imagesUploaded = [];
+                                      setState(() {});
 
                                       setState(() {});
                                     },
@@ -716,9 +714,8 @@ class _ChatThreadComponent1WidgetState
                                         setState(() {
                                           _model.textController?.clear();
                                         });
-                                        setState(() {
-                                          _model.imagesUploaded = [];
-                                        });
+                                        _model.imagesUploaded = [];
+                                        setState(() {});
                                         setState(() {
                                           _model.isDataUploading = false;
                                           _model.uploadedLocalFile =

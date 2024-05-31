@@ -38,11 +38,11 @@ class _TechStatusComponentWidgetState extends State<TechStatusComponentWidget> {
 
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      setState(() {
-        _model.onDuty = widget.onDuty!;
-      });
+      _model.onDuty = widget.onDuty!;
+      setState(() {});
     });
 
+    _model.switchValue = widget.onDuty!;
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -173,19 +173,16 @@ class _TechStatusComponentWidgetState extends State<TechStatusComponentWidget> {
                                             ),
                                       ),
                                       Switch.adaptive(
-                                        value: _model.switchValue ??=
-                                            widget.onDuty!,
+                                        value: _model.switchValue!,
                                         onChanged: (newValue) async {
                                           setState(() =>
                                               _model.switchValue = newValue);
                                           if (newValue) {
-                                            setState(() {
-                                              _model.onDuty = true;
-                                            });
+                                            _model.onDuty = true;
+                                            setState(() {});
                                           } else {
-                                            setState(() {
-                                              _model.onDuty = false;
-                                            });
+                                            _model.onDuty = false;
+                                            setState(() {});
                                           }
                                         },
                                         activeColor:

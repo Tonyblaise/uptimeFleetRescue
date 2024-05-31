@@ -354,6 +354,7 @@ class CreateARequestCall {
     String? firebaseId = '',
     String? driverImage = '',
     String? driverTechnician = '',
+    String? dropOffLocationLatLng = '',
     String? accessToken = '1707139937267x678517623997244500',
   }) async {
     final baseUrl = UptimeFleetAppGroup.getBaseUrl(
@@ -363,7 +364,7 @@ class CreateARequestCall {
     final ffApiRequestBody = '''
 {
   "date": $date,
-  "driverId": "$driverId",
+  "driverId": "$driverTechnician",
   "position": "$position",
   "fault": "$fault",
   "status": "New Case",
@@ -373,7 +374,7 @@ class CreateARequestCall {
   "chatId": "$chatId",
   "firebaseId": "$firebaseId",
   "driverImage": "$driverImage",
-  "driverId":"$driverTechnician"
+  "dropOffLocationLatLng": "$dropOffLocationLatLng"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Create a request',
@@ -2008,10 +2009,17 @@ class ApiPagingParams {
       'PagingParams(nextPageNumber: $nextPageNumber, numItems: $numItems, lastResponse: $lastResponse,)';
 }
 
+String _toEncodable(dynamic item) {
+  if (item is DocumentReference) {
+    return item.path;
+  }
+  return item;
+}
+
 String _serializeList(List? list) {
   list ??= <String>[];
   try {
-    return json.encode(list);
+    return json.encode(list, toEncodable: _toEncodable);
   } catch (_) {
     if (kDebugMode) {
       print("List serialization failed. Returning empty list.");
@@ -2023,7 +2031,7 @@ String _serializeList(List? list) {
 String _serializeJson(dynamic jsonVar, [bool isList = false]) {
   jsonVar ??= (isList ? [] : {});
   try {
-    return json.encode(jsonVar);
+    return json.encode(jsonVar, toEncodable: _toEncodable);
   } catch (_) {
     if (kDebugMode) {
       print("Json serialization failed. Returning empty json.");

@@ -122,9 +122,8 @@ class _TechnicianChatWidgetState extends State<TechnicianChatWidget> {
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
-                                  setState(() {
-                                    _model.pageState = 2;
-                                  });
+                                  _model.pageState = 2;
+                                  setState(() {});
                                 },
                                 child: Container(
                                   width: double.infinity,
@@ -171,9 +170,8 @@ class _TechnicianChatWidgetState extends State<TechnicianChatWidget> {
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
-                                  setState(() {
-                                    _model.pageState = 3;
-                                  });
+                                  _model.pageState = 3;
+                                  setState(() {});
                                 },
                                 child: Container(
                                   width: 100.0,

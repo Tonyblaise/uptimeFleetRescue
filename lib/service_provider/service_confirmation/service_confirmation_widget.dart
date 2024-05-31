@@ -603,10 +603,9 @@ class _ServiceConfirmationWidgetState extends State<ServiceConfirmationWidget> {
                                             }
                                           }
 
-                                          setState(() {
-                                            _model.image =
-                                                _model.uploadedFileUrl1;
-                                          });
+                                          _model.image =
+                                              _model.uploadedFileUrl1;
+                                          setState(() {});
                                         },
                                         child: ClipRRect(
                                           borderRadius:
@@ -705,9 +704,8 @@ class _ServiceConfirmationWidgetState extends State<ServiceConfirmationWidget> {
                                     }
                                   }
 
-                                  setState(() {
-                                    _model.image = _model.uploadedFileUrl2;
-                                  });
+                                  _model.image = _model.uploadedFileUrl2;
+                                  setState(() {});
                                 },
                                 child: Container(
                                   width: MediaQuery.sizeOf(context).width * 0.9,

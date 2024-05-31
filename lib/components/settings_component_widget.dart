@@ -1,10 +1,10 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/user_details_widget.dart';
-import '/driver/delete_account/delete_account_widget.dart';
-import '/driver/log_out_confirmation/log_out_confirmation_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/service_provider/driver/delete_account/delete_account_widget.dart';
+import '/service_provider/driver/log_out_confirmation/log_out_confirmation_widget.dart';
 import 'package:flutter/material.dart';
 import 'settings_component_model.dart';
 export 'settings_component_model.dart';

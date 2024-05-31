@@ -1,10 +1,10 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
-import '/driver/cancel_request/cancel_request_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/service_provider/driver/cancel_request/cancel_request_widget.dart';
 import '/service_provider/service_updates_component_s_p/service_updates_component_s_p_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
@@ -907,6 +907,7 @@ class _ServiceSummaryWidgetWidgetState
                 child: ServiceUpdatesComponentSPWidget(
                   request: widget.firebaseId!,
                   chat: widget.driverTechMessageId!,
+                  fault: widget.eventType!,
                 ),
               ),
             );

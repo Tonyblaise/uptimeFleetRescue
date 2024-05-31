@@ -12,6 +12,7 @@ import '/pages/chat/empty_image/empty_image_widget.dart';
 import '/service_provider/confirm_request/confirm_request_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'vehicle_confirmation_model.dart';
 export 'vehicle_confirmation_model.dart';
 
@@ -70,6 +71,8 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -344,45 +347,44 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                               if ((_model.vehicle?.succeeded ??
                                                       true) ==
                                                   true) {
-                                                setState(() {
-                                                  _model.vehicleId =
-                                                      UptimeFleetAppGroup
-                                                          .getVehiclesCall
-                                                          .id(
-                                                    (_model.vehicle?.jsonBody ??
-                                                        ''),
-                                                  );
-                                                  _model.color =
-                                                      UptimeFleetAppGroup
-                                                          .getVehiclesCall
-                                                          .color(
-                                                    (_model.vehicle?.jsonBody ??
-                                                        ''),
-                                                  );
-                                                  _model.state =
-                                                      UptimeFleetAppGroup
-                                                          .getVehiclesCall
-                                                          .state(
-                                                    (_model.vehicle?.jsonBody ??
-                                                        ''),
-                                                  );
-                                                  _model.image =
-                                                      UptimeFleetAppGroup
-                                                          .getVehiclesCall
-                                                          .image(
-                                                    (_model.vehicle?.jsonBody ??
-                                                        ''),
-                                                  );
-                                                  _model.apiCallMade = true;
-                                                  _model.details =
-                                                      '${UptimeFleetAppGroup.getVehiclesCall.make(
-                                                    (_model.vehicle?.jsonBody ??
-                                                        ''),
-                                                  )}${UptimeFleetAppGroup.getVehiclesCall.model(
-                                                    (_model.vehicle?.jsonBody ??
-                                                        ''),
-                                                  )}';
-                                                });
+                                                _model.vehicleId =
+                                                    UptimeFleetAppGroup
+                                                        .getVehiclesCall
+                                                        .id(
+                                                  (_model.vehicle?.jsonBody ??
+                                                      ''),
+                                                );
+                                                _model.color =
+                                                    UptimeFleetAppGroup
+                                                        .getVehiclesCall
+                                                        .color(
+                                                  (_model.vehicle?.jsonBody ??
+                                                      ''),
+                                                );
+                                                _model.state =
+                                                    UptimeFleetAppGroup
+                                                        .getVehiclesCall
+                                                        .state(
+                                                  (_model.vehicle?.jsonBody ??
+                                                      ''),
+                                                );
+                                                _model.image =
+                                                    UptimeFleetAppGroup
+                                                        .getVehiclesCall
+                                                        .image(
+                                                  (_model.vehicle?.jsonBody ??
+                                                      ''),
+                                                );
+                                                _model.apiCallMade = true;
+                                                _model.details =
+                                                    '${UptimeFleetAppGroup.getVehiclesCall.make(
+                                                  (_model.vehicle?.jsonBody ??
+                                                      ''),
+                                                )}${UptimeFleetAppGroup.getVehiclesCall.model(
+                                                  (_model.vehicle?.jsonBody ??
+                                                      ''),
+                                                )}';
+                                                setState(() {});
                                               } else {
                                                 if (getJsonField(
                                                       (_model.vehicle
@@ -1069,10 +1071,9 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                               }
                                                             }
 
-                                                            setState(() {
-                                                              _model.image = _model
-                                                                  .uploadedFileUrl1;
-                                                            });
+                                                            _model.image = _model
+                                                                .uploadedFileUrl1;
+                                                            setState(() {});
                                                           },
                                                           child: ClipRRect(
                                                             borderRadius:
@@ -1204,10 +1205,9 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                       }
                                                     }
 
-                                                    setState(() {
-                                                      _model.image = _model
-                                                          .uploadedFileUrl2;
-                                                    });
+                                                    _model.image =
+                                                        _model.uploadedFileUrl2;
+                                                    setState(() {});
                                                   },
                                                   child: Container(
                                                     width: MediaQuery.sizeOf(
@@ -1325,6 +1325,9 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                           currentUserDocument
                                                               ?.fullName,
                                                           ''),
+                                                      dropOffLocationLatLng:
+                                                          FFAppState()
+                                                              .dropOffLocation,
                                                     ));
                                                     _model.request = RequestRecord
                                                         .getDocumentFromData(
@@ -1341,6 +1344,9 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                                   currentUserDocument
                                                                       ?.fullName,
                                                                   ''),
+                                                              dropOffLocationLatLng:
+                                                                  FFAppState()
+                                                                      .dropOffLocation,
                                                             ),
                                                             requestRecordReference);
                                                     if ((_model.apiResult1adCopy
@@ -1360,7 +1366,14 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                         vehicleId:
                                                             _model.vehicleId,
                                                         additionalInfo: widget
-                                                            .additionalInfo,
+                                                                        .additionalInfo !=
+                                                                    null &&
+                                                                widget.additionalInfo !=
+                                                                    ''
+                                                            ? widget
+                                                                .additionalInfo
+                                                            : FFAppState()
+                                                                .requestAdditionalInfo,
                                                         supportReview: false,
                                                         position: widget.latLng
                                                             ?.toString(),

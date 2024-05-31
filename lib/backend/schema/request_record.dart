@@ -60,6 +60,11 @@ class RequestRecord extends FirestoreRecord {
   String get distance => _distance ?? '';
   bool hasDistance() => _distance != null;
 
+  // "dropOffLocationLatLng" field.
+  LatLng? _dropOffLocationLatLng;
+  LatLng? get dropOffLocationLatLng => _dropOffLocationLatLng;
+  bool hasDropOffLocationLatLng() => _dropOffLocationLatLng != null;
+
   void _initializeFields() {
     _status = snapshotData['status'] as String?;
     _bubbleId = snapshotData['bubbleId'] as String?;
@@ -71,6 +76,7 @@ class RequestRecord extends FirestoreRecord {
     _driverName = snapshotData['driverName'] as String?;
     _duration = snapshotData['duration'] as String?;
     _distance = snapshotData['distance'] as String?;
+    _dropOffLocationLatLng = snapshotData['dropOffLocationLatLng'] as LatLng?;
   }
 
   static CollectionReference get collection =>
@@ -117,6 +123,7 @@ Map<String, dynamic> createRequestRecordData({
   String? driverName,
   String? duration,
   String? distance,
+  LatLng? dropOffLocationLatLng,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -129,6 +136,7 @@ Map<String, dynamic> createRequestRecordData({
       'driverName': driverName,
       'duration': duration,
       'distance': distance,
+      'dropOffLocationLatLng': dropOffLocationLatLng,
     }.withoutNulls,
   );
 
@@ -148,7 +156,8 @@ class RequestRecordDocumentEquality implements Equality<RequestRecord> {
         e1?.location == e2?.location &&
         e1?.driverName == e2?.driverName &&
         e1?.duration == e2?.duration &&
-        e1?.distance == e2?.distance;
+        e1?.distance == e2?.distance &&
+        e1?.dropOffLocationLatLng == e2?.dropOffLocationLatLng;
   }
 
   @override
@@ -161,7 +170,8 @@ class RequestRecordDocumentEquality implements Equality<RequestRecord> {
         e?.location,
         e?.driverName,
         e?.duration,
-        e?.distance
+        e?.distance,
+        e?.dropOffLocationLatLng
       ]);
 
   @override

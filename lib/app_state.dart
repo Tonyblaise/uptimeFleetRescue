@@ -28,6 +28,18 @@ class FFAppState extends ChangeNotifier {
     _test = value;
   }
 
+  String _requestAdditionalInfo = '';
+  String get requestAdditionalInfo => _requestAdditionalInfo;
+  set requestAdditionalInfo(String value) {
+    _requestAdditionalInfo = value;
+  }
+
+  LatLng? _dropOffLocation;
+  LatLng? get dropOffLocation => _dropOffLocation;
+  set dropOffLocation(LatLng? value) {
+    _dropOffLocation = value;
+  }
+
   final _userDocQueryManager = FutureRequestManager<UsersRecord>();
   Future<UsersRecord> userDocQuery({
     String? uniqueQueryKey,
