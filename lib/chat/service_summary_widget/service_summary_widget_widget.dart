@@ -6,6 +6,8 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/service_provider/driver/cancel_request/cancel_request_widget.dart';
 import '/service_provider/service_updates_component_s_p/service_updates_component_s_p_widget.dart';
+import '/custom_code/actions/index.dart' as actions;
+import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -63,6 +65,8 @@ class _ServiceSummaryWidgetWidgetState
     extends State<ServiceSummaryWidgetWidget> {
   late ServiceSummaryWidgetModel _model;
 
+  LatLng? currentUserLocationValue;
+
   @override
   void setState(VoidCallback callback) {
     super.setState(callback);
@@ -74,6 +78,8 @@ class _ServiceSummaryWidgetWidgetState
     super.initState();
     _model = createModel(context, () => ServiceSummaryWidgetModel());
 
+    getCurrentUserLocation(defaultLocation: const LatLng(0.0, 0.0), cached: true)
+        .then((loc) => setState(() => currentUserLocationValue = loc));
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -86,6 +92,23 @@ class _ServiceSummaryWidgetWidgetState
 
   @override
   Widget build(BuildContext context) {
+    if (currentUserLocationValue == null) {
+      return Container(
+        color: FlutterFlowTheme.of(context).primaryBackground,
+        child: Center(
+          child: SizedBox(
+            width: 50.0,
+            height: 50.0,
+            child: CircularProgressIndicator(
+              valueColor: AlwaysStoppedAnimation<Color>(
+                FlutterFlowTheme.of(context).primary,
+              ),
+            ),
+          ),
+        ),
+      );
+    }
+
     return Container(
       decoration: const BoxDecoration(),
       child: Builder(
@@ -778,7 +801,7 @@ class _ServiceSummaryWidgetWidgetState
                                         },
                                         text: 'Cancel',
                                         options: FFButtonOptions(
-                                          height: 40.0,
+                                          height: 56.0,
                                           padding:
                                               const EdgeInsetsDirectional.fromSTEB(
                                                   24.0, 0.0, 24.0, 0.0),
@@ -807,80 +830,94 @@ class _ServiceSummaryWidgetWidgetState
                                         ),
                                       ),
                                     ),
-                                    Expanded(
-                                      child: FFButtonWidget(
-                                        onPressed: () async {
-                                          await currentUserReference!
-                                              .update(createUsersRecordData(
-                                            activeRequest: widget.firebaseId,
-                                            activeRequestBubble:
-                                                widget.bubbleId,
-                                          ));
-
-                                          await containerRequestRecord
-                                              .firebaseMessageThread!
-                                              .update({
-                                            ...mapToFirestore(
-                                              {
-                                                'users': FieldValue.arrayUnion(
-                                                    [currentUserReference]),
-                                              },
-                                            ),
-                                          });
-
-                                          await functions
-                                              .convertStringToRequestDocRef(
-                                                  widget.firebaseId?.id)!
-                                              .update(createRequestRecordData(
-                                                technician:
-                                                    currentUserReference,
-                                              ));
-
-                                          await widget.firebaseId!
-                                              .update(createRequestRecordData(
-                                            status: 'inProgress',
-                                          ));
-                                          _model.apiResultoan =
-                                              await UptimeFleetAppGroup
-                                                  .updateRequestCall
-                                                  .call(
-                                            id: widget.bubbleId,
-                                            status: 'inProgress',
-                                          );
-
-                                          context
-                                              .pushNamed('dashboardTechnician');
-
-                                          setState(() {});
-                                        },
-                                        text: 'Start Job',
-                                        options: FFButtonOptions(
-                                          height: 40.0,
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  24.0, 0.0, 24.0, 0.0),
-                                          iconPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 0.0),
+                                    Align(
+                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                      child: SizedBox(
+                                        width: 170.0,
+                                        height: 56.0,
+                                        child: custom_widgets
+                                            .MapboxNavigationWidget(
+                                          width: 170.0,
+                                          height: 56.0,
+                                          originLat: functions.getLat(
+                                              currentUserLocationValue!),
+                                          originLng: functions.getLng(
+                                              currentUserLocationValue!),
+                                          destinationLat: containerRequestRecord
+                                                      .status ==
+                                                  'enrouteToTowDestination'
+                                              ? functions.getLat(
+                                                  containerRequestRecord
+                                                      .dropOffLocationLatLng!)
+                                              : functions.getLat(
+                                                  containerRequestRecord
+                                                      .location!),
+                                          destinationLng: containerRequestRecord
+                                                      .status ==
+                                                  'enrouteToTowDestination'
+                                              ? functions.getLng(
+                                                  containerRequestRecord
+                                                      .dropOffLocationLatLng!)
+                                              : functions.getLng(
+                                                  containerRequestRecord
+                                                      .location!),
+                                          chat: widget.driverTechMessageId!,
+                                          request:
+                                              containerRequestRecord.reference,
+                                          driverName:
+                                              containerRequestRecord.driverName,
                                           color: FlutterFlowTheme.of(context)
-                                              .tertiary,
-                                          textStyle: FlutterFlowTheme.of(
-                                                  context)
-                                              .titleSmall
-                                              .override(
-                                                fontFamily: 'Yantramanav',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primary,
-                                                letterSpacing: 0.0,
+                                              .secondary,
+                                          updatePosition:
+                                              (duration, distance) async {
+                                            await currentUserReference!
+                                                .update(createUsersRecordData(
+                                              activeRequest: widget.firebaseId,
+                                              activeRequestBubble:
+                                                  widget.bubbleId,
+                                            ));
+
+                                            await containerRequestRecord
+                                                .firebaseMessageThread!
+                                                .update({
+                                              ...mapToFirestore(
+                                                {
+                                                  'users':
+                                                      FieldValue.arrayUnion([
+                                                    currentUserReference
+                                                  ]),
+                                                },
                                               ),
-                                          elevation: 3.0,
-                                          borderSide: const BorderSide(
-                                            color: Colors.transparent,
-                                            width: 1.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(18.0),
+                                            });
+
+                                            await functions
+                                                .convertStringToRequestDocRef(
+                                                    widget.firebaseId?.id)!
+                                                .update(createRequestRecordData(
+                                                  technician:
+                                                      currentUserReference,
+                                                ));
+
+                                            await widget.firebaseId!
+                                                .update(createRequestRecordData(
+                                              status: 'inProgress',
+                                            ));
+                                            _model.apiResultoanCopy =
+                                                await UptimeFleetAppGroup
+                                                    .updateRequestCall
+                                                    .call(
+                                              id: widget.bubbleId,
+                                              status: 'inProgress',
+                                            );
+
+                                            context.pushNamed(
+                                                'dashboardTechnician');
+
+                                            setState(() {});
+                                          },
+                                          actionCall: () async {
+                                            await actions.newCustomAction();
+                                          },
                                         ),
                                       ),
                                     ),

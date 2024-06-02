@@ -474,7 +474,7 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                                     radioButtonColor:
                                                         FlutterFlowTheme.of(
                                                                 context)
-                                                            .primary,
+                                                            .primaryText,
                                                     inactiveRadioButtonColor:
                                                         FlutterFlowTheme.of(
                                                                 context)
@@ -651,7 +651,7 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                               onPressed: () async {
                                                 FFAppState()
                                                         .requestAdditionalInfo =
-                                                    'Where would you like the vehicle towed to?${_model.wherewouldyoulikethevehicletowedtoValue.latLng.toString()}          Drop off instructions${_model.dropOffInstructionsTextController.text}           Will you be waiting with the vehicle${_model.willyoubewaitingwiththevehicleValue}           If not, where will you leave the keys${_model.ifnowherewillyouleavethekeysTextController.text}             ';
+                                                    'Where would you like the vehicle towed to?/n${_model.wherewouldyoulikethevehicletowedtoValue.latLng.toString()}/n/nDrop off instructions/n${_model.dropOffInstructionsTextController.text}/n/nWill you be waiting with the vehicle?/n${_model.willyoubewaitingwiththevehicleValue}/n/nIf not, where will you leave the keys?/n${_model.ifnowherewillyouleavethekeysTextController.text}/n/n/';
                                                 FFAppState().dropOffLocation =
                                                     _model
                                                         .wherewouldyoulikethevehicletowedtoValue
@@ -801,7 +801,7 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                                     radioButtonColor:
                                                         FlutterFlowTheme.of(
                                                                 context)
-                                                            .primary,
+                                                            .primaryText,
                                                     inactiveRadioButtonColor:
                                                         FlutterFlowTheme.of(
                                                                 context)
@@ -825,7 +825,7 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                               onPressed: () async {
                                                 FFAppState()
                                                         .requestAdditionalInfo =
-                                                    'Where are the keys${_model.areyourkeysValue}';
+                                                    'Where are the keys/n${_model.areyourkeysValue}';
                                                 setState(() {});
 
                                                 context.pushNamed(
@@ -960,7 +960,7 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                                     radioButtonColor:
                                                         FlutterFlowTheme.of(
                                                                 context)
-                                                            .primary,
+                                                            .primaryText,
                                                     inactiveRadioButtonColor:
                                                         FlutterFlowTheme.of(
                                                                 context)
@@ -984,7 +984,7 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                               onPressed: () async {
                                                 FFAppState()
                                                         .requestAdditionalInfo =
-                                                    'Does Your Vehicle Have a Spare Tire?${_model.doesYourVehicleHaveaSpareTireValue}';
+                                                    'Does Your Vehicle Have a Spare Tire?/n${_model.doesYourVehicleHaveaSpareTireValue}';
                                                 setState(() {});
 
                                                 context.pushNamed(

@@ -175,6 +175,18 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                       ),
                                     ),
                                   ),
+                                  Container(
+                                    width: 100.0,
+                                    height: 100.0,
+                                    decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                        fit: BoxFit.cover,
+                                        image: Image.asset(
+                                          'assets/images/uptimefleet-removebg-preview.png',
+                                        ).image,
+                                      ),
+                                    ),
+                                  ),
                                   Padding(
                                     padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 15.0),
@@ -757,7 +769,7 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                       ),
                                     ),
                                   ),
-                                ].divide(const SizedBox(height: 16.0)),
+                                ].divide(const SizedBox(height: 15.0)),
                               ),
                             ),
                           ].divide(const SizedBox(height: 16.0)),

@@ -1390,6 +1390,10 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                                 currentUserDocument
                                                                     ?.technicianId,
                                                                 ''),
+                                                        dropOffLocationLatLng:
+                                                            FFAppState()
+                                                                .dropOffLocation
+                                                                ?.toString(),
                                                       );
                                                       if ((_model
                                                               .apiResulty8vCopy

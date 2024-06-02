@@ -8,8 +8,8 @@ class ServiceSummaryWidgetModel
     extends FlutterFlowModel<ServiceSummaryWidgetWidget> {
   ///  State fields for stateful widgets in this component.
 
-  // Stores action output result for [Backend Call - API (Update request)] action in Button widget.
-  ApiCallResponse? apiResultoan;
+  // Stores action output result for [Backend Call - API (Update request)] action in MapboxNavigationWidget widget.
+  ApiCallResponse? apiResultoanCopy;
   // Model for serviceUpdatesComponentSP component.
   late ServiceUpdatesComponentSPModel serviceUpdatesComponentSPModel;
 

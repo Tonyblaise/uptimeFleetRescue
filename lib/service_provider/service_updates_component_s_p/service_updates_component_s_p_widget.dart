@@ -8,6 +8,7 @@ import '/flutter_flow/instant_timer.dart';
 import '/service_provider/arrival_confirmation/arrival_confirmation_widget.dart';
 import '/service_provider/driver/cancel_request/cancel_request_widget.dart';
 import '/service_provider/tow_navigation_start/tow_navigation_start_widget.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/permissions_util.dart';
@@ -1808,6 +1809,7 @@ class _ServiceUpdatesComponentSPWidgetState
                                             containerRequestRecord.reference,
                                         driverName:
                                             containerRequestRecord.driverName,
+                                        color: Colors.black,
                                         updatePosition:
                                             (duration, distance) async {
                                           await widget.request!
@@ -1815,6 +1817,9 @@ class _ServiceUpdatesComponentSPWidgetState
                                             duration: duration,
                                             distance: distance,
                                           ));
+                                        },
+                                        actionCall: () async {
+                                          await actions.newCustomAction();
                                         },
                                       ),
                                     ),
