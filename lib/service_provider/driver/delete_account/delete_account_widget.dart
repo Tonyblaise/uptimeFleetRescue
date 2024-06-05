@@ -45,7 +45,6 @@ class _DeleteAccountWidgetState extends State<DeleteAccountWidget> {
       child: Padding(
         padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
         child: Container(
-          width: MediaQuery.sizeOf(context).width * 0.9,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(24.0),

@@ -278,6 +278,12 @@ class _VerifyWidgetState extends State<VerifyWidget> {
                           driverFleetManagerMessageThreadIdFirebaseId:
                               _model.technicianChat?.reference,
                         ));
+                        await UptimeFleetAppGroup.updateDriverIdCall.call(
+                          bubbleId: UptimeFleetAppGroup.createDriverCall.id(
+                            (_model.driver?.jsonBody ?? ''),
+                          ),
+                          firebaseId: currentUserReference?.id,
+                        );
 
                         context.goNamedAuth('dashboardDriver', context.mounted);
                       } else if (widget.signUpType == 'technician') {
@@ -371,6 +377,13 @@ class _VerifyWidgetState extends State<VerifyWidget> {
                           driverFleetManagerMessageThreadIdFirebaseId:
                               _model.technicianChat2?.reference,
                         ));
+                        await UptimeFleetAppGroup.updateTechnicianIdCall.call(
+                          bubbleId: UptimeFleetAppGroup.createTechnicianCall
+                              .technicianId(
+                            (_model.technician?.jsonBody ?? ''),
+                          ),
+                          firebaseId: currentUserReference?.id,
+                        );
 
                         context.goNamedAuth(
                             'dashboardTechnician', context.mounted);

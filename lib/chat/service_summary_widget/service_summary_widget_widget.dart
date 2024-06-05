@@ -935,7 +935,6 @@ class _ServiceSummaryWidgetWidgetState
             );
           } else {
             return Container(
-              height: double.infinity,
               decoration: const BoxDecoration(),
               child: wrapWithModel(
                 model: _model.serviceUpdatesComponentSPModel,

@@ -264,19 +264,33 @@ class _TechnicianChatWidgetState extends State<TechnicianChatWidget> {
                                       ),
                                 ),
                                 const TextSpan(
-                                  text: '\nyour tech\n',
+                                  text: '\n',
                                   style: TextStyle(
                                     color: Colors.black,
                                     fontWeight: FontWeight.bold,
                                     fontSize: 36.0,
                                   ),
+                                ),
+                                TextSpan(
+                                  text: () {
+                                    if (_model.pageState == 2) {
+                                      return 'your manager';
+                                    } else if (_model.pageState == 3) {
+                                      return 'support';
+                                    } else {
+                                      return 'your tech';
+                                    }
+                                  }(),
+                                  style: const TextStyle(),
                                 )
                               ],
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Yantramanav',
+                                    fontSize: 34.0,
                                     letterSpacing: 0.0,
+                                    fontWeight: FontWeight.bold,
                                   ),
                             ),
                             textAlign: TextAlign.center,

@@ -121,7 +121,7 @@ class _MapboxNavigationWidgetState extends State<MapboxNavigationWidget> {
           backgroundColor: widget.color,
           foregroundColor: Colors.white,
         ),
-        child: Text('Go To Navigation'),
+        child: Text('Start Navigation'),
       ),
     );
   }

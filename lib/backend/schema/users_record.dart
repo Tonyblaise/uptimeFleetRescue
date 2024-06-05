@@ -164,6 +164,11 @@ class UsersRecord extends FirestoreRecord {
   String get activeVehicleReg => _activeVehicleReg ?? '';
   bool hasActiveVehicleReg() => _activeVehicleReg != null;
 
+  // "requestPending" field.
+  String? _requestPending;
+  String get requestPending => _requestPending ?? '';
+  bool hasRequestPending() => _requestPending != null;
+
   void _initializeFields() {
     _companyId = snapshotData['companyId'] as String?;
     _companyName = snapshotData['companyName'] as String?;
@@ -200,6 +205,7 @@ class UsersRecord extends FirestoreRecord {
             as DocumentReference?;
     _techProfile = snapshotData['techProfile'] as bool?;
     _activeVehicleReg = snapshotData['activeVehicleReg'] as String?;
+    _requestPending = snapshotData['requestPending'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -264,6 +270,7 @@ Map<String, dynamic> createUsersRecordData({
   DocumentReference? driverFleetManagerMessageThreadIdFirebaseId,
   bool? techProfile,
   String? activeVehicleReg,
+  String? requestPending,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -297,6 +304,7 @@ Map<String, dynamic> createUsersRecordData({
           driverFleetManagerMessageThreadIdFirebaseId,
       'techProfile': techProfile,
       'activeVehicleReg': activeVehicleReg,
+      'requestPending': requestPending,
     }.withoutNulls,
   );
 
@@ -339,7 +347,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.driverFleetManagerMessageThreadIdFirebaseId ==
             e2?.driverFleetManagerMessageThreadIdFirebaseId &&
         e1?.techProfile == e2?.techProfile &&
-        e1?.activeVehicleReg == e2?.activeVehicleReg;
+        e1?.activeVehicleReg == e2?.activeVehicleReg &&
+        e1?.requestPending == e2?.requestPending;
   }
 
   @override
@@ -371,7 +380,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.driverSupportMessageThreadIdFirebase,
         e?.driverFleetManagerMessageThreadIdFirebaseId,
         e?.techProfile,
-        e?.activeVehicleReg
+        e?.activeVehicleReg,
+        e?.requestPending
       ]);
 
   @override

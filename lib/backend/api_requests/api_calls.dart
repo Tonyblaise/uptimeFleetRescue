@@ -46,6 +46,9 @@ class UptimeFleetAppGroup {
   static GetRequestCall getRequestCall = GetRequestCall();
   static CreateDriverCall createDriverCall = CreateDriverCall();
   static CreateTechnicianCall createTechnicianCall = CreateTechnicianCall();
+  static UpdateTechnicianIdCall updateTechnicianIdCall =
+      UpdateTechnicianIdCall();
+  static UpdateDriverIdCall updateDriverIdCall = UpdateDriverIdCall();
   static CheckUserCall checkUserCall = CheckUserCall();
   static UpdateDriverTokenCall updateDriverTokenCall = UpdateDriverTokenCall();
   static DeleteAccountCall deleteAccountCall = DeleteAccountCall();
@@ -1396,6 +1399,7 @@ class CreateDriverCall {
     String? token = 'abc place',
     String? driverTechnicianMessageThreadIdFirebase = '',
     String? driverSupportMessageThreadIdFirebase = '',
+    String? firebaseId = '',
     String? accessToken = '1707139937267x678517623997244500',
   }) async {
     final baseUrl = UptimeFleetAppGroup.getBaseUrl(
@@ -1477,6 +1481,7 @@ class CreateTechnicianCall {
     String? token = 'kk',
     String? driverTechnicianMessageThreadIdFirebase = '',
     String? driverSupportMessageThreadIdFirebase = '',
+    String? firebaseId = '',
     String? accessToken = '1707139937267x678517623997244500',
   }) async {
     final baseUrl = UptimeFleetAppGroup.getBaseUrl(
@@ -1490,11 +1495,162 @@ class CreateTechnicianCall {
   "phoneNumber": "$phoneNumber",
   "token": "$token",
   "driverTechnicianMessageThreadIdFirebase": "$driverTechnicianMessageThreadIdFirebase",
-  "driverSupportMessageThreadIdFirebase": "$driverSupportMessageThreadIdFirebase"
+  "driverSupportMessageThreadIdFirebase": "$driverSupportMessageThreadIdFirebase",
+  "firebaseId": "$firebaseId"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Create technician',
       apiUrl: '$baseUrl/create-technician',
+      callType: ApiCallType.POST,
+      headers: {
+        'Authorization': 'Bearer $accessToken',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  String? companyName(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.response.technician.companyName''',
+      ));
+  String? token(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.response.technician.firebaseToken''',
+      ));
+  String? fullName(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.response.technician.fullName''',
+      ));
+  String? phoneNumber(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.response.technician.phoneNumber''',
+      ));
+  String? serviceProviderId(dynamic response) =>
+      castToType<String>(getJsonField(
+        response,
+        r'''$.response.technician.serviceProviderId''',
+      ));
+  String? technicianId(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.response.technician._id''',
+      ));
+  String? companyId(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.response.technician.companyId''',
+      ));
+  String? technicianServiceProviderMessageThreadId(dynamic response) =>
+      castToType<String>(getJsonField(
+        response,
+        r'''$.response.technician.technicianServiceProviderMessageThreadId''',
+      ));
+  String? technicianSupportMessageThreadId(dynamic response) =>
+      castToType<String>(getJsonField(
+        response,
+        r'''$.response.technician.technicianSupportMessageThreadId''',
+      ));
+}
+
+class UpdateTechnicianIdCall {
+  Future<ApiCallResponse> call({
+    String? bubbleId = '1666282691966x966109451452153900',
+    String? firebaseId = 'Tony Bubba',
+    String? accessToken = '1707139937267x678517623997244500',
+  }) async {
+    final baseUrl = UptimeFleetAppGroup.getBaseUrl(
+      accessToken: accessToken,
+    );
+
+    final ffApiRequestBody = '''
+{
+  "firebaseId":"$firebaseId",
+  "bubbleId": "$bubbleId"
+} 
+ ''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'Update technicianId',
+      apiUrl: '$baseUrl/update-technicianid',
+      callType: ApiCallType.POST,
+      headers: {
+        'Authorization': 'Bearer $accessToken',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  String? companyName(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.response.technician.companyName''',
+      ));
+  String? token(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.response.technician.firebaseToken''',
+      ));
+  String? fullName(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.response.technician.fullName''',
+      ));
+  String? phoneNumber(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.response.technician.phoneNumber''',
+      ));
+  String? serviceProviderId(dynamic response) =>
+      castToType<String>(getJsonField(
+        response,
+        r'''$.response.technician.serviceProviderId''',
+      ));
+  String? technicianId(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.response.technician._id''',
+      ));
+  String? companyId(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.response.technician.companyId''',
+      ));
+  String? technicianServiceProviderMessageThreadId(dynamic response) =>
+      castToType<String>(getJsonField(
+        response,
+        r'''$.response.technician.technicianServiceProviderMessageThreadId''',
+      ));
+  String? technicianSupportMessageThreadId(dynamic response) =>
+      castToType<String>(getJsonField(
+        response,
+        r'''$.response.technician.technicianSupportMessageThreadId''',
+      ));
+}
+
+class UpdateDriverIdCall {
+  Future<ApiCallResponse> call({
+    String? bubbleId = '1666282691966x966109451452153900',
+    String? firebaseId = 'Tony Bubba',
+    String? accessToken = '1707139937267x678517623997244500',
+  }) async {
+    final baseUrl = UptimeFleetAppGroup.getBaseUrl(
+      accessToken: accessToken,
+    );
+
+    final ffApiRequestBody = '''
+{
+  "firebaseId":"$firebaseId",
+  "bubbleId": "$bubbleId"
+} 
+ ''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'Update driverId',
+      apiUrl: '$baseUrl/update-driverid',
       callType: ApiCallType.POST,
       headers: {
         'Authorization': 'Bearer $accessToken',

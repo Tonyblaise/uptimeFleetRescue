@@ -529,7 +529,7 @@ class _ServiceConfirmationWidgetState extends State<ServiceConfirmationWidget> {
                                           final selectedMedia =
                                               await selectMediaWithSourceBottomSheet(
                                             context: context,
-                                            imageQuality: 73,
+                                            imageQuality: 62,
                                             allowPhoto: true,
                                           );
                                           if (selectedMedia != null &&
@@ -640,7 +640,7 @@ class _ServiceConfirmationWidgetState extends State<ServiceConfirmationWidget> {
                                   final selectedMedia =
                                       await selectMediaWithSourceBottomSheet(
                                     context: context,
-                                    imageQuality: 77,
+                                    imageQuality: 67,
                                     allowPhoto: true,
                                   );
                                   if (selectedMedia != null &&
