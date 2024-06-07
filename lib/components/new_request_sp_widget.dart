@@ -592,6 +592,7 @@ class _NewRequestSpWidgetState extends State<NewRequestSpWidget> {
                                                       .bubbleId,
                                                   status: 'inProgress',
                                                 );
+                                                Navigator.pop(context);
 
                                                 context.pushNamed(
                                                     'dashboardTechnician');
