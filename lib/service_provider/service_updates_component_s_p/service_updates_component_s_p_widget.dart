@@ -227,7 +227,7 @@ class _ServiceUpdatesComponentSPWidgetState
                                       borderRadius: BorderRadius.circular(24.0),
                                       border: Border.all(
                                         color: FlutterFlowTheme.of(context)
-                                            .secondary,
+                                            .primaryText,
                                       ),
                                     ),
                                     child: Row(
@@ -243,14 +243,14 @@ class _ServiceUpdatesComponentSPWidgetState
                                                 fontFamily: 'Yantramanav',
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .secondary,
+                                                        .primaryText,
                                                 letterSpacing: 0.0,
                                               ),
                                         ),
                                         Icon(
                                           Icons.open_in_new,
                                           color: FlutterFlowTheme.of(context)
-                                              .secondary,
+                                              .primaryText,
                                           size: 24.0,
                                         ),
                                       ].divide(const SizedBox(width: 10.0)),
@@ -365,11 +365,12 @@ class _ServiceUpdatesComponentSPWidgetState
                                                 BorderRadius.circular(18.0),
                                             border: Border.all(
                                               color: valueOrDefault<Color>(
-                                                containerRequestRecord.status ==
+                                                containerRequestRecord
+                                                            .status ==
                                                         'newCase'
                                                     ? FlutterFlowTheme.of(
                                                             context)
-                                                        .tertiary
+                                                        .secondary
                                                     : const Color(0xFFE5E7EE),
                                                 const Color(0xFFE5E7EE),
                                               ),
@@ -604,7 +605,7 @@ class _ServiceUpdatesComponentSPWidgetState
                                                           'inProgress'
                                                       ? FlutterFlowTheme.of(
                                                               context)
-                                                          .tertiary
+                                                          .secondary
                                                       : const Color(0xFFE5E7EE),
                                                   const Color(0xFFE5E7EE),
                                                 ),
@@ -860,7 +861,7 @@ class _ServiceUpdatesComponentSPWidgetState
                                                           'arrivedAtLocation'
                                                       ? FlutterFlowTheme.of(
                                                               context)
-                                                          .tertiary
+                                                          .secondary
                                                       : const Color(0xFFE5E7EE),
                                                   const Color(0xFFE5E7EE),
                                                 ),
@@ -1093,7 +1094,7 @@ class _ServiceUpdatesComponentSPWidgetState
                                                             'enrouteToTowDestination'
                                                         ? FlutterFlowTheme.of(
                                                                 context)
-                                                            .tertiary
+                                                            .secondary
                                                         : const Color(0xFFE5E7EE),
                                                     const Color(0xFFE5E7EE),
                                                   ),
@@ -1155,7 +1156,7 @@ class _ServiceUpdatesComponentSPWidgetState
                                                                   ),
                                                             ),
                                                             Text(
-                                                              'Click here when you arrive at the location',
+                                                              'Click here when you arrive at the destination',
                                                               style: FlutterFlowTheme
                                                                       .of(context)
                                                                   .bodyMedium
@@ -1319,7 +1320,7 @@ class _ServiceUpdatesComponentSPWidgetState
                                                             'enrouteToTowDestination'
                                                         ? FlutterFlowTheme.of(
                                                                 context)
-                                                            .tertiary
+                                                            .secondary
                                                         : const Color(0xFFE5E7EE),
                                                     const Color(0xFFE5E7EE),
                                                   ),
@@ -1353,7 +1354,7 @@ class _ServiceUpdatesComponentSPWidgetState
                                                                   .start,
                                                           children: [
                                                             Text(
-                                                              'Job is complete?',
+                                                              'Is Job Complete?',
                                                               style: FlutterFlowTheme
                                                                       .of(context)
                                                                   .bodyMedium
@@ -1367,7 +1368,7 @@ class _ServiceUpdatesComponentSPWidgetState
                                                                           ? Colors
                                                                               .black
                                                                           : const Color(
-                                                                              0xFFE5E7EE),
+                                                                              0x74FFFFFF),
                                                                       const Color(
                                                                           0xFFE5E7EE),
                                                                     ),
@@ -1381,7 +1382,7 @@ class _ServiceUpdatesComponentSPWidgetState
                                                                   ),
                                                             ),
                                                             Text(
-                                                              'Click here to review\n',
+                                                              'Click here when job is complete\n',
                                                               style: FlutterFlowTheme
                                                                       .of(context)
                                                                   .bodyMedium
@@ -1683,6 +1684,7 @@ class _ServiceUpdatesComponentSPWidgetState
                                   request: containerRequestRecord.reference,
                                   driverName: containerRequestRecord.driverName,
                                   color: Colors.black,
+                                  title: 'Go to Navigation',
                                   updatePosition: (duration, distance) async {
                                     await widget.request!
                                         .update(createRequestRecordData(

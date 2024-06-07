@@ -127,7 +127,7 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                         decoration: BoxDecoration(
                           gradient: LinearGradient(
                             colors: [
-                              FlutterFlowTheme.of(context).secondary,
+                              const Color(0xF304B53E),
                               FlutterFlowTheme.of(context).tertiary
                             ],
                             stops: const [0.0, 1.0],

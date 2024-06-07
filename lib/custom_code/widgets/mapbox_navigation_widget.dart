@@ -29,6 +29,7 @@ class MapboxNavigationWidget extends StatefulWidget {
     required this.driverName,
     required this.actionCall,
     required this.color,
+    required this.title,
   });
 
   final double? width;
@@ -43,6 +44,7 @@ class MapboxNavigationWidget extends StatefulWidget {
   final Future Function(String duration, String distance) updatePosition;
   final Future Function() actionCall;
   final Color color;
+  final String title;
 
   @override
   State<MapboxNavigationWidget> createState() => _MapboxNavigationWidgetState();
@@ -121,7 +123,7 @@ class _MapboxNavigationWidgetState extends State<MapboxNavigationWidget> {
           backgroundColor: widget.color,
           foregroundColor: Colors.white,
         ),
-        child: Text('Start Navigation'),
+        child: Text(widget.title),
       ),
     );
   }

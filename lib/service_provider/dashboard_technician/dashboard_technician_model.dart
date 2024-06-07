@@ -1,6 +1,5 @@
 import '/backend/api_requests/api_calls.dart';
 import '/chat/service_summary_widget/service_summary_widget_widget.dart';
-import '/components/new_request_sp_widget.dart';
 import '/components/user_details_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/instant_timer.dart';
@@ -20,14 +19,14 @@ class DashboardTechnicianModel
   InstantTimer? instantTimer2;
   // Stores action output result for [Backend Call - API (Update technician position  using current postion)] action in dashboardTechnician widget.
   ApiCallResponse? apiResultayoo;
+  // Stores action output result for [Backend Call - API (Get request)] action in dashboardTechnician widget.
+  ApiCallResponse? request;
   // Model for userDetails component.
   late UserDetailsModel userDetailsModel;
   // Model for empty_state_Simple component.
   late EmptyStateSimpleModel emptyStateSimpleModel;
   // Model for serviceSummaryWidget component.
   late ServiceSummaryWidgetModel serviceSummaryWidgetModel;
-  // Model for NewRequestSp component.
-  late NewRequestSpModel newRequestSpModel;
   // Model for bottom_bar component.
   late BottomBarModel bottomBarModel;
 
@@ -37,7 +36,6 @@ class DashboardTechnicianModel
     emptyStateSimpleModel = createModel(context, () => EmptyStateSimpleModel());
     serviceSummaryWidgetModel =
         createModel(context, () => ServiceSummaryWidgetModel());
-    newRequestSpModel = createModel(context, () => NewRequestSpModel());
     bottomBarModel = createModel(context, () => BottomBarModel());
   }
 
@@ -49,7 +47,6 @@ class DashboardTechnicianModel
     userDetailsModel.dispose();
     emptyStateSimpleModel.dispose();
     serviceSummaryWidgetModel.dispose();
-    newRequestSpModel.dispose();
     bottomBarModel.dispose();
   }
 }
