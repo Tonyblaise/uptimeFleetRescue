@@ -1135,7 +1135,7 @@ class _ServiceUpdatesComponentWidgetState
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.circular(
-                                                              18.0),
+                                                              100.0),
                                                     ),
                                                   ),
                                                 Builder(

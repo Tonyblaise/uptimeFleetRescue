@@ -115,20 +115,25 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                       serviceId: UptimeFleetAppGroup.getRequestCall.serviceId(
                         (_model.request?.jsonBody ?? ''),
                       )!,
-                      timestamp:
-                          UptimeFleetAppGroup.getRequestCall.driverFullName(
-                        (_model.request?.jsonBody ?? ''),
-                      )!,
+                      timestamp: dateTimeFormat(
+                        'yMd',
+                        functions.converUnixTimestamp(
+                            UptimeFleetAppGroup.getRequestCall.timestamp(
+                          (_model.request?.jsonBody ?? ''),
+                        )!),
+                        locale: FFLocalizations.of(context).languageCode,
+                      ),
                       eventType: UptimeFleetAppGroup.getRequestCall.fault(
                         (_model.request?.jsonBody ?? ''),
                       )!,
                       pickUp: UptimeFleetAppGroup.getRequestCall.location(
                         (_model.request?.jsonBody ?? ''),
                       )!,
-                      dropOff:
-                          UptimeFleetAppGroup.getRequestCall.driverFullName(
-                        (_model.request?.jsonBody ?? ''),
-                      ),
+                      dropOff: UptimeFleetAppGroup.getRequestCall
+                          .dropOffLocation(
+                            (_model.request?.jsonBody ?? ''),
+                          )
+                          .toString(),
                       fleetCompanyName:
                           UptimeFleetAppGroup.getRequestCall.driverCompanyName(
                         (_model.request?.jsonBody ?? ''),

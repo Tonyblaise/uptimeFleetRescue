@@ -962,7 +962,7 @@ class _ServiceConfirmationWidgetState extends State<ServiceConfirmationWidget> {
                                     color: Colors.transparent,
                                     width: 1.0,
                                   ),
-                                  borderRadius: BorderRadius.circular(18.0),
+                                  borderRadius: BorderRadius.circular(100.0),
                                 ),
                               ),
                             ),

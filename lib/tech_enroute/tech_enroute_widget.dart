@@ -491,7 +491,8 @@ class _TechEnrouteWidgetState extends State<TechEnrouteWidget> {
                                                   width: 1.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(18.0),
+                                                    BorderRadius.circular(
+                                                        100.0),
                                               ),
                                             ),
                                           ),

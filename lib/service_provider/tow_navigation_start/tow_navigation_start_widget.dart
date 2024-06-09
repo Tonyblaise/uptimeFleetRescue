@@ -202,7 +202,7 @@ class _TowNavigationStartWidgetState extends State<TowNavigationStartWidget> {
                             color: Colors.transparent,
                             width: 1.0,
                           ),
-                          borderRadius: BorderRadius.circular(18.0),
+                          borderRadius: BorderRadius.circular(100.0),
                         ),
                       ),
                     ),

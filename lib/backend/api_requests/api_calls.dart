@@ -367,7 +367,8 @@ class CreateARequestCall {
     final ffApiRequestBody = '''
 {
   "date": $date,
-  "driverId": "$driverTechnician",
+  "driverId": "$driverId",
+  "driverTechnician": "$driverTechnician",
   "position": "$position",
   "fault": "$fault",
   "status": "New Case",
@@ -1257,7 +1258,7 @@ class ApproveRequestCall {
 
 class GetRequestCall {
   Future<ApiCallResponse> call({
-    String? request = '1713906123433x954724735348511400',
+    String? request = '1717956763678x223175462253529800',
     String? accessToken = '1707139937267x678517623997244500',
   }) async {
     final baseUrl = UptimeFleetAppGroup.getBaseUrl(
