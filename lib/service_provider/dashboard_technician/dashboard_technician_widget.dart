@@ -2,7 +2,6 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/chat/service_summary_widget/service_summary_widget_widget.dart';
-import '/components/new_request_sp_widget.dart';
 import '/components/tech_status_component_widget.dart';
 import '/components/user_details_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -86,29 +85,7 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
             );
           }
         }),
-        Future(() async {
-          if (valueOrDefault(currentUserDocument?.requestPending, '') != '') {
-            await showModalBottomSheet(
-              isScrollControlled: true,
-              backgroundColor: Colors.transparent,
-              enableDrag: false,
-              context: context,
-              builder: (context) {
-                return GestureDetector(
-                  onTap: () => _model.unfocusNode.canRequestFocus
-                      ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-                      : FocusScope.of(context).unfocus(),
-                  child: Padding(
-                    padding: MediaQuery.viewInsetsOf(context),
-                    child: NewRequestSpWidget(
-                      request: currentUserDocument!.activeRequest!,
-                    ),
-                  ),
-                );
-              },
-            ).then((value) => safeSetState(() {}));
-          }
-        }),
+        Future(() async {}),
       ]);
     });
 
