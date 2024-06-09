@@ -19,8 +19,6 @@ class DashboardTechnicianModel
   InstantTimer? instantTimer2;
   // Stores action output result for [Backend Call - API (Update technician position  using current postion)] action in dashboardTechnician widget.
   ApiCallResponse? apiResultayoo;
-  // Stores action output result for [Backend Call - API (Get request)] action in dashboardTechnician widget.
-  ApiCallResponse? request;
   // Model for userDetails component.
   late UserDetailsModel userDetailsModel;
   // Model for empty_state_Simple component.

@@ -88,9 +88,6 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
         }),
         Future(() async {
           if (valueOrDefault(currentUserDocument?.requestPending, '') != '') {
-            _model.request = await UptimeFleetAppGroup.getRequestCall.call(
-              request: valueOrDefault(currentUserDocument?.requestPending, ''),
-            );
             await showModalBottomSheet(
               isScrollControlled: true,
               backgroundColor: Colors.transparent,
@@ -104,44 +101,7 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                   child: Padding(
                     padding: MediaQuery.viewInsetsOf(context),
                     child: NewRequestSpWidget(
-                      driverName:
-                          UptimeFleetAppGroup.getRequestCall.driverFullName(
-                        (_model.request?.jsonBody ?? ''),
-                      )!,
-                      driverPhoneNumber:
-                          UptimeFleetAppGroup.getRequestCall.driverPhoneNumber(
-                        (_model.request?.jsonBody ?? ''),
-                      )!,
-                      serviceId: UptimeFleetAppGroup.getRequestCall.serviceId(
-                        (_model.request?.jsonBody ?? ''),
-                      )!,
-                      timestamp: dateTimeFormat(
-                        'yMd',
-                        functions.converUnixTimestamp(
-                            UptimeFleetAppGroup.getRequestCall.timestamp(
-                          (_model.request?.jsonBody ?? ''),
-                        )!),
-                        locale: FFLocalizations.of(context).languageCode,
-                      ),
-                      eventType: UptimeFleetAppGroup.getRequestCall.fault(
-                        (_model.request?.jsonBody ?? ''),
-                      )!,
-                      pickUp: UptimeFleetAppGroup.getRequestCall.location(
-                        (_model.request?.jsonBody ?? ''),
-                      )!,
-                      dropOff: UptimeFleetAppGroup.getRequestCall
-                          .dropOffLocation(
-                            (_model.request?.jsonBody ?? ''),
-                          )
-                          .toString(),
-                      fleetCompanyName:
-                          UptimeFleetAppGroup.getRequestCall.driverCompanyName(
-                        (_model.request?.jsonBody ?? ''),
-                      )!,
-                      request: functions.convertStringToRequestDocRef(
-                          UptimeFleetAppGroup.getRequestCall.firebaseId(
-                        (_model.request?.jsonBody ?? ''),
-                      ))!,
+                      request: currentUserDocument!.activeRequest!,
                     ),
                   ),
                 );
