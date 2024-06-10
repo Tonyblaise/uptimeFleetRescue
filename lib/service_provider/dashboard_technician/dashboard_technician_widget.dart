@@ -40,53 +40,48 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       currentUserLocationValue =
           await getCurrentUserLocation(defaultLocation: const LatLng(0.0, 0.0));
-      await Future.wait([
-        Future(() async {
-          if (currentUserLocationValue != null) {
-            _model.instantTimer = InstantTimer.periodic(
-              duration: const Duration(milliseconds: 60000),
-              callback: (timer) async {
-                currentUserLocationValue = await getCurrentUserLocation(
-                    defaultLocation: const LatLng(0.0, 0.0));
-                _model.apiResultayo6 = await UptimeFleetAppGroup
-                    .updateTechnicianPositionUsingCurrentPostionCall
-                    .call(
-                  technicianId:
-                      valueOrDefault(currentUserDocument?.technicianId, ''),
-                  position: currentUserLocationValue?.toString(),
-                );
-
-                await currentUserReference!.update(createUsersRecordData(
-                  technicianLastUpdatedLocation: currentUserLocationValue,
-                ));
-              },
-              startImmediately: true,
+      if (currentUserLocationValue != null) {
+        _model.instantTimer = InstantTimer.periodic(
+          duration: const Duration(milliseconds: 60000),
+          callback: (timer) async {
+            currentUserLocationValue =
+                await getCurrentUserLocation(defaultLocation: const LatLng(0.0, 0.0));
+            _model.apiResultayo6 = await UptimeFleetAppGroup
+                .updateTechnicianPositionUsingCurrentPostionCall
+                .call(
+              technicianId:
+                  valueOrDefault(currentUserDocument?.technicianId, ''),
+              position: currentUserLocationValue?.toString(),
             );
-          } else {
-            await requestPermission(locationPermission);
-            _model.instantTimer2 = InstantTimer.periodic(
-              duration: const Duration(milliseconds: 60000),
-              callback: (timer) async {
-                currentUserLocationValue = await getCurrentUserLocation(
-                    defaultLocation: const LatLng(0.0, 0.0));
-                _model.apiResultayoo = await UptimeFleetAppGroup
-                    .updateTechnicianPositionUsingCurrentPostionCall
-                    .call(
-                  technicianId:
-                      valueOrDefault(currentUserDocument?.technicianId, ''),
-                  position: currentUserLocationValue?.toString(),
-                );
 
-                await currentUserReference!.update(createUsersRecordData(
-                  technicianLastUpdatedLocation: currentUserLocationValue,
-                ));
-              },
-              startImmediately: true,
+            await currentUserReference!.update(createUsersRecordData(
+              technicianLastUpdatedLocation: currentUserLocationValue,
+            ));
+          },
+          startImmediately: true,
+        );
+      } else {
+        await requestPermission(locationPermission);
+        _model.instantTimer2 = InstantTimer.periodic(
+          duration: const Duration(milliseconds: 60000),
+          callback: (timer) async {
+            currentUserLocationValue =
+                await getCurrentUserLocation(defaultLocation: const LatLng(0.0, 0.0));
+            _model.apiResultayoo = await UptimeFleetAppGroup
+                .updateTechnicianPositionUsingCurrentPostionCall
+                .call(
+              technicianId:
+                  valueOrDefault(currentUserDocument?.technicianId, ''),
+              position: currentUserLocationValue?.toString(),
             );
-          }
-        }),
-        Future(() async {}),
-      ]);
+
+            await currentUserReference!.update(createUsersRecordData(
+              technicianLastUpdatedLocation: currentUserLocationValue,
+            ));
+          },
+          startImmediately: true,
+        );
+      }
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));

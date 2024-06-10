@@ -982,10 +982,9 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                               .transparent,
                                                           onTap: () async {
                                                             final selectedMedia =
-                                                                await selectMediaWithSourceBottomSheet(
-                                                              context: context,
-                                                              imageQuality: 76,
-                                                              allowPhoto: true,
+                                                                await selectMedia(
+                                                              imageQuality: 68,
+                                                              multiImage: false,
                                                             );
                                                             if (selectedMedia !=
                                                                     null &&
@@ -1112,10 +1111,9 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                       Colors.transparent,
                                                   onTap: () async {
                                                     final selectedMedia =
-                                                        await selectMediaWithSourceBottomSheet(
-                                                      context: context,
-                                                      imageQuality: 75,
-                                                      allowPhoto: true,
+                                                        await selectMedia(
+                                                      imageQuality: 62,
+                                                      multiImage: false,
                                                     );
                                                     if (selectedMedia != null &&
                                                         selectedMedia.every((m) =>

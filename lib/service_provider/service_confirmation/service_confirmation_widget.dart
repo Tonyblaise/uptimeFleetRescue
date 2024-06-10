@@ -527,10 +527,9 @@ class _ServiceConfirmationWidgetState extends State<ServiceConfirmationWidget> {
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
                                           final selectedMedia =
-                                              await selectMediaWithSourceBottomSheet(
-                                            context: context,
+                                              await selectMedia(
                                             imageQuality: 62,
-                                            allowPhoto: true,
+                                            multiImage: false,
                                           );
                                           if (selectedMedia != null &&
                                               selectedMedia.every((m) =>
@@ -637,11 +636,9 @@ class _ServiceConfirmationWidgetState extends State<ServiceConfirmationWidget> {
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
-                                  final selectedMedia =
-                                      await selectMediaWithSourceBottomSheet(
-                                    context: context,
+                                  final selectedMedia = await selectMedia(
                                     imageQuality: 67,
-                                    allowPhoto: true,
+                                    multiImage: false,
                                   );
                                   if (selectedMedia != null &&
                                       selectedMedia.every((m) =>

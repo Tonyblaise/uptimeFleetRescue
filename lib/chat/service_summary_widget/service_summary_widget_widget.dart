@@ -6,7 +6,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/service_provider/driver/cancel_request/cancel_request_widget.dart';
 import '/service_provider/service_updates_component_s_p/service_updates_component_s_p_widget.dart';
-import '/custom_code/actions/index.dart' as actions;
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
@@ -871,6 +870,14 @@ class _ServiceSummaryWidgetWidgetState
                                           title: 'Start Job',
                                           updatePosition:
                                               (duration, distance) async {
+                                            await containerRequestRecord
+                                                .reference
+                                                .update(createRequestRecordData(
+                                              duration: duration,
+                                              distance: distance,
+                                            ));
+                                          },
+                                          actionCall: () async {
                                             await currentUserReference!
                                                 .update(createUsersRecordData(
                                               activeRequest: widget.firebaseId,
@@ -915,9 +922,6 @@ class _ServiceSummaryWidgetWidgetState
                                                 'dashboardTechnician');
 
                                             setState(() {});
-                                          },
-                                          actionCall: () async {
-                                            await actions.newCustomAction();
                                           },
                                         ),
                                       ),
