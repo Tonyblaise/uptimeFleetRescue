@@ -69,7 +69,7 @@ class _TechnicianChatWidgetState extends State<TechnicianChatWidget> {
                   child: Icon(
                     Icons.arrow_back_rounded,
                     color: FlutterFlowTheme.of(context).secondaryText,
-                    size: 24.0,
+                    size: 30.0,
                   ),
                 ),
                 Container(

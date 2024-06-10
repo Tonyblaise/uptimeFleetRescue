@@ -6,6 +6,7 @@ import '/components/tech_status_component_widget.dart';
 import '/components/user_details_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/instant_timer.dart';
 import '/pages/chat/empty_state_simple/empty_state_simple_widget.dart';
 import '/service_provider/bottom_bar/bottom_bar_widget.dart';
@@ -370,7 +371,7 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                                                             .max,
                                                                     crossAxisAlignment:
                                                                         CrossAxisAlignment
-                                                                            .start,
+                                                                            .center,
                                                                     children: [
                                                                       Padding(
                                                                         padding: const EdgeInsetsDirectional.fromSTEB(
@@ -379,60 +380,27 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                                                             20.0,
                                                                             0.0),
                                                                         child:
-                                                                            InkWell(
-                                                                          splashColor:
-                                                                              Colors.transparent,
-                                                                          focusColor:
-                                                                              Colors.transparent,
-                                                                          hoverColor:
-                                                                              Colors.transparent,
-                                                                          highlightColor:
-                                                                              Colors.transparent,
-                                                                          onTap:
-                                                                              () async {
-                                                                            await showModalBottomSheet(
-                                                                              isScrollControlled: true,
-                                                                              backgroundColor: Colors.transparent,
-                                                                              enableDrag: false,
-                                                                              context: context,
-                                                                              builder: (context) {
-                                                                                return GestureDetector(
-                                                                                  onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
-                                                                                  child: Padding(
-                                                                                    padding: MediaQuery.viewInsetsOf(context),
-                                                                                    child: const SelectVehicleWidget(),
-                                                                                  ),
-                                                                                );
-                                                                              },
-                                                                            ).then((value) =>
-                                                                                safeSetState(() {}));
-                                                                          },
+                                                                            Container(
+                                                                          width:
+                                                                              double.infinity,
+                                                                          decoration:
+                                                                              const BoxDecoration(),
                                                                           child:
-                                                                              Container(
-                                                                            width:
-                                                                                double.infinity,
-                                                                            decoration:
-                                                                                const BoxDecoration(),
-                                                                            child:
-                                                                                Row(
-                                                                              mainAxisSize: MainAxisSize.max,
-                                                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                              children: [
-                                                                                Text(
-                                                                                  'Active Vehicle',
-                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                        fontFamily: 'Yantramanav',
-                                                                                        fontSize: 24.0,
-                                                                                        letterSpacing: 0.0,
-                                                                                      ),
-                                                                                ),
-                                                                                Icon(
-                                                                                  Icons.switch_right_rounded,
-                                                                                  color: FlutterFlowTheme.of(context).secondaryText,
-                                                                                  size: 24.0,
-                                                                                ),
-                                                                              ],
-                                                                            ),
+                                                                              Row(
+                                                                            mainAxisSize:
+                                                                                MainAxisSize.max,
+                                                                            mainAxisAlignment:
+                                                                                MainAxisAlignment.spaceBetween,
+                                                                            children: [
+                                                                              Text(
+                                                                                'Active Vehicle',
+                                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                      fontFamily: 'Yantramanav',
+                                                                                      fontSize: 24.0,
+                                                                                      letterSpacing: 0.0,
+                                                                                    ),
+                                                                              ),
+                                                                            ],
                                                                           ),
                                                                         ),
                                                                       ),
@@ -490,6 +458,69 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                                                               ),
                                                                             ].divide(const SizedBox(height: 10.0)),
                                                                           ),
+                                                                        ),
+                                                                      ),
+                                                                      FFButtonWidget(
+                                                                        onPressed:
+                                                                            () async {
+                                                                          await showModalBottomSheet(
+                                                                            isScrollControlled:
+                                                                                true,
+                                                                            backgroundColor:
+                                                                                Colors.transparent,
+                                                                            enableDrag:
+                                                                                false,
+                                                                            context:
+                                                                                context,
+                                                                            builder:
+                                                                                (context) {
+                                                                              return GestureDetector(
+                                                                                onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
+                                                                                child: Padding(
+                                                                                  padding: MediaQuery.viewInsetsOf(context),
+                                                                                  child: const SelectVehicleWidget(),
+                                                                                ),
+                                                                              );
+                                                                            },
+                                                                          ).then((value) =>
+                                                                              safeSetState(() {}));
+                                                                        },
+                                                                        text:
+                                                                            'Change Vehicle',
+                                                                        options:
+                                                                            FFButtonOptions(
+                                                                          height:
+                                                                              40.0,
+                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                              24.0,
+                                                                              0.0,
+                                                                              24.0,
+                                                                              0.0),
+                                                                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                                                              0.0,
+                                                                              0.0,
+                                                                              0.0,
+                                                                              0.0),
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).tertiary,
+                                                                          textStyle: FlutterFlowTheme.of(context)
+                                                                              .titleSmall
+                                                                              .override(
+                                                                                fontFamily: 'Yantramanav',
+                                                                                color: FlutterFlowTheme.of(context).primary,
+                                                                                letterSpacing: 0.0,
+                                                                              ),
+                                                                          elevation:
+                                                                              3.0,
+                                                                          borderSide:
+                                                                              const BorderSide(
+                                                                            color:
+                                                                                Colors.transparent,
+                                                                            width:
+                                                                                1.0,
+                                                                          ),
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(100.0),
                                                                         ),
                                                                       ),
                                                                     ].divide(const SizedBox(
