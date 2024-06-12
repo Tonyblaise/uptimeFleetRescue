@@ -829,103 +829,115 @@ class _ServiceSummaryWidgetWidgetState
                                         ),
                                       ),
                                     ),
-                                    Align(
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
-                                      child: SizedBox(
-                                        width: 170.0,
-                                        height: 56.0,
-                                        child: custom_widgets
-                                            .MapboxNavigationWidget(
+                                    if ((widget.status == 'newCase') ||
+                                        (widget.status == 'inProgress') ||
+                                        (widget.status == 'pendingApproval') ||
+                                        (widget.status ==
+                                            'arrivedAtLocation') ||
+                                        (widget.status ==
+                                            'enrouteToTowDestination'))
+                                      Align(
+                                        alignment:
+                                            const AlignmentDirectional(0.0, 0.0),
+                                        child: SizedBox(
                                           width: 170.0,
                                           height: 56.0,
-                                          originLat: functions.getLat(
-                                              currentUserLocationValue!),
-                                          originLng: functions.getLng(
-                                              currentUserLocationValue!),
-                                          destinationLat: containerRequestRecord
-                                                      .status ==
-                                                  'enrouteToTowDestination'
-                                              ? functions.getLat(
-                                                  containerRequestRecord
-                                                      .dropOffLocationLatLng!)
-                                              : functions.getLat(
-                                                  containerRequestRecord
-                                                      .location!),
-                                          destinationLng: containerRequestRecord
-                                                      .status ==
-                                                  'enrouteToTowDestination'
-                                              ? functions.getLng(
-                                                  containerRequestRecord
-                                                      .dropOffLocationLatLng!)
-                                              : functions.getLng(
-                                                  containerRequestRecord
-                                                      .location!),
-                                          chat: widget.driverTechMessageId!,
-                                          request:
-                                              containerRequestRecord.reference,
-                                          driverName:
-                                              containerRequestRecord.driverName,
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondary,
-                                          title: 'Start Job',
-                                          updatePosition:
-                                              (duration, distance) async {
-                                            await containerRequestRecord
-                                                .reference
-                                                .update(createRequestRecordData(
-                                              duration: duration,
-                                              distance: distance,
-                                            ));
-                                          },
-                                          actionCall: () async {
-                                            await currentUserReference!
-                                                .update(createUsersRecordData(
-                                              activeRequest: widget.firebaseId,
-                                              activeRequestBubble:
-                                                  widget.bubbleId,
-                                            ));
+                                          child: custom_widgets
+                                              .MapboxNavigationWidget(
+                                            width: 170.0,
+                                            height: 56.0,
+                                            originLat: functions.getLat(
+                                                currentUserLocationValue!),
+                                            originLng: functions.getLng(
+                                                currentUserLocationValue!),
+                                            destinationLat: containerRequestRecord
+                                                        .status ==
+                                                    'enrouteToTowDestination'
+                                                ? functions.getLat(
+                                                    containerRequestRecord
+                                                        .dropOffLocationLatLng!)
+                                                : functions.getLat(
+                                                    containerRequestRecord
+                                                        .location!),
+                                            destinationLng: containerRequestRecord
+                                                        .status ==
+                                                    'enrouteToTowDestination'
+                                                ? functions.getLng(
+                                                    containerRequestRecord
+                                                        .dropOffLocationLatLng!)
+                                                : functions.getLng(
+                                                    containerRequestRecord
+                                                        .location!),
+                                            chat: widget.driverTechMessageId!,
+                                            request: containerRequestRecord
+                                                .reference,
+                                            driverName: containerRequestRecord
+                                                .driverName,
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondary,
+                                            title: 'Start Job',
+                                            updatePosition:
+                                                (duration, distance) async {
+                                              await containerRequestRecord
+                                                  .reference
+                                                  .update(
+                                                      createRequestRecordData(
+                                                duration: duration,
+                                                distance: distance,
+                                              ));
+                                            },
+                                            actionCall: () async {
+                                              await currentUserReference!
+                                                  .update(createUsersRecordData(
+                                                activeRequest:
+                                                    widget.firebaseId,
+                                                activeRequestBubble:
+                                                    widget.bubbleId,
+                                              ));
 
-                                            await containerRequestRecord
-                                                .firebaseMessageThread!
-                                                .update({
-                                              ...mapToFirestore(
-                                                {
-                                                  'users':
-                                                      FieldValue.arrayUnion([
-                                                    currentUserReference
-                                                  ]),
-                                                },
-                                              ),
-                                            });
+                                              await containerRequestRecord
+                                                  .firebaseMessageThread!
+                                                  .update({
+                                                ...mapToFirestore(
+                                                  {
+                                                    'users':
+                                                        FieldValue.arrayUnion([
+                                                      currentUserReference
+                                                    ]),
+                                                  },
+                                                ),
+                                              });
 
-                                            await functions
-                                                .convertStringToRequestDocRef(
-                                                    widget.firebaseId?.id)!
-                                                .update(createRequestRecordData(
-                                                  technician:
-                                                      currentUserReference,
-                                                ));
+                                              await functions
+                                                  .convertStringToRequestDocRef(
+                                                      widget.firebaseId?.id)!
+                                                  .update(
+                                                      createRequestRecordData(
+                                                    technician:
+                                                        currentUserReference,
+                                                    started: true,
+                                                  ));
 
-                                            await widget.firebaseId!
-                                                .update(createRequestRecordData(
-                                              status: 'inProgress',
-                                            ));
-                                            _model.apiResultoanCopy =
-                                                await UptimeFleetAppGroup
-                                                    .updateRequestCall
-                                                    .call(
-                                              id: widget.bubbleId,
-                                              status: 'inProgress',
-                                            );
+                                              await widget.firebaseId!.update(
+                                                  createRequestRecordData(
+                                                status: 'inProgress',
+                                              ));
+                                              _model.apiResultoanCopy =
+                                                  await UptimeFleetAppGroup
+                                                      .updateRequestCall
+                                                      .call(
+                                                id: widget.bubbleId,
+                                                status: 'inProgress',
+                                              );
 
-                                            context.pushNamed(
-                                                'dashboardTechnician');
+                                              context.pushNamed(
+                                                  'dashboardTechnician');
 
-                                            setState(() {});
-                                          },
+                                              setState(() {});
+                                            },
+                                          ),
                                         ),
                                       ),
-                                    ),
                                   ].divide(const SizedBox(width: 15.0)),
                                 ),
                               ),

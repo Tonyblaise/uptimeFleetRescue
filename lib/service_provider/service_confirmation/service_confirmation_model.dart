@@ -1,7 +1,6 @@
 import '/backend/api_requests/api_calls.dart';
 import '/components/user_details_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/pages/chat/empty_image/empty_image_widget.dart';
 import 'service_confirmation_widget.dart' show ServiceConfirmationWidget;
 import 'package:flutter/material.dart';
 
@@ -31,18 +30,6 @@ class ServiceConfirmationModel
     return null;
   }
 
-  bool isDataUploading1 = false;
-  FFUploadedFile uploadedLocalFile1 =
-      FFUploadedFile(bytes: Uint8List.fromList([]));
-  String uploadedFileUrl1 = '';
-
-  bool isDataUploading2 = false;
-  FFUploadedFile uploadedLocalFile2 =
-      FFUploadedFile(bytes: Uint8List.fromList([]));
-  String uploadedFileUrl2 = '';
-
-  // Model for empty_image component.
-  late EmptyImageModel emptyImageModel;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode;
   TextEditingController? textController2;
@@ -55,7 +42,6 @@ class ServiceConfirmationModel
     userDetailsModel = createModel(context, () => UserDetailsModel());
     textFielOdometerTextControllerValidator =
         _textFielOdometerTextControllerValidator;
-    emptyImageModel = createModel(context, () => EmptyImageModel());
   }
 
   @override
@@ -65,7 +51,6 @@ class ServiceConfirmationModel
     textFielOdometerFocusNode?.dispose();
     textFielOdometerTextController?.dispose();
 
-    emptyImageModel.dispose();
     textFieldFocusNode?.dispose();
     textController2?.dispose();
   }

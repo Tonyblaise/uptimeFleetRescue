@@ -1,4 +1,5 @@
 import '/backend/api_requests/api_calls.dart';
+import '/backend/backend.dart';
 import '/chat/service_summary_widget/service_summary_widget_widget.dart';
 import '/components/user_details_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -19,6 +20,8 @@ class DashboardTechnicianModel
   InstantTimer? instantTimer2;
   // Stores action output result for [Backend Call - API (Update technician position  using current postion)] action in dashboardTechnician widget.
   ApiCallResponse? apiResultayoo;
+  // Stores action output result for [Backend Call - Read Document] action in dashboardTechnician widget.
+  RequestRecord? activeRequest;
   // Model for userDetails component.
   late UserDetailsModel userDetailsModel;
   // Model for empty_state_Simple component.
