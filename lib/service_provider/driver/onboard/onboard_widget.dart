@@ -299,6 +299,7 @@ class _OnboardWidgetState extends State<OnboardWidget> {
                       phoneNumber:
                           '${_model.dropDownValue}${_model.textController2.text}',
                     );
+
                     if ((_model.check?.succeeded ?? true)) {
                       if (UptimeFleetAppGroup.checkUserCall.signUpType(
                             (_model.check?.jsonBody ?? ''),

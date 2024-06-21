@@ -90,14 +90,192 @@ class _ServiceUpdatesComponentWidgetState
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          'Booking status:',
-                          style:
-                              FlutterFlowTheme.of(context).labelLarge.override(
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'Booking status:',
+                              style: FlutterFlowTheme.of(context)
+                                  .labelLarge
+                                  .override(
                                     fontFamily: 'Yantramanav',
                                     color: Colors.black,
                                     letterSpacing: 0.0,
                                   ),
+                            ),
+                            StreamBuilder<List<ChatMessagesRecord>>(
+                              stream: queryChatMessagesRecord(
+                                queryBuilder: (chatMessagesRecord) =>
+                                    chatMessagesRecord.where(Filter.or(
+                                  Filter(
+                                    'chat',
+                                    isEqualTo: containerChatsRecord.reference,
+                                  ),
+                                  Filter(
+                                    'read',
+                                    isEqualTo: false,
+                                  ),
+                                  Filter(
+                                    'user',
+                                    isNotEqualTo: currentUserReference,
+                                  ),
+                                )),
+                              ),
+                              builder: (context, snapshot) {
+                                // Customize what your widget looks like when it's loading.
+                                if (!snapshot.hasData) {
+                                  return Center(
+                                    child: SizedBox(
+                                      width: 50.0,
+                                      height: 50.0,
+                                      child: CircularProgressIndicator(
+                                        valueColor:
+                                            AlwaysStoppedAnimation<Color>(
+                                          FlutterFlowTheme.of(context).primary,
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                }
+                                List<ChatMessagesRecord>
+                                    containerChatMessagesRecordList =
+                                    snapshot.data!;
+                                return Container(
+                                  decoration: const BoxDecoration(),
+                                  child: Stack(
+                                    alignment: const AlignmentDirectional(1.0, -1.0),
+                                    children: [
+                                      if (widget.request?.status != 'newCase')
+                                        FFButtonWidget(
+                                          onPressed: () async {
+                                            if (containerChatsRecord
+                                                    .lastMessageUser ==
+                                                currentUserReference) {
+                                              await containerChatsRecord
+                                                  .reference
+                                                  .update(createChatsRecordData(
+                                                lastMessageRead: true,
+                                              ));
+                                            }
+
+                                            context.pushNamed(
+                                              'chat_2_Details_1',
+                                              queryParameters: {
+                                                'chatRef': serializeParam(
+                                                  containerChatsRecord,
+                                                  ParamType.Document,
+                                                ),
+                                                'driver': serializeParam(
+                                                  true,
+                                                  ParamType.bool,
+                                                ),
+                                              }.withoutNulls,
+                                              extra: <String, dynamic>{
+                                                'chatRef': containerChatsRecord,
+                                              },
+                                            );
+                                          },
+                                          text: 'Chat Technician',
+                                          options: FFButtonOptions(
+                                            width: 160.0,
+                                            height: 56.0,
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    24.0, 0.0, 24.0, 0.0),
+                                            iconPadding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 0.0),
+                                            color: FlutterFlowTheme.of(context)
+                                                .tertiary,
+                                            textStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall
+                                                    .override(
+                                                      fontFamily: 'Yantramanav',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primary,
+                                                      letterSpacing: 0.0,
+                                                    ),
+                                            elevation: 3.0,
+                                            borderSide: const BorderSide(
+                                              color: Colors.transparent,
+                                              width: 1.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(100.0),
+                                          ),
+                                        ),
+                                      Builder(
+                                        builder: (context) {
+                                          if ((containerChatsRecord
+                                                      .lastMessageUser !=
+                                                  currentUserReference) &&
+                                              (containerChatsRecord
+                                                      .lastMessageUser !=
+                                                  null) &&
+                                              (containerChatsRecord
+                                                      .lastMessageRead ==
+                                                  false)) {
+                                            return Align(
+                                              alignment: const AlignmentDirectional(
+                                                  0.0, 0.0),
+                                              child: Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 20.0, 8.0, 0.0),
+                                                child: Container(
+                                                  width: 18.0,
+                                                  height: 18.0,
+                                                  decoration: BoxDecoration(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .error,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            100.0),
+                                                  ),
+                                                  alignment:
+                                                      const AlignmentDirectional(
+                                                          0.0, 0.0),
+                                                  child: Text(
+                                                    '1',
+                                                    textAlign: TextAlign.center,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Yantramanav',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primary,
+                                                          fontSize: 10.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ),
+                                            );
+                                          } else {
+                                            return Container(
+                                              width: 1.0,
+                                              height: 1.0,
+                                              decoration: const BoxDecoration(),
+                                            );
+                                          }
+                                        },
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              },
+                            ),
+                          ],
                         ),
                         Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(
@@ -1006,217 +1184,6 @@ class _ServiceUpdatesComponentWidgetState
                                             ),
                                           ),
                                         ),
-                                      ),
-                                      StreamBuilder<List<ChatMessagesRecord>>(
-                                        stream: queryChatMessagesRecord(
-                                          queryBuilder: (chatMessagesRecord) =>
-                                              chatMessagesRecord
-                                                  .where(Filter.or(
-                                            Filter(
-                                              'chat',
-                                              isEqualTo: containerChatsRecord
-                                                  .reference,
-                                            ),
-                                            Filter(
-                                              'read',
-                                              isEqualTo: false,
-                                            ),
-                                            Filter(
-                                              'user',
-                                              isNotEqualTo:
-                                                  currentUserReference,
-                                            ),
-                                          )),
-                                        ),
-                                        builder: (context, snapshot) {
-                                          // Customize what your widget looks like when it's loading.
-                                          if (!snapshot.hasData) {
-                                            return Center(
-                                              child: SizedBox(
-                                                width: 50.0,
-                                                height: 50.0,
-                                                child:
-                                                    CircularProgressIndicator(
-                                                  valueColor:
-                                                      AlwaysStoppedAnimation<
-                                                          Color>(
-                                                    FlutterFlowTheme.of(context)
-                                                        .primary,
-                                                  ),
-                                                ),
-                                              ),
-                                            );
-                                          }
-                                          List<ChatMessagesRecord>
-                                              containerChatMessagesRecordList =
-                                              snapshot.data!;
-                                          return Container(
-                                            decoration: const BoxDecoration(),
-                                            child: Stack(
-                                              alignment: const AlignmentDirectional(
-                                                  1.0, -1.0),
-                                              children: [
-                                                if (widget.request?.status !=
-                                                    'newCase')
-                                                  FFButtonWidget(
-                                                    onPressed: () async {
-                                                      if (containerChatsRecord
-                                                              .lastMessageUser ==
-                                                          currentUserReference) {
-                                                        await containerChatsRecord
-                                                            .reference
-                                                            .update(
-                                                                createChatsRecordData(
-                                                          lastMessageRead: true,
-                                                        ));
-                                                      }
-
-                                                      context.pushNamed(
-                                                        'chat_2_Details_1',
-                                                        queryParameters: {
-                                                          'chatRef':
-                                                              serializeParam(
-                                                            containerChatsRecord,
-                                                            ParamType.Document,
-                                                          ),
-                                                          'driver':
-                                                              serializeParam(
-                                                            true,
-                                                            ParamType.bool,
-                                                          ),
-                                                        }.withoutNulls,
-                                                        extra: <String,
-                                                            dynamic>{
-                                                          'chatRef':
-                                                              containerChatsRecord,
-                                                        },
-                                                      );
-                                                    },
-                                                    text: 'Chat Technician',
-                                                    options: FFButtonOptions(
-                                                      width: 160.0,
-                                                      height: 56.0,
-                                                      padding:
-                                                          const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  24.0,
-                                                                  0.0,
-                                                                  24.0,
-                                                                  0.0),
-                                                      iconPadding:
-                                                          const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .tertiary,
-                                                      textStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .titleSmall
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Yantramanav',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primary,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
-                                                      elevation: 3.0,
-                                                      borderSide: const BorderSide(
-                                                        color:
-                                                            Colors.transparent,
-                                                        width: 1.0,
-                                                      ),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              100.0),
-                                                    ),
-                                                  ),
-                                                Builder(
-                                                  builder: (context) {
-                                                    if ((containerChatsRecord
-                                                                .lastMessageUser !=
-                                                            currentUserReference) &&
-                                                        (containerChatsRecord
-                                                                .lastMessageUser !=
-                                                            null) &&
-                                                        (containerChatsRecord
-                                                                .lastMessageRead ==
-                                                            false)) {
-                                                      return Align(
-                                                        alignment:
-                                                            const AlignmentDirectional(
-                                                                0.0, 0.0),
-                                                        child: Padding(
-                                                          padding:
-                                                              const EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      20.0,
-                                                                      8.0,
-                                                                      0.0),
-                                                          child: Container(
-                                                            width: 18.0,
-                                                            height: 18.0,
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .error,
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          100.0),
-                                                            ),
-                                                            alignment:
-                                                                const AlignmentDirectional(
-                                                                    0.0, 0.0),
-                                                            child: Text(
-                                                              '1',
-                                                              textAlign:
-                                                                  TextAlign
-                                                                      .center,
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyMedium
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Yantramanav',
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .primary,
-                                                                    fontSize:
-                                                                        10.0,
-                                                                    letterSpacing:
-                                                                        0.0,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .bold,
-                                                                  ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      );
-                                                    } else {
-                                                      return Container(
-                                                        width: 1.0,
-                                                        height: 1.0,
-                                                        decoration:
-                                                            const BoxDecoration(),
-                                                      );
-                                                    }
-                                                  },
-                                                ),
-                                              ],
-                                            ),
-                                          );
-                                        },
                                       ),
                                     ].divide(const SizedBox(width: 15.0)),
                                   ),

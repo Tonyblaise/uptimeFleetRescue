@@ -96,6 +96,17 @@ class _DeleteAccountWidgetState extends State<DeleteAccountWidget> {
                     fit: BoxFit.fitWidth,
                   ),
                 ),
+                Text(
+                  'Are you sure you want to delete this account?',
+                  textAlign: TextAlign.center,
+                  style: FlutterFlowTheme.of(context).labelLarge.override(
+                        fontFamily: 'Yantramanav',
+                        color: const Color(0xFF64748B),
+                        fontSize: 20.0,
+                        letterSpacing: 0.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                ),
                 Padding(
                   padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                   child: Container(
@@ -105,18 +116,6 @@ class _DeleteAccountWidgetState extends State<DeleteAccountWidget> {
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Text(
-                          'Are you sure you want to delete this account?',
-                          textAlign: TextAlign.center,
-                          style:
-                              FlutterFlowTheme.of(context).labelLarge.override(
-                                    fontFamily: 'Yantramanav',
-                                    color: const Color(0xFF64748B),
-                                    fontSize: 20.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                        ),
                         Text(
                           'This action is irreversible',
                           textAlign: TextAlign.center,
@@ -201,6 +200,7 @@ class _DeleteAccountWidgetState extends State<DeleteAccountWidget> {
                                   technicianId: valueOrDefault(
                                       currentUserDocument?.technicianId, ''),
                                 );
+
                                 if ((_model.apiResultj42?.succeeded ?? true)) {
                                   Navigator.pop(context);
                                   await currentUserReference!.delete();

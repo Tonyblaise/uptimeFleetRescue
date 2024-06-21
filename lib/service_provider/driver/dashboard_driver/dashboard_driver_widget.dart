@@ -65,13 +65,15 @@ class _DashboardDriverWidgetState extends State<DashboardDriverWidget> {
         backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Colors.white,
-          automaticallyImplyLeading: false,
+          iconTheme:
+              IconThemeData(color: FlutterFlowTheme.of(context).primaryText),
+          automaticallyImplyLeading: true,
           title: Container(
             decoration: const BoxDecoration(),
             child: Padding(
               padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
               child: Text(
-                'Dashboard',
+                'Select Service',
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Yantramanav',
                       color: const Color(0xFF1E293B),
@@ -579,7 +581,7 @@ class _DashboardDriverWidgetState extends State<DashboardDriverWidget> {
                                           );
                                         } else {
                                           context.pushNamed(
-                                            'selectLocation',
+                                            'vehicle_confirmation',
                                             queryParameters: {
                                               'service': serializeParam(
                                                 _model.service,
@@ -663,7 +665,7 @@ class _DashboardDriverWidgetState extends State<DashboardDriverWidget> {
                         } else {
                           return Container(
                             width: double.infinity,
-                            height: 450.0,
+                            height: 477.0,
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,

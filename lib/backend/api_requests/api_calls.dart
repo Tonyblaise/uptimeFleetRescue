@@ -94,6 +94,7 @@ class LogUserInCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -197,6 +198,7 @@ class LogOutCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -299,6 +301,7 @@ class ResetUserPasswordCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -333,6 +336,7 @@ class ChangePasswordCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -394,6 +398,7 @@ class CreateARequestCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -483,6 +488,7 @@ class RejectRequestCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -524,6 +530,7 @@ class UpdateRequestPositionCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -561,6 +568,7 @@ class FetchTechnicianRequestsCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -572,6 +580,7 @@ class CompleteRequestsCall {
     String? notes = 'This is awesome',
     String? image = '',
     String? odometer = '',
+    String? addons = '',
     String? accessToken = '1707139937267x678517623997244500',
   }) async {
     final baseUrl = UptimeFleetAppGroup.getBaseUrl(
@@ -583,7 +592,8 @@ class CompleteRequestsCall {
   "id": "$id",
   "notes": "$notes",
   "image": "$image",
-  "odometer": "$odometer"
+  "odometer": "$odometer",
+  "addons": "$addons"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Complete requests',
@@ -599,6 +609,7 @@ class CompleteRequestsCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -638,6 +649,7 @@ class CancelRequestDriverCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -675,6 +687,7 @@ class AcceptRequestCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -714,6 +727,7 @@ class UpdateRequestCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -747,6 +761,7 @@ class GetThreadMessagesCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -835,6 +850,7 @@ class CreateMessageCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -905,6 +921,7 @@ class UpdateProfileCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -955,6 +972,7 @@ class CompanyInfoCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -1002,6 +1020,7 @@ class UpdateTechStatusCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -1035,6 +1054,7 @@ class GetTechnicianVehiclesCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -1113,6 +1133,7 @@ class GetVehiclesCall {
   Future<ApiCallResponse> call({
     String? vehicleRegNo = 'FP109109',
     String? driverId = '1713279447271x597049753416744300',
+    String? state = 'IL',
     String? accessToken = '1707139937267x678517623997244500',
   }) async {
     final baseUrl = UptimeFleetAppGroup.getBaseUrl(
@@ -1129,11 +1150,13 @@ class GetVehiclesCall {
       params: {
         'licensePlate': vehicleRegNo,
         'driverId': driverId,
+        'state': state,
       },
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -1174,6 +1197,10 @@ class GetVehiclesCall {
         response,
         r'''$.response.vehicle.make''',
       ));
+  dynamic year(dynamic response) => getJsonField(
+        response,
+        r'''$.response.vehicle.year''',
+      );
 }
 
 class UpdateVehicleCall {
@@ -1214,6 +1241,7 @@ class UpdateVehicleCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -1246,6 +1274,7 @@ class ApproveRequestCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -1279,6 +1308,7 @@ class GetRequestCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -1430,6 +1460,7 @@ class CreateDriverCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -1513,6 +1544,7 @@ class CreateTechnicianCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -1588,6 +1620,7 @@ class UpdateTechnicianIdCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -1663,6 +1696,7 @@ class UpdateDriverIdCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -1735,6 +1769,7 @@ class CheckUserCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -1782,6 +1817,7 @@ class UpdateDriverTokenCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -1816,6 +1852,7 @@ class DeleteAccountCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -1852,6 +1889,7 @@ class UpdateTechnicianCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -1888,6 +1926,7 @@ class UpdateTechnicianPositionCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -1922,6 +1961,7 @@ class UpdateTechnicianPositionUsingCurrentPostionCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -1950,6 +1990,7 @@ class GetRequestStatusCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -1985,6 +2026,7 @@ class GetPreviousJobsCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -2025,6 +2067,57 @@ class GetPreviousJobsCall {
 
 /// End UptimeFleet App Group Code
 
+/// Start Carfax Group Code
+
+class CarfaxGroup {
+  static String getBaseUrl() => 'https://quickvin.carfax.com/';
+  static Map<String, String> headers = {};
+  static CallOneCall callOneCall = CallOneCall();
+}
+
+class CallOneCall {
+  Future<ApiCallResponse> call({
+    String? vehicleReg = 'FP109109',
+    String? stateForm = 'IL',
+  }) async {
+    final baseUrl = CarfaxGroup.getBaseUrl();
+
+    final ffApiRequestBody = '''
+<carfax-request>
+<license-plate><![CDATA[$vehicleReg]]></license-plate>
+<state><![CDATA[$stateForm]]></state>
+
+<product-data-id>4E445DBC5065944D</product-data-id>
+<location-id>CARFAX</location-id>
+<partner>
+		<management-system>Quick Vin</management-system>
+		<product-data-id>4E445DBC5065944D</product-data-id>
+		<comp-code>JYGJSMCH5N</comp-code>
+	</partner>
+	
+
+</carfax-request>
+''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'Call One',
+      apiUrl: '${baseUrl}1',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.TEXT,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+/// End Carfax Group Code
+
 class GetUsdCodeCall {
   static Future<ApiCallResponse> call() async {
     return ApiManager.instance.makeApiCall(
@@ -2037,6 +2130,7 @@ class GetUsdCodeCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -2060,6 +2154,7 @@ class GetPlaceInfoCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -2103,6 +2198,7 @@ class GetAddressFromLatLngCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -2134,6 +2230,7 @@ class MapboxCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }

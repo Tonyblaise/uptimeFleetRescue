@@ -117,9 +117,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'dashboardDriver',
               path: 'dashboard_driver',
-              builder: (context, params) => params.isEmpty
-                  ? const NavBarPage(initialPage: 'dashboardDriver')
-                  : const DashboardDriverWidget(),
+              builder: (context, params) => const DashboardDriverWidget(),
             ),
             FFRoute(
               name: 'vehicle_confirmation',
@@ -128,10 +126,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 service: params.getParam(
                   'service',
                   ParamType.String,
-                ),
-                latLng: params.getParam(
-                  'latLng',
-                  ParamType.LatLng,
                 ),
                 additionalInfo: params.getParam(
                   'additionalInfo',
@@ -367,6 +361,47 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => MoreDetailsWidget(
                 fault: params.getParam(
                   'fault',
+                  ParamType.String,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: 'landing_page',
+              path: 'landing_page',
+              builder: (context, params) => params.isEmpty
+                  ? const NavBarPage(initialPage: 'landing_page')
+                  : const LandingPageWidget(),
+            ),
+            FFRoute(
+              name: 'vehicle_confirmation2',
+              path: 'vehicle_confirmation2',
+              builder: (context, params) => VehicleConfirmation2Widget(
+                service: params.getParam(
+                  'service',
+                  ParamType.String,
+                ),
+                additionalInfo: params.getParam(
+                  'additionalInfo',
+                  ParamType.String,
+                ),
+                licensePlate: params.getParam(
+                  'licensePlate',
+                  ParamType.String,
+                ),
+                state: params.getParam(
+                  'state',
+                  ParamType.String,
+                ),
+                notes: params.getParam(
+                  'notes',
+                  ParamType.String,
+                ),
+                color: params.getParam(
+                  'color',
+                  ParamType.String,
+                ),
+                image: params.getParam(
+                  'image',
                   ParamType.String,
                 ),
               ),

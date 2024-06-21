@@ -139,7 +139,7 @@ class _ConfirmRequestWidgetState extends State<ConfirmRequestWidget> {
                     hoverColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     onTap: () async {
-                      context.pushNamed('dashboardDriver');
+                      context.pushNamed('landing_page');
                     },
                     child: Container(
                       width: MediaQuery.sizeOf(context).width * 0.9,

@@ -224,7 +224,8 @@ class _ServiceUpdatesComponentSPWidgetState
                                     width: 163.0,
                                     height: 50.0,
                                     decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(24.0),
+                                      color: Colors.black,
+                                      borderRadius: BorderRadius.circular(10.0),
                                       border: Border.all(
                                         color: FlutterFlowTheme.of(context)
                                             .primaryText,
@@ -243,14 +244,14 @@ class _ServiceUpdatesComponentSPWidgetState
                                                 fontFamily: 'Yantramanav',
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .primaryText,
+                                                        .primary,
                                                 letterSpacing: 0.0,
                                               ),
                                         ),
                                         Icon(
                                           Icons.open_in_new,
                                           color: FlutterFlowTheme.of(context)
-                                              .primaryText,
+                                              .primary,
                                           size: 24.0,
                                         ),
                                       ].divide(const SizedBox(width: 10.0)),
@@ -345,7 +346,7 @@ class _ServiceUpdatesComponentSPWidgetState
                                                                     .status ==
                                                                 'inProgress'
                                                             ? Colors.black
-                                                            : const Color(0xFFE5E7EE),
+                                                            : const Color(0xFF64748B),
                                                         const Color(0xFFE5E7EE),
                                                       ),
                                                       fontSize: 24.0,
@@ -418,7 +419,7 @@ class _ServiceUpdatesComponentSPWidgetState
                                                                       ? Colors
                                                                           .black
                                                                       : const Color(
-                                                                          0xFFE5E7EE),
+                                                                          0xFF64748B),
                                                                   const Color(
                                                                       0xFFE5E7EE),
                                                                 ),
@@ -444,8 +445,9 @@ class _ServiceUpdatesComponentSPWidgetState
                                                                   containerRequestRecord
                                                                               .status ==
                                                                           'newCase'
-                                                                      ? const Color(
-                                                                          0xFF64748B)
+                                                                      ? FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primaryText
                                                                       : const Color(
                                                                           0xFFE5E7EE),
                                                                   const Color(
@@ -576,7 +578,7 @@ class _ServiceUpdatesComponentSPWidgetState
                                                                     'inProgress'
                                                                 ? Colors.black
                                                                 : const Color(
-                                                                    0xFFE5E7EE),
+                                                                    0xFF64748B),
                                                             const Color(0xFFE5E7EE),
                                                           ),
                                                           fontSize: 24.0,
@@ -653,7 +655,7 @@ class _ServiceUpdatesComponentSPWidgetState
                                                                         ? Colors
                                                                             .black
                                                                         : const Color(
-                                                                            0xFFE5E7EE),
+                                                                            0xFF64748B),
                                                                     const Color(
                                                                         0xFFE5E7EE),
                                                                   ),
@@ -679,8 +681,8 @@ class _ServiceUpdatesComponentSPWidgetState
                                                                           Color>(
                                                                     containerRequestRecord.status ==
                                                                             'inProgress'
-                                                                        ? const Color(
-                                                                            0xFF64748B)
+                                                                        ? FlutterFlowTheme.of(context)
+                                                                            .primaryText
                                                                         : const Color(
                                                                             0xFFE5E7EE),
                                                                     const Color(
@@ -836,7 +838,7 @@ class _ServiceUpdatesComponentSPWidgetState
                                                                   'arrivedAtLocation'
                                                               ? Colors.black
                                                               : const Color(
-                                                                  0xFFE5E7EE),
+                                                                  0xFF64748B),
                                                           const Color(0xFFE5E7EE),
                                                         ),
                                                         fontSize: 24.0,
@@ -912,7 +914,7 @@ class _ServiceUpdatesComponentSPWidgetState
                                                                         ? Colors
                                                                             .black
                                                                         : const Color(
-                                                                            0xFFE5E7EE),
+                                                                            0xFF64748B),
                                                                     const Color(
                                                                         0xFFE5E7EE),
                                                                   ),
@@ -1069,7 +1071,7 @@ class _ServiceUpdatesComponentSPWidgetState
                                                                     'enrouteToTowDestination'
                                                                 ? Colors.black
                                                                 : const Color(
-                                                                    0xFFE5E7EE),
+                                                                    0xFF64748B),
                                                             const Color(0xFFE5E7EE),
                                                           ),
                                                           fontSize: 24.0,
@@ -1142,7 +1144,7 @@ class _ServiceUpdatesComponentSPWidgetState
                                                                           ? Colors
                                                                               .black
                                                                           : const Color(
-                                                                              0xFFE5E7EE),
+                                                                              0xFF64748B),
                                                                       const Color(
                                                                           0xFFE5E7EE),
                                                                     ),
@@ -1167,8 +1169,8 @@ class _ServiceUpdatesComponentSPWidgetState
                                                                         Color>(
                                                                       containerRequestRecord.status ==
                                                                               'enrouteToTowDestination'
-                                                                          ? const Color(
-                                                                              0xFF64748B)
+                                                                          ? FlutterFlowTheme.of(context)
+                                                                              .primaryText
                                                                           : const Color(
                                                                               0xFFE5E7EE),
                                                                       const Color(
@@ -1295,7 +1297,7 @@ class _ServiceUpdatesComponentSPWidgetState
                                                                     'enrouteToTowDestination'
                                                                 ? Colors.black
                                                                 : const Color(
-                                                                    0xFFE5E7EE),
+                                                                    0xFF64748B),
                                                             const Color(0xFFE5E7EE),
                                                           ),
                                                           fontSize: 24.0,
@@ -1368,7 +1370,7 @@ class _ServiceUpdatesComponentSPWidgetState
                                                                           ? Colors
                                                                               .black
                                                                           : const Color(
-                                                                              0x74FFFFFF),
+                                                                              0xFF64748B),
                                                                       const Color(
                                                                           0xFFE5E7EE),
                                                                     ),
@@ -1393,8 +1395,8 @@ class _ServiceUpdatesComponentSPWidgetState
                                                                         Color>(
                                                                       containerRequestRecord.status ==
                                                                               'enrouteToTowDestination'
-                                                                          ? const Color(
-                                                                              0xFF64748B)
+                                                                          ? FlutterFlowTheme.of(context)
+                                                                              .primaryText
                                                                           : const Color(
                                                                               0xFFE5E7EE),
                                                                       const Color(

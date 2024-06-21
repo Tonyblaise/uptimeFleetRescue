@@ -279,6 +279,7 @@ class _SelectVehicleWidgetState extends State<SelectVehicleWidget> {
                                   technicianId: valueOrDefault(
                                       currentUserDocument?.technicianId, ''),
                                 );
+
                                 if ((_model.apiResultpgxCopy?.succeeded ??
                                     true)) {
                                   await currentUserReference!

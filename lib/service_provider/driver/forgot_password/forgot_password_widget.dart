@@ -194,6 +194,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                           await UptimeFleetAppGroup.resetUserPasswordCall.call(
                         email: _model.textController.text,
                       );
+
                       if ((_model.apiResulth72?.succeeded ?? true)) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(

@@ -197,6 +197,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                         phoneNumber:
                             '${_model.dropDownValue}${_model.textController.text}',
                       );
+
                       if ((_model.check?.succeeded ?? true)) {
                         if (UptimeFleetAppGroup.checkUserCall.signUpType(
                               (_model.check?.jsonBody ?? ''),

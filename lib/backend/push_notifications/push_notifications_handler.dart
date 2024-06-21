@@ -121,7 +121,6 @@ final parametersBuilderMap =
   'vehicle_confirmation': (data) async => ParameterData(
         allParams: {
           'service': getParameter<String>(data, 'service'),
-          'latLng': getParameter<LatLng>(data, 'latLng'),
           'additionalInfo': getParameter<String>(data, 'additionalInfo'),
         },
       ),
@@ -213,6 +212,18 @@ final parametersBuilderMap =
   'more_details': (data) async => ParameterData(
         allParams: {
           'fault': getParameter<String>(data, 'fault'),
+        },
+      ),
+  'landing_page': ParameterData.none(),
+  'vehicle_confirmation2': (data) async => ParameterData(
+        allParams: {
+          'service': getParameter<String>(data, 'service'),
+          'additionalInfo': getParameter<String>(data, 'additionalInfo'),
+          'licensePlate': getParameter<String>(data, 'licensePlate'),
+          'state': getParameter<String>(data, 'state'),
+          'notes': getParameter<String>(data, 'notes'),
+          'color': getParameter<String>(data, 'color'),
+          'image': getParameter<String>(data, 'image'),
         },
       ),
 };

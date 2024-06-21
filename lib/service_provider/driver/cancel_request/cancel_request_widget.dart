@@ -187,6 +187,7 @@ class _CancelRequestWidgetState extends State<CancelRequestWidget> {
                                 id: widget.id,
                                 driver: widget.driver,
                               );
+
                               if ((_model.apiResultj42?.succeeded ?? true)) {
                                 await currentUserReference!.update({
                                   ...mapToFirestore(

@@ -1,8 +1,6 @@
 import '/backend/api_requests/api_calls.dart';
-import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
-import '/pages/chat/empty_image/empty_image_widget.dart';
 import 'vehicle_confirmation_widget.dart' show VehicleConfirmationWidget;
 import 'package:flutter/material.dart';
 
@@ -26,13 +24,12 @@ class VehicleConfirmationModel
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  final formKey2 = GlobalKey<FormState>();
-  final formKey1 = GlobalKey<FormState>();
+  final formKey = GlobalKey<FormState>();
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode;
-  TextEditingController? textController1;
-  String? Function(BuildContext, String?)? textController1Validator;
-  String? _textController1Validator(BuildContext context, String? val) {
+  TextEditingController? textController;
+  String? Function(BuildContext, String?)? textControllerValidator;
+  String? _textControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
     }
@@ -44,71 +41,21 @@ class VehicleConfirmationModel
     return null;
   }
 
-  // Stores action output result for [Backend Call - API (Get vehicles)] action in Button widget.
-  ApiCallResponse? vehicle;
   // State field(s) for DropDownState widget.
   String? dropDownStateValue;
   FormFieldController<String>? dropDownStateValueController;
-  // State field(s) for TextFieldColor widget.
-  FocusNode? textFieldColorFocusNode;
-  TextEditingController? textFieldColorTextController;
-  String? Function(BuildContext, String?)?
-      textFieldColorTextControllerValidator;
-  String? _textFieldColorTextControllerValidator(
-      BuildContext context, String? val) {
-    if (val == null || val.isEmpty) {
-      return 'Field is required';
-    }
-
-    return null;
-  }
-
-  // State field(s) for TextFieldNotes widget.
-  FocusNode? textFieldNotesFocusNode;
-  TextEditingController? textFieldNotesTextController;
-  String? Function(BuildContext, String?)?
-      textFieldNotesTextControllerValidator;
-  bool isDataUploading1 = false;
-  FFUploadedFile uploadedLocalFile1 =
-      FFUploadedFile(bytes: Uint8List.fromList([]));
-  String uploadedFileUrl1 = '';
-
-  bool isDataUploading2 = false;
-  FFUploadedFile uploadedLocalFile2 =
-      FFUploadedFile(bytes: Uint8List.fromList([]));
-  String uploadedFileUrl2 = '';
-
-  // Model for empty_image component.
-  late EmptyImageModel emptyImageModel;
-  // Stores action output result for [Backend Call - Create Document] action in Button widget.
-  ChatsRecord? chatId;
-  // Stores action output result for [Backend Call - API (Update vehicle)] action in Button widget.
-  ApiCallResponse? apiResult1adCopy;
-  // Stores action output result for [Backend Call - Create Document] action in Button widget.
-  RequestRecord? request;
-  // Stores action output result for [Backend Call - API (Create a request)] action in Button widget.
-  ApiCallResponse? apiResulty8vCopy;
+  // Stores action output result for [Backend Call - API (Get vehicles)] action in Button widget.
+  ApiCallResponse? vehicle;
 
   @override
   void initState(BuildContext context) {
-    textController1Validator = _textController1Validator;
-    textFieldColorTextControllerValidator =
-        _textFieldColorTextControllerValidator;
-    emptyImageModel = createModel(context, () => EmptyImageModel());
+    textControllerValidator = _textControllerValidator;
   }
 
   @override
   void dispose() {
     unfocusNode.dispose();
     textFieldFocusNode?.dispose();
-    textController1?.dispose();
-
-    textFieldColorFocusNode?.dispose();
-    textFieldColorTextController?.dispose();
-
-    textFieldNotesFocusNode?.dispose();
-    textFieldNotesTextController?.dispose();
-
-    emptyImageModel.dispose();
+    textController?.dispose();
   }
 }

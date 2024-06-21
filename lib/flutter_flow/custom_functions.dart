@@ -124,3 +124,10 @@ String? newCustomFunction(String? text) {
   // make string uppercase
   return text?.toUpperCase();
 }
+
+List<UsersRecord> getLocationFromUsers(List<UsersRecord> users) {
+  // return a list of users documents from a list of user documents
+  return users
+      .where((user) => user.technicianLastUpdatedLocation != null)
+      .toList();
+}

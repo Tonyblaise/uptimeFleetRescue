@@ -2,9 +2,11 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/components/user_details_widget.dart';
+import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'service_confirmation_model.dart';
@@ -493,6 +495,100 @@ class _ServiceConfirmationWidgetState extends State<ServiceConfirmationWidget> {
                           ),
                         ),
                         Container(
+                          width: MediaQuery.sizeOf(context).width * 0.9,
+                          decoration: const BoxDecoration(),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                width: double.infinity,
+                                decoration: const BoxDecoration(),
+                                child: Text(
+                                  'Addons',
+                                  style: FlutterFlowTheme.of(context)
+                                      .labelLarge
+                                      .override(
+                                        fontFamily: 'Yantramanav',
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        letterSpacing: 0.0,
+                                      ),
+                                ),
+                              ),
+                              Container(
+                                width: MediaQuery.sizeOf(context).width * 0.9,
+                                decoration: const BoxDecoration(),
+                                child: FutureBuilder<List<ServicesRecord>>(
+                                  future: queryServicesRecordOnce(),
+                                  builder: (context, snapshot) {
+                                    // Customize what your widget looks like when it's loading.
+                                    if (!snapshot.hasData) {
+                                      return Center(
+                                        child: SizedBox(
+                                          width: 50.0,
+                                          height: 50.0,
+                                          child: CircularProgressIndicator(
+                                            valueColor:
+                                                AlwaysStoppedAnimation<Color>(
+                                              FlutterFlowTheme.of(context)
+                                                  .primary,
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    }
+                                    List<ServicesRecord>
+                                        dropDownServicesRecordList =
+                                        snapshot.data!;
+                                    return FlutterFlowDropDown<String>(
+                                      controller:
+                                          _model.dropDownValueController ??=
+                                              FormFieldController<String>(
+                                        _model.dropDownValue ??= '',
+                                      ),
+                                      options: List<String>.from(['Option 1']),
+                                      optionLabels: dropDownServicesRecordList
+                                          .map((e) => e.name)
+                                          .toList(),
+                                      onChanged: (val) => setState(
+                                          () => _model.dropDownValue = val),
+                                      width: 300.0,
+                                      height: 56.0,
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Yantramanav',
+                                            letterSpacing: 0.0,
+                                          ),
+                                      hintText: 'Please select...',
+                                      icon: Icon(
+                                        Icons.keyboard_arrow_down_rounded,
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                        size: 24.0,
+                                      ),
+                                      fillColor: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      elevation: 2.0,
+                                      borderColor: FlutterFlowTheme.of(context)
+                                          .alternate,
+                                      borderWidth: 2.0,
+                                      borderRadius: 18.0,
+                                      margin: const EdgeInsetsDirectional.fromSTEB(
+                                          16.0, 4.0, 16.0, 4.0),
+                                      hidesUnderline: true,
+                                      isOverButton: true,
+                                      isSearchable: false,
+                                      isMultiSelect: false,
+                                    );
+                                  },
+                                ),
+                              ),
+                            ].divide(const SizedBox(height: 5.0)),
+                          ),
+                        ),
+                        Container(
                           decoration: const BoxDecoration(),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
@@ -629,6 +725,7 @@ class _ServiceConfirmationWidgetState extends State<ServiceConfirmationWidget> {
                                     odometer: _model
                                         .textFielOdometerTextController.text,
                                   );
+
                                   if (serviceConfirmationGetRequestResponse
                                       .succeeded) {
                                     ScaffoldMessenger.of(context).showSnackBar(

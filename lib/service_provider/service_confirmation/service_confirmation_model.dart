@@ -1,6 +1,7 @@
 import '/backend/api_requests/api_calls.dart';
 import '/components/user_details_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/form_field_controller.dart';
 import 'service_confirmation_widget.dart' show ServiceConfirmationWidget;
 import 'package:flutter/material.dart';
 
@@ -30,6 +31,9 @@ class ServiceConfirmationModel
     return null;
   }
 
+  // State field(s) for DropDown widget.
+  String? dropDownValue;
+  FormFieldController<String>? dropDownValueController;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode;
   TextEditingController? textController2;

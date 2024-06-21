@@ -734,6 +734,7 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                                 newPassword:
                                     _model.yourNewPasswordTextController.text,
                               );
+
                               if ((_model.apiResultjti?.succeeded ?? true)) {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(

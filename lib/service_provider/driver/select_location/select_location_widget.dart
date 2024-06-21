@@ -315,10 +315,6 @@ class _SelectLocationWidgetState extends State<SelectLocationWidget> {
                                           widget.service,
                                           ParamType.String,
                                         ),
-                                        'latLng': serializeParam(
-                                          _model.latLng,
-                                          ParamType.LatLng,
-                                        ),
                                         'additionalInfo': serializeParam(
                                           widget.additionalInfo,
                                           ParamType.String,

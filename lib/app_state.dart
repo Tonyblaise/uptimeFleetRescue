@@ -40,6 +40,12 @@ class FFAppState extends ChangeNotifier {
     _dropOffLocation = value;
   }
 
+  LatLng? _location;
+  LatLng? get location => _location;
+  set location(LatLng? value) {
+    _location = value;
+  }
+
   final _userDocQueryManager = FutureRequestManager<UsersRecord>();
   Future<UsersRecord> userDocQuery({
     String? uniqueQueryKey,

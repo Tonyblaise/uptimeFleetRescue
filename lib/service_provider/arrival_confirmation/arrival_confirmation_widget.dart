@@ -239,6 +239,7 @@ class _ArrivalConfirmationWidgetState extends State<ArrivalConfirmationWidget> {
                                 id: widget.request?.bubbleId,
                                 status: 'arrivedAtLocation',
                               );
+
                               if ((_model.apiResultoan?.succeeded ?? true)) {
                                 Navigator.pop(context);
                                 ScaffoldMessenger.of(context).showSnackBar(

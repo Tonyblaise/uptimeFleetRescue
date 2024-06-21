@@ -286,6 +286,7 @@ class _TechStatusComponentWidgetState extends State<TechStatusComponentWidget> {
                                           currentUserDocument?.technicianId,
                                           ''),
                                     );
+
                                     if ((_model.apiResult5nw?.succeeded ??
                                         true)) {
                                       await currentUserReference!

@@ -659,18 +659,11 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                                 setState(() {});
 
                                                 context.pushNamed(
-                                                  'selectLocation',
+                                                  'vehicle_confirmation',
                                                   queryParameters: {
                                                     'service': serializeParam(
                                                       widget.fault,
                                                       ParamType.String,
-                                                    ),
-                                                    'dropOffLocation':
-                                                        serializeParam(
-                                                      _model
-                                                          .wherewouldyoulikethevehicletowedtoValue
-                                                          .latLng,
-                                                      ParamType.LatLng,
                                                     ),
                                                   }.withoutNulls,
                                                 );
@@ -829,7 +822,7 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                                 setState(() {});
 
                                                 context.pushNamed(
-                                                  'selectLocation',
+                                                  'vehicle_confirmation',
                                                   queryParameters: {
                                                     'service': serializeParam(
                                                       widget.fault,
@@ -988,7 +981,7 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                                 setState(() {});
 
                                                 context.pushNamed(
-                                                  'selectLocation',
+                                                  'vehicle_confirmation',
                                                   queryParameters: {
                                                     'service': serializeParam(
                                                       widget.fault,
