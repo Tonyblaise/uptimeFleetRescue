@@ -285,7 +285,7 @@ class _VerifyWidgetState extends State<VerifyWidget> {
                           firebaseId: currentUserReference?.id,
                         );
 
-                        context.goNamedAuth('dashboardDriver', context.mounted);
+                        context.goNamedAuth('landing_page', context.mounted);
                       } else if (widget.signUpType == 'technician') {
                         var chatsRecordReference3 =
                             ChatsRecord.collection.doc();
@@ -385,8 +385,7 @@ class _VerifyWidgetState extends State<VerifyWidget> {
                           firebaseId: currentUserReference?.id,
                         );
 
-                        context.goNamedAuth(
-                            'dashboardTechnician', context.mounted);
+                        context.goNamedAuth('landing_page', context.mounted);
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
@@ -410,7 +409,7 @@ class _VerifyWidgetState extends State<VerifyWidget> {
                           token: _model.token,
                         );
 
-                        context.goNamedAuth('dashboardDriver', context.mounted);
+                        context.goNamedAuth('landing_page', context.mounted);
                       } else if (widget.signUpType == 'technician') {
                         await UptimeFleetAppGroup.updateTechnicianCall.call(
                           technicianId: valueOrDefault(
@@ -418,8 +417,7 @@ class _VerifyWidgetState extends State<VerifyWidget> {
                           token: _model.token,
                         );
 
-                        context.goNamedAuth(
-                            'dashboardTechnician', context.mounted);
+                        context.goNamedAuth('landing_page', context.mounted);
                       }
                     }
 
