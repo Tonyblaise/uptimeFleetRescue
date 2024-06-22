@@ -224,6 +224,7 @@ final parametersBuilderMap =
           'notes': getParameter<String>(data, 'notes'),
           'color': getParameter<String>(data, 'color'),
           'image': getParameter<String>(data, 'image'),
+          'id': getParameter<String>(data, 'id'),
         },
       ),
 };

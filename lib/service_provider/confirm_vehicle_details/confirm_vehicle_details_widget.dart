@@ -440,6 +440,14 @@ class _ConfirmVehicleDetailsWidgetState
                                             ),
                                             ParamType.String,
                                           ),
+                                          'id': serializeParam(
+                                            UptimeFleetAppGroup.getVehiclesCall
+                                                .id(
+                                              containerGetVehiclesResponse
+                                                  .jsonBody,
+                                            ),
+                                            ParamType.String,
+                                          ),
                                         }.withoutNulls,
                                       );
                                     },

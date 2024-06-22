@@ -25,6 +25,7 @@ class VehicleConfirmation2Widget extends StatefulWidget {
     this.notes,
     this.color,
     required this.image,
+    required this.id,
   });
 
   final String? service;
@@ -34,6 +35,7 @@ class VehicleConfirmation2Widget extends StatefulWidget {
   final String? notes;
   final String? color;
   final String? image;
+  final String? id;
 
   @override
   State<VehicleConfirmation2Widget> createState() =>
@@ -790,250 +792,215 @@ class _VehicleConfirmation2WidgetState
                                             }
                                           },
                                         ),
-                                        if (_model.apiCallMade == true)
-                                          Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 20.0),
-                                            child: FFButtonWidget(
-                                              onPressed: () async {
-                                                currentUserLocationValue =
-                                                    await getCurrentUserLocation(
-                                                        defaultLocation:
-                                                            const LatLng(0.0, 0.0));
-                                                if (_model.image != null &&
-                                                    _model.image != '') {
-                                                  var chatsRecordReference =
-                                                      ChatsRecord.collection
-                                                          .doc();
-                                                  await chatsRecordReference
-                                                      .set({
-                                                    ...createChatsRecordData(
-                                                      userA:
-                                                          currentUserReference,
-                                                    ),
-                                                    ...mapToFirestore(
-                                                      {
-                                                        'users': [
-                                                          currentUserReference
-                                                        ],
-                                                      },
-                                                    ),
-                                                  });
-                                                  _model.chatId = ChatsRecord
-                                                      .getDocumentFromData({
-                                                    ...createChatsRecordData(
-                                                      userA:
-                                                          currentUserReference,
-                                                    ),
-                                                    ...mapToFirestore(
-                                                      {
-                                                        'users': [
-                                                          currentUserReference
-                                                        ],
-                                                      },
-                                                    ),
-                                                  }, chatsRecordReference);
-                                                  _model.apiResult1adCopy =
-                                                      await UptimeFleetAppGroup
-                                                          .updateVehicleCall
-                                                          .call(
-                                                    licensePlate:
-                                                        widget.licensePlate,
-                                                    state: widget.state,
-                                                    color: _model
-                                                        .textFieldColorTextController
-                                                        .text,
-                                                    id: _model.vehicleId,
-                                                    notes: _model
-                                                        .textFieldNotesTextController
-                                                        .text,
-                                                  );
+                                        Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 20.0),
+                                          child: FFButtonWidget(
+                                            onPressed: () async {
+                                              currentUserLocationValue =
+                                                  await getCurrentUserLocation(
+                                                      defaultLocation:
+                                                          const LatLng(0.0, 0.0));
+                                              if (_model.image != null &&
+                                                  _model.image != '') {
+                                                var chatsRecordReference =
+                                                    ChatsRecord.collection
+                                                        .doc();
+                                                await chatsRecordReference.set({
+                                                  ...createChatsRecordData(
+                                                    userA: currentUserReference,
+                                                  ),
+                                                  ...mapToFirestore(
+                                                    {
+                                                      'users': [
+                                                        currentUserReference
+                                                      ],
+                                                    },
+                                                  ),
+                                                });
+                                                _model.chatId = ChatsRecord
+                                                    .getDocumentFromData({
+                                                  ...createChatsRecordData(
+                                                    userA: currentUserReference,
+                                                  ),
+                                                  ...mapToFirestore(
+                                                    {
+                                                      'users': [
+                                                        currentUserReference
+                                                      ],
+                                                    },
+                                                  ),
+                                                }, chatsRecordReference);
+                                                _model.apiResult1adCopy =
+                                                    await UptimeFleetAppGroup
+                                                        .updateVehicleCall
+                                                        .call(
+                                                  licensePlate:
+                                                      widget.licensePlate,
+                                                  state: widget.state,
+                                                  color: _model
+                                                      .textFieldColorTextController
+                                                      .text,
+                                                  id: widget.id,
+                                                  notes: _model
+                                                      .textFieldNotesTextController
+                                                      .text,
+                                                );
 
-                                                  var requestRecordReference =
-                                                      RequestRecord.collection
-                                                          .doc();
-                                                  await requestRecordReference
-                                                      .set(
-                                                          createRequestRecordData(
-                                                    status: 'newCase',
-                                                    firebaseMessageThread:
-                                                        _model
-                                                            .chatId?.reference,
-                                                    driver:
-                                                        currentUserReference,
-                                                    location:
-                                                        currentUserLocationValue,
-                                                    driverName: valueOrDefault(
+                                                var requestRecordReference =
+                                                    RequestRecord.collection
+                                                        .doc();
+                                                await requestRecordReference
+                                                    .set(
+                                                        createRequestRecordData(
+                                                  status: 'newCase',
+                                                  firebaseMessageThread:
+                                                      _model.chatId?.reference,
+                                                  driver: currentUserReference,
+                                                  location:
+                                                      currentUserLocationValue,
+                                                  driverName: valueOrDefault(
+                                                      currentUserDocument
+                                                          ?.fullName,
+                                                      ''),
+                                                  dropOffLocationLatLng:
+                                                      FFAppState()
+                                                          .dropOffLocation,
+                                                ));
+                                                _model.request = RequestRecord
+                                                    .getDocumentFromData(
+                                                        createRequestRecordData(
+                                                          status: 'newCase',
+                                                          firebaseMessageThread:
+                                                              _model.chatId
+                                                                  ?.reference,
+                                                          driver:
+                                                              currentUserReference,
+                                                          location:
+                                                              currentUserLocationValue,
+                                                          driverName: valueOrDefault(
+                                                              currentUserDocument
+                                                                  ?.fullName,
+                                                              ''),
+                                                          dropOffLocationLatLng:
+                                                              FFAppState()
+                                                                  .dropOffLocation,
+                                                        ),
+                                                        requestRecordReference);
+                                                if ((_model.apiResult1adCopy
+                                                        ?.succeeded ??
+                                                    true)) {
+                                                  _model.apiResulty8vCopy =
+                                                      await UptimeFleetAppGroup
+                                                          .createARequestCall
+                                                          .call(
+                                                    date: getCurrentTimestamp
+                                                        .millisecondsSinceEpoch,
+                                                    driverId: valueOrDefault(
                                                         currentUserDocument
-                                                            ?.fullName,
+                                                            ?.driverId,
                                                         ''),
+                                                    fault: widget.service,
+                                                    vehicleId: _model.vehicleId,
+                                                    additionalInfo: widget
+                                                                    .additionalInfo !=
+                                                                null &&
+                                                            widget.additionalInfo !=
+                                                                ''
+                                                        ? widget.additionalInfo
+                                                        : FFAppState()
+                                                            .requestAdditionalInfo,
+                                                    supportReview: false,
+                                                    position: FFAppState()
+                                                        .location
+                                                        ?.toString(),
+                                                    chatId: _model
+                                                        .chatId?.reference.id,
+                                                    firebaseId: _model
+                                                        .request?.reference.id,
+                                                    driverImage: _model.image,
+                                                    driverTechnician:
+                                                        valueOrDefault(
+                                                            currentUserDocument
+                                                                ?.technicianId,
+                                                            ''),
                                                     dropOffLocationLatLng:
                                                         FFAppState()
-                                                            .dropOffLocation,
-                                                  ));
-                                                  _model.request = RequestRecord
-                                                      .getDocumentFromData(
-                                                          createRequestRecordData(
-                                                            status: 'newCase',
-                                                            firebaseMessageThread:
-                                                                _model.chatId
-                                                                    ?.reference,
-                                                            driver:
-                                                                currentUserReference,
-                                                            location:
-                                                                currentUserLocationValue,
-                                                            driverName: valueOrDefault(
-                                                                currentUserDocument
-                                                                    ?.fullName,
-                                                                ''),
-                                                            dropOffLocationLatLng:
-                                                                FFAppState()
-                                                                    .dropOffLocation,
-                                                          ),
-                                                          requestRecordReference);
-                                                  if ((_model.apiResult1adCopy
+                                                            .dropOffLocation
+                                                            ?.toString(),
+                                                  );
+
+                                                  if ((_model.apiResulty8vCopy
                                                           ?.succeeded ??
                                                       true)) {
-                                                    _model.apiResulty8vCopy =
-                                                        await UptimeFleetAppGroup
-                                                            .createARequestCall
-                                                            .call(
-                                                      date: getCurrentTimestamp
-                                                          .millisecondsSinceEpoch,
-                                                      driverId: valueOrDefault(
-                                                          currentUserDocument
-                                                              ?.driverId,
-                                                          ''),
-                                                      fault: widget.service,
-                                                      vehicleId:
-                                                          _model.vehicleId,
-                                                      additionalInfo: widget
-                                                                      .additionalInfo !=
-                                                                  null &&
-                                                              widget.additionalInfo !=
-                                                                  ''
-                                                          ? widget
-                                                              .additionalInfo
-                                                          : FFAppState()
-                                                              .requestAdditionalInfo,
-                                                      supportReview: false,
-                                                      position: FFAppState()
-                                                          .location
-                                                          ?.toString(),
-                                                      chatId: _model
-                                                          .chatId?.reference.id,
-                                                      firebaseId: _model.request
-                                                          ?.reference.id,
-                                                      driverImage: _model.image,
-                                                      driverTechnician:
-                                                          valueOrDefault(
-                                                              currentUserDocument
-                                                                  ?.technicianId,
-                                                              ''),
-                                                      dropOffLocationLatLng:
-                                                          FFAppState()
-                                                              .dropOffLocation
-                                                              ?.toString(),
-                                                    );
+                                                    await _model
+                                                        .request!.reference
+                                                        .update(
+                                                            createRequestRecordData(
+                                                      bubbleId:
+                                                          UptimeFleetAppGroup
+                                                              .createARequestCall
+                                                              .uniqueId(
+                                                        (_model.apiResulty8vCopy
+                                                                ?.jsonBody ??
+                                                            ''),
+                                                      ),
+                                                    ));
 
-                                                    if ((_model.apiResulty8vCopy
-                                                            ?.succeeded ??
-                                                        true)) {
-                                                      await _model
-                                                          .request!.reference
-                                                          .update(
-                                                              createRequestRecordData(
-                                                        bubbleId:
-                                                            UptimeFleetAppGroup
-                                                                .createARequestCall
-                                                                .uniqueId(
-                                                          (_model.apiResulty8vCopy
-                                                                  ?.jsonBody ??
-                                                              ''),
-                                                        ),
-                                                      ));
-
-                                                      await currentUserReference!
-                                                          .update(
-                                                              createUsersRecordData(
-                                                        activeRequest: _model
-                                                            .request?.reference,
-                                                        activeRequestBubble:
-                                                            UptimeFleetAppGroup
-                                                                .createARequestCall
-                                                                .uniqueId(
-                                                          (_model.apiResulty8vCopy
-                                                                  ?.jsonBody ??
-                                                              ''),
-                                                        ),
-                                                      ));
-                                                      await showModalBottomSheet(
-                                                        isScrollControlled:
-                                                            true,
-                                                        backgroundColor:
-                                                            Colors.transparent,
-                                                        isDismissible: false,
-                                                        enableDrag: false,
-                                                        useSafeArea: true,
-                                                        context: context,
-                                                        builder: (context) {
-                                                          return GestureDetector(
-                                                            onTap: () => _model
-                                                                    .unfocusNode
-                                                                    .canRequestFocus
-                                                                ? FocusScope.of(
-                                                                        context)
-                                                                    .requestFocus(
-                                                                        _model
-                                                                            .unfocusNode)
-                                                                : FocusScope.of(
-                                                                        context)
-                                                                    .unfocus(),
-                                                            child: Padding(
-                                                              padding: MediaQuery
-                                                                  .viewInsetsOf(
-                                                                      context),
-                                                              child: SizedBox(
-                                                                height: MediaQuery.sizeOf(
-                                                                            context)
-                                                                        .height *
-                                                                    0.6,
-                                                                child:
-                                                                    const ConfirmRequestWidget(),
-                                                              ),
-                                                            ),
-                                                          );
-                                                        },
-                                                      ).then((value) =>
-                                                          safeSetState(() {}));
-                                                    } else {
-                                                      ScaffoldMessenger.of(
-                                                              context)
-                                                          .showSnackBar(
-                                                        SnackBar(
-                                                          content: Text(
-                                                            getJsonField(
-                                                              (_model.apiResulty8vCopy
-                                                                      ?.jsonBody ??
-                                                                  ''),
-                                                              r'''$.body.message''',
-                                                            ).toString(),
-                                                            style: TextStyle(
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .primary,
-                                                              fontSize: 14.0,
+                                                    await currentUserReference!
+                                                        .update(
+                                                            createUsersRecordData(
+                                                      activeRequest: _model
+                                                          .request?.reference,
+                                                      activeRequestBubble:
+                                                          UptimeFleetAppGroup
+                                                              .createARequestCall
+                                                              .uniqueId(
+                                                        (_model.apiResulty8vCopy
+                                                                ?.jsonBody ??
+                                                            ''),
+                                                      ),
+                                                    ));
+                                                    await showModalBottomSheet(
+                                                      isScrollControlled: true,
+                                                      backgroundColor:
+                                                          Colors.transparent,
+                                                      isDismissible: false,
+                                                      enableDrag: false,
+                                                      useSafeArea: true,
+                                                      context: context,
+                                                      builder: (context) {
+                                                        return GestureDetector(
+                                                          onTap: () => _model
+                                                                  .unfocusNode
+                                                                  .canRequestFocus
+                                                              ? FocusScope.of(
+                                                                      context)
+                                                                  .requestFocus(
+                                                                      _model
+                                                                          .unfocusNode)
+                                                              : FocusScope.of(
+                                                                      context)
+                                                                  .unfocus(),
+                                                          child: Padding(
+                                                            padding: MediaQuery
+                                                                .viewInsetsOf(
+                                                                    context),
+                                                            child: SizedBox(
+                                                              height: MediaQuery
+                                                                          .sizeOf(
+                                                                              context)
+                                                                      .height *
+                                                                  0.6,
+                                                              child:
+                                                                  const ConfirmRequestWidget(),
                                                             ),
                                                           ),
-                                                          duration: const Duration(
-                                                              milliseconds:
-                                                                  4000),
-                                                          backgroundColor:
-                                                              const Color(0xFFF50833),
-                                                        ),
-                                                      );
-                                                    }
+                                                        );
+                                                      },
+                                                    ).then((value) =>
+                                                        safeSetState(() {}));
                                                   } else {
                                                     ScaffoldMessenger.of(
                                                             context)
@@ -1041,7 +1008,7 @@ class _VehicleConfirmation2WidgetState
                                                       SnackBar(
                                                         content: Text(
                                                           getJsonField(
-                                                            (_model.apiResult1adCopy
+                                                            (_model.apiResulty8vCopy
                                                                     ?.jsonBody ??
                                                                 ''),
                                                             r'''$.body.message''',
@@ -1065,7 +1032,12 @@ class _VehicleConfirmation2WidgetState
                                                       .showSnackBar(
                                                     SnackBar(
                                                       content: Text(
-                                                        'Please upload an image',
+                                                        getJsonField(
+                                                          (_model.apiResult1adCopy
+                                                                  ?.jsonBody ??
+                                                              ''),
+                                                          r'''$.body.message''',
+                                                        ).toString(),
                                                         style: TextStyle(
                                                           color: FlutterFlowTheme
                                                                   .of(context)
@@ -1080,47 +1052,64 @@ class _VehicleConfirmation2WidgetState
                                                     ),
                                                   );
                                                 }
-
-                                                setState(() {});
-                                              },
-                                              text: 'Next',
-                                              options: FFButtonOptions(
-                                                width:
-                                                    MediaQuery.sizeOf(context)
-                                                            .width *
-                                                        0.9,
-                                                height: 50.0,
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        24.0, 0.0, 24.0, 0.0),
-                                                iconPadding:
-                                                    const EdgeInsetsDirectional
-                                                        .fromSTEB(
-                                                            0.0, 0.0, 0.0, 0.0),
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .tertiary,
-                                                textStyle: FlutterFlowTheme.of(
-                                                        context)
-                                                    .titleSmall
-                                                    .override(
-                                                      fontFamily: 'Yantramanav',
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primary,
-                                                      letterSpacing: 0.0,
+                                              } else {
+                                                ScaffoldMessenger.of(context)
+                                                    .showSnackBar(
+                                                  SnackBar(
+                                                    content: Text(
+                                                      'Please upload an image',
+                                                      style: TextStyle(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primary,
+                                                        fontSize: 14.0,
+                                                      ),
                                                     ),
-                                                elevation: 3.0,
-                                                borderSide: const BorderSide(
-                                                  color: Colors.transparent,
-                                                  width: 1.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
+                                                    duration: const Duration(
+                                                        milliseconds: 4000),
+                                                    backgroundColor:
+                                                        const Color(0xFFF50833),
+                                                  ),
+                                                );
+                                              }
+
+                                              setState(() {});
+                                            },
+                                            text: 'Next',
+                                            options: FFButtonOptions(
+                                              width: MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.9,
+                                              height: 50.0,
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      24.0, 0.0, 24.0, 0.0),
+                                              iconPadding: const EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .tertiary,
+                                              textStyle: FlutterFlowTheme.of(
+                                                      context)
+                                                  .titleSmall
+                                                  .override(
+                                                    fontFamily: 'Yantramanav',
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primary,
+                                                    letterSpacing: 0.0,
+                                                  ),
+                                              elevation: 3.0,
+                                              borderSide: const BorderSide(
+                                                color: Colors.transparent,
+                                                width: 1.0,
                                               ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
                                             ),
                                           ),
+                                        ),
                                       ].divide(const SizedBox(height: 20.0)),
                                     ),
                                   ),

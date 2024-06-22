@@ -405,6 +405,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   'image',
                   ParamType.String,
                 ),
+                id: params.getParam(
+                  'id',
+                  ParamType.String,
+                ),
               ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),

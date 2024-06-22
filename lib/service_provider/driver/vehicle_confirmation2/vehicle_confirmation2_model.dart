@@ -18,8 +18,6 @@ class VehicleConfirmation2Model
   String? image =
       'https://dd8c54a01d09ed2b89dfbd9e5dfe0b12.cdn.bubble.io/f1707747018407x476662704940518100/photo.png';
 
-  bool apiCallMade = false;
-
   String? details;
 
   ///  State fields for stateful widgets in this page.
