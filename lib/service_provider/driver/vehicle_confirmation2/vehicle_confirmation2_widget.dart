@@ -902,7 +902,7 @@ class _VehicleConfirmation2WidgetState
                                                             ?.driverId,
                                                         ''),
                                                     fault: widget.service,
-                                                    vehicleId: _model.vehicleId,
+                                                    vehicleId: widget.id,
                                                     additionalInfo: widget
                                                                     .additionalInfo !=
                                                                 null &&
