@@ -9,7 +9,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/service_provider/driver/service_updates_component/service_updates_component_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'landing_page_model.dart';
 export 'landing_page_model.dart';
 
@@ -29,11 +28,6 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => LandingPageModel());
-
-    // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      setState(() {});
-    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -70,21 +64,14 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                     decoration: const BoxDecoration(),
                     child: Builder(
                       builder: (context) {
-                        if (currentUserDocument?.activeRequest?.id == null ||
-                            currentUserDocument?.activeRequest?.id == '') {
+                        if (currentUserDocument?.activeRequest == null) {
                           return StreamBuilder<List<UsersRecord>>(
                             stream: queryUsersRecord(
-                              queryBuilder: (usersRecord) =>
-                                  usersRecord.where(Filter.or(
-                                Filter(
-                                  'role',
-                                  isEqualTo: 'technician',
-                                ),
-                                Filter(
-                                  'onDuty',
-                                  isEqualTo: true,
-                                ),
-                              )),
+                              queryBuilder: (usersRecord) => usersRecord.where(
+                                'onDuty',
+                                isEqualTo: true,
+                                isNull: (true) == null,
+                              ),
                             ),
                             builder: (context, snapshot) {
                               // Customize what your widget looks like when it's loading.
@@ -631,8 +618,7 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                   decoration: const BoxDecoration(),
                   child: Builder(
                     builder: (context) {
-                      if (currentUserDocument?.activeRequest?.id == null ||
-                          currentUserDocument?.activeRequest?.id == '') {
+                      if (currentUserDocument?.activeRequest == null) {
                         return Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 16.0, 0.0, 0.0),
