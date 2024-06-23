@@ -255,6 +255,7 @@ class ThemeTypography extends Typography {
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 14.0,
+        fontStyle: FontStyle.normal,
       );
   String get bodySmallFamily => 'Yantramanav';
   TextStyle get bodySmall => GoogleFonts.getFont(
