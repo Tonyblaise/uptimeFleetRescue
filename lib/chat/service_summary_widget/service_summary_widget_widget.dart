@@ -961,6 +961,7 @@ class _ServiceSummaryWidgetWidgetState
                   request: widget.firebaseId!,
                   chat: widget.driverTechMessageId!,
                   fault: widget.eventType!,
+                  bubbleId: widget.bubbleId!,
                 ),
               ),
             );
