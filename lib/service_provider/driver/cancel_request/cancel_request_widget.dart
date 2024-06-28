@@ -221,7 +221,7 @@ class _CancelRequestWidgetState extends State<CancelRequestWidget> {
                               }
 
                               if (widget.driver == true) {
-                                context.pushNamed('dashboardDriver');
+                                context.pushNamed('landing_page');
                               } else {
                                 context.pushNamed('dashboardTechnician');
                               }

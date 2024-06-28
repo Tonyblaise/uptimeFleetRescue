@@ -52,7 +52,7 @@ class _ConfirmVehicleDetailsWidgetState
     return Align(
       alignment: const AlignmentDirectional(0.0, 0.0),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
+        padding: const EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 20.0),
         child: AuthUserStreamWidget(
           builder: (context) => FutureBuilder<ApiCallResponse>(
             future: UptimeFleetAppGroup.getVehiclesCall.call(
@@ -120,7 +120,7 @@ class _ConfirmVehicleDetailsWidgetState
                       ),
                     ),
                     Container(
-                      width: MediaQuery.sizeOf(context).width * 0.9,
+                      width: MediaQuery.sizeOf(context).width * 0.8,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20.0),
                         shape: BoxShape.rectangle,

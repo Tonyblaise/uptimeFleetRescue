@@ -24,11 +24,14 @@ class LandingPageModel extends FlutterFlowModel<LandingPageWidget> {
 
   final unfocusNode = FocusNode();
   // State field(s) for GoogleMapone widget.
-  LatLng? googleMaponesCenter;
-  final googleMaponesController = Completer<GoogleMapController>();
+  LatLng? googleMaponesCenter1;
+  final googleMaponesController1 = Completer<GoogleMapController>();
   // State field(s) for GoogleMap widget.
   LatLng? googleMapsCenter;
   final googleMapsController = Completer<GoogleMapController>();
+  // State field(s) for GoogleMapone widget.
+  LatLng? googleMaponesCenter2;
+  final googleMaponesController2 = Completer<GoogleMapController>();
   // State field(s) for PlacePicker widget.
   FFPlace placePickerValue = const FFPlace();
   // Model for serviceUpdatesComponent component.
