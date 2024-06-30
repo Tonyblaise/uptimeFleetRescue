@@ -1306,7 +1306,7 @@ class GetVehiclesCall {
 
 class GetVehiclesByRegNoCall {
   Future<ApiCallResponse> call({
-    String? vehicleRegNo = 'rbb7870',
+    String? vehicleRegNo = 'LJV9763',
     String? driverId = '1717176798915x151553456806942340',
     String? accessToken = '1707139937267x678517623997244500',
   }) async {
