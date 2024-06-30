@@ -418,9 +418,9 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                                 'licensePlate':
                                                                     serializeParam(
                                                                   UptimeFleetAppGroup
-                                                                      .getVehiclesCall
+                                                                      .getVehiclesByRegNoCall
                                                                       .licensePlate(
-                                                                    (_model.vehicle
+                                                                    (_model.vehicle2
                                                                             ?.jsonBody ??
                                                                         ''),
                                                                   ),
@@ -430,9 +430,9 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                                 'state':
                                                                     serializeParam(
                                                                   UptimeFleetAppGroup
-                                                                      .getVehiclesCall
+                                                                      .getVehiclesByRegNoCall
                                                                       .state(
-                                                                    (_model.vehicle
+                                                                    (_model.vehicle2
                                                                             ?.jsonBody ??
                                                                         ''),
                                                                   ),
@@ -442,9 +442,9 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                                 'color':
                                                                     serializeParam(
                                                                   UptimeFleetAppGroup
-                                                                      .getVehiclesCall
+                                                                      .getVehiclesByRegNoCall
                                                                       .color(
-                                                                    (_model.vehicle
+                                                                    (_model.vehicle2
                                                                             ?.jsonBody ??
                                                                         ''),
                                                                   ),
@@ -454,9 +454,9 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                                 'image':
                                                                     serializeParam(
                                                                   UptimeFleetAppGroup
-                                                                      .getVehiclesCall
+                                                                      .getVehiclesByRegNoCall
                                                                       .image(
-                                                                    (_model.vehicle
+                                                                    (_model.vehicle2
                                                                             ?.jsonBody ??
                                                                         ''),
                                                                   ),
@@ -466,9 +466,9 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                                 'id':
                                                                     serializeParam(
                                                                   UptimeFleetAppGroup
-                                                                      .getVehiclesCall
+                                                                      .getVehiclesByRegNoCall
                                                                       .id(
-                                                                    (_model.vehicle
+                                                                    (_model.vehicle2
                                                                             ?.jsonBody ??
                                                                         ''),
                                                                   ),
@@ -915,244 +915,225 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                 ].divide(const SizedBox(height: 5.0)),
                                               ),
                                             ),
-                                            if (_model.apiCallMade != true)
-                                              Container(
-                                                width: double.infinity,
-                                                decoration: const BoxDecoration(),
-                                                child: Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 10.0, 0.0, 0.0),
-                                                  child: FFButtonWidget(
-                                                    onPressed: () async {
-                                                      if (_model.formKey
-                                                                  .currentState ==
-                                                              null ||
-                                                          !_model.formKey
-                                                              .currentState!
-                                                              .validate()) {
-                                                        return;
-                                                      }
-                                                      _model.vehicle =
-                                                          await UptimeFleetAppGroup
+                                            Container(
+                                              width: double.infinity,
+                                              decoration: const BoxDecoration(),
+                                              child: Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 10.0, 0.0, 0.0),
+                                                child: FFButtonWidget(
+                                                  onPressed: () async {
+                                                    if (_model.formKey
+                                                                .currentState ==
+                                                            null ||
+                                                        !_model.formKey
+                                                            .currentState!
+                                                            .validate()) {
+                                                      return;
+                                                    }
+                                                    _model.vehicle =
+                                                        await UptimeFleetAppGroup
+                                                            .getVehiclesCall
+                                                            .call(
+                                                      vehicleRegNo: _model
+                                                          .textController.text,
+                                                      driverId: valueOrDefault(
+                                                          currentUserDocument
+                                                              ?.driverId,
+                                                          ''),
+                                                      state: _model
+                                                          .dropDownStateValue,
+                                                    );
+
+                                                    if ((_model.vehicle
+                                                                ?.succeeded ??
+                                                            true) ==
+                                                        true) {
+                                                      _model.vehicleId =
+                                                          UptimeFleetAppGroup
                                                               .getVehiclesCall
-                                                              .call(
-                                                        vehicleRegNo: _model
-                                                            .textController
-                                                            .text,
-                                                        driverId: valueOrDefault(
-                                                            currentUserDocument
-                                                                ?.driverId,
+                                                              .id(
+                                                        (_model.vehicle
+                                                                ?.jsonBody ??
                                                             ''),
-                                                        state: _model
-                                                            .dropDownStateValue,
                                                       );
-
-                                                      if ((_model.vehicle
-                                                                  ?.succeeded ??
-                                                              true) ==
-                                                          true) {
-                                                        _model.vehicleId =
-                                                            UptimeFleetAppGroup
-                                                                .getVehiclesCall
-                                                                .id(
-                                                          (_model.vehicle
-                                                                  ?.jsonBody ??
-                                                              ''),
-                                                        );
-                                                        _model.color =
-                                                            UptimeFleetAppGroup
-                                                                .getVehiclesCall
-                                                                .color(
-                                                          (_model.vehicle
-                                                                  ?.jsonBody ??
-                                                              ''),
-                                                        );
-                                                        _model.state =
-                                                            UptimeFleetAppGroup
-                                                                .getVehiclesCall
-                                                                .state(
-                                                          (_model.vehicle
-                                                                  ?.jsonBody ??
-                                                              ''),
-                                                        );
-                                                        _model.image =
-                                                            UptimeFleetAppGroup
-                                                                .getVehiclesCall
-                                                                .image(
-                                                          (_model.vehicle
-                                                                  ?.jsonBody ??
-                                                              ''),
-                                                        );
-                                                        _model.apiCallMade =
-                                                            true;
-                                                        _model.details =
-                                                            '${UptimeFleetAppGroup.getVehiclesCall.make(
-                                                          (_model.vehicle
-                                                                  ?.jsonBody ??
-                                                              ''),
-                                                        )}${UptimeFleetAppGroup.getVehiclesCall.model(
-                                                          (_model.vehicle
-                                                                  ?.jsonBody ??
-                                                              ''),
-                                                        )}';
-                                                        setState(() {});
-                                                        await showModalBottomSheet(
-                                                          isScrollControlled:
-                                                              true,
-                                                          backgroundColor:
-                                                              Colors
-                                                                  .transparent,
-                                                          enableDrag: false,
-                                                          context: context,
-                                                          builder: (context) {
-                                                            return GestureDetector(
-                                                              onTap: () => _model
-                                                                      .unfocusNode
-                                                                      .canRequestFocus
-                                                                  ? FocusScope.of(
-                                                                          context)
-                                                                      .requestFocus(
-                                                                          _model
-                                                                              .unfocusNode)
-                                                                  : FocusScope.of(
-                                                                          context)
-                                                                      .unfocus(),
-                                                              child: Padding(
-                                                                padding: MediaQuery
-                                                                    .viewInsetsOf(
-                                                                        context),
-                                                                child:
-                                                                    ConfirmVehicleDetailsWidget(
-                                                                  vehicleReg: _model
-                                                                      .textController
-                                                                      .text,
-                                                                  service: widget
-                                                                      .service!,
-                                                                ),
-                                                              ),
-                                                            );
-                                                          },
-                                                        ).then((value) =>
-                                                            safeSetState(
-                                                                () {}));
-                                                      } else {
-                                                        if (getJsonField(
-                                                              (_model.vehicle
-                                                                      ?.jsonBody ??
-                                                                  ''),
-                                                              r'''$.body.message''',
-                                                            ) !=
-                                                            null) {
-                                                          ScaffoldMessenger.of(
-                                                                  context)
-                                                              .showSnackBar(
-                                                            SnackBar(
-                                                              content: Text(
-                                                                getJsonField(
-                                                                  (_model.vehicle
-                                                                          ?.jsonBody ??
-                                                                      ''),
-                                                                  r'''$.body.message''',
-                                                                ).toString(),
-                                                                style:
-                                                                    TextStyle(
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primary,
-                                                                  fontSize:
-                                                                      14.0,
-                                                                ),
-                                                              ),
-                                                              duration: const Duration(
-                                                                  milliseconds:
-                                                                      4000),
-                                                              backgroundColor:
-                                                                  const Color(
-                                                                      0xFFF50833),
-                                                            ),
-                                                          );
-                                                        } else {
-                                                          ScaffoldMessenger.of(
-                                                                  context)
-                                                              .showSnackBar(
-                                                            SnackBar(
-                                                              content: Text(
-                                                                getJsonField(
-                                                                  (_model.vehicle
-                                                                          ?.jsonBody ??
-                                                                      ''),
-                                                                  r'''$.translation''',
-                                                                ).toString(),
-                                                                style:
-                                                                    TextStyle(
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primary,
-                                                                  fontSize:
-                                                                      14.0,
-                                                                ),
-                                                              ),
-                                                              duration: const Duration(
-                                                                  milliseconds:
-                                                                      4000),
-                                                              backgroundColor:
-                                                                  const Color(
-                                                                      0xFFF50833),
-                                                            ),
-                                                          );
-                                                        }
-                                                      }
-
+                                                      _model.color =
+                                                          UptimeFleetAppGroup
+                                                              .getVehiclesCall
+                                                              .color(
+                                                        (_model.vehicle
+                                                                ?.jsonBody ??
+                                                            ''),
+                                                      );
+                                                      _model.state =
+                                                          UptimeFleetAppGroup
+                                                              .getVehiclesCall
+                                                              .state(
+                                                        (_model.vehicle
+                                                                ?.jsonBody ??
+                                                            ''),
+                                                      );
+                                                      _model.image =
+                                                          UptimeFleetAppGroup
+                                                              .getVehiclesCall
+                                                              .image(
+                                                        (_model.vehicle
+                                                                ?.jsonBody ??
+                                                            ''),
+                                                      );
+                                                      _model.apiCallMade = true;
+                                                      _model.details =
+                                                          '${UptimeFleetAppGroup.getVehiclesCall.make(
+                                                        (_model.vehicle
+                                                                ?.jsonBody ??
+                                                            ''),
+                                                      )}${UptimeFleetAppGroup.getVehiclesCall.model(
+                                                        (_model.vehicle
+                                                                ?.jsonBody ??
+                                                            ''),
+                                                      )}';
                                                       setState(() {});
-                                                    },
-                                                    text: 'Next',
-                                                    options: FFButtonOptions(
-                                                      height: 50.0,
-                                                      padding:
-                                                          const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  24.0,
-                                                                  0.0,
-                                                                  24.0,
-                                                                  0.0),
-                                                      iconPadding:
-                                                          const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .tertiary,
-                                                      textStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .titleSmall
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Yantramanav',
+                                                      await showModalBottomSheet(
+                                                        isScrollControlled:
+                                                            true,
+                                                        backgroundColor:
+                                                            Colors.transparent,
+                                                        enableDrag: false,
+                                                        context: context,
+                                                        builder: (context) {
+                                                          return GestureDetector(
+                                                            onTap: () => _model
+                                                                    .unfocusNode
+                                                                    .canRequestFocus
+                                                                ? FocusScope.of(
+                                                                        context)
+                                                                    .requestFocus(
+                                                                        _model
+                                                                            .unfocusNode)
+                                                                : FocusScope.of(
+                                                                        context)
+                                                                    .unfocus(),
+                                                            child: Padding(
+                                                              padding: MediaQuery
+                                                                  .viewInsetsOf(
+                                                                      context),
+                                                              child:
+                                                                  ConfirmVehicleDetailsWidget(
+                                                                vehicleReg: _model
+                                                                    .textController
+                                                                    .text,
+                                                                service: widget
+                                                                    .service!,
+                                                              ),
+                                                            ),
+                                                          );
+                                                        },
+                                                      ).then((value) =>
+                                                          safeSetState(() {}));
+                                                    } else {
+                                                      if (getJsonField(
+                                                            (_model.vehicle
+                                                                    ?.jsonBody ??
+                                                                ''),
+                                                            r'''$.body.message''',
+                                                          ) !=
+                                                          null) {
+                                                        ScaffoldMessenger.of(
+                                                                context)
+                                                            .showSnackBar(
+                                                          SnackBar(
+                                                            content: Text(
+                                                              getJsonField(
+                                                                (_model.vehicle
+                                                                        ?.jsonBody ??
+                                                                    ''),
+                                                                r'''$.body.message''',
+                                                              ).toString(),
+                                                              style: TextStyle(
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .primary,
-                                                                letterSpacing:
-                                                                    0.0,
+                                                                fontSize: 14.0,
                                                               ),
-                                                      elevation: 3.0,
-                                                      borderSide: const BorderSide(
-                                                        color:
-                                                            Colors.transparent,
-                                                        width: 1.0,
-                                                      ),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              8.0),
+                                                            ),
+                                                            duration: const Duration(
+                                                                milliseconds:
+                                                                    4000),
+                                                            backgroundColor:
+                                                                const Color(
+                                                                    0xFFF50833),
+                                                          ),
+                                                        );
+                                                      } else {
+                                                        ScaffoldMessenger.of(
+                                                                context)
+                                                            .showSnackBar(
+                                                          SnackBar(
+                                                            content: Text(
+                                                              getJsonField(
+                                                                (_model.vehicle
+                                                                        ?.jsonBody ??
+                                                                    ''),
+                                                                r'''$.translation''',
+                                                              ).toString(),
+                                                              style: TextStyle(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primary,
+                                                                fontSize: 14.0,
+                                                              ),
+                                                            ),
+                                                            duration: const Duration(
+                                                                milliseconds:
+                                                                    4000),
+                                                            backgroundColor:
+                                                                const Color(
+                                                                    0xFFF50833),
+                                                          ),
+                                                        );
+                                                      }
+                                                    }
+
+                                                    setState(() {});
+                                                  },
+                                                  text: 'Next',
+                                                  options: FFButtonOptions(
+                                                    height: 50.0,
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(24.0, 0.0,
+                                                                24.0, 0.0),
+                                                    iconPadding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 0.0),
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .tertiary,
+                                                    textStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              'Yantramanav',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primary,
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                    elevation: 3.0,
+                                                    borderSide: const BorderSide(
+                                                      color: Colors.transparent,
+                                                      width: 1.0,
                                                     ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
                                                   ),
                                                 ),
                                               ),
+                                            ),
                                           ].divide(const SizedBox(height: 5.0)),
                                         );
                                       },
