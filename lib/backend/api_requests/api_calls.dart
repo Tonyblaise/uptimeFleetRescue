@@ -40,7 +40,10 @@ class UptimeFleetAppGroup {
   static UpdateTechStatusCall updateTechStatusCall = UpdateTechStatusCall();
   static GetTechnicianVehiclesCall getTechnicianVehiclesCall =
       GetTechnicianVehiclesCall();
+  static GetDriverVehiclesCall getDriverVehiclesCall = GetDriverVehiclesCall();
   static GetVehiclesCall getVehiclesCall = GetVehiclesCall();
+  static GetVehiclesByRegNoCall getVehiclesByRegNoCall =
+      GetVehiclesByRegNoCall();
   static UpdateVehicleCall updateVehicleCall = UpdateVehicleCall();
   static ApproveRequestCall approveRequestCall = ApproveRequestCall();
   static GetRequestCall getRequestCall = GetRequestCall();
@@ -1033,7 +1036,7 @@ class UpdateTechStatusCall {
 
 class GetTechnicianVehiclesCall {
   Future<ApiCallResponse> call({
-    String? technicianId = '1711561297242x959590260378098100',
+    String? technicianId = '1717176798915x151553456806942340',
     String? accessToken = '1707139937267x678517623997244500',
   }) async {
     final baseUrl = UptimeFleetAppGroup.getBaseUrl(
@@ -1049,6 +1052,104 @@ class GetTechnicianVehiclesCall {
       },
       params: {
         'technicianId': technicianId,
+      },
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  List<String>? licensePlate(dynamic response) => (getJsonField(
+        response,
+        r'''$.response.vehicle[:].licensePlate''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? serviceProvider(dynamic response) => (getJsonField(
+        response,
+        r'''$.response.vehicle[:].serviceProvider''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? fleetManager(dynamic response) => (getJsonField(
+        response,
+        r'''$.response.vehicle[:].fleetManager''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? state(dynamic response) => (getJsonField(
+        response,
+        r'''$.response.vehicle[:].state''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? color(dynamic response) => (getJsonField(
+        response,
+        r'''$.response.vehicle[:].color''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? companyId(dynamic response) => (getJsonField(
+        response,
+        r'''$.response.vehicle[:].companyId''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? id(dynamic response) => (getJsonField(
+        response,
+        r'''$.response.vehicle[:]._id''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List? vehicles(dynamic response) => getJsonField(
+        response,
+        r'''$.response.vehicle''',
+        true,
+      ) as List?;
+}
+
+class GetDriverVehiclesCall {
+  Future<ApiCallResponse> call({
+    String? driverId = '1717176798915x151553456806942340',
+    String? accessToken = '1707139937267x678517623997244500',
+  }) async {
+    final baseUrl = UptimeFleetAppGroup.getBaseUrl(
+      accessToken: accessToken,
+    );
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'Get driver vehicles',
+      apiUrl: '$baseUrl/driver-vehicles',
+      callType: ApiCallType.GET,
+      headers: {
+        'Authorization': 'Bearer $accessToken',
+      },
+      params: {
+        'driverId': driverId,
       },
       returnBody: true,
       encodeBodyUtf8: false,
@@ -1151,6 +1252,78 @@ class GetVehiclesCall {
         'licensePlate': vehicleRegNo,
         'driverId': driverId,
         'state': state,
+      },
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  String? status(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.status''',
+      ));
+  String? licensePlate(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.response.vehicle.licensePlate''',
+      ));
+  String? id(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.response.vehicle._id''',
+      ));
+  String? state(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.response.vehicle.state''',
+      ));
+  String? color(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.response.vehicle.color''',
+      ));
+  String? image(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.response.vehicle.image''',
+      ));
+  dynamic details(dynamic response) => getJsonField(
+        response,
+        r'''$.response.vehicle.details''',
+      );
+  String? model(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.response.vehicle.model''',
+      ));
+  String? make(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.response.vehicle.make''',
+      ));
+  dynamic year(dynamic response) => getJsonField(
+        response,
+        r'''$.response.vehicle.year''',
+      );
+}
+
+class GetVehiclesByRegNoCall {
+  Future<ApiCallResponse> call({
+    String? vehicleRegNo = 'rbb7870',
+    String? driverId = '1717176798915x151553456806942340',
+    String? accessToken = '1707139937267x678517623997244500',
+  }) async {
+    final baseUrl = UptimeFleetAppGroup.getBaseUrl(
+      accessToken: accessToken,
+    );
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'Get vehicles by reg no',
+      apiUrl: '$baseUrl/vehicles_2',
+      callType: ApiCallType.GET,
+      headers: {
+        'Authorization': 'Bearer $accessToken',
+      },
+      params: {
+        'licensePlate': vehicleRegNo,
+        'driverId': driverId,
       },
       returnBody: true,
       encodeBodyUtf8: false,

@@ -25,6 +25,11 @@ class VehicleConfirmationModel
 
   final unfocusNode = FocusNode();
   final formKey = GlobalKey<FormState>();
+  // State field(s) for vehicledropdown widget.
+  String? vehicledropdownValue;
+  FormFieldController<String>? vehicledropdownValueController;
+  // Stores action output result for [Backend Call - API (Get vehicles by reg no)] action in Button widget.
+  ApiCallResponse? vehicle2;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;

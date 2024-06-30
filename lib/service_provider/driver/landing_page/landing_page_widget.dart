@@ -442,7 +442,7 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                                                                                                 ),
                                                                                                           ),
                                                                                                           Text(
-                                                                                                            functions.newCustomFunction(containerUsersRecord.fullName)!,
+                                                                                                            functions.convertToUppercase(containerUsersRecord.fullName)!,
                                                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                   fontFamily: 'Yantramanav',
                                                                                                                   color: const Color(0xFF64748B),

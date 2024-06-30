@@ -120,7 +120,7 @@ int? addOne(int? number) {
   return number != null ? number + 1 : null;
 }
 
-String? newCustomFunction(String? text) {
+String? convertToUppercase(String? text) {
   // make string uppercase
   return text?.toUpperCase();
 }

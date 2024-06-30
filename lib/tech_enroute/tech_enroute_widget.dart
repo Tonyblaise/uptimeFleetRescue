@@ -350,7 +350,7 @@ class _TechEnrouteWidgetState extends State<TechEnrouteWidget> {
                                                                                         ),
                                                                                   ),
                                                                                   Text(
-                                                                                    functions.newCustomFunction(containerUsersRecord.activeVehicle)!,
+                                                                                    functions.convertToUppercase(containerUsersRecord.activeVehicle)!,
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: 'Yantramanav',
                                                                                           color: const Color(0xFF64748B),
