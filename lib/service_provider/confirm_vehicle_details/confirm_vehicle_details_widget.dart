@@ -55,7 +55,7 @@ class _ConfirmVehicleDetailsWidgetState
         padding: const EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 20.0),
         child: AuthUserStreamWidget(
           builder: (context) => FutureBuilder<ApiCallResponse>(
-            future: UptimeFleetAppGroup.getVehiclesCall.call(
+            future: UptimeFleetAppGroup.getVehiclesByRegNoCall.call(
               vehicleRegNo: widget.vehicleReg,
               driverId: valueOrDefault(currentUserDocument?.driverId, ''),
             ),
@@ -74,7 +74,7 @@ class _ConfirmVehicleDetailsWidgetState
                   ),
                 );
               }
-              final containerGetVehiclesResponse = snapshot.data!;
+              final containerGetVehiclesByRegNoResponse = snapshot.data!;
               return Container(
                 width: double.infinity,
                 decoration: BoxDecoration(
@@ -157,9 +157,10 @@ class _ConfirmVehicleDetailsWidgetState
                                           ),
                                     ),
                                     Text(
-                                      UptimeFleetAppGroup.getVehiclesCall
+                                      UptimeFleetAppGroup.getVehiclesByRegNoCall
                                           .licensePlate(
-                                        containerGetVehiclesResponse.jsonBody,
+                                        containerGetVehiclesByRegNoResponse
+                                            .jsonBody,
                                       )!,
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
@@ -197,8 +198,10 @@ class _ConfirmVehicleDetailsWidgetState
                                           ),
                                     ),
                                     Text(
-                                      UptimeFleetAppGroup.getVehiclesCall.make(
-                                        containerGetVehiclesResponse.jsonBody,
+                                      UptimeFleetAppGroup.getVehiclesByRegNoCall
+                                          .make(
+                                        containerGetVehiclesByRegNoResponse
+                                            .jsonBody,
                                       )!,
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
@@ -236,8 +239,10 @@ class _ConfirmVehicleDetailsWidgetState
                                           ),
                                     ),
                                     Text(
-                                      UptimeFleetAppGroup.getVehiclesCall.model(
-                                        containerGetVehiclesResponse.jsonBody,
+                                      UptimeFleetAppGroup.getVehiclesByRegNoCall
+                                          .model(
+                                        containerGetVehiclesByRegNoResponse
+                                            .jsonBody,
                                       )!,
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
@@ -275,9 +280,9 @@ class _ConfirmVehicleDetailsWidgetState
                                           ),
                                     ),
                                     Text(
-                                      UptimeFleetAppGroup.getVehiclesCall
+                                      UptimeFleetAppGroup.getVehiclesByRegNoCall
                                           .year(
-                                            containerGetVehiclesResponse
+                                            containerGetVehiclesByRegNoResponse
                                                 .jsonBody,
                                           )
                                           .toString(),
@@ -400,50 +405,56 @@ class _ConfirmVehicleDetailsWidgetState
                                             ParamType.String,
                                           ),
                                           'licensePlate': serializeParam(
-                                            UptimeFleetAppGroup.getVehiclesCall
+                                            UptimeFleetAppGroup
+                                                .getVehiclesByRegNoCall
                                                 .licensePlate(
-                                              containerGetVehiclesResponse
+                                              containerGetVehiclesByRegNoResponse
                                                   .jsonBody,
                                             ),
                                             ParamType.String,
                                           ),
                                           'state': serializeParam(
-                                            UptimeFleetAppGroup.getVehiclesCall
+                                            UptimeFleetAppGroup
+                                                .getVehiclesByRegNoCall
                                                 .state(
-                                              containerGetVehiclesResponse
+                                              containerGetVehiclesByRegNoResponse
                                                   .jsonBody,
                                             ),
                                             ParamType.String,
                                           ),
                                           'notes': serializeParam(
-                                            UptimeFleetAppGroup.getVehiclesCall
+                                            UptimeFleetAppGroup
+                                                .getVehiclesByRegNoCall
                                                 .details(
-                                                  containerGetVehiclesResponse
+                                                  containerGetVehiclesByRegNoResponse
                                                       .jsonBody,
                                                 )
                                                 .toString(),
                                             ParamType.String,
                                           ),
                                           'color': serializeParam(
-                                            UptimeFleetAppGroup.getVehiclesCall
+                                            UptimeFleetAppGroup
+                                                .getVehiclesByRegNoCall
                                                 .color(
-                                              containerGetVehiclesResponse
+                                              containerGetVehiclesByRegNoResponse
                                                   .jsonBody,
                                             ),
                                             ParamType.String,
                                           ),
                                           'image': serializeParam(
-                                            UptimeFleetAppGroup.getVehiclesCall
+                                            UptimeFleetAppGroup
+                                                .getVehiclesByRegNoCall
                                                 .image(
-                                              containerGetVehiclesResponse
+                                              containerGetVehiclesByRegNoResponse
                                                   .jsonBody,
                                             ),
                                             ParamType.String,
                                           ),
                                           'id': serializeParam(
-                                            UptimeFleetAppGroup.getVehiclesCall
+                                            UptimeFleetAppGroup
+                                                .getVehiclesByRegNoCall
                                                 .id(
-                                              containerGetVehiclesResponse
+                                              containerGetVehiclesByRegNoResponse
                                                   .jsonBody,
                                             ),
                                             ParamType.String,
