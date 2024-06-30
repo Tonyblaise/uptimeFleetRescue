@@ -124,7 +124,7 @@ class _SuccessWidgetState extends State<SuccessWidget> {
                     FFButtonWidget(
                       onPressed: () async {
                         if (widget.driver == true) {
-                          context.pushNamed('dashboardDriver');
+                          context.pushNamed('landing_page');
                         } else {
                           context.pushNamed('dashboardTechnician');
                         }

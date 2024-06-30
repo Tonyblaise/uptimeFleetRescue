@@ -198,16 +198,6 @@ class _CompleteRequestWidgetState extends State<CompleteRequestWidget> {
                                   ),
                                 }.withoutNulls,
                               );
-
-                              context.pushNamed(
-                                'success',
-                                queryParameters: {
-                                  'driver': serializeParam(
-                                    false,
-                                    ParamType.bool,
-                                  ),
-                                }.withoutNulls,
-                              );
                             },
                             text: 'Proceed',
                             options: FFButtonOptions(

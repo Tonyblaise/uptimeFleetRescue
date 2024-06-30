@@ -125,7 +125,9 @@ class _CancelRequestWidgetState extends State<CancelRequestWidget> {
                             ),
                       ),
                       Text(
-                        'If you cancel now, your tech will be reasigned\nto another driver and you will lose your service.',
+                        widget.driver!
+                            ? 'We understand that circumstances may change. However, if you cancel your request at this time, it might be subject to cancellation fees. '
+                            : 'If you cancel now, your tech will be reasigned to another driver and you will lose your service.',
                         textAlign: TextAlign.center,
                         style: FlutterFlowTheme.of(context).labelLarge.override(
                               fontFamily: 'Yantramanav',

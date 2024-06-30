@@ -543,19 +543,12 @@ class _ServiceUpdatesComponentSPWidgetState
                                                                           0.0,
                                                                     ),
                                                               ),
-                                                              if ((containerRequestRecord.status == 'newCase') ||
+                                                              if ((containerRequestRecord
+                                                                          .status ==
+                                                                      'newCase') ||
                                                                   (containerRequestRecord
                                                                           .status ==
-                                                                      'inProgress') ||
-                                                                  (containerRequestRecord
-                                                                          .status ==
-                                                                      'pendingApproval') ||
-                                                                  (containerRequestRecord
-                                                                          .status ==
-                                                                      'arrivedAtLocation') ||
-                                                                  (containerRequestRecord
-                                                                          .status ==
-                                                                      'enrouteToTowDestination'))
+                                                                      'pendingApproval'))
                                                                 Align(
                                                                   alignment:
                                                                       const AlignmentDirectional(
