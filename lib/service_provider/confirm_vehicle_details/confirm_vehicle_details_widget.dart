@@ -462,7 +462,7 @@ class _ConfirmVehicleDetailsWidgetState
                                         }.withoutNulls,
                                       );
                                     },
-                                    text: 'Proceed',
+                                    text: 'Confirm',
                                     options: FFButtonOptions(
                                       width: 130.0,
                                       height: 56.0,
