@@ -130,18 +130,15 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
           automaticallyImplyLeading: false,
           title: Container(
             decoration: const BoxDecoration(),
-            child: Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
-              child: Text(
-                'Dashboard',
-                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      fontFamily: 'Yantramanav',
-                      color: const Color(0xFF1E293B),
-                      fontSize: 30.0,
-                      letterSpacing: 0.0,
-                      fontWeight: FontWeight.bold,
-                    ),
-              ),
+            child: Text(
+              'Dashboard',
+              style: FlutterFlowTheme.of(context).bodyMedium.override(
+                    fontFamily: 'Yantramanav',
+                    color: const Color(0xFF1E293B),
+                    fontSize: 30.0,
+                    letterSpacing: 0.0,
+                    fontWeight: FontWeight.bold,
+                  ),
             ),
           ),
           actions: const [],
