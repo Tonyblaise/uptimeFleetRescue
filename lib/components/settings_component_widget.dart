@@ -1,5 +1,4 @@
 import '/auth/firebase_auth/auth_util.dart';
-import '/backend/backend.dart';
 import '/components/user_details_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -116,72 +115,6 @@ class _SettingsComponentWidgetState extends State<SettingsComponentWidget> {
               ),
             ),
           ),
-          const Divider(
-            thickness: 1.0,
-            color: Color(0xFFE5E7EE),
-          ),
-          if (valueOrDefault(currentUserDocument?.technicianId, '') != '')
-            AuthUserStreamWidget(
-              builder: (context) => InkWell(
-                splashColor: Colors.transparent,
-                focusColor: Colors.transparent,
-                hoverColor: Colors.transparent,
-                highlightColor: Colors.transparent,
-                onTap: () async {
-                  if (valueOrDefault<bool>(
-                          currentUserDocument?.techProfile, false) !=
-                      true) {
-                    await currentUserReference!.update(createUsersRecordData(
-                      techProfile: true,
-                    ));
-
-                    context.pushNamed('dashboardTechnician');
-                  } else {
-                    await currentUserReference!.update(createUsersRecordData(
-                      techProfile: false,
-                    ));
-
-                    context.pushNamed('dashboardDriver');
-                  }
-                },
-                child: Container(
-                  width: double.infinity,
-                  decoration: const BoxDecoration(),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Expanded(
-                        child: Container(
-                          width: 100.0,
-                          decoration: const BoxDecoration(),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Icon(
-                                Icons.switch_right,
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                                size: 24.0,
-                              ),
-                              Text(
-                                'Switch profile',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Yantramanav',
-                                      letterSpacing: 0.0,
-                                    ),
-                              ),
-                            ].divide(const SizedBox(width: 10.0)),
-                          ),
-                        ),
-                      ),
-                    ].divide(const SizedBox(width: 15.0)),
-                  ),
-                ),
-              ),
-            ),
           if (valueOrDefault(currentUserDocument?.technicianId, '') != '')
             AuthUserStreamWidget(
               builder: (context) => const Divider(
