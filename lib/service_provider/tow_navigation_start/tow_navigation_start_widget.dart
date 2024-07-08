@@ -1,4 +1,5 @@
 import '/backend/api_requests/api_calls.dart';
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -178,6 +179,10 @@ class _TowNavigationStartWidgetState extends State<TowNavigationStartWidget> {
                             id: widget.request?.id,
                             status: 'enrouteToTowDestination',
                           );
+
+                          await widget.request!.update(createRequestRecordData(
+                            status: 'enrouteToTowDestination',
+                          ));
 
                           context.pushNamed('dashboardTechnician');
 

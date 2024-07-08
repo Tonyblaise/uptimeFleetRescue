@@ -1971,7 +1971,7 @@ class _ServiceUpdatesComponentSPWidgetState
                                 ),
                                 Padding(
                                   padding: const EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 50.0),
+                                      0.0, 0.0, 0.0, 65.0),
                                   child: Container(
                                     width: double.infinity,
                                     height: 56.0,

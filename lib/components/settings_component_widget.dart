@@ -1,4 +1,3 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/components/user_details_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -115,13 +114,10 @@ class _SettingsComponentWidgetState extends State<SettingsComponentWidget> {
               ),
             ),
           ),
-          if (valueOrDefault(currentUserDocument?.technicianId, '') != '')
-            AuthUserStreamWidget(
-              builder: (context) => const Divider(
-                thickness: 1.0,
-                color: Color(0xFFE5E7EE),
-              ),
-            ),
+          const Divider(
+            thickness: 1.0,
+            color: Color(0xFFE5E7EE),
+          ),
           InkWell(
             splashColor: Colors.transparent,
             focusColor: Colors.transparent,
