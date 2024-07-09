@@ -126,6 +126,7 @@ class _ChatThreadComponent1WidgetState
                 }
                 List<ChatMessagesRecord> listViewChatMessagesRecordList =
                     snapshot.data!;
+
                 if (listViewChatMessagesRecordList.isEmpty) {
                   return EmptyStateSimple1Widget(
                     icon: Icon(
@@ -394,7 +395,8 @@ class _ChatThreadComponent1WidgetState
                                           .getDocumentFromData(
                                               createChatMessagesRecordData(
                                                 user: currentUserReference,
-                                                chat: widget.chatRef?.reference,
+                                                chat:
+                                                    widget.chatRef?.reference,
                                                 text:
                                                     _model.textController.text,
                                                 timestamp: getCurrentTimestamp,
@@ -574,8 +576,8 @@ class _ChatThreadComponent1WidgetState
                                             .getDocumentFromData(
                                                 createChatMessagesRecordData(
                                                   user: currentUserReference,
-                                                  chat:
-                                                      widget.chatRef?.reference,
+                                                  chat: widget
+                                                      .chatRef?.reference,
                                                   text: _model
                                                       .textController.text,
                                                   timestamp:
@@ -594,8 +596,8 @@ class _ChatThreadComponent1WidgetState
                                             currentUserReference!);
                                         // updateChatDocument
 
-                                        firestoreBatch
-                                            .update(widget.chatRef!.reference, {
+                                        firestoreBatch.update(
+                                            widget.chatRef!.reference, {
                                           ...createChatsRecordData(
                                             lastMessageTime:
                                                 getCurrentTimestamp,

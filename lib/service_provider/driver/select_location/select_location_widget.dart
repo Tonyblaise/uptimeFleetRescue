@@ -179,6 +179,7 @@ class _SelectLocationWidgetState extends State<SelectLocationWidget> {
                           }
                           final columnGetAddressFromLatLngResponse =
                               snapshot.data!;
+
                           return Column(
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.center,

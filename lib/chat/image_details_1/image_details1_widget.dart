@@ -182,7 +182,9 @@ class _ImageDetails1WidgetState extends State<ImageDetails1Widget>
                         ),
                       );
                     }
+
                     final otherUserUsersRecord = snapshot.data!;
+
                     return Row(
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.start,

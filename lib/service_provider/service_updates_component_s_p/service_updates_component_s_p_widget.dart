@@ -151,7 +151,9 @@ class _ServiceUpdatesComponentSPWidgetState
             ),
           );
         }
+
         final containerRequestRecord = snapshot.data!;
+
         return Container(
           width: double.infinity,
           decoration: const BoxDecoration(
@@ -179,7 +181,9 @@ class _ServiceUpdatesComponentSPWidgetState
                         ),
                       );
                     }
+
                     final containerChatsRecord = snapshot.data!;
+
                     return Container(
                       width: MediaQuery.sizeOf(context).width * 0.9,
                       decoration: const BoxDecoration(),
@@ -206,6 +210,7 @@ class _ServiceUpdatesComponentSPWidgetState
                               );
                             }
                             final columnGetRequestResponse = snapshot.data!;
+
                             return Column(
                               mainAxisSize: MainAxisSize.max,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -556,120 +561,6 @@ class _ServiceUpdatesComponentSPWidgetState
                                                                             0.0,
                                                                       ),
                                                                 ),
-                                                                if ((containerRequestRecord
-                                                                            .status ==
-                                                                        'newCase') ||
-                                                                    (containerRequestRecord
-                                                                            .status ==
-                                                                        'pendingApproval'))
-                                                                  Align(
-                                                                    alignment:
-                                                                        const AlignmentDirectional(
-                                                                            -1.0,
-                                                                            0.0),
-                                                                    child:
-                                                                        SizedBox(
-                                                                      width:
-                                                                          170.0,
-                                                                      height:
-                                                                          56.0,
-                                                                      child: custom_widgets
-                                                                          .MapboxNavigationWidget(
-                                                                        width:
-                                                                            170.0,
-                                                                        height:
-                                                                            56.0,
-                                                                        originLat:
-                                                                            functions.getLat(currentUserLocationValue!),
-                                                                        originLng:
-                                                                            functions.getLng(currentUserLocationValue!),
-                                                                        destinationLat: containerRequestRecord.status ==
-                                                                                'enrouteToTowDestination'
-                                                                            ? functions.getLat(containerRequestRecord.dropOffLocationLatLng!)
-                                                                            : functions.getLat(containerRequestRecord.location!),
-                                                                        destinationLng: containerRequestRecord.status ==
-                                                                                'enrouteToTowDestination'
-                                                                            ? functions.getLng(containerRequestRecord.dropOffLocationLatLng!)
-                                                                            : functions.getLng(containerRequestRecord.location!),
-                                                                        chat: containerChatsRecord
-                                                                            .reference
-                                                                            .id,
-                                                                        request:
-                                                                            containerRequestRecord.reference,
-                                                                        driverName:
-                                                                            containerRequestRecord.driverName,
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .secondary,
-                                                                        title:
-                                                                            'Start Job',
-                                                                        updatePosition:
-                                                                            (duration,
-                                                                                distance) async {
-                                                                          await containerRequestRecord
-                                                                              .reference
-                                                                              .update(createRequestRecordData(
-                                                                            duration:
-                                                                                duration,
-                                                                            distance:
-                                                                                distance,
-                                                                          ));
-                                                                        },
-                                                                        actionCall:
-                                                                            () async {
-                                                                          await currentUserReference!
-                                                                              .update(createUsersRecordData(
-                                                                            activeRequest:
-                                                                                widget.request,
-                                                                            activeRequestBubble:
-                                                                                UptimeFleetAppGroup.getRequestCall.uniqueBubbleId(
-                                                                              columnGetRequestResponse.jsonBody,
-                                                                            ),
-                                                                          ));
-
-                                                                          await containerRequestRecord
-                                                                              .firebaseMessageThread!
-                                                                              .update({
-                                                                            ...mapToFirestore(
-                                                                              {
-                                                                                'users': FieldValue.arrayUnion([
-                                                                                  currentUserReference
-                                                                                ]),
-                                                                              },
-                                                                            ),
-                                                                          });
-
-                                                                          await containerRequestRecord
-                                                                              .reference
-                                                                              .update(createRequestRecordData(
-                                                                            technician:
-                                                                                currentUserReference,
-                                                                            started:
-                                                                                true,
-                                                                          ));
-
-                                                                          await widget
-                                                                              .request!
-                                                                              .update(createRequestRecordData(
-                                                                            status:
-                                                                                'inProgress',
-                                                                          ));
-                                                                          _model.apiResultoanCopy8 = await UptimeFleetAppGroup
-                                                                              .updateRequestCall
-                                                                              .call(
-                                                                            id: widget.bubbleId,
-                                                                            status:
-                                                                                'inProgress',
-                                                                          );
-
-                                                                          context
-                                                                              .pushNamed('dashboardTechnician');
-
-                                                                          setState(
-                                                                              () {});
-                                                                        },
-                                                                      ),
-                                                                    ),
-                                                                  ),
                                                               ].divide(const SizedBox(
                                                                   height: 5.0)),
                                                             ),
@@ -681,6 +572,60 @@ class _ServiceUpdatesComponentSPWidgetState
                                                 ),
                                               ),
                                             ].divide(const SizedBox(width: 5.0)),
+                                          ),
+                                        ),
+                                      ),
+                                      Align(
+                                        alignment:
+                                            const AlignmentDirectional(0.0, 0.0),
+                                        child: SizedBox(
+                                          width: 200.0,
+                                          height: 56.0,
+                                          child: custom_widgets
+                                              .MapboxNavigationWidget(
+                                            width: 200.0,
+                                            height: 56.0,
+                                            originLat: functions.getLat(
+                                                currentUserLocationValue!),
+                                            originLng: functions.getLng(
+                                                currentUserLocationValue!),
+                                            destinationLat: containerRequestRecord
+                                                        .status ==
+                                                    'enrouteToTowDestination'
+                                                ? functions.getLat(
+                                                    containerRequestRecord
+                                                        .dropOffLocationLatLng!)
+                                                : functions.getLat(
+                                                    containerRequestRecord
+                                                        .location!),
+                                            destinationLng: containerRequestRecord
+                                                        .status ==
+                                                    'enrouteToTowDestination'
+                                                ? functions.getLng(
+                                                    containerRequestRecord
+                                                        .dropOffLocationLatLng!)
+                                                : functions.getLng(
+                                                    containerRequestRecord
+                                                        .location!),
+                                            chat: widget.chat!,
+                                            request: containerRequestRecord
+                                                .reference,
+                                            driverName: containerRequestRecord
+                                                .driverName,
+                                            color: Colors.black,
+                                            title:
+                                                'Start job / Go to Navigation',
+                                            updatePosition:
+                                                (duration, distance) async {
+                                              await widget.request!.update(
+                                                  createRequestRecordData(
+                                                duration: duration,
+                                                distance: distance,
+                                              ));
+                                            },
+                                            actionCall: () async {
+                                              await actions.newCustomAction();
+                                            },
                                           ),
                                         ),
                                       ),
@@ -1479,314 +1424,260 @@ class _ServiceUpdatesComponentSPWidgetState
                                         child: Container(
                                           width: double.infinity,
                                           decoration: const BoxDecoration(),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              InkWell(
-                                                splashColor: Colors.transparent,
-                                                focusColor: Colors.transparent,
-                                                hoverColor: Colors.transparent,
-                                                highlightColor:
-                                                    Colors.transparent,
-                                                onTap: () async {
-                                                  await showModalBottomSheet(
-                                                    isScrollControlled: true,
-                                                    backgroundColor:
-                                                        Colors.transparent,
-                                                    enableDrag: false,
-                                                    context: context,
-                                                    builder: (context) {
-                                                      return Padding(
-                                                        padding: MediaQuery
-                                                            .viewInsetsOf(
-                                                                context),
-                                                        child:
-                                                            CancelRequestWidget(
-                                                          id: containerRequestRecord
-                                                              .bubbleId,
-                                                          driver: false,
-                                                        ),
-                                                      );
-                                                    },
-                                                  ).then((value) =>
-                                                      safeSetState(() {}));
-                                                },
-                                                child: Container(
-                                                  width: 160.0,
-                                                  height: 56.0,
-                                                  decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            18.0),
-                                                    border: Border.all(
-                                                      color: const Color(0xFFF50833),
-                                                    ),
-                                                  ),
-                                                  child: Align(
-                                                    alignment:
-                                                        const AlignmentDirectional(
-                                                            0.0, 0.0),
-                                                    child: Text(
-                                                      'Cancel this job',
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .titleSmall
-                                                          .override(
-                                                            fontFamily:
-                                                                'Yantramanav',
-                                                            color: const Color(
-                                                                0xFFF50833),
-                                                            letterSpacing: 0.0,
+                                          child: Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 45.0),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                InkWell(
+                                                  splashColor:
+                                                      Colors.transparent,
+                                                  focusColor:
+                                                      Colors.transparent,
+                                                  hoverColor:
+                                                      Colors.transparent,
+                                                  highlightColor:
+                                                      Colors.transparent,
+                                                  onTap: () async {
+                                                    await showModalBottomSheet(
+                                                      isScrollControlled: true,
+                                                      backgroundColor:
+                                                          Colors.transparent,
+                                                      enableDrag: false,
+                                                      context: context,
+                                                      builder: (context) {
+                                                        return Padding(
+                                                          padding: MediaQuery
+                                                              .viewInsetsOf(
+                                                                  context),
+                                                          child:
+                                                              CancelRequestWidget(
+                                                            id: containerRequestRecord
+                                                                .bubbleId,
+                                                            driver: false,
                                                           ),
+                                                        );
+                                                      },
+                                                    ).then((value) =>
+                                                        safeSetState(() {}));
+                                                  },
+                                                  child: Container(
+                                                    width: 160.0,
+                                                    height: 56.0,
+                                                    decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              18.0),
+                                                      border: Border.all(
+                                                        color:
+                                                            const Color(0xFFF50833),
+                                                      ),
                                                     ),
-                                                  ),
-                                                ),
-                                              ),
-                                              Container(
-                                                decoration: const BoxDecoration(),
-                                                child: Stack(
-                                                  alignment:
-                                                      const AlignmentDirectional(
-                                                          1.0, -1.0),
-                                                  children: [
-                                                    Align(
+                                                    child: Align(
                                                       alignment:
                                                           const AlignmentDirectional(
                                                               0.0, 0.0),
-                                                      child: FFButtonWidget(
-                                                        onPressed: () async {
-                                                          if (containerChatsRecord
-                                                                  .lastMessageUser ==
-                                                              currentUserReference) {
-                                                            await containerChatsRecord
-                                                                .reference
-                                                                .update(
-                                                                    createChatsRecordData(
-                                                              lastMessageRead:
-                                                                  true,
-                                                            ));
-                                                          }
-
-                                                          context.pushNamed(
-                                                            'chat_2_Details_1',
-                                                            queryParameters: {
-                                                              'chatRef':
-                                                                  serializeParam(
-                                                                containerChatsRecord,
-                                                                ParamType
-                                                                    .Document,
-                                                              ),
-                                                              'driver':
-                                                                  serializeParam(
-                                                                false,
-                                                                ParamType.bool,
-                                                              ),
-                                                            }.withoutNulls,
-                                                            extra: <String,
-                                                                dynamic>{
-                                                              'chatRef':
-                                                                  containerChatsRecord,
-                                                            },
-                                                          );
-                                                        },
-                                                        text: 'Chat Driver',
-                                                        options:
-                                                            FFButtonOptions(
-                                                          width: 160.0,
-                                                          height: 56.0,
-                                                          padding:
-                                                              const EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      24.0,
+                                                      child: Text(
+                                                        'Cancel this job',
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleSmall
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Yantramanav',
+                                                                  color: const Color(
+                                                                      0xFFF50833),
+                                                                  letterSpacing:
                                                                       0.0,
-                                                                      24.0,
-                                                                      0.0),
-                                                          iconPadding:
-                                                              const EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      0.0,
-                                                                      0.0,
-                                                                      0.0),
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .tertiary,
-                                                          textStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .titleSmall
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Yantramanav',
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .primary,
-                                                                    letterSpacing:
-                                                                        0.0,
-                                                                  ),
-                                                          elevation: 3.0,
-                                                          borderSide:
-                                                              const BorderSide(
-                                                            color: Colors
-                                                                .transparent,
-                                                            width: 1.0,
-                                                          ),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      100.0),
-                                                        ),
+                                                                ),
                                                       ),
                                                     ),
-                                                    Builder(
-                                                      builder: (context) {
-                                                        if ((containerChatsRecord
-                                                                    .lastMessageUser !=
-                                                                currentUserReference) &&
-                                                            (containerChatsRecord
-                                                                    .lastMessageUser !=
-                                                                null) &&
-                                                            (containerChatsRecord
-                                                                    .lastMessageRead ==
-                                                                false)) {
-                                                          return Align(
-                                                            alignment:
-                                                                const AlignmentDirectional(
-                                                                    0.0, 0.0),
-                                                            child: Padding(
-                                                              padding:
-                                                                  const EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          20.0,
-                                                                          20.0,
-                                                                          0.0),
-                                                              child: Container(
-                                                                width: 18.0,
-                                                                height: 18.0,
-                                                                decoration:
-                                                                    BoxDecoration(
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .error,
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              100.0),
+                                                  ),
+                                                ),
+                                                Container(
+                                                  decoration: const BoxDecoration(),
+                                                  child: Stack(
+                                                    alignment:
+                                                        const AlignmentDirectional(
+                                                            1.0, -1.0),
+                                                    children: [
+                                                      Align(
+                                                        alignment:
+                                                            const AlignmentDirectional(
+                                                                0.0, 0.0),
+                                                        child: FFButtonWidget(
+                                                          onPressed: () async {
+                                                            if (containerChatsRecord
+                                                                    .lastMessageUser ==
+                                                                currentUserReference) {
+                                                              await containerChatsRecord
+                                                                  .reference
+                                                                  .update(
+                                                                      createChatsRecordData(
+                                                                lastMessageRead:
+                                                                    true,
+                                                              ));
+                                                            }
+
+                                                            context.pushNamed(
+                                                              'chat_2_Details_1',
+                                                              queryParameters: {
+                                                                'chatRef':
+                                                                    serializeParam(
+                                                                  containerChatsRecord,
+                                                                  ParamType
+                                                                      .Document,
                                                                 ),
-                                                                alignment:
-                                                                    const AlignmentDirectional(
+                                                                'driver':
+                                                                    serializeParam(
+                                                                  false,
+                                                                  ParamType
+                                                                      .bool,
+                                                                ),
+                                                              }.withoutNulls,
+                                                              extra: <String,
+                                                                  dynamic>{
+                                                                'chatRef':
+                                                                    containerChatsRecord,
+                                                              },
+                                                            );
+                                                          },
+                                                          text: 'Chat Driver',
+                                                          options:
+                                                              FFButtonOptions(
+                                                            width: 160.0,
+                                                            height: 56.0,
+                                                            padding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        24.0,
+                                                                        0.0,
+                                                                        24.0,
+                                                                        0.0),
+                                                            iconPadding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        0.0,
                                                                         0.0,
                                                                         0.0),
-                                                                child: Text(
-                                                                  '1',
-                                                                  textAlign:
-                                                                      TextAlign
-                                                                          .center,
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Yantramanav',
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .primary,
-                                                                        fontSize:
-                                                                            10.0,
-                                                                        letterSpacing:
-                                                                            0.0,
-                                                                        fontWeight:
-                                                                            FontWeight.bold,
-                                                                      ),
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .tertiary,
+                                                            textStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Yantramanav',
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primary,
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                    ),
+                                                            elevation: 3.0,
+                                                            borderSide:
+                                                                const BorderSide(
+                                                              color: Colors
+                                                                  .transparent,
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        100.0),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      Builder(
+                                                        builder: (context) {
+                                                          if ((containerChatsRecord
+                                                                      .lastMessageUser !=
+                                                                  currentUserReference) &&
+                                                              (containerChatsRecord
+                                                                      .lastMessageUser !=
+                                                                  null) &&
+                                                              (containerChatsRecord
+                                                                      .lastMessageRead ==
+                                                                  false)) {
+                                                            return Align(
+                                                              alignment:
+                                                                  const AlignmentDirectional(
+                                                                      0.0, 0.0),
+                                                              child: Padding(
+                                                                padding: const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        20.0,
+                                                                        20.0,
+                                                                        0.0),
+                                                                child:
+                                                                    Container(
+                                                                  width: 18.0,
+                                                                  height: 18.0,
+                                                                  decoration:
+                                                                      BoxDecoration(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .error,
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            100.0),
+                                                                  ),
+                                                                  alignment:
+                                                                      const AlignmentDirectional(
+                                                                          0.0,
+                                                                          0.0),
+                                                                  child: Text(
+                                                                    '1',
+                                                                    textAlign:
+                                                                        TextAlign
+                                                                            .center,
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Yantramanav',
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).primary,
+                                                                          fontSize:
+                                                                              10.0,
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                          fontWeight:
+                                                                              FontWeight.bold,
+                                                                        ),
+                                                                  ),
                                                                 ),
                                                               ),
-                                                            ),
-                                                          );
-                                                        } else {
-                                                          return Container(
-                                                            width: 1.0,
-                                                            height: 1.0,
-                                                            decoration:
-                                                                const BoxDecoration(),
-                                                          );
-                                                        }
-                                                      },
-                                                    ),
-                                                  ],
+                                                            );
+                                                          } else {
+                                                            return Container(
+                                                              width: 1.0,
+                                                              height: 1.0,
+                                                              decoration:
+                                                                  const BoxDecoration(),
+                                                            );
+                                                          }
+                                                        },
+                                                      ),
+                                                    ],
+                                                  ),
                                                 ),
-                                              ),
-                                            ].divide(const SizedBox(width: 15.0)),
+                                              ].divide(const SizedBox(width: 15.0)),
+                                            ),
                                           ),
                                         ),
                                       ),
                                     ].divide(const SizedBox(height: 15.0)),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 65.0),
-                                  child: Container(
-                                    width: double.infinity,
-                                    height: 56.0,
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                    ),
-                                    alignment: const AlignmentDirectional(0.0, 0.0),
-                                    child: Align(
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
-                                      child: SizedBox(
-                                        width: 200.0,
-                                        height: 56.0,
-                                        child: custom_widgets
-                                            .MapboxNavigationWidget(
-                                          width: 200.0,
-                                          height: 56.0,
-                                          originLat: functions.getLat(
-                                              currentUserLocationValue!),
-                                          originLng: functions.getLng(
-                                              currentUserLocationValue!),
-                                          destinationLat: containerRequestRecord
-                                                      .status ==
-                                                  'enrouteToTowDestination'
-                                              ? functions.getLat(
-                                                  containerRequestRecord
-                                                      .dropOffLocationLatLng!)
-                                              : functions.getLat(
-                                                  containerRequestRecord
-                                                      .location!),
-                                          destinationLng: containerRequestRecord
-                                                      .status ==
-                                                  'enrouteToTowDestination'
-                                              ? functions.getLng(
-                                                  containerRequestRecord
-                                                      .dropOffLocationLatLng!)
-                                              : functions.getLng(
-                                                  containerRequestRecord
-                                                      .location!),
-                                          chat: widget.chat!,
-                                          request:
-                                              containerRequestRecord.reference,
-                                          driverName:
-                                              containerRequestRecord.driverName,
-                                          color: Colors.black,
-                                          title: 'Go to Navigation',
-                                          updatePosition:
-                                              (duration, distance) async {
-                                            await widget.request!
-                                                .update(createRequestRecordData(
-                                              duration: duration,
-                                              distance: distance,
-                                            ));
-                                          },
-                                          actionCall: () async {
-                                            await actions.newCustomAction();
-                                          },
-                                        ),
-                                      ),
-                                    ),
                                   ),
                                 ),
                               ].divide(const SizedBox(height: 8.0)),

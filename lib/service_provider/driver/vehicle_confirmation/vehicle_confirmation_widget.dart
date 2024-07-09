@@ -205,6 +205,7 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                         }
                                         final columnGetDriverVehiclesResponse =
                                             snapshot.data!;
+
                                         return Column(
                                           mainAxisSize: MainAxisSize.max,
                                           crossAxisAlignment:

@@ -17,8 +17,6 @@ class ServiceUpdatesComponentSPModel
   ApiCallResponse? apiResultayoo;
   // Stores action output result for [Backend Call - API (Update request)] action in Container widget.
   ApiCallResponse? apiResultoanCopy;
-  // Stores action output result for [Backend Call - API (Update request)] action in MapboxNavigationWidget widget.
-  ApiCallResponse? apiResultoanCopy8;
 
   @override
   void initState(BuildContext context) {}

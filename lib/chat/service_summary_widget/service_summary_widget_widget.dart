@@ -135,7 +135,9 @@ class _ServiceSummaryWidgetWidgetState
                         ),
                       );
                     }
+
                     final containerRequestRecord = snapshot.data!;
+
                     return Container(
                       width: MediaQuery.sizeOf(context).width * 0.9,
                       decoration: const BoxDecoration(),

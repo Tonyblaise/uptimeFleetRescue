@@ -71,6 +71,7 @@ class _SelectVehicleWidgetState extends State<SelectVehicleWidget> {
               );
             }
             final containerGetTechnicianVehiclesResponse = snapshot.data!;
+
             return Container(
               width: MediaQuery.sizeOf(context).width * 0.9,
               decoration: BoxDecoration(

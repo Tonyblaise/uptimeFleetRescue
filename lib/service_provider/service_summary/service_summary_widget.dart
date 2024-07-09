@@ -95,6 +95,7 @@ class _ServiceSummaryWidgetState extends State<ServiceSummaryWidget> {
                 );
               }
               final containerGetRequestResponse = snapshot.data!;
+
               return Container(
                 width: double.infinity,
                 height: double.infinity,

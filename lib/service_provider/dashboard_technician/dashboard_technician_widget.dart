@@ -646,6 +646,7 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                                   }
                                                   final containerGetRequestResponse =
                                                       snapshot.data!;
+
                                                   return Container(
                                                     width: 100.0,
                                                     height: 624.0,

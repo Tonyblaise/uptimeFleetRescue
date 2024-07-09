@@ -91,7 +91,9 @@ class _NewRequestSpWidgetState extends State<NewRequestSpWidget> {
                 ),
               );
             }
+
             final containerRequestRecord = snapshot.data!;
+
             return Container(
               width: MediaQuery.sizeOf(context).width * 0.9,
               decoration: const BoxDecoration(),
@@ -129,6 +131,7 @@ class _NewRequestSpWidgetState extends State<NewRequestSpWidget> {
                               }
                               final containerGetRequestResponse =
                                   snapshot.data!;
+
                               return Container(
                                 width: MediaQuery.sizeOf(context).width * 0.9,
                                 decoration: BoxDecoration(

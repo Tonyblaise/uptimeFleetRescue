@@ -75,6 +75,7 @@ class _ConfirmVehicleDetailsWidgetState
                 );
               }
               final containerGetVehiclesByRegNoResponse = snapshot.data!;
+
               return Container(
                 width: double.infinity,
                 decoration: BoxDecoration(

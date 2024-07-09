@@ -84,7 +84,9 @@ class _ChatThreadUpdate1WidgetState extends State<ChatThreadUpdate1Widget> {
                         ),
                       );
                     }
+
                     final otherUserUsersRecord = snapshot.data!;
+
                     return Row(
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -282,8 +284,8 @@ class _ChatThreadUpdate1WidgetState extends State<ChatThreadUpdate1Widget> {
                                               );
                                             },
                                             child: FlutterFlowMediaDisplay(
-                                              path:
-                                                  widget.chatMessagesRef!.image,
+                                              path: widget
+                                                  .chatMessagesRef!.image,
                                               imageBuilder: (path) => ClipRRect(
                                                 borderRadius:
                                                     BorderRadius.circular(8.0),

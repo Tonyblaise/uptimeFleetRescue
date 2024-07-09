@@ -295,7 +295,9 @@ class _DriverChatWidgetState extends State<DriverChatWidget> {
                             ),
                           );
                         }
+
                         final containermanagerChatsRecord = snapshot.data!;
+
                         return Container(
                           decoration: const BoxDecoration(),
                           child: StreamBuilder<ChatsRecord>(
@@ -316,8 +318,10 @@ class _DriverChatWidgetState extends State<DriverChatWidget> {
                                   ),
                                 );
                               }
+
                               final containersupportChatsRecord =
                                   snapshot.data!;
+
                               return Container(
                                 height: 200.0,
                                 decoration: const BoxDecoration(),

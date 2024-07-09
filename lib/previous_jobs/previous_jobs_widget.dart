@@ -112,6 +112,7 @@ class _PreviousJobsWidgetState extends State<PreviousJobsWidget>
                           );
                         }
                         final listViewGetPreviousJobsResponse = snapshot.data!;
+
                         return Builder(
                           builder: (context) {
                             final jobs = UptimeFleetAppGroup.getPreviousJobsCall
@@ -134,6 +135,7 @@ class _PreviousJobsWidgetState extends State<PreviousJobsWidget>
                                 ),
                               );
                             }
+
                             return RefreshIndicator(
                               onRefresh: () async {
                                 setState(

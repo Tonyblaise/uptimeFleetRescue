@@ -110,7 +110,9 @@ class _TechEnrouteWidgetState extends State<TechEnrouteWidget> {
                   ),
                 );
               }
+
               final containerRequestRecord = snapshot.data!;
+
               return Container(
                 width: double.infinity,
                 height: double.infinity,
@@ -135,7 +137,9 @@ class _TechEnrouteWidgetState extends State<TechEnrouteWidget> {
                         ),
                       );
                     }
+
                     final containerUsersRecord = snapshot.data!;
+
                     return Container(
                       height: 600.0,
                       decoration: BoxDecoration(
@@ -403,6 +407,7 @@ class _TechEnrouteWidgetState extends State<TechEnrouteWidget> {
                                                                                       );
                                                                                     }
                                                                                     final textMapboxResponse = snapshot.data!;
+
                                                                                     return Text(
                                                                                       containerRequestRecord.duration,
                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(

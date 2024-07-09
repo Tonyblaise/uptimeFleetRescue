@@ -320,7 +320,9 @@ class _TechnicianChatWidgetState extends State<TechnicianChatWidget> {
                             ),
                           );
                         }
+
                         final containermanagerChatsRecord = snapshot.data!;
+
                         return Container(
                           decoration: const BoxDecoration(),
                           child: StreamBuilder<ChatsRecord>(
@@ -341,8 +343,10 @@ class _TechnicianChatWidgetState extends State<TechnicianChatWidget> {
                                   ),
                                 );
                               }
+
                               final containersupportChatsRecord =
                                   snapshot.data!;
+
                               return Container(
                                 height: 200.0,
                                 decoration: const BoxDecoration(),

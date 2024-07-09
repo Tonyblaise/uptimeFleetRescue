@@ -76,6 +76,7 @@ class _ServiceConfirmationWidgetState extends State<ServiceConfirmationWidget> {
           );
         }
         final serviceConfirmationGetRequestResponse = snapshot.data!;
+
         return GestureDetector(
           onTap: () => _model.unfocusNode.canRequestFocus
               ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -541,6 +542,7 @@ class _ServiceConfirmationWidgetState extends State<ServiceConfirmationWidget> {
                                     List<ServicesRecord>
                                         dropDownServicesRecordList =
                                         snapshot.data!;
+
                                     return FlutterFlowDropDown<String>(
                                       controller:
                                           _model.dropDownValueController ??=

@@ -79,7 +79,9 @@ class _ServiceUpdatesComponentWidgetState
                     ),
                   );
                 }
+
                 final containerChatsRecord = snapshot.data!;
+
                 return Container(
                   width: MediaQuery.sizeOf(context).width * 0.9,
                   decoration: const BoxDecoration(),
@@ -141,6 +143,7 @@ class _ServiceUpdatesComponentWidgetState
                                 List<ChatMessagesRecord>
                                     containerChatMessagesRecordList =
                                     snapshot.data!;
+
                                 return Container(
                                   decoration: const BoxDecoration(),
                                   child: Stack(
@@ -409,31 +412,33 @@ class _ServiceUpdatesComponentWidgetState
                                                     children: [
                                                       Text(
                                                         'Request In Process',
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Yantramanav',
-                                                              color:
-                                                                  valueOrDefault<
-                                                                      Color>(
-                                                                widget.request?.status ==
-                                                                        'newCase'
-                                                                    ? Colors
-                                                                        .black
-                                                                    : const Color(
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Yantramanav',
+                                                                  color:
+                                                                      valueOrDefault<
+                                                                          Color>(
+                                                                    widget.request?.status ==
+                                                                            'newCase'
+                                                                        ? Colors
+                                                                            .black
+                                                                        : const Color(
+                                                                            0xFFE5E7EE),
+                                                                    const Color(
                                                                         0xFFE5E7EE),
-                                                                const Color(
-                                                                    0xFFE5E7EE),
-                                                              ),
-                                                              fontSize: 16.0,
-                                                              letterSpacing:
-                                                                  0.0,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold,
-                                                            ),
+                                                                  ),
+                                                                  fontSize:
+                                                                      16.0,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                ),
                                                       ),
                                                       Text(
                                                         'Standby For ETA',
@@ -842,31 +847,33 @@ class _ServiceUpdatesComponentWidgetState
                                                     children: [
                                                       Text(
                                                         'Technician has arrived',
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Yantramanav',
-                                                              color:
-                                                                  valueOrDefault<
-                                                                      Color>(
-                                                                widget.request?.status ==
-                                                                        'arrivedAtLocation'
-                                                                    ? Colors
-                                                                        .black
-                                                                    : const Color(
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Yantramanav',
+                                                                  color:
+                                                                      valueOrDefault<
+                                                                          Color>(
+                                                                    widget.request?.status ==
+                                                                            'arrivedAtLocation'
+                                                                        ? Colors
+                                                                            .black
+                                                                        : const Color(
+                                                                            0xFFE5E7EE),
+                                                                    const Color(
                                                                         0xFFE5E7EE),
-                                                                const Color(
-                                                                    0xFFE5E7EE),
-                                                              ),
-                                                              fontSize: 16.0,
-                                                              letterSpacing:
-                                                                  0.0,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold,
-                                                            ),
+                                                                  ),
+                                                                  fontSize:
+                                                                      16.0,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                ),
                                                       ),
                                                       Text(
                                                         'Job is in service',

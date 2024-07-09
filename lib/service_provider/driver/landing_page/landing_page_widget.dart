@@ -105,6 +105,7 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                   snapshot.data!
                                       .where((u) => u.uid != currentUserUid)
                                       .toList();
+
                               return Container(
                                 width: double.infinity,
                                 height: double.infinity,
@@ -183,7 +184,9 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                     ),
                                   );
                                 }
+
                                 final containerRequestRecord = snapshot.data!;
+
                                 return Container(
                                   width: double.infinity,
                                   height: double.infinity,
@@ -219,8 +222,10 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                                 ),
                                               );
                                             }
+
                                             final containerUsersRecord =
                                                 snapshot.data!;
+
                                             return Container(
                                               height: 600.0,
                                               decoration: BoxDecoration(
@@ -536,8 +541,10 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                                                             ),
                                                                           );
                                                                         }
+
                                                                         final buttonChatsRecord =
                                                                             snapshot.data!;
+
                                                                         return FFButtonWidget(
                                                                           onPressed:
                                                                               () async {
@@ -644,6 +651,7 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                             List<UsersRecord>
                                                 containerUsersRecordList =
                                                 snapshot.data!;
+
                                             return Container(
                                               width: 100.0,
                                               height: 100.0,
@@ -750,6 +758,7 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                 }
                                 final columnGetAddressFromLatLngResponse =
                                     snapshot.data!;
+
                                 return Column(
                                   mainAxisSize: MainAxisSize.max,
                                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -985,7 +994,9 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                     ),
                                   );
                                 }
+
                                 final containerRequestRecord = snapshot.data!;
+
                                 return Container(
                                   decoration: const BoxDecoration(),
                                   child: wrapWithModel(
