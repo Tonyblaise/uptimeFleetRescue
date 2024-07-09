@@ -32,11 +32,7 @@ class _DashboardDriverWidgetState extends State<DashboardDriverWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      if ((valueOrDefault(currentUserDocument?.technicianId, '') != '') &&
-          ((valueOrDefault<bool>(currentUserDocument?.techProfile, false) ==
-                  null) ||
-              (valueOrDefault<bool>(currentUserDocument?.techProfile, false) ==
-                  true))) {
+      if (valueOrDefault(currentUserDocument?.technicianId, '') != '') {
         context.pushNamed('dashboardTechnician');
       }
     });

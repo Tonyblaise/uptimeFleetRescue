@@ -37,11 +37,7 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
           await getCurrentUserLocation(defaultLocation: const LatLng(0.0, 0.0));
       _model.latLng = currentUserLocationValue;
       setState(() {});
-      if ((valueOrDefault(currentUserDocument?.technicianId, '') != '') &&
-          ((valueOrDefault<bool>(currentUserDocument?.techProfile, false) ==
-                  null) ||
-              (valueOrDefault<bool>(currentUserDocument?.techProfile, false) ==
-                  true))) {
+      if (valueOrDefault(currentUserDocument?.technicianId, '') != '') {
         context.pushNamed('dashboardTechnician');
       }
     });
