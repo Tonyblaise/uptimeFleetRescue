@@ -8,7 +8,6 @@ import '/flutter_flow/instant_timer.dart';
 import '/service_provider/arrival_confirmation/arrival_confirmation_widget.dart';
 import '/service_provider/driver/cancel_request/cancel_request_widget.dart';
 import '/service_provider/tow_navigation_start/tow_navigation_start_widget.dart';
-import '/custom_code/actions/index.dart' as actions;
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/permissions_util.dart';
@@ -398,7 +397,7 @@ class _ServiceUpdatesComponentSPWidgetState
                                                       width: MediaQuery.sizeOf(
                                                                   context)
                                                               .width *
-                                                          0.36,
+                                                          0.361,
                                                       height: 36.0,
                                                       constraints:
                                                           const BoxConstraints(
@@ -577,13 +576,13 @@ class _ServiceUpdatesComponentSPWidgetState
                                       ),
                                       Align(
                                         alignment:
-                                            const AlignmentDirectional(0.0, 0.0),
+                                            const AlignmentDirectional(1.0, 0.0),
                                         child: SizedBox(
-                                          width: 200.0,
+                                          width: 300.0,
                                           height: 56.0,
                                           child: custom_widgets
                                               .MapboxNavigationWidget(
-                                            width: 200.0,
+                                            width: 300.0,
                                             height: 56.0,
                                             originLat: functions.getLat(
                                                 currentUserLocationValue!),
@@ -622,9 +621,6 @@ class _ServiceUpdatesComponentSPWidgetState
                                                 duration: duration,
                                                 distance: distance,
                                               ));
-                                            },
-                                            actionCall: () async {
-                                              await actions.newCustomAction();
                                             },
                                           ),
                                         ),

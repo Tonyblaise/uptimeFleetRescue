@@ -707,15 +707,6 @@ class _NewRequestSpWidgetState extends State<NewRequestSpWidget> {
 
                                                       setState(() {});
                                                     },
-                                                    actionCall: () async {
-                                                      await currentUserReference!
-                                                          .update(
-                                                              createUsersRecordData(
-                                                        activeRequest:
-                                                            containerRequestRecord
-                                                                .reference,
-                                                      ));
-                                                    },
                                                   ),
                                                 ),
                                               ),

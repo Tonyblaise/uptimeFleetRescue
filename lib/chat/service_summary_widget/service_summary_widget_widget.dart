@@ -1,5 +1,4 @@
 import '/auth/firebase_auth/auth_util.dart';
-import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -887,55 +886,6 @@ class _ServiceSummaryWidgetWidgetState
                                                 duration: duration,
                                                 distance: distance,
                                               ));
-                                            },
-                                            actionCall: () async {
-                                              await currentUserReference!
-                                                  .update(createUsersRecordData(
-                                                activeRequest:
-                                                    widget.firebaseId,
-                                                activeRequestBubble:
-                                                    widget.bubbleId,
-                                              ));
-
-                                              await containerRequestRecord
-                                                  .firebaseMessageThread!
-                                                  .update({
-                                                ...mapToFirestore(
-                                                  {
-                                                    'users':
-                                                        FieldValue.arrayUnion([
-                                                      currentUserReference
-                                                    ]),
-                                                  },
-                                                ),
-                                              });
-
-                                              await functions
-                                                  .convertStringToRequestDocRef(
-                                                      widget.firebaseId?.id)!
-                                                  .update(
-                                                      createRequestRecordData(
-                                                    technician:
-                                                        currentUserReference,
-                                                    started: true,
-                                                  ));
-
-                                              await widget.firebaseId!.update(
-                                                  createRequestRecordData(
-                                                status: 'inProgress',
-                                              ));
-                                              _model.apiResultoanCopy =
-                                                  await UptimeFleetAppGroup
-                                                      .updateRequestCall
-                                                      .call(
-                                                id: widget.bubbleId,
-                                                status: 'inProgress',
-                                              );
-
-                                              context.pushNamed(
-                                                  'dashboardTechnician');
-
-                                              setState(() {});
                                             },
                                           ),
                                         ),

@@ -27,7 +27,6 @@ class MapboxNavigationWidget extends StatefulWidget {
     required this.request,
     required this.updatePosition,
     required this.driverName,
-    required this.actionCall,
     required this.color,
     required this.title,
   });
@@ -42,7 +41,7 @@ class MapboxNavigationWidget extends StatefulWidget {
   final String driverName;
   final DocumentReference request;
   final Future Function(String duration, String distance) updatePosition;
-  final Future Function() actionCall;
+
   final Color color;
   final String title;
 
@@ -115,7 +114,7 @@ class _MapboxNavigationWidgetState extends State<MapboxNavigationWidget> {
           opt.bannerInstructionsEnabled = true;
           opt.units = VoiceUnits.metric;
           opt.language = "en";
-          await widget.actionCall();
+
           await MapBoxNavigation.instance
               .startNavigation(wayPoints: wayPoints, options: opt);
         },

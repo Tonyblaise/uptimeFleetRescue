@@ -385,7 +385,8 @@ class _VerifyWidgetState extends State<VerifyWidget> {
                           firebaseId: currentUserReference?.id,
                         );
 
-                        context.goNamedAuth('landing_page', context.mounted);
+                        context.goNamedAuth(
+                            'dashboardTechnician', context.mounted);
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
@@ -417,7 +418,8 @@ class _VerifyWidgetState extends State<VerifyWidget> {
                           token: _model.token,
                         );
 
-                        context.goNamedAuth('landing_page', context.mounted);
+                        context.goNamedAuth(
+                            'dashboardTechnician', context.mounted);
                       }
                     }
 
