@@ -261,59 +261,68 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                                                   .infinity,
                                                               decoration:
                                                                   const BoxDecoration(),
-                                                              child: Builder(
-                                                                  builder:
-                                                                      (context) {
-                                                                final googleMapMarker =
-                                                                    containerUsersRecord
-                                                                        .technicianLastUpdatedLocation;
-                                                                return FlutterFlowGoogleMap(
-                                                                  controller: _model
-                                                                      .googleMapsController,
-                                                                  onCameraIdle: (latLng) =>
-                                                                      setState(() =>
-                                                                          _model.googleMapsCenter =
-                                                                              latLng),
-                                                                  initialLocation: _model
-                                                                          .googleMapsCenter ??=
+                                                              child: Padding(
+                                                                padding: const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0,
+                                                                        145.0),
+                                                                child: Builder(
+                                                                    builder:
+                                                                        (context) {
+                                                                  final googleMapMarker =
                                                                       containerUsersRecord
-                                                                          .technicianLastUpdatedLocation!,
-                                                                  markers: [
-                                                                    if (googleMapMarker !=
-                                                                        null)
-                                                                      FlutterFlowMarker(
-                                                                        googleMapMarker
-                                                                            .serialize(),
-                                                                        googleMapMarker,
-                                                                      ),
-                                                                  ],
-                                                                  markerColor:
-                                                                      GoogleMarkerColor
-                                                                          .violet,
-                                                                  mapType: MapType
-                                                                      .normal,
-                                                                  style: GoogleMapStyle
-                                                                      .standard,
-                                                                  initialZoom:
-                                                                      14.0,
-                                                                  allowInteraction:
-                                                                      true,
-                                                                  allowZoom:
-                                                                      true,
-                                                                  showZoomControls:
-                                                                      true,
-                                                                  showLocation:
-                                                                      true,
-                                                                  showCompass:
-                                                                      true,
-                                                                  showMapToolbar:
-                                                                      true,
-                                                                  showTraffic:
-                                                                      true,
-                                                                  centerMapOnMarkerTap:
-                                                                      true,
-                                                                );
-                                                              }),
+                                                                          .technicianLastUpdatedLocation;
+                                                                  return FlutterFlowGoogleMap(
+                                                                    controller:
+                                                                        _model
+                                                                            .googleMapsController,
+                                                                    onCameraIdle:
+                                                                        (latLng) =>
+                                                                            setState(() =>
+                                                                                _model.googleMapsCenter = latLng),
+                                                                    initialLocation: _model
+                                                                            .googleMapsCenter ??=
+                                                                        containerUsersRecord
+                                                                            .technicianLastUpdatedLocation!,
+                                                                    markers: [
+                                                                      if (googleMapMarker !=
+                                                                          null)
+                                                                        FlutterFlowMarker(
+                                                                          googleMapMarker
+                                                                              .serialize(),
+                                                                          googleMapMarker,
+                                                                        ),
+                                                                    ],
+                                                                    markerColor:
+                                                                        GoogleMarkerColor
+                                                                            .violet,
+                                                                    mapType: MapType
+                                                                        .normal,
+                                                                    style: GoogleMapStyle
+                                                                        .standard,
+                                                                    initialZoom:
+                                                                        14.0,
+                                                                    allowInteraction:
+                                                                        true,
+                                                                    allowZoom:
+                                                                        true,
+                                                                    showZoomControls:
+                                                                        true,
+                                                                    showLocation:
+                                                                        true,
+                                                                    showCompass:
+                                                                        true,
+                                                                    showMapToolbar:
+                                                                        true,
+                                                                    showTraffic:
+                                                                        true,
+                                                                    centerMapOnMarkerTap:
+                                                                        true,
+                                                                  );
+                                                                }),
+                                                              ),
                                                             ),
                                                           ),
                                                           Align(
