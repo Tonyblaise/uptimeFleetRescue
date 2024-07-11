@@ -577,51 +577,71 @@ class _ServiceUpdatesComponentSPWidgetState
                                       Align(
                                         alignment:
                                             const AlignmentDirectional(1.0, 0.0),
-                                        child: SizedBox(
-                                          width: 300.0,
-                                          height: 56.0,
-                                          child: custom_widgets
-                                              .MapboxNavigationWidget(
-                                            width: 300.0,
-                                            height: 56.0,
-                                            originLat: functions.getLat(
-                                                currentUserLocationValue!),
-                                            originLng: functions.getLng(
-                                                currentUserLocationValue!),
-                                            destinationLat: containerRequestRecord
-                                                        .status ==
-                                                    'enrouteToTowDestination'
-                                                ? functions.getLat(
-                                                    containerRequestRecord
-                                                        .dropOffLocationLatLng!)
-                                                : functions.getLat(
-                                                    containerRequestRecord
-                                                        .location!),
-                                            destinationLng: containerRequestRecord
-                                                        .status ==
-                                                    'enrouteToTowDestination'
-                                                ? functions.getLng(
-                                                    containerRequestRecord
-                                                        .dropOffLocationLatLng!)
-                                                : functions.getLng(
-                                                    containerRequestRecord
-                                                        .location!),
-                                            chat: widget.chat!,
-                                            request: containerRequestRecord
-                                                .reference,
-                                            driverName: containerRequestRecord
-                                                .driverName,
-                                            color: Colors.black,
-                                            title:
-                                                'Start job / Go to Navigation',
-                                            updatePosition:
-                                                (duration, distance) async {
-                                              await widget.request!.update(
-                                                  createRequestRecordData(
-                                                duration: duration,
-                                                distance: distance,
-                                              ));
-                                            },
+                                        child: Container(
+                                          width: double.infinity,
+                                          decoration: const BoxDecoration(),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Container(
+                                                width: 64.0,
+                                                height: 64.0,
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          18.0),
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                width: 300.0,
+                                                height: 56.0,
+                                                child: custom_widgets
+                                                    .MapboxNavigationWidget(
+                                                  width: 300.0,
+                                                  height: 56.0,
+                                                  originLat: functions.getLat(
+                                                      currentUserLocationValue!),
+                                                  originLng: functions.getLng(
+                                                      currentUserLocationValue!),
+                                                  destinationLat: containerRequestRecord
+                                                              .status ==
+                                                          'enrouteToTowDestination'
+                                                      ? functions.getLat(
+                                                          containerRequestRecord
+                                                              .dropOffLocationLatLng!)
+                                                      : functions.getLat(
+                                                          containerRequestRecord
+                                                              .location!),
+                                                  destinationLng: containerRequestRecord
+                                                              .status ==
+                                                          'enrouteToTowDestination'
+                                                      ? functions.getLng(
+                                                          containerRequestRecord
+                                                              .dropOffLocationLatLng!)
+                                                      : functions.getLng(
+                                                          containerRequestRecord
+                                                              .location!),
+                                                  chat: widget.chat!,
+                                                  request:
+                                                      containerRequestRecord
+                                                          .reference,
+                                                  driverName:
+                                                      containerRequestRecord
+                                                          .driverName,
+                                                  color: Colors.black,
+                                                  title:
+                                                      'Start job / Go to Navigation',
+                                                  updatePosition: (duration,
+                                                      distance) async {
+                                                    await widget.request!.update(
+                                                        createRequestRecordData(
+                                                      duration: duration,
+                                                      distance: distance,
+                                                    ));
+                                                  },
+                                                ),
+                                              ),
+                                            ].divide(const SizedBox(width: 5.0)),
                                           ),
                                         ),
                                       ),
