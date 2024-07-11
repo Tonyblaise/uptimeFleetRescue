@@ -9,6 +9,8 @@ import 'package:flutter/material.dart';
 // Begin custom widget code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
+import 'dart:js_interop';
+
 // import '/service_provider/service_updates_component_s_p/service_updates_component_s_p_widget.dart'; // Imports other custom widgets
 
 import 'dart:async';
@@ -29,6 +31,7 @@ class MapboxNavigationWidget extends StatefulWidget {
     required this.driverName,
     required this.color,
     required this.title,
+    this.startRequest,
   });
 
   final double? width;
@@ -44,6 +47,7 @@ class MapboxNavigationWidget extends StatefulWidget {
 
   final Color color;
   final String title;
+  final Future Function()? startRequest;
 
   @override
   State<MapboxNavigationWidget> createState() => _MapboxNavigationWidgetState();
@@ -114,6 +118,8 @@ class _MapboxNavigationWidgetState extends State<MapboxNavigationWidget> {
           opt.bannerInstructionsEnabled = true;
           opt.units = VoiceUnits.metric;
           opt.language = "en";
+
+          widget.startRequest?.call();
 
           await MapBoxNavigation.instance
               .startNavigation(wayPoints: wayPoints, options: opt);

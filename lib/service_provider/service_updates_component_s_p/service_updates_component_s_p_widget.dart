@@ -592,53 +592,110 @@ class _ServiceUpdatesComponentSPWidgetState
                                                           18.0),
                                                 ),
                                               ),
-                                              SizedBox(
-                                                width: 300.0,
-                                                height: 56.0,
-                                                child: custom_widgets
-                                                    .MapboxNavigationWidget(
-                                                  width: 300.0,
+                                              Expanded(
+                                                child: SizedBox(
+                                                  width: double.infinity,
                                                   height: 56.0,
-                                                  originLat: functions.getLat(
-                                                      currentUserLocationValue!),
-                                                  originLng: functions.getLng(
-                                                      currentUserLocationValue!),
-                                                  destinationLat: containerRequestRecord
+                                                  child: custom_widgets
+                                                      .MapboxNavigationWidget(
+                                                    width: double.infinity,
+                                                    height: 56.0,
+                                                    originLat: functions.getLat(
+                                                        currentUserLocationValue!),
+                                                    originLng: functions.getLng(
+                                                        currentUserLocationValue!),
+                                                    destinationLat: containerRequestRecord
+                                                                .status ==
+                                                            'enrouteToTowDestination'
+                                                        ? functions.getLat(
+                                                            containerRequestRecord
+                                                                .dropOffLocationLatLng!)
+                                                        : functions.getLat(
+                                                            containerRequestRecord
+                                                                .location!),
+                                                    destinationLng: containerRequestRecord
+                                                                .status ==
+                                                            'enrouteToTowDestination'
+                                                        ? functions.getLng(
+                                                            containerRequestRecord
+                                                                .dropOffLocationLatLng!)
+                                                        : functions.getLng(
+                                                            containerRequestRecord
+                                                                .location!),
+                                                    chat: widget.chat!,
+                                                    request:
+                                                        containerRequestRecord
+                                                            .reference,
+                                                    driverName:
+                                                        containerRequestRecord
+                                                            .driverName,
+                                                    color: Colors.black,
+                                                    title:
+                                                        'Start job / Go to Navigation',
+                                                    updatePosition: (duration,
+                                                        distance) async {
+                                                      await widget.request!.update(
+                                                          createRequestRecordData(
+                                                        duration: duration,
+                                                        distance: distance,
+                                                      ));
+                                                    },
+                                                    startRequest: () async {
+                                                      if (containerRequestRecord
                                                               .status ==
-                                                          'enrouteToTowDestination'
-                                                      ? functions.getLat(
-                                                          containerRequestRecord
-                                                              .dropOffLocationLatLng!)
-                                                      : functions.getLat(
-                                                          containerRequestRecord
-                                                              .location!),
-                                                  destinationLng: containerRequestRecord
-                                                              .status ==
-                                                          'enrouteToTowDestination'
-                                                      ? functions.getLng(
-                                                          containerRequestRecord
-                                                              .dropOffLocationLatLng!)
-                                                      : functions.getLng(
-                                                          containerRequestRecord
-                                                              .location!),
-                                                  chat: widget.chat!,
-                                                  request:
-                                                      containerRequestRecord
-                                                          .reference,
-                                                  driverName:
-                                                      containerRequestRecord
-                                                          .driverName,
-                                                  color: Colors.black,
-                                                  title:
-                                                      'Start job / Go to Navigation',
-                                                  updatePosition: (duration,
-                                                      distance) async {
-                                                    await widget.request!.update(
-                                                        createRequestRecordData(
-                                                      duration: duration,
-                                                      distance: distance,
-                                                    ));
-                                                  },
+                                                          'newCase') {
+                                                        await currentUserReference!
+                                                            .update(
+                                                                createUsersRecordData(
+                                                          activeRequest:
+                                                              containerRequestRecord
+                                                                  .reference,
+                                                          activeRequestBubble:
+                                                              containerRequestRecord
+                                                                  .bubbleId,
+                                                        ));
+
+                                                        await containerRequestRecord
+                                                            .firebaseMessageThread!
+                                                            .update({
+                                                          ...mapToFirestore(
+                                                            {
+                                                              'users': FieldValue
+                                                                  .arrayUnion([
+                                                                currentUserReference
+                                                              ]),
+                                                            },
+                                                          ),
+                                                        });
+
+                                                        await containerRequestRecord
+                                                            .reference
+                                                            .update(
+                                                                createRequestRecordData(
+                                                          started: true,
+                                                          technician:
+                                                              currentUserReference,
+                                                        ));
+
+                                                        await containerRequestRecord
+                                                            .reference
+                                                            .update(
+                                                                createRequestRecordData(
+                                                          status: 'inProgress',
+                                                        ));
+                                                        await UptimeFleetAppGroup
+                                                            .updateRequestCall
+                                                            .call(
+                                                          id: containerRequestRecord
+                                                              .bubbleId,
+                                                          status: 'inProgress',
+                                                        );
+
+                                                        context.pushNamed(
+                                                            'dashboardTechnician');
+                                                      }
+                                                    },
+                                                  ),
                                                 ),
                                               ),
                                             ].divide(const SizedBox(width: 5.0)),
