@@ -873,7 +873,25 @@ class _ServiceUpdatesComponentWidgetState
                                                             .start,
                                                     children: [
                                                       Text(
-                                                        'Technician has arrived',
+                                                        () {
+                                                          if (widget.request
+                                                                  ?.status ==
+                                                              'arrivedAtLocation') {
+                                                            return 'Tech has arrived';
+                                                          } else if (widget
+                                                                  .request
+                                                                  ?.status ==
+                                                              'arrivedToTowDestination') {
+                                                            return 'Tech has arrived at dropoff';
+                                                          } else if (widget
+                                                                  .request
+                                                                  ?.status ==
+                                                              'enrouteToTowDestination') {
+                                                            return 'Tech is enroute to drop off';
+                                                          } else {
+                                                            return 'sf';
+                                                          }
+                                                        }(),
                                                         style: FlutterFlowTheme
                                                                 .of(context)
                                                             .bodyMedium
