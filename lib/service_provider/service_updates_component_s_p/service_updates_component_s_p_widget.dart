@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/instant_timer.dart';
 import '/service_provider/arrival_confirmation/arrival_confirmation_widget.dart';
+import '/service_provider/arrival_confirmation_copy/arrival_confirmation_copy_widget.dart';
 import '/service_provider/driver/cancel_request/cancel_request_widget.dart';
 import '/service_provider/tow_navigation_start/tow_navigation_start_widget.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
@@ -1253,16 +1254,26 @@ class _ServiceUpdatesComponentSPWidgetState
                                           hoverColor: Colors.transparent,
                                           highlightColor: Colors.transparent,
                                           onTap: () async {
-                                            context.pushNamed(
-                                              'serviceConfirmation',
-                                              queryParameters: {
-                                                'request': serializeParam(
-                                                  containerRequestRecord
-                                                      .bubbleId,
-                                                  ParamType.String,
-                                                ),
-                                              }.withoutNulls,
-                                            );
+                                            await showModalBottomSheet(
+                                              isScrollControlled: true,
+                                              backgroundColor:
+                                                  Colors.transparent,
+                                              enableDrag: false,
+                                              context: context,
+                                              builder: (context) {
+                                                return Padding(
+                                                  padding:
+                                                      MediaQuery.viewInsetsOf(
+                                                          context),
+                                                  child:
+                                                      ArrivalConfirmationCopyWidget(
+                                                    request:
+                                                        containerRequestRecord,
+                                                  ),
+                                                );
+                                              },
+                                            ).then(
+                                                (value) => safeSetState(() {}));
                                           },
                                           child: Container(
                                             decoration: const BoxDecoration(),
@@ -1468,6 +1479,251 @@ class _ServiceUpdatesComponentSPWidgetState
                                                                           color:
                                                                               valueOrDefault<Color>(
                                                                             containerRequestRecord.status == 'enrouteToTowDestination'
+                                                                                ? FlutterFlowTheme.of(context).primaryText
+                                                                                : FlutterFlowTheme.of(context).secondaryText,
+                                                                            const Color(0xFFE5E7EE),
+                                                                          ),
+                                                                          fontSize:
+                                                                              13.0,
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                        ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ].divide(const SizedBox(width: 5.0)),
+                                            ),
+                                          ),
+                                        ),
+                                      if (widget.fault == 'Tow')
+                                        InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            context.pushNamed(
+                                              'serviceConfirmation',
+                                              queryParameters: {
+                                                'request': serializeParam(
+                                                  containerRequestRecord
+                                                      .bubbleId,
+                                                  ParamType.String,
+                                                ),
+                                              }.withoutNulls,
+                                            );
+                                          },
+                                          child: Container(
+                                            decoration: const BoxDecoration(),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Container(
+                                                  width: 64.0,
+                                                  height: 64.0,
+                                                  decoration: BoxDecoration(
+                                                    color:
+                                                        valueOrDefault<Color>(
+                                                      containerRequestRecord
+                                                                  .status ==
+                                                              'arrivedToTowDestination'
+                                                          ? FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondary
+                                                          : Colors.white,
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .secondaryBackground,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            18.0),
+                                                    border: Border.all(
+                                                      color:
+                                                          valueOrDefault<Color>(
+                                                        containerRequestRecord
+                                                                    .status ==
+                                                                'arrivedToTowDestination'
+                                                            ? Colors.transparent
+                                                            : const Color(0xFFE5E7EE),
+                                                        const Color(0xFFE5E7EE),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  child: Align(
+                                                    alignment:
+                                                        const AlignmentDirectional(
+                                                            0.0, 0.0),
+                                                    child: Padding(
+                                                      padding:
+                                                          const EdgeInsets.all(14.0),
+                                                      child: Container(
+                                                        width:
+                                                            MediaQuery.sizeOf(
+                                                                        context)
+                                                                    .width *
+                                                                0.36,
+                                                        height: 36.0,
+                                                        constraints:
+                                                            const BoxConstraints(
+                                                          maxWidth: 36.0,
+                                                          maxHeight: 36.0,
+                                                        ),
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      100.0),
+                                                          border: Border.all(
+                                                            color:
+                                                                valueOrDefault<
+                                                                    Color>(
+                                                              containerRequestRecord
+                                                                          .status ==
+                                                                      'arrivedToTowDestination'
+                                                                  ? Colors
+                                                                      .transparent
+                                                                  : const Color(
+                                                                      0xFFE5E7EE),
+                                                              const Color(0xFFE5E7EE),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        alignment:
+                                                            const AlignmentDirectional(
+                                                                0.0, 0.0),
+                                                        child: Text(
+                                                          '5',
+                                                          textAlign:
+                                                              TextAlign.center,
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Yantramanav',
+                                                                color:
+                                                                    valueOrDefault<
+                                                                        Color>(
+                                                                  containerRequestRecord
+                                                                              .status ==
+                                                                          'arrivedToTowDestination'
+                                                                      ? Colors
+                                                                          .black
+                                                                      : const Color(
+                                                                          0xFF64748B),
+                                                                  const Color(
+                                                                      0xFFE5E7EE),
+                                                                ),
+                                                                fontSize: 24.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                              ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                Expanded(
+                                                  child: Container(
+                                                    width: 64.0,
+                                                    height: 64.0,
+                                                    decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              18.0),
+                                                      border: Border.all(
+                                                        color: valueOrDefault<
+                                                            Color>(
+                                                          containerRequestRecord.status ==
+                                                                  'arrivedToTowDestination'
+                                                              ? FlutterFlowTheme
+                                                                      .of(
+                                                                          context)
+                                                                  .secondary
+                                                              : const Color(
+                                                                  0xFFE5E7EE),
+                                                          const Color(0xFFE5E7EE),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    child: Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  20.0,
+                                                                  10.0,
+                                                                  20.0,
+                                                                  10.0),
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceBetween,
+                                                        children: [
+                                                          Expanded(
+                                                            child: Container(
+                                                              width: 100.0,
+                                                              height: 100.0,
+                                                              decoration:
+                                                                  const BoxDecoration(),
+                                                              child: Column(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .center,
+                                                                crossAxisAlignment:
+                                                                    CrossAxisAlignment
+                                                                        .start,
+                                                                children: [
+                                                                  Text(
+                                                                    'Enroute to tow destination',
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Yantramanav',
+                                                                          color:
+                                                                              valueOrDefault<Color>(
+                                                                            containerRequestRecord.status == 'arrivedToTowDestination'
+                                                                                ? Colors.black
+                                                                                : const Color(0xFF64748B),
+                                                                            const Color(0xFFE5E7EE),
+                                                                          ),
+                                                                          fontSize:
+                                                                              16.0,
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                          fontWeight:
+                                                                              FontWeight.bold,
+                                                                        ),
+                                                                  ),
+                                                                  Text(
+                                                                    'Click here when you arrive at the destination',
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Yantramanav',
+                                                                          color:
+                                                                              valueOrDefault<Color>(
+                                                                            containerRequestRecord.status == 'arrivedToTowDestination'
                                                                                 ? FlutterFlowTheme.of(context).primaryText
                                                                                 : FlutterFlowTheme.of(context).secondaryText,
                                                                             const Color(0xFFE5E7EE),
