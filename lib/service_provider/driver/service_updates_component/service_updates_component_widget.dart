@@ -730,8 +730,12 @@ class _ServiceUpdatesComponentWidgetState
                                       height: 64.0,
                                       decoration: BoxDecoration(
                                         color: valueOrDefault<Color>(
-                                          widget.request?.status ==
-                                                  'arrivedAtLocation'
+                                          (widget.request?.status ==
+                                                      'arrivedAtLocation') ||
+                                                  (widget.request?.status ==
+                                                      'arrivedToTowDestination') ||
+                                                  (widget.request?.status ==
+                                                      'enrouteToTowDestination')
                                               ? FlutterFlowTheme.of(context)
                                                   .secondary
                                               : Colors.white,
@@ -742,8 +746,12 @@ class _ServiceUpdatesComponentWidgetState
                                             BorderRadius.circular(18.0),
                                         border: Border.all(
                                           color: valueOrDefault<Color>(
-                                            widget.request?.status ==
-                                                    'arrivedAtLocation'
+                                            (widget.request?.status ==
+                                                        'arrivedAtLocation') ||
+                                                    (widget.request?.status ==
+                                                        'arrivedToTowDestination') ||
+                                                    (widget.request?.status ==
+                                                        'enrouteToTowDestination')
                                                 ? Colors.transparent
                                                 : const Color(0xFFE5E7EE),
                                             const Color(0xFFE5E7EE),
@@ -772,8 +780,14 @@ class _ServiceUpdatesComponentWidgetState
                                                   BorderRadius.circular(100.0),
                                               border: Border.all(
                                                 color: valueOrDefault<Color>(
-                                                  widget.request?.status ==
-                                                          'arrivedAtLocation'
+                                                  (widget.request?.status ==
+                                                              'arrivedAtLocation') ||
+                                                          (widget.request
+                                                                  ?.status ==
+                                                              'arrivedToTowDestination') ||
+                                                          (widget.request
+                                                                  ?.status ==
+                                                              'enrouteToTowDestination')
                                                       ? Colors.transparent
                                                       : const Color(0xFFE5E7EE),
                                                   const Color(0xFFE5E7EE),
@@ -792,8 +806,15 @@ class _ServiceUpdatesComponentWidgetState
                                                     fontFamily: 'Yantramanav',
                                                     color:
                                                         valueOrDefault<Color>(
-                                                      widget.request?.status ==
-                                                              'arrivedAtLocation'
+                                                      (widget
+                                                                      .request?.status ==
+                                                                  'arrivedAtLocation') ||
+                                                              (widget.request
+                                                                      ?.status ==
+                                                                  'arrivedToTowDestination') ||
+                                                              (widget.request
+                                                                      ?.status ==
+                                                                  'enrouteToTowDestination')
                                                           ? Colors.black
                                                           : const Color(0xFFE5E7EE),
                                                       const Color(0xFFE5E7EE),
@@ -815,8 +836,14 @@ class _ServiceUpdatesComponentWidgetState
                                               BorderRadius.circular(18.0),
                                           border: Border.all(
                                             color: valueOrDefault<Color>(
-                                              widget.request?.status ==
-                                                      'arrivedAtLocation'
+                                              (widget.request?.status ==
+                                                          'arrivedAtLocation') ||
+                                                      (widget.request
+                                                              ?.status ==
+                                                          'arrivedToTowDestination') ||
+                                                      (widget.request
+                                                              ?.status ==
+                                                          'enrouteToTowDestination')
                                                   ? FlutterFlowTheme.of(context)
                                                       .tertiary
                                                   : const Color(0xFFE5E7EE),
@@ -847,60 +874,62 @@ class _ServiceUpdatesComponentWidgetState
                                                     children: [
                                                       Text(
                                                         'Technician has arrived',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Yantramanav',
-                                                                  color:
-                                                                      valueOrDefault<
-                                                                          Color>(
-                                                                    widget.request?.status ==
-                                                                            'arrivedAtLocation'
-                                                                        ? Colors
-                                                                            .black
-                                                                        : const Color(
-                                                                            0xFFE5E7EE),
-                                                                    const Color(
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .bodyMedium
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Yantramanav',
+                                                              color:
+                                                                  valueOrDefault<
+                                                                      Color>(
+                                                                (widget.request?.status == 'arrivedAtLocation') ||
+                                                                        (widget.request?.status ==
+                                                                            'arrivedToTowDestination') ||
+                                                                        (widget.request?.status ==
+                                                                            'enrouteToTowDestination')
+                                                                    ? Colors
+                                                                        .black
+                                                                    : const Color(
                                                                         0xFFE5E7EE),
-                                                                  ),
-                                                                  fontSize:
-                                                                      16.0,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold,
-                                                                ),
+                                                                const Color(
+                                                                    0xFFE5E7EE),
+                                                              ),
+                                                              fontSize: 16.0,
+                                                              letterSpacing:
+                                                                  0.0,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
+                                                            ),
                                                       ),
                                                       Text(
                                                         'Job is in service',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Yantramanav',
-                                                                  color:
-                                                                      valueOrDefault<
-                                                                          Color>(
-                                                                    widget.request?.status ==
-                                                                            'arrivedAtLocation'
-                                                                        ? const Color(
-                                                                            0xFF64748B)
-                                                                        : const Color(
-                                                                            0xFFE5E7EE),
-                                                                    const Color(
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .bodyMedium
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Yantramanav',
+                                                              color:
+                                                                  valueOrDefault<
+                                                                      Color>(
+                                                                (widget.request?.status == 'arrivedAtLocation') ||
+                                                                        (widget.request?.status ==
+                                                                            'arrivedToTowDestination') ||
+                                                                        (widget.request?.status ==
+                                                                            'enrouteToTowDestination')
+                                                                    ? const Color(
+                                                                        0xFF64748B)
+                                                                    : const Color(
                                                                         0xFFE5E7EE),
-                                                                  ),
-                                                                  fontSize:
-                                                                      16.0,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                ),
+                                                                const Color(
+                                                                    0xFFE5E7EE),
+                                                              ),
+                                                              fontSize: 16.0,
+                                                              letterSpacing:
+                                                                  0.0,
+                                                            ),
                                                       ),
                                                     ],
                                                   ),

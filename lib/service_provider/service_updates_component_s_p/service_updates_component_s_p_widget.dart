@@ -1691,7 +1691,7 @@ class _ServiceUpdatesComponentSPWidgetState
                                                                         .start,
                                                                 children: [
                                                                   Text(
-                                                                    'Enroute to tow destination',
+                                                                    'Job complete?',
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
                                                                         .bodyMedium
