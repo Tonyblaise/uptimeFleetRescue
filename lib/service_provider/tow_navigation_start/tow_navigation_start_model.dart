@@ -8,7 +8,7 @@ class TowNavigationStartModel
   ///  State fields for stateful widgets in this component.
 
   // Stores action output result for [Backend Call - API (Update request)] action in Button widget.
-  ApiCallResponse? apiResultoan;
+  ApiCallResponse? enrouteToTowDestination;
 
   @override
   void initState(BuildContext context) {}

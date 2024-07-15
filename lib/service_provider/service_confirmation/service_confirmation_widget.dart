@@ -528,7 +528,15 @@ class _ServiceConfirmationWidgetState extends State<ServiceConfirmationWidget> {
                                           autofocus: true,
                                           obscureText: false,
                                           decoration: InputDecoration(
-                                            hintText: 'Enter notes here',
+                                            hintText: UptimeFleetAppGroup
+                                                        .getRequestCall
+                                                        .fault(
+                                                      serviceConfirmationGetRequestResponse
+                                                          .jsonBody,
+                                                    ) ==
+                                                    'Tow'
+                                                ? 'Enter notes i.e. where you parked the vehicle and left the keys'
+                                                : 'Enter notes',
                                             hintStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .labelLarge

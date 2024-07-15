@@ -15,7 +15,7 @@ class ServiceUpdatesComponentSPModel
   InstantTimer? instantTimer2;
   // Stores action output result for [Backend Call - API (Update technician position  using current postion)] action in serviceUpdatesComponentSP widget.
   ApiCallResponse? apiResultayoo;
-  // Stores action output result for [Backend Call - API (Update request)] action in Container widget.
+  // Stores action output result for [Backend Call - API (Update request)] action in MapboxNavigationWidget widget.
   ApiCallResponse? apiResultoanCopy;
 
   @override

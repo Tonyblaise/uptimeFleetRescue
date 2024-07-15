@@ -301,64 +301,29 @@ class _ServiceUpdatesComponentSPWidgetState
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
-                                      InkWell(
-                                        splashColor: Colors.transparent,
-                                        focusColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        onTap: () async {
-                                          await currentUserReference!
-                                              .update(createUsersRecordData(
-                                            activeRequest:
-                                                containerRequestRecord
-                                                    .reference,
-                                            activeRequestBubble:
-                                                containerRequestRecord.bubbleId,
-                                          ));
-
-                                          await containerRequestRecord
-                                              .firebaseMessageThread!
-                                              .update({
-                                            ...mapToFirestore(
-                                              {
-                                                'users': FieldValue.arrayUnion(
-                                                    [currentUserReference]),
-                                              },
-                                            ),
-                                          });
-
-                                          await containerRequestRecord.reference
-                                              .update(createRequestRecordData(
-                                            technician: currentUserReference,
-                                            started: true,
-                                          ));
-
-                                          await containerRequestRecord.reference
-                                              .update(createRequestRecordData(
-                                            status: 'inProgress',
-                                          ));
-                                          _model.apiResultoanCopy =
-                                              await UptimeFleetAppGroup
-                                                  .updateRequestCall
-                                                  .call(
-                                            id: containerRequestRecord.bubbleId,
-                                            status: 'inProgress',
-                                          );
-
-                                          context
-                                              .pushNamed('dashboardTechnician');
-
-                                          setState(() {});
-                                        },
-                                        child: Container(
-                                          decoration: const BoxDecoration(),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Container(
-                                                width: 64.0,
-                                                height: 64.0,
-                                                decoration: BoxDecoration(
+                                      Container(
+                                        decoration: const BoxDecoration(),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Container(
+                                              width: 64.0,
+                                              height: 64.0,
+                                              decoration: BoxDecoration(
+                                                color: valueOrDefault<Color>(
+                                                  containerRequestRecord
+                                                              .status ==
+                                                          'newCase'
+                                                      ? FlutterFlowTheme.of(
+                                                              context)
+                                                          .secondary
+                                                      : Colors.white,
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(18.0),
+                                                border: Border.all(
                                                   color: valueOrDefault<Color>(
                                                     containerRequestRecord
                                                                 .status ==
@@ -366,10 +331,83 @@ class _ServiceUpdatesComponentSPWidgetState
                                                         ? FlutterFlowTheme.of(
                                                                 context)
                                                             .secondary
-                                                        : Colors.white,
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
+                                                        : const Color(0xFFE5E7EE),
+                                                    const Color(0xFFE5E7EE),
                                                   ),
+                                                ),
+                                              ),
+                                              child: Align(
+                                                alignment: const AlignmentDirectional(
+                                                    0.0, 0.0),
+                                                child: Padding(
+                                                  padding: const EdgeInsets.all(14.0),
+                                                  child: Container(
+                                                    width: MediaQuery.sizeOf(
+                                                                context)
+                                                            .width *
+                                                        0.361,
+                                                    height: 36.0,
+                                                    constraints: const BoxConstraints(
+                                                      maxWidth: 36.0,
+                                                      maxHeight: 36.0,
+                                                    ),
+                                                    decoration: BoxDecoration(
+                                                      color: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              100.0),
+                                                      border: Border.all(
+                                                        color: valueOrDefault<
+                                                            Color>(
+                                                          containerRequestRecord
+                                                                      .status ==
+                                                                  'newCase'
+                                                              ? Colors
+                                                                  .transparent
+                                                              : const Color(
+                                                                  0xFFE5E7EE),
+                                                          const Color(0xFFE5E7EE),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    alignment:
+                                                        const AlignmentDirectional(
+                                                            0.0, 0.0),
+                                                    child: Text(
+                                                      '1',
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Yantramanav',
+                                                            color:
+                                                                valueOrDefault<
+                                                                    Color>(
+                                                              containerRequestRecord
+                                                                          .status ==
+                                                                      'inProgress'
+                                                                  ? Colors.black
+                                                                  : const Color(
+                                                                      0xFF64748B),
+                                                              const Color(0xFFE5E7EE),
+                                                            ),
+                                                            fontSize: 24.0,
+                                                            letterSpacing: 0.0,
+                                                          ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            Expanded(
+                                              child: Container(
+                                                width: 64.0,
+                                                decoration: BoxDecoration(
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           18.0),
@@ -387,192 +425,93 @@ class _ServiceUpdatesComponentSPWidgetState
                                                     ),
                                                   ),
                                                 ),
-                                                child: Align(
-                                                  alignment:
-                                                      const AlignmentDirectional(
-                                                          0.0, 0.0),
-                                                  child: Padding(
-                                                    padding:
-                                                        const EdgeInsets.all(14.0),
-                                                    child: Container(
-                                                      width: MediaQuery.sizeOf(
-                                                                  context)
-                                                              .width *
-                                                          0.361,
-                                                      height: 36.0,
-                                                      constraints:
-                                                          const BoxConstraints(
-                                                        maxWidth: 36.0,
-                                                        maxHeight: 36.0,
-                                                      ),
-                                                      decoration: BoxDecoration(
-                                                        color: FlutterFlowTheme
-                                                                .of(context)
-                                                            .secondaryBackground,
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(
-                                                                    100.0),
-                                                        border: Border.all(
-                                                          color: valueOrDefault<
-                                                              Color>(
-                                                            containerRequestRecord
-                                                                        .status ==
-                                                                    'newCase'
-                                                                ? Colors
-                                                                    .transparent
-                                                                : const Color(
-                                                                    0xFFE5E7EE),
-                                                            const Color(0xFFE5E7EE),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      alignment:
-                                                          const AlignmentDirectional(
-                                                              0.0, 0.0),
-                                                      child: Text(
-                                                        '1',
-                                                        textAlign:
-                                                            TextAlign.center,
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Yantramanav',
-                                                                  color:
-                                                                      valueOrDefault<
+                                                child: Padding(
+                                                  padding: const EdgeInsetsDirectional
+                                                      .fromSTEB(20.0, 10.0,
+                                                          20.0, 10.0),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      Expanded(
+                                                        child: Container(
+                                                          width: 100.0,
+                                                          decoration:
+                                                              const BoxDecoration(),
+                                                          child: Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceBetween,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Text(
+                                                                'Request In Process',
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Yantramanav',
+                                                                      color: valueOrDefault<
                                                                           Color>(
-                                                                    containerRequestRecord.status ==
-                                                                            'inProgress'
-                                                                        ? Colors
-                                                                            .black
-                                                                        : const Color(
-                                                                            0xFF64748B),
-                                                                    const Color(
-                                                                        0xFFE5E7EE),
-                                                                  ),
-                                                                  fontSize:
-                                                                      24.0,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                              Expanded(
-                                                child: Container(
-                                                  width: 64.0,
-                                                  decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            18.0),
-                                                    border: Border.all(
-                                                      color:
-                                                          valueOrDefault<Color>(
-                                                        containerRequestRecord
-                                                                    .status ==
-                                                                'newCase'
-                                                            ? FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondary
-                                                            : const Color(0xFFE5E7EE),
-                                                        const Color(0xFFE5E7EE),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  child: Padding(
-                                                    padding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                20.0,
-                                                                10.0,
-                                                                20.0,
-                                                                10.0),
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .spaceBetween,
-                                                      children: [
-                                                        Expanded(
-                                                          child: Container(
-                                                            width: 100.0,
-                                                            decoration:
-                                                                const BoxDecoration(),
-                                                            child: Column(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              mainAxisAlignment:
-                                                                  MainAxisAlignment
-                                                                      .spaceBetween,
-                                                              crossAxisAlignment:
-                                                                  CrossAxisAlignment
-                                                                      .start,
-                                                              children: [
-                                                                Text(
-                                                                  'Request In Process',
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Yantramanav',
-                                                                        color: valueOrDefault<
-                                                                            Color>(
-                                                                          containerRequestRecord.status == 'newCase'
-                                                                              ? Colors.black
-                                                                              : const Color(0xFF64748B),
-                                                                          const Color(
-                                                                              0xFFE5E7EE),
-                                                                        ),
-                                                                        fontSize:
-                                                                            16.0,
-                                                                        letterSpacing:
-                                                                            0.0,
-                                                                        fontWeight:
-                                                                            FontWeight.bold,
+                                                                        containerRequestRecord.status ==
+                                                                                'newCase'
+                                                                            ? Colors.black
+                                                                            : const Color(0xFF64748B),
+                                                                        const Color(
+                                                                            0xFFE5E7EE),
                                                                       ),
-                                                                ),
-                                                                Text(
-                                                                  'Click here to start job',
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Yantramanav',
-                                                                        color: valueOrDefault<
-                                                                            Color>(
-                                                                          containerRequestRecord.status == 'newCase'
-                                                                              ? FlutterFlowTheme.of(context).primaryText
-                                                                              : FlutterFlowTheme.of(context).secondaryText,
-                                                                          const Color(
-                                                                              0xFFE5E7EE),
-                                                                        ),
-                                                                        fontSize:
-                                                                            13.0,
-                                                                        letterSpacing:
-                                                                            0.0,
+                                                                      fontSize:
+                                                                          16.0,
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold,
+                                                                    ),
+                                                              ),
+                                                              Text(
+                                                                'Click here to start job',
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Yantramanav',
+                                                                      color: valueOrDefault<
+                                                                          Color>(
+                                                                        containerRequestRecord.status ==
+                                                                                'newCase'
+                                                                            ? FlutterFlowTheme.of(context).primaryText
+                                                                            : FlutterFlowTheme.of(context).secondaryText,
+                                                                        const Color(
+                                                                            0xFFE5E7EE),
                                                                       ),
-                                                                ),
-                                                              ].divide(const SizedBox(
-                                                                  height: 5.0)),
-                                                            ),
+                                                                      fontSize:
+                                                                          13.0,
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                    ),
+                                                              ),
+                                                            ].divide(const SizedBox(
+                                                                height: 5.0)),
                                                           ),
                                                         ),
-                                                      ],
-                                                    ),
+                                                      ),
+                                                    ],
                                                   ),
                                                 ),
                                               ),
-                                            ].divide(const SizedBox(width: 5.0)),
-                                          ),
+                                            ),
+                                          ].divide(const SizedBox(width: 5.0)),
                                         ),
                                       ),
                                       Align(
@@ -673,9 +612,9 @@ class _ServiceUpdatesComponentSPWidgetState
                                                             .reference
                                                             .update(
                                                                 createRequestRecordData(
-                                                          started: true,
                                                           technician:
                                                               currentUserReference,
+                                                          started: true,
                                                         ));
 
                                                         await containerRequestRecord
@@ -684,9 +623,10 @@ class _ServiceUpdatesComponentSPWidgetState
                                                                 createRequestRecordData(
                                                           status: 'inProgress',
                                                         ));
-                                                        await UptimeFleetAppGroup
-                                                            .updateRequestCall
-                                                            .call(
+                                                        _model.apiResultoanCopy =
+                                                            await UptimeFleetAppGroup
+                                                                .updateRequestCall
+                                                                .call(
                                                           id: containerRequestRecord
                                                               .bubbleId,
                                                           status: 'inProgress',
@@ -695,6 +635,8 @@ class _ServiceUpdatesComponentSPWidgetState
                                                         context.pushNamed(
                                                             'dashboardTechnician');
                                                       }
+
+                                                      setState(() {});
                                                     },
                                                   ),
                                                 ),
@@ -1212,8 +1154,8 @@ class _ServiceUpdatesComponentSPWidgetState
                                                                 Text(
                                                                   widget.fault ==
                                                                           'Tow'
-                                                                      ? 'Click here when ready'
-                                                                      : 'Click here to review',
+                                                                      ? 'Click here when ready to tow'
+                                                                      : 'Click here to when ready to tow',
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium
@@ -1469,7 +1411,7 @@ class _ServiceUpdatesComponentSPWidgetState
                                                                         ),
                                                                   ),
                                                                   Text(
-                                                                    'Click here when you arrive at the destination',
+                                                                    'Click here when you arrive at the drop off location',
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
                                                                         .bodyMedium
@@ -1714,7 +1656,7 @@ class _ServiceUpdatesComponentSPWidgetState
                                                                         ),
                                                                   ),
                                                                   Text(
-                                                                    'Click here when you arrive at the destination',
+                                                                    'Click here when you completele the job',
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
                                                                         .bodyMedium

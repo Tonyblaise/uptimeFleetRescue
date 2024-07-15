@@ -219,8 +219,11 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                       child: Builder(
                                         builder: (context) {
                                           if (currentUserDocument
-                                                  ?.activeRequest ==
-                                              null) {
+                                                      ?.activeRequest?.id ==
+                                                  null ||
+                                              currentUserDocument
+                                                      ?.activeRequest?.id ==
+                                                  '') {
                                             return Container(
                                               decoration: const BoxDecoration(),
                                               child: Column(
