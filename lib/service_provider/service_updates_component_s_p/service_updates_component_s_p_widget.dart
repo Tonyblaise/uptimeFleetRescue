@@ -939,8 +939,8 @@ class _ServiceUpdatesComponentSPWidgetState
                                                   child:
                                                       TowNavigationStartWidget(
                                                     request:
-                                                        containerRequestRecord
-                                                            .reference,
+                                                        containerRequestRecord,
+                                                    bubbleId: widget.bubbleId!,
                                                   ),
                                                 );
                                               },
