@@ -10,6 +10,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/instant_timer.dart';
 import '/pages/chat/empty_state_simple/empty_state_simple_widget.dart';
 import '/service_provider/bottom_bar/bottom_bar_widget.dart';
+import '/service_provider/driver/confirm_cancellation/confirm_cancellation_widget.dart';
 import '/service_provider/select_vehicle/select_vehicle_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/permissions_util.dart';
@@ -658,162 +659,213 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                                               .of(context)
                                                           .secondaryBackground,
                                                     ),
-                                                    child: Container(
-                                                      constraints:
-                                                          const BoxConstraints(
-                                                        minHeight:
-                                                            double.infinity,
-                                                      ),
-                                                      decoration:
-                                                          const BoxDecoration(),
-                                                      child: wrapWithModel(
-                                                        model: _model
-                                                            .serviceSummaryWidgetModel,
-                                                        updateCallback: () =>
-                                                            setState(() {}),
-                                                        child:
-                                                            ServiceSummaryWidgetWidget(
-                                                          fleetCompanyName:
-                                                              UptimeFleetAppGroup
-                                                                  .getRequestCall
-                                                                  .driverCompanyName(
-                                                            containerGetRequestResponse
-                                                                .jsonBody,
+                                                    child: StreamBuilder<
+                                                        RequestRecord>(
+                                                      stream: RequestRecord
+                                                          .getDocument(
+                                                              currentUserDocument!
+                                                                  .activeRequest!),
+                                                      builder:
+                                                          (context, snapshot) {
+                                                        // Customize what your widget looks like when it's loading.
+                                                        if (!snapshot.hasData) {
+                                                          return Center(
+                                                            child: SizedBox(
+                                                              width: 50.0,
+                                                              height: 50.0,
+                                                              child:
+                                                                  CircularProgressIndicator(
+                                                                valueColor:
+                                                                    AlwaysStoppedAnimation<
+                                                                        Color>(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primary,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          );
+                                                        }
+
+                                                        final containerRequestRecord =
+                                                            snapshot.data!;
+
+                                                        return Container(
+                                                          decoration:
+                                                              const BoxDecoration(),
+                                                          child: Builder(
+                                                            builder: (context) {
+                                                              if (containerRequestRecord
+                                                                      .status !=
+                                                                  'cancelled') {
+                                                                return Container(
+                                                                  constraints:
+                                                                      const BoxConstraints(
+                                                                    minHeight:
+                                                                        double
+                                                                            .infinity,
+                                                                  ),
+                                                                  decoration:
+                                                                      const BoxDecoration(),
+                                                                  child:
+                                                                      wrapWithModel(
+                                                                    model: _model
+                                                                        .serviceSummaryWidgetModel,
+                                                                    updateCallback: () =>
+                                                                        setState(
+                                                                            () {}),
+                                                                    child:
+                                                                        ServiceSummaryWidgetWidget(
+                                                                      fleetCompanyName: UptimeFleetAppGroup
+                                                                          .getRequestCall
+                                                                          .driverCompanyName(
+                                                                        containerGetRequestResponse
+                                                                            .jsonBody,
+                                                                      ),
+                                                                      driverName: UptimeFleetAppGroup
+                                                                          .getRequestCall
+                                                                          .driverFullName(
+                                                                        containerGetRequestResponse
+                                                                            .jsonBody,
+                                                                      ),
+                                                                      driverPhoneNumber: UptimeFleetAppGroup
+                                                                          .getRequestCall
+                                                                          .driverPhoneNumber(
+                                                                        containerGetRequestResponse
+                                                                            .jsonBody,
+                                                                      ),
+                                                                      serviceId: UptimeFleetAppGroup
+                                                                          .getRequestCall
+                                                                          .serviceId(
+                                                                        containerGetRequestResponse
+                                                                            .jsonBody,
+                                                                      ),
+                                                                      timestamp:
+                                                                          dateTimeFormat(
+                                                                        'd/M h:mm a',
+                                                                        functions.converUnixTimestamp(UptimeFleetAppGroup
+                                                                            .getRequestCall
+                                                                            .timestamp(
+                                                                          containerGetRequestResponse
+                                                                              .jsonBody,
+                                                                        )!),
+                                                                        locale:
+                                                                            FFLocalizations.of(context).languageCode,
+                                                                      ),
+                                                                      eventType: UptimeFleetAppGroup
+                                                                          .getRequestCall
+                                                                          .fault(
+                                                                        containerGetRequestResponse
+                                                                            .jsonBody,
+                                                                      ),
+                                                                      pickUp: UptimeFleetAppGroup
+                                                                          .getRequestCall
+                                                                          .location(
+                                                                        containerGetRequestResponse
+                                                                            .jsonBody,
+                                                                      ),
+                                                                      dropOff: UptimeFleetAppGroup
+                                                                          .getRequestCall
+                                                                          .dropOffLocation(
+                                                                            containerGetRequestResponse.jsonBody,
+                                                                          )
+                                                                          .toString(),
+                                                                      vehicleLicenseNumber: UptimeFleetAppGroup
+                                                                          .getRequestCall
+                                                                          .vehicleRegNo(
+                                                                        containerGetRequestResponse
+                                                                            .jsonBody,
+                                                                      ),
+                                                                      vehicleInformation: UptimeFleetAppGroup
+                                                                          .getRequestCall
+                                                                          .vehicleColor(
+                                                                        containerGetRequestResponse
+                                                                            .jsonBody,
+                                                                      ),
+                                                                      vehicleVinNumber: UptimeFleetAppGroup
+                                                                          .getRequestCall
+                                                                          .vehicleVinNumber(
+                                                                            containerGetRequestResponse.jsonBody,
+                                                                          )
+                                                                          .toString(),
+                                                                      locationLat: functions.convertStringToDouble(UptimeFleetAppGroup
+                                                                          .getRequestCall
+                                                                          .lat(
+                                                                        containerGetRequestResponse
+                                                                            .jsonBody,
+                                                                      ))!,
+                                                                      locationLng: functions.convertStringToDouble(UptimeFleetAppGroup
+                                                                          .getRequestCall
+                                                                          .lng(
+                                                                        containerGetRequestResponse
+                                                                            .jsonBody,
+                                                                      ))!,
+                                                                      firebaseId: functions.convertStringToRequestDocRef(UptimeFleetAppGroup
+                                                                          .getRequestCall
+                                                                          .firebaseId(
+                                                                        containerGetRequestResponse
+                                                                            .jsonBody,
+                                                                      ))!,
+                                                                      status: UptimeFleetAppGroup
+                                                                          .getRequestCall
+                                                                          .status(
+                                                                        containerGetRequestResponse
+                                                                            .jsonBody,
+                                                                      )!,
+                                                                      driverTechMessageId: UptimeFleetAppGroup
+                                                                          .getRequestCall
+                                                                          .driverTechnicianMessageThreadId(
+                                                                        containerGetRequestResponse
+                                                                            .jsonBody,
+                                                                      )!,
+                                                                      bubbleId: UptimeFleetAppGroup
+                                                                          .getRequestCall
+                                                                          .uniqueId(
+                                                                        containerGetRequestResponse
+                                                                            .jsonBody,
+                                                                      )!,
+                                                                      driverImage: UptimeFleetAppGroup
+                                                                          .getRequestCall
+                                                                          .driverImage(
+                                                                            containerGetRequestResponse.jsonBody,
+                                                                          )
+                                                                          .toString(),
+                                                                    ),
+                                                                  ),
+                                                                );
+                                                              } else {
+                                                                return Container(
+                                                                  width: 100.0,
+                                                                  height: double
+                                                                      .infinity,
+                                                                  decoration:
+                                                                      BoxDecoration(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryBackground,
+                                                                  ),
+                                                                  child:
+                                                                      wrapWithModel(
+                                                                    model: _model
+                                                                        .confirmCancellationModel,
+                                                                    updateCallback: () =>
+                                                                        setState(
+                                                                            () {}),
+                                                                    child:
+                                                                        ConfirmCancellationWidget(
+                                                                      request: containerRequestRecord
+                                                                          .reference
+                                                                          .id,
+                                                                      driver:
+                                                                          false,
+                                                                    ),
+                                                                  ),
+                                                                );
+                                                              }
+                                                            },
                                                           ),
-                                                          driverName:
-                                                              UptimeFleetAppGroup
-                                                                  .getRequestCall
-                                                                  .driverFullName(
-                                                            containerGetRequestResponse
-                                                                .jsonBody,
-                                                          ),
-                                                          driverPhoneNumber:
-                                                              UptimeFleetAppGroup
-                                                                  .getRequestCall
-                                                                  .driverPhoneNumber(
-                                                            containerGetRequestResponse
-                                                                .jsonBody,
-                                                          ),
-                                                          serviceId:
-                                                              UptimeFleetAppGroup
-                                                                  .getRequestCall
-                                                                  .serviceId(
-                                                            containerGetRequestResponse
-                                                                .jsonBody,
-                                                          ),
-                                                          timestamp:
-                                                              dateTimeFormat(
-                                                            'd/M h:mm a',
-                                                            functions.converUnixTimestamp(
-                                                                UptimeFleetAppGroup
-                                                                    .getRequestCall
-                                                                    .timestamp(
-                                                              containerGetRequestResponse
-                                                                  .jsonBody,
-                                                            )!),
-                                                            locale: FFLocalizations
-                                                                    .of(context)
-                                                                .languageCode,
-                                                          ),
-                                                          eventType:
-                                                              UptimeFleetAppGroup
-                                                                  .getRequestCall
-                                                                  .fault(
-                                                            containerGetRequestResponse
-                                                                .jsonBody,
-                                                          ),
-                                                          pickUp:
-                                                              UptimeFleetAppGroup
-                                                                  .getRequestCall
-                                                                  .location(
-                                                            containerGetRequestResponse
-                                                                .jsonBody,
-                                                          ),
-                                                          dropOff:
-                                                              UptimeFleetAppGroup
-                                                                  .getRequestCall
-                                                                  .dropOffLocation(
-                                                                    containerGetRequestResponse
-                                                                        .jsonBody,
-                                                                  )
-                                                                  .toString(),
-                                                          vehicleLicenseNumber:
-                                                              UptimeFleetAppGroup
-                                                                  .getRequestCall
-                                                                  .vehicleRegNo(
-                                                            containerGetRequestResponse
-                                                                .jsonBody,
-                                                          ),
-                                                          vehicleInformation:
-                                                              UptimeFleetAppGroup
-                                                                  .getRequestCall
-                                                                  .vehicleColor(
-                                                            containerGetRequestResponse
-                                                                .jsonBody,
-                                                          ),
-                                                          vehicleVinNumber:
-                                                              UptimeFleetAppGroup
-                                                                  .getRequestCall
-                                                                  .vehicleVinNumber(
-                                                                    containerGetRequestResponse
-                                                                        .jsonBody,
-                                                                  )
-                                                                  .toString(),
-                                                          locationLat: functions
-                                                              .convertStringToDouble(
-                                                                  UptimeFleetAppGroup
-                                                                      .getRequestCall
-                                                                      .lat(
-                                                            containerGetRequestResponse
-                                                                .jsonBody,
-                                                          ))!,
-                                                          locationLng: functions
-                                                              .convertStringToDouble(
-                                                                  UptimeFleetAppGroup
-                                                                      .getRequestCall
-                                                                      .lng(
-                                                            containerGetRequestResponse
-                                                                .jsonBody,
-                                                          ))!,
-                                                          firebaseId: functions
-                                                              .convertStringToRequestDocRef(
-                                                                  UptimeFleetAppGroup
-                                                                      .getRequestCall
-                                                                      .firebaseId(
-                                                            containerGetRequestResponse
-                                                                .jsonBody,
-                                                          ))!,
-                                                          status:
-                                                              UptimeFleetAppGroup
-                                                                  .getRequestCall
-                                                                  .status(
-                                                            containerGetRequestResponse
-                                                                .jsonBody,
-                                                          )!,
-                                                          driverTechMessageId:
-                                                              UptimeFleetAppGroup
-                                                                  .getRequestCall
-                                                                  .driverTechnicianMessageThreadId(
-                                                            containerGetRequestResponse
-                                                                .jsonBody,
-                                                          )!,
-                                                          bubbleId:
-                                                              UptimeFleetAppGroup
-                                                                  .getRequestCall
-                                                                  .uniqueId(
-                                                            containerGetRequestResponse
-                                                                .jsonBody,
-                                                          )!,
-                                                          driverImage:
-                                                              UptimeFleetAppGroup
-                                                                  .getRequestCall
-                                                                  .driverImage(
-                                                                    containerGetRequestResponse
-                                                                        .jsonBody,
-                                                                  )
-                                                                  .toString(),
-                                                        ),
-                                                      ),
+                                                        );
+                                                      },
                                                     ),
                                                   );
                                                 },

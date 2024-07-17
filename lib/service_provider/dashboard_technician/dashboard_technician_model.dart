@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/instant_timer.dart';
 import '/pages/chat/empty_state_simple/empty_state_simple_widget.dart';
 import '/service_provider/bottom_bar/bottom_bar_widget.dart';
+import '/service_provider/driver/confirm_cancellation/confirm_cancellation_widget.dart';
 import 'dashboard_technician_widget.dart' show DashboardTechnicianWidget;
 import 'package:flutter/material.dart';
 
@@ -28,6 +29,8 @@ class DashboardTechnicianModel
   late EmptyStateSimpleModel emptyStateSimpleModel;
   // Model for serviceSummaryWidget component.
   late ServiceSummaryWidgetModel serviceSummaryWidgetModel;
+  // Model for confirmCancellation component.
+  late ConfirmCancellationModel confirmCancellationModel;
   // Model for bottom_bar component.
   late BottomBarModel bottomBarModel;
 
@@ -37,6 +40,8 @@ class DashboardTechnicianModel
     emptyStateSimpleModel = createModel(context, () => EmptyStateSimpleModel());
     serviceSummaryWidgetModel =
         createModel(context, () => ServiceSummaryWidgetModel());
+    confirmCancellationModel =
+        createModel(context, () => ConfirmCancellationModel());
     bottomBarModel = createModel(context, () => BottomBarModel());
   }
 
@@ -48,6 +53,7 @@ class DashboardTechnicianModel
     userDetailsModel.dispose();
     emptyStateSimpleModel.dispose();
     serviceSummaryWidgetModel.dispose();
+    confirmCancellationModel.dispose();
     bottomBarModel.dispose();
   }
 }

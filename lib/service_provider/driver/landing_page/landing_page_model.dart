@@ -1,5 +1,6 @@
 import '/flutter_flow/flutter_flow_google_map.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/service_provider/driver/confirm_cancellation/confirm_cancellation_widget.dart';
 import '/service_provider/driver/service_updates_component/service_updates_component_widget.dart';
 import 'landing_page_widget.dart' show LandingPageWidget;
 import 'package:flutter/material.dart';
@@ -29,6 +30,8 @@ class LandingPageModel extends FlutterFlowModel<LandingPageWidget> {
   // State field(s) for GoogleMap widget.
   LatLng? googleMapsCenter;
   final googleMapsController = Completer<GoogleMapController>();
+  // Model for confirmCancellation component.
+  late ConfirmCancellationModel confirmCancellationModel;
   // State field(s) for GoogleMapone widget.
   LatLng? googleMaponesCenter2;
   final googleMaponesController2 = Completer<GoogleMapController>();
@@ -39,6 +42,8 @@ class LandingPageModel extends FlutterFlowModel<LandingPageWidget> {
 
   @override
   void initState(BuildContext context) {
+    confirmCancellationModel =
+        createModel(context, () => ConfirmCancellationModel());
     serviceUpdatesComponentModel =
         createModel(context, () => ServiceUpdatesComponentModel());
   }
@@ -46,6 +51,7 @@ class LandingPageModel extends FlutterFlowModel<LandingPageWidget> {
   @override
   void dispose() {
     unfocusNode.dispose();
+    confirmCancellationModel.dispose();
     serviceUpdatesComponentModel.dispose();
   }
 }

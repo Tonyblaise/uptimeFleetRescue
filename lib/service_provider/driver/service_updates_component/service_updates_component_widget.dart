@@ -889,7 +889,7 @@ class _ServiceUpdatesComponentWidgetState
                                                               'enrouteToTowDestination') {
                                                             return 'Tech is enroute to drop off';
                                                           } else {
-                                                            return 'sf';
+                                                            return 'Tech has arrived';
                                                           }
                                                         }(),
                                                         style: FlutterFlowTheme
@@ -1237,6 +1237,98 @@ class _ServiceUpdatesComponentWidgetState
                                                   ),
                                             ),
                                           ),
+                                        ),
+                                      ),
+                                      AuthUserStreamWidget(
+                                        builder: (context) =>
+                                            FutureBuilder<ChatsRecord>(
+                                          future: ChatsRecord.getDocumentOnce(
+                                              currentUserDocument!
+                                                  .driverSupportMessageThreadIdFirebase!),
+                                          builder: (context, snapshot) {
+                                            // Customize what your widget looks like when it's loading.
+                                            if (!snapshot.hasData) {
+                                              return Center(
+                                                child: SizedBox(
+                                                  width: 50.0,
+                                                  height: 50.0,
+                                                  child:
+                                                      CircularProgressIndicator(
+                                                    valueColor:
+                                                        AlwaysStoppedAnimation<
+                                                            Color>(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primary,
+                                                    ),
+                                                  ),
+                                                ),
+                                              );
+                                            }
+
+                                            final container2ChatsRecord =
+                                                snapshot.data!;
+
+                                            return InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                context.pushNamed(
+                                                  'chat_2_Details_1',
+                                                  queryParameters: {
+                                                    'chatRef': serializeParam(
+                                                      container2ChatsRecord,
+                                                      ParamType.Document,
+                                                    ),
+                                                    'driver': serializeParam(
+                                                      true,
+                                                      ParamType.bool,
+                                                    ),
+                                                  }.withoutNulls,
+                                                  extra: <String, dynamic>{
+                                                    'chatRef':
+                                                        container2ChatsRecord,
+                                                  },
+                                                );
+                                              },
+                                              child: Container(
+                                                width: 160.0,
+                                                height: 56.0,
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          18.0),
+                                                  border: Border.all(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondary,
+                                                  ),
+                                                ),
+                                                child: Align(
+                                                  alignment:
+                                                      const AlignmentDirectional(
+                                                          0.0, 0.0),
+                                                  child: Text(
+                                                    'Contact Support',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              'Yantramanav',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondary,
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ),
+                                            );
+                                          },
                                         ),
                                       ),
                                     ].divide(const SizedBox(width: 15.0)),

@@ -84,7 +84,7 @@ class _Chat2Details1WidgetState extends State<Chat2Details1Widget> {
             ),
             onPressed: () async {
               if (widget.driver == true) {
-                context.pushNamed('dashboardDriver');
+                context.pushNamed('landing_page');
               } else {
                 context.pushNamed('dashboardTechnician');
               }

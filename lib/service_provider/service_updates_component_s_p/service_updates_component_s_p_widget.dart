@@ -1698,7 +1698,7 @@ class _ServiceUpdatesComponentSPWidgetState
                                           child: Padding(
                                             padding:
                                                 const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 45.0),
+                                                    0.0, 0.0, 0.0, 60.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:

@@ -96,7 +96,7 @@ class _RequestCancelledWidgetState extends State<RequestCancelledWidget> {
                 borderRadius: BorderRadius.circular(0.0),
                 child: SvgPicture.asset(
                   'assets/images/group_alert.svg',
-                  width: 56.0,
+                  width: 70.0,
                   height: 56.0,
                   fit: BoxFit.fitHeight,
                 ),
