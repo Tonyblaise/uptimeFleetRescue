@@ -467,16 +467,43 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                                                                                                         letterSpacing: 0.0,
                                                                                                                       ),
                                                                                                                 ),
-                                                                                                                Text(
-                                                                                                                  containerRequestRecord.duration,
-                                                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                                        fontFamily: 'Yantramanav',
-                                                                                                                        color: const Color(0xFF64748B),
-                                                                                                                        fontSize: 12.0,
-                                                                                                                        letterSpacing: 0.0,
-                                                                                                                        fontWeight: FontWeight.bold,
-                                                                                                                      ),
-                                                                                                                ),
+                                                                                                                if (containerUsersRecord.technicianLastUpdatedLocation != null)
+                                                                                                                  FutureBuilder<ApiCallResponse>(
+                                                                                                                    future: MapboxCall.call(
+                                                                                                                      from: '${functions.getLng(containerUsersRecord.technicianLastUpdatedLocation!).toString()},${functions.getLat(containerUsersRecord.technicianLastUpdatedLocation!).toString()}',
+                                                                                                                      to: '${functions.getLng(containerRequestRecord.location!).toString()},${functions.getLat(containerRequestRecord.location!).toString()}',
+                                                                                                                    ),
+                                                                                                                    builder: (context, snapshot) {
+                                                                                                                      // Customize what your widget looks like when it's loading.
+                                                                                                                      if (!snapshot.hasData) {
+                                                                                                                        return Center(
+                                                                                                                          child: SizedBox(
+                                                                                                                            width: 50.0,
+                                                                                                                            height: 50.0,
+                                                                                                                            child: CircularProgressIndicator(
+                                                                                                                              valueColor: AlwaysStoppedAnimation<Color>(
+                                                                                                                                FlutterFlowTheme.of(context).primary,
+                                                                                                                              ),
+                                                                                                                            ),
+                                                                                                                          ),
+                                                                                                                        );
+                                                                                                                      }
+                                                                                                                      final textMapboxResponse = snapshot.data!;
+
+                                                                                                                      return Text(
+                                                                                                                        functions.relativeTime(MapboxCall.durationSeconds(
+                                                                                                                          textMapboxResponse.jsonBody,
+                                                                                                                        ))!,
+                                                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                                              fontFamily: 'Yantramanav',
+                                                                                                                              color: const Color(0xFF64748B),
+                                                                                                                              fontSize: 12.0,
+                                                                                                                              letterSpacing: 0.0,
+                                                                                                                              fontWeight: FontWeight.bold,
+                                                                                                                            ),
+                                                                                                                      );
+                                                                                                                    },
+                                                                                                                  ),
                                                                                                               ],
                                                                                                             ),
                                                                                                           ),
