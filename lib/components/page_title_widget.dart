@@ -1,6 +1,8 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'page_title_model.dart';
 export 'page_title_model.dart';
 
@@ -9,8 +11,8 @@ class PageTitleWidget extends StatefulWidget {
     super.key,
     String? title1,
     String? title2,
-  })  : title1 = title1 ?? 'What service do you',
-        title2 = title2 ?? 'need';
+  })  : this.title1 = title1 ?? 'What service do you',
+        this.title2 = title2 ?? 'need';
 
   final String title1;
   final String title2;
@@ -46,7 +48,7 @@ class _PageTitleWidgetState extends State<PageTitleWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: const AlignmentDirectional(0.0, 0.0),
+      alignment: AlignmentDirectional(0.0, 0.0),
       child: Container(
         width: double.infinity,
         height: 100.0,
@@ -56,11 +58,11 @@ class _PageTitleWidgetState extends State<PageTitleWidget> {
               FlutterFlowTheme.of(context).secondary,
               FlutterFlowTheme.of(context).tertiary
             ],
-            stops: const [0.0, 1.0],
-            begin: const AlignmentDirectional(0.0, -1.0),
-            end: const AlignmentDirectional(0, 1.0),
+            stops: [0.0, 1.0],
+            begin: AlignmentDirectional(0.0, -1.0),
+            end: AlignmentDirectional(0, 1.0),
           ),
-          borderRadius: const BorderRadius.only(
+          borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(36.0),
             bottomRight: Radius.circular(36.0),
             topLeft: Radius.circular(0.0),
@@ -72,7 +74,7 @@ class _PageTitleWidgetState extends State<PageTitleWidget> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              widget.title1,
+              widget!.title1,
               style: FlutterFlowTheme.of(context).bodyMedium.override(
                     fontFamily: 'Yantramanav',
                     color: Colors.black,
@@ -82,7 +84,7 @@ class _PageTitleWidgetState extends State<PageTitleWidget> {
                   ),
             ),
             Text(
-              widget.title2,
+              widget!.title2,
               style: FlutterFlowTheme.of(context).bodyMedium.override(
                     fontFamily: 'Yantramanav',
                     color: Colors.black,

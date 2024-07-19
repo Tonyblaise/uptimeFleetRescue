@@ -3,7 +3,11 @@ import '/backend/backend.dart';
 import '/chat/chat_thread_component_1/chat_thread_component1_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'driver_chat_model.dart';
 export 'driver_chat_model.dart';
 
@@ -11,7 +15,7 @@ class DriverChatWidget extends StatefulWidget {
   const DriverChatWidget({
     super.key,
     int? state,
-  }) : state = state ?? 2;
+  }) : this.state = state ?? 2;
 
   final int state;
 
@@ -52,14 +56,14 @@ class _DriverChatWidgetState extends State<DriverChatWidget> {
           backgroundColor: Colors.white,
           automaticallyImplyLeading: false,
           title: Container(
-            decoration: const BoxDecoration(),
+            decoration: BoxDecoration(),
             child: Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
               child: Text(
                 'Messages',
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Yantramanav',
-                      color: const Color(0xFF1E293B),
+                      color: Color(0xFF1E293B),
                       fontSize: 30.0,
                       letterSpacing: 0.0,
                       fontWeight: FontWeight.bold,
@@ -67,7 +71,7 @@ class _DriverChatWidgetState extends State<DriverChatWidget> {
               ),
             ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: false,
           elevation: 1.0,
         ),
@@ -76,19 +80,19 @@ class _DriverChatWidgetState extends State<DriverChatWidget> {
           child: Container(
             width: double.infinity,
             height: double.infinity,
-            decoration: const BoxDecoration(),
+            decoration: BoxDecoration(),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
                 Container(
-                  decoration: const BoxDecoration(),
+                  decoration: BoxDecoration(),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Container(
                         width: double.infinity,
                         height: 48.0,
-                        decoration: const BoxDecoration(
+                        decoration: BoxDecoration(
                           color: Color(0xFFE2E8F0),
                         ),
                         child: Row(
@@ -110,14 +114,14 @@ class _DriverChatWidgetState extends State<DriverChatWidget> {
                                   decoration: BoxDecoration(
                                     color: valueOrDefault<Color>(
                                       _model.pageState == 2
-                                          ? const Color(0xFFE2E8F0)
+                                          ? Color(0xFFE2E8F0)
                                           : FlutterFlowTheme.of(context)
                                               .secondaryBackground,
                                       FlutterFlowTheme.of(context)
                                           .secondaryBackground,
                                     ),
                                   ),
-                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                  alignment: AlignmentDirectional(0.0, 0.0),
                                   child: Text(
                                     'Manager',
                                     style: FlutterFlowTheme.of(context)
@@ -158,13 +162,13 @@ class _DriverChatWidgetState extends State<DriverChatWidget> {
                                   decoration: BoxDecoration(
                                     color: valueOrDefault<Color>(
                                       _model.pageState == 3
-                                          ? const Color(0xFFE2E8F0)
+                                          ? Color(0xFFE2E8F0)
                                           : FlutterFlowTheme.of(context)
                                               .secondaryBackground,
                                       FlutterFlowTheme.of(context)
                                           .secondaryBackground,
                                     ),
-                                    boxShadow: const [
+                                    boxShadow: [
                                       BoxShadow(
                                         blurRadius: 1.0,
                                         color: Color(0x28000000),
@@ -176,7 +180,7 @@ class _DriverChatWidgetState extends State<DriverChatWidget> {
                                       )
                                     ],
                                   ),
-                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                  alignment: AlignmentDirectional(0.0, 0.0),
                                   child: Text(
                                     'Support',
                                     style: FlutterFlowTheme.of(context)
@@ -213,11 +217,11 @@ class _DriverChatWidgetState extends State<DriverChatWidget> {
                               FlutterFlowTheme.of(context).secondary,
                               FlutterFlowTheme.of(context).tertiary
                             ],
-                            stops: const [0.0, 1.0],
-                            begin: const AlignmentDirectional(0.0, -1.0),
-                            end: const AlignmentDirectional(0, 1.0),
+                            stops: [0.0, 1.0],
+                            begin: AlignmentDirectional(0.0, -1.0),
+                            end: AlignmentDirectional(0, 1.0),
                           ),
-                          borderRadius: const BorderRadius.only(
+                          borderRadius: BorderRadius.only(
                             bottomLeft: Radius.circular(36.0),
                             bottomRight: Radius.circular(36.0),
                             topLeft: Radius.circular(0.0),
@@ -225,7 +229,7 @@ class _DriverChatWidgetState extends State<DriverChatWidget> {
                           ),
                         ),
                         child: Align(
-                          alignment: const AlignmentDirectional(0.0, 0.0),
+                          alignment: AlignmentDirectional(0.0, 0.0),
                           child: RichText(
                             textScaler: MediaQuery.of(context).textScaler,
                             text: TextSpan(
@@ -242,7 +246,7 @@ class _DriverChatWidgetState extends State<DriverChatWidget> {
                                         fontWeight: FontWeight.w300,
                                       ),
                                 ),
-                                const TextSpan(
+                                TextSpan(
                                   text: '\n',
                                   style: TextStyle(),
                                 ),
@@ -256,7 +260,7 @@ class _DriverChatWidgetState extends State<DriverChatWidget> {
                                       return 'your tech';
                                     }
                                   }(),
-                                  style: const TextStyle(),
+                                  style: TextStyle(),
                                 )
                               ],
                               style: FlutterFlowTheme.of(context)
@@ -299,7 +303,7 @@ class _DriverChatWidgetState extends State<DriverChatWidget> {
                         final containermanagerChatsRecord = snapshot.data!;
 
                         return Container(
-                          decoration: const BoxDecoration(),
+                          decoration: BoxDecoration(),
                           child: StreamBuilder<ChatsRecord>(
                             stream: ChatsRecord.getDocument(currentUserDocument!
                                 .driverSupportMessageThreadIdFirebase!),
@@ -324,7 +328,7 @@ class _DriverChatWidgetState extends State<DriverChatWidget> {
 
                               return Container(
                                 height: 200.0,
-                                decoration: const BoxDecoration(),
+                                decoration: BoxDecoration(),
                                 child: wrapWithModel(
                                   model: _model.chatThreadComponent1Model,
                                   updateCallback: () => setState(() {}),
@@ -343,7 +347,7 @@ class _DriverChatWidgetState extends State<DriverChatWidget> {
                     ),
                   ),
                 ),
-              ].divide(const SizedBox(height: 16.0)),
+              ].divide(SizedBox(height: 16.0)),
             ),
           ),
         ),

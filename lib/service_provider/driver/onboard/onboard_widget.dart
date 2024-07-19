@@ -7,6 +7,9 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:provider/provider.dart';
 import 'onboard_model.dart';
 export 'onboard_model.dart';
 
@@ -36,17 +39,17 @@ class _OnboardWidgetState extends State<OnboardWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      if (widget.fleetManagerId != null && widget.fleetManagerId != '') {
+      if (widget!.fleetManagerId != null && widget!.fleetManagerId != '') {
         _model.signUpType = 'fleet';
         setState(() {});
-      } else if (widget.serviceProviderId != null &&
-          widget.serviceProviderId != '') {
+      } else if (widget!.serviceProviderId != null &&
+          widget!.serviceProviderId != '') {
         _model.signUpType = 'technician';
         setState(() {});
-      } else if ((widget.fleetManagerId == null ||
-              widget.fleetManagerId == '') &&
-          (widget.serviceProviderId == null ||
-              widget.serviceProviderId == '')) {
+      } else if ((widget!.fleetManagerId == null ||
+              widget!.fleetManagerId == '') &&
+          (widget!.serviceProviderId == null ||
+              widget!.serviceProviderId == '')) {
         context.pushNamed('login');
       }
     });
@@ -101,7 +104,7 @@ class _OnboardWidgetState extends State<OnboardWidget> {
                 Container(
                   width: MediaQuery.sizeOf(context).width * 0.9,
                   height: 84.0,
-                  decoration: const BoxDecoration(),
+                  decoration: BoxDecoration(),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -116,7 +119,7 @@ class _OnboardWidgetState extends State<OnboardWidget> {
                       ),
                       Expanded(
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 4.0, 0.0, 4.0),
                           child: TextFormField(
                             controller: _model.fullnameTextController,
@@ -133,7 +136,7 @@ class _OnboardWidgetState extends State<OnboardWidget> {
                                     fontWeight: FontWeight.normal,
                                   ),
                               enabledBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Color(0xFFCBD5E1),
                                   width: 1.0,
                                 ),
@@ -162,7 +165,7 @@ class _OnboardWidgetState extends State<OnboardWidget> {
                               ),
                               filled: true,
                               fillColor: Colors.white,
-                              contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                              contentPadding: EdgeInsetsDirectional.fromSTEB(
                                   8.0, 0.0, 8.0, 0.0),
                             ),
                             style: FlutterFlowTheme.of(context)
@@ -183,7 +186,7 @@ class _OnboardWidgetState extends State<OnboardWidget> {
                 Container(
                   width: MediaQuery.sizeOf(context).width * 0.9,
                   height: 84.0,
-                  decoration: const BoxDecoration(),
+                  decoration: BoxDecoration(),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -205,7 +208,7 @@ class _OnboardWidgetState extends State<OnboardWidget> {
                             borderRadius: BorderRadius.circular(18.0),
                           ),
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 8.0, 0.0, 0.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -215,7 +218,7 @@ class _OnboardWidgetState extends State<OnboardWidget> {
                                       FormFieldController<String>(
                                     _model.dropDownValue ??= '+1',
                                   ),
-                                  options: const ['+1', '+254'],
+                                  options: ['+1', '+254'],
                                   onChanged: (val) => setState(
                                       () => _model.dropDownValue = val),
                                   width: 62.0,
@@ -237,7 +240,7 @@ class _OnboardWidgetState extends State<OnboardWidget> {
                                   borderColor: Colors.transparent,
                                   borderWidth: 0.0,
                                   borderRadius: 8.0,
-                                  margin: const EdgeInsetsDirectional.fromSTEB(
+                                  margin: EdgeInsetsDirectional.fromSTEB(
                                       4.0, 4.0, 0.0, 4.0),
                                   hidesUnderline: true,
                                   isOverButton: true,
@@ -247,7 +250,7 @@ class _OnboardWidgetState extends State<OnboardWidget> {
                                 Expanded(
                                   flex: 1,
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 4.0, 0.0, 4.0),
                                     child: TextFormField(
                                       controller: _model.textController2,
@@ -268,7 +271,7 @@ class _OnboardWidgetState extends State<OnboardWidget> {
                                         errorBorder: InputBorder.none,
                                         focusedErrorBorder: InputBorder.none,
                                         contentPadding:
-                                            const EdgeInsetsDirectional.fromSTEB(
+                                            EdgeInsetsDirectional.fromSTEB(
                                                 8.0, 0.0, 8.0, 0.0),
                                       ),
                                       style: FlutterFlowTheme.of(context)
@@ -285,7 +288,7 @@ class _OnboardWidgetState extends State<OnboardWidget> {
                                     ),
                                   ),
                                 ),
-                              ].divide(const SizedBox(width: 5.0)),
+                              ].divide(SizedBox(width: 5.0)),
                             ),
                           ),
                         ),
@@ -307,10 +310,11 @@ class _OnboardWidgetState extends State<OnboardWidget> {
                           'none') {
                         final phoneNumberVal =
                             '${_model.dropDownValue}${_model.textController2.text}';
-                        if (phoneNumberVal.isEmpty ||
+                        if (phoneNumberVal == null ||
+                            phoneNumberVal.isEmpty ||
                             !phoneNumberVal.startsWith('+')) {
                           ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
+                            SnackBar(
                               content: Text(
                                   'Phone Number is required and has to start with +.'),
                             ),
@@ -330,7 +334,7 @@ class _OnboardWidgetState extends State<OnboardWidget> {
                                   ParamType.String,
                                 ),
                                 'fleetManagerId': serializeParam(
-                                  widget.fleetManagerId,
+                                  widget!.fleetManagerId,
                                   ParamType.String,
                                 ),
                                 'signUpType': serializeParam(
@@ -338,7 +342,7 @@ class _OnboardWidgetState extends State<OnboardWidget> {
                                   ParamType.String,
                                 ),
                                 'serviceProviderId': serializeParam(
-                                  widget.serviceProviderId,
+                                  widget!.serviceProviderId,
                                   ParamType.String,
                                 ),
                                 'fullName': serializeParam(
@@ -364,7 +368,7 @@ class _OnboardWidgetState extends State<OnboardWidget> {
                                 fontSize: 14.0,
                               ),
                             ),
-                            duration: const Duration(milliseconds: 4000),
+                            duration: Duration(milliseconds: 4000),
                             backgroundColor:
                                 FlutterFlowTheme.of(context).secondary,
                           ),
@@ -380,7 +384,7 @@ class _OnboardWidgetState extends State<OnboardWidget> {
                               fontSize: 14.0,
                             ),
                           ),
-                          duration: const Duration(milliseconds: 4000),
+                          duration: Duration(milliseconds: 4000),
                           backgroundColor: FlutterFlowTheme.of(context).error,
                         ),
                       );
@@ -393,9 +397,9 @@ class _OnboardWidgetState extends State<OnboardWidget> {
                     width: MediaQuery.sizeOf(context).width * 0.9,
                     height: 56.0,
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                     iconPadding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                     color: FlutterFlowTheme.of(context).tertiary,
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                           fontFamily: 'Yantramanav',
@@ -403,14 +407,14 @@ class _OnboardWidgetState extends State<OnboardWidget> {
                           letterSpacing: 0.0,
                         ),
                     elevation: 3.0,
-                    borderSide: const BorderSide(
+                    borderSide: BorderSide(
                       color: Colors.transparent,
                       width: 1.0,
                     ),
                     borderRadius: BorderRadius.circular(18.0),
                   ),
                 ),
-              ].divide(const SizedBox(height: 10.0)),
+              ].divide(SizedBox(height: 10.0)),
             ),
           ),
         ),

@@ -6,7 +6,10 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'new_request_sp_model.dart';
 export 'new_request_sp_model.dart';
@@ -39,7 +42,7 @@ class _NewRequestSpWidgetState extends State<NewRequestSpWidget> {
     super.initState();
     _model = createModel(context, () => NewRequestSpModel());
 
-    getCurrentUserLocation(defaultLocation: const LatLng(0.0, 0.0), cached: true)
+    getCurrentUserLocation(defaultLocation: LatLng(0.0, 0.0), cached: true)
         .then((loc) => setState(() => currentUserLocationValue = loc));
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -71,11 +74,11 @@ class _NewRequestSpWidgetState extends State<NewRequestSpWidget> {
     }
 
     return Align(
-      alignment: const AlignmentDirectional(0.0, 0.0),
+      alignment: AlignmentDirectional(0.0, 0.0),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+        padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
         child: StreamBuilder<RequestRecord>(
-          stream: RequestRecord.getDocument(widget.request!),
+          stream: RequestRecord.getDocument(widget!.request!),
           builder: (context, snapshot) {
             // Customize what your widget looks like when it's loading.
             if (!snapshot.hasData) {
@@ -96,7 +99,7 @@ class _NewRequestSpWidgetState extends State<NewRequestSpWidget> {
 
             return Container(
               width: MediaQuery.sizeOf(context).width * 0.9,
-              decoration: const BoxDecoration(),
+              decoration: BoxDecoration(),
               child: SingleChildScrollView(
                 primary: false,
                 child: Column(
@@ -104,10 +107,10 @@ class _NewRequestSpWidgetState extends State<NewRequestSpWidget> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Align(
-                      alignment: const AlignmentDirectional(0.0, 0.0),
+                      alignment: AlignmentDirectional(0.0, 0.0),
                       child: Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
                         child: AuthUserStreamWidget(
                           builder: (context) => FutureBuilder<ApiCallResponse>(
                             future: UptimeFleetAppGroup.getRequestCall.call(
@@ -143,7 +146,7 @@ class _NewRequestSpWidgetState extends State<NewRequestSpWidget> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Align(
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                      alignment: AlignmentDirectional(0.0, 0.0),
                                       child: Container(
                                         width: double.infinity,
                                         height: 80.0,
@@ -155,17 +158,17 @@ class _NewRequestSpWidgetState extends State<NewRequestSpWidget> {
                                               FlutterFlowTheme.of(context)
                                                   .tertiary
                                             ],
-                                            stops: const [0.0, 1.0],
+                                            stops: [0.0, 1.0],
                                             begin:
-                                                const AlignmentDirectional(0.0, -1.0),
-                                            end: const AlignmentDirectional(0, 1.0),
+                                                AlignmentDirectional(0.0, -1.0),
+                                            end: AlignmentDirectional(0, 1.0),
                                           ),
                                           borderRadius:
                                               BorderRadius.circular(24.0),
                                         ),
                                         child: Align(
                                           alignment:
-                                              const AlignmentDirectional(0.0, 0.0),
+                                              AlignmentDirectional(0.0, 0.0),
                                           child: Text(
                                             'Accept request',
                                             textAlign: TextAlign.center,
@@ -190,14 +193,14 @@ class _NewRequestSpWidgetState extends State<NewRequestSpWidget> {
                                             BorderRadius.circular(18.0),
                                       ),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             20.0, 10.0, 20.0, 10.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.min,
                                           children: [
                                             Container(
                                               width: double.infinity,
-                                              decoration: const BoxDecoration(),
+                                              decoration: BoxDecoration(),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
                                                 crossAxisAlignment:
@@ -232,7 +235,7 @@ class _NewRequestSpWidgetState extends State<NewRequestSpWidget> {
                                                           fontFamily:
                                                               'Yantramanav',
                                                           color:
-                                                              const Color(0xFF64748B),
+                                                              Color(0xFF64748B),
                                                           fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                         ),
@@ -242,7 +245,7 @@ class _NewRequestSpWidgetState extends State<NewRequestSpWidget> {
                                             ),
                                             Container(
                                               width: double.infinity,
-                                              decoration: const BoxDecoration(),
+                                              decoration: BoxDecoration(),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
                                                 crossAxisAlignment:
@@ -296,7 +299,7 @@ class _NewRequestSpWidgetState extends State<NewRequestSpWidget> {
                                                           .override(
                                                             fontFamily:
                                                                 'Yantramanav',
-                                                            color: const Color(
+                                                            color: Color(
                                                                 0xFF64748B),
                                                             fontSize: 16.0,
                                                             letterSpacing: 0.0,
@@ -308,7 +311,7 @@ class _NewRequestSpWidgetState extends State<NewRequestSpWidget> {
                                             ),
                                             Container(
                                               width: double.infinity,
-                                              decoration: const BoxDecoration(),
+                                              decoration: BoxDecoration(),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.min,
                                                 crossAxisAlignment:
@@ -343,7 +346,7 @@ class _NewRequestSpWidgetState extends State<NewRequestSpWidget> {
                                                           fontFamily:
                                                               'Yantramanav',
                                                           color:
-                                                              const Color(0xFF64748B),
+                                                              Color(0xFF64748B),
                                                           fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                         ),
@@ -353,7 +356,7 @@ class _NewRequestSpWidgetState extends State<NewRequestSpWidget> {
                                             ),
                                             Container(
                                               width: double.infinity,
-                                              decoration: const BoxDecoration(),
+                                              decoration: BoxDecoration(),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.min,
                                                 crossAxisAlignment:
@@ -388,7 +391,7 @@ class _NewRequestSpWidgetState extends State<NewRequestSpWidget> {
                                                           fontFamily:
                                                               'Yantramanav',
                                                           color:
-                                                              const Color(0xFF64748B),
+                                                              Color(0xFF64748B),
                                                           fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                         ),
@@ -398,7 +401,7 @@ class _NewRequestSpWidgetState extends State<NewRequestSpWidget> {
                                             ),
                                             Container(
                                               width: double.infinity,
-                                              decoration: const BoxDecoration(),
+                                              decoration: BoxDecoration(),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
                                                 crossAxisAlignment:
@@ -442,7 +445,7 @@ class _NewRequestSpWidgetState extends State<NewRequestSpWidget> {
                                                           fontFamily:
                                                               'Yantramanav',
                                                           color:
-                                                              const Color(0xFF64748B),
+                                                              Color(0xFF64748B),
                                                           fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                         ),
@@ -452,7 +455,7 @@ class _NewRequestSpWidgetState extends State<NewRequestSpWidget> {
                                             ),
                                             Container(
                                               width: double.infinity,
-                                              decoration: const BoxDecoration(),
+                                              decoration: BoxDecoration(),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
                                                 crossAxisAlignment:
@@ -487,7 +490,7 @@ class _NewRequestSpWidgetState extends State<NewRequestSpWidget> {
                                                           fontFamily:
                                                               'Yantramanav',
                                                           color:
-                                                              const Color(0xFF64748B),
+                                                              Color(0xFF64748B),
                                                           fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                         ),
@@ -497,7 +500,7 @@ class _NewRequestSpWidgetState extends State<NewRequestSpWidget> {
                                             ),
                                             Container(
                                               width: double.infinity,
-                                              decoration: const BoxDecoration(),
+                                              decoration: BoxDecoration(),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
                                                 crossAxisAlignment:
@@ -532,7 +535,7 @@ class _NewRequestSpWidgetState extends State<NewRequestSpWidget> {
                                                           fontFamily:
                                                               'Yantramanav',
                                                           color:
-                                                              const Color(0xFF64748B),
+                                                              Color(0xFF64748B),
                                                           fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                         ),
@@ -540,21 +543,21 @@ class _NewRequestSpWidgetState extends State<NewRequestSpWidget> {
                                                 ],
                                               ),
                                             ),
-                                          ].divide(const SizedBox(height: 10.0)),
+                                          ].divide(SizedBox(height: 10.0)),
                                         ),
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           20.0, 0.0, 20.0, 0.0),
                                       child: Container(
                                         width:
                                             MediaQuery.sizeOf(context).width *
                                                 0.9,
-                                        decoration: const BoxDecoration(),
+                                        decoration: BoxDecoration(),
                                         child: Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 20.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
@@ -568,11 +571,11 @@ class _NewRequestSpWidgetState extends State<NewRequestSpWidget> {
                                                   options: FFButtonOptions(
                                                     height: 56.0,
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(24.0, 0.0,
                                                                 24.0, 0.0),
                                                     iconPadding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     color: FlutterFlowTheme.of(
@@ -590,7 +593,7 @@ class _NewRequestSpWidgetState extends State<NewRequestSpWidget> {
                                                           letterSpacing: 0.0,
                                                         ),
                                                     elevation: 3.0,
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Colors.transparent,
                                                       width: 1.0,
                                                     ),
@@ -601,9 +604,9 @@ class _NewRequestSpWidgetState extends State<NewRequestSpWidget> {
                                                 ),
                                               ),
                                               Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     0.0, 0.0),
-                                                child: SizedBox(
+                                                child: Container(
                                                   width: 170.0,
                                                   height: 56.0,
                                                   child: custom_widgets
@@ -679,7 +682,7 @@ class _NewRequestSpWidgetState extends State<NewRequestSpWidget> {
                                                         ),
                                                       });
 
-                                                      await widget.request!.update(
+                                                      await widget!.request!.update(
                                                           createRequestRecordData(
                                                         technician:
                                                             currentUserReference,
@@ -711,12 +714,12 @@ class _NewRequestSpWidgetState extends State<NewRequestSpWidget> {
                                                   ),
                                                 ),
                                               ),
-                                            ].divide(const SizedBox(width: 15.0)),
+                                            ].divide(SizedBox(width: 15.0)),
                                           ),
                                         ),
                                       ),
                                     ),
-                                  ].divide(const SizedBox(height: 10.0)),
+                                  ].divide(SizedBox(height: 10.0)),
                                 ),
                               );
                             },
@@ -724,7 +727,7 @@ class _NewRequestSpWidgetState extends State<NewRequestSpWidget> {
                         ),
                       ),
                     ),
-                  ].divide(const SizedBox(height: 16.0)),
+                  ].divide(SizedBox(height: 16.0)),
                 ),
               ),
             );

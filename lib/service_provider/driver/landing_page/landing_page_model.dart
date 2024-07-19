@@ -1,9 +1,23 @@
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_google_map.dart';
+import '/flutter_flow/flutter_flow_place_picker.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/place.dart';
 import '/service_provider/driver/confirm_cancellation/confirm_cancellation_widget.dart';
 import '/service_provider/driver/service_updates_component/service_updates_component_widget.dart';
+import 'dart:io';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'landing_page_widget.dart' show LandingPageWidget;
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class LandingPageModel extends FlutterFlowModel<LandingPageWidget> {
   ///  Local state fields for this page.
@@ -36,7 +50,7 @@ class LandingPageModel extends FlutterFlowModel<LandingPageWidget> {
   LatLng? googleMaponesCenter2;
   final googleMaponesController2 = Completer<GoogleMapController>();
   // State field(s) for PlacePicker widget.
-  FFPlace placePickerValue = const FFPlace();
+  FFPlace placePickerValue = FFPlace();
   // Model for serviceUpdatesComponent component.
   late ServiceUpdatesComponentModel serviceUpdatesComponentModel;
 

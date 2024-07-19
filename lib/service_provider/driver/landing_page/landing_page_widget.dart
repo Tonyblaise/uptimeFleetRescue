@@ -6,11 +6,17 @@ import '/flutter_flow/flutter_flow_place_picker.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/place.dart';
 import '/service_provider/driver/confirm_cancellation/confirm_cancellation_widget.dart';
 import '/service_provider/driver/service_updates_component/service_updates_component_widget.dart';
+import 'dart:io';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'landing_page_model.dart';
 export 'landing_page_model.dart';
 
@@ -35,10 +41,11 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       currentUserLocationValue =
-          await getCurrentUserLocation(defaultLocation: const LatLng(0.0, 0.0));
+          await getCurrentUserLocation(defaultLocation: LatLng(0.0, 0.0));
       _model.latLng = currentUserLocationValue;
       setState(() {});
-      if (valueOrDefault(currentUserDocument?.technicianId, '') != '') {
+      if (valueOrDefault(currentUserDocument?.technicianId, '') != null &&
+          valueOrDefault(currentUserDocument?.technicianId, '') != '') {
         context.pushNamed('dashboardTechnician');
       }
     });
@@ -64,18 +71,18 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
         resizeToAvoidBottomInset: false,
         backgroundColor: Colors.white,
         body: Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+          padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
           child: Container(
             width: double.infinity,
             height: double.infinity,
-            decoration: const BoxDecoration(),
+            decoration: BoxDecoration(),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Expanded(
                   child: Container(
-                    decoration: const BoxDecoration(),
+                    decoration: BoxDecoration(),
                     child: Builder(
                       builder: (context) {
                         if (currentUserDocument?.activeRequest == null) {
@@ -117,11 +124,11 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                 child: Stack(
                                   children: [
                                     Align(
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                      alignment: AlignmentDirectional(0.0, 0.0),
                                       child: Container(
                                         width: double.infinity,
                                         height: double.infinity,
-                                        decoration: const BoxDecoration(),
+                                        decoration: BoxDecoration(),
                                         child: FlutterFlowGoogleMap(
                                           controller:
                                               _model.googleMaponesController1,
@@ -204,7 +211,7 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                             if (containerRequestRecord.status !=
                                                 'cancelled') {
                                               return Container(
-                                                decoration: const BoxDecoration(),
+                                                decoration: BoxDecoration(),
                                                 child:
                                                     StreamBuilder<UsersRecord>(
                                                   stream:
@@ -269,7 +276,7 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                                                 children: [
                                                                   Align(
                                                                     alignment:
-                                                                        const AlignmentDirectional(
+                                                                        AlignmentDirectional(
                                                                             0.0,
                                                                             0.0),
                                                                     child:
@@ -279,17 +286,17 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                                                       height: double
                                                                           .infinity,
                                                                       decoration:
-                                                                          const BoxDecoration(),
+                                                                          BoxDecoration(),
                                                                       child:
                                                                           Padding(
-                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
                                                                             0.0,
                                                                             0.0,
                                                                             0.0,
                                                                             145.0),
                                                                         child: Builder(builder:
                                                                             (context) {
-                                                                          final googleMapMarker =
+                                                                          final _googleMapMarker =
                                                                               containerUsersRecord.technicianLastUpdatedLocation;
                                                                           return FlutterFlowGoogleMap(
                                                                             controller:
@@ -299,10 +306,10 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                                                             initialLocation: _model.googleMapsCenter ??=
                                                                                 containerUsersRecord.technicianLastUpdatedLocation!,
                                                                             markers: [
-                                                                              if (googleMapMarker != null)
+                                                                              if (_googleMapMarker != null)
                                                                                 FlutterFlowMarker(
-                                                                                  googleMapMarker.serialize(),
-                                                                                  googleMapMarker,
+                                                                                  _googleMapMarker.serialize(),
+                                                                                  _googleMapMarker,
                                                                                 ),
                                                                             ],
                                                                             markerColor:
@@ -336,13 +343,13 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                                                   ),
                                                                   Align(
                                                                     alignment:
-                                                                        const AlignmentDirectional(
+                                                                        AlignmentDirectional(
                                                                             0.0,
                                                                             0.9),
                                                                     child:
                                                                         Container(
                                                                       decoration:
-                                                                          const BoxDecoration(),
+                                                                          BoxDecoration(),
                                                                       child:
                                                                           Column(
                                                                         mainAxisSize:
@@ -351,10 +358,10 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                                                             [
                                                                           Align(
                                                                             alignment:
-                                                                                const AlignmentDirectional(0.0, 0.0),
+                                                                                AlignmentDirectional(0.0, 0.0),
                                                                             child:
                                                                                 Padding(
-                                                                              padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                                                                               child: Container(
                                                                                 width: MediaQuery.sizeOf(context).width * 0.9,
                                                                                 height: 80.0,
@@ -369,15 +376,15 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                                                                   ),
                                                                                 ),
                                                                                 child: Align(
-                                                                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                                                                  alignment: AlignmentDirectional(0.0, 0.0),
                                                                                   child: Padding(
-                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
+                                                                                    padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
                                                                                     child: Container(
                                                                                       width: MediaQuery.sizeOf(context).width * 0.9,
                                                                                       constraints: BoxConstraints(
                                                                                         maxWidth: MediaQuery.sizeOf(context).width * 0.9,
                                                                                       ),
-                                                                                      decoration: const BoxDecoration(),
+                                                                                      decoration: BoxDecoration(),
                                                                                       child: Row(
                                                                                         mainAxisSize: MainAxisSize.min,
                                                                                         children: [
@@ -399,7 +406,7 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                                                                             child: Container(
                                                                                               width: 100.0,
                                                                                               height: 100.0,
-                                                                                              decoration: const BoxDecoration(),
+                                                                                              decoration: BoxDecoration(),
                                                                                               child: Column(
                                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -407,9 +414,9 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                                                                                 children: [
                                                                                                   Container(
                                                                                                     width: double.infinity,
-                                                                                                    decoration: const BoxDecoration(),
+                                                                                                    decoration: BoxDecoration(),
                                                                                                     child: Container(
-                                                                                                      decoration: const BoxDecoration(),
+                                                                                                      decoration: BoxDecoration(),
                                                                                                       child: Row(
                                                                                                         mainAxisSize: MainAxisSize.max,
                                                                                                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -421,7 +428,7 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                                                                                               color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                             ),
                                                                                                             child: Container(
-                                                                                                              decoration: const BoxDecoration(),
+                                                                                                              decoration: BoxDecoration(),
                                                                                                               child: Column(
                                                                                                                 mainAxisSize: MainAxisSize.min,
                                                                                                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -431,7 +438,7 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                                                                                                     containerUsersRecord.companyName,
                                                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                           fontFamily: 'Yantramanav',
-                                                                                                                          color: const Color(0xFF0F172A),
+                                                                                                                          color: Color(0xFF0F172A),
                                                                                                                           fontSize: 16.0,
                                                                                                                           letterSpacing: 0.0,
                                                                                                                           fontWeight: FontWeight.bold,
@@ -441,7 +448,7 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                                                                                                     functions.convertToUppercase(containerUsersRecord.fullName)!,
                                                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                           fontFamily: 'Yantramanav',
-                                                                                                                          color: const Color(0xFF64748B),
+                                                                                                                          color: Color(0xFF64748B),
                                                                                                                           fontSize: 12.0,
                                                                                                                           letterSpacing: 0.0,
                                                                                                                         ),
@@ -452,7 +459,7 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                                                                                           ),
                                                                                                           Container(
                                                                                                             width: 100.0,
-                                                                                                            decoration: const BoxDecoration(),
+                                                                                                            decoration: BoxDecoration(),
                                                                                                             child: Column(
                                                                                                               mainAxisSize: MainAxisSize.min,
                                                                                                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -462,7 +469,7 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                                                                                                   'ETA:',
                                                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                         fontFamily: 'Yantramanav',
-                                                                                                                        color: const Color(0xFF64748B),
+                                                                                                                        color: Color(0xFF64748B),
                                                                                                                         fontSize: 12.0,
                                                                                                                         letterSpacing: 0.0,
                                                                                                                       ),
@@ -496,7 +503,7 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                                                                                                         ))!,
                                                                                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                               fontFamily: 'Yantramanav',
-                                                                                                                              color: const Color(0xFF64748B),
+                                                                                                                              color: Color(0xFF64748B),
                                                                                                                               fontSize: 12.0,
                                                                                                                               letterSpacing: 0.0,
                                                                                                                               fontWeight: FontWeight.bold,
@@ -511,11 +518,11 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                                                                                       ),
                                                                                                     ),
                                                                                                   ),
-                                                                                                ].divide(const SizedBox(height: 6.0)),
+                                                                                                ].divide(SizedBox(height: 6.0)),
                                                                                               ),
                                                                                             ),
                                                                                           ),
-                                                                                        ].divide(const SizedBox(width: 16.0)),
+                                                                                        ].divide(SizedBox(width: 16.0)),
                                                                                       ),
                                                                                     ),
                                                                                   ),
@@ -524,7 +531,7 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                                                             ),
                                                                           ),
                                                                           Padding(
-                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                            padding: EdgeInsetsDirectional.fromSTEB(
                                                                                 20.0,
                                                                                 0.0,
                                                                                 20.0,
@@ -573,8 +580,8 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                                                                   options: FFButtonOptions(
                                                                                     width: double.infinity,
                                                                                     height: 50.0,
-                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                                                                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                                                                    padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                                                                                    iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                                                                                     color: FlutterFlowTheme.of(context).tertiary,
                                                                                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                           fontFamily: 'Yantramanav',
@@ -582,7 +589,7 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                                                                           letterSpacing: 0.0,
                                                                                         ),
                                                                                     elevation: 3.0,
-                                                                                    borderSide: const BorderSide(
+                                                                                    borderSide: BorderSide(
                                                                                       color: Colors.transparent,
                                                                                       width: 1.0,
                                                                                     ),
@@ -592,7 +599,7 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                                                               },
                                                                             ),
                                                                           ),
-                                                                        ].divide(const SizedBox(height: 16.0)),
+                                                                        ].divide(SizedBox(height: 16.0)),
                                                                       ),
                                                                     ),
                                                                   ),
@@ -615,11 +622,11 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                                           context)
                                                       .secondaryBackground,
                                                 ),
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     0.0, 0.0),
                                                 child: Align(
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           0.0, 0.0),
                                                   child: wrapWithModel(
                                                     model: _model
@@ -681,12 +688,12 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                                         .secondaryBackground,
                                               ),
                                               child: Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     0.0, 0.0),
                                                 child: Container(
                                                   width: double.infinity,
                                                   height: double.infinity,
-                                                  decoration: const BoxDecoration(),
+                                                  decoration: BoxDecoration(),
                                                   child: FlutterFlowGoogleMap(
                                                     controller: _model
                                                         .googleMaponesController2,
@@ -745,16 +752,16 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                   ),
                 ),
                 Container(
-                  decoration: const BoxDecoration(),
+                  decoration: BoxDecoration(),
                   child: Builder(
                     builder: (context) {
                       if (currentUserDocument?.activeRequest == null) {
                         return Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 16.0, 0.0, 0.0),
                           child: Container(
                             width: MediaQuery.sizeOf(context).width * 0.9,
-                            decoration: const BoxDecoration(),
+                            decoration: BoxDecoration(),
                             child: FutureBuilder<ApiCallResponse>(
                               future: GetAddressFromLatLngCall.call(
                                 lat: functions.getLat(_model.latLng!),
@@ -785,7 +792,7 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                   children: [
                                     Container(
                                       width: double.infinity,
-                                      decoration: const BoxDecoration(),
+                                      decoration: BoxDecoration(),
                                       child: Visibility(
                                         visible: _model.addressView,
                                         child: RichText(
@@ -811,7 +818,7 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                                           FontWeight.bold,
                                                     ),
                                               ),
-                                              const TextSpan(
+                                              TextSpan(
                                                 text: '\n',
                                                 style: TextStyle(
                                                   fontSize: 20.0,
@@ -826,7 +833,7 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                                   )?.first,
                                                   '.',
                                                 ),
-                                                style: const TextStyle(),
+                                                style: TextStyle(),
                                               )
                                             ],
                                             style: FlutterFlowTheme.of(context)
@@ -853,7 +860,7 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                               _model.placePickerValue = place);
                                         },
                                         defaultText: 'Type in your location',
-                                        icon: const Icon(
+                                        icon: Icon(
                                           Icons.place,
                                           color: Color(0xFF0F172A),
                                           size: 16.0,
@@ -861,17 +868,17 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                         buttonOptions: FFButtonOptions(
                                           width: double.infinity,
                                           height: 50.0,
-                                          color: const Color(0xFFF1F5F9),
+                                          color: Color(0xFFF1F5F9),
                                           textStyle:
                                               FlutterFlowTheme.of(context)
                                                   .titleSmall
                                                   .override(
                                                     fontFamily: 'Yantramanav',
-                                                    color: const Color(0xFF0F172A),
+                                                    color: Color(0xFF0F172A),
                                                     letterSpacing: 0.0,
                                                   ),
                                           elevation: 2.0,
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Colors.transparent,
                                             width: 1.0,
                                           ),
@@ -891,7 +898,7 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                       },
                                       child: Container(
                                         width: double.infinity,
-                                        decoration: const BoxDecoration(),
+                                        decoration: BoxDecoration(),
                                         child: Text(
                                           _model.addressView
                                               ? 'Change location'
@@ -955,17 +962,17 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                               FlutterFlowTheme.of(context)
                                                   .tertiary
                                             ],
-                                            stops: const [0.0, 1.0],
+                                            stops: [0.0, 1.0],
                                             begin:
-                                                const AlignmentDirectional(0.0, -1.0),
-                                            end: const AlignmentDirectional(0, 1.0),
+                                                AlignmentDirectional(0.0, -1.0),
+                                            end: AlignmentDirectional(0, 1.0),
                                           ),
                                           borderRadius:
                                               BorderRadius.circular(18.0),
                                         ),
                                         child: Align(
                                           alignment:
-                                              const AlignmentDirectional(0.0, 0.0),
+                                              AlignmentDirectional(0.0, 0.0),
                                           child: Text(
                                             _model.addressView
                                                 ? 'Confirm Location'
@@ -980,7 +987,7 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                         ),
                                       ),
                                     ),
-                                  ].divide(const SizedBox(height: 10.0)),
+                                  ].divide(SizedBox(height: 10.0)),
                                 );
                               },
                             ),
@@ -1018,7 +1025,7 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                 final containerRequestRecord = snapshot.data!;
 
                                 return Container(
-                                  decoration: const BoxDecoration(),
+                                  decoration: BoxDecoration(),
                                   child: wrapWithModel(
                                     model: _model.serviceUpdatesComponentModel,
                                     updateCallback: () => setState(() {}),
@@ -1038,7 +1045,7 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                     },
                   ),
                 ),
-              ].divide(const SizedBox(height: 5.0)),
+              ].divide(SizedBox(height: 5.0)),
             ),
           ),
         ),

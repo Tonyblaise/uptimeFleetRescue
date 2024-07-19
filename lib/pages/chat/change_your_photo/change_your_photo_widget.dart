@@ -1,7 +1,10 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'change_your_photo_model.dart';
 export 'change_your_photo_model.dart';
 
@@ -40,14 +43,14 @@ class _ChangeYourPhotoWidgetState extends State<ChangeYourPhotoWidget> {
           : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: const Color(0xFFB8B8BE),
+        backgroundColor: Color(0xFFB8B8BE),
         body: SafeArea(
           top: true,
           child: Container(
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               shape: BoxShape.rectangle,
             ),
-            alignment: const AlignmentDirectional(0.0, 0.0),
+            alignment: AlignmentDirectional(0.0, 0.0),
             child: Container(
               width: MediaQuery.sizeOf(context).width * 0.9,
               decoration: BoxDecoration(
@@ -55,14 +58,14 @@ class _ChangeYourPhotoWidgetState extends State<ChangeYourPhotoWidget> {
                 borderRadius: BorderRadius.circular(24.0),
               ),
               child: Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Align(
-                      alignment: const AlignmentDirectional(0.0, 0.0),
+                      alignment: AlignmentDirectional(0.0, 0.0),
                       child: Container(
                         height: 80.0,
                         decoration: BoxDecoration(
@@ -71,14 +74,14 @@ class _ChangeYourPhotoWidgetState extends State<ChangeYourPhotoWidget> {
                               FlutterFlowTheme.of(context).secondary,
                               FlutterFlowTheme.of(context).tertiary
                             ],
-                            stops: const [0.0, 1.0],
-                            begin: const AlignmentDirectional(0.0, -1.0),
-                            end: const AlignmentDirectional(0, 1.0),
+                            stops: [0.0, 1.0],
+                            begin: AlignmentDirectional(0.0, -1.0),
+                            end: AlignmentDirectional(0, 1.0),
                           ),
                           borderRadius: BorderRadius.circular(24.0),
                         ),
                         child: Align(
-                          alignment: const AlignmentDirectional(0.0, 0.0),
+                          alignment: AlignmentDirectional(0.0, 0.0),
                           child: Text(
                             'Change your photo',
                             textAlign: TextAlign.center,
@@ -96,9 +99,9 @@ class _ChangeYourPhotoWidgetState extends State<ChangeYourPhotoWidget> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                       child: Container(
-                        decoration: const BoxDecoration(),
+                        decoration: BoxDecoration(),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -119,11 +122,11 @@ class _ChangeYourPhotoWidgetState extends State<ChangeYourPhotoWidget> {
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(18.0),
                                 border: Border.all(
-                                  color: const Color(0xFFCBD5E1),
+                                  color: Color(0xFFCBD5E1),
                                 ),
                               ),
                               child: Padding(
-                                padding: const EdgeInsets.all(24.0),
+                                padding: EdgeInsets.all(24.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.min,
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -138,13 +141,13 @@ class _ChangeYourPhotoWidgetState extends State<ChangeYourPhotoWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           20.0, 0.0, 20.0, 0.0),
                                       child: Container(
                                         width:
                                             MediaQuery.sizeOf(context).width *
                                                 0.9,
-                                        decoration: const BoxDecoration(),
+                                        decoration: BoxDecoration(),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
                                           crossAxisAlignment:
@@ -158,7 +161,7 @@ class _ChangeYourPhotoWidgetState extends State<ChangeYourPhotoWidget> {
                                                   .labelLarge
                                                   .override(
                                                     fontFamily: 'Yantramanav',
-                                                    color: const Color(0xFF64748B),
+                                                    color: Color(0xFF64748B),
                                                     fontSize: 20.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.bold,
@@ -172,37 +175,37 @@ class _ChangeYourPhotoWidgetState extends State<ChangeYourPhotoWidget> {
                                                   .labelLarge
                                                   .override(
                                                     fontFamily: 'Yantramanav',
-                                                    color: const Color(0xFF64748B),
+                                                    color: Color(0xFF64748B),
                                                     fontSize: 16.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.w300,
                                                   ),
                                             ),
-                                          ].divide(const SizedBox(height: 8.0)),
+                                          ].divide(SizedBox(height: 8.0)),
                                         ),
                                       ),
                                     ),
-                                  ].divide(const SizedBox(height: 32.0)),
+                                  ].divide(SizedBox(height: 32.0)),
                                 ),
                               ),
                             ),
-                          ].divide(const SizedBox(height: 10.0)),
+                          ].divide(SizedBox(height: 10.0)),
                         ),
                       ),
                     ),
                     Align(
-                      alignment: const AlignmentDirectional(0.0, 0.0),
+                      alignment: AlignmentDirectional(0.0, 0.0),
                       child: Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             20.0, 0.0, 20.0, 0.0),
                         child: Container(
-                          decoration: const BoxDecoration(),
+                          decoration: BoxDecoration(),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Expanded(
                                 child: Align(
-                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                  alignment: AlignmentDirectional(0.0, 0.0),
                                   child: Container(
                                     height: 56.0,
                                     decoration: BoxDecoration(
@@ -212,14 +215,14 @@ class _ChangeYourPhotoWidgetState extends State<ChangeYourPhotoWidget> {
                                               .secondary,
                                           FlutterFlowTheme.of(context).tertiary
                                         ],
-                                        stops: const [0.0, 1.0],
-                                        begin: const AlignmentDirectional(0.0, -1.0),
-                                        end: const AlignmentDirectional(0, 1.0),
+                                        stops: [0.0, 1.0],
+                                        begin: AlignmentDirectional(0.0, -1.0),
+                                        end: AlignmentDirectional(0, 1.0),
                                       ),
                                       borderRadius: BorderRadius.circular(18.0),
                                     ),
                                     child: Align(
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                      alignment: AlignmentDirectional(0.0, 0.0),
                                       child: Text(
                                         'Take a photo',
                                         style: FlutterFlowTheme.of(context)
@@ -247,26 +250,26 @@ class _ChangeYourPhotoWidgetState extends State<ChangeYourPhotoWidget> {
                                     ),
                                   ),
                                   child: Align(
-                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                    alignment: AlignmentDirectional(0.0, 0.0),
                                     child: Text(
                                       'Cancel',
                                       style: FlutterFlowTheme.of(context)
                                           .titleSmall
                                           .override(
                                             fontFamily: 'Yantramanav',
-                                            color: const Color(0xFF0CCA4A),
+                                            color: Color(0xFF0CCA4A),
                                             letterSpacing: 0.0,
                                           ),
                                     ),
                                   ),
                                 ),
                               ),
-                            ].divide(const SizedBox(width: 12.0)),
+                            ].divide(SizedBox(width: 12.0)),
                           ),
                         ),
                       ),
                     ),
-                  ].divide(const SizedBox(height: 20.0)),
+                  ].divide(SizedBox(height: 20.0)),
                 ),
               ),
             ),

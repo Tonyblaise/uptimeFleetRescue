@@ -3,8 +3,12 @@ import '/chat/service_summary_widget/service_summary_widget_widget.dart';
 import '/components/user_details_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'start_request_model.dart';
 export 'start_request_model.dart';
 
@@ -53,14 +57,14 @@ class _StartRequestWidgetState extends State<StartRequestWidget> {
           backgroundColor: Colors.white,
           automaticallyImplyLeading: false,
           title: Container(
-            decoration: const BoxDecoration(),
+            decoration: BoxDecoration(),
             child: Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
               child: Text(
                 'Dashboard',
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Yantramanav',
-                      color: const Color(0xFF1E293B),
+                      color: Color(0xFF1E293B),
                       fontSize: 30.0,
                       letterSpacing: 0.0,
                       fontWeight: FontWeight.bold,
@@ -68,7 +72,7 @@ class _StartRequestWidgetState extends State<StartRequestWidget> {
               ),
             ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: false,
           elevation: 1.0,
         ),
@@ -76,7 +80,7 @@ class _StartRequestWidgetState extends State<StartRequestWidget> {
           top: true,
           child: FutureBuilder<ApiCallResponse>(
             future: UptimeFleetAppGroup.getRequestCall.call(
-              request: widget.request,
+              request: widget!.request,
             ),
             builder: (context, snapshot) {
               // Customize what your widget looks like when it's loading.
@@ -98,15 +102,15 @@ class _StartRequestWidgetState extends State<StartRequestWidget> {
               return Container(
                 width: double.infinity,
                 height: double.infinity,
-                decoration: const BoxDecoration(),
+                decoration: BoxDecoration(),
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 25.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 25.0),
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Container(
-                          decoration: const BoxDecoration(),
+                          decoration: BoxDecoration(),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
@@ -118,15 +122,15 @@ class _StartRequestWidgetState extends State<StartRequestWidget> {
                                       .primaryBackground,
                                 ),
                                 child: Align(
-                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                  alignment: AlignmentDirectional(0.0, 0.0),
                                   child: Container(
                                     width:
                                         MediaQuery.sizeOf(context).width * 0.9,
-                                    decoration: const BoxDecoration(),
+                                    decoration: BoxDecoration(),
                                     child: wrapWithModel(
                                       model: _model.userDetailsModel,
                                       updateCallback: () => setState(() {}),
-                                      child: const UserDetailsWidget(),
+                                      child: UserDetailsWidget(),
                                     ),
                                   ),
                                 ),
@@ -140,11 +144,11 @@ class _StartRequestWidgetState extends State<StartRequestWidget> {
                                       FlutterFlowTheme.of(context).secondary,
                                       FlutterFlowTheme.of(context).tertiary
                                     ],
-                                    stops: const [0.0, 1.0],
-                                    begin: const AlignmentDirectional(0.0, -1.0),
-                                    end: const AlignmentDirectional(0, 1.0),
+                                    stops: [0.0, 1.0],
+                                    begin: AlignmentDirectional(0.0, -1.0),
+                                    end: AlignmentDirectional(0, 1.0),
                                   ),
-                                  borderRadius: const BorderRadius.only(
+                                  borderRadius: BorderRadius.only(
                                     bottomLeft: Radius.circular(36.0),
                                     bottomRight: Radius.circular(36.0),
                                     topLeft: Radius.circular(0.0),
@@ -152,7 +156,7 @@ class _StartRequestWidgetState extends State<StartRequestWidget> {
                                   ),
                                 ),
                                 child: Align(
-                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                  alignment: AlignmentDirectional(0.0, 0.0),
                                   child: RichText(
                                     textScaler:
                                         MediaQuery.of(context).textScaler,
@@ -170,7 +174,7 @@ class _StartRequestWidgetState extends State<StartRequestWidget> {
                                                 fontWeight: FontWeight.w300,
                                               ),
                                         ),
-                                        const TextSpan(
+                                        TextSpan(
                                           text: '\nsummary',
                                           style: TextStyle(
                                             color: Colors.black,
@@ -195,7 +199,7 @@ class _StartRequestWidgetState extends State<StartRequestWidget> {
                         ),
                         Container(
                           width: MediaQuery.sizeOf(context).width * 0.9,
-                          decoration: const BoxDecoration(),
+                          decoration: BoxDecoration(),
                           child: wrapWithModel(
                             model: _model.serviceSummaryWidgetModel,
                             updateCallback: () => setState(() {}),
@@ -347,7 +351,7 @@ class _StartRequestWidgetState extends State<StartRequestWidget> {
                             ),
                           ),
                         ),
-                      ].divide(const SizedBox(height: 16.0)),
+                      ].divide(SizedBox(height: 16.0)),
                     ),
                   ),
                 ),

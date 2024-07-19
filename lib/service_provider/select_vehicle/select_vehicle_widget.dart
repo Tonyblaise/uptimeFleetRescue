@@ -8,7 +8,10 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/pages/chat/empty_state_simple/empty_state_simple_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'select_vehicle_model.dart';
 export 'select_vehicle_model.dart';
 
@@ -46,10 +49,10 @@ class _SelectVehicleWidgetState extends State<SelectVehicleWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         shape: BoxShape.rectangle,
       ),
-      alignment: const AlignmentDirectional(0.0, 0.0),
+      alignment: AlignmentDirectional(0.0, 0.0),
       child: AuthUserStreamWidget(
         builder: (context) => FutureBuilder<ApiCallResponse>(
           future: UptimeFleetAppGroup.getTechnicianVehiclesCall.call(
@@ -83,7 +86,7 @@ class _SelectVehicleWidgetState extends State<SelectVehicleWidget> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Align(
-                    alignment: const AlignmentDirectional(0.0, 0.0),
+                    alignment: AlignmentDirectional(0.0, 0.0),
                     child: Container(
                       width: MediaQuery.sizeOf(context).width * 0.9,
                       height: 80.0,
@@ -93,14 +96,14 @@ class _SelectVehicleWidgetState extends State<SelectVehicleWidget> {
                             FlutterFlowTheme.of(context).secondary,
                             FlutterFlowTheme.of(context).tertiary
                           ],
-                          stops: const [0.0, 1.0],
-                          begin: const AlignmentDirectional(0.0, -1.0),
-                          end: const AlignmentDirectional(0, 1.0),
+                          stops: [0.0, 1.0],
+                          begin: AlignmentDirectional(0.0, -1.0),
+                          end: AlignmentDirectional(0, 1.0),
                         ),
                         borderRadius: BorderRadius.circular(24.0),
                       ),
                       child: Align(
-                        alignment: const AlignmentDirectional(0.0, 0.0),
+                        alignment: AlignmentDirectional(0.0, 0.0),
                         child: Text(
                           'Please select vehicle',
                           textAlign: TextAlign.center,
@@ -124,12 +127,12 @@ class _SelectVehicleWidgetState extends State<SelectVehicleWidget> {
                               )
                               ?.first)) {
                         return Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               20.0, 0.0, 20.0, 0.0),
                           child: Container(
                             width: MediaQuery.sizeOf(context).width * 0.9,
                             height: 84.0,
-                            decoration: const BoxDecoration(),
+                            decoration: BoxDecoration(),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -192,7 +195,7 @@ class _SelectVehicleWidgetState extends State<SelectVehicleWidget> {
                                       FlutterFlowTheme.of(context).alternate,
                                   borderWidth: 2.0,
                                   borderRadius: 8.0,
-                                  margin: const EdgeInsetsDirectional.fromSTEB(
+                                  margin: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 4.0, 10.0, 4.0),
                                   hidesUnderline: true,
                                   isOverButton: true,
@@ -231,13 +234,13 @@ class _SelectVehicleWidgetState extends State<SelectVehicleWidget> {
                     },
                   ),
                   Align(
-                    alignment: const AlignmentDirectional(0.0, 0.0),
+                    alignment: AlignmentDirectional(0.0, 0.0),
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 20.0),
+                          EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 20.0),
                       child: Container(
-                        decoration: const BoxDecoration(),
-                        alignment: const AlignmentDirectional(0.0, 0.0),
+                        decoration: BoxDecoration(),
+                        alignment: AlignmentDirectional(0.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -250,9 +253,9 @@ class _SelectVehicleWidgetState extends State<SelectVehicleWidget> {
                               options: FFButtonOptions(
                                 width: 120.0,
                                 height: 40.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     24.0, 0.0, 24.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context).primary,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -263,7 +266,7 @@ class _SelectVehicleWidgetState extends State<SelectVehicleWidget> {
                                       letterSpacing: 0.0,
                                     ),
                                 elevation: 3.0,
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
                                 ),
@@ -296,7 +299,7 @@ class _SelectVehicleWidgetState extends State<SelectVehicleWidget> {
                                               .primaryText,
                                         ),
                                       ),
-                                      duration: const Duration(milliseconds: 4000),
+                                      duration: Duration(milliseconds: 4000),
                                       backgroundColor:
                                           FlutterFlowTheme.of(context)
                                               .secondary,
@@ -313,8 +316,8 @@ class _SelectVehicleWidgetState extends State<SelectVehicleWidget> {
                                               .primaryText,
                                         ),
                                       ),
-                                      duration: const Duration(milliseconds: 4000),
-                                      backgroundColor: const Color(0xFFF50833),
+                                      duration: Duration(milliseconds: 4000),
+                                      backgroundColor: Color(0xFFF50833),
                                     ),
                                   );
                                 }
@@ -325,9 +328,9 @@ class _SelectVehicleWidgetState extends State<SelectVehicleWidget> {
                               options: FFButtonOptions(
                                 width: 120.0,
                                 height: 40.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     24.0, 0.0, 24.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context).tertiary,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -339,19 +342,19 @@ class _SelectVehicleWidgetState extends State<SelectVehicleWidget> {
                                       letterSpacing: 0.0,
                                     ),
                                 elevation: 3.0,
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(100.0),
                               ),
                             ),
-                          ].divide(const SizedBox(width: 10.0)),
+                          ].divide(SizedBox(width: 10.0)),
                         ),
                       ),
                     ),
                   ),
-                ].divide(const SizedBox(height: 32.0)),
+                ].divide(SizedBox(height: 32.0)),
               ),
             );
           },
