@@ -124,7 +124,7 @@ class _OnboardWidgetState extends State<OnboardWidget> {
                             autofocus: true,
                             obscureText: false,
                             decoration: InputDecoration(
-                              hintText: 'What is your name?',
+                              hintText: 'Enter your full names',
                               hintStyle: FlutterFlowTheme.of(context)
                                   .labelLarge
                                   .override(

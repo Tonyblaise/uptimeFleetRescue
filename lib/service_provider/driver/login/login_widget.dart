@@ -78,7 +78,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(
-                        'Log in to Your Account',
+                        'Enter your phone number',
                         textAlign: TextAlign.center,
                         style: FlutterFlowTheme.of(context).labelLarge.override(
                               fontFamily: 'Yantramanav',
