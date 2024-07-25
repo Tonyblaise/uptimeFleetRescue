@@ -4,8 +4,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'delete_account_model.dart';
 export 'delete_account_model.dart';
 
@@ -43,22 +41,22 @@ class _DeleteAccountWidgetState extends State<DeleteAccountWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: AlignmentDirectional(0.0, 1.0),
+      alignment: const AlignmentDirectional(0.0, 1.0),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 20.0),
+        padding: const EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 20.0),
         child: Container(
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(24.0),
           ),
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Align(
-                  alignment: AlignmentDirectional(0.0, 0.0),
+                  alignment: const AlignmentDirectional(0.0, 0.0),
                   child: Container(
                     width: double.infinity,
                     height: 80.0,
@@ -68,14 +66,14 @@ class _DeleteAccountWidgetState extends State<DeleteAccountWidget> {
                           FlutterFlowTheme.of(context).secondary,
                           FlutterFlowTheme.of(context).tertiary
                         ],
-                        stops: [0.0, 1.0],
-                        begin: AlignmentDirectional(0.0, -1.0),
-                        end: AlignmentDirectional(0, 1.0),
+                        stops: const [0.0, 1.0],
+                        begin: const AlignmentDirectional(0.0, -1.0),
+                        end: const AlignmentDirectional(0, 1.0),
                       ),
                       borderRadius: BorderRadius.circular(24.0),
                     ),
                     child: Align(
-                      alignment: AlignmentDirectional(0.0, 0.0),
+                      alignment: const AlignmentDirectional(0.0, 0.0),
                       child: Text(
                         'Delete your account',
                         textAlign: TextAlign.center,
@@ -103,17 +101,17 @@ class _DeleteAccountWidgetState extends State<DeleteAccountWidget> {
                   textAlign: TextAlign.center,
                   style: FlutterFlowTheme.of(context).labelLarge.override(
                         fontFamily: 'Yantramanav',
-                        color: Color(0xFF64748B),
+                        color: const Color(0xFF64748B),
                         fontSize: 20.0,
                         letterSpacing: 0.0,
                         fontWeight: FontWeight.bold,
                       ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                   child: Container(
                     width: MediaQuery.sizeOf(context).width * 0.9,
-                    decoration: BoxDecoration(),
+                    decoration: const BoxDecoration(),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -124,25 +122,25 @@ class _DeleteAccountWidgetState extends State<DeleteAccountWidget> {
                           style:
                               FlutterFlowTheme.of(context).labelLarge.override(
                                     fontFamily: 'Yantramanav',
-                                    color: Color(0xFF64748B),
+                                    color: const Color(0xFF64748B),
                                     fontSize: 16.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w300,
                                   ),
                         ),
-                      ].divide(SizedBox(height: 8.0)),
+                      ].divide(const SizedBox(height: 8.0)),
                     ),
                   ),
                 ),
                 Align(
-                  alignment: AlignmentDirectional(0.0, 0.0),
+                  alignment: const AlignmentDirectional(0.0, 0.0),
                   child: Container(
-                    decoration: BoxDecoration(),
+                    decoration: const BoxDecoration(),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               20.0, 0.0, 20.0, 0.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
@@ -168,14 +166,14 @@ class _DeleteAccountWidgetState extends State<DeleteAccountWidget> {
                                 ),
                               ),
                               child: Align(
-                                alignment: AlignmentDirectional(0.0, 0.0),
+                                alignment: const AlignmentDirectional(0.0, 0.0),
                                 child: Text(
                                   'Cancel',
                                   style: FlutterFlowTheme.of(context)
                                       .titleSmall
                                       .override(
                                         fontFamily: 'Yantramanav',
-                                        color: Color(0xFF0CCA4A),
+                                        color: const Color(0xFF0CCA4A),
                                         letterSpacing: 0.0,
                                       ),
                                 ),
@@ -184,9 +182,9 @@ class _DeleteAccountWidgetState extends State<DeleteAccountWidget> {
                           ),
                         ),
                         Align(
-                          alignment: AlignmentDirectional(0.0, 0.0),
+                          alignment: const AlignmentDirectional(0.0, 0.0),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 20.0, 0.0, 20.0, 0.0),
                             child: InkWell(
                               splashColor: Colors.transparent,
@@ -222,8 +220,8 @@ class _DeleteAccountWidgetState extends State<DeleteAccountWidget> {
                                           fontSize: 14.0,
                                         ),
                                       ),
-                                      duration: Duration(milliseconds: 4000),
-                                      backgroundColor: Color(0xFFF50833),
+                                      duration: const Duration(milliseconds: 4000),
+                                      backgroundColor: const Color(0xFFF50833),
                                     ),
                                   );
                                 }
@@ -242,7 +240,7 @@ class _DeleteAccountWidgetState extends State<DeleteAccountWidget> {
                                   borderRadius: BorderRadius.circular(18.0),
                                 ),
                                 child: Align(
-                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  alignment: const AlignmentDirectional(0.0, 0.0),
                                   child: Text(
                                     'Delete',
                                     style: FlutterFlowTheme.of(context)
@@ -258,11 +256,11 @@ class _DeleteAccountWidgetState extends State<DeleteAccountWidget> {
                             ),
                           ),
                         ),
-                      ].divide(SizedBox(height: 15.0)),
+                      ].divide(const SizedBox(height: 15.0)),
                     ),
                   ),
                 ),
-              ].divide(SizedBox(height: 32.0)),
+              ].divide(const SizedBox(height: 32.0)),
             ),
           ),
         ),

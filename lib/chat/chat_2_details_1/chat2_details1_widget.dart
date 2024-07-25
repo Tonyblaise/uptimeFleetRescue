@@ -4,13 +4,9 @@ import '/chat/chat_thread_component_1/chat_thread_component1_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:async';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'chat2_details1_model.dart';
 export 'chat2_details1_model.dart';
 
@@ -19,7 +15,7 @@ class Chat2Details1Widget extends StatefulWidget {
     super.key,
     required this.chatRef,
     bool? driver,
-  }) : this.driver = driver ?? true;
+  }) : driver = driver ?? true;
 
   final ChatsRecord? chatRef;
   final bool driver;
@@ -42,7 +38,7 @@ class _Chat2Details1WidgetState extends State<Chat2Details1Widget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       unawaited(
         () async {
-          await widget!.chatRef!.reference.update({
+          await widget.chatRef!.reference.update({
             ...mapToFirestore(
               {
                 'last_message_seen_by':
@@ -87,7 +83,7 @@ class _Chat2Details1WidgetState extends State<Chat2Details1Widget> {
               size: 30.0,
             ),
             onPressed: () async {
-              if (widget!.driver == true) {
+              if (widget.driver == true) {
                 context.pushNamed('landing_page');
               } else {
                 context.pushNamed('dashboardTechnician');
@@ -96,7 +92,7 @@ class _Chat2Details1WidgetState extends State<Chat2Details1Widget> {
           ),
           title: Text(
             valueOrDefault<String>(
-              widget!.driver == true
+              widget.driver == true
                   ? 'Chat with Technician'
                   : 'Chat with Driver',
               'Chat with driver',
@@ -108,7 +104,7 @@ class _Chat2Details1WidgetState extends State<Chat2Details1Widget> {
                   fontWeight: FontWeight.w600,
                 ),
           ),
-          actions: [],
+          actions: const [],
           centerTitle: false,
           elevation: 0.0,
         ),
@@ -119,7 +115,7 @@ class _Chat2Details1WidgetState extends State<Chat2Details1Widget> {
             updateCallback: () => setState(() {}),
             updateOnChange: true,
             child: ChatThreadComponent1Widget(
-              chatRef: widget!.chatRef,
+              chatRef: widget.chatRef,
               state: 1,
             ),
           ),

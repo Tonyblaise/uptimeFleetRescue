@@ -8,10 +8,7 @@ import '/service_provider/driver/cancel_request/cancel_request_widget.dart';
 import '/service_provider/service_updates_component_s_p/service_updates_component_s_p_widget.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'service_summary_widget_model.dart';
 export 'service_summary_widget_model.dart';
@@ -80,7 +77,7 @@ class _ServiceSummaryWidgetWidgetState
     super.initState();
     _model = createModel(context, () => ServiceSummaryWidgetModel());
 
-    getCurrentUserLocation(defaultLocation: LatLng(0.0, 0.0), cached: true)
+    getCurrentUserLocation(defaultLocation: const LatLng(0.0, 0.0), cached: true)
         .then((loc) => setState(() => currentUserLocationValue = loc));
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -112,17 +109,17 @@ class _ServiceSummaryWidgetWidgetState
     }
 
     return Container(
-      decoration: BoxDecoration(),
+      decoration: const BoxDecoration(),
       child: Builder(
         builder: (context) {
           if (currentUserDocument?.activeRequest == null) {
             return Align(
-              alignment: AlignmentDirectional(0.0, 0.0),
+              alignment: const AlignmentDirectional(0.0, 0.0),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                 child: StreamBuilder<RequestRecord>(
                   stream: RequestRecord.getDocument(functions
-                      .convertStringToRequestDocRef(widget!.firebaseId?.id)!),
+                      .convertStringToRequestDocRef(widget.firebaseId?.id)!),
                   builder: (context, snapshot) {
                     // Customize what your widget looks like when it's loading.
                     if (!snapshot.hasData) {
@@ -143,10 +140,10 @@ class _ServiceSummaryWidgetWidgetState
 
                     return Container(
                       width: MediaQuery.sizeOf(context).width * 0.9,
-                      decoration: BoxDecoration(),
+                      decoration: const BoxDecoration(),
                       child: Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 30.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 30.0),
                         child: SingleChildScrollView(
                           primary: false,
                           child: Column(
@@ -158,7 +155,7 @@ class _ServiceSummaryWidgetWidgetState
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(18.0),
                                   border: Border.all(
-                                    color: Color(0xFFCBD5E1),
+                                    color: const Color(0xFFCBD5E1),
                                   ),
                                 ),
                                 child: Column(
@@ -174,14 +171,14 @@ class _ServiceSummaryWidgetWidgetState
                                             BorderRadius.circular(18.0),
                                       ),
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             20.0, 10.0, 20.0, 10.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.min,
                                           children: [
                                             Container(
                                               width: double.infinity,
-                                              decoration: BoxDecoration(),
+                                              decoration: const BoxDecoration(),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.min,
                                                 crossAxisAlignment:
@@ -204,7 +201,7 @@ class _ServiceSummaryWidgetWidgetState
                                                   ),
                                                   Text(
                                                     valueOrDefault<String>(
-                                                      widget!.fleetCompanyName,
+                                                      widget.fleetCompanyName,
                                                       'N/A',
                                                     ),
                                                     style: FlutterFlowTheme.of(
@@ -214,7 +211,7 @@ class _ServiceSummaryWidgetWidgetState
                                                           fontFamily:
                                                               'Yantramanav',
                                                           color:
-                                                              Color(0xFF64748B),
+                                                              const Color(0xFF64748B),
                                                           fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                         ),
@@ -224,7 +221,7 @@ class _ServiceSummaryWidgetWidgetState
                                             ),
                                             Container(
                                               width: double.infinity,
-                                              decoration: BoxDecoration(),
+                                              decoration: const BoxDecoration(),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
                                                 crossAxisAlignment:
@@ -247,7 +244,7 @@ class _ServiceSummaryWidgetWidgetState
                                                   ),
                                                   Text(
                                                     valueOrDefault<String>(
-                                                      widget!.driverName,
+                                                      widget.driverName,
                                                       'N/A',
                                                     ),
                                                     style: FlutterFlowTheme.of(
@@ -257,7 +254,7 @@ class _ServiceSummaryWidgetWidgetState
                                                           fontFamily:
                                                               'Yantramanav',
                                                           color:
-                                                              Color(0xFF64748B),
+                                                              const Color(0xFF64748B),
                                                           fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                         ),
@@ -267,7 +264,7 @@ class _ServiceSummaryWidgetWidgetState
                                             ),
                                             Container(
                                               width: double.infinity,
-                                              decoration: BoxDecoration(),
+                                              decoration: const BoxDecoration(),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
                                                 crossAxisAlignment:
@@ -302,7 +299,7 @@ class _ServiceSummaryWidgetWidgetState
                                                         scheme: 'tel',
                                                         path: valueOrDefault<
                                                             String>(
-                                                          widget!
+                                                          widget
                                                               .driverPhoneNumber,
                                                           'N/A',
                                                         ),
@@ -310,7 +307,7 @@ class _ServiceSummaryWidgetWidgetState
                                                     },
                                                     child: Text(
                                                       valueOrDefault<String>(
-                                                        widget!
+                                                        widget
                                                             .driverPhoneNumber,
                                                         'N/A',
                                                       ),
@@ -320,7 +317,7 @@ class _ServiceSummaryWidgetWidgetState
                                                           .override(
                                                             fontFamily:
                                                                 'Yantramanav',
-                                                            color: Color(
+                                                            color: const Color(
                                                                 0xFF64748B),
                                                             fontSize: 16.0,
                                                             letterSpacing: 0.0,
@@ -330,18 +327,18 @@ class _ServiceSummaryWidgetWidgetState
                                                 ],
                                               ),
                                             ),
-                                          ].divide(SizedBox(height: 10.0)),
+                                          ].divide(const SizedBox(height: 10.0)),
                                         ),
                                       ),
                                     ),
-                                  ].divide(SizedBox(height: 5.0)),
+                                  ].divide(const SizedBox(height: 5.0)),
                                 ),
                               ),
                               Container(
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(18.0),
                                   border: Border.all(
-                                    color: Color(0xFFCBD5E1),
+                                    color: const Color(0xFFCBD5E1),
                                   ),
                                 ),
                                 child: Column(
@@ -357,14 +354,14 @@ class _ServiceSummaryWidgetWidgetState
                                             BorderRadius.circular(18.0),
                                       ),
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             20.0, 10.0, 20.0, 10.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.min,
                                           children: [
                                             Container(
                                               width: double.infinity,
-                                              decoration: BoxDecoration(),
+                                              decoration: const BoxDecoration(),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.min,
                                                 crossAxisAlignment:
@@ -387,7 +384,7 @@ class _ServiceSummaryWidgetWidgetState
                                                   ),
                                                   Text(
                                                     valueOrDefault<String>(
-                                                      widget!.serviceId,
+                                                      widget.serviceId,
                                                       'N/A',
                                                     ),
                                                     style: FlutterFlowTheme.of(
@@ -397,7 +394,7 @@ class _ServiceSummaryWidgetWidgetState
                                                           fontFamily:
                                                               'Yantramanav',
                                                           color:
-                                                              Color(0xFF64748B),
+                                                              const Color(0xFF64748B),
                                                           fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                         ),
@@ -407,7 +404,7 @@ class _ServiceSummaryWidgetWidgetState
                                             ),
                                             Container(
                                               width: double.infinity,
-                                              decoration: BoxDecoration(),
+                                              decoration: const BoxDecoration(),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
                                                 crossAxisAlignment:
@@ -430,7 +427,7 @@ class _ServiceSummaryWidgetWidgetState
                                                   ),
                                                   Text(
                                                     valueOrDefault<String>(
-                                                      widget!.timestamp,
+                                                      widget.timestamp,
                                                       'N/A',
                                                     ),
                                                     style: FlutterFlowTheme.of(
@@ -440,7 +437,7 @@ class _ServiceSummaryWidgetWidgetState
                                                           fontFamily:
                                                               'Yantramanav',
                                                           color:
-                                                              Color(0xFF64748B),
+                                                              const Color(0xFF64748B),
                                                           fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                         ),
@@ -450,7 +447,7 @@ class _ServiceSummaryWidgetWidgetState
                                             ),
                                             Container(
                                               width: double.infinity,
-                                              decoration: BoxDecoration(),
+                                              decoration: const BoxDecoration(),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
                                                 crossAxisAlignment:
@@ -473,7 +470,7 @@ class _ServiceSummaryWidgetWidgetState
                                                   ),
                                                   Text(
                                                     valueOrDefault<String>(
-                                                      widget!.eventType,
+                                                      widget.eventType,
                                                       'N/A',
                                                     ),
                                                     style: FlutterFlowTheme.of(
@@ -483,7 +480,7 @@ class _ServiceSummaryWidgetWidgetState
                                                           fontFamily:
                                                               'Yantramanav',
                                                           color:
-                                                              Color(0xFF64748B),
+                                                              const Color(0xFF64748B),
                                                           fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                         ),
@@ -493,7 +490,7 @@ class _ServiceSummaryWidgetWidgetState
                                             ),
                                             Container(
                                               width: double.infinity,
-                                              decoration: BoxDecoration(),
+                                              decoration: const BoxDecoration(),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
                                                 crossAxisAlignment:
@@ -516,7 +513,7 @@ class _ServiceSummaryWidgetWidgetState
                                                   ),
                                                   Text(
                                                     valueOrDefault<String>(
-                                                      widget!.pickUp,
+                                                      widget.pickUp,
                                                       'N/A',
                                                     ),
                                                     style: FlutterFlowTheme.of(
@@ -526,7 +523,7 @@ class _ServiceSummaryWidgetWidgetState
                                                           fontFamily:
                                                               'Yantramanav',
                                                           color:
-                                                              Color(0xFF64748B),
+                                                              const Color(0xFF64748B),
                                                           fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                         ),
@@ -534,10 +531,10 @@ class _ServiceSummaryWidgetWidgetState
                                                 ],
                                               ),
                                             ),
-                                            if (widget!.eventType == 'Tow')
+                                            if (widget.eventType == 'Tow')
                                               Container(
                                                 width: double.infinity,
-                                                decoration: BoxDecoration(),
+                                                decoration: const BoxDecoration(),
                                                 child: Column(
                                                   mainAxisSize:
                                                       MainAxisSize.max,
@@ -561,16 +558,16 @@ class _ServiceSummaryWidgetWidgetState
                                                     ),
                                                     Text(
                                                       functions.checkNull(
-                                                              widget!.dropOff)
+                                                              widget.dropOff)
                                                           ? 'N/A'
-                                                          : widget!.dropOff!,
+                                                          : widget.dropOff!,
                                                       style: FlutterFlowTheme
                                                               .of(context)
                                                           .bodyMedium
                                                           .override(
                                                             fontFamily:
                                                                 'Yantramanav',
-                                                            color: Color(
+                                                            color: const Color(
                                                                 0xFF64748B),
                                                             fontSize: 16.0,
                                                             letterSpacing: 0.0,
@@ -579,18 +576,18 @@ class _ServiceSummaryWidgetWidgetState
                                                   ],
                                                 ),
                                               ),
-                                          ].divide(SizedBox(height: 10.0)),
+                                          ].divide(const SizedBox(height: 10.0)),
                                         ),
                                       ),
                                     ),
-                                  ].divide(SizedBox(height: 5.0)),
+                                  ].divide(const SizedBox(height: 5.0)),
                                 ),
                               ),
                               Container(
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(18.0),
                                   border: Border.all(
-                                    color: Color(0xFFCBD5E1),
+                                    color: const Color(0xFFCBD5E1),
                                   ),
                                 ),
                                 child: Column(
@@ -606,14 +603,14 @@ class _ServiceSummaryWidgetWidgetState
                                             BorderRadius.circular(18.0),
                                       ),
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             20.0, 10.0, 20.0, 10.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.min,
                                           children: [
                                             Container(
                                               width: double.infinity,
-                                              decoration: BoxDecoration(),
+                                              decoration: const BoxDecoration(),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.min,
                                                 crossAxisAlignment:
@@ -636,7 +633,7 @@ class _ServiceSummaryWidgetWidgetState
                                                   ),
                                                   Text(
                                                     valueOrDefault<String>(
-                                                      widget!
+                                                      widget
                                                           .vehicleLicenseNumber,
                                                       'N/A',
                                                     ),
@@ -647,7 +644,7 @@ class _ServiceSummaryWidgetWidgetState
                                                           fontFamily:
                                                               'Yantramanav',
                                                           color:
-                                                              Color(0xFF64748B),
+                                                              const Color(0xFF64748B),
                                                           fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                         ),
@@ -657,7 +654,7 @@ class _ServiceSummaryWidgetWidgetState
                                             ),
                                             Container(
                                               width: double.infinity,
-                                              decoration: BoxDecoration(),
+                                              decoration: const BoxDecoration(),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
                                                 crossAxisAlignment:
@@ -679,10 +676,10 @@ class _ServiceSummaryWidgetWidgetState
                                                         ),
                                                   ),
                                                   Text(
-                                                    functions.checkNull(widget!
+                                                    functions.checkNull(widget
                                                             .vehicleInformation)
                                                         ? 'N/A'
-                                                        : widget!
+                                                        : widget
                                                             .vehicleInformation!,
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -691,7 +688,7 @@ class _ServiceSummaryWidgetWidgetState
                                                           fontFamily:
                                                               'Yantramanav',
                                                           color:
-                                                              Color(0xFF64748B),
+                                                              const Color(0xFF64748B),
                                                           fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                         ),
@@ -701,7 +698,7 @@ class _ServiceSummaryWidgetWidgetState
                                             ),
                                             Container(
                                               width: double.infinity,
-                                              decoration: BoxDecoration(),
+                                              decoration: const BoxDecoration(),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
                                                 crossAxisAlignment:
@@ -723,12 +720,12 @@ class _ServiceSummaryWidgetWidgetState
                                                         ),
                                                   ),
                                                   Text(
-                                                    functions.checkNull(widget!
+                                                    functions.checkNull(widget
                                                             .vehicleVinNumber)
                                                         ? 'N/A'
                                                         : valueOrDefault<
                                                             String>(
-                                                            widget!
+                                                            widget
                                                                 .vehicleVinNumber,
                                                             'N/A',
                                                           ),
@@ -739,7 +736,7 @@ class _ServiceSummaryWidgetWidgetState
                                                           fontFamily:
                                                               'Yantramanav',
                                                           color:
-                                                              Color(0xFF64748B),
+                                                              const Color(0xFF64748B),
                                                           fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                         ),
@@ -759,23 +756,23 @@ class _ServiceSummaryWidgetWidgetState
                                                 borderRadius:
                                                     BorderRadius.circular(8.0),
                                                 child: Image.network(
-                                                  widget!.driverImage!,
+                                                  widget.driverImage!,
                                                   width: 300.0,
                                                   height: 200.0,
                                                   fit: BoxFit.cover,
                                                 ),
                                               ),
                                             ),
-                                          ].divide(SizedBox(height: 10.0)),
+                                          ].divide(const SizedBox(height: 10.0)),
                                         ),
                                       ),
                                     ),
-                                  ].divide(SizedBox(height: 5.0)),
+                                  ].divide(const SizedBox(height: 5.0)),
                                 ),
                               ),
                               Container(
                                 width: double.infinity,
-                                decoration: BoxDecoration(),
+                                decoration: const BoxDecoration(),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment:
@@ -795,7 +792,7 @@ class _ServiceSummaryWidgetWidgetState
                                                     MediaQuery.viewInsetsOf(
                                                         context),
                                                 child: CancelRequestWidget(
-                                                  id: widget!.bubbleId!,
+                                                  id: widget.bubbleId!,
                                                   driver: false,
                                                 ),
                                               );
@@ -807,10 +804,10 @@ class _ServiceSummaryWidgetWidgetState
                                         options: FFButtonOptions(
                                           height: 56.0,
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   24.0, 0.0, 24.0, 0.0),
                                           iconPadding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
                                           color: FlutterFlowTheme.of(context)
                                               .primary,
@@ -825,7 +822,7 @@ class _ServiceSummaryWidgetWidgetState
                                                 letterSpacing: 0.0,
                                               ),
                                           elevation: 3.0,
-                                          borderSide: BorderSide(
+                                          borderSide: const BorderSide(
                                             color: Colors.transparent,
                                             width: 1.0,
                                           ),
@@ -834,17 +831,17 @@ class _ServiceSummaryWidgetWidgetState
                                         ),
                                       ),
                                     ),
-                                    if ((widget!.status == 'newCase') ||
-                                        (widget!.status == 'inProgress') ||
-                                        (widget!.status == 'pendingApproval') ||
-                                        (widget!.status ==
+                                    if ((widget.status == 'newCase') ||
+                                        (widget.status == 'inProgress') ||
+                                        (widget.status == 'pendingApproval') ||
+                                        (widget.status ==
                                             'arrivedAtLocation') ||
-                                        (widget!.status ==
+                                        (widget.status ==
                                             'enrouteToTowDestination'))
                                       Align(
                                         alignment:
-                                            AlignmentDirectional(0.0, 0.0),
-                                        child: Container(
+                                            const AlignmentDirectional(0.0, 0.0),
+                                        child: SizedBox(
                                           width: 170.0,
                                           height: 56.0,
                                           child: custom_widgets
@@ -873,7 +870,7 @@ class _ServiceSummaryWidgetWidgetState
                                                 : functions.getLng(
                                                     containerRequestRecord
                                                         .location!),
-                                            chat: widget!.driverTechMessageId!,
+                                            chat: widget.driverTechMessageId!,
                                             request: containerRequestRecord
                                                 .reference,
                                             driverName: containerRequestRecord
@@ -933,7 +930,7 @@ class _ServiceSummaryWidgetWidgetState
                                               await UptimeFleetAppGroup
                                                   .updateRequestCall
                                                   .call(
-                                                id: widget!.bubbleId,
+                                                id: widget.bubbleId,
                                                 status: 'inProgress',
                                               );
 
@@ -943,10 +940,10 @@ class _ServiceSummaryWidgetWidgetState
                                           ),
                                         ),
                                       ),
-                                  ].divide(SizedBox(width: 15.0)),
+                                  ].divide(const SizedBox(width: 15.0)),
                                 ),
                               ),
-                            ].divide(SizedBox(height: 16.0)),
+                            ].divide(const SizedBox(height: 16.0)),
                           ),
                         ),
                       ),
@@ -957,16 +954,16 @@ class _ServiceSummaryWidgetWidgetState
             );
           } else {
             return Container(
-              decoration: BoxDecoration(),
+              decoration: const BoxDecoration(),
               child: wrapWithModel(
                 model: _model.serviceUpdatesComponentSPModel,
                 updateCallback: () => setState(() {}),
                 updateOnChange: true,
                 child: ServiceUpdatesComponentSPWidget(
-                  request: widget!.firebaseId!,
-                  chat: widget!.driverTechMessageId!,
-                  fault: widget!.eventType!,
-                  bubbleId: widget!.bubbleId!,
+                  request: widget.firebaseId!,
+                  chat: widget.driverTechMessageId!,
+                  fault: widget.eventType!,
+                  bubbleId: widget.bubbleId!,
                 ),
               ),
             );

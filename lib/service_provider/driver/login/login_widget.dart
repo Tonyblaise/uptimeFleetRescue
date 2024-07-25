@@ -3,12 +3,8 @@ import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'package:provider/provider.dart';
 import 'login_model.dart';
 export 'login_model.dart';
 
@@ -76,7 +72,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                 Container(
                   width: MediaQuery.sizeOf(context).width * 0.9,
                   height: 104.0,
-                  decoration: BoxDecoration(),
+                  decoration: const BoxDecoration(),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -100,7 +96,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                             borderRadius: BorderRadius.circular(18.0),
                           ),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 16.0, 0.0, 0.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -110,7 +106,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                       FormFieldController<String>(
                                     _model.dropDownValue ??= '+1',
                                   ),
-                                  options: ['+1', '+254'],
+                                  options: const ['+1', '+254'],
                                   onChanged: (val) => setState(
                                       () => _model.dropDownValue = val),
                                   width: 62.0,
@@ -132,7 +128,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   borderColor: Colors.transparent,
                                   borderWidth: 0.0,
                                   borderRadius: 8.0,
-                                  margin: EdgeInsetsDirectional.fromSTEB(
+                                  margin: const EdgeInsetsDirectional.fromSTEB(
                                       4.0, 4.0, 0.0, 4.0),
                                   hidesUnderline: true,
                                   isOverButton: true,
@@ -142,7 +138,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 Expanded(
                                   flex: 1,
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 4.0, 0.0, 4.0),
                                     child: TextFormField(
                                       controller: _model.textController,
@@ -163,7 +159,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                         errorBorder: InputBorder.none,
                                         focusedErrorBorder: InputBorder.none,
                                         contentPadding:
-                                            EdgeInsetsDirectional.fromSTEB(
+                                            const EdgeInsetsDirectional.fromSTEB(
                                                 8.0, 0.0, 8.0, 0.0),
                                       ),
                                       style: FlutterFlowTheme.of(context)
@@ -180,16 +176,16 @@ class _LoginWidgetState extends State<LoginWidget> {
                                     ),
                                   ),
                                 ),
-                              ].divide(SizedBox(width: 5.0)),
+                              ].divide(const SizedBox(width: 5.0)),
                             ),
                           ),
                         ),
                       ),
-                    ].divide(SizedBox(height: 20.0)),
+                    ].divide(const SizedBox(height: 20.0)),
                   ),
                 ),
                 Align(
-                  alignment: AlignmentDirectional(0.0, 0.0),
+                  alignment: const AlignmentDirectional(0.0, 0.0),
                   child: InkWell(
                     splashColor: Colors.transparent,
                     focusColor: Colors.transparent,
@@ -209,11 +205,10 @@ class _LoginWidgetState extends State<LoginWidget> {
                             'none') {
                           final phoneNumberVal =
                               '${_model.dropDownValue}${_model.textController.text}';
-                          if (phoneNumberVal == null ||
-                              phoneNumberVal.isEmpty ||
+                          if (phoneNumberVal.isEmpty ||
                               !phoneNumberVal.startsWith('+')) {
                             ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
+                              const SnackBar(
                                 content: Text(
                                     'Phone Number is required and has to start with +.'),
                               ),
@@ -259,7 +254,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   fontSize: 14.0,
                                 ),
                               ),
-                              duration: Duration(milliseconds: 4000),
+                              duration: const Duration(milliseconds: 4000),
                               backgroundColor:
                                   FlutterFlowTheme.of(context).secondary,
                             ),
@@ -275,7 +270,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 fontSize: 14.0,
                               ),
                             ),
-                            duration: Duration(milliseconds: 4000),
+                            duration: const Duration(milliseconds: 4000),
                             backgroundColor: FlutterFlowTheme.of(context).error,
                           ),
                         );
@@ -292,14 +287,14 @@ class _LoginWidgetState extends State<LoginWidget> {
                             FlutterFlowTheme.of(context).secondary,
                             FlutterFlowTheme.of(context).tertiary
                           ],
-                          stops: [0.0, 1.0],
-                          begin: AlignmentDirectional(0.0, -1.0),
-                          end: AlignmentDirectional(0, 1.0),
+                          stops: const [0.0, 1.0],
+                          begin: const AlignmentDirectional(0.0, -1.0),
+                          end: const AlignmentDirectional(0, 1.0),
                         ),
                         borderRadius: BorderRadius.circular(18.0),
                       ),
                       child: Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
+                        alignment: const AlignmentDirectional(0.0, 0.0),
                         child: Text(
                           'Send OTP',
                           style:
@@ -312,7 +307,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                     ),
                   ),
                 ),
-              ].divide(SizedBox(height: 20.0)),
+              ].divide(const SizedBox(height: 20.0)),
             ),
           ),
         ),

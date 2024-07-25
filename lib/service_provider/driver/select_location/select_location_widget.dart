@@ -4,14 +4,9 @@ import '/flutter_flow/flutter_flow_place_picker.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/place.dart';
-import 'dart:io';
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'select_location_model.dart';
 export 'select_location_model.dart';
 
@@ -47,7 +42,7 @@ class _SelectLocationWidgetState extends State<SelectLocationWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       currentUserLocationValue =
-          await getCurrentUserLocation(defaultLocation: LatLng(0.0, 0.0));
+          await getCurrentUserLocation(defaultLocation: const LatLng(0.0, 0.0));
       _model.latLng = currentUserLocationValue;
       setState(() {});
     });
@@ -78,30 +73,30 @@ class _SelectLocationWidgetState extends State<SelectLocationWidget> {
               IconThemeData(color: FlutterFlowTheme.of(context).primaryText),
           automaticallyImplyLeading: true,
           title: Container(
-            decoration: BoxDecoration(),
+            decoration: const BoxDecoration(),
             child: Text(
               'Confirm Location',
               style: FlutterFlowTheme.of(context).bodyMedium.override(
                     fontFamily: 'Yantramanav',
-                    color: Color(0xFF1E293B),
+                    color: const Color(0xFF1E293B),
                     fontSize: 30.0,
                     letterSpacing: 0.0,
                     fontWeight: FontWeight.bold,
                   ),
             ),
           ),
-          actions: [],
+          actions: const [],
           centerTitle: false,
           elevation: 1.0,
         ),
         body: SafeArea(
           top: true,
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 30.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 30.0),
             child: Container(
               width: double.infinity,
               height: double.infinity,
-              decoration: BoxDecoration(),
+              decoration: const BoxDecoration(),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -116,13 +111,13 @@ class _SelectLocationWidgetState extends State<SelectLocationWidget> {
                       child: Stack(
                         children: [
                           Align(
-                            alignment: AlignmentDirectional(0.0, 0.0),
+                            alignment: const AlignmentDirectional(0.0, 0.0),
                             child: Container(
                               width: double.infinity,
                               height: double.infinity,
-                              decoration: BoxDecoration(),
+                              decoration: const BoxDecoration(),
                               child: Builder(builder: (context) {
-                                final _googleMapMarker = _model.latLng;
+                                final googleMapMarker = _model.latLng;
                                 return FlutterFlowGoogleMap(
                                   controller: _model.googleMapsController,
                                   onCameraIdle: (latLng) => setState(
@@ -130,10 +125,10 @@ class _SelectLocationWidgetState extends State<SelectLocationWidget> {
                                   initialLocation: _model.googleMapsCenter ??=
                                       _model.latLng!,
                                   markers: [
-                                    if (_googleMapMarker != null)
+                                    if (googleMapMarker != null)
                                       FlutterFlowMarker(
-                                        _googleMapMarker.serialize(),
-                                        _googleMapMarker,
+                                        googleMapMarker.serialize(),
+                                        googleMapMarker,
                                       ),
                                   ],
                                   markerColor: GoogleMarkerColor.red,
@@ -158,10 +153,10 @@ class _SelectLocationWidgetState extends State<SelectLocationWidget> {
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                     child: Container(
                       width: MediaQuery.sizeOf(context).width * 0.9,
-                      decoration: BoxDecoration(),
+                      decoration: const BoxDecoration(),
                       child: FutureBuilder<ApiCallResponse>(
                         future: GetAddressFromLatLngCall.call(
                           lat: functions.getLat(_model.latLng!),
@@ -191,7 +186,7 @@ class _SelectLocationWidgetState extends State<SelectLocationWidget> {
                             children: [
                               Container(
                                 width: double.infinity,
-                                decoration: BoxDecoration(),
+                                decoration: const BoxDecoration(),
                                 child: Visibility(
                                   visible: _model.addressView,
                                   child: RichText(
@@ -213,7 +208,7 @@ class _SelectLocationWidgetState extends State<SelectLocationWidget> {
                                                 fontWeight: FontWeight.bold,
                                               ),
                                         ),
-                                        TextSpan(
+                                        const TextSpan(
                                           text: '\n',
                                           style: TextStyle(
                                             fontSize: 20.0,
@@ -227,7 +222,7 @@ class _SelectLocationWidgetState extends State<SelectLocationWidget> {
                                             )?.first,
                                             '.',
                                           ),
-                                          style: TextStyle(),
+                                          style: const TextStyle(),
                                         )
                                       ],
                                       style: FlutterFlowTheme.of(context)
@@ -254,7 +249,7 @@ class _SelectLocationWidgetState extends State<SelectLocationWidget> {
                                         () => _model.placePickerValue = place);
                                   },
                                   defaultText: 'Type in your location',
-                                  icon: Icon(
+                                  icon: const Icon(
                                     Icons.place,
                                     color: Color(0xFF0F172A),
                                     size: 16.0,
@@ -262,16 +257,16 @@ class _SelectLocationWidgetState extends State<SelectLocationWidget> {
                                   buttonOptions: FFButtonOptions(
                                     width: double.infinity,
                                     height: 50.0,
-                                    color: Color(0xFFF1F5F9),
+                                    color: const Color(0xFFF1F5F9),
                                     textStyle: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
                                           fontFamily: 'Yantramanav',
-                                          color: Color(0xFF0F172A),
+                                          color: const Color(0xFF0F172A),
                                           letterSpacing: 0.0,
                                         ),
                                     elevation: 2.0,
-                                    borderSide: BorderSide(
+                                    borderSide: const BorderSide(
                                       color: Colors.transparent,
                                       width: 1.0,
                                     ),
@@ -289,7 +284,7 @@ class _SelectLocationWidgetState extends State<SelectLocationWidget> {
                                 },
                                 child: Container(
                                   width: double.infinity,
-                                  decoration: BoxDecoration(),
+                                  decoration: const BoxDecoration(),
                                   child: Text(
                                     _model.addressView
                                         ? 'Change location'
@@ -318,11 +313,11 @@ class _SelectLocationWidgetState extends State<SelectLocationWidget> {
                                       'vehicle_confirmation',
                                       queryParameters: {
                                         'service': serializeParam(
-                                          widget!.service,
+                                          widget.service,
                                           ParamType.String,
                                         ),
                                         'additionalInfo': serializeParam(
-                                          widget!.additionalInfo,
+                                          widget.additionalInfo,
                                           ParamType.String,
                                         ),
                                       }.withoutNulls,
@@ -355,14 +350,14 @@ class _SelectLocationWidgetState extends State<SelectLocationWidget> {
                                         FlutterFlowTheme.of(context).secondary,
                                         FlutterFlowTheme.of(context).tertiary
                                       ],
-                                      stops: [0.0, 1.0],
-                                      begin: AlignmentDirectional(0.0, -1.0),
-                                      end: AlignmentDirectional(0, 1.0),
+                                      stops: const [0.0, 1.0],
+                                      begin: const AlignmentDirectional(0.0, -1.0),
+                                      end: const AlignmentDirectional(0, 1.0),
                                     ),
                                     borderRadius: BorderRadius.circular(18.0),
                                   ),
                                   child: Align(
-                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    alignment: const AlignmentDirectional(0.0, 0.0),
                                     child: Text(
                                       _model.addressView
                                           ? 'Confirm Location'
@@ -377,13 +372,13 @@ class _SelectLocationWidgetState extends State<SelectLocationWidget> {
                                   ),
                                 ),
                               ),
-                            ].divide(SizedBox(height: 10.0)),
+                            ].divide(const SizedBox(height: 10.0)),
                           );
                         },
                       ),
                     ),
                   ),
-                ].divide(SizedBox(height: 5.0)),
+                ].divide(const SizedBox(height: 5.0)),
               ),
             ),
           ),

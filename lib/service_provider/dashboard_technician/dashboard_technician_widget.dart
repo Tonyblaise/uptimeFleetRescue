@@ -14,11 +14,8 @@ import '/service_provider/driver/confirm_cancellation/confirm_cancellation_widge
 import '/service_provider/select_vehicle/select_vehicle_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/permissions_util.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'dashboard_technician_model.dart';
 export 'dashboard_technician_model.dart';
 
@@ -44,15 +41,15 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       currentUserLocationValue =
-          await getCurrentUserLocation(defaultLocation: LatLng(0.0, 0.0));
+          await getCurrentUserLocation(defaultLocation: const LatLng(0.0, 0.0));
       await Future.wait([
         Future(() async {
           if (currentUserLocationValue != null) {
             _model.instantTimer = InstantTimer.periodic(
-              duration: Duration(milliseconds: 60000),
+              duration: const Duration(milliseconds: 60000),
               callback: (timer) async {
                 currentUserLocationValue = await getCurrentUserLocation(
-                    defaultLocation: LatLng(0.0, 0.0));
+                    defaultLocation: const LatLng(0.0, 0.0));
                 _model.apiResultayo6 = await UptimeFleetAppGroup
                     .updateTechnicianPositionUsingCurrentPostionCall
                     .call(
@@ -70,10 +67,10 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
           } else {
             await requestPermission(locationPermission);
             _model.instantTimer2 = InstantTimer.periodic(
-              duration: Duration(milliseconds: 60000),
+              duration: const Duration(milliseconds: 60000),
               callback: (timer) async {
                 currentUserLocationValue = await getCurrentUserLocation(
-                    defaultLocation: LatLng(0.0, 0.0));
+                    defaultLocation: const LatLng(0.0, 0.0));
                 _model.apiResultayoo = await UptimeFleetAppGroup
                     .updateTechnicianPositionUsingCurrentPostionCall
                     .call(
@@ -133,19 +130,19 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
           backgroundColor: Colors.white,
           automaticallyImplyLeading: false,
           title: Container(
-            decoration: BoxDecoration(),
+            decoration: const BoxDecoration(),
             child: Text(
               'Dashboard',
               style: FlutterFlowTheme.of(context).bodyMedium.override(
                     fontFamily: 'Yantramanav',
-                    color: Color(0xFF1E293B),
+                    color: const Color(0xFF1E293B),
                     fontSize: 30.0,
                     letterSpacing: 0.0,
                     fontWeight: FontWeight.bold,
                   ),
             ),
           ),
-          actions: [],
+          actions: const [],
           centerTitle: false,
           elevation: 1.0,
         ),
@@ -154,7 +151,7 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
           child: Container(
             width: double.infinity,
             height: double.infinity,
-            decoration: BoxDecoration(),
+            decoration: const BoxDecoration(),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -162,17 +159,17 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                 Flexible(
                   child: Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 15.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 15.0),
                     child: Container(
                       width: double.infinity,
                       height: double.infinity,
-                      decoration: BoxDecoration(),
+                      decoration: const BoxDecoration(),
                       child: SingleChildScrollView(
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Container(
-                              decoration: BoxDecoration(),
+                              decoration: const BoxDecoration(),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
@@ -184,16 +181,16 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                           .primaryBackground,
                                     ),
                                     child: Align(
-                                      alignment: AlignmentDirectional(0.0, 0.0),
+                                      alignment: const AlignmentDirectional(0.0, 0.0),
                                       child: Container(
                                         width:
                                             MediaQuery.sizeOf(context).width *
                                                 0.9,
-                                        decoration: BoxDecoration(),
+                                        decoration: const BoxDecoration(),
                                         child: wrapWithModel(
                                           model: _model.userDetailsModel,
                                           updateCallback: () => setState(() {}),
-                                          child: UserDetailsWidget(),
+                                          child: const UserDetailsWidget(),
                                         ),
                                       ),
                                     ),
@@ -215,11 +212,11 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                       ),
                                     ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 15.0),
                                     child: Container(
                                       width: double.infinity,
-                                      decoration: BoxDecoration(),
+                                      decoration: const BoxDecoration(),
                                       child: Builder(
                                         builder: (context) {
                                           if (currentUserDocument
@@ -229,7 +226,7 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                                       ?.activeRequest?.id ==
                                                   '') {
                                             return Container(
-                                              decoration: BoxDecoration(),
+                                              decoration: const BoxDecoration(),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
@@ -267,7 +264,7 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                                               padding: MediaQuery
                                                                   .viewInsetsOf(
                                                                       context),
-                                                              child: Container(
+                                                              child: SizedBox(
                                                                 height: 300.0,
                                                                 child:
                                                                     TechStatusComponentWidget(
@@ -295,11 +292,11 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                                                 .circular(60.0),
                                                         border: Border.all(
                                                           color:
-                                                              Color(0xFFE5E7EE),
+                                                              const Color(0xFFE5E7EE),
                                                         ),
                                                       ),
                                                       child: Padding(
-                                                        padding: EdgeInsets.all(
+                                                        padding: const EdgeInsets.all(
                                                             10.0),
                                                         child: Row(
                                                           mainAxisSize:
@@ -341,20 +338,20 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                                                     ? FlutterFlowTheme.of(
                                                                             context)
                                                                         .tertiary
-                                                                    : Color(
+                                                                    : const Color(
                                                                         0xFFB3B3B3),
                                                                 shape: BoxShape
                                                                     .circle,
                                                               ),
                                                             ),
-                                                          ].divide(SizedBox(
+                                                          ].divide(const SizedBox(
                                                               width: 10.0)),
                                                         ),
                                                       ),
                                                     ),
                                                   ),
                                                   Container(
-                                                    decoration: BoxDecoration(),
+                                                    decoration: const BoxDecoration(),
                                                     child: Column(
                                                       mainAxisSize:
                                                           MainAxisSize.max,
@@ -362,11 +359,6 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                                         Builder(
                                                           builder: (context) {
                                                             if (valueOrDefault(
-                                                                        currentUserDocument
-                                                                            ?.activeVehicle,
-                                                                        '') !=
-                                                                    null &&
-                                                                valueOrDefault(
                                                                         currentUserDocument
                                                                             ?.activeVehicle,
                                                                         '') !=
@@ -384,12 +376,12 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                                                               18.0),
                                                                   border: Border
                                                                       .all(
-                                                                    color: Color(
+                                                                    color: const Color(
                                                                         0xFFCBD5E1),
                                                                   ),
                                                                 ),
                                                                 child: Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           10.0,
@@ -404,7 +396,7 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                                                             .center,
                                                                     children: [
                                                                       Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                                                             20.0,
                                                                             0.0,
                                                                             20.0,
@@ -414,7 +406,7 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                                                           width:
                                                                               double.infinity,
                                                                           decoration:
-                                                                              BoxDecoration(),
+                                                                              const BoxDecoration(),
                                                                           child:
                                                                               Row(
                                                                             mainAxisSize:
@@ -446,7 +438,7 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                                                         ),
                                                                         child:
                                                                             Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
                                                                               20.0,
                                                                               10.0,
                                                                               20.0,
@@ -459,7 +451,7 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                                                                 [
                                                                               Container(
                                                                                 width: double.infinity,
-                                                                                decoration: BoxDecoration(),
+                                                                                decoration: const BoxDecoration(),
                                                                                 child: Column(
                                                                                   mainAxisSize: MainAxisSize.min,
                                                                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -478,7 +470,7 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                                                                       valueOrDefault(currentUserDocument?.activeVehicle, ''),
                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                             fontFamily: 'Yantramanav',
-                                                                                            color: Color(0xFF64748B),
+                                                                                            color: const Color(0xFF64748B),
                                                                                             fontSize: 16.0,
                                                                                             letterSpacing: 0.0,
                                                                                           ),
@@ -486,7 +478,7 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                                                                   ],
                                                                                 ),
                                                                               ),
-                                                                            ].divide(SizedBox(height: 10.0)),
+                                                                            ].divide(const SizedBox(height: 10.0)),
                                                                           ),
                                                                         ),
                                                                       ),
@@ -508,7 +500,7 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                                                                 onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
                                                                                 child: Padding(
                                                                                   padding: MediaQuery.viewInsetsOf(context),
-                                                                                  child: SelectVehicleWidget(),
+                                                                                  child: const SelectVehicleWidget(),
                                                                                 ),
                                                                               );
                                                                             },
@@ -521,12 +513,12 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                                                             FFButtonOptions(
                                                                           height:
                                                                               40.0,
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
                                                                               24.0,
                                                                               0.0,
                                                                               24.0,
                                                                               0.0),
-                                                                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                                                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                                                               0.0,
                                                                               0.0,
                                                                               0.0,
@@ -543,7 +535,7 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                                                           elevation:
                                                                               3.0,
                                                                           borderSide:
-                                                                              BorderSide(
+                                                                              const BorderSide(
                                                                             color:
                                                                                 Colors.transparent,
                                                                             width:
@@ -553,7 +545,7 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                                                               BorderRadius.circular(100.0),
                                                                         ),
                                                                       ),
-                                                                    ].divide(SizedBox(
+                                                                    ].divide(const SizedBox(
                                                                         height:
                                                                             5.0)),
                                                                   ),
@@ -573,7 +565,7 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                                                               18.0),
                                                                   border: Border
                                                                       .all(
-                                                                    color: Color(
+                                                                    color: const Color(
                                                                         0xFFCBD5E1),
                                                                   ),
                                                                 ),
@@ -581,7 +573,7 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                                                     Container(
                                                                   height: 200.0,
                                                                   decoration:
-                                                                      BoxDecoration(),
+                                                                      const BoxDecoration(),
                                                                   child:
                                                                       wrapWithModel(
                                                                     model: _model
@@ -615,12 +607,12 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                                             }
                                                           },
                                                         ),
-                                                      ].divide(SizedBox(
+                                                      ].divide(const SizedBox(
                                                           height: 16.0)),
                                                     ),
                                                   ),
                                                 ].divide(
-                                                    SizedBox(height: 16.0)),
+                                                    const SizedBox(height: 16.0)),
                                               ),
                                             );
                                           } else {
@@ -667,213 +659,226 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                                               .of(context)
                                                           .secondaryBackground,
                                                     ),
-                                                    child: StreamBuilder<
-                                                        RequestRecord>(
-                                                      stream: RequestRecord
-                                                          .getDocument(
-                                                              currentUserDocument!
-                                                                  .activeRequest!),
-                                                      builder:
-                                                          (context, snapshot) {
-                                                        // Customize what your widget looks like when it's loading.
-                                                        if (!snapshot.hasData) {
-                                                          return Center(
-                                                            child: SizedBox(
-                                                              width: 50.0,
-                                                              height: 50.0,
-                                                              child:
-                                                                  CircularProgressIndicator(
-                                                                valueColor:
-                                                                    AlwaysStoppedAnimation<
-                                                                        Color>(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primary,
+                                                    child: Align(
+                                                      alignment:
+                                                          const AlignmentDirectional(
+                                                              0.0, 0.0),
+                                                      child: StreamBuilder<
+                                                          RequestRecord>(
+                                                        stream: RequestRecord
+                                                            .getDocument(
+                                                                currentUserDocument!
+                                                                    .activeRequest!),
+                                                        builder: (context,
+                                                            snapshot) {
+                                                          // Customize what your widget looks like when it's loading.
+                                                          if (!snapshot
+                                                              .hasData) {
+                                                            return Center(
+                                                              child: SizedBox(
+                                                                width: 50.0,
+                                                                height: 50.0,
+                                                                child:
+                                                                    CircularProgressIndicator(
+                                                                  valueColor:
+                                                                      AlwaysStoppedAnimation<
+                                                                          Color>(
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primary,
+                                                                  ),
                                                                 ),
                                                               ),
-                                                            ),
-                                                          );
-                                                        }
+                                                            );
+                                                          }
 
-                                                        final containerRequestRecord =
-                                                            snapshot.data!;
+                                                          final containerRequestRecord =
+                                                              snapshot.data!;
 
-                                                        return Container(
-                                                          decoration:
-                                                              BoxDecoration(),
-                                                          child: Builder(
-                                                            builder: (context) {
-                                                              if (containerRequestRecord
-                                                                      .status !=
-                                                                  'cancelled') {
-                                                                return Container(
-                                                                  constraints:
-                                                                      BoxConstraints(
-                                                                    minHeight:
-                                                                        double
-                                                                            .infinity,
-                                                                  ),
-                                                                  decoration:
-                                                                      BoxDecoration(),
-                                                                  child:
-                                                                      wrapWithModel(
-                                                                    model: _model
-                                                                        .serviceSummaryWidgetModel,
-                                                                    updateCallback: () =>
-                                                                        setState(
-                                                                            () {}),
+                                                          return Container(
+                                                            width:
+                                                                double.infinity,
+                                                            decoration:
+                                                                const BoxDecoration(),
+                                                            child: Builder(
+                                                              builder:
+                                                                  (context) {
+                                                                if (containerRequestRecord
+                                                                        .status !=
+                                                                    'cancelled') {
+                                                                  return Container(
+                                                                    constraints:
+                                                                        const BoxConstraints(
+                                                                      minHeight:
+                                                                          double
+                                                                              .infinity,
+                                                                    ),
+                                                                    decoration:
+                                                                        const BoxDecoration(),
                                                                     child:
-                                                                        ServiceSummaryWidgetWidget(
-                                                                      fleetCompanyName: UptimeFleetAppGroup
-                                                                          .getRequestCall
-                                                                          .driverCompanyName(
-                                                                        containerGetRequestResponse
-                                                                            .jsonBody,
-                                                                      ),
-                                                                      driverName: UptimeFleetAppGroup
-                                                                          .getRequestCall
-                                                                          .driverFullName(
-                                                                        containerGetRequestResponse
-                                                                            .jsonBody,
-                                                                      ),
-                                                                      driverPhoneNumber: UptimeFleetAppGroup
-                                                                          .getRequestCall
-                                                                          .driverPhoneNumber(
-                                                                        containerGetRequestResponse
-                                                                            .jsonBody,
-                                                                      ),
-                                                                      serviceId: UptimeFleetAppGroup
-                                                                          .getRequestCall
-                                                                          .serviceId(
-                                                                        containerGetRequestResponse
-                                                                            .jsonBody,
-                                                                      ),
-                                                                      timestamp:
-                                                                          dateTimeFormat(
-                                                                        'd/M h:mm a',
-                                                                        functions.converUnixTimestamp(UptimeFleetAppGroup
+                                                                        wrapWithModel(
+                                                                      model: _model
+                                                                          .serviceSummaryWidgetModel,
+                                                                      updateCallback:
+                                                                          () =>
+                                                                              setState(() {}),
+                                                                      child:
+                                                                          ServiceSummaryWidgetWidget(
+                                                                        fleetCompanyName: UptimeFleetAppGroup
                                                                             .getRequestCall
-                                                                            .timestamp(
+                                                                            .driverCompanyName(
                                                                           containerGetRequestResponse
                                                                               .jsonBody,
-                                                                        )!),
-                                                                        locale:
-                                                                            FFLocalizations.of(context).languageCode,
-                                                                      ),
-                                                                      eventType: UptimeFleetAppGroup
-                                                                          .getRequestCall
-                                                                          .fault(
-                                                                        containerGetRequestResponse
-                                                                            .jsonBody,
-                                                                      ),
-                                                                      pickUp: UptimeFleetAppGroup
-                                                                          .getRequestCall
-                                                                          .location(
-                                                                        containerGetRequestResponse
-                                                                            .jsonBody,
-                                                                      ),
-                                                                      dropOff: UptimeFleetAppGroup
-                                                                          .getRequestCall
-                                                                          .dropOffLocation(
+                                                                        ),
+                                                                        driverName: UptimeFleetAppGroup
+                                                                            .getRequestCall
+                                                                            .driverFullName(
+                                                                          containerGetRequestResponse
+                                                                              .jsonBody,
+                                                                        ),
+                                                                        driverPhoneNumber: UptimeFleetAppGroup
+                                                                            .getRequestCall
+                                                                            .driverPhoneNumber(
+                                                                          containerGetRequestResponse
+                                                                              .jsonBody,
+                                                                        ),
+                                                                        serviceId: UptimeFleetAppGroup
+                                                                            .getRequestCall
+                                                                            .serviceId(
+                                                                          containerGetRequestResponse
+                                                                              .jsonBody,
+                                                                        ),
+                                                                        timestamp:
+                                                                            dateTimeFormat(
+                                                                          'd/M h:mm a',
+                                                                          functions.converUnixTimestamp(UptimeFleetAppGroup
+                                                                              .getRequestCall
+                                                                              .timestamp(
                                                                             containerGetRequestResponse.jsonBody,
-                                                                          )
-                                                                          .toString(),
-                                                                      vehicleLicenseNumber: UptimeFleetAppGroup
-                                                                          .getRequestCall
-                                                                          .vehicleRegNo(
-                                                                        containerGetRequestResponse
-                                                                            .jsonBody,
+                                                                          )!),
+                                                                          locale:
+                                                                              FFLocalizations.of(context).languageCode,
+                                                                        ),
+                                                                        eventType: UptimeFleetAppGroup
+                                                                            .getRequestCall
+                                                                            .fault(
+                                                                          containerGetRequestResponse
+                                                                              .jsonBody,
+                                                                        ),
+                                                                        pickUp: UptimeFleetAppGroup
+                                                                            .getRequestCall
+                                                                            .location(
+                                                                          containerGetRequestResponse
+                                                                              .jsonBody,
+                                                                        ),
+                                                                        dropOff: UptimeFleetAppGroup
+                                                                            .getRequestCall
+                                                                            .dropOffLocation(
+                                                                              containerGetRequestResponse.jsonBody,
+                                                                            )
+                                                                            .toString(),
+                                                                        vehicleLicenseNumber: UptimeFleetAppGroup
+                                                                            .getRequestCall
+                                                                            .vehicleRegNo(
+                                                                          containerGetRequestResponse
+                                                                              .jsonBody,
+                                                                        ),
+                                                                        vehicleInformation: UptimeFleetAppGroup
+                                                                            .getRequestCall
+                                                                            .vehicleColor(
+                                                                          containerGetRequestResponse
+                                                                              .jsonBody,
+                                                                        ),
+                                                                        vehicleVinNumber: UptimeFleetAppGroup
+                                                                            .getRequestCall
+                                                                            .vehicleVinNumber(
+                                                                              containerGetRequestResponse.jsonBody,
+                                                                            )
+                                                                            .toString(),
+                                                                        locationLat: functions.convertStringToDouble(UptimeFleetAppGroup
+                                                                            .getRequestCall
+                                                                            .lat(
+                                                                          containerGetRequestResponse
+                                                                              .jsonBody,
+                                                                        ))!,
+                                                                        locationLng: functions.convertStringToDouble(UptimeFleetAppGroup
+                                                                            .getRequestCall
+                                                                            .lng(
+                                                                          containerGetRequestResponse
+                                                                              .jsonBody,
+                                                                        ))!,
+                                                                        firebaseId: functions.convertStringToRequestDocRef(UptimeFleetAppGroup
+                                                                            .getRequestCall
+                                                                            .firebaseId(
+                                                                          containerGetRequestResponse
+                                                                              .jsonBody,
+                                                                        ))!,
+                                                                        status: UptimeFleetAppGroup
+                                                                            .getRequestCall
+                                                                            .status(
+                                                                          containerGetRequestResponse
+                                                                              .jsonBody,
+                                                                        )!,
+                                                                        driverTechMessageId: UptimeFleetAppGroup
+                                                                            .getRequestCall
+                                                                            .driverTechnicianMessageThreadId(
+                                                                          containerGetRequestResponse
+                                                                              .jsonBody,
+                                                                        )!,
+                                                                        bubbleId: UptimeFleetAppGroup
+                                                                            .getRequestCall
+                                                                            .uniqueId(
+                                                                          containerGetRequestResponse
+                                                                              .jsonBody,
+                                                                        )!,
+                                                                        driverImage: UptimeFleetAppGroup
+                                                                            .getRequestCall
+                                                                            .driverImage(
+                                                                              containerGetRequestResponse.jsonBody,
+                                                                            )
+                                                                            .toString(),
                                                                       ),
-                                                                      vehicleInformation: UptimeFleetAppGroup
-                                                                          .getRequestCall
-                                                                          .vehicleColor(
-                                                                        containerGetRequestResponse
-                                                                            .jsonBody,
-                                                                      ),
-                                                                      vehicleVinNumber: UptimeFleetAppGroup
-                                                                          .getRequestCall
-                                                                          .vehicleVinNumber(
-                                                                            containerGetRequestResponse.jsonBody,
-                                                                          )
-                                                                          .toString(),
-                                                                      locationLat: functions.convertStringToDouble(UptimeFleetAppGroup
-                                                                          .getRequestCall
-                                                                          .lat(
-                                                                        containerGetRequestResponse
-                                                                            .jsonBody,
-                                                                      ))!,
-                                                                      locationLng: functions.convertStringToDouble(UptimeFleetAppGroup
-                                                                          .getRequestCall
-                                                                          .lng(
-                                                                        containerGetRequestResponse
-                                                                            .jsonBody,
-                                                                      ))!,
-                                                                      firebaseId: functions.convertStringToRequestDocRef(UptimeFleetAppGroup
-                                                                          .getRequestCall
-                                                                          .firebaseId(
-                                                                        containerGetRequestResponse
-                                                                            .jsonBody,
-                                                                      ))!,
-                                                                      status: UptimeFleetAppGroup
-                                                                          .getRequestCall
-                                                                          .status(
-                                                                        containerGetRequestResponse
-                                                                            .jsonBody,
-                                                                      )!,
-                                                                      driverTechMessageId: UptimeFleetAppGroup
-                                                                          .getRequestCall
-                                                                          .driverTechnicianMessageThreadId(
-                                                                        containerGetRequestResponse
-                                                                            .jsonBody,
-                                                                      )!,
-                                                                      bubbleId: UptimeFleetAppGroup
-                                                                          .getRequestCall
-                                                                          .uniqueId(
-                                                                        containerGetRequestResponse
-                                                                            .jsonBody,
-                                                                      )!,
-                                                                      driverImage: UptimeFleetAppGroup
-                                                                          .getRequestCall
-                                                                          .driverImage(
-                                                                            containerGetRequestResponse.jsonBody,
-                                                                          )
-                                                                          .toString(),
                                                                     ),
-                                                                  ),
-                                                                );
-                                                              } else {
-                                                                return Container(
-                                                                  width: 100.0,
-                                                                  height: double
-                                                                      .infinity,
-                                                                  decoration:
-                                                                      BoxDecoration(
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .secondaryBackground,
-                                                                  ),
-                                                                  child:
-                                                                      wrapWithModel(
-                                                                    model: _model
-                                                                        .confirmCancellationModel,
-                                                                    updateCallback: () =>
-                                                                        setState(
-                                                                            () {}),
+                                                                  );
+                                                                } else {
+                                                                  return Container(
+                                                                    width:
+                                                                        100.0,
+                                                                    height:
+                                                                        421.0,
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryBackground,
+                                                                    ),
+                                                                    alignment:
+                                                                        const AlignmentDirectional(
+                                                                            0.0,
+                                                                            -1.0),
                                                                     child:
-                                                                        ConfirmCancellationWidget(
-                                                                      request: containerRequestRecord
-                                                                          .reference
-                                                                          .id,
-                                                                      driver:
-                                                                          false,
+                                                                        wrapWithModel(
+                                                                      model: _model
+                                                                          .confirmCancellationModel,
+                                                                      updateCallback:
+                                                                          () =>
+                                                                              setState(() {}),
+                                                                      child:
+                                                                          ConfirmCancellationWidget(
+                                                                        request: containerRequestRecord
+                                                                            .reference
+                                                                            .id,
+                                                                        driver:
+                                                                            false,
+                                                                      ),
                                                                     ),
-                                                                  ),
-                                                                );
-                                                              }
-                                                            },
-                                                          ),
-                                                        );
-                                                      },
+                                                                  );
+                                                                }
+                                                              },
+                                                            ),
+                                                          );
+                                                        },
+                                                      ),
                                                     ),
                                                   );
                                                 },
@@ -884,10 +889,10 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                       ),
                                     ),
                                   ),
-                                ].divide(SizedBox(height: 15.0)),
+                                ].divide(const SizedBox(height: 15.0)),
                               ),
                             ),
-                          ].divide(SizedBox(height: 16.0)),
+                          ].divide(const SizedBox(height: 16.0)),
                         ),
                       ),
                     ),
@@ -896,7 +901,7 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                 wrapWithModel(
                   model: _model.bottomBarModel,
                   updateCallback: () => setState(() {}),
-                  child: BottomBarWidget(),
+                  child: const BottomBarWidget(),
                 ),
               ],
             ),

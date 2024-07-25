@@ -1,11 +1,8 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'log_out_confirmation_model.dart';
 export 'log_out_confirmation_model.dart';
 
@@ -44,15 +41,15 @@ class _LogOutConfirmationWidgetState extends State<LogOutConfirmationWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: AlignmentDirectional(0.0, 0.0),
+      alignment: const AlignmentDirectional(0.0, 0.0),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
+        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
         child: Container(
           width: MediaQuery.sizeOf(context).width * 0.9,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             shape: BoxShape.rectangle,
           ),
-          alignment: AlignmentDirectional(0.0, 0.0),
+          alignment: const AlignmentDirectional(0.0, 0.0),
           child: Container(
             width: double.infinity,
             decoration: BoxDecoration(
@@ -60,13 +57,13 @@ class _LogOutConfirmationWidgetState extends State<LogOutConfirmationWidget> {
               borderRadius: BorderRadius.circular(24.0),
             ),
             child: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Align(
-                    alignment: AlignmentDirectional(0.0, 0.0),
+                    alignment: const AlignmentDirectional(0.0, 0.0),
                     child: Container(
                       width: double.infinity,
                       height: 80.0,
@@ -76,14 +73,14 @@ class _LogOutConfirmationWidgetState extends State<LogOutConfirmationWidget> {
                             FlutterFlowTheme.of(context).secondary,
                             FlutterFlowTheme.of(context).tertiary
                           ],
-                          stops: [0.0, 1.0],
-                          begin: AlignmentDirectional(0.0, -1.0),
-                          end: AlignmentDirectional(0, 1.0),
+                          stops: const [0.0, 1.0],
+                          begin: const AlignmentDirectional(0.0, -1.0),
+                          end: const AlignmentDirectional(0, 1.0),
                         ),
                         borderRadius: BorderRadius.circular(24.0),
                       ),
                       child: Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
+                        alignment: const AlignmentDirectional(0.0, 0.0),
                         child: Text(
                           'Log out confirmation',
                           textAlign: TextAlign.center,
@@ -110,10 +107,10 @@ class _LogOutConfirmationWidgetState extends State<LogOutConfirmationWidget> {
                   Flexible(
                     child: Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                       child: Container(
                         width: MediaQuery.sizeOf(context).width * 0.9,
-                        decoration: BoxDecoration(),
+                        decoration: const BoxDecoration(),
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -129,20 +126,20 @@ class _LogOutConfirmationWidgetState extends State<LogOutConfirmationWidget> {
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Yantramanav',
-                                            color: Color(0xFF64748B),
+                                            color: const Color(0xFF64748B),
                                             fontSize: 16.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w300,
                                           ),
                                     ),
-                                    TextSpan(
+                                    const TextSpan(
                                       text: 'log out',
                                       style: TextStyle(
                                         color: Color(0xFF64748B),
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
-                                    TextSpan(
+                                    const TextSpan(
                                       text: ' \nof your account?',
                                       style: TextStyle(),
                                     )
@@ -151,7 +148,7 @@ class _LogOutConfirmationWidgetState extends State<LogOutConfirmationWidget> {
                                       .labelLarge
                                       .override(
                                         fontFamily: 'Yantramanav',
-                                        color: Color(0xFF64748B),
+                                        color: const Color(0xFF64748B),
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w300,
                                       ),
@@ -166,26 +163,26 @@ class _LogOutConfirmationWidgetState extends State<LogOutConfirmationWidget> {
                                   .labelLarge
                                   .override(
                                     fontFamily: 'Yantramanav',
-                                    color: Color(0xFF64748B),
+                                    color: const Color(0xFF64748B),
                                     fontSize: 16.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w300,
                                   ),
                             ),
-                          ].divide(SizedBox(height: 8.0)),
+                          ].divide(const SizedBox(height: 8.0)),
                         ),
                       ),
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.0, 0.0),
+                    alignment: const AlignmentDirectional(0.0, 0.0),
                     child: Container(
-                      decoration: BoxDecoration(),
+                      decoration: const BoxDecoration(),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 20.0, 0.0, 20.0, 0.0),
                             child: InkWell(
                               splashColor: Colors.transparent,
@@ -212,14 +209,14 @@ class _LogOutConfirmationWidgetState extends State<LogOutConfirmationWidget> {
                                   ),
                                 ),
                                 child: Align(
-                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  alignment: const AlignmentDirectional(0.0, 0.0),
                                   child: Text(
                                     'Cancel',
                                     style: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
                                           fontFamily: 'Yantramanav',
-                                          color: Color(0xFF0CCA4A),
+                                          color: const Color(0xFF0CCA4A),
                                           letterSpacing: 0.0,
                                         ),
                                   ),
@@ -228,9 +225,9 @@ class _LogOutConfirmationWidgetState extends State<LogOutConfirmationWidget> {
                             ),
                           ),
                           Align(
-                            alignment: AlignmentDirectional(0.0, 0.0),
+                            alignment: const AlignmentDirectional(0.0, 0.0),
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   20.0, 0.0, 20.0, 10.0),
                               child: InkWell(
                                 splashColor: Colors.transparent,
@@ -257,14 +254,14 @@ class _LogOutConfirmationWidgetState extends State<LogOutConfirmationWidget> {
                                         FlutterFlowTheme.of(context).secondary,
                                         FlutterFlowTheme.of(context).tertiary
                                       ],
-                                      stops: [0.0, 1.0],
-                                      begin: AlignmentDirectional(0.0, -1.0),
-                                      end: AlignmentDirectional(0, 1.0),
+                                      stops: const [0.0, 1.0],
+                                      begin: const AlignmentDirectional(0.0, -1.0),
+                                      end: const AlignmentDirectional(0, 1.0),
                                     ),
                                     borderRadius: BorderRadius.circular(18.0),
                                   ),
                                   child: Align(
-                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    alignment: const AlignmentDirectional(0.0, 0.0),
                                     child: Text(
                                       'Log out',
                                       style: FlutterFlowTheme.of(context)
@@ -280,11 +277,11 @@ class _LogOutConfirmationWidgetState extends State<LogOutConfirmationWidget> {
                               ),
                             ),
                           ),
-                        ].divide(SizedBox(height: 15.0)),
+                        ].divide(const SizedBox(height: 15.0)),
                       ),
                     ),
                   ),
-                ].divide(SizedBox(height: 32.0)),
+                ].divide(const SizedBox(height: 32.0)),
               ),
             ),
           ),

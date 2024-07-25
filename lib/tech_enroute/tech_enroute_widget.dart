@@ -5,10 +5,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'tech_enroute_model.dart';
 export 'tech_enroute_model.dart';
 
@@ -37,7 +34,7 @@ class _TechEnrouteWidgetState extends State<TechEnrouteWidget> {
     super.initState();
     _model = createModel(context, () => TechEnrouteModel());
 
-    getCurrentUserLocation(defaultLocation: LatLng(0.0, 0.0), cached: true)
+    getCurrentUserLocation(defaultLocation: const LatLng(0.0, 0.0), cached: true)
         .then((loc) => setState(() => currentUserLocationValue = loc));
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -85,19 +82,19 @@ class _TechEnrouteWidgetState extends State<TechEnrouteWidget> {
             'Your tech is en route',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'Yantramanav',
-                  color: Color(0xFF1E293B),
+                  color: const Color(0xFF1E293B),
                   fontSize: 30.0,
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: [],
+          actions: const [],
           centerTitle: false,
           elevation: 2.0,
         ),
         body: SafeArea(
           top: true,
           child: StreamBuilder<RequestRecord>(
-            stream: RequestRecord.getDocument(widget!.request!),
+            stream: RequestRecord.getDocument(widget.request!),
             builder: (context, snapshot) {
               // Customize what your widget looks like when it's loading.
               if (!snapshot.hasData) {
@@ -164,13 +161,13 @@ class _TechEnrouteWidgetState extends State<TechEnrouteWidget> {
                               child: Stack(
                                 children: [
                                   Align(
-                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    alignment: const AlignmentDirectional(0.0, 0.0),
                                     child: Container(
                                       width: double.infinity,
                                       height: double.infinity,
-                                      decoration: BoxDecoration(),
+                                      decoration: const BoxDecoration(),
                                       child: Builder(builder: (context) {
-                                        final _googleMapMarker =
+                                        final googleMapMarker =
                                             containerUsersRecord
                                                 .technicianLastUpdatedLocation;
                                         return FlutterFlowGoogleMap(
@@ -184,10 +181,10 @@ class _TechEnrouteWidgetState extends State<TechEnrouteWidget> {
                                               containerUsersRecord
                                                   .technicianLastUpdatedLocation!,
                                           markers: [
-                                            if (_googleMapMarker != null)
+                                            if (googleMapMarker != null)
                                               FlutterFlowMarker(
-                                                _googleMapMarker.serialize(),
-                                                _googleMapMarker,
+                                                googleMapMarker.serialize(),
+                                                googleMapMarker,
                                               ),
                                           ],
                                           markerColor: GoogleMarkerColor.violet,
@@ -207,17 +204,17 @@ class _TechEnrouteWidgetState extends State<TechEnrouteWidget> {
                                     ),
                                   ),
                                   Align(
-                                    alignment: AlignmentDirectional(0.0, 0.9),
+                                    alignment: const AlignmentDirectional(0.0, 0.9),
                                     child: Container(
-                                      decoration: BoxDecoration(),
+                                      decoration: const BoxDecoration(),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
                                           Align(
                                             alignment:
-                                                AlignmentDirectional(0.0, 0.0),
+                                                const AlignmentDirectional(0.0, 0.0),
                                             child: Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       20.0, 0.0, 20.0, 0.0),
                                               child: Container(
@@ -247,11 +244,11 @@ class _TechEnrouteWidgetState extends State<TechEnrouteWidget> {
                                                 ),
                                                 child: Align(
                                                   alignment:
-                                                      AlignmentDirectional(
+                                                      const AlignmentDirectional(
                                                           0.0, 0.0),
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(10.0, 0.0,
                                                                 10.0, 0.0),
                                                     child: Container(
@@ -268,7 +265,7 @@ class _TechEnrouteWidgetState extends State<TechEnrouteWidget> {
                                                                 0.9,
                                                       ),
                                                       decoration:
-                                                          BoxDecoration(),
+                                                          const BoxDecoration(),
                                                       child: Row(
                                                         mainAxisSize:
                                                             MainAxisSize.min,
@@ -301,7 +298,7 @@ class _TechEnrouteWidgetState extends State<TechEnrouteWidget> {
                                                               width: 100.0,
                                                               height: 100.0,
                                                               decoration:
-                                                                  BoxDecoration(),
+                                                                  const BoxDecoration(),
                                                               child: Column(
                                                                 mainAxisSize:
                                                                     MainAxisSize
@@ -317,11 +314,11 @@ class _TechEnrouteWidgetState extends State<TechEnrouteWidget> {
                                                                     width: double
                                                                         .infinity,
                                                                     decoration:
-                                                                        BoxDecoration(),
+                                                                        const BoxDecoration(),
                                                                     child:
                                                                         Container(
                                                                       decoration:
-                                                                          BoxDecoration(),
+                                                                          const BoxDecoration(),
                                                                       child:
                                                                           Row(
                                                                         mainAxisSize:
@@ -340,7 +337,7 @@ class _TechEnrouteWidgetState extends State<TechEnrouteWidget> {
                                                                             ),
                                                                             child:
                                                                                 Container(
-                                                                              decoration: BoxDecoration(),
+                                                                              decoration: const BoxDecoration(),
                                                                               child: Column(
                                                                                 mainAxisSize: MainAxisSize.min,
                                                                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -350,7 +347,7 @@ class _TechEnrouteWidgetState extends State<TechEnrouteWidget> {
                                                                                     containerUsersRecord.fullName,
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: 'Yantramanav',
-                                                                                          color: Color(0xFF0F172A),
+                                                                                          color: const Color(0xFF0F172A),
                                                                                           fontSize: 16.0,
                                                                                           letterSpacing: 0.0,
                                                                                           fontWeight: FontWeight.bold,
@@ -360,7 +357,7 @@ class _TechEnrouteWidgetState extends State<TechEnrouteWidget> {
                                                                                     functions.convertToUppercase(containerUsersRecord.activeVehicle)!,
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: 'Yantramanav',
-                                                                                          color: Color(0xFF64748B),
+                                                                                          color: const Color(0xFF64748B),
                                                                                           fontSize: 12.0,
                                                                                           letterSpacing: 0.0,
                                                                                         ),
@@ -373,7 +370,7 @@ class _TechEnrouteWidgetState extends State<TechEnrouteWidget> {
                                                                             width:
                                                                                 100.0,
                                                                             decoration:
-                                                                                BoxDecoration(),
+                                                                                const BoxDecoration(),
                                                                             child:
                                                                                 Column(
                                                                               mainAxisSize: MainAxisSize.min,
@@ -384,7 +381,7 @@ class _TechEnrouteWidgetState extends State<TechEnrouteWidget> {
                                                                                   'ETA:',
                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                         fontFamily: 'Yantramanav',
-                                                                                        color: Color(0xFF64748B),
+                                                                                        color: const Color(0xFF64748B),
                                                                                         fontSize: 12.0,
                                                                                         letterSpacing: 0.0,
                                                                                       ),
@@ -415,7 +412,7 @@ class _TechEnrouteWidgetState extends State<TechEnrouteWidget> {
                                                                                       containerRequestRecord.duration,
                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                             fontFamily: 'Yantramanav',
-                                                                                            color: Color(0xFF64748B),
+                                                                                            color: const Color(0xFF64748B),
                                                                                             fontSize: 12.0,
                                                                                             letterSpacing: 0.0,
                                                                                             fontWeight: FontWeight.bold,
@@ -430,13 +427,13 @@ class _TechEnrouteWidgetState extends State<TechEnrouteWidget> {
                                                                       ),
                                                                     ),
                                                                   ),
-                                                                ].divide(SizedBox(
+                                                                ].divide(const SizedBox(
                                                                     height:
                                                                         6.0)),
                                                               ),
                                                             ),
                                                           ),
-                                                        ].divide(SizedBox(
+                                                        ].divide(const SizedBox(
                                                             width: 16.0)),
                                                       ),
                                                     ),
@@ -447,7 +444,7 @@ class _TechEnrouteWidgetState extends State<TechEnrouteWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     20.0, 0.0, 20.0, 0.0),
                                             child: FFButtonWidget(
                                               onPressed: () async {
@@ -455,7 +452,7 @@ class _TechEnrouteWidgetState extends State<TechEnrouteWidget> {
                                                   'chat_2_Details_1',
                                                   queryParameters: {
                                                     'chatRef': serializeParam(
-                                                      widget!.chat,
+                                                      widget.chat,
                                                       ParamType.Document,
                                                     ),
                                                     'driver': serializeParam(
@@ -464,7 +461,7 @@ class _TechEnrouteWidgetState extends State<TechEnrouteWidget> {
                                                     ),
                                                   }.withoutNulls,
                                                   extra: <String, dynamic>{
-                                                    'chatRef': widget!.chat,
+                                                    'chatRef': widget.chat,
                                                   },
                                                 );
                                               },
@@ -472,11 +469,11 @@ class _TechEnrouteWidgetState extends State<TechEnrouteWidget> {
                                               options: FFButtonOptions(
                                                 width: double.infinity,
                                                 height: 50.0,
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         24.0, 0.0, 24.0, 0.0),
                                                 iconPadding:
-                                                    EdgeInsetsDirectional
+                                                    const EdgeInsetsDirectional
                                                         .fromSTEB(
                                                             0.0, 0.0, 0.0, 0.0),
                                                 color:
@@ -494,7 +491,7 @@ class _TechEnrouteWidgetState extends State<TechEnrouteWidget> {
                                                       letterSpacing: 0.0,
                                                     ),
                                                 elevation: 3.0,
-                                                borderSide: BorderSide(
+                                                borderSide: const BorderSide(
                                                   color: Colors.transparent,
                                                   width: 1.0,
                                                 ),
@@ -504,7 +501,7 @@ class _TechEnrouteWidgetState extends State<TechEnrouteWidget> {
                                               ),
                                             ),
                                           ),
-                                        ].divide(SizedBox(height: 16.0)),
+                                        ].divide(const SizedBox(height: 16.0)),
                                       ),
                                     ),
                                   ),

@@ -2,8 +2,6 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'user_details_model.dart';
 export 'user_details_model.dart';
 
@@ -41,10 +39,10 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: AlignmentDirectional(0.0, 0.0),
+      alignment: const AlignmentDirectional(0.0, 0.0),
       child: Container(
         width: double.infinity,
-        decoration: BoxDecoration(),
+        decoration: const BoxDecoration(),
         child: Row(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.start,
@@ -57,7 +55,7 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget> {
                   image: DecorationImage(
                     fit: BoxFit.cover,
                     image: Image.network(
-                      currentUserPhoto != null && currentUserPhoto != ''
+                      currentUserPhoto != ''
                           ? currentUserPhoto
                           : 'https://s3.amazonaws.com/appforest_uf/f1633437780404x920214512569844000/account.png',
                     ).image,
@@ -65,18 +63,18 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget> {
                   borderRadius: BorderRadius.circular(100.0),
                 ),
                 child: Align(
-                  alignment: AlignmentDirectional(1.0, 1.0),
+                  alignment: const AlignmentDirectional(1.0, 1.0),
                   child: Container(
                     width: 10.0,
                     height: 10.0,
-                    constraints: BoxConstraints(
+                    constraints: const BoxConstraints(
                       minWidth: 9.0,
                       minHeight: 9.0,
                       maxWidth: 10.0,
                       maxHeight: 10.0,
                     ),
                     decoration: BoxDecoration(
-                      color: Color(0xFF0CCA4A),
+                      color: const Color(0xFF0CCA4A),
                       borderRadius: BorderRadius.circular(100.0),
                     ),
                   ),
@@ -86,7 +84,7 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget> {
             Expanded(
               child: Container(
                 width: 100.0,
-                decoration: BoxDecoration(),
+                decoration: const BoxDecoration(),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -97,7 +95,7 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget> {
                         valueOrDefault(currentUserDocument?.fullName, ''),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Yantramanav',
-                              color: Color(0xFF0F172A),
+                              color: const Color(0xFF0F172A),
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.bold,
                             ),
@@ -108,16 +106,16 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget> {
                         valueOrDefault(currentUserDocument?.companyName, ''),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Yantramanav',
-                              color: Color(0xFF0F172A),
+                              color: const Color(0xFF0F172A),
                               letterSpacing: 0.0,
                             ),
                       ),
                     ),
-                  ].divide(SizedBox(height: 6.0)),
+                  ].divide(const SizedBox(height: 6.0)),
                 ),
               ),
             ),
-          ].divide(SizedBox(width: 16.0)),
+          ].divide(const SizedBox(width: 16.0)),
         ),
       ),
     );

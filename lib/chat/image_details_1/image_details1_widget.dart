@@ -3,15 +3,10 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:math';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'image_details1_model.dart';
 export 'image_details1_model.dart';
 
@@ -56,15 +51,15 @@ class _ImageDetails1WidgetState extends State<ImageDetails1Widget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 300.0.ms,
-            begin: Offset(0.0, 30.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(0.0, 30.0),
+            end: const Offset(0.0, 0.0),
           ),
           ScaleEffect(
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 300.0.ms,
-            begin: Offset(0.7, 0.7),
-            end: Offset(1.0, 1.0),
+            begin: const Offset(0.7, 0.7),
+            end: const Offset(1.0, 1.0),
           ),
         ],
       ),
@@ -83,15 +78,15 @@ class _ImageDetails1WidgetState extends State<ImageDetails1Widget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 300.0.ms,
-            begin: Offset(0.0, 30.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(0.0, 30.0),
+            end: const Offset(0.0, 0.0),
           ),
           TiltEffect(
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 300.0.ms,
-            begin: Offset(-0.698, 0),
-            end: Offset(0, 0),
+            begin: const Offset(-0.698, 0),
+            end: const Offset(0, 0),
           ),
         ],
       ),
@@ -133,7 +128,7 @@ class _ImageDetails1WidgetState extends State<ImageDetails1Widget>
               context.pop();
             },
           ),
-          actions: [],
+          actions: const [],
           centerTitle: false,
           elevation: 0.0,
         ),
@@ -144,16 +139,16 @@ class _ImageDetails1WidgetState extends State<ImageDetails1Widget>
             children: [
               Expanded(
                 child: Padding(
-                  padding: EdgeInsets.all(12.0),
+                  padding: const EdgeInsets.all(12.0),
                   child: Hero(
-                    tag: widget!.chatMessage!.image,
+                    tag: widget.chatMessage!.image,
                     transitionOnUserGestures: true,
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(8.0),
                       child: CachedNetworkImage(
-                        fadeInDuration: Duration(milliseconds: 500),
-                        fadeOutDuration: Duration(milliseconds: 500),
-                        imageUrl: widget!.chatMessage!.image,
+                        fadeInDuration: const Duration(milliseconds: 500),
+                        fadeOutDuration: const Duration(milliseconds: 500),
+                        imageUrl: widget.chatMessage!.image,
                         width: double.infinity,
                         fit: BoxFit.fitWidth,
                         memCacheWidth: 1200,
@@ -165,12 +160,12 @@ class _ImageDetails1WidgetState extends State<ImageDetails1Widget>
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 32.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 32.0),
                 child: FutureBuilder<UsersRecord>(
                   future: FFAppState().userDocQuery(
-                    uniqueQueryKey: widget!.chatMessage?.reference.id,
+                    uniqueQueryKey: widget.chatMessage?.reference.id,
                     requestFn: () =>
-                        UsersRecord.getDocumentOnce(widget!.chatMessage!.user!),
+                        UsersRecord.getDocumentOnce(widget.chatMessage!.user!),
                   ),
                   builder: (context, snapshot) {
                     // Customize what your widget looks like when it's loading.
@@ -195,7 +190,7 @@ class _ImageDetails1WidgetState extends State<ImageDetails1Widget>
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 4.0, 8.0, 16.0),
                           child: Container(
                             width: 36.0,
@@ -210,12 +205,12 @@ class _ImageDetails1WidgetState extends State<ImageDetails1Widget>
                               ),
                             ),
                             child: Padding(
-                              padding: EdgeInsets.all(2.0),
+                              padding: const EdgeInsets.all(2.0),
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(8.0),
                                 child: CachedNetworkImage(
-                                  fadeInDuration: Duration(milliseconds: 200),
-                                  fadeOutDuration: Duration(milliseconds: 200),
+                                  fadeInDuration: const Duration(milliseconds: 200),
+                                  fadeOutDuration: const Duration(milliseconds: 200),
                                   imageUrl: otherUserUsersRecord.photoUrl,
                                   width: 44.0,
                                   height: 44.0,
@@ -227,7 +222,7 @@ class _ImageDetails1WidgetState extends State<ImageDetails1Widget>
                         ),
                         Flexible(
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 8.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
@@ -250,12 +245,12 @@ class _ImageDetails1WidgetState extends State<ImageDetails1Widget>
                                           ),
                                     )),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 4.0, 0.0, 0.0),
                                       child: Text(
                                         dateTimeFormat(
                                           'relative',
-                                          widget!.chatMessage!.timestamp!,
+                                          widget.chatMessage!.timestamp!,
                                           locale: FFLocalizations.of(context)
                                                   .languageShortCode ??
                                               FFLocalizations.of(context)
@@ -269,15 +264,15 @@ class _ImageDetails1WidgetState extends State<ImageDetails1Widget>
                                             ),
                                       ),
                                     ),
-                                  ].divide(SizedBox(width: 4.0)),
+                                  ].divide(const SizedBox(width: 4.0)),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 4.0, 0.0, 0.0),
                                   child: SelectionArea(
                                       child: AutoSizeText(
                                     valueOrDefault<String>(
-                                      widget!.chatMessage?.text,
+                                      widget.chatMessage?.text,
                                       '--',
                                     ),
                                     textAlign: TextAlign.start,
