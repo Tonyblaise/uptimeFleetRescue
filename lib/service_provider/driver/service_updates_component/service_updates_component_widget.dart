@@ -640,7 +640,7 @@ class _ServiceUpdatesComponentWidgetState
                                                               .start,
                                                       children: [
                                                         Text(
-                                                          'En Route',
+                                                          'Your technician is on the way',
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyMedium
@@ -669,7 +669,7 @@ class _ServiceUpdatesComponentWidgetState
                                                               ),
                                                         ),
                                                         Text(
-                                                          'Check your tech location',
+                                                          'Click to check your tech location',
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyMedium
