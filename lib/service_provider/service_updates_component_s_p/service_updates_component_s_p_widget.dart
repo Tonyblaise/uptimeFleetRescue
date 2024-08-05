@@ -407,6 +407,7 @@ class _ServiceUpdatesComponentSPWidgetState
                                             Expanded(
                                               child: Container(
                                                 width: 64.0,
+                                                height: 64.0,
                                                 decoration: BoxDecoration(
                                                   borderRadius:
                                                       BorderRadius.circular(
@@ -447,13 +448,13 @@ class _ServiceUpdatesComponentSPWidgetState
                                                                     .max,
                                                             mainAxisAlignment:
                                                                 MainAxisAlignment
-                                                                    .spaceBetween,
+                                                                    .center,
                                                             crossAxisAlignment:
                                                                 CrossAxisAlignment
                                                                     .start,
                                                             children: [
                                                               Text(
-                                                                'Request In Process',
+                                                                'Click below to start job',
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMedium
@@ -476,29 +477,6 @@ class _ServiceUpdatesComponentSPWidgetState
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .bold,
-                                                                    ),
-                                                              ),
-                                                              Text(
-                                                                'Click here to start job',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Yantramanav',
-                                                                      color: valueOrDefault<
-                                                                          Color>(
-                                                                        containerRequestRecord.status ==
-                                                                                'newCase'
-                                                                            ? FlutterFlowTheme.of(context).primaryText
-                                                                            : FlutterFlowTheme.of(context).secondaryText,
-                                                                        const Color(
-                                                                            0xFFE5E7EE),
-                                                                      ),
-                                                                      fontSize:
-                                                                          13.0,
-                                                                      letterSpacing:
-                                                                          0.0,
                                                                     ),
                                                               ),
                                                             ].divide(const SizedBox(
@@ -844,7 +822,7 @@ class _ServiceUpdatesComponentSPWidgetState
                                                                       .start,
                                                               children: [
                                                                 Text(
-                                                                  'En Route',
+                                                                  'Click here when you arrive at the service location',
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium
@@ -865,28 +843,6 @@ class _ServiceUpdatesComponentSPWidgetState
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.bold,
-                                                                      ),
-                                                                ),
-                                                                Text(
-                                                                  'Click here when you arrive at the location',
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Yantramanav',
-                                                                        color: valueOrDefault<
-                                                                            Color>(
-                                                                          containerRequestRecord.status == 'inProgress'
-                                                                              ? FlutterFlowTheme.of(context).primaryText
-                                                                              : FlutterFlowTheme.of(context).secondaryText,
-                                                                          const Color(
-                                                                              0xFFE5E7EE),
-                                                                        ),
-                                                                        fontSize:
-                                                                            13.0,
-                                                                        letterSpacing:
-                                                                            0.0,
                                                                       ),
                                                                 ),
                                                               ],
@@ -1127,8 +1083,8 @@ class _ServiceUpdatesComponentSPWidgetState
                                                                 Text(
                                                                   widget.fault ==
                                                                           'Tow'
-                                                                      ? 'Arrived'
-                                                                      : 'Job is complete',
+                                                                      ? 'Click here when ready to tow'
+                                                                      : 'Click here to when ready to tow',
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium
@@ -1149,31 +1105,6 @@ class _ServiceUpdatesComponentSPWidgetState
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.bold,
-                                                                      ),
-                                                                ),
-                                                                Text(
-                                                                  widget.fault ==
-                                                                          'Tow'
-                                                                      ? 'Click here when ready to tow'
-                                                                      : 'Click here to when ready to tow',
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Yantramanav',
-                                                                        color: valueOrDefault<
-                                                                            Color>(
-                                                                          containerRequestRecord.status == 'arrivedAtLocation'
-                                                                              ? const Color(0xFF64748B)
-                                                                              : FlutterFlowTheme.of(context).secondaryText,
-                                                                          const Color(
-                                                                              0xFFE5E7EE),
-                                                                        ),
-                                                                        fontSize:
-                                                                            13.0,
-                                                                        letterSpacing:
-                                                                            0.0,
                                                                       ),
                                                                 ),
                                                               ],
@@ -1388,7 +1319,7 @@ class _ServiceUpdatesComponentSPWidgetState
                                                                         .start,
                                                                 children: [
                                                                   Text(
-                                                                    'Enroute to tow destination',
+                                                                    'Click here when you arrive at the drop off location',
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
                                                                         .bodyMedium
@@ -1408,27 +1339,6 @@ class _ServiceUpdatesComponentSPWidgetState
                                                                               0.0,
                                                                           fontWeight:
                                                                               FontWeight.bold,
-                                                                        ),
-                                                                  ),
-                                                                  Text(
-                                                                    'Click here when you arrive at the drop off location',
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Yantramanav',
-                                                                          color:
-                                                                              valueOrDefault<Color>(
-                                                                            containerRequestRecord.status == 'enrouteToTowDestination'
-                                                                                ? FlutterFlowTheme.of(context).primaryText
-                                                                                : FlutterFlowTheme.of(context).secondaryText,
-                                                                            const Color(0xFFE5E7EE),
-                                                                          ),
-                                                                          fontSize:
-                                                                              13.0,
-                                                                          letterSpacing:
-                                                                              0.0,
                                                                         ),
                                                                   ),
                                                                 ],
@@ -1633,7 +1543,7 @@ class _ServiceUpdatesComponentSPWidgetState
                                                                         .start,
                                                                 children: [
                                                                   Text(
-                                                                    'Job complete?',
+                                                                    'Click here when you complete the job.',
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
                                                                         .bodyMedium
@@ -1653,27 +1563,6 @@ class _ServiceUpdatesComponentSPWidgetState
                                                                               0.0,
                                                                           fontWeight:
                                                                               FontWeight.bold,
-                                                                        ),
-                                                                  ),
-                                                                  Text(
-                                                                    'Click here when you completele the job',
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Yantramanav',
-                                                                          color:
-                                                                              valueOrDefault<Color>(
-                                                                            containerRequestRecord.status == 'arrivedToTowDestination'
-                                                                                ? FlutterFlowTheme.of(context).primaryText
-                                                                                : FlutterFlowTheme.of(context).secondaryText,
-                                                                            const Color(0xFFE5E7EE),
-                                                                          ),
-                                                                          fontSize:
-                                                                              13.0,
-                                                                          letterSpacing:
-                                                                              0.0,
                                                                         ),
                                                                   ),
                                                                 ],
