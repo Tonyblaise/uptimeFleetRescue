@@ -42,9 +42,7 @@ class _ServiceSummaryWidgetState extends State<ServiceSummaryWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: Colors.white,
@@ -414,7 +412,7 @@ class _ServiceSummaryWidgetState extends State<ServiceSummaryWidget> {
                                                 ),
                                                 Text(
                                                   dateTimeFormat(
-                                                    'd/M h:mm a',
+                                                    "d/M h:mm a",
                                                     functions
                                                         .converUnixTimestamp(
                                                             UptimeFleetAppGroup

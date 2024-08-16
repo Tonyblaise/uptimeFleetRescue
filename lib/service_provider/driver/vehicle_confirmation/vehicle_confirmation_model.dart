@@ -23,7 +23,6 @@ class VehicleConfirmationModel
 
   ///  State fields for stateful widgets in this page.
 
-  final unfocusNode = FocusNode();
   final formKey = GlobalKey<FormState>();
   // State field(s) for vehicledropdown widget.
   String? vehicledropdownValue;
@@ -59,7 +58,6 @@ class VehicleConfirmationModel
 
   @override
   void dispose() {
-    unfocusNode.dispose();
     textFieldFocusNode?.dispose();
     textController?.dispose();
   }

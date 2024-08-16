@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 class SettingsSpModel extends FlutterFlowModel<SettingsSpWidget> {
   ///  State fields for stateful widgets in this page.
 
-  final unfocusNode = FocusNode();
   // Model for settingsComponent component.
   late SettingsComponentModel settingsComponentModel;
   // Model for bottom_bar component.
@@ -22,7 +21,6 @@ class SettingsSpModel extends FlutterFlowModel<SettingsSpWidget> {
 
   @override
   void dispose() {
-    unfocusNode.dispose();
     settingsComponentModel.dispose();
     bottomBarModel.dispose();
   }

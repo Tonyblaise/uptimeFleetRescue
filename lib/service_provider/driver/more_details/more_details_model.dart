@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 class MoreDetailsModel extends FlutterFlowModel<MoreDetailsWidget> {
   ///  State fields for stateful widgets in this page.
 
-  final unfocusNode = FocusNode();
   final formKey2 = GlobalKey<FormState>();
   final formKey3 = GlobalKey<FormState>();
   final formKey1 = GlobalKey<FormState>();
@@ -46,7 +45,6 @@ class MoreDetailsModel extends FlutterFlowModel<MoreDetailsWidget> {
 
   @override
   void dispose() {
-    unfocusNode.dispose();
     dropOffInstructionsFocusNode?.dispose();
     dropOffInstructionsTextController?.dispose();
 

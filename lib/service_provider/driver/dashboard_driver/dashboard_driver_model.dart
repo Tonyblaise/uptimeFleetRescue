@@ -12,7 +12,6 @@ class DashboardDriverModel extends FlutterFlowModel<DashboardDriverWidget> {
 
   ///  State fields for stateful widgets in this page.
 
-  final unfocusNode = FocusNode();
   // Model for userDetails component.
   late UserDetailsModel userDetailsModel;
   // Model for pageTitle component.
@@ -34,7 +33,6 @@ class DashboardDriverModel extends FlutterFlowModel<DashboardDriverWidget> {
 
   @override
   void dispose() {
-    unfocusNode.dispose();
     userDetailsModel.dispose();
     pageTitleModel.dispose();
     textFieldFocusNode?.dispose();

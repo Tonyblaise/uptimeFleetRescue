@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 class TechStatusModel extends FlutterFlowModel<TechStatusWidget> {
   ///  State fields for stateful widgets in this page.
 
-  final unfocusNode = FocusNode();
   // Model for userDetails component.
   late UserDetailsModel userDetailsModel;
   // Model for pageTitle component.
@@ -25,7 +24,6 @@ class TechStatusModel extends FlutterFlowModel<TechStatusWidget> {
 
   @override
   void dispose() {
-    unfocusNode.dispose();
     userDetailsModel.dispose();
     pageTitleModel.dispose();
     bottomBarModel.dispose();

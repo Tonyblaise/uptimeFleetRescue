@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 class TechEnrouteModel extends FlutterFlowModel<TechEnrouteWidget> {
   ///  State fields for stateful widgets in this page.
 
-  final unfocusNode = FocusNode();
   // State field(s) for GoogleMap widget.
   LatLng? googleMapsCenter;
   final googleMapsController = Completer<GoogleMapController>();
@@ -15,7 +14,5 @@ class TechEnrouteModel extends FlutterFlowModel<TechEnrouteWidget> {
   void initState(BuildContext context) {}
 
   @override
-  void dispose() {
-    unfocusNode.dispose();
-  }
+  void dispose() {}
 }

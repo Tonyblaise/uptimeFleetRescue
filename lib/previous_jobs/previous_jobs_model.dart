@@ -7,16 +7,13 @@ import 'package:flutter/material.dart';
 class PreviousJobsModel extends FlutterFlowModel<PreviousJobsWidget> {
   ///  State fields for stateful widgets in this page.
 
-  final unfocusNode = FocusNode();
   Completer<ApiCallResponse>? apiRequestCompleter;
 
   @override
   void initState(BuildContext context) {}
 
   @override
-  void dispose() {
-    unfocusNode.dispose();
-  }
+  void dispose() {}
 
   /// Additional helper methods.
   Future waitForApiRequestCompleted({

@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 class ChangePasswordModel extends FlutterFlowModel<ChangePasswordWidget> {
   ///  State fields for stateful widgets in this page.
 
-  final unfocusNode = FocusNode();
   // State field(s) for yourOldPassword widget.
   FocusNode? yourOldPasswordFocusNode;
   TextEditingController? yourOldPasswordTextController;
@@ -37,7 +36,6 @@ class ChangePasswordModel extends FlutterFlowModel<ChangePasswordWidget> {
 
   @override
   void dispose() {
-    unfocusNode.dispose();
     yourOldPasswordFocusNode?.dispose();
     yourOldPasswordTextController?.dispose();
 

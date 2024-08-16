@@ -121,9 +121,9 @@ class _ConfirmCancellationWidgetState extends State<ConfirmCancellationWidget> {
                                 ),
                               });
                               if (widget.driver == true) {
-                                context.pushNamed('landing_page');
+                                context.goNamed('landing_page');
                               } else {
-                                context.pushNamed('dashboardTechnician');
+                                context.goNamed('dashboardTechnician');
                               }
                             },
                             text: 'Confirm',

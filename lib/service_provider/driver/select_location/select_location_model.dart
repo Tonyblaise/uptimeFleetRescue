@@ -12,7 +12,6 @@ class SelectLocationModel extends FlutterFlowModel<SelectLocationWidget> {
 
   ///  State fields for stateful widgets in this page.
 
-  final unfocusNode = FocusNode();
   // State field(s) for GoogleMap widget.
   LatLng? googleMapsCenter;
   final googleMapsController = Completer<GoogleMapController>();
@@ -23,7 +22,5 @@ class SelectLocationModel extends FlutterFlowModel<SelectLocationWidget> {
   void initState(BuildContext context) {}
 
   @override
-  void dispose() {
-    unfocusNode.dispose();
-  }
+  void dispose() {}
 }

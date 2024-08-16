@@ -10,7 +10,6 @@ class DriverChatModel extends FlutterFlowModel<DriverChatWidget> {
 
   ///  State fields for stateful widgets in this page.
 
-  final unfocusNode = FocusNode();
   // Model for chat_ThreadComponent_1 component.
   late ChatThreadComponent1Model chatThreadComponent1Model;
 
@@ -22,7 +21,6 @@ class DriverChatModel extends FlutterFlowModel<DriverChatWidget> {
 
   @override
   void dispose() {
-    unfocusNode.dispose();
     chatThreadComponent1Model.dispose();
   }
 }

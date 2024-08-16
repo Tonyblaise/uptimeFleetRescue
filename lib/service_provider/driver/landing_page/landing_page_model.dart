@@ -23,7 +23,6 @@ class LandingPageModel extends FlutterFlowModel<LandingPageWidget> {
 
   ///  State fields for stateful widgets in this page.
 
-  final unfocusNode = FocusNode();
   // State field(s) for GoogleMapone widget.
   LatLng? googleMaponesCenter1;
   final googleMaponesController1 = Completer<GoogleMapController>();
@@ -31,10 +30,12 @@ class LandingPageModel extends FlutterFlowModel<LandingPageWidget> {
   LatLng? googleMapsCenter;
   final googleMapsController = Completer<GoogleMapController>();
   // Model for confirmCancellation component.
-  late ConfirmCancellationModel confirmCancellationModel;
+  late ConfirmCancellationModel confirmCancellationModel1;
   // State field(s) for GoogleMapone widget.
   LatLng? googleMaponesCenter2;
   final googleMaponesController2 = Completer<GoogleMapController>();
+  // Model for confirmCancellation component.
+  late ConfirmCancellationModel confirmCancellationModel2;
   // State field(s) for PlacePicker widget.
   FFPlace placePickerValue = const FFPlace();
   // Model for serviceUpdatesComponent component.
@@ -42,7 +43,9 @@ class LandingPageModel extends FlutterFlowModel<LandingPageWidget> {
 
   @override
   void initState(BuildContext context) {
-    confirmCancellationModel =
+    confirmCancellationModel1 =
+        createModel(context, () => ConfirmCancellationModel());
+    confirmCancellationModel2 =
         createModel(context, () => ConfirmCancellationModel());
     serviceUpdatesComponentModel =
         createModel(context, () => ServiceUpdatesComponentModel());
@@ -50,8 +53,8 @@ class LandingPageModel extends FlutterFlowModel<LandingPageWidget> {
 
   @override
   void dispose() {
-    unfocusNode.dispose();
-    confirmCancellationModel.dispose();
+    confirmCancellationModel1.dispose();
+    confirmCancellationModel2.dispose();
     serviceUpdatesComponentModel.dispose();
   }
 }

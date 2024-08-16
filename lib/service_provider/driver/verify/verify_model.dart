@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 class VerifyModel extends FlutterFlowModel<VerifyWidget> {
   ///  State fields for stateful widgets in this page.
 
-  final unfocusNode = FocusNode();
   // State field(s) for PinCode widget.
   TextEditingController? pinCodeController;
   String? Function(BuildContext, String?)? pinCodeControllerValidator;
@@ -33,7 +32,6 @@ class VerifyModel extends FlutterFlowModel<VerifyWidget> {
 
   @override
   void dispose() {
-    unfocusNode.dispose();
     pinCodeController?.dispose();
   }
 }

@@ -22,7 +22,6 @@ class VehicleConfirmation2Model
 
   ///  State fields for stateful widgets in this page.
 
-  final unfocusNode = FocusNode();
   final formKey = GlobalKey<FormState>();
   // State field(s) for TextFieldColor widget.
   FocusNode? textFieldColorFocusNode;
@@ -73,7 +72,6 @@ class VehicleConfirmation2Model
 
   @override
   void dispose() {
-    unfocusNode.dispose();
     textFieldColorFocusNode?.dispose();
     textFieldColorTextController?.dispose();
 

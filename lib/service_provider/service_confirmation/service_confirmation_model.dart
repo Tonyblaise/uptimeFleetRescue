@@ -12,7 +12,6 @@ class ServiceConfirmationModel
 
   ///  State fields for stateful widgets in this page.
 
-  final unfocusNode = FocusNode();
   final formKey = GlobalKey<FormState>();
   // Model for userDetails component.
   late UserDetailsModel userDetailsModel;
@@ -46,7 +45,6 @@ class ServiceConfirmationModel
 
   @override
   void dispose() {
-    unfocusNode.dispose();
     userDetailsModel.dispose();
     textFielOdometerFocusNode?.dispose();
     textFielOdometerTextController?.dispose();

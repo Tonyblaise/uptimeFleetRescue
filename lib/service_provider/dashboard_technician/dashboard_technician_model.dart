@@ -14,7 +14,6 @@ class DashboardTechnicianModel
     extends FlutterFlowModel<DashboardTechnicianWidget> {
   ///  State fields for stateful widgets in this page.
 
-  final unfocusNode = FocusNode();
   InstantTimer? instantTimer;
   // Stores action output result for [Backend Call - API (Update technician position  using current postion)] action in dashboardTechnician widget.
   ApiCallResponse? apiResultayo6;
@@ -47,7 +46,6 @@ class DashboardTechnicianModel
 
   @override
   void dispose() {
-    unfocusNode.dispose();
     instantTimer?.cancel();
     instantTimer2?.cancel();
     userDetailsModel.dispose();

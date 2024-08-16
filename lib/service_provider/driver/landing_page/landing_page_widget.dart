@@ -56,9 +56,7 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         resizeToAvoidBottomInset: false,
@@ -627,7 +625,7 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                                             0.0, -1.0),
                                                     child: wrapWithModel(
                                                       model: _model
-                                                          .confirmCancellationModel,
+                                                          .confirmCancellationModel1,
                                                       updateCallback: () =>
                                                           setState(() {}),
                                                       child:
@@ -645,96 +643,135 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                           },
                                         );
                                       } else {
-                                        return StreamBuilder<List<UsersRecord>>(
-                                          stream: queryUsersRecord(
-                                            queryBuilder: (usersRecord) =>
-                                                usersRecord.where(
-                                              'onDuty',
-                                              isEqualTo: true,
-                                            ),
-                                          ),
-                                          builder: (context, snapshot) {
-                                            // Customize what your widget looks like when it's loading.
-                                            if (!snapshot.hasData) {
-                                              return Center(
-                                                child: SizedBox(
-                                                  width: 50.0,
-                                                  height: 50.0,
-                                                  child:
-                                                      CircularProgressIndicator(
-                                                    valueColor:
-                                                        AlwaysStoppedAnimation<
-                                                            Color>(
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .primary,
+                                        return Builder(
+                                          builder: (context) {
+                                            if (containerRequestRecord.status !=
+                                                'cancelled') {
+                                              return StreamBuilder<
+                                                  List<UsersRecord>>(
+                                                stream: queryUsersRecord(
+                                                  queryBuilder: (usersRecord) =>
+                                                      usersRecord.where(
+                                                    'onDuty',
+                                                    isEqualTo: true,
+                                                  ),
+                                                ),
+                                                builder: (context, snapshot) {
+                                                  // Customize what your widget looks like when it's loading.
+                                                  if (!snapshot.hasData) {
+                                                    return Center(
+                                                      child: SizedBox(
+                                                        width: 50.0,
+                                                        height: 50.0,
+                                                        child:
+                                                            CircularProgressIndicator(
+                                                          valueColor:
+                                                              AlwaysStoppedAnimation<
+                                                                  Color>(
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primary,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    );
+                                                  }
+                                                  List<UsersRecord>
+                                                      containerUsersRecordList =
+                                                      snapshot.data!;
+
+                                                  return Container(
+                                                    width: 100.0,
+                                                    height: 100.0,
+                                                    decoration: BoxDecoration(
+                                                      color: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
                                                     ),
+                                                    child: Align(
+                                                      alignment:
+                                                          const AlignmentDirectional(
+                                                              0.0, 0.0),
+                                                      child: Container(
+                                                        width: double.infinity,
+                                                        height: double.infinity,
+                                                        decoration:
+                                                            const BoxDecoration(),
+                                                        child:
+                                                            FlutterFlowGoogleMap(
+                                                          controller: _model
+                                                              .googleMaponesController2,
+                                                          onCameraIdle: (latLng) =>
+                                                              setState(() =>
+                                                                  _model.googleMaponesCenter2 =
+                                                                      latLng),
+                                                          initialLocation: _model
+                                                                  .googleMaponesCenter2 ??=
+                                                              _model.latLng!,
+                                                          markers:
+                                                              containerUsersRecordList
+                                                                  .map((e) => e
+                                                                      .technicianLastUpdatedLocation)
+                                                                  .withoutNulls
+                                                                  .toList()
+                                                                  .map(
+                                                                    (marker) =>
+                                                                        FlutterFlowMarker(
+                                                                      marker
+                                                                          .serialize(),
+                                                                      marker,
+                                                                    ),
+                                                                  )
+                                                                  .toList(),
+                                                          markerColor:
+                                                              GoogleMarkerColor
+                                                                  .red,
+                                                          mapType:
+                                                              MapType.normal,
+                                                          style: GoogleMapStyle
+                                                              .standard,
+                                                          initialZoom: 14.0,
+                                                          allowInteraction:
+                                                              true,
+                                                          allowZoom: true,
+                                                          showZoomControls:
+                                                              true,
+                                                          showLocation: true,
+                                                          showCompass: true,
+                                                          showMapToolbar: true,
+                                                          showTraffic: true,
+                                                          centerMapOnMarkerTap:
+                                                              true,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  );
+                                                },
+                                              );
+                                            } else {
+                                              return Container(
+                                                width: double.infinity,
+                                                height: double.infinity,
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryBackground,
+                                                ),
+                                                child: wrapWithModel(
+                                                  model: _model
+                                                      .confirmCancellationModel2,
+                                                  updateCallback: () =>
+                                                      setState(() {}),
+                                                  child:
+                                                      ConfirmCancellationWidget(
+                                                    request:
+                                                        containerRequestRecord
+                                                            .reference.id,
+                                                    driver: true,
                                                   ),
                                                 ),
                                               );
                                             }
-                                            List<UsersRecord>
-                                                containerUsersRecordList =
-                                                snapshot.data!;
-
-                                            return Container(
-                                              width: 100.0,
-                                              height: 100.0,
-                                              decoration: BoxDecoration(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
-                                              ),
-                                              child: Align(
-                                                alignment: const AlignmentDirectional(
-                                                    0.0, 0.0),
-                                                child: Container(
-                                                  width: double.infinity,
-                                                  height: double.infinity,
-                                                  decoration: const BoxDecoration(),
-                                                  child: FlutterFlowGoogleMap(
-                                                    controller: _model
-                                                        .googleMaponesController2,
-                                                    onCameraIdle: (latLng) =>
-                                                        setState(() => _model
-                                                                .googleMaponesCenter2 =
-                                                            latLng),
-                                                    initialLocation: _model
-                                                            .googleMaponesCenter2 ??=
-                                                        _model.latLng!,
-                                                    markers:
-                                                        containerUsersRecordList
-                                                            .map((e) => e
-                                                                .technicianLastUpdatedLocation)
-                                                            .withoutNulls
-                                                            .toList()
-                                                            .map(
-                                                              (marker) =>
-                                                                  FlutterFlowMarker(
-                                                                marker
-                                                                    .serialize(),
-                                                                marker,
-                                                              ),
-                                                            )
-                                                            .toList(),
-                                                    markerColor:
-                                                        GoogleMarkerColor.red,
-                                                    mapType: MapType.normal,
-                                                    style:
-                                                        GoogleMapStyle.standard,
-                                                    initialZoom: 14.0,
-                                                    allowInteraction: true,
-                                                    allowZoom: true,
-                                                    showZoomControls: true,
-                                                    showLocation: true,
-                                                    showCompass: true,
-                                                    showMapToolbar: true,
-                                                    showTraffic: true,
-                                                    centerMapOnMarkerTap: true,
-                                                  ),
-                                                ),
-                                              ),
-                                            );
                                           },
                                         );
                                       }

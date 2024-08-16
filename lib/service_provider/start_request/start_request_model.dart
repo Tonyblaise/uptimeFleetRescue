@@ -17,7 +17,6 @@ class StartRequestModel extends FlutterFlowModel<StartRequestWidget> {
 
   ///  State fields for stateful widgets in this page.
 
-  final unfocusNode = FocusNode();
   // Model for userDetails component.
   late UserDetailsModel userDetailsModel;
   // Model for serviceSummaryWidget component.
@@ -32,7 +31,6 @@ class StartRequestModel extends FlutterFlowModel<StartRequestWidget> {
 
   @override
   void dispose() {
-    unfocusNode.dispose();
     userDetailsModel.dispose();
     serviceSummaryWidgetModel.dispose();
   }
