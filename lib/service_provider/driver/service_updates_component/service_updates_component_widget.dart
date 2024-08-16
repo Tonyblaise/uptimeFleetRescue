@@ -1213,26 +1213,53 @@ class _ServiceUpdatesComponentWidgetState
                                               (value) => safeSetState(() {}));
                                         },
                                         child: Container(
-                                          width: 160.0,
+                                          width: 181.0,
                                           height: 56.0,
                                           decoration: BoxDecoration(
+                                            color: widget.request?.status ==
+                                                    'completed'
+                                                ? FlutterFlowTheme.of(context)
+                                                    .tertiary
+                                                : FlutterFlowTheme.of(context)
+                                                    .secondaryBackground,
                                             borderRadius:
                                                 BorderRadius.circular(18.0),
                                             border: Border.all(
-                                              color: const Color(0xFFF50833),
+                                              color: valueOrDefault<Color>(
+                                                widget.request?.status ==
+                                                        'completed'
+                                                    ? FlutterFlowTheme.of(
+                                                            context)
+                                                        .tertiary
+                                                    : const Color(0xFFF50833),
+                                                const Color(0xFFF50833),
+                                              ),
                                             ),
                                           ),
                                           child: Align(
                                             alignment:
                                                 const AlignmentDirectional(0.0, 0.0),
                                             child: Text(
-                                              'Cancel this job',
+                                              widget.request?.status ==
+                                                      'completed'
+                                                  ? 'Mark as complete'
+                                                  : 'Cancel this job',
+                                              textAlign: TextAlign.center,
                                               style: FlutterFlowTheme.of(
                                                       context)
                                                   .titleSmall
                                                   .override(
                                                     fontFamily: 'Yantramanav',
-                                                    color: const Color(0xFFF50833),
+                                                    color:
+                                                        valueOrDefault<Color>(
+                                                      widget.request?.status ==
+                                                              'completed'
+                                                          ? FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryBackground
+                                                          : const Color(0xFFF50833),
+                                                      const Color(0xFFF50833),
+                                                    ),
                                                     letterSpacing: 0.0,
                                                   ),
                                             ),
