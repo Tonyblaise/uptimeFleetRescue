@@ -647,6 +647,14 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                                     0.0, 0.0, 0.0, 20.0),
                                             child: FFButtonWidget(
                                               onPressed: () async {
+                                                if (_model.formKey1
+                                                            .currentState ==
+                                                        null ||
+                                                    !_model
+                                                        .formKey1.currentState!
+                                                        .validate()) {
+                                                  return;
+                                                }
                                                 FFAppState()
                                                         .requestAdditionalInfo =
                                                     'Where would you like the vehicle towed to?/n${_model.wherewouldyoulikethevehicletowedtoValue.latLng.toString()}/n/nDrop off instructions/n${_model.dropOffInstructionsTextController.text}/n/nWill you be waiting with the vehicle?/n${_model.willyoubewaitingwiththevehicleValue}/n/nIf not, where will you leave the keys?/n${_model.ifnowherewillyouleavethekeysTextController.text}/n/n/';

@@ -36,6 +36,7 @@ dependencies:
   cloud_functions_web: 4.9.4
   collection: 1.18.0
   device_info_plus: any
+  device_info_plus_platform_interface: 7.0.0
   dropdown_button2: 2.3.9
   equatable: 2.0.5
   file_picker: 8.0.3
@@ -124,7 +125,6 @@ dependencies:
   video_player_platform_interface: 6.2.2
   video_player_web: 2.3.1
 
-
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.0
@@ -141,7 +141,6 @@ dev_dependencies:
   flutter_lints: 4.0.0
   image: 4.0.17
   lints: 4.0.0
-
   flutter_test:
     sdk: flutter
 

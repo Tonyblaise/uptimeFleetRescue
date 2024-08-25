@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/pages/chat/empty_state_simple/empty_state_simple_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:flutter/material.dart';
 import 'select_vehicle_model.dart';
 export 'select_vehicle_model.dart';
@@ -303,6 +304,14 @@ class _SelectVehicleWidgetState extends State<SelectVehicleWidget> {
                                     ),
                                   );
                                   Navigator.pop(context);
+                                  FFAppState().test = random_data.randomString(
+                                    0,
+                                    0,
+                                    true,
+                                    false,
+                                    false,
+                                  );
+                                  FFAppState().update(() {});
                                 } else {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(

@@ -1106,12 +1106,15 @@ class _ServiceUpdatesComponentWidgetState
                                                     child: Column(
                                                       mainAxisSize:
                                                           MainAxisSize.max,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
                                                       crossAxisAlignment:
                                                           CrossAxisAlignment
                                                               .start,
                                                       children: [
                                                         Text(
-                                                          'Completed',
+                                                          'Job is complete',
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyMedium
@@ -1137,32 +1140,6 @@ class _ServiceUpdatesComponentWidgetState
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .bold,
-                                                              ),
-                                                        ),
-                                                        Text(
-                                                          'Click here to mark  it as complete',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Yantramanav',
-                                                                color:
-                                                                    valueOrDefault<
-                                                                        Color>(
-                                                                  widget.request
-                                                                              ?.status ==
-                                                                          'completed'
-                                                                      ? const Color(
-                                                                          0xFF64748B)
-                                                                      : const Color(
-                                                                          0xFFE5E7EE),
-                                                                  const Color(
-                                                                      0xFFE5E7EE),
-                                                                ),
-                                                                fontSize: 16.0,
-                                                                letterSpacing:
-                                                                    0.0,
                                                               ),
                                                         ),
                                                       ],

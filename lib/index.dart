@@ -46,7 +46,7 @@ export '/chat/image_details_1/image_details1_widget.dart'
 export '/previous_jobs/previous_jobs_widget.dart' show PreviousJobsWidget;
 export '/success/success_widget.dart' show SuccessWidget;
 export '/tech_enroute/tech_enroute_widget.dart' show TechEnrouteWidget;
-export '/service_provider/driver/more_details/more_details_widget.dart'
+export '/service_provider/more_details/more_details_widget.dart'
     show MoreDetailsWidget;
 export '/service_provider/driver/landing_page/landing_page_widget.dart'
     show LandingPageWidget;
