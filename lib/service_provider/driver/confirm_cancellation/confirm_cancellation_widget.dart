@@ -3,6 +3,7 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/permissions_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'confirm_cancellation_model.dart';
@@ -121,6 +122,8 @@ class _ConfirmCancellationWidgetState extends State<ConfirmCancellationWidget> {
                                 ),
                               });
                               if (widget.driver == true) {
+                                await requestPermission(locationPermission);
+
                                 context.goNamed('landing_page');
                               } else {
                                 context.goNamed('dashboardTechnician');

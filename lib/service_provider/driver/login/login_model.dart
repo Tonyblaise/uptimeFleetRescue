@@ -8,6 +8,7 @@ import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 class LoginModel extends FlutterFlowModel<LoginWidget> {
   ///  State fields for stateful widgets in this page.
 
+  final unfocusNode = FocusNode();
   // State field(s) for DropDown widget.
   String? dropDownValue;
   FormFieldController<String>? dropDownValueController;
@@ -16,7 +17,7 @@ class LoginModel extends FlutterFlowModel<LoginWidget> {
   TextEditingController? textController;
   final textFieldMask = MaskTextInputFormatter(mask: '(###) ###-####');
   String? Function(BuildContext, String?)? textControllerValidator;
-  // Stores action output result for [Backend Call - API (Check user)] action in Container widget.
+  // Stores action output result for [Backend Call - API (Check user)] action in Button widget.
   ApiCallResponse? check;
 
   @override

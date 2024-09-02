@@ -1084,7 +1084,7 @@ class _ServiceUpdatesComponentSPWidgetState
                                                                   widget.fault ==
                                                                           'Tow'
                                                                       ? 'Click here when ready to tow'
-                                                                      : 'Click here to when ready to tow',
+                                                                      : 'Click here when you complete the job',
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium

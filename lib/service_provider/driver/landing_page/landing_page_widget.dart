@@ -8,7 +8,9 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/service_provider/driver/confirm_cancellation/confirm_cancellation_widget.dart';
 import '/service_provider/driver/service_updates_component/service_updates_component_widget.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
+import '/flutter_flow/permissions_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'landing_page_model.dart';
@@ -36,6 +38,12 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       currentUserLocationValue =
           await getCurrentUserLocation(defaultLocation: const LatLng(0.0, 0.0));
+      if (isAndroid || isiOS) {
+        await requestPermission(locationPermission);
+      } else {
+        await actions.getUserLocation();
+      }
+
       _model.latLng = currentUserLocationValue;
       setState(() {});
       if (valueOrDefault(currentUserDocument?.technicianId, '') != '') {

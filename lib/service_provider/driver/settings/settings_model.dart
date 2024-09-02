@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 class SettingsModel extends FlutterFlowModel<SettingsWidget> {
   ///  State fields for stateful widgets in this page.
 
+  final unfocusNode = FocusNode();
   // Model for settingsComponent component.
   late SettingsComponentModel settingsComponentModel;
 

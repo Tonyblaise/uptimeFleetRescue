@@ -1,5 +1,5 @@
-import '/chat/chat_thread_component_1/chat_thread_component1_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/service_provider/driver/chat/chat_thread_component_1/chat_thread_component1_widget.dart';
 import 'chat2_details1_widget.dart' show Chat2Details1Widget;
 import 'package:flutter/material.dart';
 
@@ -31,6 +31,7 @@ class Chat2Details1Model extends FlutterFlowModel<Chat2Details1Widget> {
 
   ///  State fields for stateful widgets in this page.
 
+  final unfocusNode = FocusNode();
   // Model for chat_ThreadComponent_1 component.
   late ChatThreadComponent1Model chatThreadComponent1Model;
 

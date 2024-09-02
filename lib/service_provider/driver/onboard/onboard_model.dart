@@ -12,6 +12,7 @@ class OnboardModel extends FlutterFlowModel<OnboardWidget> {
 
   ///  State fields for stateful widgets in this page.
 
+  final unfocusNode = FocusNode();
   // State field(s) for fullname widget.
   FocusNode? fullnameFocusNode;
   TextEditingController? fullnameTextController;

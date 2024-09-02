@@ -23,6 +23,7 @@ class LandingPageModel extends FlutterFlowModel<LandingPageWidget> {
 
   ///  State fields for stateful widgets in this page.
 
+  final unfocusNode = FocusNode();
   // State field(s) for GoogleMapone widget.
   LatLng? googleMaponesCenter1;
   final googleMaponesController1 = Completer<GoogleMapController>();

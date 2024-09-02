@@ -650,8 +650,8 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                                 if (_model.formKey1
                                                             .currentState ==
                                                         null ||
-                                                    !_model
-                                                        .formKey1.currentState!
+                                                    !_model.formKey1
+                                                        .currentState!
                                                         .validate()) {
                                                   return;
                                                 }
@@ -673,7 +673,7 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                                     ),
                                                   }.withoutNulls,
                                                 );
-                                              },
+                                                                                            },
                                               text: 'Next',
                                               options: FFButtonOptions(
                                                 width:

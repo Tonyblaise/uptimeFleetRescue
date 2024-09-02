@@ -39,9 +39,9 @@ export '/service_provider/tech_status/tech_status_widget.dart'
     show TechStatusWidget;
 export '/service_provider/technician_chat/technician_chat_widget.dart'
     show TechnicianChatWidget;
-export '/chat/chat_2_details_1/chat2_details1_widget.dart'
+export '/service_provider/driver/chat/chat_2_details_1/chat2_details1_widget.dart'
     show Chat2Details1Widget;
-export '/chat/image_details_1/image_details1_widget.dart'
+export '/service_provider/driver/chat/image_details_1/image_details1_widget.dart'
     show ImageDetails1Widget;
 export '/previous_jobs/previous_jobs_widget.dart' show PreviousJobsWidget;
 export '/success/success_widget.dart' show SuccessWidget;

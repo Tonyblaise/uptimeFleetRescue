@@ -13,6 +13,10 @@ class ServiceSummaryModel extends FlutterFlowModel<ServiceSummaryWidget> {
   void updateNumebrAtIndex(int index, Function(int) updateFn) =>
       numebr[index] = updateFn(numebr[index]);
 
+  ///  State fields for stateful widgets in this page.
+
+  final unfocusNode = FocusNode();
+
   @override
   void initState(BuildContext context) {}
 

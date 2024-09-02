@@ -291,121 +291,134 @@ class _OnboardWidgetState extends State<OnboardWidget> {
                     ],
                   ),
                 ),
-                FFButtonWidget(
-                  onPressed: () async {
-                    _model.check = await UptimeFleetAppGroup.checkUserCall.call(
-                      phoneNumber:
-                          '${_model.dropDownValue}${_model.textController2.text}',
-                    );
-
-                    if ((_model.check?.succeeded ?? true)) {
-                      if (UptimeFleetAppGroup.checkUserCall.signUpType(
-                            (_model.check?.jsonBody ?? ''),
-                          ) ==
-                          'none') {
-                        final phoneNumberVal =
-                            '${_model.dropDownValue}${_model.textController2.text}';
-                        if (phoneNumberVal.isEmpty ||
-                            !phoneNumberVal.startsWith('+')) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text(
-                                  'Phone Number is required and has to start with +.'),
-                            ),
+                Container(
+                  decoration: const BoxDecoration(),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      FFButtonWidget(
+                        onPressed: () async {
+                          _model.check =
+                              await UptimeFleetAppGroup.checkUserCall.call(
+                            phoneNumber:
+                                '${_model.dropDownValue}${_model.textController2.text}',
                           );
-                          return;
-                        }
-                        await authManager.beginPhoneAuth(
-                          context: context,
-                          phoneNumber: phoneNumberVal,
-                          onCodeSent: (context) async {
-                            context.goNamedAuth(
-                              'verify',
-                              context.mounted,
-                              queryParameters: {
-                                'phoneNumber': serializeParam(
-                                  '${_model.dropDownValue}${_model.textController2.text}',
-                                  ParamType.String,
-                                ),
-                                'fleetManagerId': serializeParam(
-                                  widget.fleetManagerId,
-                                  ParamType.String,
-                                ),
-                                'signUpType': serializeParam(
-                                  _model.signUpType,
-                                  ParamType.String,
-                                ),
-                                'serviceProviderId': serializeParam(
-                                  widget.serviceProviderId,
-                                  ParamType.String,
-                                ),
-                                'fullName': serializeParam(
-                                  _model.fullnameTextController.text,
-                                  ParamType.String,
-                                ),
-                                'signUp': serializeParam(
-                                  true,
-                                  ParamType.bool,
-                                ),
-                              }.withoutNulls,
-                              ignoreRedirect: true,
-                            );
-                          },
-                        );
-                      } else {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text(
-                              'This account already exists. Please use a different phone number or log in.',
-                              style: TextStyle(
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                fontSize: 14.0,
-                              ),
-                            ),
-                            duration: const Duration(milliseconds: 4000),
-                            backgroundColor:
-                                FlutterFlowTheme.of(context).secondary,
-                          ),
-                        );
-                      }
-                    } else {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text(
-                            'Something went wrong. Please try again later.',
-                            style: TextStyle(
-                              color: FlutterFlowTheme.of(context).primaryText,
-                              fontSize: 14.0,
-                            ),
-                          ),
-                          duration: const Duration(milliseconds: 4000),
-                          backgroundColor: FlutterFlowTheme.of(context).error,
-                        ),
-                      );
-                    }
 
-                    setState(() {});
-                  },
-                  text: 'Create Account',
-                  options: FFButtonOptions(
-                    width: MediaQuery.sizeOf(context).width * 0.9,
-                    height: 56.0,
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                    iconPadding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                    color: FlutterFlowTheme.of(context).tertiary,
-                    textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                          fontFamily: 'Yantramanav',
-                          color: FlutterFlowTheme.of(context).primary,
-                          letterSpacing: 0.0,
+                          if ((_model.check?.succeeded ?? true)) {
+                            if (UptimeFleetAppGroup.checkUserCall.signUpType(
+                                  (_model.check?.jsonBody ?? ''),
+                                ) ==
+                                'none') {
+                              final phoneNumberVal =
+                                  '${_model.dropDownValue}${_model.textController2.text}';
+                              if (phoneNumberVal.isEmpty ||
+                                  !phoneNumberVal.startsWith('+')) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content: Text(
+                                        'Phone Number is required and has to start with +.'),
+                                  ),
+                                );
+                                return;
+                              }
+                              await authManager.beginPhoneAuth(
+                                context: context,
+                                phoneNumber: phoneNumberVal,
+                                onCodeSent: (context) async {
+                                  context.goNamedAuth(
+                                    'verify',
+                                    context.mounted,
+                                    queryParameters: {
+                                      'phoneNumber': serializeParam(
+                                        '${_model.dropDownValue}${_model.textController2.text}',
+                                        ParamType.String,
+                                      ),
+                                      'fleetManagerId': serializeParam(
+                                        widget.fleetManagerId,
+                                        ParamType.String,
+                                      ),
+                                      'signUpType': serializeParam(
+                                        _model.signUpType,
+                                        ParamType.String,
+                                      ),
+                                      'serviceProviderId': serializeParam(
+                                        widget.serviceProviderId,
+                                        ParamType.String,
+                                      ),
+                                      'fullName': serializeParam(
+                                        _model.fullnameTextController.text,
+                                        ParamType.String,
+                                      ),
+                                      'signUp': serializeParam(
+                                        true,
+                                        ParamType.bool,
+                                      ),
+                                    }.withoutNulls,
+                                    ignoreRedirect: true,
+                                  );
+                                },
+                              );
+                            } else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                    'This account already exists. Please use a different phone number or log in.',
+                                    style: TextStyle(
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      fontSize: 14.0,
+                                    ),
+                                  ),
+                                  duration: const Duration(milliseconds: 4000),
+                                  backgroundColor:
+                                      FlutterFlowTheme.of(context).secondary,
+                                ),
+                              );
+                            }
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  'Something went wrong. Please try again later.',
+                                  style: TextStyle(
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    fontSize: 14.0,
+                                  ),
+                                ),
+                                duration: const Duration(milliseconds: 4000),
+                                backgroundColor:
+                                    FlutterFlowTheme.of(context).error,
+                              ),
+                            );
+                          }
+
+                          setState(() {});
+                        },
+                        text: 'Create Account',
+                        options: FFButtonOptions(
+                          width: MediaQuery.sizeOf(context).width * 0.9,
+                          height: 56.0,
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              24.0, 0.0, 24.0, 0.0),
+                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          color: FlutterFlowTheme.of(context).tertiary,
+                          textStyle:
+                              FlutterFlowTheme.of(context).titleSmall.override(
+                                    fontFamily: 'Yantramanav',
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    letterSpacing: 0.0,
+                                  ),
+                          elevation: 3.0,
+                          borderSide: const BorderSide(
+                            color: Colors.transparent,
+                            width: 1.0,
+                          ),
+                          borderRadius: BorderRadius.circular(18.0),
                         ),
-                    elevation: 3.0,
-                    borderSide: const BorderSide(
-                      color: Colors.transparent,
-                      width: 1.0,
-                    ),
-                    borderRadius: BorderRadius.circular(18.0),
+                      ),
+                    ],
                   ),
                 ),
               ].divide(const SizedBox(height: 10.0)),

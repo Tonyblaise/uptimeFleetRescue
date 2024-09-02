@@ -4,8 +4,8 @@ import '/components/page_title_widget.dart';
 import '/components/user_details_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/service_provider/driver/allow_location/allow_location_widget.dart';
 import '/service_provider/driver/service_updates_component/service_updates_component_widget.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/permissions_util.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -34,6 +34,12 @@ class _DashboardDriverWidgetState extends State<DashboardDriverWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       if (valueOrDefault(currentUserDocument?.technicianId, '') != '') {
         context.pushNamed('dashboardTechnician');
+      } else {
+        if (isAndroid || isiOS) {
+          await requestPermission(locationPermission);
+        } else {
+          await actions.getUserLocation();
+        }
       }
     });
 
@@ -541,78 +547,47 @@ class _DashboardDriverWidgetState extends State<DashboardDriverWidget> {
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
-                                      if (await getPermissionStatus(
-                                          locationPermission)) {
-                                        if (_model.service == 'Tow') {
-                                          context.pushNamed(
-                                            'more_details',
-                                            queryParameters: {
-                                              'fault': serializeParam(
-                                                'Tow',
-                                                ParamType.String,
-                                              ),
-                                            }.withoutNulls,
-                                          );
-                                        } else if (_model.service ==
-                                            'Lockout') {
-                                          context.pushNamed(
-                                            'more_details',
-                                            queryParameters: {
-                                              'fault': serializeParam(
-                                                'Lockout',
-                                                ParamType.String,
-                                              ),
-                                            }.withoutNulls,
-                                          );
-                                        } else if (_model.service ==
-                                            'Tire Change') {
-                                          context.pushNamed(
-                                            'more_details',
-                                            queryParameters: {
-                                              'fault': serializeParam(
-                                                'Tire Change',
-                                                ParamType.String,
-                                              ),
-                                            }.withoutNulls,
-                                          );
-                                        } else {
-                                          context.pushNamed(
-                                            'vehicle_confirmation',
-                                            queryParameters: {
-                                              'service': serializeParam(
-                                                _model.service,
-                                                ParamType.String,
-                                              ),
-                                            }.withoutNulls,
-                                          );
-                                        }
+                                      if (_model.service == 'Tow') {
+                                        context.pushNamed(
+                                          'more_details',
+                                          queryParameters: {
+                                            'fault': serializeParam(
+                                              'Tow',
+                                              ParamType.String,
+                                            ),
+                                          }.withoutNulls,
+                                        );
+                                      } else if (_model.service == 'Lockout') {
+                                        context.pushNamed(
+                                          'more_details',
+                                          queryParameters: {
+                                            'fault': serializeParam(
+                                              'Lockout',
+                                              ParamType.String,
+                                            ),
+                                          }.withoutNulls,
+                                        );
+                                      } else if (_model.service ==
+                                          'Tire Change') {
+                                        context.pushNamed(
+                                          'more_details',
+                                          queryParameters: {
+                                            'fault': serializeParam(
+                                              'Tire Change',
+                                              ParamType.String,
+                                            ),
+                                          }.withoutNulls,
+                                        );
                                       } else {
-                                        await showModalBottomSheet(
-                                          isScrollControlled: true,
-                                          backgroundColor: Colors.transparent,
-                                          isDismissible: false,
-                                          enableDrag: false,
-                                          context: context,
-                                          builder: (context) {
-                                            return GestureDetector(
-                                              onTap: () =>
-                                                  FocusScope.of(context)
-                                                      .unfocus(),
-                                              child: Padding(
-                                                padding:
-                                                    MediaQuery.viewInsetsOf(
-                                                        context),
-                                                child: SizedBox(
-                                                  height:
-                                                      MediaQuery.sizeOf(context)
-                                                              .height *
-                                                          0.6,
-                                                  child: const AllowLocationWidget(),
-                                                ),
-                                              ),
-                                            );
-                                          },
-                                        ).then((value) => safeSetState(() {}));
+                                        context.pushNamed(
+                                          'vehicle_confirmation',
+                                          queryParameters: {
+                                            'service': serializeParam(
+                                              _model.service,
+                                              ParamType.String,
+                                            ),
+                                          }.withoutNulls,
+                                        );
                                       }
                                     },
                                     child: Container(

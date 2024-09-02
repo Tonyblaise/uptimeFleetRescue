@@ -5,8 +5,10 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
+import '/flutter_flow/permissions_util.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'verify_model.dart';
 export 'verify_model.dart';
 
@@ -41,6 +43,15 @@ class _VerifyWidgetState extends State<VerifyWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => VerifyModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      if (isAndroid || isiOS) {
+        await requestPermission(locationPermission);
+      } else {
+        await actions.getUserLocation();
+      }
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -438,6 +449,22 @@ class _VerifyWidgetState extends State<VerifyWidget> {
                     ),
                     borderRadius: BorderRadius.circular(100.0),
                   ),
+                ),
+              ),
+              InkWell(
+                splashColor: Colors.transparent,
+                focusColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                onTap: () async {
+                  context.pushNamed('landing_page');
+                },
+                child: Text(
+                  'Click here if not redirected after confirmation',
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        fontFamily: 'Yantramanav',
+                        letterSpacing: 0.0,
+                      ),
                 ),
               ),
             ].divide(const SizedBox(height: 15.0)),

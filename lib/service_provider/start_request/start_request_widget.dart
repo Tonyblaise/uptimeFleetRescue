@@ -1,8 +1,8 @@
 import '/backend/api_requests/api_calls.dart';
-import '/chat/service_summary_widget/service_summary_widget_widget.dart';
 import '/components/user_details_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/service_provider/driver/chat/service_summary_widget/service_summary_widget_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'start_request_model.dart';

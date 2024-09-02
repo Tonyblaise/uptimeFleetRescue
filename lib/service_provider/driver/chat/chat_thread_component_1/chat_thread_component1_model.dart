@@ -1,7 +1,7 @@
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
-import '/chat/chat_thread_update_1/chat_thread_update1_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/service_provider/driver/chat/chat_thread_update_1/chat_thread_update1_widget.dart';
 import 'chat_thread_component1_widget.dart' show ChatThreadComponent1Widget;
 import 'package:flutter/material.dart';
 
