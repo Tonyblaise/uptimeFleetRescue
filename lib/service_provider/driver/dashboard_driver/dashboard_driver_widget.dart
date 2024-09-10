@@ -4,15 +4,12 @@ import '/components/page_title_widget.dart';
 import '/components/user_details_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/service_provider/driver/service_updates_component/service_updates_component_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/permissions_util.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'dashboard_driver_model.dart';
 export 'dashboard_driver_model.dart';
 
@@ -35,8 +32,7 @@ class _DashboardDriverWidgetState extends State<DashboardDriverWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      if (valueOrDefault(currentUserDocument?.technicianId, '') != null &&
-          valueOrDefault(currentUserDocument?.technicianId, '') != '') {
+      if (valueOrDefault(currentUserDocument?.technicianId, '') != '') {
         context.pushNamed('dashboardTechnician');
       } else {
         if (isAndroid || isiOS) {
@@ -73,14 +69,14 @@ class _DashboardDriverWidgetState extends State<DashboardDriverWidget> {
               IconThemeData(color: FlutterFlowTheme.of(context).primaryText),
           automaticallyImplyLeading: true,
           title: Container(
-            decoration: BoxDecoration(),
+            decoration: const BoxDecoration(),
             child: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
               child: Text(
                 'Select Service',
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Yantramanav',
-                      color: Color(0xFF1E293B),
+                      color: const Color(0xFF1E293B),
                       fontSize: 30.0,
                       letterSpacing: 0.0,
                       fontWeight: FontWeight.bold,
@@ -88,24 +84,24 @@ class _DashboardDriverWidgetState extends State<DashboardDriverWidget> {
               ),
             ),
           ),
-          actions: [],
+          actions: const [],
           centerTitle: false,
           elevation: 1.0,
         ),
         body: SafeArea(
           top: true,
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 30.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 30.0),
             child: Container(
               width: double.infinity,
               height: double.infinity,
-              decoration: BoxDecoration(),
+              decoration: const BoxDecoration(),
               child: SingleChildScrollView(
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Container(
-                      decoration: BoxDecoration(),
+                      decoration: const BoxDecoration(),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -117,14 +113,14 @@ class _DashboardDriverWidgetState extends State<DashboardDriverWidget> {
                                   .primaryBackground,
                             ),
                             child: Align(
-                              alignment: AlignmentDirectional(0.0, 0.0),
+                              alignment: const AlignmentDirectional(0.0, 0.0),
                               child: Container(
                                 width: MediaQuery.sizeOf(context).width * 0.9,
-                                decoration: BoxDecoration(),
+                                decoration: const BoxDecoration(),
                                 child: wrapWithModel(
                                   model: _model.userDetailsModel,
                                   updateCallback: () => safeSetState(() {}),
-                                  child: UserDetailsWidget(),
+                                  child: const UserDetailsWidget(),
                                 ),
                               ),
                             ),
@@ -132,7 +128,7 @@ class _DashboardDriverWidgetState extends State<DashboardDriverWidget> {
                           wrapWithModel(
                             model: _model.pageTitleModel,
                             updateCallback: () => safeSetState(() {}),
-                            child: PageTitleWidget(),
+                            child: const PageTitleWidget(),
                           ),
                         ],
                       ),
@@ -142,20 +138,16 @@ class _DashboardDriverWidgetState extends State<DashboardDriverWidget> {
                         if (valueOrDefault(
                                     currentUserDocument?.activeRequestBubble,
                                     '') ==
-                                null ||
-                            valueOrDefault(
-                                    currentUserDocument?.activeRequestBubble,
-                                    '') ==
                                 '') {
                           return Container(
                             width: double.infinity,
-                            decoration: BoxDecoration(),
+                            decoration: const BoxDecoration(),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Container(
                                   width: MediaQuery.sizeOf(context).width * 0.9,
-                                  decoration: BoxDecoration(),
+                                  decoration: const BoxDecoration(),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
                                     crossAxisAlignment:
@@ -198,7 +190,7 @@ class _DashboardDriverWidgetState extends State<DashboardDriverWidget> {
 
                                           return Container(
                                             width: double.infinity,
-                                            decoration: BoxDecoration(),
+                                            decoration: const BoxDecoration(),
                                             child: Builder(
                                               builder: (context) {
                                                 final services =
@@ -208,7 +200,7 @@ class _DashboardDriverWidgetState extends State<DashboardDriverWidget> {
                                                 return GridView.builder(
                                                   padding: EdgeInsets.zero,
                                                   gridDelegate:
-                                                      SliverGridDelegateWithFixedCrossAxisCount(
+                                                      const SliverGridDelegateWithFixedCrossAxisCount(
                                                     crossAxisCount: 3,
                                                     crossAxisSpacing: 10.0,
                                                     mainAxisSpacing: 10.0,
@@ -241,7 +233,7 @@ class _DashboardDriverWidgetState extends State<DashboardDriverWidget> {
                                                         width: 99.0,
                                                         height: 99.0,
                                                         constraints:
-                                                            BoxConstraints(
+                                                            const BoxConstraints(
                                                           minWidth: 99.0,
                                                           minHeight: 99.0,
                                                           maxWidth: 99.0,
@@ -252,7 +244,7 @@ class _DashboardDriverWidgetState extends State<DashboardDriverWidget> {
                                                           color: servicesItem
                                                                       .name !=
                                                                   _model.service
-                                                              ? Color(
+                                                              ? const Color(
                                                                   0xFFE5E7EE)
                                                               : FlutterFlowTheme
                                                                       .of(context)
@@ -262,7 +254,7 @@ class _DashboardDriverWidgetState extends State<DashboardDriverWidget> {
                                                                   .circular(
                                                                       18.0),
                                                         ),
-                                                        child: Container(
+                                                        child: SizedBox(
                                                           width:
                                                               double.infinity,
                                                           height:
@@ -271,13 +263,13 @@ class _DashboardDriverWidgetState extends State<DashboardDriverWidget> {
                                                             children: [
                                                               Align(
                                                                 alignment:
-                                                                    AlignmentDirectional(
+                                                                    const AlignmentDirectional(
                                                                         0.0,
                                                                         0.0),
                                                                 child:
                                                                     Container(
                                                                   decoration:
-                                                                      BoxDecoration(),
+                                                                      const BoxDecoration(),
                                                                   child: Column(
                                                                     mainAxisSize:
                                                                         MainAxisSize
@@ -298,14 +290,14 @@ class _DashboardDriverWidgetState extends State<DashboardDriverWidget> {
                                                                               Border.all(
                                                                             color: servicesItem.name != _model.service
                                                                                 ? FlutterFlowTheme.of(context).tertiary
-                                                                                : Color(0xFF64748B),
+                                                                                : const Color(0xFF64748B),
                                                                             width:
                                                                                 2.0,
                                                                           ),
                                                                         ),
                                                                         child:
                                                                             Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
                                                                               10.0,
                                                                               12.0,
                                                                               10.0,
@@ -324,8 +316,8 @@ class _DashboardDriverWidgetState extends State<DashboardDriverWidget> {
                                                                                 ClipRRect(
                                                                               borderRadius: BorderRadius.circular(8.0),
                                                                               child: CachedNetworkImage(
-                                                                                fadeInDuration: Duration(milliseconds: 500),
-                                                                                fadeOutDuration: Duration(milliseconds: 500),
+                                                                                fadeInDuration: const Duration(milliseconds: 500),
+                                                                                fadeOutDuration: const Duration(milliseconds: 500),
                                                                                 imageUrl: servicesItem.name == _model.service ? servicesItem.selectedImage : servicesItem.defaultImage,
                                                                                 width: 300.0,
                                                                                 height: 200.0,
@@ -346,7 +338,7 @@ class _DashboardDriverWidgetState extends State<DashboardDriverWidget> {
                                                                               letterSpacing: 0.0,
                                                                             ),
                                                                       ),
-                                                                    ].divide(SizedBox(
+                                                                    ].divide(const SizedBox(
                                                                         height:
                                                                             5.0)),
                                                                   ),
@@ -354,11 +346,11 @@ class _DashboardDriverWidgetState extends State<DashboardDriverWidget> {
                                                               ),
                                                               Align(
                                                                 alignment:
-                                                                    AlignmentDirectional(
+                                                                    const AlignmentDirectional(
                                                                         0.8,
                                                                         -0.74),
                                                                 child: Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           5.0,
                                                                           0.0,
@@ -379,7 +371,7 @@ class _DashboardDriverWidgetState extends State<DashboardDriverWidget> {
                                                                               100.0),
                                                                     ),
                                                                     alignment:
-                                                                        AlignmentDirectional(
+                                                                        const AlignmentDirectional(
                                                                             0.0,
                                                                             0.0),
                                                                     child:
@@ -395,7 +387,7 @@ class _DashboardDriverWidgetState extends State<DashboardDriverWidget> {
                                                                         height:
                                                                             100.0,
                                                                         constraints:
-                                                                            BoxConstraints(
+                                                                            const BoxConstraints(
                                                                           maxWidth:
                                                                               8.0,
                                                                           maxHeight:
@@ -425,12 +417,12 @@ class _DashboardDriverWidgetState extends State<DashboardDriverWidget> {
                                           );
                                         },
                                       ),
-                                    ].divide(SizedBox(height: 5.0)),
+                                    ].divide(const SizedBox(height: 5.0)),
                                   ),
                                 ),
                                 if (_model.service == 'Other')
                                   Container(
-                                    decoration: BoxDecoration(),
+                                    decoration: const BoxDecoration(),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       crossAxisAlignment:
@@ -450,10 +442,10 @@ class _DashboardDriverWidgetState extends State<DashboardDriverWidget> {
                                           width:
                                               MediaQuery.sizeOf(context).width *
                                                   0.9,
-                                          decoration: BoxDecoration(),
+                                          decoration: const BoxDecoration(),
                                           child: Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 4.0),
                                             child: TextFormField(
                                               controller: _model.textController,
@@ -476,7 +468,7 @@ class _DashboardDriverWidgetState extends State<DashboardDriverWidget> {
                                                         ),
                                                 enabledBorder:
                                                     OutlineInputBorder(
-                                                  borderSide: BorderSide(
+                                                  borderSide: const BorderSide(
                                                     color: Color(0xFFCBD5E1),
                                                     width: 1.0,
                                                   ),
@@ -522,7 +514,7 @@ class _DashboardDriverWidgetState extends State<DashboardDriverWidget> {
                                                 filled: true,
                                                 fillColor: Colors.white,
                                                 contentPadding:
-                                                    EdgeInsetsDirectional
+                                                    const EdgeInsetsDirectional
                                                         .fromSTEB(20.0, 20.0,
                                                             20.0, 20.0),
                                               ),
@@ -544,11 +536,11 @@ class _DashboardDriverWidgetState extends State<DashboardDriverWidget> {
                                             ),
                                           ),
                                         ),
-                                      ].divide(SizedBox(height: 5.0)),
+                                      ].divide(const SizedBox(height: 5.0)),
                                     ),
                                   ),
                                 Align(
-                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  alignment: const AlignmentDirectional(0.0, 0.0),
                                   child: InkWell(
                                     splashColor: Colors.transparent,
                                     focusColor: Colors.transparent,
@@ -610,17 +602,17 @@ class _DashboardDriverWidgetState extends State<DashboardDriverWidget> {
                                             FlutterFlowTheme.of(context)
                                                 .tertiary
                                           ],
-                                          stops: [0.0, 1.0],
+                                          stops: const [0.0, 1.0],
                                           begin:
-                                              AlignmentDirectional(0.0, -1.0),
-                                          end: AlignmentDirectional(0, 1.0),
+                                              const AlignmentDirectional(0.0, -1.0),
+                                          end: const AlignmentDirectional(0, 1.0),
                                         ),
                                         borderRadius:
                                             BorderRadius.circular(18.0),
                                       ),
                                       child: Align(
                                         alignment:
-                                            AlignmentDirectional(0.0, 0.0),
+                                            const AlignmentDirectional(0.0, 0.0),
                                         child: Text(
                                           'Submit',
                                           style: FlutterFlowTheme.of(context)
@@ -634,7 +626,7 @@ class _DashboardDriverWidgetState extends State<DashboardDriverWidget> {
                                     ),
                                   ),
                                 ),
-                              ].divide(SizedBox(height: 16.0)),
+                              ].divide(const SizedBox(height: 16.0)),
                             ),
                           );
                         } else {
@@ -671,7 +663,7 @@ class _DashboardDriverWidgetState extends State<DashboardDriverWidget> {
                                   final containerRequestRecord = snapshot.data!;
 
                                   return Container(
-                                    decoration: BoxDecoration(),
+                                    decoration: const BoxDecoration(),
                                     child: wrapWithModel(
                                       model:
                                           _model.serviceUpdatesComponentModel,
@@ -691,7 +683,7 @@ class _DashboardDriverWidgetState extends State<DashboardDriverWidget> {
                         }
                       },
                     ),
-                  ].divide(SizedBox(height: 16.0)),
+                  ].divide(const SizedBox(height: 16.0)),
                 ),
               ),
             ),

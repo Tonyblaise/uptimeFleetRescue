@@ -1,8 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'edit_your_password_model.dart';
 export 'edit_your_password_model.dart';
 
@@ -46,10 +44,10 @@ class _EditYourPasswordWidgetState extends State<EditYourPasswordWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         shape: BoxShape.rectangle,
       ),
-      alignment: AlignmentDirectional(0.0, 0.0),
+      alignment: const AlignmentDirectional(0.0, 0.0),
       child: Container(
         width: MediaQuery.sizeOf(context).width * 0.9,
         decoration: BoxDecoration(
@@ -57,13 +55,13 @@ class _EditYourPasswordWidgetState extends State<EditYourPasswordWidget> {
           borderRadius: BorderRadius.circular(24.0),
         ),
         child: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
+          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Align(
-                alignment: AlignmentDirectional(0.0, 0.0),
+                alignment: const AlignmentDirectional(0.0, 0.0),
                 child: Container(
                   height: 80.0,
                   decoration: BoxDecoration(
@@ -72,14 +70,14 @@ class _EditYourPasswordWidgetState extends State<EditYourPasswordWidget> {
                         FlutterFlowTheme.of(context).secondary,
                         FlutterFlowTheme.of(context).tertiary
                       ],
-                      stops: [0.0, 1.0],
-                      begin: AlignmentDirectional(0.0, -1.0),
-                      end: AlignmentDirectional(0, 1.0),
+                      stops: const [0.0, 1.0],
+                      begin: const AlignmentDirectional(0.0, -1.0),
+                      end: const AlignmentDirectional(0, 1.0),
                     ),
                     borderRadius: BorderRadius.circular(24.0),
                   ),
                   child: Align(
-                    alignment: AlignmentDirectional(0.0, 0.0),
+                    alignment: const AlignmentDirectional(0.0, 0.0),
                     child: Text(
                       'Edit your password',
                       textAlign: TextAlign.center,
@@ -94,9 +92,9 @@ class _EditYourPasswordWidgetState extends State<EditYourPasswordWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                 child: Container(
-                  decoration: BoxDecoration(),
+                  decoration: const BoxDecoration(),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -112,9 +110,9 @@ class _EditYourPasswordWidgetState extends State<EditYourPasswordWidget> {
                       ),
                       Container(
                         width: MediaQuery.sizeOf(context).width * 0.9,
-                        decoration: BoxDecoration(),
+                        decoration: const BoxDecoration(),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 4.0, 0.0, 4.0),
                           child: TextFormField(
                             controller: _model.textController1,
@@ -131,7 +129,7 @@ class _EditYourPasswordWidgetState extends State<EditYourPasswordWidget> {
                                     fontWeight: FontWeight.normal,
                                   ),
                               enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Color(0xFFCBD5E1),
                                   width: 1.0,
                                 ),
@@ -160,7 +158,7 @@ class _EditYourPasswordWidgetState extends State<EditYourPasswordWidget> {
                               ),
                               filled: true,
                               fillColor: Colors.white,
-                              contentPadding: EdgeInsetsDirectional.fromSTEB(
+                              contentPadding: const EdgeInsetsDirectional.fromSTEB(
                                   8.0, 0.0, 8.0, 0.0),
                               suffixIcon: InkWell(
                                 onTap: () => safeSetState(
@@ -172,7 +170,7 @@ class _EditYourPasswordWidgetState extends State<EditYourPasswordWidget> {
                                   _model.passwordVisibility1
                                       ? Icons.visibility_outlined
                                       : Icons.visibility_off_outlined,
-                                  color: Color(0xFF94A3B8),
+                                  color: const Color(0xFF94A3B8),
                                   size: 21.0,
                                 ),
                               ),
@@ -194,9 +192,9 @@ class _EditYourPasswordWidgetState extends State<EditYourPasswordWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                 child: Container(
-                  decoration: BoxDecoration(),
+                  decoration: const BoxDecoration(),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -212,9 +210,9 @@ class _EditYourPasswordWidgetState extends State<EditYourPasswordWidget> {
                       ),
                       Container(
                         width: MediaQuery.sizeOf(context).width * 0.9,
-                        decoration: BoxDecoration(),
+                        decoration: const BoxDecoration(),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 4.0, 0.0, 4.0),
                           child: TextFormField(
                             controller: _model.textController2,
@@ -231,7 +229,7 @@ class _EditYourPasswordWidgetState extends State<EditYourPasswordWidget> {
                                     fontWeight: FontWeight.normal,
                                   ),
                               enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Color(0xFFCBD5E1),
                                   width: 1.0,
                                 ),
@@ -260,7 +258,7 @@ class _EditYourPasswordWidgetState extends State<EditYourPasswordWidget> {
                               ),
                               filled: true,
                               fillColor: Colors.white,
-                              contentPadding: EdgeInsetsDirectional.fromSTEB(
+                              contentPadding: const EdgeInsetsDirectional.fromSTEB(
                                   8.0, 0.0, 8.0, 0.0),
                               suffixIcon: InkWell(
                                 onTap: () => safeSetState(
@@ -272,7 +270,7 @@ class _EditYourPasswordWidgetState extends State<EditYourPasswordWidget> {
                                   _model.passwordVisibility2
                                       ? Icons.visibility_outlined
                                       : Icons.visibility_off_outlined,
-                                  color: Color(0xFF94A3B8),
+                                  color: const Color(0xFF94A3B8),
                                   size: 21.0,
                                 ),
                               ),
@@ -294,17 +292,17 @@ class _EditYourPasswordWidgetState extends State<EditYourPasswordWidget> {
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(0.0, 0.0),
+                alignment: const AlignmentDirectional(0.0, 0.0),
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                   child: Container(
-                    decoration: BoxDecoration(),
+                    decoration: const BoxDecoration(),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Expanded(
                           child: Align(
-                            alignment: AlignmentDirectional(0.0, 0.0),
+                            alignment: const AlignmentDirectional(0.0, 0.0),
                             child: Container(
                               height: 56.0,
                               decoration: BoxDecoration(
@@ -313,14 +311,14 @@ class _EditYourPasswordWidgetState extends State<EditYourPasswordWidget> {
                                     FlutterFlowTheme.of(context).secondary,
                                     FlutterFlowTheme.of(context).tertiary
                                   ],
-                                  stops: [0.0, 1.0],
-                                  begin: AlignmentDirectional(0.0, -1.0),
-                                  end: AlignmentDirectional(0, 1.0),
+                                  stops: const [0.0, 1.0],
+                                  begin: const AlignmentDirectional(0.0, -1.0),
+                                  end: const AlignmentDirectional(0, 1.0),
                                 ),
                                 borderRadius: BorderRadius.circular(18.0),
                               ),
                               child: Align(
-                                alignment: AlignmentDirectional(0.0, 0.0),
+                                alignment: const AlignmentDirectional(0.0, 0.0),
                                 child: Text(
                                   'Confirm ',
                                   style: FlutterFlowTheme.of(context)
@@ -347,26 +345,26 @@ class _EditYourPasswordWidgetState extends State<EditYourPasswordWidget> {
                               ),
                             ),
                             child: Align(
-                              alignment: AlignmentDirectional(0.0, 0.0),
+                              alignment: const AlignmentDirectional(0.0, 0.0),
                               child: Text(
                                 'Cancel',
                                 style: FlutterFlowTheme.of(context)
                                     .titleSmall
                                     .override(
                                       fontFamily: 'Yantramanav',
-                                      color: Color(0xFF0CCA4A),
+                                      color: const Color(0xFF0CCA4A),
                                       letterSpacing: 0.0,
                                     ),
                               ),
                             ),
                           ),
                         ),
-                      ].divide(SizedBox(width: 10.0)),
+                      ].divide(const SizedBox(width: 10.0)),
                     ),
                   ),
                 ),
               ),
-            ].divide(SizedBox(height: 20.0)),
+            ].divide(const SizedBox(height: 20.0)),
           ),
         ),
       ),

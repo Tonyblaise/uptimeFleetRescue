@@ -1,14 +1,10 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'tow_navigation_start_model.dart';
 export 'tow_navigation_start_model.dart';
 
@@ -54,9 +50,9 @@ class _TowNavigationStartWidgetState extends State<TowNavigationStartWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: AlignmentDirectional(0.0, 0.0),
+      alignment: const AlignmentDirectional(0.0, 0.0),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 20.0),
+        padding: const EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 20.0),
         child: Container(
           width: double.infinity,
           decoration: BoxDecoration(
@@ -68,7 +64,7 @@ class _TowNavigationStartWidgetState extends State<TowNavigationStartWidget> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Align(
-                alignment: AlignmentDirectional(0.0, 0.0),
+                alignment: const AlignmentDirectional(0.0, 0.0),
                 child: Container(
                   width: double.infinity,
                   height: 80.0,
@@ -78,14 +74,14 @@ class _TowNavigationStartWidgetState extends State<TowNavigationStartWidget> {
                         FlutterFlowTheme.of(context).secondary,
                         FlutterFlowTheme.of(context).tertiary
                       ],
-                      stops: [0.0, 1.0],
-                      begin: AlignmentDirectional(0.0, -1.0),
-                      end: AlignmentDirectional(0, 1.0),
+                      stops: const [0.0, 1.0],
+                      begin: const AlignmentDirectional(0.0, -1.0),
+                      end: const AlignmentDirectional(0, 1.0),
                     ),
                     borderRadius: BorderRadius.circular(24.0),
                   ),
                   child: Align(
-                    alignment: AlignmentDirectional(0.0, 0.0),
+                    alignment: const AlignmentDirectional(0.0, 0.0),
                     child: Text(
                       'Start navigation',
                       textAlign: TextAlign.center,
@@ -109,10 +105,10 @@ class _TowNavigationStartWidgetState extends State<TowNavigationStartWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                 child: Container(
                   width: MediaQuery.sizeOf(context).width * 0.9,
-                  decoration: BoxDecoration(),
+                  decoration: const BoxDecoration(),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -122,7 +118,7 @@ class _TowNavigationStartWidgetState extends State<TowNavigationStartWidget> {
                         textAlign: TextAlign.center,
                         style: FlutterFlowTheme.of(context).labelLarge.override(
                               fontFamily: 'Yantramanav',
-                              color: Color(0xFF64748B),
+                              color: const Color(0xFF64748B),
                               fontSize: 20.0,
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.bold,
@@ -133,18 +129,18 @@ class _TowNavigationStartWidgetState extends State<TowNavigationStartWidget> {
                         textAlign: TextAlign.center,
                         style: FlutterFlowTheme.of(context).labelLarge.override(
                               fontFamily: 'Yantramanav',
-                              color: Color(0xFF64748B),
+                              color: const Color(0xFF64748B),
                               fontSize: 16.0,
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.w300,
                             ),
                       ),
-                    ].divide(SizedBox(height: 8.0)),
+                    ].divide(const SizedBox(height: 8.0)),
                   ),
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 20.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 20.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -157,9 +153,9 @@ class _TowNavigationStartWidgetState extends State<TowNavigationStartWidget> {
                         text: 'Cancel',
                         options: FFButtonOptions(
                           height: 56.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               24.0, 0.0, 24.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).primary,
                           textStyle:
@@ -169,7 +165,7 @@ class _TowNavigationStartWidgetState extends State<TowNavigationStartWidget> {
                                     letterSpacing: 0.0,
                                   ),
                           elevation: 3.0,
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             color: Colors.transparent,
                             width: 1.0,
                           ),
@@ -182,11 +178,11 @@ class _TowNavigationStartWidgetState extends State<TowNavigationStartWidget> {
                         onPressed: () async {
                           _model.enrouteToTowDestination =
                               await UptimeFleetAppGroup.updateRequestCall.call(
-                            id: widget!.bubbleId,
+                            id: widget.bubbleId,
                             status: 'enrouteToTowDestination',
                           );
 
-                          await widget!.request!.reference
+                          await widget.request!.reference
                               .update(createRequestRecordData(
                             status: 'enrouteToTowDestination',
                           ));
@@ -198,9 +194,9 @@ class _TowNavigationStartWidgetState extends State<TowNavigationStartWidget> {
                         text: 'Start Job',
                         options: FFButtonOptions(
                           height: 56.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               24.0, 0.0, 24.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).tertiary,
                           textStyle:
@@ -210,7 +206,7 @@ class _TowNavigationStartWidgetState extends State<TowNavigationStartWidget> {
                                     letterSpacing: 0.0,
                                   ),
                           elevation: 3.0,
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             color: Colors.transparent,
                             width: 1.0,
                           ),
@@ -218,10 +214,10 @@ class _TowNavigationStartWidgetState extends State<TowNavigationStartWidget> {
                         ),
                       ),
                     ),
-                  ].divide(SizedBox(width: 15.0)),
+                  ].divide(const SizedBox(width: 15.0)),
                 ),
               ),
-            ].divide(SizedBox(height: 32.0)),
+            ].divide(const SizedBox(height: 32.0)),
           ),
         ),
       ),

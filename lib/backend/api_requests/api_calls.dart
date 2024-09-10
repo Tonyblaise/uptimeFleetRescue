@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:typed_data';
 import 'package:flutter/foundation.dart';
 
 import '/flutter_flow/flutter_flow_util.dart';
@@ -79,16 +78,16 @@ class LogUserInCall {
 
     final ffApiRequestBody = '''
 {
-  "email": "${email}",
-  "password": "${password}",
-  "device_id": "${deviceId}"
+  "email": "$email",
+  "password": "$password",
+  "device_id": "$deviceId"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Log user in',
-      apiUrl: '${baseUrl}/login',
+      apiUrl: '$baseUrl/login',
       callType: ApiCallType.POST,
       headers: {
-        'Authorization': 'Bearer ${accessToken}',
+        'Authorization': 'Bearer $accessToken',
         'Content-Type': 'application/json',
       },
       params: {},
@@ -185,14 +184,14 @@ class LogOutCall {
       accessToken: accessToken,
     );
 
-    final ffApiRequestBody = '''
+    const ffApiRequestBody = '''
 {}''';
     return ApiManager.instance.makeApiCall(
       callName: 'Log out',
-      apiUrl: '${baseUrl}/logout',
+      apiUrl: '$baseUrl/logout',
       callType: ApiCallType.POST,
       headers: {
-        'Authorization': 'Bearer ${accessToken}',
+        'Authorization': 'Bearer $accessToken',
         'Content-Type': 'application/json',
       },
       params: {},
@@ -289,14 +288,14 @@ class ResetUserPasswordCall {
 
     final ffApiRequestBody = '''
 {
-  "email": "${email}"
+  "email": "$email"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Reset user password',
-      apiUrl: '${baseUrl}/reset_password',
+      apiUrl: '$baseUrl/reset_password',
       callType: ApiCallType.POST,
       headers: {
-        'Authorization': 'Bearer ${accessToken}',
+        'Authorization': 'Bearer $accessToken',
       },
       params: {},
       body: ffApiRequestBody,
@@ -323,15 +322,15 @@ class ChangePasswordCall {
 
     final ffApiRequestBody = '''
 {
-  "current_password": "${currentPassword}",
-  "new_password": "${newPassword}"
+  "current_password": "$currentPassword",
+  "new_password": "$newPassword"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Change password',
-      apiUrl: '${baseUrl}/change_password',
+      apiUrl: '$baseUrl/change_password',
       callType: ApiCallType.POST,
       headers: {
-        'Authorization': 'Bearer ${accessToken}',
+        'Authorization': 'Bearer $accessToken',
       },
       params: {},
       body: ffApiRequestBody,
@@ -374,26 +373,26 @@ class CreateARequestCall {
 
     final ffApiRequestBody = '''
 {
-  "date": ${date},
-  "driverId": "${driverId}",
-  "driverTechnician": "${driverTechnician}",
-  "position": "${position}",
-  "fault": "${fault}",
+  "date": $date,
+  "driverId": "$driverId",
+  "driverTechnician": "$driverTechnician",
+  "position": "$position",
+  "fault": "$fault",
   "status": "New Case",
-  "vehicleId": "${vehicleId}",
-  "additionalInfo": "${additionalInfo}",
-  "support_review": ${supportReview},
-  "chatId": "${chatId}",
-  "firebaseId": "${firebaseId}",
-  "driverImage": "${driverImage}",
-  "dropOffLocationLatLng": "${dropOffLocationLatLng}"
+  "vehicleId": "$vehicleId",
+  "additionalInfo": "$additionalInfo",
+  "support_review": $supportReview,
+  "chatId": "$chatId",
+  "firebaseId": "$firebaseId",
+  "driverImage": "$driverImage",
+  "dropOffLocationLatLng": "$dropOffLocationLatLng"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Create a request',
-      apiUrl: '${baseUrl}/create_request',
+      apiUrl: '$baseUrl/create_request',
       callType: ApiCallType.POST,
       headers: {
-        'Authorization': 'Bearer ${accessToken}',
+        'Authorization': 'Bearer $accessToken',
       },
       params: {},
       body: ffApiRequestBody,
@@ -480,14 +479,14 @@ class RejectRequestCall {
 
     final ffApiRequestBody = '''
 {
-  "id": "${requestId}"
+  "id": "$requestId"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Reject request',
-      apiUrl: '${baseUrl}/reject_request',
+      apiUrl: '$baseUrl/reject_request',
       callType: ApiCallType.POST,
       headers: {
-        'Authorization': 'Bearer ${accessToken}',
+        'Authorization': 'Bearer $accessToken',
       },
       params: {},
       body: ffApiRequestBody,
@@ -520,16 +519,16 @@ class UpdateRequestPositionCall {
 
     final ffApiRequestBody = '''
 {
-  "lat":"${lat}",
-  "lng": "${lng}",
+  "lat":"$lat",
+  "lng": "$lng",
   "request_id": "<request_id>"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Update request position',
-      apiUrl: '${baseUrl}/update_position',
+      apiUrl: '$baseUrl/update_position',
       callType: ApiCallType.POST,
       headers: {
-        'Authorization': 'Bearer ${accessToken}',
+        'Authorization': 'Bearer $accessToken',
       },
       params: {},
       body: ffApiRequestBody,
@@ -560,14 +559,14 @@ class FetchTechnicianRequestsCall {
 
     final ffApiRequestBody = '''
 {
-  "user_id": "${userId}"
+  "user_id": "$userId"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Fetch technician requests',
-      apiUrl: '${baseUrl}/fetch_requests',
+      apiUrl: '$baseUrl/fetch_requests',
       callType: ApiCallType.POST,
       headers: {
-        'Authorization': 'Bearer ${accessToken}',
+        'Authorization': 'Bearer $accessToken',
       },
       params: {},
       body: ffApiRequestBody,
@@ -597,18 +596,18 @@ class CompleteRequestsCall {
 
     final ffApiRequestBody = '''
 {
-  "id": "${id}",
-  "notes": "${notes}",
-  "image": "${image}",
-  "odometer": "${odometer}",
-  "addons": "${addons}"
+  "id": "$id",
+  "notes": "$notes",
+  "image": "$image",
+  "odometer": "$odometer",
+  "addons": "$addons"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Complete requests',
-      apiUrl: '${baseUrl}/complete_request',
+      apiUrl: '$baseUrl/complete_request',
       callType: ApiCallType.POST,
       headers: {
-        'Authorization': 'Bearer ${accessToken}',
+        'Authorization': 'Bearer $accessToken',
       },
       params: {},
       body: ffApiRequestBody,
@@ -640,15 +639,15 @@ class CancelRequestDriverCall {
 
     final ffApiRequestBody = '''
 {
-  "id": "${id}",
-  "driver": ${driver}
+  "id": "$id",
+  "driver": $driver
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Cancel request driver',
-      apiUrl: '${baseUrl}/cancel_request_driver',
+      apiUrl: '$baseUrl/cancel_request_driver',
       callType: ApiCallType.POST,
       headers: {
-        'Authorization': 'Bearer ${accessToken}',
+        'Authorization': 'Bearer $accessToken',
       },
       params: {},
       body: ffApiRequestBody,
@@ -679,14 +678,14 @@ class AcceptRequestCall {
 
     final ffApiRequestBody = '''
 {
-  "id": "${id}"
+  "id": "$id"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Accept request',
-      apiUrl: '${baseUrl}/accept_request',
+      apiUrl: '$baseUrl/accept_request',
       callType: ApiCallType.POST,
       headers: {
-        'Authorization': 'Bearer ${accessToken}',
+        'Authorization': 'Bearer $accessToken',
       },
       params: {},
       body: ffApiRequestBody,
@@ -718,15 +717,15 @@ class UpdateRequestCall {
 
     final ffApiRequestBody = '''
 {
-  "id": "${id}",
-  "status": "${status}"
+  "id": "$id",
+  "status": "$status"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Update request',
-      apiUrl: '${baseUrl}/update_request',
+      apiUrl: '$baseUrl/update_request',
       callType: ApiCallType.POST,
       headers: {
-        'Authorization': 'Bearer ${accessToken}',
+        'Authorization': 'Bearer $accessToken',
       },
       params: {},
       body: ffApiRequestBody,
@@ -757,10 +756,10 @@ class GetThreadMessagesCall {
 
     return ApiManager.instance.makeApiCall(
       callName: 'Get thread messages',
-      apiUrl: '${baseUrl}/messages',
+      apiUrl: '$baseUrl/messages',
       callType: ApiCallType.GET,
       headers: {
-        'Authorization': 'Bearer ${accessToken}',
+        'Authorization': 'Bearer $accessToken',
       },
       params: {
         'message_thread_id': messageThreadId,
@@ -838,18 +837,18 @@ class CreateMessageCall {
 
     final ffApiRequestBody = '''
 {
-  "messageThreadId": "${messageThreadId}",
-  "message": "${message}",
-  "messageImage": "${messageImage}",
-  "driverId": "${driver}",
-  "technicianId": "${technician}"
+  "messageThreadId": "$messageThreadId",
+  "message": "$message",
+  "messageImage": "$messageImage",
+  "driverId": "$driver",
+  "technicianId": "$technician"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Create message',
-      apiUrl: '${baseUrl}/create-message',
+      apiUrl: '$baseUrl/create-message',
       callType: ApiCallType.POST,
       headers: {
-        'Authorization': 'Bearer ${accessToken}',
+        'Authorization': 'Bearer $accessToken',
       },
       params: {},
       body: ffApiRequestBody,
@@ -867,7 +866,7 @@ class CreateMessageCall {
         response,
         r'''$.status''',
       ));
-  dynamic? messages(dynamic response) => getJsonField(
+  dynamic messages(dynamic response) => getJsonField(
         response,
         r'''$.response.messages''',
       );
@@ -911,16 +910,16 @@ class UpdateProfileCall {
 
     final ffApiRequestBody = '''
 {
-  "phone": "${phone}",
-  "email": "${email}",
-  "encoded_photo": "${encodedPhoto}"
+  "phone": "$phone",
+  "email": "$email",
+  "encoded_photo": "$encodedPhoto"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Update profile',
-      apiUrl: '${baseUrl}/update_profile',
+      apiUrl: '$baseUrl/update_profile',
       callType: ApiCallType.POST,
       headers: {
-        'Authorization': 'Bearer ${accessToken}',
+        'Authorization': 'Bearer $accessToken',
       },
       params: {},
       body: ffApiRequestBody,
@@ -970,10 +969,10 @@ class CompanyInfoCall {
 
     return ApiManager.instance.makeApiCall(
       callName: 'Company Info',
-      apiUrl: '${baseUrl}/company_info',
+      apiUrl: '$baseUrl/company_info',
       callType: ApiCallType.GET,
       headers: {
-        'Authorization': 'Bearer ${accessToken}',
+        'Authorization': 'Bearer $accessToken',
       },
       params: {},
       returnBody: true,
@@ -1011,15 +1010,15 @@ class UpdateTechStatusCall {
 
     final ffApiRequestBody = '''
 {
-  "onDuty": ${onDuty},
-  "technicianId": "${technicianId}"
+  "onDuty": $onDuty,
+  "technicianId": "$technicianId"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Update tech status',
-      apiUrl: '${baseUrl}/update_tech_status',
+      apiUrl: '$baseUrl/update_tech_status',
       callType: ApiCallType.POST,
       headers: {
-        'Authorization': 'Bearer ${accessToken}',
+        'Authorization': 'Bearer $accessToken',
       },
       params: {},
       body: ffApiRequestBody,
@@ -1050,10 +1049,10 @@ class GetTechnicianVehiclesCall {
 
     return ApiManager.instance.makeApiCall(
       callName: 'Get technician vehicles',
-      apiUrl: '${baseUrl}/technician-vehicles',
+      apiUrl: '$baseUrl/technician-vehicles',
       callType: ApiCallType.GET,
       headers: {
-        'Authorization': 'Bearer ${accessToken}',
+        'Authorization': 'Bearer $accessToken',
       },
       params: {
         'technicianId': technicianId,
@@ -1148,10 +1147,10 @@ class GetDriverVehiclesCall {
 
     return ApiManager.instance.makeApiCall(
       callName: 'Get driver vehicles',
-      apiUrl: '${baseUrl}/driver-vehicles',
+      apiUrl: '$baseUrl/driver-vehicles',
       callType: ApiCallType.GET,
       headers: {
-        'Authorization': 'Bearer ${accessToken}',
+        'Authorization': 'Bearer $accessToken',
       },
       params: {
         'driverId': driverId,
@@ -1248,10 +1247,10 @@ class GetVehiclesCall {
 
     return ApiManager.instance.makeApiCall(
       callName: 'Get vehicles',
-      apiUrl: '${baseUrl}/vehicles',
+      apiUrl: '$baseUrl/vehicles',
       callType: ApiCallType.GET,
       headers: {
-        'Authorization': 'Bearer ${accessToken}',
+        'Authorization': 'Bearer $accessToken',
       },
       params: {
         'licensePlate': vehicleRegNo,
@@ -1321,10 +1320,10 @@ class GetVehiclesByRegNoCall {
 
     return ApiManager.instance.makeApiCall(
       callName: 'Get vehicles by reg no',
-      apiUrl: '${baseUrl}/vehicles_2',
+      apiUrl: '$baseUrl/vehicles_2',
       callType: ApiCallType.GET,
       headers: {
-        'Authorization': 'Bearer ${accessToken}',
+        'Authorization': 'Bearer $accessToken',
       },
       params: {
         'licensePlate': vehicleRegNo,
@@ -1398,19 +1397,19 @@ class UpdateVehicleCall {
 
     final ffApiRequestBody = '''
 {
-  "id": "${id}",
-  "licensePlate": "${licensePlate}",
-  "state": "${state}",
-  "color": "${color}",
-  "image": "${image}",
-  "notes": "${notes}"
+  "id": "$id",
+  "licensePlate": "$licensePlate",
+  "state": "$state",
+  "color": "$color",
+  "image": "$image",
+  "notes": "$notes"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Update vehicle',
-      apiUrl: '${baseUrl}/update_vehicle',
+      apiUrl: '$baseUrl/update_vehicle',
       callType: ApiCallType.POST,
       headers: {
-        'Authorization': 'Bearer ${accessToken}',
+        'Authorization': 'Bearer $accessToken',
       },
       params: {},
       body: ffApiRequestBody,
@@ -1441,14 +1440,14 @@ class ApproveRequestCall {
 
     final ffApiRequestBody = '''
 {
-  "id": "${id}"
+  "id": "$id"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Approve request',
-      apiUrl: '${baseUrl}/approve_request',
+      apiUrl: '$baseUrl/approve_request',
       callType: ApiCallType.POST,
       headers: {
-        'Authorization': 'Bearer ${accessToken}',
+        'Authorization': 'Bearer $accessToken',
       },
       params: {},
       body: ffApiRequestBody,
@@ -1479,10 +1478,10 @@ class GetRequestCall {
 
     return ApiManager.instance.makeApiCall(
       callName: 'Get request',
-      apiUrl: '${baseUrl}/request',
+      apiUrl: '$baseUrl/request',
       callType: ApiCallType.GET,
       headers: {
-        'Authorization': 'Bearer ${accessToken}',
+        'Authorization': 'Bearer $accessToken',
       },
       params: {
         'request': request,
@@ -1622,19 +1621,19 @@ class CreateDriverCall {
 
     final ffApiRequestBody = '''
 {
-  "fleetManagerId": "${fleetManagerId}",
-  "fullName": "${fullName}",
-  "phoneNumber": "${phoneNumber}",
-  "token": "${token}",
-  "driverTechnicianMessageThreadIdFirebase": "${driverTechnicianMessageThreadIdFirebase}",
-  "driverSupportMessageThreadIdFirebase": "${driverSupportMessageThreadIdFirebase}"
+  "fleetManagerId": "$fleetManagerId",
+  "fullName": "$fullName",
+  "phoneNumber": "$phoneNumber",
+  "token": "$token",
+  "driverTechnicianMessageThreadIdFirebase": "$driverTechnicianMessageThreadIdFirebase",
+  "driverSupportMessageThreadIdFirebase": "$driverSupportMessageThreadIdFirebase"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Create driver',
-      apiUrl: '${baseUrl}/create-driver',
+      apiUrl: '$baseUrl/create-driver',
       callType: ApiCallType.POST,
       headers: {
-        'Authorization': 'Bearer ${accessToken}',
+        'Authorization': 'Bearer $accessToken',
       },
       params: {},
       body: ffApiRequestBody,
@@ -1660,7 +1659,7 @@ class CreateDriverCall {
         response,
         r'''$.response.driver.phoneNumber''',
       ));
-  dynamic? token(dynamic response) => getJsonField(
+  dynamic token(dynamic response) => getJsonField(
         response,
         r'''$.response.driver.token''',
       );
@@ -1705,20 +1704,20 @@ class CreateTechnicianCall {
 
     final ffApiRequestBody = '''
 {
-  "serviceProviderId": "${serviceProviderId}",
-  "fullName": "${fullName}",
-  "phoneNumber": "${phoneNumber}",
-  "token": "${token}",
-  "driverTechnicianMessageThreadIdFirebase": "${driverTechnicianMessageThreadIdFirebase}",
-  "driverSupportMessageThreadIdFirebase": "${driverSupportMessageThreadIdFirebase}",
-  "firebaseId": "${firebaseId}"
+  "serviceProviderId": "$serviceProviderId",
+  "fullName": "$fullName",
+  "phoneNumber": "$phoneNumber",
+  "token": "$token",
+  "driverTechnicianMessageThreadIdFirebase": "$driverTechnicianMessageThreadIdFirebase",
+  "driverSupportMessageThreadIdFirebase": "$driverSupportMessageThreadIdFirebase",
+  "firebaseId": "$firebaseId"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Create technician',
-      apiUrl: '${baseUrl}/create-technician',
+      apiUrl: '$baseUrl/create-technician',
       callType: ApiCallType.POST,
       headers: {
-        'Authorization': 'Bearer ${accessToken}',
+        'Authorization': 'Bearer $accessToken',
       },
       params: {},
       body: ffApiRequestBody,
@@ -1785,16 +1784,16 @@ class UpdateTechnicianIdCall {
 
     final ffApiRequestBody = '''
 {
-  "firebaseId":"${firebaseId}",
-  "bubbleId": "${bubbleId}"
+  "firebaseId":"$firebaseId",
+  "bubbleId": "$bubbleId"
 } 
  ''';
     return ApiManager.instance.makeApiCall(
       callName: 'Update technicianId',
-      apiUrl: '${baseUrl}/update-technicianid',
+      apiUrl: '$baseUrl/update-technicianid',
       callType: ApiCallType.POST,
       headers: {
-        'Authorization': 'Bearer ${accessToken}',
+        'Authorization': 'Bearer $accessToken',
       },
       params: {},
       body: ffApiRequestBody,
@@ -1861,16 +1860,16 @@ class UpdateDriverIdCall {
 
     final ffApiRequestBody = '''
 {
-  "firebaseId":"${firebaseId}",
-  "bubbleId": "${bubbleId}"
+  "firebaseId":"$firebaseId",
+  "bubbleId": "$bubbleId"
 } 
  ''';
     return ApiManager.instance.makeApiCall(
       callName: 'Update driverId',
-      apiUrl: '${baseUrl}/update-driverid',
+      apiUrl: '$baseUrl/update-driverid',
       callType: ApiCallType.POST,
       headers: {
-        'Authorization': 'Bearer ${accessToken}',
+        'Authorization': 'Bearer $accessToken',
       },
       params: {},
       body: ffApiRequestBody,
@@ -1936,14 +1935,14 @@ class CheckUserCall {
 
     final ffApiRequestBody = '''
 {
-  "phoneNumber": "${phoneNumber}"
+  "phoneNumber": "$phoneNumber"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Check user',
-      apiUrl: '${baseUrl}/check-driver-technician',
+      apiUrl: '$baseUrl/check-driver-technician',
       callType: ApiCallType.POST,
       headers: {
-        'Authorization': 'Bearer ${accessToken}',
+        'Authorization': 'Bearer $accessToken',
       },
       params: {},
       body: ffApiRequestBody,
@@ -1965,7 +1964,7 @@ class CheckUserCall {
         response,
         r'''$.response.signUpType''',
       ));
-  dynamic? technicianId(dynamic response) => getJsonField(
+  dynamic technicianId(dynamic response) => getJsonField(
         response,
         r'''$.response.technician._id''',
       );
@@ -1983,15 +1982,15 @@ class UpdateDriverTokenCall {
 
     final ffApiRequestBody = '''
 {
-  "driverId": "${driverId}",
-  "token": "${token}"
+  "driverId": "$driverId",
+  "token": "$token"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Update driver token',
-      apiUrl: '${baseUrl}/update-driver-token',
+      apiUrl: '$baseUrl/update-driver-token',
       callType: ApiCallType.POST,
       headers: {
-        'Authorization': 'Bearer ${accessToken}',
+        'Authorization': 'Bearer $accessToken',
       },
       params: {},
       body: ffApiRequestBody,
@@ -2018,15 +2017,15 @@ class DeleteAccountCall {
 
     final ffApiRequestBody = '''
 {
-  "driver": "${driverId}",
-  "technician": "${technicianId}"
+  "driver": "$driverId",
+  "technician": "$technicianId"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Delete account',
-      apiUrl: '${baseUrl}/delete_account',
+      apiUrl: '$baseUrl/delete_account',
       callType: ApiCallType.POST,
       headers: {
-        'Authorization': 'Bearer ${accessToken}',
+        'Authorization': 'Bearer $accessToken',
       },
       params: {},
       body: ffApiRequestBody,
@@ -2054,16 +2053,16 @@ class UpdateTechnicianCall {
 
     final ffApiRequestBody = '''
 {
-  "technicianId": "${technicianId}",
-  "token": "${token}",
-  "activeVehiceId": "${activeVehiceId}"
+  "technicianId": "$technicianId",
+  "token": "$token",
+  "activeVehiceId": "$activeVehiceId"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Update technician',
-      apiUrl: '${baseUrl}/update-technician',
+      apiUrl: '$baseUrl/update-technician',
       callType: ApiCallType.POST,
       headers: {
-        'Authorization': 'Bearer ${accessToken}',
+        'Authorization': 'Bearer $accessToken',
       },
       params: {},
       body: ffApiRequestBody,
@@ -2091,16 +2090,16 @@ class UpdateTechnicianPositionCall {
 
     final ffApiRequestBody = '''
 {
-  "id": "${technicianId}",
-  "lat": "${lat}",
-  "lng": "${lng}"
+  "id": "$technicianId",
+  "lat": "$lat",
+  "lng": "$lng"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Update technician position',
-      apiUrl: '${baseUrl}/update_position',
+      apiUrl: '$baseUrl/update_position',
       callType: ApiCallType.POST,
       headers: {
-        'Authorization': 'Bearer ${accessToken}',
+        'Authorization': 'Bearer $accessToken',
       },
       params: {},
       body: ffApiRequestBody,
@@ -2127,15 +2126,15 @@ class UpdateTechnicianPositionUsingCurrentPostionCall {
 
     final ffApiRequestBody = '''
 {
-  "id": "${technicianId}",
-  "position": "${position}"
+  "id": "$technicianId",
+  "position": "$position"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Update technician position  using current postion',
-      apiUrl: '${baseUrl}/update_position_current_position',
+      apiUrl: '$baseUrl/update_position_current_position',
       callType: ApiCallType.POST,
       headers: {
-        'Authorization': 'Bearer ${accessToken}',
+        'Authorization': 'Bearer $accessToken',
       },
       params: {},
       body: ffApiRequestBody,
@@ -2161,10 +2160,10 @@ class GetRequestStatusCall {
 
     return ApiManager.instance.makeApiCall(
       callName: 'Get request status',
-      apiUrl: '${baseUrl}/request_status',
+      apiUrl: '$baseUrl/request_status',
       callType: ApiCallType.GET,
       headers: {
-        'Authorization': 'Bearer ${accessToken}',
+        'Authorization': 'Bearer $accessToken',
       },
       params: {
         'request': request,
@@ -2196,10 +2195,10 @@ class GetPreviousJobsCall {
 
     return ApiManager.instance.makeApiCall(
       callName: 'Get previous jobs',
-      apiUrl: '${baseUrl}/completed_jobs',
+      apiUrl: '$baseUrl/completed_jobs',
       callType: ApiCallType.GET,
       headers: {
-        'Authorization': 'Bearer ${accessToken}',
+        'Authorization': 'Bearer $accessToken',
       },
       params: {
         'driverId': driverId,
@@ -2267,8 +2266,8 @@ class CallOneCall {
 
     final ffApiRequestBody = '''
 <carfax-request>
-<license-plate><![CDATA[${vehicleReg}]]></license-plate>
-<state><![CDATA[${stateForm}]]></state>
+<license-plate><![CDATA[$vehicleReg]]></license-plate>
+<state><![CDATA[$stateForm]]></state>
 
 <product-data-id>4E445DBC5065944D</product-data-id>
 <location-id>CARFAX</location-id>
@@ -2373,7 +2372,7 @@ class GetAddressFromLatLngCall {
     return ApiManager.instance.makeApiCall(
       callName: 'Get address from latLng',
       apiUrl:
-          'https://api.openrouteservice.org/geocode/reverse?api_key=5b3ce3597851110001cf624881bae077dd5340f885fedf25ef381c10&point.lon=${lng}&point.lat=${lat}',
+          'https://api.openrouteservice.org/geocode/reverse?api_key=5b3ce3597851110001cf624881bae077dd5340f885fedf25ef381c10&point.lon=$lng&point.lat=$lat',
       callType: ApiCallType.GET,
       headers: {},
       params: {},
@@ -2405,7 +2404,7 @@ class MapboxCall {
     return ApiManager.instance.makeApiCall(
       callName: 'Mapbox',
       apiUrl:
-          'https://api.mapbox.com/directions/v5/mapbox/driving/${from}%3B${to}?access_token=pk.eyJ1IjoiYnViYnMiLCJhIjoiY2tuajZnM2RrM3Z5bTJwcDl5dnUyMGIweSJ9.ptrzHux-aOqLLq88xesllg',
+          'https://api.mapbox.com/directions/v5/mapbox/driving/$from%3B$to?access_token=pk.eyJ1IjoiYnViYnMiLCJhIjoiY2tuajZnM2RrM3Z5bTJwcDl5dnUyMGIweSJ9.ptrzHux-aOqLLq88xesllg',
       callType: ApiCallType.GET,
       headers: {},
       params: {},

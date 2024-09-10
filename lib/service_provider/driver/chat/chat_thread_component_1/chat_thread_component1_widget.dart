@@ -12,11 +12,7 @@ import '/flutter_flow/upload_data.dart';
 import '/service_provider/driver/chat/chat_thread_update_1/chat_thread_update1_widget.dart';
 import '/service_provider/driver/chat/empty_state_simple_1/empty_state_simple1_widget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'chat_thread_component1_model.dart';
 export 'chat_thread_component1_model.dart';
 
@@ -81,7 +77,7 @@ class _ChatThreadComponent1WidgetState
                 queryBuilder: (chatMessagesRecord) => chatMessagesRecord
                     .where(
                       'chat',
-                      isEqualTo: widget!.chatRef?.reference,
+                      isEqualTo: widget.chatRef?.reference,
                     )
                     .orderBy('timestamp', descending: true),
                 limit: 200,
@@ -93,9 +89,9 @@ class _ChatThreadComponent1WidgetState
                           .equals(listViewChatMessagesRecordList,
                               _model.listViewPreviousSnapshot)) {
                     () async {
-                      if (!widget!.chatRef!.lastMessageSeenBy
+                      if (!widget.chatRef!.lastMessageSeenBy
                           .contains(currentUserReference)) {
-                        await widget!.chatRef!.reference.update({
+                        await widget.chatRef!.reference.update({
                           ...mapToFirestore(
                             {
                               'last_message_seen_by':
@@ -115,7 +111,7 @@ class _ChatThreadComponent1WidgetState
                 if (!snapshot.hasData) {
                   return Center(
                     child: Padding(
-                      padding: EdgeInsets.all(16.0),
+                      padding: const EdgeInsets.all(16.0),
                       child: SizedBox(
                         width: 50.0,
                         height: 50.0,
@@ -143,7 +139,7 @@ class _ChatThreadComponent1WidgetState
                 }
 
                 return ListView.builder(
-                  padding: EdgeInsets.fromLTRB(
+                  padding: const EdgeInsets.fromLTRB(
                     0,
                     12.0,
                     0,
@@ -156,7 +152,7 @@ class _ChatThreadComponent1WidgetState
                     final listViewChatMessagesRecord =
                         listViewChatMessagesRecordList[listViewIndex];
                     return Container(
-                      decoration: BoxDecoration(),
+                      decoration: const BoxDecoration(),
                       child: wrapWithModel(
                         model: _model.chatThreadUpdate1Models.getModel(
                           listViewChatMessagesRecord.reference.id,
@@ -181,7 +177,7 @@ class _ChatThreadComponent1WidgetState
             width: double.infinity,
             decoration: BoxDecoration(
               color: FlutterFlowTheme.of(context).secondaryBackground,
-              boxShadow: [
+              boxShadow: const [
                 BoxShadow(
                   blurRadius: 3.0,
                   color: Color(0x33000000),
@@ -195,14 +191,13 @@ class _ChatThreadComponent1WidgetState
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
-                if (_model.uploadedFileUrl != null &&
-                    _model.uploadedFileUrl != '')
+                if (_model.uploadedFileUrl != '')
                   Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Expanded(
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 12.0, 0.0, 0.0),
                           child: SingleChildScrollView(
                             scrollDirection: Axis.horizontal,
@@ -216,9 +211,9 @@ class _ChatThreadComponent1WidgetState
                                     borderRadius: BorderRadius.circular(8.0),
                                     child: CachedNetworkImage(
                                       fadeInDuration:
-                                          Duration(milliseconds: 500),
+                                          const Duration(milliseconds: 500),
                                       fadeOutDuration:
-                                          Duration(milliseconds: 500),
+                                          const Duration(milliseconds: 500),
                                       imageUrl: path,
                                       width: 120.0,
                                       height: 100.0,
@@ -237,7 +232,7 @@ class _ChatThreadComponent1WidgetState
                                   ),
                                 ),
                                 Align(
-                                  alignment: AlignmentDirectional(-1.0, -1.0),
+                                  alignment: const AlignmentDirectional(-1.0, -1.0),
                                   child: FlutterFlowIconButton(
                                     borderColor:
                                         FlutterFlowTheme.of(context).error,
@@ -263,9 +258,9 @@ class _ChatThreadComponent1WidgetState
                                   ),
                                 ),
                               ]
-                                  .divide(SizedBox(width: 8.0))
-                                  .addToStart(SizedBox(width: 16.0))
-                                  .addToEnd(SizedBox(width: 16.0)),
+                                  .divide(const SizedBox(width: 8.0))
+                                  .addToStart(const SizedBox(width: 16.0))
+                                  .addToEnd(const SizedBox(width: 16.0)),
                             ),
                           ),
                         ),
@@ -276,7 +271,7 @@ class _ChatThreadComponent1WidgetState
                   key: _model.formKey,
                   autovalidateMode: AutovalidateMode.disabled,
                   child: Padding(
-                    padding: EdgeInsets.all(12.0),
+                    padding: const EdgeInsets.all(12.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -360,8 +355,7 @@ class _ChatThreadComponent1WidgetState
                               }
                             }
 
-                            if (_model.uploadedFileUrl != null &&
-                                _model.uploadedFileUrl != '') {
+                            if (_model.uploadedFileUrl != '') {
                               _model
                                   .addToImagesUploaded(_model.uploadedFileUrl);
                               safeSetState(() {});
@@ -372,9 +366,9 @@ class _ChatThreadComponent1WidgetState
                           child: Stack(
                             children: [
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     8.0, 0.0, 0.0, 0.0),
-                                child: Container(
+                                child: SizedBox(
                                   width: double.infinity,
                                   child: TextFormField(
                                     controller: _model.textController,
@@ -392,7 +386,7 @@ class _ChatThreadComponent1WidgetState
                                       await chatMessagesRecordReference
                                           .set(createChatMessagesRecordData(
                                         user: currentUserReference,
-                                        chat: widget!.chatRef?.reference,
+                                        chat: widget.chatRef?.reference,
                                         text: _model.textController.text,
                                         timestamp: getCurrentTimestamp,
                                         image: _model.uploadedFileUrl,
@@ -402,7 +396,7 @@ class _ChatThreadComponent1WidgetState
                                               createChatMessagesRecordData(
                                                 user: currentUserReference,
                                                 chat:
-                                                    widget!.chatRef?.reference,
+                                                    widget.chatRef?.reference,
                                                 text:
                                                     _model.textController.text,
                                                 timestamp: getCurrentTimestamp,
@@ -419,7 +413,7 @@ class _ChatThreadComponent1WidgetState
                                           currentUserReference!);
                                       // updateChatDocument
 
-                                      await widget!.chatRef!.reference.update({
+                                      await widget.chatRef!.reference.update({
                                         ...createChatsRecordData(
                                           lastMessageTime: getCurrentTimestamp,
                                           lastMessageSentBy:
@@ -517,7 +511,7 @@ class _ChatThreadComponent1WidgetState
                                             BorderRadius.circular(24.0),
                                       ),
                                       contentPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
+                                          const EdgeInsetsDirectional.fromSTEB(
                                               16.0, 16.0, 56.0, 16.0),
                                     ),
                                     style: FlutterFlowTheme.of(context)
@@ -536,9 +530,9 @@ class _ChatThreadComponent1WidgetState
                                 ),
                               ),
                               Align(
-                                alignment: AlignmentDirectional(1.0, 0.0),
+                                alignment: const AlignmentDirectional(1.0, 0.0),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 4.0, 6.0, 4.0),
                                   child: FlutterFlowIconButton(
                                     borderColor: FlutterFlowTheme.of(context)
@@ -572,7 +566,7 @@ class _ChatThreadComponent1WidgetState
                                             chatMessagesRecordReference,
                                             createChatMessagesRecordData(
                                               user: currentUserReference,
-                                              chat: widget!.chatRef?.reference,
+                                              chat: widget.chatRef?.reference,
                                               text: _model.textController.text,
                                               timestamp: getCurrentTimestamp,
                                               image: _model.uploadedFileUrl,
@@ -582,7 +576,7 @@ class _ChatThreadComponent1WidgetState
                                             .getDocumentFromData(
                                                 createChatMessagesRecordData(
                                                   user: currentUserReference,
-                                                  chat: widget!
+                                                  chat: widget
                                                       .chatRef?.reference,
                                                   text: _model
                                                       .textController.text,
@@ -603,7 +597,7 @@ class _ChatThreadComponent1WidgetState
                                         // updateChatDocument
 
                                         firestoreBatch.update(
-                                            widget!.chatRef!.reference, {
+                                            widget.chatRef!.reference, {
                                           ...createChatsRecordData(
                                             lastMessageTime:
                                                 getCurrentTimestamp,
@@ -624,7 +618,7 @@ class _ChatThreadComponent1WidgetState
                                         });
                                         // clearUsers
                                         _model.lastSeenBy = [];
-                                        if (widget!.state == 2) {
+                                        if (widget.state == 2) {
                                           _model.apiResult116 =
                                               await UptimeFleetAppGroup
                                                   .createMessageCall
@@ -637,11 +631,6 @@ class _ChatThreadComponent1WidgetState
                                             messageImage:
                                                 _model.uploadedFileUrl,
                                             creator: valueOrDefault(
-                                                            currentUserDocument
-                                                                ?.driverId,
-                                                            '') !=
-                                                        null &&
-                                                    valueOrDefault(
                                                             currentUserDocument
                                                                 ?.driverId,
                                                             '') !=
@@ -662,7 +651,7 @@ class _ChatThreadComponent1WidgetState
                                                     ?.technicianId,
                                                 ''),
                                           );
-                                        } else if (widget!.state == 3) {
+                                        } else if (widget.state == 3) {
                                           _model.apiResult117 =
                                               await UptimeFleetAppGroup
                                                   .createMessageCall
@@ -675,11 +664,6 @@ class _ChatThreadComponent1WidgetState
                                             messageImage:
                                                 _model.uploadedFileUrl,
                                             creator: valueOrDefault(
-                                                            currentUserDocument
-                                                                ?.driverId,
-                                                            '') !=
-                                                        null &&
-                                                    valueOrDefault(
                                                             currentUserDocument
                                                                 ?.driverId,
                                                             '') !=
@@ -710,7 +694,7 @@ class _ChatThreadComponent1WidgetState
                                                 currentUserPhoto,
                                             notificationSound: 'default',
                                             userRefs: [
-                                              widget!.chatRef!.users
+                                              widget.chatRef!.users
                                                   .where((e) =>
                                                       e.id !=
                                                       currentUserReference?.id)
@@ -719,13 +703,8 @@ class _ChatThreadComponent1WidgetState
                                             ],
                                             initialPageName: 'chat_2_Details_1',
                                             parameterData: {
-                                              'chatRef': widget!.chatRef,
+                                              'chatRef': widget.chatRef,
                                               'driver': valueOrDefault(
-                                                              currentUserDocument
-                                                                  ?.driverId,
-                                                              '') !=
-                                                          null &&
-                                                      valueOrDefault(
                                                               currentUserDocument
                                                                   ?.driverId,
                                                               '') !=

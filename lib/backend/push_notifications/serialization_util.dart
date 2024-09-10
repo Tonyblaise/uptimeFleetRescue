@@ -1,12 +1,9 @@
 import 'dart:convert';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:from_css_color/from_css_color.dart';
 
 import '/backend/backend.dart';
 
-import '../../flutter_flow/lat_lng.dart';
 import '../../flutter_flow/place.dart';
 import '../../flutter_flow/uploaded_file.dart';
 
@@ -65,7 +62,7 @@ String serializeParameterData(Map<String, dynamic> parameterData) => jsonEncode(
           key,
           serializeParameter(value),
         ),
-      )..removeWhere((k, v) => k == null || v == null),
+      )..removeWhere((k, v) => v == null),
     );
 
 /// END SERIALIZATION HELPERS

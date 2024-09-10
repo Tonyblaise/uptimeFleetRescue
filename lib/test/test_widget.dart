@@ -3,7 +3,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'test_model.dart';
 export 'test_model.dart';
@@ -37,6 +36,8 @@ class _TestWidgetState extends State<TestWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
@@ -49,12 +50,12 @@ class _TestWidgetState extends State<TestWidget> {
             'Page Title',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'Yantramanav',
-                  color: Color(0xFF1E293B),
+                  color: const Color(0xFF1E293B),
                   fontSize: 30.0,
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: [],
+          actions: const [],
           centerTitle: false,
           elevation: 2.0,
         ),
@@ -75,7 +76,7 @@ class _TestWidgetState extends State<TestWidget> {
                       _model.apiResultyjv = await UptimeFleetAppGroup
                           .updateTechnicianPositionCall
                           .call(
-                        technicianId: 'qwe',
+                        technicianId: FFAppState().technicianId,
                         lat: '78',
                         lng: '878',
                       );
@@ -86,9 +87,9 @@ class _TestWidgetState extends State<TestWidget> {
                     options: FFButtonOptions(
                       height: 40.0,
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                       iconPadding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       color: FlutterFlowTheme.of(context).primary,
                       textStyle:
                           FlutterFlowTheme.of(context).titleSmall.override(

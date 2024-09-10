@@ -1,14 +1,9 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'arrival_confirmation_copy_model.dart';
 export 'arrival_confirmation_copy_model.dart';
 
@@ -53,10 +48,10 @@ class _ArrivalConfirmationCopyWidgetState
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         shape: BoxShape.rectangle,
       ),
-      alignment: AlignmentDirectional(0.0, 0.0),
+      alignment: const AlignmentDirectional(0.0, 0.0),
       child: Container(
         width: MediaQuery.sizeOf(context).width * 0.9,
         decoration: BoxDecoration(
@@ -64,13 +59,13 @@ class _ArrivalConfirmationCopyWidgetState
           borderRadius: BorderRadius.circular(24.0),
         ),
         child: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
+          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Align(
-                alignment: AlignmentDirectional(0.0, 0.0),
+                alignment: const AlignmentDirectional(0.0, 0.0),
                 child: Container(
                   width: MediaQuery.sizeOf(context).width * 0.9,
                   height: 80.0,
@@ -80,14 +75,14 @@ class _ArrivalConfirmationCopyWidgetState
                         FlutterFlowTheme.of(context).secondary,
                         FlutterFlowTheme.of(context).tertiary
                       ],
-                      stops: [0.0, 1.0],
-                      begin: AlignmentDirectional(0.0, -1.0),
-                      end: AlignmentDirectional(0, 1.0),
+                      stops: const [0.0, 1.0],
+                      begin: const AlignmentDirectional(0.0, -1.0),
+                      end: const AlignmentDirectional(0, 1.0),
                     ),
                     borderRadius: BorderRadius.circular(24.0),
                   ),
                   child: Align(
-                    alignment: AlignmentDirectional(0.0, 0.0),
+                    alignment: const AlignmentDirectional(0.0, 0.0),
                     child: Text(
                       'Arrival confirmation',
                       textAlign: TextAlign.center,
@@ -112,10 +107,10 @@ class _ArrivalConfirmationCopyWidgetState
               ),
               Flexible(
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                   child: Container(
                     width: MediaQuery.sizeOf(context).width * 0.9,
-                    decoration: BoxDecoration(),
+                    decoration: const BoxDecoration(),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -130,20 +125,20 @@ class _ArrivalConfirmationCopyWidgetState
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Yantramanav',
-                                      color: Color(0xFF64748B),
+                                      color: const Color(0xFF64748B),
                                       fontSize: 16.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w300,
                                     ),
                               ),
-                              TextSpan(
+                              const TextSpan(
                                 text: '“Confirm” ',
                                 style: TextStyle(
                                   color: Color(0xFF64748B),
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
-                              TextSpan(
+                              const TextSpan(
                                 text: 'your arrival\nat your destination.',
                                 style: TextStyle(),
                               )
@@ -152,7 +147,7 @@ class _ArrivalConfirmationCopyWidgetState
                                 .labelLarge
                                 .override(
                                   fontFamily: 'Yantramanav',
-                                  color: Color(0xFF64748B),
+                                  color: const Color(0xFF64748B),
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.w300,
                                 ),
@@ -165,26 +160,26 @@ class _ArrivalConfirmationCopyWidgetState
                           style:
                               FlutterFlowTheme.of(context).labelLarge.override(
                                     fontFamily: 'Yantramanav',
-                                    color: Color(0xFF64748B),
+                                    color: const Color(0xFF64748B),
                                     fontSize: 16.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w300,
                                   ),
                         ),
-                      ].divide(SizedBox(height: 8.0)),
+                      ].divide(const SizedBox(height: 8.0)),
                     ),
                   ),
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(0.0, 0.0),
+                alignment: const AlignmentDirectional(0.0, 0.0),
                 child: Container(
-                  decoration: BoxDecoration(),
+                  decoration: const BoxDecoration(),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             20.0, 0.0, 20.0, 0.0),
                         child: InkWell(
                           splashColor: Colors.transparent,
@@ -209,14 +204,14 @@ class _ArrivalConfirmationCopyWidgetState
                               ),
                             ),
                             child: Align(
-                              alignment: AlignmentDirectional(0.0, 0.0),
+                              alignment: const AlignmentDirectional(0.0, 0.0),
                               child: Text(
                                 'Cancel',
                                 style: FlutterFlowTheme.of(context)
                                     .titleSmall
                                     .override(
                                       fontFamily: 'Yantramanav',
-                                      color: Color(0xFF0CCA4A),
+                                      color: const Color(0xFF0CCA4A),
                                       letterSpacing: 0.0,
                                     ),
                               ),
@@ -225,9 +220,9 @@ class _ArrivalConfirmationCopyWidgetState
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
+                        alignment: const AlignmentDirectional(0.0, 0.0),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               20.0, 0.0, 20.0, 0.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
@@ -235,14 +230,14 @@ class _ArrivalConfirmationCopyWidgetState
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
-                              await widget!.request!.reference
+                              await widget.request!.reference
                                   .update(createRequestRecordData(
                                 status: 'arrivedToTowDestination',
                               ));
                               _model.apiResultoan = await UptimeFleetAppGroup
                                   .updateRequestCall
                                   .call(
-                                id: widget!.request?.bubbleId,
+                                id: widget.request?.bubbleId,
                                 status: 'arrivedToTowDestination',
                               );
 
@@ -261,7 +256,7 @@ class _ArrivalConfirmationCopyWidgetState
                                             letterSpacing: 0.0,
                                           ),
                                     ),
-                                    duration: Duration(milliseconds: 4000),
+                                    duration: const Duration(milliseconds: 4000),
                                     backgroundColor:
                                         FlutterFlowTheme.of(context).secondary,
                                   ),
@@ -280,7 +275,7 @@ class _ArrivalConfirmationCopyWidgetState
                                             letterSpacing: 0.0,
                                           ),
                                     ),
-                                    duration: Duration(milliseconds: 4000),
+                                    duration: const Duration(milliseconds: 4000),
                                     backgroundColor:
                                         FlutterFlowTheme.of(context).error,
                                   ),
@@ -301,14 +296,14 @@ class _ArrivalConfirmationCopyWidgetState
                                     FlutterFlowTheme.of(context).secondary,
                                     FlutterFlowTheme.of(context).tertiary
                                   ],
-                                  stops: [0.0, 1.0],
-                                  begin: AlignmentDirectional(0.0, -1.0),
-                                  end: AlignmentDirectional(0, 1.0),
+                                  stops: const [0.0, 1.0],
+                                  begin: const AlignmentDirectional(0.0, -1.0),
+                                  end: const AlignmentDirectional(0, 1.0),
                                 ),
                                 borderRadius: BorderRadius.circular(18.0),
                               ),
                               child: Align(
-                                alignment: AlignmentDirectional(0.0, 0.0),
+                                alignment: const AlignmentDirectional(0.0, 0.0),
                                 child: Text(
                                   'Confirm arrival',
                                   style: FlutterFlowTheme.of(context)
@@ -324,11 +319,11 @@ class _ArrivalConfirmationCopyWidgetState
                           ),
                         ),
                       ),
-                    ].divide(SizedBox(height: 15.0)),
+                    ].divide(const SizedBox(height: 15.0)),
                   ),
                 ),
               ),
-            ].divide(SizedBox(height: 32.0)),
+            ].divide(const SizedBox(height: 32.0)),
           ),
         ),
       ),

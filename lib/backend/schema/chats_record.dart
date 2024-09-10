@@ -10,9 +10,9 @@ import '/flutter_flow/flutter_flow_util.dart';
 
 class ChatsRecord extends FirestoreRecord {
   ChatsRecord._(
-    DocumentReference reference,
-    Map<String, dynamic> data,
-  ) : super(reference, data) {
+    super.reference,
+    super.data,
+  ) {
     _initializeFields();
   }
 

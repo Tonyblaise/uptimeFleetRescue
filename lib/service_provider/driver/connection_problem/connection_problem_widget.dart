@@ -1,10 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'connection_problem_model.dart';
 export 'connection_problem_model.dart';
 
@@ -42,14 +39,14 @@ class _ConnectionProblemWidgetState extends State<ConnectionProblemWidget> {
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Color(0xFFB8B8BE),
+        backgroundColor: const Color(0xFFB8B8BE),
         body: SafeArea(
           top: true,
           child: Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               shape: BoxShape.rectangle,
             ),
-            alignment: AlignmentDirectional(0.0, 0.0),
+            alignment: const AlignmentDirectional(0.0, 0.0),
             child: Container(
               width: MediaQuery.sizeOf(context).width * 0.9,
               decoration: BoxDecoration(
@@ -61,7 +58,7 @@ class _ConnectionProblemWidgetState extends State<ConnectionProblemWidget> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Align(
-                    alignment: AlignmentDirectional(0.0, 0.0),
+                    alignment: const AlignmentDirectional(0.0, 0.0),
                     child: Container(
                       width: MediaQuery.sizeOf(context).width * 0.9,
                       height: 80.0,
@@ -71,14 +68,14 @@ class _ConnectionProblemWidgetState extends State<ConnectionProblemWidget> {
                             FlutterFlowTheme.of(context).secondary,
                             FlutterFlowTheme.of(context).tertiary
                           ],
-                          stops: [0.0, 1.0],
-                          begin: AlignmentDirectional(0.0, -1.0),
-                          end: AlignmentDirectional(0, 1.0),
+                          stops: const [0.0, 1.0],
+                          begin: const AlignmentDirectional(0.0, -1.0),
+                          end: const AlignmentDirectional(0, 1.0),
                         ),
                         borderRadius: BorderRadius.circular(24.0),
                       ),
                       child: Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
+                        alignment: const AlignmentDirectional(0.0, 0.0),
                         child: Text(
                           'Connection problem',
                           textAlign: TextAlign.center,
@@ -104,10 +101,10 @@ class _ConnectionProblemWidgetState extends State<ConnectionProblemWidget> {
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                     child: Container(
                       width: MediaQuery.sizeOf(context).width * 0.9,
-                      decoration: BoxDecoration(),
+                      decoration: const BoxDecoration(),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -119,7 +116,7 @@ class _ConnectionProblemWidgetState extends State<ConnectionProblemWidget> {
                                 .labelLarge
                                 .override(
                                   fontFamily: 'Yantramanav',
-                                  color: Color(0xFF64748B),
+                                  color: const Color(0xFF64748B),
                                   fontSize: 20.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,
@@ -132,21 +129,21 @@ class _ConnectionProblemWidgetState extends State<ConnectionProblemWidget> {
                                 .labelLarge
                                 .override(
                                   fontFamily: 'Yantramanav',
-                                  color: Color(0xFF64748B),
+                                  color: const Color(0xFF64748B),
                                   fontSize: 16.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.w300,
                                 ),
                           ),
-                        ].divide(SizedBox(height: 8.0)),
+                        ].divide(const SizedBox(height: 8.0)),
                       ),
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.0, 0.0),
+                    alignment: const AlignmentDirectional(0.0, 0.0),
                     child: Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 30.0),
+                          const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 30.0),
                       child: Container(
                         width: MediaQuery.sizeOf(context).width * 0.9,
                         height: 56.0,
@@ -159,14 +156,14 @@ class _ConnectionProblemWidgetState extends State<ConnectionProblemWidget> {
                               FlutterFlowTheme.of(context).secondary,
                               FlutterFlowTheme.of(context).tertiary
                             ],
-                            stops: [0.0, 1.0],
-                            begin: AlignmentDirectional(0.0, -1.0),
-                            end: AlignmentDirectional(0, 1.0),
+                            stops: const [0.0, 1.0],
+                            begin: const AlignmentDirectional(0.0, -1.0),
+                            end: const AlignmentDirectional(0, 1.0),
                           ),
                           borderRadius: BorderRadius.circular(18.0),
                         ),
                         child: Align(
-                          alignment: AlignmentDirectional(0.0, 0.0),
+                          alignment: const AlignmentDirectional(0.0, 0.0),
                           child: Text(
                             'Try again',
                             style: FlutterFlowTheme.of(context)
@@ -180,7 +177,7 @@ class _ConnectionProblemWidgetState extends State<ConnectionProblemWidget> {
                       ),
                     ),
                   ),
-                ].divide(SizedBox(height: 32.0)),
+                ].divide(const SizedBox(height: 32.0)),
               ),
             ),
           ),

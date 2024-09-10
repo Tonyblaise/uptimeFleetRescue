@@ -1,10 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'check_your_email_model.dart';
 export 'check_your_email_model.dart';
 
@@ -64,10 +60,10 @@ class _CheckYourEmailWidgetState extends State<CheckYourEmailWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
                   child: Container(
                     width: MediaQuery.sizeOf(context).width * 0.9,
-                    decoration: BoxDecoration(),
+                    decoration: const BoxDecoration(),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -78,7 +74,7 @@ class _CheckYourEmailWidgetState extends State<CheckYourEmailWidget> {
                           style:
                               FlutterFlowTheme.of(context).labelLarge.override(
                                     fontFamily: 'Yantramanav',
-                                    color: Color(0xFF0F172A),
+                                    color: const Color(0xFF0F172A),
                                     fontSize: 18.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
@@ -95,19 +91,19 @@ class _CheckYourEmailWidgetState extends State<CheckYourEmailWidget> {
                                 letterSpacing: 0.0,
                               ),
                         ),
-                      ].divide(SizedBox(height: 8.0)),
+                      ].divide(const SizedBox(height: 8.0)),
                     ),
                   ),
                 ),
                 Container(
                   width: MediaQuery.sizeOf(context).width * 0.9,
-                  decoration: BoxDecoration(),
+                  decoration: const BoxDecoration(),
                   child: Text(
                     'Resend e-mail',
                     textAlign: TextAlign.center,
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Yantramanav',
-                          color: Color(0xFF0CCA4A),
+                          color: const Color(0xFF0CCA4A),
                           fontSize: 16.0,
                           letterSpacing: 0.0,
                           fontWeight: FontWeight.normal,
@@ -116,7 +112,7 @@ class _CheckYourEmailWidgetState extends State<CheckYourEmailWidget> {
                 ),
                 Container(
                   width: MediaQuery.sizeOf(context).width * 0.9,
-                  decoration: BoxDecoration(),
+                  decoration: const BoxDecoration(),
                   child: RichText(
                     textScaler: MediaQuery.of(context).textScaler,
                     text: TextSpan(
@@ -126,7 +122,7 @@ class _CheckYourEmailWidgetState extends State<CheckYourEmailWidget> {
                           style:
                               FlutterFlowTheme.of(context).labelLarge.override(
                                     fontFamily: 'Yantramanav',
-                                    color: Color(0xFF0F172A),
+                                    color: const Color(0xFF0F172A),
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.normal,
                                   ),
@@ -136,7 +132,7 @@ class _CheckYourEmailWidgetState extends State<CheckYourEmailWidget> {
                           style:
                               FlutterFlowTheme.of(context).labelLarge.override(
                                     fontFamily: 'Yantramanav',
-                                    color: Color(0xFF0CCA4A),
+                                    color: const Color(0xFF0CCA4A),
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.normal,
                                   ),
@@ -150,7 +146,7 @@ class _CheckYourEmailWidgetState extends State<CheckYourEmailWidget> {
                     textAlign: TextAlign.center,
                   ),
                 ),
-              ].divide(SizedBox(height: 32.0)),
+              ].divide(const SizedBox(height: 32.0)),
             ),
           ),
         ),

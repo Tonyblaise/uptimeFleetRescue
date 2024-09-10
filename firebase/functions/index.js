@@ -10,7 +10,7 @@ const firestore = admin.firestore();
 
 const kPushNotificationRuntimeOpts = {
   timeoutSeconds: 540,
-  memory: "2GB"
+  memory: "2GB",
 };
 
 exports.addFcmToken = functions.https.onCall(async (data, context) => {
@@ -77,28 +77,26 @@ exports.sendPushNotificationsTrigger = functions
   });
 
 exports.sendUserPushNotificationsTrigger = functions
-.runWith(kPushNotificationRuntimeOpts)
-.firestore.document(`${kUserPushNotificationsCollection}/{id}`)
-.onCreate(async (snapshot, _) => {
-  try {
-    // Ignore scheduled push notifications on create
-    const scheduledTime = snapshot.data().scheduled_time || "";
-    if (scheduledTime) {
-      return;
+  .runWith(kPushNotificationRuntimeOpts)
+  .firestore.document(`${kUserPushNotificationsCollection}/{id}`)
+  .onCreate(async (snapshot, _) => {
+    try {
+      // Ignore scheduled push notifications on create
+      const scheduledTime = snapshot.data().scheduled_time || "";
+      if (scheduledTime) {
+        return;
+      }
+
+      // Don't let user-triggered notifications to be sent to all users.
+      const userRefsStr = snapshot.data().user_refs || "";
+      if (userRefsStr) {
+        await sendPushNotifications(snapshot);
+      }
+    } catch (e) {
+      console.log(`Error: ${e}`);
+      await snapshot.ref.update({ status: "failed", error: `${e}` });
     }
-
-    // Don't let user-triggered notifications to be sent to all users.
-    const userRefsStr = snapshot.data().user_refs || "";
-    if (userRefsStr) {
-      await sendPushNotifications(snapshot);
-    }
-  } catch (e) {
-    console.log(`Error: ${e}`);
-    await snapshot.ref.update({ status: "failed", error: `${e}` });
-  }
-});
-
-
+  });
 
 exports.sendScheduledPushNotifications = functions.pubsub
   .schedule(`every ${kSchedulerIntervalMinutes} minutes synchronized`)
@@ -148,9 +146,7 @@ exports.sendScheduledPushNotifications = functions.pubsub
         await snapshot.ref.update({ status: "failed", error: `${e}` });
       }
     }
-
   });
-
 
 async function sendPushNotifications(snapshot) {
   const notificationData = snapshot.data();
@@ -223,7 +219,7 @@ async function sendPushNotifications(snapshot) {
       },
       data: {
         initialPageName,
-        parameterData
+        parameterData,
       },
       android: {
         notification: {
@@ -247,7 +243,7 @@ async function sendPushNotifications(snapshot) {
     messageBatches.map(async (messages) => {
       const response = await admin.messaging().sendMulticast(messages);
       numSent += response.successCount;
-    })
+    }),
   );
 
   await snapshot.ref.update({ status: "succeeded", num_sent: numSent });
@@ -286,5 +282,5 @@ function getCharForIndex(charIdx) {
 }
 exports.onUserDeleted = functions.auth.user().onDelete(async (user) => {
   let firestore = admin.firestore();
-  let userRef = firestore.doc('users/' + user.uid);
+  let userRef = firestore.doc("users/" + user.uid);
 });

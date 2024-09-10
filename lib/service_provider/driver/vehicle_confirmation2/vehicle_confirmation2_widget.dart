@@ -9,10 +9,7 @@ import '/flutter_flow/upload_data.dart';
 import '/pages/chat/empty_image/empty_image_widget.dart';
 import '/service_provider/confirm_request/confirm_request_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'vehicle_confirmation2_model.dart';
 export 'vehicle_confirmation2_model.dart';
@@ -57,14 +54,14 @@ class _VehicleConfirmation2WidgetState
     _model = createModel(context, () => VehicleConfirmation2Model());
 
     _model.textFieldColorTextController ??= TextEditingController(
-        text: (functions.checkNull(widget!.color) ? true : false)
+        text: (functions.checkNull(widget.color) ? true : false)
             ? _model.color
             : '  ');
     _model.textFieldColorFocusNode ??= FocusNode();
 
     _model.textFieldNotesTextController ??= TextEditingController(
-        text: (functions.checkNull(widget!.notes) ? true : false)
-            ? widget!.notes
+        text: (functions.checkNull(widget.notes) ? true : false)
+            ? widget.notes
             : '  ');
     _model.textFieldNotesFocusNode ??= FocusNode();
 
@@ -89,10 +86,10 @@ class _VehicleConfirmation2WidgetState
         backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Colors.white,
-          iconTheme: IconThemeData(color: Color(0xFF1E293B)),
+          iconTheme: const IconThemeData(color: Color(0xFF1E293B)),
           automaticallyImplyLeading: true,
           title: Container(
-            decoration: BoxDecoration(),
+            decoration: const BoxDecoration(),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -100,16 +97,16 @@ class _VehicleConfirmation2WidgetState
                   'Vehicle Confirmation',
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Yantramanav',
-                        color: Color(0xFF1E293B),
+                        color: const Color(0xFF1E293B),
                         fontSize: 30.0,
                         letterSpacing: 0.0,
                         fontWeight: FontWeight.bold,
                       ),
                 ),
-              ].divide(SizedBox(width: 10.0)),
+              ].divide(const SizedBox(width: 10.0)),
             ),
           ),
-          actions: [],
+          actions: const [],
           centerTitle: false,
           elevation: 1.0,
         ),
@@ -118,13 +115,13 @@ class _VehicleConfirmation2WidgetState
           child: Container(
             width: double.infinity,
             height: double.infinity,
-            decoration: BoxDecoration(),
+            decoration: const BoxDecoration(),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Container(
-                  decoration: BoxDecoration(),
+                  decoration: const BoxDecoration(),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -134,14 +131,14 @@ class _VehicleConfirmation2WidgetState
                         decoration: BoxDecoration(
                           gradient: LinearGradient(
                             colors: [
-                              Color(0xF304B53E),
+                              const Color(0xF304B53E),
                               FlutterFlowTheme.of(context).tertiary
                             ],
-                            stops: [0.0, 1.0],
-                            begin: AlignmentDirectional(0.0, -1.0),
-                            end: AlignmentDirectional(0, 1.0),
+                            stops: const [0.0, 1.0],
+                            begin: const AlignmentDirectional(0.0, -1.0),
+                            end: const AlignmentDirectional(0, 1.0),
                           ),
-                          borderRadius: BorderRadius.only(
+                          borderRadius: const BorderRadius.only(
                             bottomLeft: Radius.circular(36.0),
                             bottomRight: Radius.circular(36.0),
                             topLeft: Radius.circular(0.0),
@@ -149,7 +146,7 @@ class _VehicleConfirmation2WidgetState
                           ),
                         ),
                         child: Align(
-                          alignment: AlignmentDirectional(0.0, 0.0),
+                          alignment: const AlignmentDirectional(0.0, 0.0),
                           child: RichText(
                             textScaler: MediaQuery.of(context).textScaler,
                             text: TextSpan(
@@ -166,7 +163,7 @@ class _VehicleConfirmation2WidgetState
                                         fontWeight: FontWeight.w300,
                                       ),
                                 ),
-                                TextSpan(
+                                const TextSpan(
                                   text: '\ndetails',
                                   style: TextStyle(
                                     color: Colors.black,
@@ -191,14 +188,14 @@ class _VehicleConfirmation2WidgetState
                 ),
                 Expanded(
                   child: Container(
-                    decoration: BoxDecoration(),
+                    decoration: const BoxDecoration(),
                     child: SingleChildScrollView(
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Container(
-                            decoration: BoxDecoration(),
+                            decoration: const BoxDecoration(),
                             child: Column(
                               mainAxisSize: MainAxisSize.min,
                               children: [
@@ -206,12 +203,12 @@ class _VehicleConfirmation2WidgetState
                                   key: _model.formKey,
                                   autovalidateMode: AutovalidateMode.always,
                                   child: Container(
-                                    decoration: BoxDecoration(),
+                                    decoration: const BoxDecoration(),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
                                         Container(
-                                          decoration: BoxDecoration(),
+                                          decoration: const BoxDecoration(),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
                                             crossAxisAlignment:
@@ -236,9 +233,9 @@ class _VehicleConfirmation2WidgetState
                                                     MediaQuery.sizeOf(context)
                                                             .width *
                                                         0.9,
-                                                decoration: BoxDecoration(),
+                                                decoration: const BoxDecoration(),
                                                 child: Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 4.0, 0.0, 4.0),
                                                   child: TextFormField(
@@ -266,7 +263,7 @@ class _VehicleConfirmation2WidgetState
                                                               ),
                                                       enabledBorder:
                                                           OutlineInputBorder(
-                                                        borderSide: BorderSide(
+                                                        borderSide: const BorderSide(
                                                           color:
                                                               Color(0xFFCBD5E1),
                                                           width: 1.0,
@@ -314,7 +311,7 @@ class _VehicleConfirmation2WidgetState
                                                       filled: true,
                                                       fillColor: Colors.white,
                                                       contentPadding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   8.0,
                                                                   0.0,
@@ -337,11 +334,11 @@ class _VehicleConfirmation2WidgetState
                                                   ),
                                                 ),
                                               ),
-                                            ].divide(SizedBox(height: 5.0)),
+                                            ].divide(const SizedBox(height: 5.0)),
                                           ),
                                         ),
                                         Container(
-                                          decoration: BoxDecoration(),
+                                          decoration: const BoxDecoration(),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
                                             crossAxisAlignment:
@@ -366,9 +363,9 @@ class _VehicleConfirmation2WidgetState
                                                     MediaQuery.sizeOf(context)
                                                             .width *
                                                         0.9,
-                                                decoration: BoxDecoration(),
+                                                decoration: const BoxDecoration(),
                                                 child: Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 4.0, 0.0, 4.0),
                                                   child: TextFormField(
@@ -396,7 +393,7 @@ class _VehicleConfirmation2WidgetState
                                                               ),
                                                       enabledBorder:
                                                           OutlineInputBorder(
-                                                        borderSide: BorderSide(
+                                                        borderSide: const BorderSide(
                                                           color:
                                                               Color(0xFFCBD5E1),
                                                           width: 1.0,
@@ -444,7 +441,7 @@ class _VehicleConfirmation2WidgetState
                                                       filled: true,
                                                       fillColor: Colors.white,
                                                       contentPadding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   8.0,
                                                                   0.0,
@@ -469,7 +466,7 @@ class _VehicleConfirmation2WidgetState
                                                   ),
                                                 ),
                                               ),
-                                            ].divide(SizedBox(height: 5.0)),
+                                            ].divide(const SizedBox(height: 5.0)),
                                           ),
                                         ),
                                         Builder(
@@ -481,7 +478,7 @@ class _VehicleConfirmation2WidgetState
                                                     MediaQuery.sizeOf(context)
                                                             .width *
                                                         0.9,
-                                                decoration: BoxDecoration(),
+                                                decoration: const BoxDecoration(),
                                                 child: Column(
                                                   mainAxisSize:
                                                       MainAxisSize.max,
@@ -489,8 +486,8 @@ class _VehicleConfirmation2WidgetState
                                                       CrossAxisAlignment.start,
                                                   children: [
                                                     Text(
-                                                      widget!.image != null &&
-                                                              widget!.image !=
+                                                      widget.image != null &&
+                                                              widget.image !=
                                                                   ''
                                                           ? 'Upload image (press image to replace)'
                                                           : 'Upload image ',
@@ -515,7 +512,7 @@ class _VehicleConfirmation2WidgetState
                                                           0.9,
                                                       height: 150.0,
                                                       decoration:
-                                                          BoxDecoration(),
+                                                          const BoxDecoration(),
                                                       child: InkWell(
                                                         splashColor:
                                                             Colors.transparent,
@@ -646,7 +643,7 @@ class _VehicleConfirmation2WidgetState
                                                       ),
                                                     ),
                                                   ].divide(
-                                                      SizedBox(height: 5.0)),
+                                                      const SizedBox(height: 5.0)),
                                                 ),
                                               );
                                             } else {
@@ -791,14 +788,14 @@ class _VehicleConfirmation2WidgetState
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 20.0),
                                           child: FFButtonWidget(
                                             onPressed: () async {
                                               currentUserLocationValue =
                                                   await getCurrentUserLocation(
                                                       defaultLocation:
-                                                          LatLng(0.0, 0.0));
+                                                          const LatLng(0.0, 0.0));
                                               if (_model.image != null &&
                                                   _model.image != '') {
                                                 var chatsRecordReference =
@@ -834,12 +831,12 @@ class _VehicleConfirmation2WidgetState
                                                         .updateVehicleCall
                                                         .call(
                                                   licensePlate:
-                                                      widget!.licensePlate,
-                                                  state: widget!.state,
+                                                      widget.licensePlate,
+                                                  state: widget.state,
                                                   color: _model
                                                       .textFieldColorTextController
                                                       .text,
-                                                  id: widget!.id,
+                                                  id: widget.id,
                                                   notes: _model
                                                       .textFieldNotesTextController
                                                       .text,
@@ -898,14 +895,14 @@ class _VehicleConfirmation2WidgetState
                                                         currentUserDocument
                                                             ?.driverId,
                                                         ''),
-                                                    fault: widget!.service,
-                                                    vehicleId: widget!.id,
-                                                    additionalInfo: widget!
+                                                    fault: widget.service,
+                                                    vehicleId: widget.id,
+                                                    additionalInfo: widget
                                                                     .additionalInfo !=
                                                                 null &&
-                                                            widget!.additionalInfo !=
+                                                            widget.additionalInfo !=
                                                                 ''
-                                                        ? widget!.additionalInfo
+                                                        ? widget.additionalInfo
                                                         : FFAppState()
                                                             .requestAdditionalInfo,
                                                     supportReview: false,
@@ -977,14 +974,14 @@ class _VehicleConfirmation2WidgetState
                                                             padding: MediaQuery
                                                                 .viewInsetsOf(
                                                                     context),
-                                                            child: Container(
+                                                            child: SizedBox(
                                                               height: MediaQuery
                                                                           .sizeOf(
                                                                               context)
                                                                       .height *
                                                                   0.6,
                                                               child:
-                                                                  ConfirmRequestWidget(),
+                                                                  const ConfirmRequestWidget(),
                                                             ),
                                                           ),
                                                         );
@@ -1011,10 +1008,10 @@ class _VehicleConfirmation2WidgetState
                                                             fontSize: 14.0,
                                                           ),
                                                         ),
-                                                        duration: Duration(
+                                                        duration: const Duration(
                                                             milliseconds: 4000),
                                                         backgroundColor:
-                                                            Color(0xFFF50833),
+                                                            const Color(0xFFF50833),
                                                       ),
                                                     );
                                                   }
@@ -1037,10 +1034,10 @@ class _VehicleConfirmation2WidgetState
                                                           fontSize: 14.0,
                                                         ),
                                                       ),
-                                                      duration: Duration(
+                                                      duration: const Duration(
                                                           milliseconds: 4000),
                                                       backgroundColor:
-                                                          Color(0xFFF50833),
+                                                          const Color(0xFFF50833),
                                                     ),
                                                   );
                                                 }
@@ -1058,10 +1055,10 @@ class _VehicleConfirmation2WidgetState
                                                         fontSize: 14.0,
                                                       ),
                                                     ),
-                                                    duration: Duration(
+                                                    duration: const Duration(
                                                         milliseconds: 4000),
                                                     backgroundColor:
-                                                        Color(0xFFF50833),
+                                                        const Color(0xFFF50833),
                                                   ),
                                                 );
                                               }
@@ -1074,10 +1071,10 @@ class _VehicleConfirmation2WidgetState
                                                       .width *
                                                   0.9,
                                               height: 50.0,
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       24.0, 0.0, 24.0, 0.0),
-                                              iconPadding: EdgeInsetsDirectional
+                                              iconPadding: const EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 0.0),
                                               color:
                                                   FlutterFlowTheme.of(context)
@@ -1093,7 +1090,7 @@ class _VehicleConfirmation2WidgetState
                                                     letterSpacing: 0.0,
                                                   ),
                                               elevation: 3.0,
-                                              borderSide: BorderSide(
+                                              borderSide: const BorderSide(
                                                 color: Colors.transparent,
                                                 width: 1.0,
                                               ),
@@ -1102,19 +1099,19 @@ class _VehicleConfirmation2WidgetState
                                             ),
                                           ),
                                         ),
-                                      ].divide(SizedBox(height: 20.0)),
+                                      ].divide(const SizedBox(height: 20.0)),
                                     ),
                                   ),
                                 ),
-                              ].divide(SizedBox(height: 20.0)),
+                              ].divide(const SizedBox(height: 20.0)),
                             ),
                           ),
-                        ].divide(SizedBox(height: 20.0)),
+                        ].divide(const SizedBox(height: 20.0)),
                       ),
                     ),
                   ),
                 ),
-              ].divide(SizedBox(height: 16.0)),
+              ].divide(const SizedBox(height: 16.0)),
             ),
           ),
         ),

@@ -4,8 +4,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/service_provider/select_vehicle/select_vehicle_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'empty_state_simple_model.dart';
 export 'empty_state_simple_model.dart';
 
@@ -17,9 +15,9 @@ class EmptyStateSimpleWidget extends StatefulWidget {
     String? body,
     this.action,
     bool? buttonVisible,
-  })  : this.title = title ?? 'No Comments',
-        this.body = body ?? 'There are no comments associated with this post.',
-        this.buttonVisible = buttonVisible ?? false;
+  })  : title = title ?? 'No Comments',
+        body = body ?? 'There are no comments associated with this post.',
+        buttonVisible = buttonVisible ?? false;
 
   final Widget? icon;
   final String title;
@@ -58,16 +56,16 @@ class _EmptyStateSimpleWidgetState extends State<EmptyStateSimpleWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: AlignmentDirectional(0.0, -1.0),
+      alignment: const AlignmentDirectional(0.0, -1.0),
       child: Column(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          widget!.icon!,
+          widget.icon!,
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
             child: Text(
-              widget!.title,
+              widget.title,
               textAlign: TextAlign.center,
               style: FlutterFlowTheme.of(context).headlineSmall.override(
                     fontFamily: 'Yantramanav',
@@ -76,9 +74,9 @@ class _EmptyStateSimpleWidgetState extends State<EmptyStateSimpleWidget> {
                   ),
             ),
           ),
-          if (!widget!.buttonVisible)
+          if (!widget.buttonVisible)
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
               child: InkWell(
                 splashColor: Colors.transparent,
                 focusColor: Colors.transparent,
@@ -95,7 +93,7 @@ class _EmptyStateSimpleWidgetState extends State<EmptyStateSimpleWidget> {
                         builder: (context) {
                           return Padding(
                             padding: MediaQuery.viewInsetsOf(context),
-                            child: SelectVehicleWidget(),
+                            child: const SelectVehicleWidget(),
                           );
                         },
                       ).then((value) => safeSetState(() {}));
@@ -103,7 +101,7 @@ class _EmptyStateSimpleWidgetState extends State<EmptyStateSimpleWidget> {
                   );
                 },
                 child: Text(
-                  widget!.body,
+                  widget.body,
                   textAlign: TextAlign.center,
                   style: FlutterFlowTheme.of(context).labelMedium.override(
                         fontFamily: 'Yantramanav',
@@ -112,9 +110,9 @@ class _EmptyStateSimpleWidgetState extends State<EmptyStateSimpleWidget> {
                 ),
               ),
             ),
-          if (widget!.buttonVisible)
+          if (widget.buttonVisible)
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 15.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 15.0),
               child: FFButtonWidget(
                 onPressed: () async {
                   await actions.runWidgetAction(
@@ -127,7 +125,7 @@ class _EmptyStateSimpleWidgetState extends State<EmptyStateSimpleWidget> {
                         builder: (context) {
                           return Padding(
                             padding: MediaQuery.viewInsetsOf(context),
-                            child: SelectVehicleWidget(),
+                            child: const SelectVehicleWidget(),
                           );
                         },
                       ).then((value) => safeSetState(() {}));
@@ -137,9 +135,9 @@ class _EmptyStateSimpleWidgetState extends State<EmptyStateSimpleWidget> {
                 text: 'Update Vehicle',
                 options: FFButtonOptions(
                   height: 40.0,
-                  padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                   iconPadding:
-                      EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   color: FlutterFlowTheme.of(context).tertiary,
                   textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                         fontFamily: 'Yantramanav',
@@ -147,7 +145,7 @@ class _EmptyStateSimpleWidgetState extends State<EmptyStateSimpleWidget> {
                         letterSpacing: 0.0,
                       ),
                   elevation: 3.0,
-                  borderSide: BorderSide(
+                  borderSide: const BorderSide(
                     color: Colors.transparent,
                     width: 1.0,
                   ),
@@ -155,7 +153,7 @@ class _EmptyStateSimpleWidgetState extends State<EmptyStateSimpleWidget> {
                 ),
               ),
             ),
-        ].divide(SizedBox(height: 15.0)),
+        ].divide(const SizedBox(height: 15.0)),
       ),
     );
   }

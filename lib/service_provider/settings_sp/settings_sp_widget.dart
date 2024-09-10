@@ -1,12 +1,8 @@
 import '/components/settings_component_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/service_provider/bottom_bar/bottom_bar_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'settings_sp_model.dart';
 export 'settings_sp_model.dart';
 
@@ -48,14 +44,14 @@ class _SettingsSpWidgetState extends State<SettingsSpWidget> {
           backgroundColor: Colors.white,
           automaticallyImplyLeading: false,
           title: Container(
-            decoration: BoxDecoration(),
+            decoration: const BoxDecoration(),
             child: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
               child: Text(
                 'Settings',
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Yantramanav',
-                      color: Color(0xFF1E293B),
+                      color: const Color(0xFF1E293B),
                       fontSize: 30.0,
                       letterSpacing: 0.0,
                       fontWeight: FontWeight.bold,
@@ -63,37 +59,37 @@ class _SettingsSpWidgetState extends State<SettingsSpWidget> {
               ),
             ),
           ),
-          actions: [],
+          actions: const [],
           centerTitle: false,
           elevation: 1.0,
         ),
         body: SafeArea(
           top: true,
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
             child: Container(
               width: double.infinity,
               height: double.infinity,
-              decoration: BoxDecoration(),
+              decoration: const BoxDecoration(),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
                     child: wrapWithModel(
                       model: _model.settingsComponentModel,
                       updateCallback: () => safeSetState(() {}),
-                      child: SettingsComponentWidget(),
+                      child: const SettingsComponentWidget(),
                     ),
                   ),
                   wrapWithModel(
                     model: _model.bottomBarModel,
                     updateCallback: () => safeSetState(() {}),
-                    child: BottomBarWidget(),
+                    child: const BottomBarWidget(),
                   ),
-                ].divide(SizedBox(height: 20.0)),
+                ].divide(const SizedBox(height: 20.0)),
               ),
             ),
           ),
