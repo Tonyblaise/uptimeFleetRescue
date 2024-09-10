@@ -1,6 +1,8 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'empty_state_simple1_model.dart';
 export 'empty_state_simple1_model.dart';
 
@@ -10,8 +12,8 @@ class EmptyStateSimple1Widget extends StatefulWidget {
     this.icon,
     String? title,
     String? body,
-  })  : title = title ?? 'No Comments',
-        body = body ?? 'There are no comments associated with this post.';
+  })  : this.title = title ?? 'No Comments',
+        this.body = body ?? 'There are no comments associated with this post.';
 
   final Widget? icon;
   final String title;
@@ -36,7 +38,7 @@ class _EmptyStateSimple1WidgetState extends State<EmptyStateSimple1Widget> {
     super.initState();
     _model = createModel(context, () => EmptyStateSimple1Model());
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -49,16 +51,16 @@ class _EmptyStateSimple1WidgetState extends State<EmptyStateSimple1Widget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: const AlignmentDirectional(0.0, -1.0),
+      alignment: AlignmentDirectional(0.0, -1.0),
       child: Column(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          widget.icon!,
+          widget!.icon!,
           Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
             child: Text(
-              widget.title,
+              widget!.title,
               textAlign: TextAlign.center,
               style: FlutterFlowTheme.of(context).headlineSmall.override(
                     fontFamily: 'Yantramanav',
@@ -68,9 +70,9 @@ class _EmptyStateSimple1WidgetState extends State<EmptyStateSimple1Widget> {
             ),
           ),
           Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 0.0),
+            padding: EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 0.0),
             child: Text(
-              widget.body,
+              widget!.body,
               textAlign: TextAlign.center,
               style: FlutterFlowTheme.of(context).labelMedium.override(
                     fontFamily: 'Yantramanav',

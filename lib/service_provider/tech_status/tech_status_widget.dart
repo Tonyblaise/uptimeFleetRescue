@@ -2,8 +2,11 @@ import '/components/page_title_widget.dart';
 import '/components/user_details_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/service_provider/bottom_bar/bottom_bar_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'tech_status_model.dart';
 export 'tech_status_model.dart';
 
@@ -24,7 +27,7 @@ class _TechStatusWidgetState extends State<TechStatusWidget> {
     super.initState();
     _model = createModel(context, () => TechStatusModel());
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -43,10 +46,10 @@ class _TechStatusWidgetState extends State<TechStatusWidget> {
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
           backgroundColor: Colors.white,
-          iconTheme: const IconThemeData(color: Color(0xFF1E293B)),
+          iconTheme: IconThemeData(color: Color(0xFF1E293B)),
           automaticallyImplyLeading: false,
           title: Container(
-            decoration: const BoxDecoration(),
+            decoration: BoxDecoration(),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -54,16 +57,16 @@ class _TechStatusWidgetState extends State<TechStatusWidget> {
                   'Tech Status',
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Yantramanav',
-                        color: const Color(0xFF1E293B),
+                        color: Color(0xFF1E293B),
                         fontSize: 30.0,
                         letterSpacing: 0.0,
                         fontWeight: FontWeight.bold,
                       ),
                 ),
-              ].divide(const SizedBox(width: 10.0)),
+              ].divide(SizedBox(width: 10.0)),
             ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: false,
           elevation: 1.0,
         ),
@@ -72,13 +75,13 @@ class _TechStatusWidgetState extends State<TechStatusWidget> {
           child: Container(
             width: double.infinity,
             height: double.infinity,
-            decoration: const BoxDecoration(),
+            decoration: BoxDecoration(),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
-                  decoration: const BoxDecoration(),
+                  decoration: BoxDecoration(),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -89,22 +92,22 @@ class _TechStatusWidgetState extends State<TechStatusWidget> {
                           color: FlutterFlowTheme.of(context).primaryBackground,
                         ),
                         child: Align(
-                          alignment: const AlignmentDirectional(0.0, 0.0),
+                          alignment: AlignmentDirectional(0.0, 0.0),
                           child: Container(
                             width: MediaQuery.sizeOf(context).width * 0.9,
-                            decoration: const BoxDecoration(),
+                            decoration: BoxDecoration(),
                             child: wrapWithModel(
                               model: _model.userDetailsModel,
-                              updateCallback: () => setState(() {}),
-                              child: const UserDetailsWidget(),
+                              updateCallback: () => safeSetState(() {}),
+                              child: UserDetailsWidget(),
                             ),
                           ),
                         ),
                       ),
                       wrapWithModel(
                         model: _model.pageTitleModel,
-                        updateCallback: () => setState(() {}),
-                        child: const PageTitleWidget(
+                        updateCallback: () => safeSetState(() {}),
+                        child: PageTitleWidget(
                           title1: 'Set your',
                           title2: 'Status',
                         ),
@@ -113,12 +116,12 @@ class _TechStatusWidgetState extends State<TechStatusWidget> {
                   ),
                 ),
                 Container(
-                  decoration: const BoxDecoration(),
+                  decoration: BoxDecoration(),
                 ),
                 wrapWithModel(
                   model: _model.bottomBarModel,
-                  updateCallback: () => setState(() {}),
-                  child: const BottomBarWidget(),
+                  updateCallback: () => safeSetState(() {}),
+                  child: BottomBarWidget(),
                 ),
               ],
             ),

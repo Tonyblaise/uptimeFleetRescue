@@ -1,7 +1,17 @@
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/service_provider/driver/chat/chat_thread_component_1/chat_thread_component1_widget.dart';
+import 'dart:async';
 import 'chat2_details1_widget.dart' show Chat2Details1Widget;
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class Chat2Details1Model extends FlutterFlowModel<Chat2Details1Widget> {
   ///  Local state fields for this page.
@@ -31,7 +41,6 @@ class Chat2Details1Model extends FlutterFlowModel<Chat2Details1Widget> {
 
   ///  State fields for stateful widgets in this page.
 
-  final unfocusNode = FocusNode();
   // Model for chat_ThreadComponent_1 component.
   late ChatThreadComponent1Model chatThreadComponent1Model;
 

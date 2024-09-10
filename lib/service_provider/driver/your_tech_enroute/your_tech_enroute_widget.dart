@@ -1,6 +1,9 @@
 import '/backend/backend.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'your_tech_enroute_model.dart';
 export 'your_tech_enroute_model.dart';
 
@@ -32,7 +35,7 @@ class _YourTechEnrouteWidgetState extends State<YourTechEnrouteWidget> {
     super.initState();
     _model = createModel(context, () => YourTechEnrouteModel());
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

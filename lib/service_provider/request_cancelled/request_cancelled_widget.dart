@@ -3,8 +3,11 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'request_cancelled_model.dart';
 export 'request_cancelled_model.dart';
 
@@ -34,7 +37,7 @@ class _RequestCancelledWidgetState extends State<RequestCancelledWidget> {
     super.initState();
     _model = createModel(context, () => RequestCancelledModel());
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -47,9 +50,9 @@ class _RequestCancelledWidgetState extends State<RequestCancelledWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: const AlignmentDirectional(0.0, 0.0),
+      alignment: AlignmentDirectional(0.0, 0.0),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 20.0),
+        padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 20.0),
         child: Container(
           width: double.infinity,
           decoration: BoxDecoration(
@@ -61,7 +64,7 @@ class _RequestCancelledWidgetState extends State<RequestCancelledWidget> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Align(
-                alignment: const AlignmentDirectional(0.0, 0.0),
+                alignment: AlignmentDirectional(0.0, 0.0),
                 child: Container(
                   width: double.infinity,
                   height: 80.0,
@@ -71,14 +74,14 @@ class _RequestCancelledWidgetState extends State<RequestCancelledWidget> {
                         FlutterFlowTheme.of(context).secondary,
                         FlutterFlowTheme.of(context).tertiary
                       ],
-                      stops: const [0.0, 1.0],
-                      begin: const AlignmentDirectional(0.0, -1.0),
-                      end: const AlignmentDirectional(0, 1.0),
+                      stops: [0.0, 1.0],
+                      begin: AlignmentDirectional(0.0, -1.0),
+                      end: AlignmentDirectional(0, 1.0),
                     ),
                     borderRadius: BorderRadius.circular(24.0),
                   ),
                   child: Align(
-                    alignment: const AlignmentDirectional(0.0, 0.0),
+                    alignment: AlignmentDirectional(0.0, 0.0),
                     child: Text(
                       'Request cancelled',
                       textAlign: TextAlign.center,
@@ -102,10 +105,10 @@ class _RequestCancelledWidgetState extends State<RequestCancelledWidget> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                 child: Container(
                   width: MediaQuery.sizeOf(context).width * 0.9,
-                  decoration: const BoxDecoration(),
+                  decoration: BoxDecoration(),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -115,7 +118,7 @@ class _RequestCancelledWidgetState extends State<RequestCancelledWidget> {
                         textAlign: TextAlign.center,
                         style: FlutterFlowTheme.of(context).labelLarge.override(
                               fontFamily: 'Yantramanav',
-                              color: const Color(0xFF64748B),
+                              color: Color(0xFF64748B),
                               fontSize: 20.0,
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.bold,
@@ -126,18 +129,18 @@ class _RequestCancelledWidgetState extends State<RequestCancelledWidget> {
                         textAlign: TextAlign.center,
                         style: FlutterFlowTheme.of(context).labelLarge.override(
                               fontFamily: 'Yantramanav',
-                              color: const Color(0xFF64748B),
+                              color: Color(0xFF64748B),
                               fontSize: 16.0,
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.w300,
                             ),
                       ),
-                    ].divide(const SizedBox(height: 8.0)),
+                    ].divide(SizedBox(height: 8.0)),
                   ),
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 20.0),
+                padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 20.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -160,9 +163,9 @@ class _RequestCancelledWidgetState extends State<RequestCancelledWidget> {
                         text: 'Proceed',
                         options: FFButtonOptions(
                           height: 56.0,
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               24.0, 0.0, 24.0, 0.0),
-                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).tertiary,
                           textStyle:
@@ -172,7 +175,7 @@ class _RequestCancelledWidgetState extends State<RequestCancelledWidget> {
                                     letterSpacing: 0.0,
                                   ),
                           elevation: 3.0,
-                          borderSide: const BorderSide(
+                          borderSide: BorderSide(
                             color: Colors.transparent,
                             width: 1.0,
                           ),
@@ -180,10 +183,10 @@ class _RequestCancelledWidgetState extends State<RequestCancelledWidget> {
                         ),
                       ),
                     ),
-                  ].divide(const SizedBox(width: 15.0)),
+                  ].divide(SizedBox(width: 15.0)),
                 ),
               ),
-            ].divide(const SizedBox(height: 32.0)),
+            ].divide(SizedBox(height: 32.0)),
           ),
         ),
       ),

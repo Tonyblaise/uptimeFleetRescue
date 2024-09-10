@@ -4,6 +4,8 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/service_provider/driver/delete_account/delete_account_widget.dart';
 import '/service_provider/driver/log_out_confirmation/log_out_confirmation_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'settings_component_model.dart';
 export 'settings_component_model.dart';
 
@@ -29,7 +31,7 @@ class _SettingsComponentWidgetState extends State<SettingsComponentWidget> {
     super.initState();
     _model = createModel(context, () => SettingsComponentModel());
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -42,15 +44,15 @@ class _SettingsComponentWidgetState extends State<SettingsComponentWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(),
+      decoration: BoxDecoration(),
       child: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
           Align(
-            alignment: const AlignmentDirectional(0.0, 0.0),
+            alignment: AlignmentDirectional(0.0, 0.0),
             child: Container(
               width: double.infinity,
-              decoration: const BoxDecoration(),
+              decoration: BoxDecoration(),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -58,15 +60,15 @@ class _SettingsComponentWidgetState extends State<SettingsComponentWidget> {
                   Expanded(
                     child: wrapWithModel(
                       model: _model.userDetailsModel,
-                      updateCallback: () => setState(() {}),
-                      child: const UserDetailsWidget(),
+                      updateCallback: () => safeSetState(() {}),
+                      child: UserDetailsWidget(),
                     ),
                   ),
-                ].divide(const SizedBox(width: 15.0)),
+                ].divide(SizedBox(width: 15.0)),
               ),
             ),
           ),
-          const Divider(
+          Divider(
             thickness: 1.0,
             color: Color(0xFFE5E7EE),
           ),
@@ -80,7 +82,7 @@ class _SettingsComponentWidgetState extends State<SettingsComponentWidget> {
             },
             child: Container(
               width: double.infinity,
-              decoration: const BoxDecoration(),
+              decoration: BoxDecoration(),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -88,7 +90,7 @@ class _SettingsComponentWidgetState extends State<SettingsComponentWidget> {
                   Expanded(
                     child: Container(
                       width: 100.0,
-                      decoration: const BoxDecoration(),
+                      decoration: BoxDecoration(),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -106,15 +108,15 @@ class _SettingsComponentWidgetState extends State<SettingsComponentWidget> {
                                   letterSpacing: 0.0,
                                 ),
                           ),
-                        ].divide(const SizedBox(width: 10.0)),
+                        ].divide(SizedBox(width: 10.0)),
                       ),
                     ),
                   ),
-                ].divide(const SizedBox(width: 15.0)),
+                ].divide(SizedBox(width: 15.0)),
               ),
             ),
           ),
-          const Divider(
+          Divider(
             thickness: 1.0,
             color: Color(0xFFE5E7EE),
           ),
@@ -128,7 +130,7 @@ class _SettingsComponentWidgetState extends State<SettingsComponentWidget> {
             },
             child: Container(
               width: double.infinity,
-              decoration: const BoxDecoration(),
+              decoration: BoxDecoration(),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -136,7 +138,7 @@ class _SettingsComponentWidgetState extends State<SettingsComponentWidget> {
                   Expanded(
                     child: Container(
                       width: 100.0,
-                      decoration: const BoxDecoration(),
+                      decoration: BoxDecoration(),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -154,20 +156,20 @@ class _SettingsComponentWidgetState extends State<SettingsComponentWidget> {
                                   letterSpacing: 0.0,
                                 ),
                           ),
-                        ].divide(const SizedBox(width: 10.0)),
+                        ].divide(SizedBox(width: 10.0)),
                       ),
                     ),
                   ),
-                  const Icon(
+                  Icon(
                     Icons.open_in_new_rounded,
                     color: Color(0xFF64748B),
                     size: 24.0,
                   ),
-                ].divide(const SizedBox(width: 15.0)),
+                ].divide(SizedBox(width: 15.0)),
               ),
             ),
           ),
-          const Divider(
+          Divider(
             thickness: 1.0,
             color: Color(0xFFE5E7EE),
           ),
@@ -185,7 +187,7 @@ class _SettingsComponentWidgetState extends State<SettingsComponentWidget> {
                 builder: (context) {
                   return Padding(
                     padding: MediaQuery.viewInsetsOf(context),
-                    child: const DeleteAccountWidget(),
+                    child: DeleteAccountWidget(),
                   );
                 },
               ).then((value) => safeSetState(() {}));
@@ -194,7 +196,7 @@ class _SettingsComponentWidgetState extends State<SettingsComponentWidget> {
             },
             child: Container(
               width: double.infinity,
-              decoration: const BoxDecoration(),
+              decoration: BoxDecoration(),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -202,7 +204,7 @@ class _SettingsComponentWidgetState extends State<SettingsComponentWidget> {
                   Expanded(
                     child: Container(
                       width: 100.0,
-                      decoration: const BoxDecoration(),
+                      decoration: BoxDecoration(),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -221,15 +223,15 @@ class _SettingsComponentWidgetState extends State<SettingsComponentWidget> {
                                   letterSpacing: 0.0,
                                 ),
                           ),
-                        ].divide(const SizedBox(width: 10.0)),
+                        ].divide(SizedBox(width: 10.0)),
                       ),
                     ),
                   ),
-                ].divide(const SizedBox(width: 15.0)),
+                ].divide(SizedBox(width: 15.0)),
               ),
             ),
           ),
-          const Divider(
+          Divider(
             thickness: 1.0,
             color: Color(0xFFE5E7EE),
           ),
@@ -247,14 +249,14 @@ class _SettingsComponentWidgetState extends State<SettingsComponentWidget> {
                 builder: (context) {
                   return Padding(
                     padding: MediaQuery.viewInsetsOf(context),
-                    child: const LogOutConfirmationWidget(),
+                    child: LogOutConfirmationWidget(),
                   );
                 },
               ).then((value) => safeSetState(() {}));
             },
             child: Container(
               width: double.infinity,
-              decoration: const BoxDecoration(),
+              decoration: BoxDecoration(),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -262,7 +264,7 @@ class _SettingsComponentWidgetState extends State<SettingsComponentWidget> {
                   Expanded(
                     child: Container(
                       width: 100.0,
-                      decoration: const BoxDecoration(),
+                      decoration: BoxDecoration(),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -280,15 +282,15 @@ class _SettingsComponentWidgetState extends State<SettingsComponentWidget> {
                                   letterSpacing: 0.0,
                                 ),
                           ),
-                        ].divide(const SizedBox(width: 10.0)),
+                        ].divide(SizedBox(width: 10.0)),
                       ),
                     ),
                   ),
-                ].divide(const SizedBox(width: 15.0)),
+                ].divide(SizedBox(width: 15.0)),
               ),
             ),
           ),
-        ].divide(const SizedBox(height: 10.0)),
+        ].divide(SizedBox(height: 10.0)),
       ),
     );
   }

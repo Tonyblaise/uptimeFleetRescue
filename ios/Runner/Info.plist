@@ -67,6 +67,8 @@
     <string>In order to view your current location, this app needs permission to access your location</string>
 	<key>PermissionGroupNotification</key>
     <string>Allow application to send you notifications</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+    <string>This app needs access to location when in the background.</string>
     <key>UIBackgroundModes</key>
     <array>
         <string>fetch</string>

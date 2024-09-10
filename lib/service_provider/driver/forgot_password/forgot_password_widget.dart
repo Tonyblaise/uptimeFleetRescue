@@ -1,7 +1,10 @@
 import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'forgot_password_model.dart';
 export 'forgot_password_model.dart';
 
@@ -25,7 +28,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -65,7 +68,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                 ),
                 Container(
                   width: MediaQuery.sizeOf(context).width * 0.9,
-                  decoration: const BoxDecoration(),
+                  decoration: BoxDecoration(),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -74,7 +77,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                         'Forgot password?',
                         style: FlutterFlowTheme.of(context).labelLarge.override(
                               fontFamily: 'Yantramanav',
-                              color: const Color(0xFF0F172A),
+                              color: Color(0xFF0F172A),
                               fontSize: 18.0,
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.bold,
@@ -88,15 +91,15 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                               letterSpacing: 0.0,
                             ),
                       ),
-                    ].divide(const SizedBox(height: 8.0)),
+                    ].divide(SizedBox(height: 8.0)),
                   ),
                 ),
                 Container(
                   width: MediaQuery.sizeOf(context).width * 0.9,
                   height: 114.0,
-                  decoration: const BoxDecoration(),
+                  decoration: BoxDecoration(),
                   child: Container(
-                    decoration: const BoxDecoration(),
+                    decoration: BoxDecoration(),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -113,9 +116,9 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                         ),
                         Container(
                           width: MediaQuery.sizeOf(context).width * 0.9,
-                          decoration: const BoxDecoration(),
+                          decoration: BoxDecoration(),
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 4.0, 0.0, 4.0),
                             child: TextFormField(
                               controller: _model.textController,
@@ -132,7 +135,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                                       fontWeight: FontWeight.normal,
                                     ),
                                 enabledBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Color(0xFFCBD5E1),
                                     width: 1.0,
                                   ),
@@ -161,7 +164,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                                 ),
                                 filled: true,
                                 fillColor: Colors.white,
-                                contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                                contentPadding: EdgeInsetsDirectional.fromSTEB(
                                     8.0, 0.0, 8.0, 0.0),
                               ),
                               style: FlutterFlowTheme.of(context)
@@ -181,7 +184,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                   ),
                 ),
                 Align(
-                  alignment: const AlignmentDirectional(0.0, 0.0),
+                  alignment: AlignmentDirectional(0.0, 0.0),
                   child: InkWell(
                     splashColor: Colors.transparent,
                     focusColor: Colors.transparent,
@@ -204,7 +207,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                                 fontSize: 16.0,
                               ),
                             ),
-                            duration: const Duration(milliseconds: 4000),
+                            duration: Duration(milliseconds: 4000),
                             backgroundColor:
                                 FlutterFlowTheme.of(context).secondary,
                           ),
@@ -220,13 +223,13 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                                 fontSize: 16.0,
                               ),
                             ),
-                            duration: const Duration(milliseconds: 4000),
-                            backgroundColor: const Color(0xFFF50833),
+                            duration: Duration(milliseconds: 4000),
+                            backgroundColor: Color(0xFFF50833),
                           ),
                         );
                       }
 
-                      setState(() {});
+                      safeSetState(() {});
                     },
                     child: Container(
                       width: MediaQuery.sizeOf(context).width * 0.9,
@@ -237,14 +240,14 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                             FlutterFlowTheme.of(context).secondary,
                             FlutterFlowTheme.of(context).tertiary
                           ],
-                          stops: const [0.0, 1.0],
-                          begin: const AlignmentDirectional(0.0, -1.0),
-                          end: const AlignmentDirectional(0, 1.0),
+                          stops: [0.0, 1.0],
+                          begin: AlignmentDirectional(0.0, -1.0),
+                          end: AlignmentDirectional(0, 1.0),
                         ),
                         borderRadius: BorderRadius.circular(18.0),
                       ),
                       child: Align(
-                        alignment: const AlignmentDirectional(0.0, 0.0),
+                        alignment: AlignmentDirectional(0.0, 0.0),
                         child: Text(
                           'Send a recovery link',
                           style:
@@ -267,15 +270,15 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                   },
                   child: Container(
                     width: MediaQuery.sizeOf(context).width * 0.9,
-                    decoration: const BoxDecoration(),
+                    decoration: BoxDecoration(),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Align(
-                          alignment: const AlignmentDirectional(1.0, 0.0),
+                          alignment: AlignmentDirectional(1.0, 0.0),
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 8.0, 0.0, 0.0),
                             child: Text(
                               'Back to',
@@ -283,16 +286,16 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Yantramanav',
-                                    color: const Color(0xFF0F172A),
+                                    color: Color(0xFF0F172A),
                                     letterSpacing: 0.0,
                                   ),
                             ),
                           ),
                         ),
                         Align(
-                          alignment: const AlignmentDirectional(1.0, 0.0),
+                          alignment: AlignmentDirectional(1.0, 0.0),
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 8.0, 0.0, 0.0),
                             child: Text(
                               'Log in',
@@ -300,17 +303,17 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Yantramanav',
-                                    color: const Color(0xFF0CCA4A),
+                                    color: Color(0xFF0CCA4A),
                                     letterSpacing: 0.0,
                                   ),
                             ),
                           ),
                         ),
-                      ].divide(const SizedBox(width: 8.0)),
+                      ].divide(SizedBox(width: 8.0)),
                     ),
                   ),
                 ),
-              ].divide(const SizedBox(height: 32.0)),
+              ].divide(SizedBox(height: 32.0)),
             ),
           ),
         ),

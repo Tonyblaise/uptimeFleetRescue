@@ -1,8 +1,11 @@
 import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'service_summary_model.dart';
 export 'service_summary_model.dart';
@@ -29,7 +32,7 @@ class _ServiceSummaryWidgetState extends State<ServiceSummaryWidget> {
     super.initState();
     _model = createModel(context, () => ServiceSummaryModel());
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -52,14 +55,14 @@ class _ServiceSummaryWidgetState extends State<ServiceSummaryWidget> {
               IconThemeData(color: FlutterFlowTheme.of(context).primaryText),
           automaticallyImplyLeading: true,
           title: Container(
-            decoration: const BoxDecoration(),
+            decoration: BoxDecoration(),
             child: Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
               child: Text(
                 'Service Summary',
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Yantramanav',
-                      color: const Color(0xFF1E293B),
+                      color: Color(0xFF1E293B),
                       fontSize: 30.0,
                       letterSpacing: 0.0,
                       fontWeight: FontWeight.bold,
@@ -67,7 +70,7 @@ class _ServiceSummaryWidgetState extends State<ServiceSummaryWidget> {
               ),
             ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: false,
           elevation: 1.0,
         ),
@@ -75,7 +78,7 @@ class _ServiceSummaryWidgetState extends State<ServiceSummaryWidget> {
           top: true,
           child: FutureBuilder<ApiCallResponse>(
             future: UptimeFleetAppGroup.getRequestCall.call(
-              request: widget.requestId,
+              request: widget!.requestId,
             ),
             builder: (context, snapshot) {
               // Customize what your widget looks like when it's loading.
@@ -101,13 +104,13 @@ class _ServiceSummaryWidgetState extends State<ServiceSummaryWidget> {
                   color: FlutterFlowTheme.of(context).secondaryBackground,
                 ),
                 child: Align(
-                  alignment: const AlignmentDirectional(0.0, 0.0),
+                  alignment: AlignmentDirectional(0.0, 0.0),
                   child: Container(
                     width: MediaQuery.sizeOf(context).width * 0.9,
-                    decoration: const BoxDecoration(),
+                    decoration: BoxDecoration(),
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
                       child: SingleChildScrollView(
                         primary: false,
                         child: Column(
@@ -119,7 +122,7 @@ class _ServiceSummaryWidgetState extends State<ServiceSummaryWidget> {
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(18.0),
                                 border: Border.all(
-                                  color: const Color(0xFFCBD5E1),
+                                  color: Color(0xFFCBD5E1),
                                 ),
                               ),
                               child: Column(
@@ -134,14 +137,14 @@ class _ServiceSummaryWidgetState extends State<ServiceSummaryWidget> {
                                       borderRadius: BorderRadius.circular(18.0),
                                     ),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           20.0, 10.0, 20.0, 10.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
                                           Container(
                                             width: double.infinity,
-                                            decoration: const BoxDecoration(),
+                                            decoration: BoxDecoration(),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.min,
                                               crossAxisAlignment:
@@ -179,7 +182,7 @@ class _ServiceSummaryWidgetState extends State<ServiceSummaryWidget> {
                                                         fontFamily:
                                                             'Yantramanav',
                                                         color:
-                                                            const Color(0xFF64748B),
+                                                            Color(0xFF64748B),
                                                         fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                       ),
@@ -189,7 +192,7 @@ class _ServiceSummaryWidgetState extends State<ServiceSummaryWidget> {
                                           ),
                                           Container(
                                             width: double.infinity,
-                                            decoration: const BoxDecoration(),
+                                            decoration: BoxDecoration(),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
                                               crossAxisAlignment:
@@ -227,7 +230,7 @@ class _ServiceSummaryWidgetState extends State<ServiceSummaryWidget> {
                                                         fontFamily:
                                                             'Yantramanav',
                                                         color:
-                                                            const Color(0xFF64748B),
+                                                            Color(0xFF64748B),
                                                         fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                       ),
@@ -237,7 +240,7 @@ class _ServiceSummaryWidgetState extends State<ServiceSummaryWidget> {
                                           ),
                                           Container(
                                             width: double.infinity,
-                                            decoration: const BoxDecoration(),
+                                            decoration: BoxDecoration(),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
                                               crossAxisAlignment:
@@ -299,7 +302,7 @@ class _ServiceSummaryWidgetState extends State<ServiceSummaryWidget> {
                                                           fontFamily:
                                                               'Yantramanav',
                                                           color:
-                                                              const Color(0xFF64748B),
+                                                              Color(0xFF64748B),
                                                           fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                         ),
@@ -308,18 +311,18 @@ class _ServiceSummaryWidgetState extends State<ServiceSummaryWidget> {
                                               ],
                                             ),
                                           ),
-                                        ].divide(const SizedBox(height: 10.0)),
+                                        ].divide(SizedBox(height: 10.0)),
                                       ),
                                     ),
                                   ),
-                                ].divide(const SizedBox(height: 5.0)),
+                                ].divide(SizedBox(height: 5.0)),
                               ),
                             ),
                             Container(
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(18.0),
                                 border: Border.all(
-                                  color: const Color(0xFFCBD5E1),
+                                  color: Color(0xFFCBD5E1),
                                 ),
                               ),
                               child: Column(
@@ -334,14 +337,14 @@ class _ServiceSummaryWidgetState extends State<ServiceSummaryWidget> {
                                       borderRadius: BorderRadius.circular(18.0),
                                     ),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           20.0, 10.0, 20.0, 10.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
                                           Container(
                                             width: double.infinity,
-                                            decoration: const BoxDecoration(),
+                                            decoration: BoxDecoration(),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.min,
                                               crossAxisAlignment:
@@ -379,7 +382,7 @@ class _ServiceSummaryWidgetState extends State<ServiceSummaryWidget> {
                                                         fontFamily:
                                                             'Yantramanav',
                                                         color:
-                                                            const Color(0xFF64748B),
+                                                            Color(0xFF64748B),
                                                         fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                       ),
@@ -389,7 +392,7 @@ class _ServiceSummaryWidgetState extends State<ServiceSummaryWidget> {
                                           ),
                                           Container(
                                             width: double.infinity,
-                                            decoration: const BoxDecoration(),
+                                            decoration: BoxDecoration(),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
                                               crossAxisAlignment:
@@ -432,7 +435,7 @@ class _ServiceSummaryWidgetState extends State<ServiceSummaryWidget> {
                                                         fontFamily:
                                                             'Yantramanav',
                                                         color:
-                                                            const Color(0xFF64748B),
+                                                            Color(0xFF64748B),
                                                         fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                       ),
@@ -442,7 +445,7 @@ class _ServiceSummaryWidgetState extends State<ServiceSummaryWidget> {
                                           ),
                                           Container(
                                             width: double.infinity,
-                                            decoration: const BoxDecoration(),
+                                            decoration: BoxDecoration(),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
                                               crossAxisAlignment:
@@ -480,7 +483,7 @@ class _ServiceSummaryWidgetState extends State<ServiceSummaryWidget> {
                                                         fontFamily:
                                                             'Yantramanav',
                                                         color:
-                                                            const Color(0xFF64748B),
+                                                            Color(0xFF64748B),
                                                         fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                       ),
@@ -490,7 +493,7 @@ class _ServiceSummaryWidgetState extends State<ServiceSummaryWidget> {
                                           ),
                                           Container(
                                             width: double.infinity,
-                                            decoration: const BoxDecoration(),
+                                            decoration: BoxDecoration(),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
                                               crossAxisAlignment:
@@ -528,7 +531,7 @@ class _ServiceSummaryWidgetState extends State<ServiceSummaryWidget> {
                                                         fontFamily:
                                                             'Yantramanav',
                                                         color:
-                                                            const Color(0xFF64748B),
+                                                            Color(0xFF64748B),
                                                         fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                       ),
@@ -538,7 +541,7 @@ class _ServiceSummaryWidgetState extends State<ServiceSummaryWidget> {
                                           ),
                                           Container(
                                             width: double.infinity,
-                                            decoration: const BoxDecoration(),
+                                            decoration: BoxDecoration(),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
                                               crossAxisAlignment:
@@ -591,7 +594,7 @@ class _ServiceSummaryWidgetState extends State<ServiceSummaryWidget> {
                                                         fontFamily:
                                                             'Yantramanav',
                                                         color:
-                                                            const Color(0xFF64748B),
+                                                            Color(0xFF64748B),
                                                         fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                       ),
@@ -599,18 +602,18 @@ class _ServiceSummaryWidgetState extends State<ServiceSummaryWidget> {
                                               ],
                                             ),
                                           ),
-                                        ].divide(const SizedBox(height: 10.0)),
+                                        ].divide(SizedBox(height: 10.0)),
                                       ),
                                     ),
                                   ),
-                                ].divide(const SizedBox(height: 5.0)),
+                                ].divide(SizedBox(height: 5.0)),
                               ),
                             ),
                             Container(
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(18.0),
                                 border: Border.all(
-                                  color: const Color(0xFFCBD5E1),
+                                  color: Color(0xFFCBD5E1),
                                 ),
                               ),
                               child: Column(
@@ -625,14 +628,14 @@ class _ServiceSummaryWidgetState extends State<ServiceSummaryWidget> {
                                       borderRadius: BorderRadius.circular(18.0),
                                     ),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           20.0, 10.0, 20.0, 10.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
                                           Container(
                                             width: double.infinity,
-                                            decoration: const BoxDecoration(),
+                                            decoration: BoxDecoration(),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.min,
                                               crossAxisAlignment:
@@ -670,7 +673,7 @@ class _ServiceSummaryWidgetState extends State<ServiceSummaryWidget> {
                                                         fontFamily:
                                                             'Yantramanav',
                                                         color:
-                                                            const Color(0xFF64748B),
+                                                            Color(0xFF64748B),
                                                         fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                       ),
@@ -680,7 +683,7 @@ class _ServiceSummaryWidgetState extends State<ServiceSummaryWidget> {
                                           ),
                                           Container(
                                             width: double.infinity,
-                                            decoration: const BoxDecoration(),
+                                            decoration: BoxDecoration(),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
                                               crossAxisAlignment:
@@ -730,7 +733,7 @@ class _ServiceSummaryWidgetState extends State<ServiceSummaryWidget> {
                                                         fontFamily:
                                                             'Yantramanav',
                                                         color:
-                                                            const Color(0xFF64748B),
+                                                            Color(0xFF64748B),
                                                         fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                       ),
@@ -740,7 +743,7 @@ class _ServiceSummaryWidgetState extends State<ServiceSummaryWidget> {
                                           ),
                                           Container(
                                             width: double.infinity,
-                                            decoration: const BoxDecoration(),
+                                            decoration: BoxDecoration(),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
                                               crossAxisAlignment:
@@ -793,7 +796,7 @@ class _ServiceSummaryWidgetState extends State<ServiceSummaryWidget> {
                                                         fontFamily:
                                                             'Yantramanav',
                                                         color:
-                                                            const Color(0xFF64748B),
+                                                            Color(0xFF64748B),
                                                         fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                       ),
@@ -826,14 +829,14 @@ class _ServiceSummaryWidgetState extends State<ServiceSummaryWidget> {
                                               ),
                                             ),
                                           ),
-                                        ].divide(const SizedBox(height: 10.0)),
+                                        ].divide(SizedBox(height: 10.0)),
                                       ),
                                     ),
                                   ),
-                                ].divide(const SizedBox(height: 5.0)),
+                                ].divide(SizedBox(height: 5.0)),
                               ),
                             ),
-                          ].divide(const SizedBox(height: 16.0)),
+                          ].divide(SizedBox(height: 16.0)),
                         ),
                       ),
                     ),

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'serialization_util.dart';
 import '../backend.dart';
@@ -8,11 +9,14 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 
+import '../../index.dart';
+import '../../main.dart';
 
 final _handledMessageIds = <String?>{};
 
 class PushNotificationsHandler extends StatefulWidget {
-  const PushNotificationsHandler({super.key, required this.child});
+  const PushNotificationsHandler({Key? key, required this.child})
+      : super(key: key);
 
   final Widget child;
 
@@ -42,9 +46,7 @@ class _PushNotificationsHandlerState extends State<PushNotificationsHandler> {
     }
     _handledMessageIds.add(message.messageId);
 
-    if (mounted) {
-      setState(() => _loading = true);
-    }
+    safeSetState(() => _loading = true);
     try {
       final initialPageName = message.data['initialPageName'] as String;
       final initialParameterData = getInitialParameterData(message.data);
@@ -60,9 +62,7 @@ class _PushNotificationsHandlerState extends State<PushNotificationsHandler> {
     } catch (e) {
       print('Error: $e');
     } finally {
-      if (mounted) {
-        setState(() => _loading = false);
-      }
+      safeSetState(() => _loading = false);
     }
   }
 
@@ -106,7 +106,7 @@ class ParameterData {
       );
 
   static Future<ParameterData> Function(Map<String, dynamic>) none() =>
-      (data) async => const ParameterData();
+      (data) async => ParameterData();
 }
 
 final parametersBuilderMap =
@@ -230,6 +230,7 @@ final parametersBuilderMap =
           'id': getParameter<String>(data, 'id'),
         },
       ),
+  'test': ParameterData.none(),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

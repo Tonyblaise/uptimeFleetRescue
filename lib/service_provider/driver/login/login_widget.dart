@@ -8,6 +8,9 @@ import '/flutter_flow/form_field_controller.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/permissions_util.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:provider/provider.dart';
 import 'login_model.dart';
 export 'login_model.dart';
 
@@ -32,7 +35,7 @@ class _LoginWidgetState extends State<LoginWidget> {
     _model.textFieldFocusNode ??= FocusNode();
 
     authManager.handlePhoneAuthStateChanges(context);
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -73,7 +76,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                 Container(
                   width: MediaQuery.sizeOf(context).width * 0.9,
                   height: 104.0,
-                  decoration: const BoxDecoration(),
+                  decoration: BoxDecoration(),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -97,7 +100,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                             borderRadius: BorderRadius.circular(18.0),
                           ),
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 16.0, 0.0, 0.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -107,8 +110,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                                       FormFieldController<String>(
                                     _model.dropDownValue ??= '+1',
                                   ),
-                                  options: const ['+1', '+254'],
-                                  onChanged: (val) => setState(
+                                  options: ['+1', '+254'],
+                                  onChanged: (val) => safeSetState(
                                       () => _model.dropDownValue = val),
                                   width: 62.0,
                                   height: 50.0,
@@ -129,7 +132,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   borderColor: Colors.transparent,
                                   borderWidth: 0.0,
                                   borderRadius: 8.0,
-                                  margin: const EdgeInsetsDirectional.fromSTEB(
+                                  margin: EdgeInsetsDirectional.fromSTEB(
                                       4.0, 4.0, 0.0, 4.0),
                                   hidesUnderline: true,
                                   isOverButton: true,
@@ -139,7 +142,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 Expanded(
                                   flex: 1,
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 4.0, 0.0, 4.0),
                                     child: TextFormField(
                                       controller: _model.textController,
@@ -160,7 +163,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                         errorBorder: InputBorder.none,
                                         focusedErrorBorder: InputBorder.none,
                                         contentPadding:
-                                            const EdgeInsetsDirectional.fromSTEB(
+                                            EdgeInsetsDirectional.fromSTEB(
                                                 8.0, 0.0, 8.0, 0.0),
                                       ),
                                       style: FlutterFlowTheme.of(context)
@@ -177,16 +180,16 @@ class _LoginWidgetState extends State<LoginWidget> {
                                     ),
                                   ),
                                 ),
-                              ].divide(const SizedBox(width: 5.0)),
+                              ].divide(SizedBox(width: 5.0)),
                             ),
                           ),
                         ),
                       ),
-                    ].divide(const SizedBox(height: 20.0)),
+                    ].divide(SizedBox(height: 20.0)),
                   ),
                 ),
                 Align(
-                  alignment: const AlignmentDirectional(0.0, 0.0),
+                  alignment: AlignmentDirectional(0.0, 0.0),
                   child: Container(
                     width: MediaQuery.sizeOf(context).width * 0.9,
                     height: 56.0,
@@ -196,9 +199,9 @@ class _LoginWidgetState extends State<LoginWidget> {
                           FlutterFlowTheme.of(context).secondary,
                           FlutterFlowTheme.of(context).tertiary
                         ],
-                        stops: const [0.0, 1.0],
-                        begin: const AlignmentDirectional(0.0, -1.0),
-                        end: const AlignmentDirectional(0, 1.0),
+                        stops: [0.0, 1.0],
+                        begin: AlignmentDirectional(0.0, -1.0),
+                        end: AlignmentDirectional(0, 1.0),
                       ),
                       borderRadius: BorderRadius.circular(18.0),
                     ),
@@ -223,10 +226,11 @@ class _LoginWidgetState extends State<LoginWidget> {
                               'none') {
                             final phoneNumberVal =
                                 '${_model.dropDownValue}${_model.textController.text}';
-                            if (phoneNumberVal.isEmpty ||
+                            if (phoneNumberVal == null ||
+                                phoneNumberVal.isEmpty ||
                                 !phoneNumberVal.startsWith('+')) {
                               ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
+                                SnackBar(
                                   content: Text(
                                       'Phone Number is required and has to start with +.'),
                                 ),
@@ -272,7 +276,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                     fontSize: 14.0,
                                   ),
                                 ),
-                                duration: const Duration(milliseconds: 4000),
+                                duration: Duration(milliseconds: 4000),
                                 backgroundColor:
                                     FlutterFlowTheme.of(context).secondary,
                               ),
@@ -289,23 +293,23 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   fontSize: 14.0,
                                 ),
                               ),
-                              duration: const Duration(milliseconds: 4000),
+                              duration: Duration(milliseconds: 4000),
                               backgroundColor:
                                   FlutterFlowTheme.of(context).error,
                             ),
                           );
                         }
 
-                        setState(() {});
+                        safeSetState(() {});
                       },
                       text: 'Send OTP',
                       options: FFButtonOptions(
                         width: MediaQuery.sizeOf(context).width * 0.9,
                         height: 56.0,
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             24.0, 0.0, 24.0, 0.0),
                         iconPadding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         color: FlutterFlowTheme.of(context).tertiary,
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
@@ -314,7 +318,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   letterSpacing: 0.0,
                                 ),
                         elevation: 3.0,
-                        borderSide: const BorderSide(
+                        borderSide: BorderSide(
                           color: Colors.transparent,
                           width: 18.0,
                         ),
@@ -323,7 +327,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                     ),
                   ),
                 ),
-              ].divide(const SizedBox(height: 20.0)),
+              ].divide(SizedBox(height: 20.0)),
             ),
           ),
         ),

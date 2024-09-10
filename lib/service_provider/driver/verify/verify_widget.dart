@@ -7,8 +7,11 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/permissions_util.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'verify_model.dart';
 export 'verify_model.dart';
 
@@ -21,7 +24,7 @@ class VerifyWidget extends StatefulWidget {
     required this.signUpType,
     this.fullName,
     bool? signUp,
-  }) : signUp = signUp ?? false;
+  }) : this.signUp = signUp ?? false;
 
   final String? phoneNumber;
   final String? serviceProviderId;
@@ -53,7 +56,7 @@ class _VerifyWidgetState extends State<VerifyWidget> {
       }
     });
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -76,14 +79,14 @@ class _VerifyWidgetState extends State<VerifyWidget> {
               IconThemeData(color: FlutterFlowTheme.of(context).primaryText),
           automaticallyImplyLeading: true,
           title: Container(
-            decoration: const BoxDecoration(),
+            decoration: BoxDecoration(),
             child: Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
               child: Text(
                 'OTP verification',
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Yantramanav',
-                      color: const Color(0xFF1E293B),
+                      color: Color(0xFF1E293B),
                       fontSize: 30.0,
                       letterSpacing: 0.0,
                       fontWeight: FontWeight.bold,
@@ -91,7 +94,7 @@ class _VerifyWidgetState extends State<VerifyWidget> {
               ),
             ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: false,
           elevation: 1.0,
         ),
@@ -106,17 +109,17 @@ class _VerifyWidgetState extends State<VerifyWidget> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
                 child: Container(
                   width: MediaQuery.sizeOf(context).width * 0.9,
                   height: 84.0,
-                  decoration: const BoxDecoration(),
+                  decoration: BoxDecoration(),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'We\'ve send a verification code to ${widget.phoneNumber}',
+                        'We\'ve send a verification code to ${widget!.phoneNumber}',
                         style: FlutterFlowTheme.of(context).labelLarge.override(
                               fontFamily: 'Yantramanav',
                               color: FlutterFlowTheme.of(context).primaryText,
@@ -146,7 +149,7 @@ class _VerifyWidgetState extends State<VerifyWidget> {
                           fieldHeight: 44.0,
                           fieldWidth: 44.0,
                           borderWidth: 2.0,
-                          borderRadius: const BorderRadius.only(
+                          borderRadius: BorderRadius.only(
                             bottomLeft: Radius.circular(12.0),
                             bottomRight: Radius.circular(12.0),
                             topLeft: Radius.circular(12.0),
@@ -163,19 +166,19 @@ class _VerifyWidgetState extends State<VerifyWidget> {
                         validator: _model.pinCodeControllerValidator
                             .asValidator(context),
                       ),
-                    ].divide(const SizedBox(height: 15.0)),
+                    ].divide(SizedBox(height: 15.0)),
                   ),
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                 child: FFButtonWidget(
                   onPressed: () async {
                     GoRouter.of(context).prepareAuthEvent();
                     final smsCodeVal = _model.pinCodeController!.text;
-                    if (smsCodeVal.isEmpty) {
+                    if (smsCodeVal == null || smsCodeVal.isEmpty) {
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
+                        SnackBar(
                           content: Text('Enter SMS verification code.'),
                         ),
                       );
@@ -190,8 +193,8 @@ class _VerifyWidgetState extends State<VerifyWidget> {
                     }
 
                     _model.token = await actions.getFcmToken();
-                    if (widget.signUp) {
-                      if (widget.signUpType == 'fleet') {
+                    if (widget!.signUp) {
+                      if (widget!.signUpType == 'fleet') {
                         var chatsRecordReference1 =
                             ChatsRecord.collection.doc();
                         await chatsRecordReference1.set({
@@ -240,9 +243,9 @@ class _VerifyWidgetState extends State<VerifyWidget> {
                         }, chatsRecordReference2);
                         _model.driver =
                             await UptimeFleetAppGroup.createDriverCall.call(
-                          fleetManagerId: widget.fleetManagerId,
-                          fullName: widget.fullName,
-                          phoneNumber: widget.phoneNumber,
+                          fleetManagerId: widget!.fleetManagerId,
+                          fullName: widget!.fullName,
+                          phoneNumber: widget!.phoneNumber,
                           token: _model.token,
                           driverTechnicianMessageThreadIdFirebase:
                               _model.technicianChat?.reference.id,
@@ -263,7 +266,7 @@ class _VerifyWidgetState extends State<VerifyWidget> {
                           driverId: UptimeFleetAppGroup.createDriverCall.id(
                             (_model.driver?.jsonBody ?? ''),
                           ),
-                          fullName: widget.fullName,
+                          fullName: widget!.fullName,
                           driverFleetManagerMessageThreadId: UptimeFleetAppGroup
                               .createDriverCall
                               .driverFleetManagerMessageThreadId(
@@ -275,7 +278,7 @@ class _VerifyWidgetState extends State<VerifyWidget> {
                             (_model.driver?.jsonBody ?? ''),
                           ),
                           profilePicture: '',
-                          phoneNumber: widget.phoneNumber,
+                          phoneNumber: widget!.phoneNumber,
                           driverSupportMessageThreadIdFirebase:
                               _model.supportchat?.reference,
                           driverFleetManagerMessageThreadIdFirebaseId:
@@ -289,7 +292,7 @@ class _VerifyWidgetState extends State<VerifyWidget> {
                         );
 
                         context.goNamedAuth('landing_page', context.mounted);
-                      } else if (widget.signUpType == 'technician') {
+                      } else if (widget!.signUpType == 'technician') {
                         var chatsRecordReference3 =
                             ChatsRecord.collection.doc();
                         await chatsRecordReference3.set({
@@ -338,9 +341,9 @@ class _VerifyWidgetState extends State<VerifyWidget> {
                         }, chatsRecordReference4);
                         _model.technician =
                             await UptimeFleetAppGroup.createTechnicianCall.call(
-                          serviceProviderId: widget.serviceProviderId,
-                          fullName: widget.fullName,
-                          phoneNumber: widget.phoneNumber,
+                          serviceProviderId: widget!.serviceProviderId,
+                          fullName: widget!.fullName,
+                          phoneNumber: widget!.phoneNumber,
                           token: _model.token,
                           driverTechnicianMessageThreadIdFirebase:
                               _model.technicianChat2?.reference.id,
@@ -362,8 +365,8 @@ class _VerifyWidgetState extends State<VerifyWidget> {
                               .technicianId(
                             (_model.technician?.jsonBody ?? ''),
                           ),
-                          fullName: widget.fullName,
-                          phoneNumber: widget.phoneNumber,
+                          fullName: widget!.fullName,
+                          phoneNumber: widget!.phoneNumber,
                           onDuty: false,
                           driverFleetManagerMessageThreadId: UptimeFleetAppGroup
                               .createTechnicianCall
@@ -399,14 +402,14 @@ class _VerifyWidgetState extends State<VerifyWidget> {
                                 color: FlutterFlowTheme.of(context).primaryText,
                               ),
                             ),
-                            duration: const Duration(milliseconds: 4000),
+                            duration: Duration(milliseconds: 4000),
                             backgroundColor:
                                 FlutterFlowTheme.of(context).secondary,
                           ),
                         );
                       }
                     } else {
-                      if (widget.signUpType == 'fleet') {
+                      if (widget!.signUpType == 'fleet') {
                         await UptimeFleetAppGroup.updateDriverTokenCall.call(
                           driverId:
                               valueOrDefault(currentUserDocument?.driverId, ''),
@@ -414,7 +417,7 @@ class _VerifyWidgetState extends State<VerifyWidget> {
                         );
 
                         context.goNamedAuth('landing_page', context.mounted);
-                      } else if (widget.signUpType == 'technician') {
+                      } else if (widget!.signUpType == 'technician') {
                         await UptimeFleetAppGroup.updateTechnicianCall.call(
                           technicianId: valueOrDefault(
                               currentUserDocument?.technicianId, ''),
@@ -426,16 +429,16 @@ class _VerifyWidgetState extends State<VerifyWidget> {
                       }
                     }
 
-                    setState(() {});
+                    safeSetState(() {});
                   },
                   text: 'Confirm',
                   options: FFButtonOptions(
                     width: MediaQuery.sizeOf(context).width * 0.9,
                     height: 50.0,
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                     iconPadding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                     color: FlutterFlowTheme.of(context).tertiary,
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                           fontFamily: 'Yantramanav',
@@ -443,7 +446,7 @@ class _VerifyWidgetState extends State<VerifyWidget> {
                           letterSpacing: 0.0,
                         ),
                     elevation: 3.0,
-                    borderSide: const BorderSide(
+                    borderSide: BorderSide(
                       color: Colors.transparent,
                       width: 1.0,
                     ),
@@ -467,7 +470,7 @@ class _VerifyWidgetState extends State<VerifyWidget> {
                       ),
                 ),
               ),
-            ].divide(const SizedBox(height: 15.0)),
+            ].divide(SizedBox(height: 15.0)),
           ),
         ),
       ),

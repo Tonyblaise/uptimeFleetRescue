@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import '/backend/backend.dart';
 
@@ -11,7 +13,10 @@ import '/backend/push_notifications/push_notifications_handler.dart'
 import '/index.dart';
 import '/main.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/lat_lng.dart';
+import '/flutter_flow/place.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'serialization_util.dart';
 
 export 'package:go_router/go_router.dart';
 export 'serialization_util.dart';
@@ -76,28 +81,28 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? const NavBarPage() : const LoginWidget(),
+          appStateNotifier.loggedIn ? NavBarPage() : LoginWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? const NavBarPage() : const LoginWidget(),
+              appStateNotifier.loggedIn ? NavBarPage() : LoginWidget(),
           routes: [
             FFRoute(
               name: 'login',
               path: 'login',
-              builder: (context, params) => const LoginWidget(),
+              builder: (context, params) => LoginWidget(),
             ),
             FFRoute(
               name: 'forgotPassword',
               path: 'forgotPassword',
-              builder: (context, params) => const ForgotPasswordWidget(),
+              builder: (context, params) => ForgotPasswordWidget(),
             ),
             FFRoute(
               name: 'checkYourEmail',
               path: 'check_your_email',
-              builder: (context, params) => const CheckYourEmailWidget(),
+              builder: (context, params) => CheckYourEmailWidget(),
             ),
             FFRoute(
               name: 'changePassword',
@@ -112,12 +117,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'connectionProblem',
               path: 'connection_problem',
-              builder: (context, params) => const ConnectionProblemWidget(),
+              builder: (context, params) => ConnectionProblemWidget(),
             ),
             FFRoute(
               name: 'dashboardDriver',
               path: 'dashboard_driver',
-              builder: (context, params) => const DashboardDriverWidget(),
+              builder: (context, params) => DashboardDriverWidget(),
             ),
             FFRoute(
               name: 'vehicle_confirmation',
@@ -148,7 +153,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'driver_chat',
               requireAuth: true,
               builder: (context, params) => params.isEmpty
-                  ? const NavBarPage(initialPage: 'driverChat')
+                  ? NavBarPage(initialPage: 'driverChat')
                   : DriverChatWidget(
                       state: params.getParam(
                         'state',
@@ -169,7 +174,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'dashboardTechnician',
               path: 'dashboard_technician',
-              builder: (context, params) => const DashboardTechnicianWidget(),
+              builder: (context, params) => DashboardTechnicianWidget(),
             ),
             FFRoute(
               name: 'service_summary',
@@ -184,19 +189,19 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'changeYourPhoto',
               path: 'change_your_photo',
-              builder: (context, params) => const ChangeYourPhotoWidget(),
+              builder: (context, params) => ChangeYourPhotoWidget(),
             ),
             FFRoute(
               name: 'settings',
               path: 'settings',
               builder: (context, params) => params.isEmpty
-                  ? const NavBarPage(initialPage: 'settings')
-                  : const SettingsWidget(),
+                  ? NavBarPage(initialPage: 'settings')
+                  : SettingsWidget(),
             ),
             FFRoute(
               name: 'settingsSp',
               path: 'settings_sp',
-              builder: (context, params) => const SettingsSpWidget(),
+              builder: (context, params) => SettingsSpWidget(),
             ),
             FFRoute(
               name: 'selectLocation',
@@ -277,7 +282,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'tech_status',
               path: 'techStatus',
-              builder: (context, params) => const TechStatusWidget(),
+              builder: (context, params) => TechStatusWidget(),
             ),
             FFRoute(
               name: 'technicianChat',
@@ -324,7 +329,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'previousJobs',
               path: 'previousJobs',
-              builder: (context, params) => const PreviousJobsWidget(),
+              builder: (context, params) => PreviousJobsWidget(),
             ),
             FFRoute(
               name: 'success',
@@ -370,8 +375,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'landing_page',
               requireAuth: true,
               builder: (context, params) => params.isEmpty
-                  ? const NavBarPage(initialPage: 'landing_page')
-                  : const LandingPageWidget(),
+                  ? NavBarPage(initialPage: 'landing_page')
+                  : LandingPageWidget(),
             ),
             FFRoute(
               name: 'vehicle_confirmation2',
@@ -410,6 +415,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   ParamType.String,
                 ),
               ),
+            ),
+            FFRoute(
+              name: 'test',
+              path: 'test',
+              builder: (context, params) => TestWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
@@ -650,7 +660,7 @@ class TransitionInfo {
   final Duration duration;
   final Alignment? alignment;
 
-  static TransitionInfo appDefault() => const TransitionInfo(hasTransition: false);
+  static TransitionInfo appDefault() => TransitionInfo(hasTransition: false);
 }
 
 class RootPageContext {

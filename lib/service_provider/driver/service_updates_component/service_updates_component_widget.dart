@@ -6,8 +6,11 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/service_provider/driver/cancel_request/cancel_request_widget.dart';
 import '/service_provider/driver/complete_request/complete_request_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'service_updates_component_model.dart';
 export 'service_updates_component_model.dart';
 
@@ -41,7 +44,7 @@ class _ServiceUpdatesComponentWidgetState
     super.initState();
     _model = createModel(context, () => ServiceUpdatesComponentModel());
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -55,7 +58,7 @@ class _ServiceUpdatesComponentWidgetState
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         color: Colors.white,
       ),
       child: SingleChildScrollView(
@@ -63,7 +66,7 @@ class _ServiceUpdatesComponentWidgetState
           mainAxisSize: MainAxisSize.max,
           children: [
             StreamBuilder<ChatsRecord>(
-              stream: ChatsRecord.getDocument(widget.chat!),
+              stream: ChatsRecord.getDocument(widget!.chat!),
               builder: (context, snapshot) {
                 // Customize what your widget looks like when it's loading.
                 if (!snapshot.hasData) {
@@ -84,10 +87,10 @@ class _ServiceUpdatesComponentWidgetState
 
                 return Container(
                   width: MediaQuery.sizeOf(context).width * 0.9,
-                  decoration: const BoxDecoration(),
+                  decoration: BoxDecoration(),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -145,11 +148,11 @@ class _ServiceUpdatesComponentWidgetState
                                     snapshot.data!;
 
                                 return Container(
-                                  decoration: const BoxDecoration(),
+                                  decoration: BoxDecoration(),
                                   child: Stack(
-                                    alignment: const AlignmentDirectional(1.0, -1.0),
+                                    alignment: AlignmentDirectional(1.0, -1.0),
                                     children: [
-                                      if (widget.request?.status != 'newCase')
+                                      if (widget!.request?.status != 'newCase')
                                         FFButtonWidget(
                                           onPressed: () async {
                                             if (containerChatsRecord
@@ -184,10 +187,10 @@ class _ServiceUpdatesComponentWidgetState
                                             width: 160.0,
                                             height: 56.0,
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     24.0, 0.0, 24.0, 0.0),
                                             iconPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 0.0),
                                             color: FlutterFlowTheme.of(context)
                                                 .tertiary,
@@ -203,7 +206,7 @@ class _ServiceUpdatesComponentWidgetState
                                                       letterSpacing: 0.0,
                                                     ),
                                             elevation: 3.0,
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Colors.transparent,
                                               width: 1.0,
                                             ),
@@ -223,10 +226,10 @@ class _ServiceUpdatesComponentWidgetState
                                                       .lastMessageRead ==
                                                   false)) {
                                             return Align(
-                                              alignment: const AlignmentDirectional(
+                                              alignment: AlignmentDirectional(
                                                   0.0, 0.0),
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 20.0, 8.0, 0.0),
                                                 child: Container(
@@ -241,7 +244,7 @@ class _ServiceUpdatesComponentWidgetState
                                                             100.0),
                                                   ),
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           0.0, 0.0),
                                                   child: Text(
                                                     '1',
@@ -268,7 +271,7 @@ class _ServiceUpdatesComponentWidgetState
                                             return Container(
                                               width: 1.0,
                                               height: 1.0,
-                                              decoration: const BoxDecoration(),
+                                              decoration: BoxDecoration(),
                                             );
                                           }
                                         },
@@ -281,13 +284,13 @@ class _ServiceUpdatesComponentWidgetState
                           ],
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 35.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Container(
-                                decoration: const BoxDecoration(),
+                                decoration: BoxDecoration(),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
@@ -296,7 +299,7 @@ class _ServiceUpdatesComponentWidgetState
                                       height: 64.0,
                                       decoration: BoxDecoration(
                                         color: valueOrDefault<Color>(
-                                          widget.request?.status == 'newCase'
+                                          widget!.request?.status == 'newCase'
                                               ? FlutterFlowTheme.of(context)
                                                   .secondary
                                               : Colors.white,
@@ -307,25 +310,25 @@ class _ServiceUpdatesComponentWidgetState
                                             BorderRadius.circular(18.0),
                                         border: Border.all(
                                           color: valueOrDefault<Color>(
-                                            widget.request?.status == 'newCase'
+                                            widget!.request?.status == 'newCase'
                                                 ? FlutterFlowTheme.of(context)
                                                     .secondary
-                                                : const Color(0xFFE5E7EE),
-                                            const Color(0xFFE5E7EE),
+                                                : Color(0xFFE5E7EE),
+                                            Color(0xFFE5E7EE),
                                           ),
                                         ),
                                       ),
                                       child: Align(
                                         alignment:
-                                            const AlignmentDirectional(0.0, 0.0),
+                                            AlignmentDirectional(0.0, 0.0),
                                         child: Padding(
-                                          padding: const EdgeInsets.all(14.0),
+                                          padding: EdgeInsets.all(14.0),
                                           child: Container(
                                             width: MediaQuery.sizeOf(context)
                                                     .width *
                                                 0.36,
                                             height: 36.0,
-                                            constraints: const BoxConstraints(
+                                            constraints: BoxConstraints(
                                               maxWidth: 36.0,
                                               maxHeight: 36.0,
                                             ),
@@ -337,16 +340,16 @@ class _ServiceUpdatesComponentWidgetState
                                                   BorderRadius.circular(100.0),
                                               border: Border.all(
                                                 color: valueOrDefault<Color>(
-                                                  widget.request?.status ==
+                                                  widget!.request?.status ==
                                                           'newCase'
                                                       ? Colors.transparent
-                                                      : const Color(0xFFE5E7EE),
-                                                  const Color(0xFFE5E7EE),
+                                                      : Color(0xFFE5E7EE),
+                                                  Color(0xFFE5E7EE),
                                                 ),
                                               ),
                                             ),
                                             alignment:
-                                                const AlignmentDirectional(0.0, 0.0),
+                                                AlignmentDirectional(0.0, 0.0),
                                             child: Text(
                                               '1',
                                               textAlign: TextAlign.center,
@@ -357,11 +360,11 @@ class _ServiceUpdatesComponentWidgetState
                                                     fontFamily: 'Yantramanav',
                                                     color:
                                                         valueOrDefault<Color>(
-                                                      widget.request?.status ==
+                                                      widget!.request?.status ==
                                                               'inProgress'
                                                           ? Colors.black
-                                                          : const Color(0xFFE5E7EE),
-                                                      const Color(0xFFE5E7EE),
+                                                          : Color(0xFFE5E7EE),
+                                                      Color(0xFFE5E7EE),
                                                     ),
                                                     fontSize: 24.0,
                                                     letterSpacing: 0.0,
@@ -380,18 +383,18 @@ class _ServiceUpdatesComponentWidgetState
                                               BorderRadius.circular(18.0),
                                           border: Border.all(
                                             color: valueOrDefault<Color>(
-                                              widget.request?.status ==
+                                              widget!.request?.status ==
                                                       'newCase'
                                                   ? FlutterFlowTheme.of(context)
                                                       .tertiary
-                                                  : const Color(0xFFE5E7EE),
-                                              const Color(0xFFE5E7EE),
+                                                  : Color(0xFFE5E7EE),
+                                              Color(0xFFE5E7EE),
                                             ),
                                           ),
                                         ),
                                         child: Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   20.0, 10.0, 20.0, 10.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
@@ -402,7 +405,7 @@ class _ServiceUpdatesComponentWidgetState
                                                 child: Container(
                                                   width: 100.0,
                                                   height: 100.0,
-                                                  decoration: const BoxDecoration(),
+                                                  decoration: BoxDecoration(),
                                                   child: Column(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
@@ -422,13 +425,13 @@ class _ServiceUpdatesComponentWidgetState
                                                                   color:
                                                                       valueOrDefault<
                                                                           Color>(
-                                                                    widget.request?.status ==
+                                                                    widget!.request?.status ==
                                                                             'newCase'
                                                                         ? Colors
                                                                             .black
-                                                                        : const Color(
+                                                                        : Color(
                                                                             0xFFE5E7EE),
-                                                                    const Color(
+                                                                    Color(
                                                                         0xFFE5E7EE),
                                                                   ),
                                                                   fontSize:
@@ -452,13 +455,13 @@ class _ServiceUpdatesComponentWidgetState
                                                                   color:
                                                                       valueOrDefault<
                                                                           Color>(
-                                                                    widget.request?.status ==
+                                                                    widget!.request?.status ==
                                                                             'newCase'
-                                                                        ? const Color(
+                                                                        ? Color(
                                                                             0xFF64748B)
-                                                                        : const Color(
+                                                                        : Color(
                                                                             0xFFE5E7EE),
-                                                                    const Color(
+                                                                    Color(
                                                                         0xFFE5E7EE),
                                                                   ),
                                                                   fontSize:
@@ -476,7 +479,7 @@ class _ServiceUpdatesComponentWidgetState
                                         ),
                                       ),
                                     ),
-                                  ].divide(const SizedBox(width: 5.0)),
+                                  ].divide(SizedBox(width: 5.0)),
                                 ),
                               ),
                               InkWell(
@@ -485,7 +488,7 @@ class _ServiceUpdatesComponentWidgetState
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
-                                  if (widget.request?.status == 'inProgress') {
+                                  if (widget!.request?.status == 'inProgress') {
                                     context.pushNamed(
                                       'tech_enroute',
                                       queryParameters: {
@@ -494,7 +497,7 @@ class _ServiceUpdatesComponentWidgetState
                                           ParamType.Document,
                                         ),
                                         'request': serializeParam(
-                                          widget.request?.reference,
+                                          widget!.request?.reference,
                                           ParamType.DocumentReference,
                                         ),
                                       }.withoutNulls,
@@ -505,7 +508,7 @@ class _ServiceUpdatesComponentWidgetState
                                   }
                                 },
                                 child: Container(
-                                  decoration: const BoxDecoration(),
+                                  decoration: BoxDecoration(),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
@@ -514,7 +517,7 @@ class _ServiceUpdatesComponentWidgetState
                                         height: 64.0,
                                         decoration: BoxDecoration(
                                           color: valueOrDefault<Color>(
-                                            widget.request?.status ==
+                                            widget!.request?.status ==
                                                     'inProgress'
                                                 ? FlutterFlowTheme.of(context)
                                                     .secondary
@@ -526,25 +529,25 @@ class _ServiceUpdatesComponentWidgetState
                                               BorderRadius.circular(18.0),
                                           border: Border.all(
                                             color: valueOrDefault<Color>(
-                                              widget.request?.status ==
+                                              widget!.request?.status ==
                                                       'inProgress'
                                                   ? Colors.transparent
-                                                  : const Color(0xFFE5E7EE),
-                                              const Color(0xFFE5E7EE),
+                                                  : Color(0xFFE5E7EE),
+                                              Color(0xFFE5E7EE),
                                             ),
                                           ),
                                         ),
                                         child: Align(
                                           alignment:
-                                              const AlignmentDirectional(0.0, 0.0),
+                                              AlignmentDirectional(0.0, 0.0),
                                           child: Padding(
-                                            padding: const EdgeInsets.all(14.0),
+                                            padding: EdgeInsets.all(14.0),
                                             child: Container(
                                               width: MediaQuery.sizeOf(context)
                                                       .width *
                                                   0.36,
                                               height: 36.0,
-                                              constraints: const BoxConstraints(
+                                              constraints: BoxConstraints(
                                                 maxWidth: 36.0,
                                                 maxHeight: 36.0,
                                               ),
@@ -557,18 +560,18 @@ class _ServiceUpdatesComponentWidgetState
                                                         100.0),
                                                 border: Border.all(
                                                   color: valueOrDefault<Color>(
-                                                    widget.request?.status ==
+                                                    widget!.request?.status ==
                                                             'inProgress'
                                                         ? Colors.transparent
-                                                        : const Color(0xFFE5E7EE),
-                                                    const Color(0xFFE5E7EE),
+                                                        : Color(0xFFE5E7EE),
+                                                    Color(0xFFE5E7EE),
                                                   ),
                                                 ),
                                               ),
-                                              alignment: const AlignmentDirectional(
+                                              alignment: AlignmentDirectional(
                                                   0.0, 0.0),
                                               child: Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     0.0, 0.0),
                                                 child: AutoSizeText(
                                                   '2',
@@ -581,13 +584,13 @@ class _ServiceUpdatesComponentWidgetState
                                                             'Yantramanav',
                                                         color: valueOrDefault<
                                                             Color>(
-                                                          widget.request
+                                                          widget!.request
                                                                       ?.status ==
                                                                   'inProgress'
                                                               ? Colors.black
-                                                              : const Color(
+                                                              : Color(
                                                                   0xFFE5E7EE),
-                                                          const Color(0xFFE5E7EE),
+                                                          Color(0xFFE5E7EE),
                                                         ),
                                                         fontSize: 24.0,
                                                         letterSpacing: 0.0,
@@ -607,19 +610,19 @@ class _ServiceUpdatesComponentWidgetState
                                                 BorderRadius.circular(18.0),
                                             border: Border.all(
                                               color: valueOrDefault<Color>(
-                                                widget.request?.status ==
+                                                widget!.request?.status ==
                                                         'inProgress'
                                                     ? FlutterFlowTheme.of(
                                                             context)
                                                         .tertiary
-                                                    : const Color(0xFFE5E7EE),
-                                                const Color(0xFFE5E7EE),
+                                                    : Color(0xFFE5E7EE),
+                                                Color(0xFFE5E7EE),
                                               ),
                                             ),
                                           ),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     20.0, 10.0, 20.0, 10.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -631,7 +634,7 @@ class _ServiceUpdatesComponentWidgetState
                                                   child: Container(
                                                     width: 100.0,
                                                     height: 100.0,
-                                                    decoration: const BoxDecoration(),
+                                                    decoration: BoxDecoration(),
                                                     child: Column(
                                                       mainAxisSize:
                                                           MainAxisSize.max,
@@ -650,14 +653,14 @@ class _ServiceUpdatesComponentWidgetState
                                                                 color:
                                                                     valueOrDefault<
                                                                         Color>(
-                                                                  widget.request
+                                                                  widget!.request
                                                                               ?.status ==
                                                                           'inProgress'
                                                                       ? Colors
                                                                           .black
-                                                                      : const Color(
+                                                                      : Color(
                                                                           0xFFE5E7EE),
-                                                                  const Color(
+                                                                  Color(
                                                                       0xFFE5E7EE),
                                                                 ),
                                                                 fontSize: 16.0,
@@ -679,14 +682,14 @@ class _ServiceUpdatesComponentWidgetState
                                                                 color:
                                                                     valueOrDefault<
                                                                         Color>(
-                                                                  widget.request
+                                                                  widget!.request
                                                                               ?.status ==
                                                                           'inProgress'
-                                                                      ? const Color(
+                                                                      ? Color(
                                                                           0xFF64748B)
-                                                                      : const Color(
+                                                                      : Color(
                                                                           0xFFE5E7EE),
-                                                                  const Color(
+                                                                  Color(
                                                                       0xFFE5E7EE),
                                                                 ),
                                                                 fontSize: 16.0,
@@ -698,7 +701,7 @@ class _ServiceUpdatesComponentWidgetState
                                                     ),
                                                   ),
                                                 ),
-                                                if (widget.request?.status ==
+                                                if (widget!.request?.status ==
                                                     'inProgress')
                                                   ClipRRect(
                                                     borderRadius:
@@ -716,12 +719,12 @@ class _ServiceUpdatesComponentWidgetState
                                           ),
                                         ),
                                       ),
-                                    ].divide(const SizedBox(width: 5.0)),
+                                    ].divide(SizedBox(width: 5.0)),
                                   ),
                                 ),
                               ),
                               Container(
-                                decoration: const BoxDecoration(),
+                                decoration: BoxDecoration(),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
@@ -730,11 +733,11 @@ class _ServiceUpdatesComponentWidgetState
                                       height: 64.0,
                                       decoration: BoxDecoration(
                                         color: valueOrDefault<Color>(
-                                          (widget.request?.status ==
+                                          (widget!.request?.status ==
                                                       'arrivedAtLocation') ||
-                                                  (widget.request?.status ==
+                                                  (widget!.request?.status ==
                                                       'arrivedToTowDestination') ||
-                                                  (widget.request?.status ==
+                                                  (widget!.request?.status ==
                                                       'enrouteToTowDestination')
                                               ? FlutterFlowTheme.of(context)
                                                   .secondary
@@ -746,29 +749,29 @@ class _ServiceUpdatesComponentWidgetState
                                             BorderRadius.circular(18.0),
                                         border: Border.all(
                                           color: valueOrDefault<Color>(
-                                            (widget.request?.status ==
+                                            (widget!.request?.status ==
                                                         'arrivedAtLocation') ||
-                                                    (widget.request?.status ==
+                                                    (widget!.request?.status ==
                                                         'arrivedToTowDestination') ||
-                                                    (widget.request?.status ==
+                                                    (widget!.request?.status ==
                                                         'enrouteToTowDestination')
                                                 ? Colors.transparent
-                                                : const Color(0xFFE5E7EE),
-                                            const Color(0xFFE5E7EE),
+                                                : Color(0xFFE5E7EE),
+                                            Color(0xFFE5E7EE),
                                           ),
                                         ),
                                       ),
                                       child: Align(
                                         alignment:
-                                            const AlignmentDirectional(0.0, 0.0),
+                                            AlignmentDirectional(0.0, 0.0),
                                         child: Padding(
-                                          padding: const EdgeInsets.all(14.0),
+                                          padding: EdgeInsets.all(14.0),
                                           child: Container(
                                             width: MediaQuery.sizeOf(context)
                                                     .width *
                                                 0.36,
                                             height: 36.0,
-                                            constraints: const BoxConstraints(
+                                            constraints: BoxConstraints(
                                               maxWidth: 36.0,
                                               maxHeight: 36.0,
                                             ),
@@ -780,22 +783,22 @@ class _ServiceUpdatesComponentWidgetState
                                                   BorderRadius.circular(100.0),
                                               border: Border.all(
                                                 color: valueOrDefault<Color>(
-                                                  (widget.request?.status ==
+                                                  (widget!.request?.status ==
                                                               'arrivedAtLocation') ||
-                                                          (widget.request
+                                                          (widget!.request
                                                                   ?.status ==
                                                               'arrivedToTowDestination') ||
-                                                          (widget.request
+                                                          (widget!.request
                                                                   ?.status ==
                                                               'enrouteToTowDestination')
                                                       ? Colors.transparent
-                                                      : const Color(0xFFE5E7EE),
-                                                  const Color(0xFFE5E7EE),
+                                                      : Color(0xFFE5E7EE),
+                                                  Color(0xFFE5E7EE),
                                                 ),
                                               ),
                                             ),
                                             alignment:
-                                                const AlignmentDirectional(0.0, 0.0),
+                                                AlignmentDirectional(0.0, 0.0),
                                             child: Text(
                                               '3',
                                               textAlign: TextAlign.center,
@@ -806,18 +809,18 @@ class _ServiceUpdatesComponentWidgetState
                                                     fontFamily: 'Yantramanav',
                                                     color:
                                                         valueOrDefault<Color>(
-                                                      (widget
+                                                      (widget!
                                                                       .request?.status ==
                                                                   'arrivedAtLocation') ||
-                                                              (widget.request
+                                                              (widget!.request
                                                                       ?.status ==
                                                                   'arrivedToTowDestination') ||
-                                                              (widget.request
+                                                              (widget!.request
                                                                       ?.status ==
                                                                   'enrouteToTowDestination')
                                                           ? Colors.black
-                                                          : const Color(0xFFE5E7EE),
-                                                      const Color(0xFFE5E7EE),
+                                                          : Color(0xFFE5E7EE),
+                                                      Color(0xFFE5E7EE),
                                                     ),
                                                     fontSize: 24.0,
                                                     letterSpacing: 0.0,
@@ -836,24 +839,24 @@ class _ServiceUpdatesComponentWidgetState
                                               BorderRadius.circular(18.0),
                                           border: Border.all(
                                             color: valueOrDefault<Color>(
-                                              (widget.request?.status ==
+                                              (widget!.request?.status ==
                                                           'arrivedAtLocation') ||
-                                                      (widget.request
+                                                      (widget!.request
                                                               ?.status ==
                                                           'arrivedToTowDestination') ||
-                                                      (widget.request
+                                                      (widget!.request
                                                               ?.status ==
                                                           'enrouteToTowDestination')
                                                   ? FlutterFlowTheme.of(context)
                                                       .tertiary
-                                                  : const Color(0xFFE5E7EE),
-                                              const Color(0xFFE5E7EE),
+                                                  : Color(0xFFE5E7EE),
+                                              Color(0xFFE5E7EE),
                                             ),
                                           ),
                                         ),
                                         child: Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   20.0, 10.0, 20.0, 10.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
@@ -864,7 +867,7 @@ class _ServiceUpdatesComponentWidgetState
                                                 child: Container(
                                                   width: 100.0,
                                                   height: 100.0,
-                                                  decoration: const BoxDecoration(),
+                                                  decoration: BoxDecoration(),
                                                   child: Column(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
@@ -874,16 +877,16 @@ class _ServiceUpdatesComponentWidgetState
                                                     children: [
                                                       Text(
                                                         () {
-                                                          if (widget.request
+                                                          if (widget!.request
                                                                   ?.status ==
                                                               'arrivedAtLocation') {
                                                             return 'Tech has arrived';
-                                                          } else if (widget
+                                                          } else if (widget!
                                                                   .request
                                                                   ?.status ==
                                                               'arrivedToTowDestination') {
                                                             return 'Tech has arrived at dropoff';
-                                                          } else if (widget
+                                                          } else if (widget!
                                                                   .request
                                                                   ?.status ==
                                                               'enrouteToTowDestination') {
@@ -901,16 +904,16 @@ class _ServiceUpdatesComponentWidgetState
                                                               color:
                                                                   valueOrDefault<
                                                                       Color>(
-                                                                (widget.request?.status == 'arrivedAtLocation') ||
-                                                                        (widget.request?.status ==
+                                                                (widget!.request?.status == 'arrivedAtLocation') ||
+                                                                        (widget!.request?.status ==
                                                                             'arrivedToTowDestination') ||
-                                                                        (widget.request?.status ==
+                                                                        (widget!.request?.status ==
                                                                             'enrouteToTowDestination')
                                                                     ? Colors
                                                                         .black
-                                                                    : const Color(
+                                                                    : Color(
                                                                         0xFFE5E7EE),
-                                                                const Color(
+                                                                Color(
                                                                     0xFFE5E7EE),
                                                               ),
                                                               fontSize: 16.0,
@@ -932,16 +935,16 @@ class _ServiceUpdatesComponentWidgetState
                                                               color:
                                                                   valueOrDefault<
                                                                       Color>(
-                                                                (widget.request?.status == 'arrivedAtLocation') ||
-                                                                        (widget.request?.status ==
+                                                                (widget!.request?.status == 'arrivedAtLocation') ||
+                                                                        (widget!.request?.status ==
                                                                             'arrivedToTowDestination') ||
-                                                                        (widget.request?.status ==
+                                                                        (widget!.request?.status ==
                                                                             'enrouteToTowDestination')
-                                                                    ? const Color(
+                                                                    ? Color(
                                                                         0xFF64748B)
-                                                                    : const Color(
+                                                                    : Color(
                                                                         0xFFE5E7EE),
-                                                                const Color(
+                                                                Color(
                                                                     0xFFE5E7EE),
                                                               ),
                                                               fontSize: 16.0,
@@ -958,7 +961,7 @@ class _ServiceUpdatesComponentWidgetState
                                         ),
                                       ),
                                     ),
-                                  ].divide(const SizedBox(width: 5.0)),
+                                  ].divide(SizedBox(width: 5.0)),
                                 ),
                               ),
                               InkWell(
@@ -976,13 +979,13 @@ class _ServiceUpdatesComponentWidgetState
                                       return Padding(
                                         padding:
                                             MediaQuery.viewInsetsOf(context),
-                                        child: const CompleteRequestWidget(),
+                                        child: CompleteRequestWidget(),
                                       );
                                     },
                                   ).then((value) => safeSetState(() {}));
                                 },
                                 child: Container(
-                                  decoration: const BoxDecoration(),
+                                  decoration: BoxDecoration(),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
@@ -991,7 +994,7 @@ class _ServiceUpdatesComponentWidgetState
                                         height: 64.0,
                                         decoration: BoxDecoration(
                                           color: valueOrDefault<Color>(
-                                            widget.request?.status ==
+                                            widget!.request?.status ==
                                                     'completed'
                                                 ? FlutterFlowTheme.of(context)
                                                     .secondary
@@ -1003,25 +1006,25 @@ class _ServiceUpdatesComponentWidgetState
                                               BorderRadius.circular(18.0),
                                           border: Border.all(
                                             color: valueOrDefault<Color>(
-                                              widget.request?.status ==
+                                              widget!.request?.status ==
                                                       'completed'
                                                   ? Colors.transparent
-                                                  : const Color(0xFFE5E7EE),
-                                              const Color(0xFFE5E7EE),
+                                                  : Color(0xFFE5E7EE),
+                                              Color(0xFFE5E7EE),
                                             ),
                                           ),
                                         ),
                                         child: Align(
                                           alignment:
-                                              const AlignmentDirectional(0.0, 0.0),
+                                              AlignmentDirectional(0.0, 0.0),
                                           child: Padding(
-                                            padding: const EdgeInsets.all(14.0),
+                                            padding: EdgeInsets.all(14.0),
                                             child: Container(
                                               width: MediaQuery.sizeOf(context)
                                                       .width *
                                                   0.36,
                                               height: 36.0,
-                                              constraints: const BoxConstraints(
+                                              constraints: BoxConstraints(
                                                 maxWidth: 36.0,
                                                 maxHeight: 36.0,
                                               ),
@@ -1034,15 +1037,15 @@ class _ServiceUpdatesComponentWidgetState
                                                         100.0),
                                                 border: Border.all(
                                                   color: valueOrDefault<Color>(
-                                                    widget.request?.status ==
+                                                    widget!.request?.status ==
                                                             'completed'
                                                         ? Colors.transparent
-                                                        : const Color(0xFFE5E7EE),
-                                                    const Color(0xFFE5E7EE),
+                                                        : Color(0xFFE5E7EE),
+                                                    Color(0xFFE5E7EE),
                                                   ),
                                                 ),
                                               ),
-                                              alignment: const AlignmentDirectional(
+                                              alignment: AlignmentDirectional(
                                                   0.0, 0.0),
                                               child: Text(
                                                 '4',
@@ -1054,12 +1057,12 @@ class _ServiceUpdatesComponentWidgetState
                                                       fontFamily: 'Yantramanav',
                                                       color:
                                                           valueOrDefault<Color>(
-                                                        widget.request
+                                                        widget!.request
                                                                     ?.status ==
                                                                 'completed'
                                                             ? Colors.black
-                                                            : const Color(0xFFE5E7EE),
-                                                        const Color(0xFFE5E7EE),
+                                                            : Color(0xFFE5E7EE),
+                                                        Color(0xFFE5E7EE),
                                                       ),
                                                       fontSize: 24.0,
                                                       letterSpacing: 0.0,
@@ -1078,19 +1081,19 @@ class _ServiceUpdatesComponentWidgetState
                                                 BorderRadius.circular(18.0),
                                             border: Border.all(
                                               color: valueOrDefault<Color>(
-                                                widget.request?.status ==
+                                                widget!.request?.status ==
                                                         'completed'
                                                     ? FlutterFlowTheme.of(
                                                             context)
                                                         .tertiary
-                                                    : const Color(0xFFE5E7EE),
-                                                const Color(0xFFE5E7EE),
+                                                    : Color(0xFFE5E7EE),
+                                                Color(0xFFE5E7EE),
                                               ),
                                             ),
                                           ),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     20.0, 10.0, 20.0, 10.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -1102,7 +1105,7 @@ class _ServiceUpdatesComponentWidgetState
                                                   child: Container(
                                                     width: 100.0,
                                                     height: 100.0,
-                                                    decoration: const BoxDecoration(),
+                                                    decoration: BoxDecoration(),
                                                     child: Column(
                                                       mainAxisSize:
                                                           MainAxisSize.max,
@@ -1124,14 +1127,14 @@ class _ServiceUpdatesComponentWidgetState
                                                                 color:
                                                                     valueOrDefault<
                                                                         Color>(
-                                                                  widget.request
+                                                                  widget!.request
                                                                               ?.status ==
                                                                           'completed'
                                                                       ? Colors
                                                                           .black
-                                                                      : const Color(
+                                                                      : Color(
                                                                           0xFFE5E7EE),
-                                                                  const Color(
+                                                                  Color(
                                                                       0xFFE5E7EE),
                                                                 ),
                                                                 fontSize: 16.0,
@@ -1151,15 +1154,15 @@ class _ServiceUpdatesComponentWidgetState
                                           ),
                                         ),
                                       ),
-                                    ].divide(const SizedBox(width: 5.0)),
+                                    ].divide(SizedBox(width: 5.0)),
                                   ),
                                 ),
                               ),
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Container(
                                   width: double.infinity,
-                                  decoration: const BoxDecoration(),
+                                  decoration: BoxDecoration(),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment: MainAxisAlignment.center,
@@ -1170,7 +1173,7 @@ class _ServiceUpdatesComponentWidgetState
                                         hoverColor: Colors.transparent,
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
-                                          if (widget.request?.status ==
+                                          if (widget!.request?.status ==
                                               'completed') {
                                             await showModalBottomSheet(
                                               isScrollControlled: true,
@@ -1184,7 +1187,7 @@ class _ServiceUpdatesComponentWidgetState
                                                       MediaQuery.viewInsetsOf(
                                                           context),
                                                   child:
-                                                      const CompleteRequestWidget(),
+                                                      CompleteRequestWidget(),
                                                 );
                                               },
                                             ).then(
@@ -1202,7 +1205,7 @@ class _ServiceUpdatesComponentWidgetState
                                                       MediaQuery.viewInsetsOf(
                                                           context),
                                                   child: CancelRequestWidget(
-                                                    id: widget
+                                                    id: widget!
                                                         .request!.bubbleId,
                                                     driver: true,
                                                   ),
@@ -1216,7 +1219,7 @@ class _ServiceUpdatesComponentWidgetState
                                           width: 181.0,
                                           height: 56.0,
                                           decoration: BoxDecoration(
-                                            color: widget.request?.status ==
+                                            color: widget!.request?.status ==
                                                     'completed'
                                                 ? FlutterFlowTheme.of(context)
                                                     .tertiary
@@ -1226,21 +1229,21 @@ class _ServiceUpdatesComponentWidgetState
                                                 BorderRadius.circular(18.0),
                                             border: Border.all(
                                               color: valueOrDefault<Color>(
-                                                widget.request?.status ==
+                                                widget!.request?.status ==
                                                         'completed'
                                                     ? FlutterFlowTheme.of(
                                                             context)
                                                         .tertiary
-                                                    : const Color(0xFFF50833),
-                                                const Color(0xFFF50833),
+                                                    : Color(0xFFF50833),
+                                                Color(0xFFF50833),
                                               ),
                                             ),
                                           ),
                                           child: Align(
                                             alignment:
-                                                const AlignmentDirectional(0.0, 0.0),
+                                                AlignmentDirectional(0.0, 0.0),
                                             child: Text(
-                                              widget.request?.status ==
+                                              widget!.request?.status ==
                                                       'completed'
                                                   ? 'Mark as complete'
                                                   : 'Cancel this job',
@@ -1252,13 +1255,13 @@ class _ServiceUpdatesComponentWidgetState
                                                     fontFamily: 'Yantramanav',
                                                     color:
                                                         valueOrDefault<Color>(
-                                                      widget.request?.status ==
+                                                      widget!.request?.status ==
                                                               'completed'
                                                           ? FlutterFlowTheme.of(
                                                                   context)
                                                               .primaryBackground
-                                                          : const Color(0xFFF50833),
-                                                      const Color(0xFFF50833),
+                                                          : Color(0xFFF50833),
+                                                      Color(0xFFF50833),
                                                     ),
                                                     letterSpacing: 0.0,
                                                   ),
@@ -1336,7 +1339,7 @@ class _ServiceUpdatesComponentWidgetState
                                                 ),
                                                 child: Align(
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           0.0, 0.0),
                                                   child: Text(
                                                     'Contact Support',
@@ -1358,20 +1361,20 @@ class _ServiceUpdatesComponentWidgetState
                                           },
                                         ),
                                       ),
-                                    ].divide(const SizedBox(width: 15.0)),
+                                    ].divide(SizedBox(width: 15.0)),
                                   ),
                                 ),
                               ),
-                            ].divide(const SizedBox(height: 20.0)),
+                            ].divide(SizedBox(height: 20.0)),
                           ),
                         ),
-                      ].divide(const SizedBox(height: 5.0)),
+                      ].divide(SizedBox(height: 5.0)),
                     ),
                   ),
                 );
               },
             ),
-          ].divide(const SizedBox(height: 16.0)),
+          ].divide(SizedBox(height: 16.0)),
         ),
       ),
     );

@@ -7,7 +7,10 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/service_provider/confirm_vehicle_details/confirm_vehicle_details_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'vehicle_confirmation_model.dart';
 export 'vehicle_confirmation_model.dart';
 
@@ -39,7 +42,7 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -58,10 +61,10 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
         backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Colors.white,
-          iconTheme: const IconThemeData(color: Color(0xFF1E293B)),
+          iconTheme: IconThemeData(color: Color(0xFF1E293B)),
           automaticallyImplyLeading: true,
           title: Container(
-            decoration: const BoxDecoration(),
+            decoration: BoxDecoration(),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -69,16 +72,16 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                   'Vehicle Confirmation',
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Yantramanav',
-                        color: const Color(0xFF1E293B),
+                        color: Color(0xFF1E293B),
                         fontSize: 30.0,
                         letterSpacing: 0.0,
                         fontWeight: FontWeight.bold,
                       ),
                 ),
-              ].divide(const SizedBox(width: 10.0)),
+              ].divide(SizedBox(width: 10.0)),
             ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: false,
           elevation: 1.0,
         ),
@@ -87,13 +90,13 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
           child: Container(
             width: double.infinity,
             height: double.infinity,
-            decoration: const BoxDecoration(),
+            decoration: BoxDecoration(),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Container(
-                  decoration: const BoxDecoration(),
+                  decoration: BoxDecoration(),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -103,14 +106,14 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                         decoration: BoxDecoration(
                           gradient: LinearGradient(
                             colors: [
-                              const Color(0xF304B53E),
+                              Color(0xF304B53E),
                               FlutterFlowTheme.of(context).tertiary
                             ],
-                            stops: const [0.0, 1.0],
-                            begin: const AlignmentDirectional(0.0, -1.0),
-                            end: const AlignmentDirectional(0, 1.0),
+                            stops: [0.0, 1.0],
+                            begin: AlignmentDirectional(0.0, -1.0),
+                            end: AlignmentDirectional(0, 1.0),
                           ),
-                          borderRadius: const BorderRadius.only(
+                          borderRadius: BorderRadius.only(
                             bottomLeft: Radius.circular(36.0),
                             bottomRight: Radius.circular(36.0),
                             topLeft: Radius.circular(0.0),
@@ -118,7 +121,7 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                           ),
                         ),
                         child: Align(
-                          alignment: const AlignmentDirectional(0.0, 0.0),
+                          alignment: AlignmentDirectional(0.0, 0.0),
                           child: RichText(
                             textScaler: MediaQuery.of(context).textScaler,
                             text: TextSpan(
@@ -135,7 +138,7 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                         fontWeight: FontWeight.w300,
                                       ),
                                 ),
-                                const TextSpan(
+                                TextSpan(
                                   text: '\nvehicle details',
                                   style: TextStyle(
                                     color: Colors.black,
@@ -160,20 +163,20 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                 ),
                 Expanded(
                   child: Container(
-                    decoration: const BoxDecoration(),
+                    decoration: BoxDecoration(),
                     child: SingleChildScrollView(
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Container(
-                            decoration: const BoxDecoration(),
+                            decoration: BoxDecoration(),
                             child: Column(
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 Container(
                                   width: MediaQuery.sizeOf(context).width * 0.9,
-                                  decoration: const BoxDecoration(),
+                                  decoration: BoxDecoration(),
                                   child: AuthUserStreamWidget(
                                     builder: (context) =>
                                         FutureBuilder<ApiCallResponse>(
@@ -218,7 +221,7 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                     )
                                                     ?.first))
                                               Container(
-                                                decoration: const BoxDecoration(),
+                                                decoration: BoxDecoration(),
                                                 child: Column(
                                                   mainAxisSize:
                                                       MainAxisSize.max,
@@ -227,12 +230,12 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                   children: [
                                                     Container(
                                                       constraints:
-                                                          const BoxConstraints(
+                                                          BoxConstraints(
                                                         minWidth:
                                                             double.infinity,
                                                       ),
                                                       decoration:
-                                                          const BoxDecoration(),
+                                                          BoxDecoration(),
                                                       child: Text(
                                                         'Select Vehicle',
                                                         style:
@@ -256,7 +259,7 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                               .width *
                                                           0.9,
                                                       decoration:
-                                                          const BoxDecoration(),
+                                                          BoxDecoration(),
                                                       child:
                                                           FlutterFlowDropDown<
                                                               String>(
@@ -271,11 +274,31 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                               .jsonBody,
                                                         )!,
                                                         onChanged: (val) =>
-                                                            setState(() => _model
-                                                                    .vehicledropdownValue =
-                                                                val),
+                                                            safeSetState(() =>
+                                                                _model.vehicledropdownValue =
+                                                                    val),
                                                         width: 300.0,
                                                         height: 52.0,
+                                                        searchHintTextStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Yantramanav',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
+                                                        searchTextStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Yantramanav',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
                                                         textStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -283,7 +306,7 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                                 .override(
                                                                   fontFamily:
                                                                       'Yantramanav',
-                                                                  color: const Color(
+                                                                  color: Color(
                                                                       0xFF64748B),
                                                                   fontSize:
                                                                       16.0,
@@ -292,6 +315,8 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                                 ),
                                                         hintText:
                                                             'Select vehicle option',
+                                                        searchHintText:
+                                                            'Search for an vehicle',
                                                         icon: Icon(
                                                           Icons
                                                               .keyboard_arrow_down_rounded,
@@ -311,7 +336,7 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                         borderWidth: 2.0,
                                                         borderRadius: 18.0,
                                                         margin:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     16.0,
                                                                     4.0,
@@ -319,13 +344,13 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                                     4.0),
                                                         hidesUnderline: true,
                                                         isOverButton: true,
-                                                        isSearchable: false,
+                                                        isSearchable: true,
                                                         isMultiSelect: false,
                                                       ),
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   10.0,
@@ -395,21 +420,21 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                                       ?.jsonBody ??
                                                                   ''),
                                                             )}';
-                                                            setState(() {});
+                                                            safeSetState(() {});
 
                                                             context.pushNamed(
                                                               'vehicle_confirmation2',
                                                               queryParameters: {
                                                                 'service':
                                                                     serializeParam(
-                                                                  widget
+                                                                  widget!
                                                                       .service,
                                                                   ParamType
                                                                       .String,
                                                                 ),
                                                                 'additionalInfo':
                                                                     serializeParam(
-                                                                  widget
+                                                                  widget!
                                                                       .additionalInfo,
                                                                   ParamType
                                                                       .String,
@@ -504,11 +529,11 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                                           14.0,
                                                                     ),
                                                                   ),
-                                                                  duration: const Duration(
+                                                                  duration: Duration(
                                                                       milliseconds:
                                                                           4000),
                                                                   backgroundColor:
-                                                                      const Color(
+                                                                      Color(
                                                                           0xFFF50833),
                                                                 ),
                                                               );
@@ -533,18 +558,18 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                                           14.0,
                                                                     ),
                                                                   ),
-                                                                  duration: const Duration(
+                                                                  duration: Duration(
                                                                       milliseconds:
                                                                           4000),
                                                                   backgroundColor:
-                                                                      const Color(
+                                                                      Color(
                                                                           0xFFF50833),
                                                                 ),
                                                               );
                                                             }
                                                           }
 
-                                                          setState(() {});
+                                                          safeSetState(() {});
                                                         },
                                                         text: 'Next',
                                                         options:
@@ -553,14 +578,14 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                               double.infinity,
                                                           height: 50.0,
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       24.0,
                                                                       0.0,
                                                                       24.0,
                                                                       0.0),
                                                           iconPadding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       0.0,
@@ -584,7 +609,7 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                                   ),
                                                           elevation: 3.0,
                                                           borderSide:
-                                                              const BorderSide(
+                                                              BorderSide(
                                                             color: Colors
                                                                 .transparent,
                                                             width: 1.0,
@@ -598,7 +623,7 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   10.0,
@@ -624,12 +649,12 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                       ),
                                                     ),
                                                   ].divide(
-                                                      const SizedBox(height: 5.0)),
+                                                      SizedBox(height: 5.0)),
                                                 ),
                                               ),
                                             Container(
                                               width: double.infinity,
-                                              decoration: const BoxDecoration(),
+                                              decoration: BoxDecoration(),
                                               child: Text(
                                                 'License Plate',
                                                 style: FlutterFlowTheme.of(
@@ -649,13 +674,13 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                               width: MediaQuery.sizeOf(context)
                                                       .width *
                                                   0.9,
-                                              decoration: const BoxDecoration(),
+                                              decoration: BoxDecoration(),
                                               child: Form(
                                                 key: _model.formKey,
                                                 autovalidateMode:
                                                     AutovalidateMode.disabled,
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 4.0, 0.0, 4.0),
                                                   child: TextFormField(
@@ -683,7 +708,7 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                               ),
                                                       enabledBorder:
                                                           OutlineInputBorder(
-                                                        borderSide: const BorderSide(
+                                                        borderSide: BorderSide(
                                                           color:
                                                               Color(0xFFCBD5E1),
                                                           width: 1.0,
@@ -731,7 +756,7 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                       filled: true,
                                                       fillColor: Colors.white,
                                                       contentPadding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   8.0,
                                                                   0.0,
@@ -756,7 +781,7 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                               ),
                                             ),
                                             Container(
-                                              decoration: const BoxDecoration(),
+                                              decoration: BoxDecoration(),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
                                                 crossAxisAlignment:
@@ -781,7 +806,7 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                                 context)
                                                             .width *
                                                         0.9,
-                                                    decoration: const BoxDecoration(),
+                                                    decoration: BoxDecoration(),
                                                     child: FlutterFlowDropDown<
                                                         String>(
                                                       controller: _model
@@ -797,7 +822,7 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                                 ? _model.state
                                                                 : '  ',
                                                       ),
-                                                      options: const [
+                                                      options: [
                                                         'Alabama',
                                                         'Alaska',
                                                         'American Samoa',
@@ -859,9 +884,9 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                         'Wyoming'
                                                       ],
                                                       onChanged: (val) =>
-                                                          setState(() => _model
-                                                                  .dropDownStateValue =
-                                                              val),
+                                                          safeSetState(() =>
+                                                              _model.dropDownStateValue =
+                                                                  val),
                                                       width: 300.0,
                                                       height: 52.0,
                                                       textStyle:
@@ -871,7 +896,7 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                               .override(
                                                                 fontFamily:
                                                                     'Yantramanav',
-                                                                color: const Color(
+                                                                color: Color(
                                                                     0xFF64748B),
                                                                 fontSize: 16.0,
                                                                 letterSpacing:
@@ -899,7 +924,7 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                       borderWidth: 2.0,
                                                       borderRadius: 18.0,
                                                       margin:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   16.0,
                                                                   4.0,
@@ -911,14 +936,14 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                       isMultiSelect: false,
                                                     ),
                                                   ),
-                                                ].divide(const SizedBox(height: 5.0)),
+                                                ].divide(SizedBox(height: 5.0)),
                                               ),
                                             ),
                                             Container(
                                               width: double.infinity,
-                                              decoration: const BoxDecoration(),
+                                              decoration: BoxDecoration(),
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 10.0, 0.0, 0.0),
                                                 child: FFButtonWidget(
@@ -992,7 +1017,7 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                                 ?.jsonBody ??
                                                             ''),
                                                       )}';
-                                                      setState(() {});
+                                                      safeSetState(() {});
                                                       await showModalBottomSheet(
                                                         isScrollControlled:
                                                             true,
@@ -1015,7 +1040,7 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                                 vehicleReg: _model
                                                                     .textController
                                                                     .text,
-                                                                service: widget
+                                                                service: widget!
                                                                     .service!,
                                                               ),
                                                             ),
@@ -1049,11 +1074,11 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                                 fontSize: 14.0,
                                                               ),
                                                             ),
-                                                            duration: const Duration(
+                                                            duration: Duration(
                                                                 milliseconds:
                                                                     4000),
                                                             backgroundColor:
-                                                                const Color(
+                                                                Color(
                                                                     0xFFF50833),
                                                           ),
                                                         );
@@ -1076,28 +1101,28 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                                 fontSize: 14.0,
                                                               ),
                                                             ),
-                                                            duration: const Duration(
+                                                            duration: Duration(
                                                                 milliseconds:
                                                                     4000),
                                                             backgroundColor:
-                                                                const Color(
+                                                                Color(
                                                                     0xFFF50833),
                                                           ),
                                                         );
                                                       }
                                                     }
 
-                                                    setState(() {});
+                                                    safeSetState(() {});
                                                   },
                                                   text: 'Next',
                                                   options: FFButtonOptions(
                                                     height: 50.0,
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(24.0, 0.0,
                                                                 24.0, 0.0),
                                                     iconPadding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     color: FlutterFlowTheme.of(
@@ -1115,7 +1140,7 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                           letterSpacing: 0.0,
                                                         ),
                                                     elevation: 3.0,
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Colors.transparent,
                                                       width: 1.0,
                                                     ),
@@ -1126,21 +1151,21 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                 ),
                                               ),
                                             ),
-                                          ].divide(const SizedBox(height: 5.0)),
+                                          ].divide(SizedBox(height: 5.0)),
                                         );
                                       },
                                     ),
                                   ),
                                 ),
-                              ].divide(const SizedBox(height: 20.0)),
+                              ].divide(SizedBox(height: 20.0)),
                             ),
                           ),
-                        ].divide(const SizedBox(height: 20.0)),
+                        ].divide(SizedBox(height: 20.0)),
                       ),
                     ),
                   ),
                 ),
-              ].divide(const SizedBox(height: 16.0)),
+              ].divide(SizedBox(height: 16.0)),
             ),
           ),
         ),
