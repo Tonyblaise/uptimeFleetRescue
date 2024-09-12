@@ -401,12 +401,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   'color',
                   ParamType.String,
                 ),
-                image: params.getParam(
-                  'image',
-                  ParamType.String,
-                ),
                 id: params.getParam(
                   'id',
+                  ParamType.String,
+                ),
+                image: params.getParam(
+                  'image',
                   ParamType.String,
                 ),
               ),

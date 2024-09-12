@@ -23,8 +23,8 @@ class VehicleConfirmation2Widget extends StatefulWidget {
     required this.state,
     this.notes,
     this.color,
-    required this.image,
     required this.id,
+    this.image,
   });
 
   final String? service;
@@ -33,8 +33,8 @@ class VehicleConfirmation2Widget extends StatefulWidget {
   final String? state;
   final String? notes;
   final String? color;
-  final String? image;
   final String? id;
+  final String? image;
 
   @override
   State<VehicleConfirmation2Widget> createState() =>

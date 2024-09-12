@@ -189,91 +189,6 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                                   CrossAxisAlignment.start,
                                               children: [
                                                 Text(
-                                                  'Where would you like the vehicle towed to?',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .labelLarge
-                                                      .override(
-                                                        fontFamily:
-                                                            'Yantramanav',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                                ),
-                                                Container(
-                                                  width:
-                                                      MediaQuery.sizeOf(context)
-                                                              .width *
-                                                          0.9,
-                                                  decoration: const BoxDecoration(),
-                                                  child: FlutterFlowPlacePicker(
-                                                    iOSGoogleMapsApiKey:
-                                                        'AIzaSyCQCtKBOInrdAHzTTfpXIeTqKe4-9Q1iB8',
-                                                    androidGoogleMapsApiKey:
-                                                        'AIzaSyCQCtKBOInrdAHzTTfpXIeTqKe4-9Q1iB8',
-                                                    webGoogleMapsApiKey:
-                                                        'AIzaSyCQCtKBOInrdAHzTTfpXIeTqKe4-9Q1iB8',
-                                                    onSelect: (place) async {
-                                                      safeSetState(() => _model
-                                                              .wherewouldyoulikethevehicletowedtoValue =
-                                                          place);
-                                                    },
-                                                    defaultText:
-                                                        'Select Location',
-                                                    icon: Icon(
-                                                      Icons.place,
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .secondaryText,
-                                                      size: 16.0,
-                                                    ),
-                                                    buttonOptions:
-                                                        FFButtonOptions(
-                                                      width: 200.0,
-                                                      height: 45.0,
-                                                      color: FlutterFlowTheme
-                                                              .of(context)
-                                                          .secondaryBackground,
-                                                      textStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .titleSmall
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Yantramanav',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryText,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
-                                                      elevation: 0.0,
-                                                      borderSide: const BorderSide(
-                                                        color:
-                                                            Color(0xFFCBD5E1),
-                                                        width: 1.0,
-                                                      ),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              18.0),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ].divide(const SizedBox(height: 5.0)),
-                                            ),
-                                          ),
-                                          Container(
-                                            decoration: const BoxDecoration(),
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
                                                   'Drop Off Instructions?',
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -403,6 +318,91 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                                       validator: _model
                                                           .dropOffInstructionsTextControllerValidator
                                                           .asValidator(context),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ].divide(const SizedBox(height: 5.0)),
+                                            ),
+                                          ),
+                                          Container(
+                                            decoration: const BoxDecoration(),
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  'Where would you like the vehicle towed to?',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .labelLarge
+                                                      .override(
+                                                        fontFamily:
+                                                            'Yantramanav',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                ),
+                                                Container(
+                                                  width:
+                                                      MediaQuery.sizeOf(context)
+                                                              .width *
+                                                          0.9,
+                                                  decoration: const BoxDecoration(),
+                                                  child: FlutterFlowPlacePicker(
+                                                    iOSGoogleMapsApiKey:
+                                                        'AIzaSyCQCtKBOInrdAHzTTfpXIeTqKe4-9Q1iB8',
+                                                    androidGoogleMapsApiKey:
+                                                        'AIzaSyCQCtKBOInrdAHzTTfpXIeTqKe4-9Q1iB8',
+                                                    webGoogleMapsApiKey:
+                                                        'AIzaSyCQCtKBOInrdAHzTTfpXIeTqKe4-9Q1iB8',
+                                                    onSelect: (place) async {
+                                                      safeSetState(() => _model
+                                                              .wherewouldyoulikethevehicletowedtoValue =
+                                                          place);
+                                                    },
+                                                    defaultText:
+                                                        'Select Location',
+                                                    icon: Icon(
+                                                      Icons.place,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondaryText,
+                                                      size: 16.0,
+                                                    ),
+                                                    buttonOptions:
+                                                        FFButtonOptions(
+                                                      width: 200.0,
+                                                      height: 45.0,
+                                                      color: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
+                                                      textStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleSmall
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Yantramanav',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryText,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                              ),
+                                                      elevation: 0.0,
+                                                      borderSide: const BorderSide(
+                                                        color:
+                                                            Color(0xFFCBD5E1),
+                                                        width: 1.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              18.0),
                                                     ),
                                                   ),
                                                 ),
@@ -647,14 +647,6 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                                     0.0, 0.0, 0.0, 20.0),
                                             child: FFButtonWidget(
                                               onPressed: () async {
-                                                if (_model.formKey1
-                                                            .currentState ==
-                                                        null ||
-                                                    !_model.formKey1
-                                                        .currentState!
-                                                        .validate()) {
-                                                  return;
-                                                }
                                                 FFAppState()
                                                         .requestAdditionalInfo =
                                                     'Where would you like the vehicle towed to?/n${_model.wherewouldyoulikethevehicletowedtoValue.latLng.toString()}/n/nDrop off instructions/n${_model.dropOffInstructionsTextController.text}/n/nWill you be waiting with the vehicle?/n${_model.willyoubewaitingwiththevehicleValue}/n/nIf not, where will you leave the keys?/n${_model.ifnowherewillyouleavethekeysTextController.text}/n/n/';
@@ -673,7 +665,7 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                                     ),
                                                   }.withoutNulls,
                                                 );
-                                                                                            },
+                                              },
                                               text: 'Next',
                                               options: FFButtonOptions(
                                                 width:

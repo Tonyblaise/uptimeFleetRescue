@@ -9,8 +9,6 @@ class MoreDetailsModel extends FlutterFlowModel<MoreDetailsWidget> {
   final formKey2 = GlobalKey<FormState>();
   final formKey3 = GlobalKey<FormState>();
   final formKey1 = GlobalKey<FormState>();
-  // State field(s) for Wherewouldyoulikethevehicletowedto widget.
-  FFPlace wherewouldyoulikethevehicletowedtoValue = const FFPlace();
   // State field(s) for dropOffInstructions widget.
   FocusNode? dropOffInstructionsFocusNode;
   TextEditingController? dropOffInstructionsTextController;
@@ -25,6 +23,8 @@ class MoreDetailsModel extends FlutterFlowModel<MoreDetailsWidget> {
     return null;
   }
 
+  // State field(s) for Wherewouldyoulikethevehicletowedto widget.
+  FFPlace wherewouldyoulikethevehicletowedtoValue = const FFPlace();
   // State field(s) for willyoubewaitingwiththevehicle widget.
   FormFieldController<String>? willyoubewaitingwiththevehicleValueController;
   // State field(s) for ifnowherewillyouleavethekeys widget.
