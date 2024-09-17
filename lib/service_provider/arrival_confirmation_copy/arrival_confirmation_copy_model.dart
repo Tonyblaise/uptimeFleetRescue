@@ -8,8 +8,8 @@ class ArrivalConfirmationCopyModel
     extends FlutterFlowModel<ArrivalConfirmationCopyWidget> {
   ///  State fields for stateful widgets in this component.
 
-  // Stores action output result for [Backend Call - API (Update request)] action in Container widget.
-  ApiCallResponse? apiResultoan;
+  // Stores action output result for [Backend Call - API (Update request)] action in Button widget.
+  ApiCallResponse? apiResultoanCopy;
 
   @override
   void initState(BuildContext context) {}

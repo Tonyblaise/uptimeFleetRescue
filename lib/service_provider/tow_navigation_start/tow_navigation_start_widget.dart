@@ -125,7 +125,7 @@ class _TowNavigationStartWidgetState extends State<TowNavigationStartWidget> {
                             ),
                       ),
                       Text(
-                        'You can chat with your tech\nat any time, keep track of the location\nand also cancel request if necessary.',
+                        'You can chat with your driver\nat any time, keep track of the location\nand also cancel request if necessary.',
                         textAlign: TextAlign.center,
                         style: FlutterFlowTheme.of(context).labelLarge.override(
                               fontFamily: 'Yantramanav',

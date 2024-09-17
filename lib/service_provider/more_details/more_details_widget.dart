@@ -649,7 +649,7 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                               onPressed: () async {
                                                 FFAppState()
                                                         .requestAdditionalInfo =
-                                                    'Where would you like the vehicle towed to?/n${_model.wherewouldyoulikethevehicletowedtoValue.latLng.toString()}/n/nDrop off instructions/n${_model.dropOffInstructionsTextController.text}/n/nWill you be waiting with the vehicle?/n${_model.willyoubewaitingwiththevehicleValue}/n/nIf not, where will you leave the keys?/n${_model.ifnowherewillyouleavethekeysTextController.text}/n/n/';
+                                                    'Where would you like the vehicle towed to?/n${_model.wherewouldyoulikethevehicletowedtoValue.address}/n/nDrop off instructions/n${_model.dropOffInstructionsTextController.text}/n/nWill you be waiting with the vehicle?/n${_model.willyoubewaitingwiththevehicleValue}/n/nIf not, where will you leave the keys?/n${_model.ifnowherewillyouleavethekeysTextController.text}/n/n/';
                                                 FFAppState().dropOffLocation =
                                                     _model
                                                         .wherewouldyoulikethevehicletowedtoValue

@@ -442,15 +442,6 @@ class _ConfirmVehicleDetailsWidgetState
                                             ),
                                             ParamType.String,
                                           ),
-                                          'image': serializeParam(
-                                            UptimeFleetAppGroup
-                                                .getVehiclesByRegNoCall
-                                                .image(
-                                              containerGetVehiclesByRegNoResponse
-                                                  .jsonBody,
-                                            ),
-                                            ParamType.String,
-                                          ),
                                           'id': serializeParam(
                                             UptimeFleetAppGroup
                                                 .getVehiclesByRegNoCall
