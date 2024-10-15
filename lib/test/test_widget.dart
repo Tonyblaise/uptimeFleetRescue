@@ -1,9 +1,8 @@
-import '/backend/api_requests/api_calls.dart';
+import '/flutter_flow/flutter_flow_credit_card_form.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'test_model.dart';
 export 'test_model.dart';
 
@@ -36,8 +35,6 @@ class _TestWidgetState extends State<TestWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
@@ -64,42 +61,85 @@ class _TestWidgetState extends State<TestWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              Expanded(
-                child: Container(
-                  width: double.infinity,
+              FlipCard(
+                fill: Fill.fillBack,
+                direction: FlipDirection.HORIZONTAL,
+                speed: 400,
+                front: Container(
+                  width: 100.0,
                   height: 100.0,
                   decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).secondaryBackground,
-                  ),
-                  child: FFButtonWidget(
-                    onPressed: () async {
-                      _model.apiResultyjv = await UptimeFleetAppGroup
-                          .updateTechnicianPositionCall
-                          .call(
-                        technicianId: FFAppState().technicianId,
-                        lat: '78',
-                        lng: '878',
-                      );
-
-                      safeSetState(() {});
-                    },
-                    text: 'Button',
-                    options: FFButtonOptions(
-                      height: 40.0,
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-                      iconPadding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: FlutterFlowTheme.of(context).primary,
-                      textStyle:
-                          FlutterFlowTheme.of(context).titleSmall.override(
-                                fontFamily: 'Yantramanav',
-                                color: Colors.white,
-                                letterSpacing: 0.0,
-                              ),
-                      elevation: 0.0,
-                      borderRadius: BorderRadius.circular(8.0),
+                    color: FlutterFlowTheme.of(context).primary,
+                    borderRadius: const BorderRadius.only(
+                      bottomLeft: Radius.circular(12.0),
+                      bottomRight: Radius.circular(12.0),
+                      topLeft: Radius.circular(12.0),
+                      topRight: Radius.circular(12.0),
                     ),
+                  ),
+                  child: Align(
+                    alignment: const AlignmentDirectional(0.0, 0.0),
+                    child: Text(
+                      'Front',
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            fontFamily: 'Yantramanav',
+                            color: FlutterFlowTheme.of(context).info,
+                            letterSpacing: 0.0,
+                          ),
+                    ),
+                  ),
+                ),
+                back: Container(
+                  width: 100.0,
+                  height: 100.0,
+                  decoration: BoxDecoration(
+                    color: FlutterFlowTheme.of(context).primary,
+                    borderRadius: const BorderRadius.only(
+                      bottomLeft: Radius.circular(12.0),
+                      bottomRight: Radius.circular(12.0),
+                      topLeft: Radius.circular(12.0),
+                      topRight: Radius.circular(12.0),
+                    ),
+                  ),
+                  child: Align(
+                    alignment: const AlignmentDirectional(0.0, 0.0),
+                    child: Text(
+                      'Back',
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            fontFamily: 'Yantramanav',
+                            color: FlutterFlowTheme.of(context).info,
+                            letterSpacing: 0.0,
+                          ),
+                    ),
+                  ),
+                ),
+              ),
+              FlutterFlowCreditCardForm(
+                formKey: _model.creditCardFormKey,
+                creditCardModel: _model.creditCardInfo,
+                obscureNumber: true,
+                obscureCvv: false,
+                spacing: 12.0,
+                textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
+                      fontFamily: 'Yantramanav',
+                      letterSpacing: 0.0,
+                    ),
+                inputDecoration: InputDecoration(
+                  filled: true,
+                  fillColor: FlutterFlowTheme.of(context).secondaryBackground,
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(
+                      color: Color(0x00000000),
+                      width: 1.0,
+                    ),
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(
+                      color: Color(0x00000000),
+                      width: 1.0,
+                    ),
+                    borderRadius: BorderRadius.circular(8.0),
                   ),
                 ),
               ),

@@ -1311,7 +1311,7 @@ class GetVehiclesCall {
 class GetVehiclesByRegNoCall {
   Future<ApiCallResponse> call({
     String? vehicleRegNo = 'LJV9763',
-    String? driverId = '1717176798915x151553456806942340',
+    String? driverId = '1728673950467x198397388861890620',
     String? accessToken = '1707139937267x678517623997244500',
   }) async {
     final baseUrl = UptimeFleetAppGroup.getBaseUrl(

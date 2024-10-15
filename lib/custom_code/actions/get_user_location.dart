@@ -12,11 +12,33 @@ import 'package:geolocator/geolocator.dart';
 
 Future getUserLocation() async {
   // Add your function code here!
-  void main() async {
-    Position position = await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.high);
+  Future<Position> _determinePosition() async {
+    LocationPermission permission = await Geolocator.requestPermission();
+    // Check if location services are enabled
+    bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      // Location services are not enabled return an error message
+      return Future.error('Location services are disabled.');
+    }
 
-    print('Latitude: ${position.latitude}');
-    print('Longitude: ${position.longitude}');
+    // Check location permissions
+
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        return Future.error('Location permissions are denied');
+      }
+    }
+
+    if (permission == LocationPermission.deniedForever) {
+      return Future.error(
+          'Location permissions are permanently denied, we cannot request permissions.');
+    }
+
+    // If permissions are granted, return the current location
+    return await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high);
   }
+
+  _determinePosition();
 }
