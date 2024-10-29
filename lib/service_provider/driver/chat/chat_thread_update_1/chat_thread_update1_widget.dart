@@ -145,7 +145,9 @@ class _ChatThreadUpdate1WidgetState extends State<ChatThreadUpdate1Widget> {
                                         valueOrDefault<String>(
                                           otherUserUsersRecord.fullName,
                                           'A',
-                                        ).maybeHandleOverflow(maxChars: 1),
+                                        ).maybeHandleOverflow(
+                                          maxChars: 1,
+                                        ),
                                         textAlign: TextAlign.center,
                                         style: FlutterFlowTheme.of(context)
                                             .bodyLarge

@@ -75,63 +75,66 @@ class _ImageDetailsWidgetState extends State<ImageDetailsWidget>
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
-      child: Scaffold(
-        key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-        appBar: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-          automaticallyImplyLeading: false,
-          leading: FlutterFlowIconButton(
-            borderColor: Colors.transparent,
-            borderRadius: 30.0,
-            borderWidth: 1.0,
-            buttonSize: 60.0,
-            icon: Icon(
-              Icons.arrow_back_rounded,
-              color: FlutterFlowTheme.of(context).primaryText,
-              size: 30.0,
-            ),
-            onPressed: () async {
-              context.pop();
-            },
-          ),
-          actions: const [],
-          centerTitle: false,
-          elevation: 0.0,
-        ),
-        body: SafeArea(
-          top: true,
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: Hero(
-                    tag: 'image',
-                    transitionOnUserGestures: true,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(8.0),
-                      child: CachedNetworkImage(
-                        fadeInDuration: const Duration(milliseconds: 500),
-                        fadeOutDuration: const Duration(milliseconds: 500),
-                        imageUrl: 'https://picsum.photos/seed/150/600',
-                        width: double.infinity,
-                        fit: BoxFit.fitWidth,
-                        memCacheWidth: 1200,
-                        memCacheHeight: 1200,
-                      ),
-                    ),
-                  ).animateOnPageLoad(
-                      animationsMap['imageOnPageLoadAnimation']!),
+    return Title(
+        title: 'image_Details',
+        color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
+        child: GestureDetector(
+          onTap: () => FocusScope.of(context).unfocus(),
+          child: Scaffold(
+            key: scaffoldKey,
+            backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+            appBar: AppBar(
+              backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+              automaticallyImplyLeading: false,
+              leading: FlutterFlowIconButton(
+                borderColor: Colors.transparent,
+                borderRadius: 30.0,
+                borderWidth: 1.0,
+                buttonSize: 60.0,
+                icon: Icon(
+                  Icons.arrow_back_rounded,
+                  color: FlutterFlowTheme.of(context).primaryText,
+                  size: 30.0,
                 ),
+                onPressed: () async {
+                  context.pop();
+                },
               ),
-            ],
+              actions: const [],
+              centerTitle: false,
+              elevation: 0.0,
+            ),
+            body: SafeArea(
+              top: true,
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Hero(
+                        tag: 'image',
+                        transitionOnUserGestures: true,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(8.0),
+                          child: CachedNetworkImage(
+                            fadeInDuration: const Duration(milliseconds: 500),
+                            fadeOutDuration: const Duration(milliseconds: 500),
+                            imageUrl: 'https://picsum.photos/seed/150/600',
+                            width: double.infinity,
+                            fit: BoxFit.fitWidth,
+                            memCacheWidth: 1200,
+                            memCacheHeight: 1200,
+                          ),
+                        ),
+                      ).animateOnPageLoad(
+                          animationsMap['imageOnPageLoadAnimation']!),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
-        ),
-      ),
-    );
+        ));
   }
 }

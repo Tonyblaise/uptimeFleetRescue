@@ -6,3 +6,4 @@ export 'new_custom_action.dart' show newCustomAction;
 export 'get_user_location.dart' show getUserLocation;
 export 'track_user_location.dart' show trackUserLocation;
 export 'live_location.dart' show liveLocation;
+export 'check_location_permissions.dart' show checkLocationPermissions;

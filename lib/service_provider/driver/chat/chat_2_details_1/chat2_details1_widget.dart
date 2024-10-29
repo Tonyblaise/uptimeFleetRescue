@@ -62,63 +62,66 @@ class _Chat2Details1WidgetState extends State<Chat2Details1Widget> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
-      child: Scaffold(
-        key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-        appBar: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-          automaticallyImplyLeading: false,
-          leading: FlutterFlowIconButton(
-            borderColor: Colors.transparent,
-            borderRadius: 30.0,
-            borderWidth: 1.0,
-            buttonSize: 60.0,
-            icon: Icon(
-              Icons.arrow_back_rounded,
-              color: FlutterFlowTheme.of(context).primaryText,
-              size: 30.0,
-            ),
-            onPressed: () async {
-              if (widget.driver == true) {
-                context.pushNamed('landing_page');
-              } else {
-                context.pushNamed('dashboardTechnician');
-              }
-            },
-          ),
-          title: Text(
-            valueOrDefault<String>(
-              widget.driver == true
-                  ? 'Chat with Technician'
-                  : 'Chat with Driver',
-              'Chat with driver',
-            ),
-            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                  fontFamily: 'Yantramanav',
-                  fontSize: 24.0,
-                  letterSpacing: 0.0,
-                  fontWeight: FontWeight.w600,
+    return Title(
+        title: 'chat_2_Details_1',
+        color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
+        child: GestureDetector(
+          onTap: () => FocusScope.of(context).unfocus(),
+          child: Scaffold(
+            key: scaffoldKey,
+            backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+            appBar: AppBar(
+              backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+              automaticallyImplyLeading: false,
+              leading: FlutterFlowIconButton(
+                borderColor: Colors.transparent,
+                borderRadius: 30.0,
+                borderWidth: 1.0,
+                buttonSize: 60.0,
+                icon: Icon(
+                  Icons.arrow_back_rounded,
+                  color: FlutterFlowTheme.of(context).primaryText,
+                  size: 30.0,
                 ),
-          ),
-          actions: const [],
-          centerTitle: false,
-          elevation: 0.0,
-        ),
-        body: SafeArea(
-          top: true,
-          child: wrapWithModel(
-            model: _model.chatThreadComponent1Model,
-            updateCallback: () => safeSetState(() {}),
-            updateOnChange: true,
-            child: ChatThreadComponent1Widget(
-              chatRef: widget.chatRef,
-              state: 1,
+                onPressed: () async {
+                  if (widget.driver == true) {
+                    context.pushNamed('landing_page');
+                  } else {
+                    context.pushNamed('dashboardTechnician');
+                  }
+                },
+              ),
+              title: Text(
+                valueOrDefault<String>(
+                  widget.driver == true
+                      ? 'Chat with Technician'
+                      : 'Chat with Driver',
+                  'Chat with driver',
+                ),
+                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                      fontFamily: 'Yantramanav',
+                      fontSize: 24.0,
+                      letterSpacing: 0.0,
+                      fontWeight: FontWeight.w600,
+                    ),
+              ),
+              actions: const [],
+              centerTitle: false,
+              elevation: 0.0,
+            ),
+            body: SafeArea(
+              top: true,
+              child: wrapWithModel(
+                model: _model.chatThreadComponent1Model,
+                updateCallback: () => safeSetState(() {}),
+                updateOnChange: true,
+                child: ChatThreadComponent1Widget(
+                  chatRef: widget.chatRef,
+                  state: 1,
+                ),
+              ),
             ),
           ),
-        ),
-      ),
-    );
+        ));
   }
 }

@@ -78,6 +78,9 @@ class _ConfirmVehicleDetailsWidgetState
 
               return Container(
                 width: double.infinity,
+                constraints: const BoxConstraints(
+                  maxWidth: 500.0,
+                ),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(24.0),

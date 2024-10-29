@@ -36,95 +36,99 @@ class _TechStatusWidgetState extends State<TechStatusWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
-      child: Scaffold(
-        key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          iconTheme: const IconThemeData(color: Color(0xFF1E293B)),
-          automaticallyImplyLeading: false,
-          title: Container(
-            decoration: const BoxDecoration(),
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Text(
-                  'Tech Status',
-                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Yantramanav',
-                        color: const Color(0xFF1E293B),
-                        fontSize: 30.0,
-                        letterSpacing: 0.0,
-                        fontWeight: FontWeight.bold,
-                      ),
+    return Title(
+        title: 'tech_status',
+        color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
+        child: GestureDetector(
+          onTap: () => FocusScope.of(context).unfocus(),
+          child: Scaffold(
+            key: scaffoldKey,
+            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+            appBar: AppBar(
+              backgroundColor: Colors.white,
+              iconTheme: const IconThemeData(color: Color(0xFF1E293B)),
+              automaticallyImplyLeading: false,
+              title: Container(
+                decoration: const BoxDecoration(),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Text(
+                      'Tech Status',
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            fontFamily: 'Yantramanav',
+                            color: const Color(0xFF1E293B),
+                            fontSize: 30.0,
+                            letterSpacing: 0.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                    ),
+                  ].divide(const SizedBox(width: 10.0)),
                 ),
-              ].divide(const SizedBox(width: 10.0)),
+              ),
+              actions: const [],
+              centerTitle: false,
+              elevation: 1.0,
             ),
-          ),
-          actions: const [],
-          centerTitle: false,
-          elevation: 1.0,
-        ),
-        body: SafeArea(
-          top: true,
-          child: Container(
-            width: double.infinity,
-            height: double.infinity,
-            decoration: const BoxDecoration(),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  decoration: const BoxDecoration(),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Container(
-                        width: double.infinity,
-                        height: 100.0,
-                        decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).primaryBackground,
-                        ),
-                        child: Align(
-                          alignment: const AlignmentDirectional(0.0, 0.0),
-                          child: Container(
-                            width: MediaQuery.sizeOf(context).width * 0.9,
-                            decoration: const BoxDecoration(),
-                            child: wrapWithModel(
-                              model: _model.userDetailsModel,
-                              updateCallback: () => safeSetState(() {}),
-                              child: const UserDetailsWidget(),
+            body: SafeArea(
+              top: true,
+              child: Container(
+                width: double.infinity,
+                height: double.infinity,
+                decoration: const BoxDecoration(),
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      decoration: const BoxDecoration(),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Container(
+                            width: double.infinity,
+                            height: 100.0,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .primaryBackground,
+                            ),
+                            child: Align(
+                              alignment: const AlignmentDirectional(0.0, 0.0),
+                              child: Container(
+                                width: MediaQuery.sizeOf(context).width * 0.9,
+                                decoration: const BoxDecoration(),
+                                child: wrapWithModel(
+                                  model: _model.userDetailsModel,
+                                  updateCallback: () => safeSetState(() {}),
+                                  child: const UserDetailsWidget(),
+                                ),
+                              ),
                             ),
                           ),
-                        ),
+                          wrapWithModel(
+                            model: _model.pageTitleModel,
+                            updateCallback: () => safeSetState(() {}),
+                            child: const PageTitleWidget(
+                              title1: 'Set your',
+                              title2: 'Status',
+                            ),
+                          ),
+                        ],
                       ),
-                      wrapWithModel(
-                        model: _model.pageTitleModel,
-                        updateCallback: () => safeSetState(() {}),
-                        child: const PageTitleWidget(
-                          title1: 'Set your',
-                          title2: 'Status',
-                        ),
-                      ),
-                    ],
-                  ),
+                    ),
+                    Container(
+                      decoration: const BoxDecoration(),
+                    ),
+                    wrapWithModel(
+                      model: _model.bottomBarModel,
+                      updateCallback: () => safeSetState(() {}),
+                      child: const BottomBarWidget(),
+                    ),
+                  ],
                 ),
-                Container(
-                  decoration: const BoxDecoration(),
-                ),
-                wrapWithModel(
-                  model: _model.bottomBarModel,
-                  updateCallback: () => safeSetState(() {}),
-                  child: const BottomBarWidget(),
-                ),
-              ],
+              ),
             ),
           ),
-        ),
-      ),
-    );
+        ));
   }
 }

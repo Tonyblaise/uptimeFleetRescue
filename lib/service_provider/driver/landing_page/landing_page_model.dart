@@ -21,6 +21,8 @@ class LandingPageModel extends FlutterFlowModel<LandingPageWidget> {
   void updateLocationsAtIndex(int index, Function(LatLng) updateFn) =>
       locations[index] = updateFn(locations[index]);
 
+  String? address;
+
   ///  State fields for stateful widgets in this page.
 
   // State field(s) for GoogleMapone widget.

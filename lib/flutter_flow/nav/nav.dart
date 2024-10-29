@@ -87,7 +87,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'login',
               path: 'login',
-              builder: (context, params) => const LoginWidget(),
+              builder: (context, params) => LoginWidget(
+                fleetManagerId: params.getParam(
+                  'fleetManagerId',
+                  ParamType.String,
+                ),
+                serviceProviderId: params.getParam(
+                  'serviceProviderId',
+                  ParamType.String,
+                ),
+              ),
             ),
             FFRoute(
               name: 'forgotPassword',
@@ -412,9 +421,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'test',
-              path: 'test',
-              builder: (context, params) => const TestWidget(),
+              name: 'request_service',
+              path: 'request_service',
+              builder: (context, params) => RequestServiceWidget(
+                fleetManagerId: params.getParam(
+                  'fleetManagerId',
+                  ParamType.String,
+                ),
+              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

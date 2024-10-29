@@ -1,27 +1,22 @@
-import '/auth/firebase_auth/auth_util.dart';
-import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/service_provider/request_notification/request_notification_widget.dart';
+import '/custom_code/actions/index.dart' as actions;
+import '/flutter_flow/permissions_util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'request_cancelled_model.dart';
-export 'request_cancelled_model.dart';
+import 'request_location_model.dart';
+export 'request_location_model.dart';
 
-class RequestCancelledWidget extends StatefulWidget {
-  const RequestCancelledWidget({
-    super.key,
-    required this.request,
-  });
-
-  final DocumentReference? request;
+class RequestLocationWidget extends StatefulWidget {
+  const RequestLocationWidget({super.key});
 
   @override
-  State<RequestCancelledWidget> createState() => _RequestCancelledWidgetState();
+  State<RequestLocationWidget> createState() => _RequestLocationWidgetState();
 }
 
-class _RequestCancelledWidgetState extends State<RequestCancelledWidget> {
-  late RequestCancelledModel _model;
+class _RequestLocationWidgetState extends State<RequestLocationWidget> {
+  late RequestLocationModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -32,7 +27,7 @@ class _RequestCancelledWidgetState extends State<RequestCancelledWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => RequestCancelledModel());
+    _model = createModel(context, () => RequestLocationModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -47,14 +42,11 @@ class _RequestCancelledWidgetState extends State<RequestCancelledWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: const AlignmentDirectional(0.0, 0.0),
+      alignment: const AlignmentDirectional(0.0, 1.0),
       child: Padding(
         padding: const EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 20.0),
         child: Container(
           width: double.infinity,
-          constraints: const BoxConstraints(
-            maxWidth: 500.0,
-          ),
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(24.0),
@@ -83,7 +75,7 @@ class _RequestCancelledWidgetState extends State<RequestCancelledWidget> {
                   child: Align(
                     alignment: const AlignmentDirectional(0.0, 0.0),
                     child: Text(
-                      'Request cancelled',
+                      'Allow location access',
                       textAlign: TextAlign.center,
                       style: FlutterFlowTheme.of(context).titleSmall.override(
                             fontFamily: 'Yantramanav',
@@ -95,14 +87,10 @@ class _RequestCancelledWidgetState extends State<RequestCancelledWidget> {
                   ),
                 ),
               ),
-              ClipRRect(
-                borderRadius: BorderRadius.circular(0.0),
-                child: SvgPicture.asset(
-                  'assets/images/group_alert.svg',
-                  width: 70.0,
-                  height: 56.0,
-                  fit: BoxFit.fitHeight,
-                ),
+              Icon(
+                Icons.location_on_outlined,
+                color: FlutterFlowTheme.of(context).primaryText,
+                size: 56.0,
               ),
               Padding(
                 padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
@@ -114,18 +102,7 @@ class _RequestCancelledWidgetState extends State<RequestCancelledWidget> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(
-                        'Request has been cancelled',
-                        textAlign: TextAlign.center,
-                        style: FlutterFlowTheme.of(context).labelLarge.override(
-                              fontFamily: 'Yantramanav',
-                              color: const Color(0xFF64748B),
-                              fontSize: 20.0,
-                              letterSpacing: 0.0,
-                              fontWeight: FontWeight.bold,
-                            ),
-                      ),
-                      Text(
-                        'This request has been cancelled. Please contact your manager or support for assistance',
+                        'In order to view your current location, this app needs permission to access your location',
                         textAlign: TextAlign.center,
                         style: FlutterFlowTheme.of(context).labelLarge.override(
                               fontFamily: 'Yantramanav',
@@ -148,19 +125,56 @@ class _RequestCancelledWidgetState extends State<RequestCancelledWidget> {
                     Expanded(
                       child: FFButtonWidget(
                         onPressed: () async {
-                          await currentUserReference!.update({
-                            ...mapToFirestore(
-                              {
-                                'activeRequest': FieldValue.delete(),
-                                'activeRequestBubble': FieldValue.delete(),
-                                'requestPending': FieldValue.delete(),
-                              },
-                            ),
-                          });
-
-                          context.pushNamed('dashboardTechnician');
+                          Navigator.pop(context);
                         },
-                        text: 'Proceed',
+                        text: 'Cancel',
+                        options: FFButtonOptions(
+                          height: 56.0,
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              24.0, 0.0, 24.0, 0.0),
+                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          color: FlutterFlowTheme.of(context).primary,
+                          textStyle:
+                              FlutterFlowTheme.of(context).titleSmall.override(
+                                    fontFamily: 'Yantramanav',
+                                    color: FlutterFlowTheme.of(context).error,
+                                    letterSpacing: 0.0,
+                                  ),
+                          elevation: 3.0,
+                          borderSide: const BorderSide(
+                            color: Colors.transparent,
+                            width: 1.0,
+                          ),
+                          borderRadius: BorderRadius.circular(100.0),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: FFButtonWidget(
+                        onPressed: () async {
+                          if (isAndroid || isiOS) {
+                            await requestPermission(locationPermission);
+                          } else {
+                            await actions.getUserLocation();
+                          }
+
+                          Navigator.pop(context);
+                          await showModalBottomSheet(
+                            isScrollControlled: true,
+                            backgroundColor: Colors.transparent,
+                            isDismissible: false,
+                            enableDrag: false,
+                            context: context,
+                            builder: (context) {
+                              return Padding(
+                                padding: MediaQuery.viewInsetsOf(context),
+                                child: const RequestNotificationWidget(),
+                              );
+                            },
+                          ).then((value) => safeSetState(() {}));
+                        },
+                        text: 'Allow access',
                         options: FFButtonOptions(
                           height: 56.0,
                           padding: const EdgeInsetsDirectional.fromSTEB(

@@ -1,19 +1,21 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/permissions_util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'confirm_request_model.dart';
-export 'confirm_request_model.dart';
+import 'request_notification_model.dart';
+export 'request_notification_model.dart';
 
-class ConfirmRequestWidget extends StatefulWidget {
-  const ConfirmRequestWidget({super.key});
+class RequestNotificationWidget extends StatefulWidget {
+  const RequestNotificationWidget({super.key});
 
   @override
-  State<ConfirmRequestWidget> createState() => _ConfirmRequestWidgetState();
+  State<RequestNotificationWidget> createState() =>
+      _RequestNotificationWidgetState();
 }
 
-class _ConfirmRequestWidgetState extends State<ConfirmRequestWidget> {
-  late ConfirmRequestModel _model;
+class _RequestNotificationWidgetState extends State<RequestNotificationWidget> {
+  late RequestNotificationModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -24,7 +26,7 @@ class _ConfirmRequestWidgetState extends State<ConfirmRequestWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => ConfirmRequestModel());
+    _model = createModel(context, () => RequestNotificationModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -39,14 +41,11 @@ class _ConfirmRequestWidgetState extends State<ConfirmRequestWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: const AlignmentDirectional(0.0, 1.0),
+      alignment: const AlignmentDirectional(0.0, 0.0),
       child: Padding(
         padding: const EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 20.0),
         child: Container(
           width: double.infinity,
-          constraints: const BoxConstraints(
-            maxWidth: 500.0,
-          ),
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(24.0),
@@ -75,7 +74,7 @@ class _ConfirmRequestWidgetState extends State<ConfirmRequestWidget> {
                   child: Align(
                     alignment: const AlignmentDirectional(0.0, 0.0),
                     child: Text(
-                      'Request Confirmed',
+                      'Allow notification access',
                       textAlign: TextAlign.center,
                       style: FlutterFlowTheme.of(context).titleSmall.override(
                             fontFamily: 'Yantramanav',
@@ -87,14 +86,10 @@ class _ConfirmRequestWidgetState extends State<ConfirmRequestWidget> {
                   ),
                 ),
               ),
-              ClipRRect(
-                borderRadius: BorderRadius.circular(0.0),
-                child: SvgPicture.asset(
-                  'assets/images/image_confirmation.svg',
-                  width: 56.0,
-                  height: 56.0,
-                  fit: BoxFit.fitHeight,
-                ),
+              Icon(
+                Icons.notifications_outlined,
+                color: FlutterFlowTheme.of(context).primaryText,
+                size: 56.0,
               ),
               Padding(
                 padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
@@ -106,18 +101,7 @@ class _ConfirmRequestWidgetState extends State<ConfirmRequestWidget> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(
-                        'Your tech assist request\nhas been confirmed.',
-                        textAlign: TextAlign.center,
-                        style: FlutterFlowTheme.of(context).labelLarge.override(
-                              fontFamily: 'Yantramanav',
-                              color: const Color(0xFF64748B),
-                              fontSize: 20.0,
-                              letterSpacing: 0.0,
-                              fontWeight: FontWeight.bold,
-                            ),
-                      ),
-                      Text(
-                        'You can chat with your tech\nat any time, keep track of the location\nand also cancel request if necessary.',
+                        'Allow application to send you notifications',
                         textAlign: TextAlign.center,
                         style: FlutterFlowTheme.of(context).labelLarge.override(
                               fontFamily: 'Yantramanav',
@@ -131,50 +115,74 @@ class _ConfirmRequestWidgetState extends State<ConfirmRequestWidget> {
                   ),
                 ),
               ),
-              Align(
-                alignment: const AlignmentDirectional(0.0, 0.0),
-                child: Padding(
-                  padding:
-                      const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 20.0),
-                  child: InkWell(
-                    splashColor: Colors.transparent,
-                    focusColor: Colors.transparent,
-                    hoverColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    onTap: () async {
-                      context.pushNamed('landing_page');
-                    },
-                    child: Container(
-                      width: MediaQuery.sizeOf(context).width * 0.9,
-                      height: 56.0,
-                      constraints: BoxConstraints(
-                        maxWidth: MediaQuery.sizeOf(context).width * 0.9,
-                      ),
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [
-                            FlutterFlowTheme.of(context).secondary,
-                            FlutterFlowTheme.of(context).tertiary
-                          ],
-                          stops: const [0.0, 1.0],
-                          begin: const AlignmentDirectional(0.0, -1.0),
-                          end: const AlignmentDirectional(0, 1.0),
-                        ),
-                        borderRadius: BorderRadius.circular(18.0),
-                      ),
-                      child: Align(
-                        alignment: const AlignmentDirectional(0.0, 0.0),
-                        child: Text(
-                          'Continue',
-                          style:
+              Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 20.0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Expanded(
+                      child: FFButtonWidget(
+                        onPressed: () async {
+                          Navigator.pop(context);
+                        },
+                        text: 'Cancel',
+                        options: FFButtonOptions(
+                          height: 56.0,
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              24.0, 0.0, 24.0, 0.0),
+                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          color: FlutterFlowTheme.of(context).primary,
+                          textStyle:
                               FlutterFlowTheme.of(context).titleSmall.override(
                                     fontFamily: 'Yantramanav',
+                                    color: FlutterFlowTheme.of(context).error,
                                     letterSpacing: 0.0,
                                   ),
+                          elevation: 3.0,
+                          borderSide: const BorderSide(
+                            color: Colors.transparent,
+                            width: 1.0,
+                          ),
+                          borderRadius: BorderRadius.circular(100.0),
                         ),
                       ),
                     ),
-                  ),
+                    Expanded(
+                      child: FFButtonWidget(
+                        onPressed: () async {
+                          if (isAndroid || isiOS) {
+                            await requestPermission(notificationsPermission);
+                            Navigator.pop(context);
+                          } else {
+                            Navigator.pop(context);
+                          }
+                        },
+                        text: 'Allow',
+                        options: FFButtonOptions(
+                          height: 56.0,
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              24.0, 0.0, 24.0, 0.0),
+                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          color: FlutterFlowTheme.of(context).tertiary,
+                          textStyle:
+                              FlutterFlowTheme.of(context).titleSmall.override(
+                                    fontFamily: 'Yantramanav',
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    letterSpacing: 0.0,
+                                  ),
+                          elevation: 3.0,
+                          borderSide: const BorderSide(
+                            color: Colors.transparent,
+                            width: 1.0,
+                          ),
+                          borderRadius: BorderRadius.circular(100.0),
+                        ),
+                      ),
+                    ),
+                  ].divide(const SizedBox(width: 15.0)),
                 ),
               ),
             ].divide(const SizedBox(height: 32.0)),

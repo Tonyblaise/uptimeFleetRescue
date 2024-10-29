@@ -52,4 +52,5 @@ export '/service_provider/driver/landing_page/landing_page_widget.dart'
     show LandingPageWidget;
 export '/service_provider/driver/vehicle_confirmation2/vehicle_confirmation2_widget.dart'
     show VehicleConfirmation2Widget;
-export '/test/test_widget.dart' show TestWidget;
+export '/service_provider/driver/request_service/request_service_widget.dart'
+    show RequestServiceWidget;

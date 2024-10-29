@@ -16,6 +16,8 @@ class LoginModel extends FlutterFlowModel<LoginWidget> {
   TextEditingController? textController;
   final textFieldMask = MaskTextInputFormatter(mask: '(###) ###-####');
   String? Function(BuildContext, String?)? textControllerValidator;
+  // Stores action output result for [Custom Action - checkLocationPermissions] action in Button widget.
+  bool? location;
   // Stores action output result for [Backend Call - API (Check user)] action in Button widget.
   ApiCallResponse? check;
 

@@ -9,6 +9,8 @@ class MoreDetailsModel extends FlutterFlowModel<MoreDetailsWidget> {
   final formKey2 = GlobalKey<FormState>();
   final formKey3 = GlobalKey<FormState>();
   final formKey1 = GlobalKey<FormState>();
+  // State field(s) for Wherewouldyoulikethevehicletowedto widget.
+  FFPlace wherewouldyoulikethevehicletowedtoValue = const FFPlace();
   // State field(s) for dropOffInstructions widget.
   FocusNode? dropOffInstructionsFocusNode;
   TextEditingController? dropOffInstructionsTextController;
@@ -23,8 +25,6 @@ class MoreDetailsModel extends FlutterFlowModel<MoreDetailsWidget> {
     return null;
   }
 
-  // State field(s) for Wherewouldyoulikethevehicletowedto widget.
-  FFPlace wherewouldyoulikethevehicletowedtoValue = const FFPlace();
   // State field(s) for willyoubewaitingwiththevehicle widget.
   FormFieldController<String>? willyoubewaitingwiththevehicleValueController;
   // State field(s) for ifnowherewillyouleavethekeys widget.
@@ -32,6 +32,15 @@ class MoreDetailsModel extends FlutterFlowModel<MoreDetailsWidget> {
   TextEditingController? ifnowherewillyouleavethekeysTextController;
   String? Function(BuildContext, String?)?
       ifnowherewillyouleavethekeysTextControllerValidator;
+  String? _ifnowherewillyouleavethekeysTextControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Field is required';
+    }
+
+    return null;
+  }
+
   // State field(s) for Areyourkeys widget.
   FormFieldController<String>? areyourkeysValueController;
   // State field(s) for DoesYourVehicleHaveaSpareTire widget.
@@ -41,6 +50,8 @@ class MoreDetailsModel extends FlutterFlowModel<MoreDetailsWidget> {
   void initState(BuildContext context) {
     dropOffInstructionsTextControllerValidator =
         _dropOffInstructionsTextControllerValidator;
+    ifnowherewillyouleavethekeysTextControllerValidator =
+        _ifnowherewillyouleavethekeysTextControllerValidator;
   }
 
   @override

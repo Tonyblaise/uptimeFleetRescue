@@ -107,7 +107,12 @@ class ParameterData {
 
 final parametersBuilderMap =
     <String, Future<ParameterData> Function(Map<String, dynamic>)>{
-  'login': ParameterData.none(),
+  'login': (data) async => ParameterData(
+        allParams: {
+          'fleetManagerId': getParameter<String>(data, 'fleetManagerId'),
+          'serviceProviderId': getParameter<String>(data, 'serviceProviderId'),
+        },
+      ),
   'forgotPassword': ParameterData.none(),
   'checkYourEmail': ParameterData.none(),
   'changePassword': (data) async => ParameterData(
@@ -226,7 +231,11 @@ final parametersBuilderMap =
           'image': getParameter<String>(data, 'image'),
         },
       ),
-  'test': ParameterData.none(),
+  'request_service': (data) async => ParameterData(
+        allParams: {
+          'fleetManagerId': getParameter<String>(data, 'fleetManagerId'),
+        },
+      ),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

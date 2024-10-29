@@ -365,6 +365,8 @@ class CreateARequestCall {
     String? driverImage = '',
     String? driverTechnician = '',
     String? dropOffLocationLatLng = '',
+    String? address = '',
+    String? dropOffAddress = '',
     String? accessToken = '1707139937267x678517623997244500',
   }) async {
     final baseUrl = UptimeFleetAppGroup.getBaseUrl(
@@ -385,7 +387,9 @@ class CreateARequestCall {
   "chatId": "$chatId",
   "firebaseId": "$firebaseId",
   "driverImage": "$driverImage",
-  "dropOffLocationLatLng": "$dropOffLocationLatLng"
+  "dropOffLocationLatLng": "$dropOffLocationLatLng",
+  "address": "$address",
+  "dropOffAddress": "$dropOffAddress"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Create a request',

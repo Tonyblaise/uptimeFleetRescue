@@ -104,199 +104,208 @@ class _ImageDetails1WidgetState extends State<ImageDetails1Widget>
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
-      child: Scaffold(
-        key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-        appBar: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-          automaticallyImplyLeading: false,
-          leading: FlutterFlowIconButton(
-            borderColor: Colors.transparent,
-            borderRadius: 30.0,
-            borderWidth: 1.0,
-            buttonSize: 60.0,
-            icon: Icon(
-              Icons.arrow_back_rounded,
-              color: FlutterFlowTheme.of(context).primaryText,
-              size: 30.0,
-            ),
-            onPressed: () async {
-              context.pop();
-            },
-          ),
-          actions: const [],
-          centerTitle: false,
-          elevation: 0.0,
-        ),
-        body: SafeArea(
-          top: true,
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: Hero(
-                    tag: widget.chatMessage!.image,
-                    transitionOnUserGestures: true,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(8.0),
-                      child: CachedNetworkImage(
-                        fadeInDuration: const Duration(milliseconds: 500),
-                        fadeOutDuration: const Duration(milliseconds: 500),
-                        imageUrl: widget.chatMessage!.image,
-                        width: double.infinity,
-                        fit: BoxFit.fitWidth,
-                        memCacheWidth: 1200,
-                        memCacheHeight: 1200,
-                      ),
-                    ),
-                  ).animateOnPageLoad(
-                      animationsMap['imageOnPageLoadAnimation']!),
+    return Title(
+        title: 'image_Details_1',
+        color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
+        child: GestureDetector(
+          onTap: () => FocusScope.of(context).unfocus(),
+          child: Scaffold(
+            key: scaffoldKey,
+            backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+            appBar: AppBar(
+              backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+              automaticallyImplyLeading: false,
+              leading: FlutterFlowIconButton(
+                borderColor: Colors.transparent,
+                borderRadius: 30.0,
+                borderWidth: 1.0,
+                buttonSize: 60.0,
+                icon: Icon(
+                  Icons.arrow_back_rounded,
+                  color: FlutterFlowTheme.of(context).primaryText,
+                  size: 30.0,
                 ),
+                onPressed: () async {
+                  context.pop();
+                },
               ),
-              Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 32.0),
-                child: FutureBuilder<UsersRecord>(
-                  future: FFAppState().userDocQuery(
-                    uniqueQueryKey: widget.chatMessage?.reference.id,
-                    requestFn: () =>
-                        UsersRecord.getDocumentOnce(widget.chatMessage!.user!),
-                  ),
-                  builder: (context, snapshot) {
-                    // Customize what your widget looks like when it's loading.
-                    if (!snapshot.hasData) {
-                      return Center(
-                        child: SizedBox(
-                          width: 50.0,
-                          height: 50.0,
-                          child: CircularProgressIndicator(
-                            valueColor: AlwaysStoppedAnimation<Color>(
-                              FlutterFlowTheme.of(context).primary,
-                            ),
+              actions: const [],
+              centerTitle: false,
+              elevation: 0.0,
+            ),
+            body: SafeArea(
+              top: true,
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Hero(
+                        tag: widget.chatMessage!.image,
+                        transitionOnUserGestures: true,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(8.0),
+                          child: CachedNetworkImage(
+                            fadeInDuration: const Duration(milliseconds: 500),
+                            fadeOutDuration: const Duration(milliseconds: 500),
+                            imageUrl: widget.chatMessage!.image,
+                            width: double.infinity,
+                            fit: BoxFit.fitWidth,
+                            memCacheWidth: 1200,
+                            memCacheHeight: 1200,
                           ),
                         ),
-                      );
-                    }
-
-                    final otherUserUsersRecord = snapshot.data!;
-
-                    return Row(
-                      mainAxisSize: MainAxisSize.max,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 4.0, 8.0, 16.0),
-                          child: Container(
-                            width: 36.0,
-                            height: 36.0,
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context).accent1,
-                              borderRadius: BorderRadius.circular(12.0),
-                              shape: BoxShape.rectangle,
-                              border: Border.all(
-                                color: FlutterFlowTheme.of(context).primary,
-                                width: 2.0,
-                              ),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(2.0),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(8.0),
-                                child: CachedNetworkImage(
-                                  fadeInDuration: const Duration(milliseconds: 200),
-                                  fadeOutDuration: const Duration(milliseconds: 200),
-                                  imageUrl: otherUserUsersRecord.photoUrl,
-                                  width: 44.0,
-                                  height: 44.0,
-                                  fit: BoxFit.cover,
+                      ).animateOnPageLoad(
+                          animationsMap['imageOnPageLoadAnimation']!),
+                    ),
+                  ),
+                  Padding(
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 32.0),
+                    child: FutureBuilder<UsersRecord>(
+                      future: FFAppState().userDocQuery(
+                        uniqueQueryKey: widget.chatMessage?.reference.id,
+                        requestFn: () => UsersRecord.getDocumentOnce(
+                            widget.chatMessage!.user!),
+                      ),
+                      builder: (context, snapshot) {
+                        // Customize what your widget looks like when it's loading.
+                        if (!snapshot.hasData) {
+                          return Center(
+                            child: SizedBox(
+                              width: 50.0,
+                              height: 50.0,
+                              child: CircularProgressIndicator(
+                                valueColor: AlwaysStoppedAnimation<Color>(
+                                  FlutterFlowTheme.of(context).primary,
                                 ),
                               ),
                             ),
-                          ),
-                        ),
-                        Flexible(
-                          child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 8.0),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
+                          );
+                        }
+
+                        final otherUserUsersRecord = snapshot.data!;
+
+                        return Row(
+                          mainAxisSize: MainAxisSize.max,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 4.0, 8.0, 16.0),
+                              child: Container(
+                                width: 36.0,
+                                height: 36.0,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context).accent1,
+                                  borderRadius: BorderRadius.circular(12.0),
+                                  shape: BoxShape.rectangle,
+                                  border: Border.all(
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    width: 2.0,
+                                  ),
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(2.0),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(8.0),
+                                    child: CachedNetworkImage(
+                                      fadeInDuration:
+                                          const Duration(milliseconds: 200),
+                                      fadeOutDuration:
+                                          const Duration(milliseconds: 200),
+                                      imageUrl: otherUserUsersRecord.photoUrl,
+                                      width: 44.0,
+                                      height: 44.0,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Flexible(
+                              child: Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 8.0),
+                                child: Column(
                                   mainAxisSize: MainAxisSize.max,
-                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    SelectionArea(
-                                        child: AutoSizeText(
-                                      otherUserUsersRecord.displayName,
-                                      textAlign: TextAlign.start,
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Yantramanav',
-                                            letterSpacing: 0.0,
-                                            lineHeight: 1.5,
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.end,
+                                      children: [
+                                        SelectionArea(
+                                            child: AutoSizeText(
+                                          otherUserUsersRecord.displayName,
+                                          textAlign: TextAlign.start,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Yantramanav',
+                                                letterSpacing: 0.0,
+                                                lineHeight: 1.5,
+                                              ),
+                                        )),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 4.0, 0.0, 0.0),
+                                          child: Text(
+                                            dateTimeFormat(
+                                              "relative",
+                                              widget.chatMessage!.timestamp!,
+                                              locale: FFLocalizations.of(
+                                                          context)
+                                                      .languageShortCode ??
+                                                  FFLocalizations.of(context)
+                                                      .languageCode,
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .labelSmall
+                                                .override(
+                                                  fontFamily: 'Yantramanav',
+                                                  letterSpacing: 0.0,
+                                                ),
                                           ),
-                                    )),
+                                        ),
+                                      ].divide(const SizedBox(width: 4.0)),
+                                    ),
                                     Padding(
                                       padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 4.0, 0.0, 0.0),
-                                      child: Text(
-                                        dateTimeFormat(
-                                          "relative",
-                                          widget.chatMessage!.timestamp!,
-                                          locale: FFLocalizations.of(context)
-                                                  .languageShortCode ??
-                                              FFLocalizations.of(context)
-                                                  .languageCode,
+                                      child: SelectionArea(
+                                          child: AutoSizeText(
+                                        valueOrDefault<String>(
+                                          widget.chatMessage?.text,
+                                          '--',
                                         ),
+                                        textAlign: TextAlign.start,
                                         style: FlutterFlowTheme.of(context)
-                                            .labelSmall
+                                            .labelLarge
                                             .override(
                                               fontFamily: 'Yantramanav',
                                               letterSpacing: 0.0,
+                                              lineHeight: 1.5,
                                             ),
-                                      ),
+                                      )),
                                     ),
-                                  ].divide(const SizedBox(width: 4.0)),
+                                  ],
                                 ),
-                                Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 4.0, 0.0, 0.0),
-                                  child: SelectionArea(
-                                      child: AutoSizeText(
-                                    valueOrDefault<String>(
-                                      widget.chatMessage?.text,
-                                      '--',
-                                    ),
-                                    textAlign: TextAlign.start,
-                                    style: FlutterFlowTheme.of(context)
-                                        .labelLarge
-                                        .override(
-                                          fontFamily: 'Yantramanav',
-                                          letterSpacing: 0.0,
-                                          lineHeight: 1.5,
-                                        ),
-                                  )),
-                                ),
-                              ],
+                              ),
                             ),
-                          ),
-                        ),
-                      ],
-                    ).animateOnPageLoad(
-                        animationsMap['rowOnPageLoadAnimation']!);
-                  },
-                ),
+                          ],
+                        ).animateOnPageLoad(
+                            animationsMap['rowOnPageLoadAnimation']!);
+                      },
+                    ),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
-        ),
-      ),
-    );
+        ));
   }
 }

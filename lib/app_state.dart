@@ -50,7 +50,7 @@ class FFAppState extends ChangeNotifier {
     _dropOffLocation = value;
   }
 
-  LatLng? _location;
+  LatLng? _location = const LatLng(-3.2191864, 40.1168906);
   LatLng? get location => _location;
   set location(LatLng? value) {
     _location = value;
@@ -71,6 +71,18 @@ class FFAppState extends ChangeNotifier {
   String get technicianId => _technicianId;
   set technicianId(String value) {
     _technicianId = value;
+  }
+
+  String _address = '';
+  String get address => _address;
+  set address(String value) {
+    _address = value;
+  }
+
+  String _dropOffLocationAddress = '';
+  String get dropOffLocationAddress => _dropOffLocationAddress;
+  set dropOffLocationAddress(String value) {
+    _dropOffLocationAddress = value;
   }
 
   final _userDocQueryManager = FutureRequestManager<UsersRecord>();

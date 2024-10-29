@@ -35,154 +35,165 @@ class _ConnectionProblemWidgetState extends State<ConnectionProblemWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
-      child: Scaffold(
-        key: scaffoldKey,
-        backgroundColor: const Color(0xFFB8B8BE),
-        body: SafeArea(
-          top: true,
-          child: Container(
-            decoration: const BoxDecoration(
-              shape: BoxShape.rectangle,
-            ),
-            alignment: const AlignmentDirectional(0.0, 0.0),
-            child: Container(
-              width: MediaQuery.sizeOf(context).width * 0.9,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(24.0),
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Align(
-                    alignment: const AlignmentDirectional(0.0, 0.0),
-                    child: Container(
-                      width: MediaQuery.sizeOf(context).width * 0.9,
-                      height: 80.0,
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [
-                            FlutterFlowTheme.of(context).secondary,
-                            FlutterFlowTheme.of(context).tertiary
-                          ],
-                          stops: const [0.0, 1.0],
-                          begin: const AlignmentDirectional(0.0, -1.0),
-                          end: const AlignmentDirectional(0, 1.0),
-                        ),
-                        borderRadius: BorderRadius.circular(24.0),
-                      ),
-                      child: Align(
-                        alignment: const AlignmentDirectional(0.0, 0.0),
-                        child: Text(
-                          'Connection problem',
-                          textAlign: TextAlign.center,
-                          style:
-                              FlutterFlowTheme.of(context).titleSmall.override(
-                                    fontFamily: 'Yantramanav',
-                                    color: Colors.black,
-                                    fontSize: 24.0,
-                                    letterSpacing: 0.0,
-                                  ),
-                        ),
-                      ),
-                    ),
+    return Title(
+        title: 'connectionProblem',
+        color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
+        child: GestureDetector(
+          onTap: () => FocusScope.of(context).unfocus(),
+          child: Scaffold(
+            key: scaffoldKey,
+            backgroundColor: const Color(0xFFB8B8BE),
+            body: SafeArea(
+              top: true,
+              child: Align(
+                alignment: const AlignmentDirectional(0.0, 0.0),
+                child: Container(
+                  constraints: const BoxConstraints(
+                    maxWidth: 500.0,
                   ),
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(0.0),
-                    child: SvgPicture.asset(
-                      'assets/images/group_nosignal.svg',
-                      width: 56.0,
-                      height: 56.0,
-                      fit: BoxFit.fitHeight,
-                    ),
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.rectangle,
                   ),
-                  Padding(
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
-                    child: Container(
-                      width: MediaQuery.sizeOf(context).width * 0.9,
-                      decoration: const BoxDecoration(),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(
-                            'Oops! No internet connection',
-                            textAlign: TextAlign.center,
-                            style: FlutterFlowTheme.of(context)
-                                .labelLarge
-                                .override(
-                                  fontFamily: 'Yantramanav',
-                                  color: const Color(0xFF64748B),
-                                  fontSize: 20.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                          ),
-                          Text(
-                            'Make sure wi-fi or cellular data is turned on\nand then please try again.',
-                            textAlign: TextAlign.center,
-                            style: FlutterFlowTheme.of(context)
-                                .labelLarge
-                                .override(
-                                  fontFamily: 'Yantramanav',
-                                  color: const Color(0xFF64748B),
-                                  fontSize: 16.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.w300,
-                                ),
-                          ),
-                        ].divide(const SizedBox(height: 8.0)),
-                      ),
+                  alignment: const AlignmentDirectional(0.0, 0.0),
+                  child: Container(
+                    width: MediaQuery.sizeOf(context).width * 0.9,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(24.0),
                     ),
-                  ),
-                  Align(
-                    alignment: const AlignmentDirectional(0.0, 0.0),
-                    child: Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 30.0),
-                      child: Container(
-                        width: MediaQuery.sizeOf(context).width * 0.9,
-                        height: 56.0,
-                        constraints: BoxConstraints(
-                          maxWidth: MediaQuery.sizeOf(context).width * 0.9,
-                        ),
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            colors: [
-                              FlutterFlowTheme.of(context).secondary,
-                              FlutterFlowTheme.of(context).tertiary
-                            ],
-                            stops: const [0.0, 1.0],
-                            begin: const AlignmentDirectional(0.0, -1.0),
-                            end: const AlignmentDirectional(0, 1.0),
-                          ),
-                          borderRadius: BorderRadius.circular(18.0),
-                        ),
-                        child: Align(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Align(
                           alignment: const AlignmentDirectional(0.0, 0.0),
-                          child: Text(
-                            'Try again',
-                            style: FlutterFlowTheme.of(context)
-                                .titleSmall
-                                .override(
-                                  fontFamily: 'Yantramanav',
-                                  letterSpacing: 0.0,
-                                ),
+                          child: Container(
+                            width: MediaQuery.sizeOf(context).width * 0.9,
+                            height: 80.0,
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                colors: [
+                                  FlutterFlowTheme.of(context).secondary,
+                                  FlutterFlowTheme.of(context).tertiary
+                                ],
+                                stops: const [0.0, 1.0],
+                                begin: const AlignmentDirectional(0.0, -1.0),
+                                end: const AlignmentDirectional(0, 1.0),
+                              ),
+                              borderRadius: BorderRadius.circular(24.0),
+                            ),
+                            child: Align(
+                              alignment: const AlignmentDirectional(0.0, 0.0),
+                              child: Text(
+                                'Connection problem',
+                                textAlign: TextAlign.center,
+                                style: FlutterFlowTheme.of(context)
+                                    .titleSmall
+                                    .override(
+                                      fontFamily: 'Yantramanav',
+                                      color: Colors.black,
+                                      fontSize: 24.0,
+                                      letterSpacing: 0.0,
+                                    ),
+                              ),
+                            ),
                           ),
                         ),
-                      ),
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(0.0),
+                          child: SvgPicture.asset(
+                            'assets/images/group_nosignal.svg',
+                            width: 56.0,
+                            height: 56.0,
+                            fit: BoxFit.fitHeight,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              20.0, 0.0, 20.0, 0.0),
+                          child: Container(
+                            width: MediaQuery.sizeOf(context).width * 0.9,
+                            decoration: const BoxDecoration(),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  'Oops! No internet connection',
+                                  textAlign: TextAlign.center,
+                                  style: FlutterFlowTheme.of(context)
+                                      .labelLarge
+                                      .override(
+                                        fontFamily: 'Yantramanav',
+                                        color: const Color(0xFF64748B),
+                                        fontSize: 20.0,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                ),
+                                Text(
+                                  'Make sure wi-fi or cellular data is turned on\nand then please try again.',
+                                  textAlign: TextAlign.center,
+                                  style: FlutterFlowTheme.of(context)
+                                      .labelLarge
+                                      .override(
+                                        fontFamily: 'Yantramanav',
+                                        color: const Color(0xFF64748B),
+                                        fontSize: 16.0,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.w300,
+                                      ),
+                                ),
+                              ].divide(const SizedBox(height: 8.0)),
+                            ),
+                          ),
+                        ),
+                        Align(
+                          alignment: const AlignmentDirectional(0.0, 0.0),
+                          child: Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                20.0, 0.0, 20.0, 30.0),
+                            child: Container(
+                              width: MediaQuery.sizeOf(context).width * 0.9,
+                              height: 56.0,
+                              constraints: BoxConstraints(
+                                maxWidth:
+                                    MediaQuery.sizeOf(context).width * 0.9,
+                              ),
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  colors: [
+                                    FlutterFlowTheme.of(context).secondary,
+                                    FlutterFlowTheme.of(context).tertiary
+                                  ],
+                                  stops: const [0.0, 1.0],
+                                  begin: const AlignmentDirectional(0.0, -1.0),
+                                  end: const AlignmentDirectional(0, 1.0),
+                                ),
+                                borderRadius: BorderRadius.circular(18.0),
+                              ),
+                              child: Align(
+                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                child: Text(
+                                  'Try again',
+                                  style: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .override(
+                                        fontFamily: 'Yantramanav',
+                                        letterSpacing: 0.0,
+                                      ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ].divide(const SizedBox(height: 32.0)),
                     ),
                   ),
-                ].divide(const SizedBox(height: 32.0)),
+                ),
               ),
             ),
           ),
-        ),
-      ),
-    );
+        ));
   }
 }
