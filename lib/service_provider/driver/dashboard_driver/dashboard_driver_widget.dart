@@ -144,6 +144,9 @@ class _DashboardDriverWidgetState extends State<DashboardDriverWidget> {
                                       '') {
                                 return Container(
                                   width: double.infinity,
+                                  constraints: const BoxConstraints(
+                                    maxWidth: 500.0,
+                                  ),
                                   decoration: const BoxDecoration(),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
@@ -249,7 +252,7 @@ class _DashboardDriverWidgetState extends State<DashboardDriverWidget> {
                                                               height: 99.0,
                                                               constraints:
                                                                   const BoxConstraints(
-                                                                minWidth: 99.0,
+                                                                minWidth: 75.0,
                                                                 minHeight: 99.0,
                                                                 maxWidth: 99.0,
                                                                 maxHeight:
@@ -633,6 +636,9 @@ class _DashboardDriverWidgetState extends State<DashboardDriverWidget> {
                                 return Container(
                                   width: double.infinity,
                                   height: 477.0,
+                                  constraints: const BoxConstraints(
+                                    maxWidth: 500.0,
+                                  ),
                                   decoration: BoxDecoration(
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryBackground,

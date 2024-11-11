@@ -236,6 +236,7 @@ final parametersBuilderMap =
           'fleetManagerId': getParameter<String>(data, 'fleetManagerId'),
         },
       ),
+  'test': ParameterData.none(),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

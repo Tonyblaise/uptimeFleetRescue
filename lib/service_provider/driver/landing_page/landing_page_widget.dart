@@ -11,6 +11,7 @@ import '/service_provider/driver/service_updates_component/service_updates_compo
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:provider/provider.dart';
 import 'landing_page_model.dart';
 export 'landing_page_model.dart';
 
@@ -60,6 +61,8 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Title(
         title: 'landing_page',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
@@ -90,129 +93,62 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                           child: Builder(
                             builder: (context) {
                               if (currentUserDocument?.activeRequest == null) {
-                                return StreamBuilder<List<UsersRecord>>(
-                                  stream: queryUsersRecord(
-                                    queryBuilder: (usersRecord) =>
-                                        usersRecord.where(
-                                      'onDuty',
-                                      isEqualTo: true,
-                                      isNull: (true) == null,
-                                    ),
+                                return Container(
+                                  width: double.infinity,
+                                  height: double.infinity,
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
                                   ),
-                                  builder: (context, snapshot) {
-                                    // Customize what your widget looks like when it's loading.
-                                    if (!snapshot.hasData) {
-                                      return Center(
-                                        child: SizedBox(
-                                          width: 50.0,
-                                          height: 50.0,
-                                          child: CircularProgressIndicator(
-                                            valueColor:
-                                                AlwaysStoppedAnimation<Color>(
-                                              FlutterFlowTheme.of(context)
-                                                  .primary,
-                                            ),
-                                          ),
-                                        ),
-                                      );
-                                    }
-                                    List<UsersRecord> containerUsersRecordList =
-                                        snapshot.data!
-                                            .where(
-                                                (u) => u.uid != currentUserUid)
-                                            .toList();
-
-                                    return Container(
-                                      width: double.infinity,
-                                      height: double.infinity,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                      ),
-                                      child: StreamBuilder<RequestRecord>(
-                                        stream: RequestRecord.getDocument(
-                                            currentUserDocument!
-                                                .activeRequest!),
-                                        builder: (context, snapshot) {
-                                          // Customize what your widget looks like when it's loading.
-                                          if (!snapshot.hasData) {
-                                            return Center(
-                                              child: SizedBox(
-                                                width: 50.0,
-                                                height: 50.0,
-                                                child:
-                                                    CircularProgressIndicator(
-                                                  valueColor:
-                                                      AlwaysStoppedAnimation<
-                                                          Color>(
-                                                    FlutterFlowTheme.of(context)
-                                                        .primary,
+                                  child: Stack(
+                                    children: [
+                                      Align(
+                                        alignment:
+                                            const AlignmentDirectional(0.0, 0.0),
+                                        child: Container(
+                                          width: double.infinity,
+                                          height: double.infinity,
+                                          decoration: const BoxDecoration(),
+                                          child: Builder(builder: (context) {
+                                            final googleMapMarker =
+                                                _model.latLng;
+                                            return FlutterFlowGoogleMap(
+                                              controller: _model
+                                                  .googleMap6879sController,
+                                              onCameraIdle: (latLng) =>
+                                                  safeSetState(() => _model
+                                                          .googleMap6879sCenter =
+                                                      latLng),
+                                              initialLocation: _model
+                                                      .googleMap6879sCenter ??=
+                                                  _model.latLng!,
+                                              markers: [
+                                                if (googleMapMarker != null)
+                                                  FlutterFlowMarker(
+                                                    googleMapMarker
+                                                        .serialize(),
+                                                    googleMapMarker,
                                                   ),
-                                                ),
-                                              ),
+                                              ],
+                                              markerColor:
+                                                  GoogleMarkerColor.violet,
+                                              mapType: MapType.normal,
+                                              style: GoogleMapStyle.standard,
+                                              initialZoom: 14.0,
+                                              allowInteraction: true,
+                                              allowZoom: true,
+                                              showZoomControls: true,
+                                              showLocation: true,
+                                              showCompass: true,
+                                              showMapToolbar: true,
+                                              showTraffic: true,
+                                              centerMapOnMarkerTap: true,
                                             );
-                                          }
-
-                                          final stackRequestRecord =
-                                              snapshot.data!;
-
-                                          return Stack(
-                                            children: [
-                                              Align(
-                                                alignment: const AlignmentDirectional(
-                                                    0.0, 0.0),
-                                                child: Container(
-                                                  width: double.infinity,
-                                                  height: double.infinity,
-                                                  decoration: const BoxDecoration(),
-                                                  child: FlutterFlowGoogleMap(
-                                                    controller: _model
-                                                        .googleMaponesController1,
-                                                    onCameraIdle: (latLng) =>
-                                                        safeSetState(() => _model
-                                                                .googleMaponesCenter1 =
-                                                            latLng),
-                                                    initialLocation: _model
-                                                            .googleMaponesCenter1 ??=
-                                                        _model.latLng!,
-                                                    markers:
-                                                        containerUsersRecordList
-                                                            .map((e) => e
-                                                                .technicianLastUpdatedLocation)
-                                                            .withoutNulls
-                                                            .toList()
-                                                            .map(
-                                                              (marker) =>
-                                                                  FlutterFlowMarker(
-                                                                marker
-                                                                    .serialize(),
-                                                                marker,
-                                                              ),
-                                                            )
-                                                            .toList(),
-                                                    markerColor:
-                                                        GoogleMarkerColor.red,
-                                                    mapType: MapType.normal,
-                                                    style:
-                                                        GoogleMapStyle.standard,
-                                                    initialZoom: 14.0,
-                                                    allowInteraction: true,
-                                                    allowZoom: true,
-                                                    showZoomControls: true,
-                                                    showLocation: true,
-                                                    showCompass: true,
-                                                    showMapToolbar: true,
-                                                    showTraffic: true,
-                                                    centerMapOnMarkerTap: true,
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          );
-                                        },
+                                          }),
+                                        ),
                                       ),
-                                    );
-                                  },
+                                    ],
+                                  ),
                                 );
                               } else {
                                 return AuthUserStreamWidget(
@@ -743,15 +679,15 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                                               child:
                                                                   FlutterFlowGoogleMap(
                                                                 controller: _model
-                                                                    .googleMaponesController2,
+                                                                    .googleMaponesController,
                                                                 onCameraIdle: (latLng) =>
                                                                     safeSetState(() =>
-                                                                        _model.googleMaponesCenter2 =
+                                                                        _model.googleMaponesCenter =
                                                                             latLng),
-                                                                initialLocation:
-                                                                    _model.googleMaponesCenter2 ??=
-                                                                        _model
-                                                                            .latLng!,
+                                                                initialLocation: _model
+                                                                        .googleMaponesCenter ??=
+                                                                    containerRequestRecord
+                                                                        .location!,
                                                                 markers: containerUsersRecordList
                                                                     .map((e) => e.technicianLastUpdatedLocation)
                                                                     .withoutNulls
@@ -1022,24 +958,38 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                             highlightColor: Colors.transparent,
                                             onTap: () async {
                                               if (_model.addressView == true) {
-                                                FFAppState().location =
-                                                    _model.latLng;
-                                                FFAppState().address =
-                                                    valueOrDefault<String>(
-                                                  GetAddressFromLatLngCall
-                                                      .placename(
-                                                    columnGetAddressFromLatLngResponse
-                                                        .jsonBody,
-                                                  )?.first,
-                                                  '.',
-                                                );
-                                                safeSetState(() {});
+                                                if (FFAppState().address ==
+                                                        '') {
+                                                  FFAppState().location =
+                                                      _model.latLng;
+                                                  FFAppState().address =
+                                                      valueOrDefault<String>(
+                                                    GetAddressFromLatLngCall
+                                                        .placename(
+                                                      columnGetAddressFromLatLngResponse
+                                                          .jsonBody,
+                                                    )?.first,
+                                                    '.',
+                                                  );
+                                                  safeSetState(() {});
 
-                                                context.pushNamed(
-                                                    'dashboardDriver');
+                                                  context.pushNamed(
+                                                      'dashboardDriver');
+                                                } else {
+                                                  FFAppState().address =
+                                                      _model.address!;
+                                                  FFAppState().location =
+                                                      _model.latLng;
+                                                  safeSetState(() {});
+                                                  _model.address = null;
+                                                  safeSetState(() {});
+
+                                                  context.pushNamed(
+                                                      'dashboardDriver');
+                                                }
                                               } else {
                                                 await _model
-                                                    .googleMaponesController1
+                                                    .googleMap6879sController
                                                     .future
                                                     .then(
                                                   (c) => c.animateCamera(
@@ -1049,12 +999,7 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                                             .toGoogleMaps()),
                                                   ),
                                                 );
-                                                FFAppState().location =
-                                                    _model.latLng;
-                                                FFAppState().address =
-                                                    '${_model.placePickerValue.zipCode} ${_model.placePickerValue.name},${_model.placePickerValue.city},${_model.placePickerValue.state} ,${_model.placePickerValue.country}';
-                                                safeSetState(() {});
-                                                _model.addressView = false;
+                                                _model.addressView = true;
                                                 _model.latLng = _model
                                                     .placePickerValue.latLng;
                                                 _model.address =

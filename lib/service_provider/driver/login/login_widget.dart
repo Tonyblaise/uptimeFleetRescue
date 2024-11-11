@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/service_provider/request_location/request_location_widget.dart';
+import 'dart:async';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'login_model.dart';
@@ -239,8 +240,12 @@ class _LoginWidgetState extends State<LoginWidget> {
                             ),
                             child: FFButtonWidget(
                               onPressed: () async {
-                                _model.location =
-                                    await actions.checkLocationPermissions();
+                                unawaited(
+                                  () async {
+                                    _model.location = await actions
+                                        .checkLocationPermissions();
+                                  }(),
+                                );
                                 if (_model.location == true) {
                                   _model.check = await UptimeFleetAppGroup
                                       .checkUserCall

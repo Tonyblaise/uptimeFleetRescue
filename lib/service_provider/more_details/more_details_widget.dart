@@ -696,62 +696,35 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                                           0.0, 0.0, 0.0, 20.0),
                                                   child: FFButtonWidget(
                                                     onPressed: () async {
-                                                      if (_model.wherewouldyoulikethevehicletowedtoValue
-                                                                  .address !=
-                                                              '') {
-                                                        FFAppState()
-                                                                .requestAdditionalInfo =
-                                                            'Where would you like the vehicle towed to?/n${_model.wherewouldyoulikethevehicletowedtoValue.address}/n/nDrop off instructions/n${_model.dropOffInstructionsTextController.text}/n/nWill you be waiting with the vehicle?/n${_model.willyoubewaitingwiththevehicleValue}/n/nIf not, where will you leave the keys?/n${_model.ifnowherewillyouleavethekeysTextController.text}/n/n/';
-                                                        FFAppState()
-                                                                .dropOffLocation =
-                                                            _model
-                                                                .wherewouldyoulikethevehicletowedtoValue
-                                                                .latLng;
-                                                        FFAppState()
-                                                                .dropOffLocationAddress =
-                                                            '${_model.wherewouldyoulikethevehicletowedtoValue.zipCode} ${_model.wherewouldyoulikethevehicletowedtoValue.name},${_model.wherewouldyoulikethevehicletowedtoValue.city},${_model.wherewouldyoulikethevehicletowedtoValue.state} ,${_model.wherewouldyoulikethevehicletowedtoValue.country}';
-                                                        safeSetState(() {});
+                                                      FFAppState()
+                                                              .requestAdditionalInfo =
+                                                          'Where would you like the vehicle towed to?/n${_model.wherewouldyoulikethevehicletowedtoValue.address}/n/nDrop off instructions/n${_model.dropOffInstructionsTextController.text}/n/nWill you be waiting with the vehicle?/n${_model.willyoubewaitingwiththevehicleValue}/n/nIf not, where will you leave the keys?/n${_model.ifnowherewillyouleavethekeysTextController.text}/n/n/';
+                                                      FFAppState()
+                                                              .dropOffLocation =
+                                                          _model
+                                                              .wherewouldyoulikethevehicletowedtoValue
+                                                              .latLng;
+                                                      FFAppState()
+                                                              .dropOffLocationAddress =
+                                                          '${_model.wherewouldyoulikethevehicletowedtoValue.zipCode} ${_model.wherewouldyoulikethevehicletowedtoValue.name},${_model.wherewouldyoulikethevehicletowedtoValue.city},${_model.wherewouldyoulikethevehicletowedtoValue.state} ,${_model.wherewouldyoulikethevehicletowedtoValue.country}';
+                                                      safeSetState(() {});
 
-                                                        context.pushNamed(
-                                                          'vehicle_confirmation',
-                                                          queryParameters: {
-                                                            'service':
-                                                                serializeParam(
-                                                              widget.fault,
-                                                              ParamType.String,
-                                                            ),
-                                                            'additionalInfo':
-                                                                serializeParam(
-                                                              '',
-                                                              ParamType.String,
-                                                            ),
-                                                          }.withoutNulls,
-                                                        );
-                                                      } else {
-                                                        ScaffoldMessenger.of(
-                                                                context)
-                                                            .showSnackBar(
-                                                          SnackBar(
-                                                            content: Text(
-                                                              'Towing location is requeired',
-                                                              style: TextStyle(
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primary,
-                                                                fontSize: 14.0,
-                                                              ),
-                                                            ),
-                                                            duration: const Duration(
-                                                                milliseconds:
-                                                                    4000),
-                                                            backgroundColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .error,
+                                                      context.pushNamed(
+                                                        'vehicle_confirmation',
+                                                        queryParameters: {
+                                                          'service':
+                                                              serializeParam(
+                                                            widget.fault,
+                                                            ParamType.String,
                                                           ),
-                                                        );
-                                                      }
-                                                    },
+                                                          'additionalInfo':
+                                                              serializeParam(
+                                                            '',
+                                                            ParamType.String,
+                                                          ),
+                                                        }.withoutNulls,
+                                                      );
+                                                                                                        },
                                                     text: 'Next',
                                                     options: FFButtonOptions(
                                                       width: MediaQuery.sizeOf(

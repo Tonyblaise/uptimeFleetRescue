@@ -46,6 +46,9 @@ class _RequestNotificationWidgetState extends State<RequestNotificationWidget> {
         padding: const EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 20.0),
         child: Container(
           width: double.infinity,
+          constraints: const BoxConstraints(
+            maxWidth: 500.0,
+          ),
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(24.0),

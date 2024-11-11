@@ -46,7 +46,6 @@ class _VehicleConfirmation2WidgetState
   late VehicleConfirmation2Model _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  LatLng? currentUserLocationValue;
 
   @override
   void initState() {
@@ -861,12 +860,6 @@ class _VehicleConfirmation2WidgetState
                                                         0.0, 0.0, 0.0, 20.0),
                                                 child: FFButtonWidget(
                                                   onPressed: () async {
-                                                    currentUserLocationValue =
-                                                        await getCurrentUserLocation(
-                                                            defaultLocation:
-                                                                const LatLng(
-                                                                    0.0, 0.0));
-
                                                     var chatsRecordReference =
                                                         ChatsRecord.collection
                                                             .doc();
@@ -927,7 +920,7 @@ class _VehicleConfirmation2WidgetState
                                                       driver:
                                                           currentUserReference,
                                                       location:
-                                                          currentUserLocationValue,
+                                                          FFAppState().location,
                                                       driverName: valueOrDefault(
                                                           currentUserDocument
                                                               ?.fullName,
@@ -946,7 +939,8 @@ class _VehicleConfirmation2WidgetState
                                                               driver:
                                                                   currentUserReference,
                                                               location:
-                                                                  currentUserLocationValue,
+                                                                  FFAppState()
+                                                                      .location,
                                                               driverName: valueOrDefault(
                                                                   currentUserDocument
                                                                       ?.fullName,

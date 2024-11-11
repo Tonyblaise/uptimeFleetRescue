@@ -25,17 +25,17 @@ class LandingPageModel extends FlutterFlowModel<LandingPageWidget> {
 
   ///  State fields for stateful widgets in this page.
 
-  // State field(s) for GoogleMapone widget.
-  LatLng? googleMaponesCenter1;
-  final googleMaponesController1 = Completer<GoogleMapController>();
+  // State field(s) for GoogleMap6879 widget.
+  LatLng? googleMap6879sCenter;
+  final googleMap6879sController = Completer<GoogleMapController>();
   // State field(s) for GoogleMap widget.
   LatLng? googleMapsCenter;
   final googleMapsController = Completer<GoogleMapController>();
   // Model for confirmCancellation component.
   late ConfirmCancellationModel confirmCancellationModel1;
   // State field(s) for GoogleMapone widget.
-  LatLng? googleMaponesCenter2;
-  final googleMaponesController2 = Completer<GoogleMapController>();
+  LatLng? googleMaponesCenter;
+  final googleMaponesController = Completer<GoogleMapController>();
   // Model for confirmCancellation component.
   late ConfirmCancellationModel confirmCancellationModel2;
   // State field(s) for PlacePicker widget.
