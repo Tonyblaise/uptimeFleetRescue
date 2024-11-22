@@ -416,7 +416,7 @@ class _RequestServiceWidgetState extends State<RequestServiceWidget> {
                                         fullName:
                                             _model.fullnameTextController.text,
                                         phoneNumber:
-                                            _model.textController2.text,
+                                            '${_model.dropDownValue}${_model.textController2.text}',
                                         driverTechnicianMessageThreadIdFirebase:
                                             _model.technicianChat?.reference.id,
                                         driverSupportMessageThreadIdFirebase:
