@@ -53,7 +53,10 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
         title: 'changePassword',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
+          onTap: () {
+            FocusScope.of(context).unfocus();
+            FocusManager.instance.primaryFocus?.unfocus();
+          },
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -63,14 +66,14 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                   color: FlutterFlowTheme.of(context).primaryText),
               automaticallyImplyLeading: true,
               title: Container(
-                decoration: const BoxDecoration(),
+                decoration: BoxDecoration(),
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
                   child: Text(
                     'Change your password',
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Yantramanav',
-                          color: const Color(0xFF1E293B),
+                          color: Color(0xFF1E293B),
                           fontSize: 30.0,
                           letterSpacing: 0.0,
                           fontWeight: FontWeight.bold,
@@ -78,7 +81,7 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                   ),
                 ),
               ),
-              actions: const [],
+              actions: [],
               centerTitle: false,
               elevation: 1.0,
             ),
@@ -96,15 +99,15 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                   children: [
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
                       child: Container(
-                        decoration: const BoxDecoration(),
+                        decoration: BoxDecoration(),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Container(
                               width: MediaQuery.sizeOf(context).width * 0.9,
-                              decoration: const BoxDecoration(),
+                              decoration: BoxDecoration(),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -115,7 +118,7 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                                         .labelLarge
                                         .override(
                                           fontFamily: 'Yantramanav',
-                                          color: const Color(0xFF0F172A),
+                                          color: Color(0xFF0F172A),
                                           fontSize: 18.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.bold,
@@ -132,19 +135,19 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                                           letterSpacing: 0.0,
                                         ),
                                   ),
-                                ].divide(const SizedBox(height: 8.0)),
+                                ].divide(SizedBox(height: 8.0)),
                               ),
                             ),
                             Column(
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Container(
-                                  decoration: const BoxDecoration(),
+                                  decoration: BoxDecoration(),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Container(
-                                        decoration: const BoxDecoration(),
+                                        decoration: BoxDecoration(),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
                                           crossAxisAlignment:
@@ -167,9 +170,9 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                                               width: MediaQuery.sizeOf(context)
                                                       .width *
                                                   0.9,
-                                              decoration: const BoxDecoration(),
+                                              decoration: BoxDecoration(),
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 4.0, 0.0, 4.0),
                                                 child: TextFormField(
@@ -195,7 +198,7 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                                                         ),
                                                     enabledBorder:
                                                         OutlineInputBorder(
-                                                      borderSide: const BorderSide(
+                                                      borderSide: BorderSide(
                                                         color:
                                                             Color(0xFFCBD5E1),
                                                         width: 1.0,
@@ -246,7 +249,7 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                                                     filled: true,
                                                     fillColor: Colors.white,
                                                     contentPadding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(8.0, 0.0,
                                                                 8.0, 0.0),
                                                     suffixIcon: InkWell(
@@ -265,7 +268,7 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                                                             : Icons
                                                                 .visibility_off_outlined,
                                                         color:
-                                                            const Color(0xFF94A3B8),
+                                                            Color(0xFF94A3B8),
                                                         size: 21.0,
                                                       ),
                                                     ),
@@ -294,7 +297,7 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                                             MediaQuery.sizeOf(context).width *
                                                 0.9,
                                         height: 84.0,
-                                        decoration: const BoxDecoration(),
+                                        decoration: BoxDecoration(),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
                                           crossAxisAlignment:
@@ -315,7 +318,7 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                                             ),
                                             Expanded(
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 4.0, 0.0, 4.0),
                                                 child: TextFormField(
@@ -341,7 +344,7 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                                                         ),
                                                     enabledBorder:
                                                         OutlineInputBorder(
-                                                      borderSide: const BorderSide(
+                                                      borderSide: BorderSide(
                                                         color:
                                                             Color(0xFFCBD5E1),
                                                         width: 1.0,
@@ -392,7 +395,7 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                                                     filled: true,
                                                     fillColor: Colors.white,
                                                     contentPadding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(8.0, 0.0,
                                                                 8.0, 0.0),
                                                     suffixIcon: InkWell(
@@ -434,7 +437,7 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                                         ),
                                       ),
                                       Container(
-                                        decoration: const BoxDecoration(),
+                                        decoration: BoxDecoration(),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
                                           crossAxisAlignment:
@@ -457,9 +460,9 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                                               width: MediaQuery.sizeOf(context)
                                                       .width *
                                                   0.9,
-                                              decoration: const BoxDecoration(),
+                                              decoration: BoxDecoration(),
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 4.0, 0.0, 4.0),
                                                 child: TextFormField(
@@ -485,7 +488,7 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                                                         ),
                                                     enabledBorder:
                                                         OutlineInputBorder(
-                                                      borderSide: const BorderSide(
+                                                      borderSide: BorderSide(
                                                         color:
                                                             Color(0xFFCBD5E1),
                                                         width: 1.0,
@@ -536,7 +539,7 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                                                     filled: true,
                                                     fillColor: Colors.white,
                                                     contentPadding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(8.0, 0.0,
                                                                 8.0, 0.0),
                                                     suffixIcon: InkWell(
@@ -555,7 +558,7 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                                                             : Icons
                                                                 .visibility_off_outlined,
                                                         color:
-                                                            const Color(0xFF94A3B8),
+                                                            Color(0xFF94A3B8),
                                                         size: 21.0,
                                                       ),
                                                     ),
@@ -579,12 +582,12 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                                           ],
                                         ),
                                       ),
-                                    ].divide(const SizedBox(height: 16.0)),
+                                    ].divide(SizedBox(height: 16.0)),
                                   ),
                                 ),
                                 Container(
                                   width: MediaQuery.sizeOf(context).width * 0.9,
-                                  decoration: const BoxDecoration(),
+                                  decoration: BoxDecoration(),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
                                     crossAxisAlignment:
@@ -596,7 +599,7 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                                             .labelLarge
                                             .override(
                                               fontFamily: 'Yantramanav',
-                                              color: const Color(0xFF0F172A),
+                                              color: Color(0xFF0F172A),
                                               fontSize: 16.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.normal,
@@ -606,7 +609,7 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Container(
-                                            decoration: const BoxDecoration(),
+                                            decoration: BoxDecoration(),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
@@ -636,11 +639,11 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                                                             FontWeight.normal,
                                                       ),
                                                 ),
-                                              ].divide(const SizedBox(width: 6.0)),
+                                              ].divide(SizedBox(width: 6.0)),
                                             ),
                                           ),
                                           Container(
-                                            decoration: const BoxDecoration(),
+                                            decoration: BoxDecoration(),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
@@ -670,11 +673,11 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                                                             FontWeight.normal,
                                                       ),
                                                 ),
-                                              ].divide(const SizedBox(width: 6.0)),
+                                              ].divide(SizedBox(width: 6.0)),
                                             ),
                                           ),
                                           Container(
-                                            decoration: const BoxDecoration(),
+                                            decoration: BoxDecoration(),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
@@ -704,11 +707,11 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                                                             FontWeight.normal,
                                                       ),
                                                 ),
-                                              ].divide(const SizedBox(width: 6.0)),
+                                              ].divide(SizedBox(width: 6.0)),
                                             ),
                                           ),
                                           Container(
-                                            decoration: const BoxDecoration(),
+                                            decoration: BoxDecoration(),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
@@ -738,18 +741,18 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                                                             FontWeight.normal,
                                                       ),
                                                 ),
-                                              ].divide(const SizedBox(width: 6.0)),
+                                              ].divide(SizedBox(width: 6.0)),
                                             ),
                                           ),
-                                        ].divide(const SizedBox(height: 8.0)),
+                                        ].divide(SizedBox(height: 8.0)),
                                       ),
-                                    ].divide(const SizedBox(height: 8.0)),
+                                    ].divide(SizedBox(height: 8.0)),
                                   ),
                                 ),
-                              ].divide(const SizedBox(height: 24.0)),
+                              ].divide(SizedBox(height: 24.0)),
                             ),
                             Align(
-                              alignment: const AlignmentDirectional(0.0, 0.0),
+                              alignment: AlignmentDirectional(0.0, 0.0),
                               child: InkWell(
                                 splashColor: Colors.transparent,
                                 focusColor: Colors.transparent,
@@ -778,7 +781,7 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                                             fontSize: 14.0,
                                           ),
                                         ),
-                                        duration: const Duration(milliseconds: 4000),
+                                        duration: Duration(milliseconds: 4000),
                                         backgroundColor:
                                             FlutterFlowTheme.of(context)
                                                 .secondary,
@@ -794,7 +797,7 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                                                 .primaryText,
                                           ),
                                         ),
-                                        duration: const Duration(milliseconds: 4000),
+                                        duration: Duration(milliseconds: 4000),
                                         backgroundColor:
                                             FlutterFlowTheme.of(context)
                                                 .secondary,
@@ -813,14 +816,14 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                                         FlutterFlowTheme.of(context).secondary,
                                         FlutterFlowTheme.of(context).tertiary
                                       ],
-                                      stops: const [0.0, 1.0],
-                                      begin: const AlignmentDirectional(0.0, -1.0),
-                                      end: const AlignmentDirectional(0, 1.0),
+                                      stops: [0.0, 1.0],
+                                      begin: AlignmentDirectional(0.0, -1.0),
+                                      end: AlignmentDirectional(0, 1.0),
                                     ),
                                     borderRadius: BorderRadius.circular(18.0),
                                   ),
                                   child: Align(
-                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                    alignment: AlignmentDirectional(0.0, 0.0),
                                     child: Text(
                                       'Set New Password',
                                       style: FlutterFlowTheme.of(context)
@@ -834,11 +837,11 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                                 ),
                               ),
                             ),
-                          ].divide(const SizedBox(height: 32.0)),
+                          ].divide(SizedBox(height: 32.0)),
                         ),
                       ),
                     ),
-                  ].divide(const SizedBox(height: 16.0)),
+                  ].divide(SizedBox(height: 16.0)),
                 ),
               ),
             ),

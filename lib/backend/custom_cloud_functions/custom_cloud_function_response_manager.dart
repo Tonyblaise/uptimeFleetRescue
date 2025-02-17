@@ -19,3 +19,14 @@ class UpdateChatMessagesCloudFunctionCallResponse {
   bool? succeeded;
   dynamic jsonBody;
 }
+
+class UpdateRequestLocationCloudFunctionCallResponse {
+  UpdateRequestLocationCloudFunctionCallResponse({
+    this.errorCode,
+    this.succeeded,
+    this.jsonBody,
+  });
+  String? errorCode;
+  bool? succeeded;
+  dynamic jsonBody;
+}

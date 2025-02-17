@@ -43,12 +43,12 @@ class _AllowLocationWidgetState extends State<AllowLocationWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: const AlignmentDirectional(0.0, 0.0),
+      alignment: AlignmentDirectional(0.0, 0.0),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 20.0),
+        padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 20.0),
         child: Container(
           width: double.infinity,
-          constraints: const BoxConstraints(
+          constraints: BoxConstraints(
             maxWidth: 500.0,
           ),
           decoration: BoxDecoration(
@@ -60,7 +60,7 @@ class _AllowLocationWidgetState extends State<AllowLocationWidget> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Align(
-                alignment: const AlignmentDirectional(0.0, 0.0),
+                alignment: AlignmentDirectional(0.0, 0.0),
                 child: Container(
                   height: 80.0,
                   decoration: BoxDecoration(
@@ -69,14 +69,14 @@ class _AllowLocationWidgetState extends State<AllowLocationWidget> {
                         FlutterFlowTheme.of(context).secondary,
                         FlutterFlowTheme.of(context).tertiary
                       ],
-                      stops: const [0.0, 1.0],
-                      begin: const AlignmentDirectional(0.0, -1.0),
-                      end: const AlignmentDirectional(0, 1.0),
+                      stops: [0.0, 1.0],
+                      begin: AlignmentDirectional(0.0, -1.0),
+                      end: AlignmentDirectional(0, 1.0),
                     ),
                     borderRadius: BorderRadius.circular(24.0),
                   ),
                   child: Align(
-                    alignment: const AlignmentDirectional(0.0, 0.0),
+                    alignment: AlignmentDirectional(0.0, 0.0),
                     child: Text(
                       'Confirm your location',
                       textAlign: TextAlign.center,
@@ -100,10 +100,10 @@ class _AllowLocationWidgetState extends State<AllowLocationWidget> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                 child: Container(
                   width: MediaQuery.sizeOf(context).width * 0.9,
-                  decoration: const BoxDecoration(),
+                  decoration: BoxDecoration(),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -118,13 +118,13 @@ class _AllowLocationWidgetState extends State<AllowLocationWidget> {
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Yantramanav',
-                                    color: const Color(0xFF64748B),
+                                    color: Color(0xFF64748B),
                                     fontSize: 16.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w300,
                                   ),
                             ),
-                            const TextSpan(
+                            TextSpan(
                               text: '\"UpTime\"',
                               style: TextStyle(
                                 color: Color(0xFF64748B),
@@ -137,7 +137,7 @@ class _AllowLocationWidgetState extends State<AllowLocationWidget> {
                                   ' to also access your location\neeven when you are not using the app?',
                               style: GoogleFonts.getFont(
                                 'Yantramanav',
-                                color: const Color(0xFF64748B),
+                                color: Color(0xFF64748B),
                                 fontWeight: FontWeight.w300,
                                 fontSize: 16.0,
                               ),
@@ -155,31 +155,31 @@ class _AllowLocationWidgetState extends State<AllowLocationWidget> {
                         textAlign: TextAlign.center,
                         style: FlutterFlowTheme.of(context).labelLarge.override(
                               fontFamily: 'Yantramanav',
-                              color: const Color(0xFF64748B),
+                              color: Color(0xFF64748B),
                               fontSize: 16.0,
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.w300,
                             ),
                       ),
-                    ].divide(const SizedBox(height: 8.0)),
+                    ].divide(SizedBox(height: 8.0)),
                   ),
                 ),
               ),
               Expanded(
                 child: Align(
-                  alignment: const AlignmentDirectional(0.0, 0.0),
+                  alignment: AlignmentDirectional(0.0, 0.0),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
                     child: Container(
-                      decoration: const BoxDecoration(),
+                      decoration: BoxDecoration(),
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Align(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   20.0, 0.0, 20.0, 0.0),
                               child: InkWell(
                                 splashColor: Colors.transparent,
@@ -189,7 +189,7 @@ class _AllowLocationWidgetState extends State<AllowLocationWidget> {
                                 onTap: () async {
                                   currentUserLocationValue =
                                       await getCurrentUserLocation(
-                                          defaultLocation: const LatLng(0.0, 0.0));
+                                          defaultLocation: LatLng(0.0, 0.0));
                                   await requestPermission(locationPermission);
                                   Navigator.pop(
                                       context, currentUserLocationValue);
@@ -211,14 +211,14 @@ class _AllowLocationWidgetState extends State<AllowLocationWidget> {
                                     ),
                                   ),
                                   child: Align(
-                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                    alignment: AlignmentDirectional(0.0, 0.0),
                                     child: Text(
                                       'Only while using the app',
                                       style: FlutterFlowTheme.of(context)
                                           .titleSmall
                                           .override(
                                             fontFamily: 'Yantramanav',
-                                            color: const Color(0xFF0CCA4A),
+                                            color: Color(0xFF0CCA4A),
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w500,
                                           ),
@@ -229,7 +229,7 @@ class _AllowLocationWidgetState extends State<AllowLocationWidget> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 20.0, 0.0, 20.0, 0.0),
                             child: InkWell(
                               splashColor: Colors.transparent,
@@ -239,7 +239,7 @@ class _AllowLocationWidgetState extends State<AllowLocationWidget> {
                               onTap: () async {
                                 currentUserLocationValue =
                                     await getCurrentUserLocation(
-                                        defaultLocation: const LatLng(0.0, 0.0));
+                                        defaultLocation: LatLng(0.0, 0.0));
                                 await requestPermission(locationPermission);
                                 Navigator.pop(
                                     context, currentUserLocationValue);
@@ -257,14 +257,14 @@ class _AllowLocationWidgetState extends State<AllowLocationWidget> {
                                       FlutterFlowTheme.of(context).secondary,
                                       FlutterFlowTheme.of(context).tertiary
                                     ],
-                                    stops: const [0.0, 1.0],
-                                    begin: const AlignmentDirectional(0.0, -1.0),
-                                    end: const AlignmentDirectional(0, 1.0),
+                                    stops: [0.0, 1.0],
+                                    begin: AlignmentDirectional(0.0, -1.0),
+                                    end: AlignmentDirectional(0, 1.0),
                                   ),
                                   borderRadius: BorderRadius.circular(18.0),
                                 ),
                                 child: Align(
-                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                  alignment: AlignmentDirectional(0.0, 0.0),
                                   child: Text(
                                     'Always allow',
                                     style: FlutterFlowTheme.of(context)
@@ -278,13 +278,13 @@ class _AllowLocationWidgetState extends State<AllowLocationWidget> {
                               ),
                             ),
                           ),
-                        ].divide(const SizedBox(height: 16.0)),
+                        ].divide(SizedBox(height: 16.0)),
                       ),
                     ),
                   ),
                 ),
               ),
-            ].divide(const SizedBox(height: 30.0)),
+            ].divide(SizedBox(height: 30.0)),
           ),
         ),
       ),

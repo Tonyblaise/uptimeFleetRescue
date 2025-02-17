@@ -39,7 +39,7 @@ class LandingPageModel extends FlutterFlowModel<LandingPageWidget> {
   // Model for confirmCancellation component.
   late ConfirmCancellationModel confirmCancellationModel2;
   // State field(s) for PlacePicker widget.
-  FFPlace placePickerValue = const FFPlace();
+  FFPlace placePickerValue = FFPlace();
   // Model for serviceUpdatesComponent component.
   late ServiceUpdatesComponentModel serviceUpdatesComponentModel;
 

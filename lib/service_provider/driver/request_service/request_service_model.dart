@@ -1,5 +1,6 @@
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
+import '/flutter_flow/flutter_flow_google_map.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'request_service_widget.dart' show RequestServiceWidget;
@@ -9,6 +10,9 @@ import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 class RequestServiceModel extends FlutterFlowModel<RequestServiceWidget> {
   ///  State fields for stateful widgets in this page.
 
+  // State field(s) for GoogleMap widget.
+  LatLng? googleMapsCenter;
+  final googleMapsController = Completer<GoogleMapController>();
   // State field(s) for fullname widget.
   FocusNode? fullnameFocusNode;
   TextEditingController? fullnameTextController;
@@ -25,14 +29,14 @@ class RequestServiceModel extends FlutterFlowModel<RequestServiceWidget> {
   bool? location3;
   // Stores action output result for [Backend Call - API (Check user)] action in Startrequest widget.
   ApiCallResponse? check;
-  // Stores action output result for [Custom Action - getFcmToken] action in Startrequest widget.
-  String? token;
   // Stores action output result for [Backend Call - Create Document] action in Startrequest widget.
   ChatsRecord? supportchat;
   // Stores action output result for [Backend Call - Create Document] action in Startrequest widget.
   ChatsRecord? technicianChat;
   // Stores action output result for [Backend Call - API (Create driver)] action in Startrequest widget.
   ApiCallResponse? driver;
+  // Stores action output result for [Backend Call - API (Update driverId)] action in Startrequest widget.
+  ApiCallResponse? test;
 
   @override
   void initState(BuildContext context) {}

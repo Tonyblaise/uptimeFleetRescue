@@ -50,8 +50,14 @@ export '/service_provider/more_details/more_details_widget.dart'
     show MoreDetailsWidget;
 export '/service_provider/driver/landing_page/landing_page_widget.dart'
     show LandingPageWidget;
-export '/service_provider/driver/vehicle_confirmation2/vehicle_confirmation2_widget.dart'
+export '/service_provider/vehicle_confirmation2/vehicle_confirmation2_widget.dart'
     show VehicleConfirmation2Widget;
+export '/service_provider/request_service2/request_service2_widget.dart'
+    show RequestService2Widget;
+export '/service_provider/driver/vehicle_confirmation_manual/vehicle_confirmation_manual_widget.dart'
+    show VehicleConfirmationManualWidget;
+export '/service_provider/driver/vehicle_confirmation3/vehicle_confirmation3_widget.dart'
+    show VehicleConfirmation3Widget;
 export '/service_provider/driver/request_service/request_service_widget.dart'
     show RequestServiceWidget;
 export '/test/test_widget.dart' show TestWidget;

@@ -29,11 +29,11 @@ class ServiceConfirmationModel
     return null;
   }
 
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode;
-  TextEditingController? textController2;
-  String? Function(BuildContext, String?)? textController2Validator;
-  // Stores action output result for [Backend Call - API (Complete requests)] action in Button widget.
+  // State field(s) for addedNotes widget.
+  FocusNode? addedNotesFocusNode;
+  TextEditingController? addedNotesTextController;
+  String? Function(BuildContext, String?)? addedNotesTextControllerValidator;
+  // Stores action output result for [Backend Call - API (Complete requests technician )] action in Button widget.
   ApiCallResponse? apiResultd4y;
 
   @override
@@ -49,7 +49,7 @@ class ServiceConfirmationModel
     textFielOdometerFocusNode?.dispose();
     textFielOdometerTextController?.dispose();
 
-    textFieldFocusNode?.dispose();
-    textController2?.dispose();
+    addedNotesFocusNode?.dispose();
+    addedNotesTextController?.dispose();
   }
 }

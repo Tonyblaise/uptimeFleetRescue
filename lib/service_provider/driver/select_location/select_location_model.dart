@@ -16,7 +16,7 @@ class SelectLocationModel extends FlutterFlowModel<SelectLocationWidget> {
   LatLng? googleMapsCenter;
   final googleMapsController = Completer<GoogleMapController>();
   // State field(s) for PlacePicker widget.
-  FFPlace placePickerValue = const FFPlace();
+  FFPlace placePickerValue = FFPlace();
 
   @override
   void initState(BuildContext context) {}

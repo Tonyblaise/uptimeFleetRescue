@@ -41,9 +41,9 @@ class _BottomBarWidgetState extends State<BottomBarWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: const AlignmentDirectional(0.0, 0.0),
+      alignment: AlignmentDirectional(0.0, 0.0),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 15.0),
+        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 15.0),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(16.0),
           child: Container(
@@ -53,11 +53,11 @@ class _BottomBarWidgetState extends State<BottomBarWidget> {
               color: FlutterFlowTheme.of(context).secondaryBackground,
               borderRadius: BorderRadius.circular(16.0),
               border: Border.all(
-                color: const Color(0x410F172A),
+                color: Color(0x410F172A),
               ),
             ),
             child: Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -97,13 +97,13 @@ class _BottomBarWidgetState extends State<BottomBarWidget> {
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Yantramanav',
-                                    color: const Color(0xFF64748B),
+                                    color: Color(0xFF64748B),
                                     fontSize: 10.0,
                                     letterSpacing: 0.0,
                                   ),
                             ),
                           ),
-                        ].divide(const SizedBox(height: 6.0)),
+                        ].divide(SizedBox(height: 6.0)),
                       ),
                     ),
                   ),
@@ -147,12 +147,12 @@ class _BottomBarWidgetState extends State<BottomBarWidget> {
                                 .bodyMedium
                                 .override(
                                   fontFamily: 'Yantramanav',
-                                  color: const Color(0xFF64748B),
+                                  color: Color(0xFF64748B),
                                   fontSize: 10.0,
                                   letterSpacing: 0.0,
                                 ),
                           ),
-                        ].divide(const SizedBox(height: 6.0)),
+                        ].divide(SizedBox(height: 6.0)),
                       ),
                     ),
                   ),
@@ -170,7 +170,7 @@ class _BottomBarWidgetState extends State<BottomBarWidget> {
                         builder: (context) {
                           return Padding(
                             padding: MediaQuery.viewInsetsOf(context),
-                            child: SizedBox(
+                            child: Container(
                               height: 300.0,
                               child: TechStatusComponentWidget(
                                 onDuty: valueOrDefault<bool>(
@@ -205,12 +205,12 @@ class _BottomBarWidgetState extends State<BottomBarWidget> {
                                 .bodyMedium
                                 .override(
                                   fontFamily: 'Yantramanav',
-                                  color: const Color(0xFF64748B),
+                                  color: Color(0xFF64748B),
                                   fontSize: 10.0,
                                   letterSpacing: 0.0,
                                 ),
                           ),
-                        ].divide(const SizedBox(height: 6.0)),
+                        ].divide(SizedBox(height: 6.0)),
                       ),
                     ),
                   ),
@@ -246,12 +246,12 @@ class _BottomBarWidgetState extends State<BottomBarWidget> {
                                 .bodyMedium
                                 .override(
                                   fontFamily: 'Yantramanav',
-                                  color: const Color(0xFF64748B),
+                                  color: Color(0xFF64748B),
                                   fontSize: 10.0,
                                   letterSpacing: 0.0,
                                 ),
                           ),
-                        ].divide(const SizedBox(height: 6.0)),
+                        ].divide(SizedBox(height: 6.0)),
                       ),
                     ),
                   ),

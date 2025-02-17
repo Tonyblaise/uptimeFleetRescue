@@ -44,7 +44,10 @@ class _PreviousJobsWidgetState extends State<PreviousJobsWidget>
         title: 'previousJobs',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
+          onTap: () {
+            FocusScope.of(context).unfocus();
+            FocusManager.instance.primaryFocus?.unfocus();
+          },
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
@@ -72,26 +75,26 @@ class _PreviousJobsWidgetState extends State<PreviousJobsWidget>
                       letterSpacing: 0.0,
                     ),
               ),
-              actions: const [],
+              actions: [],
               centerTitle: false,
               elevation: 0.0,
             ),
             body: SafeArea(
               top: true,
               child: Align(
-                alignment: const AlignmentDirectional(0.0, 0.0),
+                alignment: AlignmentDirectional(0.0, 0.0),
                 child: Container(
-                  constraints: const BoxConstraints(
+                  constraints: BoxConstraints(
                     maxWidth: 500.0,
                   ),
-                  decoration: const BoxDecoration(),
+                  decoration: BoxDecoration(),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Expanded(
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               8.0, 8.0, 8.0, 0.0),
                           child: AuthUserStreamWidget(
                             builder: (context) =>
@@ -139,10 +142,10 @@ class _PreviousJobsWidgetState extends State<PreviousJobsWidget>
                                                 ?.toList() ??
                                             [];
                                     if (jobs.isEmpty) {
-                                      return SizedBox(
+                                      return Container(
                                         width: double.infinity,
                                         child: EmptyStateSimpleWidget(
-                                          icon: const Icon(
+                                          icon: Icon(
                                             Icons.report_outlined,
                                             size: 40.0,
                                           ),
@@ -169,7 +172,7 @@ class _PreviousJobsWidgetState extends State<PreviousJobsWidget>
                                           final jobsItem = jobs[jobsIndex];
                                           return Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 1.0),
                                             child: InkWell(
                                               splashColor: Colors.transparent,
@@ -204,7 +207,7 @@ class _PreviousJobsWidgetState extends State<PreviousJobsWidget>
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .alternate,
-                                                      offset: const Offset(
+                                                      offset: Offset(
                                                         0.0,
                                                         1.0,
                                                       ),
@@ -212,7 +215,7 @@ class _PreviousJobsWidgetState extends State<PreviousJobsWidget>
                                                   ],
                                                 ),
                                                 child: Padding(
-                                                  padding: const EdgeInsets.all(8.0),
+                                                  padding: EdgeInsets.all(8.0),
                                                   child: Row(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
@@ -271,7 +274,7 @@ class _PreviousJobsWidgetState extends State<PreviousJobsWidget>
                                                           children: [
                                                             Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           12.0,
                                                                           0.0,
@@ -298,7 +301,7 @@ class _PreviousJobsWidgetState extends State<PreviousJobsWidget>
                                                             ),
                                                             Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           4.0,
@@ -310,7 +313,7 @@ class _PreviousJobsWidgetState extends State<PreviousJobsWidget>
                                                                         .max,
                                                                 children: [
                                                                   Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             12.0,
                                                                             0.0,
@@ -357,7 +360,7 @@ class _PreviousJobsWidgetState extends State<PreviousJobsWidget>
                                                         ),
                                                         child: Padding(
                                                           padding:
-                                                              const EdgeInsets.all(
+                                                              EdgeInsets.all(
                                                                   4.0),
                                                           child: Icon(
                                                             Icons

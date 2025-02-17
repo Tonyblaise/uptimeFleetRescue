@@ -36,8 +36,8 @@ class _ServiceConfirmationWidgetState extends State<ServiceConfirmationWidget> {
     _model.textFielOdometerTextController ??= TextEditingController();
     _model.textFielOdometerFocusNode ??= FocusNode();
 
-    _model.textController2 ??= TextEditingController();
-    _model.textFieldFocusNode ??= FocusNode();
+    _model.addedNotesTextController ??= TextEditingController();
+    _model.addedNotesFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -79,7 +79,10 @@ class _ServiceConfirmationWidgetState extends State<ServiceConfirmationWidget> {
             title: 'serviceConfirmation',
             color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
             child: GestureDetector(
-              onTap: () => FocusScope.of(context).unfocus(),
+              onTap: () {
+                FocusScope.of(context).unfocus();
+                FocusManager.instance.primaryFocus?.unfocus();
+              },
               child: Scaffold(
                 key: scaffoldKey,
                 backgroundColor: Colors.white,
@@ -89,15 +92,15 @@ class _ServiceConfirmationWidgetState extends State<ServiceConfirmationWidget> {
                       color: FlutterFlowTheme.of(context).primaryText),
                   automaticallyImplyLeading: true,
                   title: Container(
-                    decoration: const BoxDecoration(),
+                    decoration: BoxDecoration(),
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
                       child: Text(
                         'Complete request',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Yantramanav',
-                              color: const Color(0xFF1E293B),
+                              color: Color(0xFF1E293B),
                               fontSize: 30.0,
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.bold,
@@ -105,21 +108,21 @@ class _ServiceConfirmationWidgetState extends State<ServiceConfirmationWidget> {
                       ),
                     ),
                   ),
-                  actions: const [],
+                  actions: [],
                   centerTitle: false,
                   elevation: 1.0,
                 ),
                 body: SafeArea(
                   top: true,
                   child: Align(
-                    alignment: const AlignmentDirectional(0.0, 0.0),
+                    alignment: AlignmentDirectional(0.0, 0.0),
                     child: Container(
                       width: double.infinity,
                       height: double.infinity,
-                      constraints: const BoxConstraints(
+                      constraints: BoxConstraints(
                         maxWidth: 500.0,
                       ),
-                      decoration: const BoxDecoration(),
+                      decoration: BoxDecoration(),
                       child: Form(
                         key: _model.formKey,
                         autovalidateMode: AutovalidateMode.always,
@@ -128,29 +131,29 @@ class _ServiceConfirmationWidgetState extends State<ServiceConfirmationWidget> {
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Container(
-                                decoration: const BoxDecoration(),
+                                decoration: BoxDecoration(),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Container(
                                       width: double.infinity,
                                       height: 100.0,
-                                      decoration: const BoxDecoration(
+                                      decoration: BoxDecoration(
                                         color: Color(0xFFE2E8F0),
                                       ),
                                       child: Align(
                                         alignment:
-                                            const AlignmentDirectional(0.0, 0.0),
+                                            AlignmentDirectional(0.0, 0.0),
                                         child: Container(
                                           width:
                                               MediaQuery.sizeOf(context).width *
                                                   0.9,
-                                          decoration: const BoxDecoration(),
+                                          decoration: BoxDecoration(),
                                           child: wrapWithModel(
                                             model: _model.userDetailsModel,
                                             updateCallback: () =>
                                                 safeSetState(() {}),
-                                            child: const UserDetailsWidget(),
+                                            child: UserDetailsWidget(),
                                           ),
                                         ),
                                       ),
@@ -159,7 +162,7 @@ class _ServiceConfirmationWidgetState extends State<ServiceConfirmationWidget> {
                                 ),
                               ),
                               Container(
-                                decoration: const BoxDecoration(),
+                                decoration: BoxDecoration(),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.min,
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -182,20 +185,20 @@ class _ServiceConfirmationWidgetState extends State<ServiceConfirmationWidget> {
                                             BorderRadius.circular(20.0),
                                         shape: BoxShape.rectangle,
                                         border: Border.all(
-                                          color: const Color(0xFFCBD5E1),
+                                          color: Color(0xFFCBD5E1),
                                         ),
                                       ),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             20.0, 10.0, 20.0, 10.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.min,
                                           children: [
                                             Container(
                                               width: double.infinity,
-                                              decoration: const BoxDecoration(),
+                                              decoration: BoxDecoration(),
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 5.0, 0.0),
                                                 child: Column(
@@ -235,7 +238,7 @@ class _ServiceConfirmationWidgetState extends State<ServiceConfirmationWidget> {
                                                           .override(
                                                             fontFamily:
                                                                 'Yantramanav',
-                                                            color: const Color(
+                                                            color: Color(
                                                                 0xFF64748B),
                                                             fontSize: 16.0,
                                                             letterSpacing: 0.0,
@@ -247,9 +250,9 @@ class _ServiceConfirmationWidgetState extends State<ServiceConfirmationWidget> {
                                             ),
                                             Container(
                                               width: double.infinity,
-                                              decoration: const BoxDecoration(),
+                                              decoration: BoxDecoration(),
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 5.0, 0.0),
                                                 child: Column(
@@ -292,7 +295,7 @@ class _ServiceConfirmationWidgetState extends State<ServiceConfirmationWidget> {
                                                           .override(
                                                             fontFamily:
                                                                 'Yantramanav',
-                                                            color: const Color(
+                                                            color: Color(
                                                                 0xFF64748B),
                                                             fontSize: 16.0,
                                                             letterSpacing: 0.0,
@@ -304,9 +307,9 @@ class _ServiceConfirmationWidgetState extends State<ServiceConfirmationWidget> {
                                             ),
                                             Container(
                                               width: double.infinity,
-                                              decoration: const BoxDecoration(),
+                                              decoration: BoxDecoration(),
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 5.0, 0.0),
                                                 child: Column(
@@ -346,7 +349,7 @@ class _ServiceConfirmationWidgetState extends State<ServiceConfirmationWidget> {
                                                           .override(
                                                             fontFamily:
                                                                 'Yantramanav',
-                                                            color: const Color(
+                                                            color: Color(
                                                                 0xFF64748B),
                                                             fontSize: 16.0,
                                                             letterSpacing: 0.0,
@@ -358,9 +361,9 @@ class _ServiceConfirmationWidgetState extends State<ServiceConfirmationWidget> {
                                             ),
                                             Container(
                                               width: double.infinity,
-                                              decoration: const BoxDecoration(),
+                                              decoration: BoxDecoration(),
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 5.0, 0.0),
                                                 child: Column(
@@ -400,7 +403,7 @@ class _ServiceConfirmationWidgetState extends State<ServiceConfirmationWidget> {
                                                           .override(
                                                             fontFamily:
                                                                 'Yantramanav',
-                                                            color: const Color(
+                                                            color: Color(
                                                                 0xFF64748B),
                                                             fontSize: 16.0,
                                                             letterSpacing: 0.0,
@@ -410,23 +413,23 @@ class _ServiceConfirmationWidgetState extends State<ServiceConfirmationWidget> {
                                                 ),
                                               ),
                                             ),
-                                          ].divide(const SizedBox(height: 10.0)),
+                                          ].divide(SizedBox(height: 10.0)),
                                         ),
                                       ),
                                     ),
-                                  ].divide(const SizedBox(height: 5.0)),
+                                  ].divide(SizedBox(height: 5.0)),
                                 ),
                               ),
                               Container(
                                 width: MediaQuery.sizeOf(context).width * 0.9,
-                                decoration: const BoxDecoration(),
+                                decoration: BoxDecoration(),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Container(
                                       width: double.infinity,
-                                      decoration: const BoxDecoration(),
+                                      decoration: BoxDecoration(),
                                       child: Text(
                                         'Odometer',
                                         style: FlutterFlowTheme.of(context)
@@ -443,9 +446,9 @@ class _ServiceConfirmationWidgetState extends State<ServiceConfirmationWidget> {
                                     Container(
                                       width: MediaQuery.sizeOf(context).width *
                                           0.9,
-                                      decoration: const BoxDecoration(),
+                                      decoration: BoxDecoration(),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 4.0, 0.0, 4.0),
                                         child: TextFormField(
                                           controller: _model
@@ -466,7 +469,7 @@ class _ServiceConfirmationWidgetState extends State<ServiceConfirmationWidget> {
                                                           FontWeight.normal,
                                                     ),
                                             enabledBorder: OutlineInputBorder(
-                                              borderSide: const BorderSide(
+                                              borderSide: BorderSide(
                                                 color: Color(0xFFCBD5E1),
                                                 width: 1.0,
                                               ),
@@ -507,7 +510,7 @@ class _ServiceConfirmationWidgetState extends State<ServiceConfirmationWidget> {
                                             filled: true,
                                             fillColor: Colors.white,
                                             contentPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     8.0, 0.0, 8.0, 0.0),
                                           ),
                                           style: FlutterFlowTheme.of(context)
@@ -523,17 +526,17 @@ class _ServiceConfirmationWidgetState extends State<ServiceConfirmationWidget> {
                                         ),
                                       ),
                                     ),
-                                  ].divide(const SizedBox(height: 5.0)),
+                                  ].divide(SizedBox(height: 5.0)),
                                 ),
                               ),
                               Container(
-                                decoration: const BoxDecoration(),
+                                decoration: BoxDecoration(),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Container(
-                                      decoration: const BoxDecoration(),
+                                      decoration: BoxDecoration(),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
                                         crossAxisAlignment:
@@ -553,15 +556,15 @@ class _ServiceConfirmationWidgetState extends State<ServiceConfirmationWidget> {
                                             width: MediaQuery.sizeOf(context)
                                                     .width *
                                                 0.9,
-                                            decoration: const BoxDecoration(),
+                                            decoration: BoxDecoration(),
                                             child: Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 4.0),
                                               child: TextFormField(
-                                                controller:
-                                                    _model.textController2,
+                                                controller: _model
+                                                    .addedNotesTextController,
                                                 focusNode:
-                                                    _model.textFieldFocusNode,
+                                                    _model.addedNotesFocusNode,
                                                 autofocus: true,
                                                 obscureText: false,
                                                 decoration: InputDecoration(
@@ -586,7 +589,7 @@ class _ServiceConfirmationWidgetState extends State<ServiceConfirmationWidget> {
                                                       ),
                                                   enabledBorder:
                                                       OutlineInputBorder(
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Color(0xFFCBD5E1),
                                                       width: 1.0,
                                                     ),
@@ -639,7 +642,7 @@ class _ServiceConfirmationWidgetState extends State<ServiceConfirmationWidget> {
                                                               context)
                                                           .primaryBackground,
                                                   contentPadding:
-                                                      const EdgeInsetsDirectional
+                                                      EdgeInsetsDirectional
                                                           .fromSTEB(20.0, 20.0,
                                                               20.0, 20.0),
                                                 ),
@@ -656,21 +659,21 @@ class _ServiceConfirmationWidgetState extends State<ServiceConfirmationWidget> {
                                                 maxLines: 5,
                                                 minLines: 5,
                                                 validator: _model
-                                                    .textController2Validator
+                                                    .addedNotesTextControllerValidator
                                                     .asValidator(context),
                                               ),
                                             ),
                                           ),
-                                        ].divide(const SizedBox(height: 5.0)),
+                                        ].divide(SizedBox(height: 5.0)),
                                       ),
                                     ),
-                                  ].divide(const SizedBox(height: 16.0)),
+                                  ].divide(SizedBox(height: 16.0)),
                                 ),
                               ),
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 25.0),
                                   child: Container(
                                     width:
@@ -685,10 +688,15 @@ class _ServiceConfirmationWidgetState extends State<ServiceConfirmationWidget> {
                                       onPressed: () async {
                                         _model.apiResultd4y =
                                             await UptimeFleetAppGroup
-                                                .completeRequestsCall
+                                                .completeRequestsTechnicianCall
                                                 .call(
-                                          id: widget.request,
-                                          notes: _model.textController2.text,
+                                          id: UptimeFleetAppGroup.getRequestCall
+                                              .uniqueId(
+                                            serviceConfirmationGetRequestResponse
+                                                .jsonBody,
+                                          ),
+                                          notes: _model
+                                              .addedNotesTextController.text,
                                           odometer: _model
                                               .textFielOdometerTextController
                                               .text,
@@ -708,7 +716,7 @@ class _ServiceConfirmationWidgetState extends State<ServiceConfirmationWidget> {
                                                 ),
                                               ),
                                               duration:
-                                                  const Duration(milliseconds: 4000),
+                                                  Duration(milliseconds: 4000),
                                               backgroundColor:
                                                   FlutterFlowTheme.of(context)
                                                       .secondary,
@@ -760,7 +768,7 @@ class _ServiceConfirmationWidgetState extends State<ServiceConfirmationWidget> {
                                                 ),
                                               ),
                                               duration:
-                                                  const Duration(milliseconds: 4000),
+                                                  Duration(milliseconds: 4000),
                                               backgroundColor:
                                                   FlutterFlowTheme.of(context)
                                                       .secondary,
@@ -773,10 +781,10 @@ class _ServiceConfirmationWidgetState extends State<ServiceConfirmationWidget> {
                                       text: 'Complete request',
                                       options: FFButtonOptions(
                                         height: 56.0,
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             24.0, 0.0, 24.0, 0.0),
                                         iconPadding:
-                                            const EdgeInsetsDirectional.fromSTEB(
+                                            EdgeInsetsDirectional.fromSTEB(
                                                 0.0, 0.0, 0.0, 0.0),
                                         color: FlutterFlowTheme.of(context)
                                             .tertiary,
@@ -790,7 +798,7 @@ class _ServiceConfirmationWidgetState extends State<ServiceConfirmationWidget> {
                                               letterSpacing: 0.0,
                                             ),
                                         elevation: 3.0,
-                                        borderSide: const BorderSide(
+                                        borderSide: BorderSide(
                                           color: Colors.transparent,
                                           width: 1.0,
                                         ),
@@ -801,7 +809,7 @@ class _ServiceConfirmationWidgetState extends State<ServiceConfirmationWidget> {
                                   ),
                                 ),
                               ),
-                            ].divide(const SizedBox(height: 16.0)),
+                            ].divide(SizedBox(height: 16.0)),
                           ),
                         ),
                       ),

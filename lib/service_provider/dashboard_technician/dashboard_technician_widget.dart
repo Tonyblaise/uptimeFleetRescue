@@ -6,7 +6,6 @@ import '/components/user_details_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/instant_timer.dart';
 import '/pages/chat/empty_state_simple/empty_state_simple_widget.dart';
 import '/service_provider/bottom_bar/bottom_bar_widget.dart';
 import '/service_provider/driver/chat/service_summary_widget/service_summary_widget_widget.dart';
@@ -41,50 +40,34 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       currentUserLocationValue =
-          await getCurrentUserLocation(defaultLocation: const LatLng(0.0, 0.0));
+          await getCurrentUserLocation(defaultLocation: LatLng(0.0, 0.0));
       await Future.wait([
         Future(() async {
           if (currentUserLocationValue != null) {
-            _model.instantTimer = InstantTimer.periodic(
-              duration: const Duration(milliseconds: 60000),
-              callback: (timer) async {
-                currentUserLocationValue = await getCurrentUserLocation(
-                    defaultLocation: const LatLng(0.0, 0.0));
-                _model.apiResultayo6 = await UptimeFleetAppGroup
-                    .updateTechnicianPositionUsingCurrentPostionCall
-                    .call(
-                  technicianId:
-                      valueOrDefault(currentUserDocument?.technicianId, ''),
-                  position: currentUserLocationValue?.toString(),
-                );
-
-                await currentUserReference!.update(createUsersRecordData(
-                  technicianLastUpdatedLocation: currentUserLocationValue,
-                ));
-              },
-              startImmediately: true,
+            _model.apiResultayo6 = await UptimeFleetAppGroup
+                .updateTechnicianPositionUsingCurrentPostionCall
+                .call(
+              technicianId:
+                  valueOrDefault(currentUserDocument?.technicianId, ''),
+              position: currentUserLocationValue?.toString(),
             );
+
+            await currentUserReference!.update(createUsersRecordData(
+              technicianLastUpdatedLocation: currentUserLocationValue,
+            ));
           } else {
             await requestPermission(locationPermission);
-            _model.instantTimer2 = InstantTimer.periodic(
-              duration: const Duration(milliseconds: 60000),
-              callback: (timer) async {
-                currentUserLocationValue = await getCurrentUserLocation(
-                    defaultLocation: const LatLng(0.0, 0.0));
-                _model.apiResultayoo = await UptimeFleetAppGroup
-                    .updateTechnicianPositionUsingCurrentPostionCall
-                    .call(
-                  technicianId:
-                      valueOrDefault(currentUserDocument?.technicianId, ''),
-                  position: currentUserLocationValue?.toString(),
-                );
-
-                await currentUserReference!.update(createUsersRecordData(
-                  technicianLastUpdatedLocation: currentUserLocationValue,
-                ));
-              },
-              startImmediately: true,
+            _model.apiResultayoo = await UptimeFleetAppGroup
+                .updateTechnicianPositionUsingCurrentPostionCall
+                .call(
+              technicianId:
+                  valueOrDefault(currentUserDocument?.technicianId, ''),
+              position: currentUserLocationValue?.toString(),
             );
+
+            await currentUserReference!.update(createUsersRecordData(
+              technicianLastUpdatedLocation: currentUserLocationValue,
+            ));
           }
         }),
         Future(() async {
@@ -123,7 +106,10 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
         title: 'dashboardTechnician',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
+          onTap: () {
+            FocusScope.of(context).unfocus();
+            FocusManager.instance.primaryFocus?.unfocus();
+          },
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: Colors.white,
@@ -131,19 +117,19 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
               backgroundColor: Colors.white,
               automaticallyImplyLeading: false,
               title: Container(
-                decoration: const BoxDecoration(),
+                decoration: BoxDecoration(),
                 child: Text(
                   'Dashboard',
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Yantramanav',
-                        color: const Color(0xFF1E293B),
+                        color: Color(0xFF1E293B),
                         fontSize: 30.0,
                         letterSpacing: 0.0,
                         fontWeight: FontWeight.bold,
                       ),
                 ),
               ),
-              actions: const [],
+              actions: [],
               centerTitle: false,
               elevation: 1.0,
             ),
@@ -152,7 +138,7 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
               child: Container(
                 width: double.infinity,
                 height: double.infinity,
-                decoration: const BoxDecoration(),
+                decoration: BoxDecoration(),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -160,17 +146,17 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                     Flexible(
                       child: Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 15.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 15.0),
                         child: Container(
                           width: double.infinity,
                           height: double.infinity,
-                          decoration: const BoxDecoration(),
+                          decoration: BoxDecoration(),
                           child: SingleChildScrollView(
                             child: Column(
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 Container(
-                                  decoration: const BoxDecoration(),
+                                  decoration: BoxDecoration(),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
@@ -183,17 +169,17 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                         ),
                                         child: Align(
                                           alignment:
-                                              const AlignmentDirectional(0.0, 0.0),
+                                              AlignmentDirectional(0.0, 0.0),
                                           child: Container(
                                             width: MediaQuery.sizeOf(context)
                                                     .width *
                                                 0.9,
-                                            decoration: const BoxDecoration(),
+                                            decoration: BoxDecoration(),
                                             child: wrapWithModel(
                                               model: _model.userDetailsModel,
                                               updateCallback: () =>
                                                   safeSetState(() {}),
-                                              child: const UserDetailsWidget(),
+                                              child: UserDetailsWidget(),
                                             ),
                                           ),
                                         ),
@@ -215,11 +201,11 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                           ),
                                         ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 15.0),
                                         child: Container(
                                           width: double.infinity,
-                                          decoration: const BoxDecoration(),
+                                          decoration: BoxDecoration(),
                                           child: Builder(
                                             builder: (context) {
                                               if (currentUserDocument
@@ -229,7 +215,7 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                                           ?.activeRequest?.id ==
                                                       '') {
                                                 return Container(
-                                                  decoration: const BoxDecoration(),
+                                                  decoration: BoxDecoration(),
                                                   child: Column(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
@@ -254,16 +240,21 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                                             context: context,
                                                             builder: (context) {
                                                               return GestureDetector(
-                                                                onTap: () =>
-                                                                    FocusScope.of(
-                                                                            context)
-                                                                        .unfocus(),
+                                                                onTap: () {
+                                                                  FocusScope.of(
+                                                                          context)
+                                                                      .unfocus();
+                                                                  FocusManager
+                                                                      .instance
+                                                                      .primaryFocus
+                                                                      ?.unfocus();
+                                                                },
                                                                 child: Padding(
                                                                   padding: MediaQuery
                                                                       .viewInsetsOf(
                                                                           context),
                                                                   child:
-                                                                      SizedBox(
+                                                                      Container(
                                                                     height:
                                                                         300.0,
                                                                     child:
@@ -294,13 +285,13 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                                                     .circular(
                                                                         60.0),
                                                             border: Border.all(
-                                                              color: const Color(
+                                                              color: Color(
                                                                   0xFFE5E7EE),
                                                             ),
                                                           ),
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsets.all(
+                                                                EdgeInsets.all(
                                                                     10.0),
                                                             child: Row(
                                                               mainAxisSize:
@@ -341,13 +332,13 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                                                             false)
                                                                         ? FlutterFlowTheme.of(context)
                                                                             .tertiary
-                                                                        : const Color(
+                                                                        : Color(
                                                                             0xFFB3B3B3),
                                                                     shape: BoxShape
                                                                         .circle,
                                                                   ),
                                                                 ),
-                                                              ].divide(const SizedBox(
+                                                              ].divide(SizedBox(
                                                                   width: 10.0)),
                                                             ),
                                                           ),
@@ -355,7 +346,7 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                                       ),
                                                       Container(
                                                         decoration:
-                                                            const BoxDecoration(),
+                                                            BoxDecoration(),
                                                         child: Column(
                                                           mainAxisSize:
                                                               MainAxisSize.max,
@@ -379,13 +370,13 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                                                       border:
                                                                           Border
                                                                               .all(
-                                                                        color: const Color(
+                                                                        color: Color(
                                                                             0xFFCBD5E1),
                                                                       ),
                                                                     ),
                                                                     child:
                                                                         Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
                                                                           0.0,
                                                                           10.0,
                                                                           0.0,
@@ -399,7 +390,7 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                                                         children:
                                                                             [
                                                                           Padding(
-                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                            padding: EdgeInsetsDirectional.fromSTEB(
                                                                                 20.0,
                                                                                 0.0,
                                                                                 20.0,
@@ -407,7 +398,7 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                                                             child:
                                                                                 Container(
                                                                               width: double.infinity,
-                                                                              decoration: const BoxDecoration(),
+                                                                              decoration: BoxDecoration(),
                                                                               child: Row(
                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -434,13 +425,13 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                                                             ),
                                                                             child:
                                                                                 Padding(
-                                                                              padding: const EdgeInsetsDirectional.fromSTEB(20.0, 10.0, 20.0, 10.0),
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(20.0, 10.0, 20.0, 10.0),
                                                                               child: Column(
                                                                                 mainAxisSize: MainAxisSize.min,
                                                                                 children: [
                                                                                   Container(
                                                                                     width: double.infinity,
-                                                                                    decoration: const BoxDecoration(),
+                                                                                    decoration: BoxDecoration(),
                                                                                     child: Column(
                                                                                       mainAxisSize: MainAxisSize.min,
                                                                                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -459,7 +450,7 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                                                                           valueOrDefault(currentUserDocument?.activeVehicle, ''),
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                 fontFamily: 'Yantramanav',
-                                                                                                color: const Color(0xFF64748B),
+                                                                                                color: Color(0xFF64748B),
                                                                                                 fontSize: 16.0,
                                                                                                 letterSpacing: 0.0,
                                                                                               ),
@@ -467,7 +458,7 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                                                                       ],
                                                                                     ),
                                                                                   ),
-                                                                                ].divide(const SizedBox(height: 10.0)),
+                                                                                ].divide(SizedBox(height: 10.0)),
                                                                               ),
                                                                             ),
                                                                           ),
@@ -481,10 +472,13 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                                                                 context: context,
                                                                                 builder: (context) {
                                                                                   return GestureDetector(
-                                                                                    onTap: () => FocusScope.of(context).unfocus(),
+                                                                                    onTap: () {
+                                                                                      FocusScope.of(context).unfocus();
+                                                                                      FocusManager.instance.primaryFocus?.unfocus();
+                                                                                    },
                                                                                     child: Padding(
                                                                                       padding: MediaQuery.viewInsetsOf(context),
-                                                                                      child: const SelectVehicleWidget(),
+                                                                                      child: SelectVehicleWidget(),
                                                                                     ),
                                                                                   );
                                                                                 },
@@ -495,8 +489,8 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                                                             options:
                                                                                 FFButtonOptions(
                                                                               height: 40.0,
-                                                                              padding: const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                                                                              iconPadding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                                                                              iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                                                                               color: FlutterFlowTheme.of(context).tertiary,
                                                                               textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                     fontFamily: 'Yantramanav',
@@ -504,14 +498,14 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                                                                     letterSpacing: 0.0,
                                                                                   ),
                                                                               elevation: 3.0,
-                                                                              borderSide: const BorderSide(
+                                                                              borderSide: BorderSide(
                                                                                 color: Colors.transparent,
                                                                                 width: 1.0,
                                                                               ),
                                                                               borderRadius: BorderRadius.circular(100.0),
                                                                             ),
                                                                           ),
-                                                                        ].divide(const SizedBox(height: 5.0)),
+                                                                        ].divide(SizedBox(height: 5.0)),
                                                                       ),
                                                                     ),
                                                                   );
@@ -528,7 +522,7 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                                                       border:
                                                                           Border
                                                                               .all(
-                                                                        color: const Color(
+                                                                        color: Color(
                                                                             0xFFCBD5E1),
                                                                       ),
                                                                     ),
@@ -537,7 +531,7 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                                                       height:
                                                                           200.0,
                                                                       decoration:
-                                                                          const BoxDecoration(),
+                                                                          BoxDecoration(),
                                                                       child:
                                                                           wrapWithModel(
                                                                         model: _model
@@ -570,12 +564,12 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                                                 }
                                                               },
                                                             ),
-                                                          ].divide(const SizedBox(
+                                                          ].divide(SizedBox(
                                                               height: 16.0)),
                                                         ),
                                                       ),
                                                     ].divide(
-                                                        const SizedBox(height: 16.0)),
+                                                        SizedBox(height: 16.0)),
                                                   ),
                                                 );
                                               } else {
@@ -626,7 +620,7 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                                         ),
                                                         child: Align(
                                                           alignment:
-                                                              const AlignmentDirectional(
+                                                              AlignmentDirectional(
                                                                   0.0, 0.0),
                                                           child: StreamBuilder<
                                                               RequestRecord>(
@@ -666,7 +660,7 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                                                 width: double
                                                                     .infinity,
                                                                 decoration:
-                                                                    const BoxDecoration(),
+                                                                    BoxDecoration(),
                                                                 child: Builder(
                                                                   builder:
                                                                       (context) {
@@ -675,12 +669,12 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                                                         'cancelled') {
                                                                       return Container(
                                                                         constraints:
-                                                                            const BoxConstraints(
+                                                                            BoxConstraints(
                                                                           minHeight:
                                                                               double.infinity,
                                                                         ),
                                                                         decoration:
-                                                                            const BoxDecoration(),
+                                                                            BoxDecoration(),
                                                                         child:
                                                                             wrapWithModel(
                                                                           model:
@@ -782,7 +776,7 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                                                           color:
                                                                               FlutterFlowTheme.of(context).secondaryBackground,
                                                                         ),
-                                                                        alignment: const AlignmentDirectional(
+                                                                        alignment: AlignmentDirectional(
                                                                             0.0,
                                                                             -1.0),
                                                                         child:
@@ -816,10 +810,10 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                           ),
                                         ),
                                       ),
-                                    ].divide(const SizedBox(height: 15.0)),
+                                    ].divide(SizedBox(height: 15.0)),
                                   ),
                                 ),
-                              ].divide(const SizedBox(height: 16.0)),
+                              ].divide(SizedBox(height: 16.0)),
                             ),
                           ),
                         ),
@@ -828,7 +822,7 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                     wrapWithModel(
                       model: _model.bottomBarModel,
                       updateCallback: () => safeSetState(() {}),
-                      child: const BottomBarWidget(),
+                      child: BottomBarWidget(),
                     ),
                   ],
                 ),

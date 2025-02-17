@@ -55,16 +55,19 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
         title: 'vehicle_confirmation',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
+          onTap: () {
+            FocusScope.of(context).unfocus();
+            FocusManager.instance.primaryFocus?.unfocus();
+          },
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: Colors.white,
             appBar: AppBar(
               backgroundColor: Colors.white,
-              iconTheme: const IconThemeData(color: Color(0xFF1E293B)),
+              iconTheme: IconThemeData(color: Color(0xFF1E293B)),
               automaticallyImplyLeading: true,
               title: Container(
-                decoration: const BoxDecoration(),
+                decoration: BoxDecoration(),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -72,36 +75,36 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                       'Vehicle Confirmation',
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Yantramanav',
-                            color: const Color(0xFF1E293B),
+                            color: Color(0xFF1E293B),
                             fontSize: 30.0,
                             letterSpacing: 0.0,
                             fontWeight: FontWeight.bold,
                           ),
                     ),
-                  ].divide(const SizedBox(width: 10.0)),
+                  ].divide(SizedBox(width: 10.0)),
                 ),
               ),
-              actions: const [],
+              actions: [],
               centerTitle: false,
               elevation: 1.0,
             ),
             body: SafeArea(
               top: true,
               child: Align(
-                alignment: const AlignmentDirectional(0.0, 0.0),
+                alignment: AlignmentDirectional(0.0, 0.0),
                 child: Container(
                   width: double.infinity,
                   height: double.infinity,
-                  constraints: const BoxConstraints(
+                  constraints: BoxConstraints(
                     maxWidth: 500.0,
                   ),
-                  decoration: const BoxDecoration(),
+                  decoration: BoxDecoration(),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Container(
-                        decoration: const BoxDecoration(),
+                        decoration: BoxDecoration(),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
@@ -111,14 +114,14 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                               decoration: BoxDecoration(
                                 gradient: LinearGradient(
                                   colors: [
-                                    const Color(0xF304B53E),
+                                    Color(0xF304B53E),
                                     FlutterFlowTheme.of(context).tertiary
                                   ],
-                                  stops: const [0.0, 1.0],
-                                  begin: const AlignmentDirectional(0.0, -1.0),
-                                  end: const AlignmentDirectional(0, 1.0),
+                                  stops: [0.0, 1.0],
+                                  begin: AlignmentDirectional(0.0, -1.0),
+                                  end: AlignmentDirectional(0, 1.0),
                                 ),
-                                borderRadius: const BorderRadius.only(
+                                borderRadius: BorderRadius.only(
                                   bottomLeft: Radius.circular(36.0),
                                   bottomRight: Radius.circular(36.0),
                                   topLeft: Radius.circular(0.0),
@@ -126,7 +129,7 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                 ),
                               ),
                               child: Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: RichText(
                                   textScaler: MediaQuery.of(context).textScaler,
                                   text: TextSpan(
@@ -143,7 +146,7 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                               fontWeight: FontWeight.w300,
                                             ),
                                       ),
-                                      const TextSpan(
+                                      TextSpan(
                                         text: '\nvehicle details',
                                         style: TextStyle(
                                           color: Colors.black,
@@ -168,14 +171,14 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                       ),
                       Expanded(
                         child: Container(
-                          decoration: const BoxDecoration(),
+                          decoration: BoxDecoration(),
                           child: SingleChildScrollView(
                             child: Column(
                               mainAxisSize: MainAxisSize.min,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Container(
-                                  decoration: const BoxDecoration(),
+                                  decoration: BoxDecoration(),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
@@ -183,7 +186,7 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                         width:
                                             MediaQuery.sizeOf(context).width *
                                                 0.9,
-                                        decoration: const BoxDecoration(),
+                                        decoration: BoxDecoration(),
                                         child: AuthUserStreamWidget(
                                           builder: (context) =>
                                               FutureBuilder<ApiCallResponse>(
@@ -229,10 +232,10 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                             columnGetDriverVehiclesResponse
                                                                 .jsonBody,
                                                           )
-                                                          ?.first))
+                                                          ?.firstOrNull))
                                                     Container(
                                                       decoration:
-                                                          const BoxDecoration(),
+                                                          BoxDecoration(),
                                                       child: Column(
                                                         mainAxisSize:
                                                             MainAxisSize.max,
@@ -242,12 +245,12 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                         children: [
                                                           Container(
                                                             constraints:
-                                                                const BoxConstraints(
+                                                                BoxConstraints(
                                                               minWidth: double
                                                                   .infinity,
                                                             ),
                                                             decoration:
-                                                                const BoxDecoration(),
+                                                                BoxDecoration(),
                                                             child: Text(
                                                               'Select Vehicle',
                                                               style: FlutterFlowTheme
@@ -271,7 +274,7 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                                     .width *
                                                                 0.9,
                                                             decoration:
-                                                                const BoxDecoration(),
+                                                                BoxDecoration(),
                                                             child:
                                                                 FlutterFlowDropDown<
                                                                     String>(
@@ -319,7 +322,7 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                                       .override(
                                                                         fontFamily:
                                                                             'Yantramanav',
-                                                                        color: const Color(
+                                                                        color: Color(
                                                                             0xFF64748B),
                                                                         fontSize:
                                                                             16.0,
@@ -350,7 +353,7 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                               borderRadius:
                                                                   18.0,
                                                               margin:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           16.0,
                                                                           4.0,
@@ -368,7 +371,7 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         10.0,
@@ -442,83 +445,144 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                                   )}';
                                                                   safeSetState(
                                                                       () {});
-
-                                                                  context
-                                                                      .pushNamed(
-                                                                    'vehicle_confirmation2',
-                                                                    queryParameters:
-                                                                        {
-                                                                      'service':
-                                                                          serializeParam(
-                                                                        widget
-                                                                            .service,
-                                                                        ParamType
-                                                                            .String,
-                                                                      ),
-                                                                      'additionalInfo':
-                                                                          serializeParam(
-                                                                        widget
-                                                                            .additionalInfo,
-                                                                        ParamType
-                                                                            .String,
-                                                                      ),
-                                                                      'licensePlate':
-                                                                          serializeParam(
-                                                                        UptimeFleetAppGroup
-                                                                            .getVehiclesByRegNoCall
-                                                                            .licensePlate(
-                                                                          (_model.vehicle2?.jsonBody ??
-                                                                              ''),
+                                                                  if ((functions.checkNull(UptimeFleetAppGroup
+                                                                              .getVehiclesByRegNoCall
+                                                                              .make(
+                                                                            (_model.vehicle2?.jsonBody ??
+                                                                                ''),
+                                                                          )) ==
+                                                                          false) &&
+                                                                      (functions.checkNull(UptimeFleetAppGroup
+                                                                              .getVehiclesByRegNoCall
+                                                                              .model(
+                                                                            (_model.vehicle2?.jsonBody ??
+                                                                                ''),
+                                                                          )) ==
+                                                                          false)) {
+                                                                    await showModalBottomSheet(
+                                                                      isScrollControlled:
+                                                                          true,
+                                                                      backgroundColor:
+                                                                          Colors
+                                                                              .transparent,
+                                                                      enableDrag:
+                                                                          false,
+                                                                      context:
+                                                                          context,
+                                                                      builder:
+                                                                          (context) {
+                                                                        return GestureDetector(
+                                                                          onTap:
+                                                                              () {
+                                                                            FocusScope.of(context).unfocus();
+                                                                            FocusManager.instance.primaryFocus?.unfocus();
+                                                                          },
+                                                                          child:
+                                                                              Padding(
+                                                                            padding:
+                                                                                MediaQuery.viewInsetsOf(context),
+                                                                            child:
+                                                                                ConfirmVehicleDetailsWidget(
+                                                                              vehicleReg: UptimeFleetAppGroup.getVehiclesByRegNoCall.licensePlate(
+                                                                                (_model.vehicle2?.jsonBody ?? ''),
+                                                                              )!,
+                                                                              service: widget.service!,
+                                                                            ),
+                                                                          ),
+                                                                        );
+                                                                      },
+                                                                    ).then((value) =>
+                                                                        safeSetState(
+                                                                            () {}));
+                                                                  } else {
+                                                                    context
+                                                                        .pushNamed(
+                                                                      'vehicle_confirmation_manual',
+                                                                      queryParameters:
+                                                                          {
+                                                                        'service':
+                                                                            serializeParam(
+                                                                          widget
+                                                                              .service,
+                                                                          ParamType
+                                                                              .String,
                                                                         ),
-                                                                        ParamType
-                                                                            .String,
-                                                                      ),
-                                                                      'state':
-                                                                          serializeParam(
-                                                                        UptimeFleetAppGroup
-                                                                            .getVehiclesByRegNoCall
-                                                                            .state(
-                                                                          (_model.vehicle2?.jsonBody ??
-                                                                              ''),
+                                                                        'licensePlate':
+                                                                            serializeParam(
+                                                                          UptimeFleetAppGroup
+                                                                              .getVehiclesByRegNoCall
+                                                                              .licensePlate(
+                                                                            (_model.vehicle2?.jsonBody ??
+                                                                                ''),
+                                                                          ),
+                                                                          ParamType
+                                                                              .String,
                                                                         ),
-                                                                        ParamType
-                                                                            .String,
-                                                                      ),
-                                                                      'color':
-                                                                          serializeParam(
-                                                                        UptimeFleetAppGroup
-                                                                            .getVehiclesByRegNoCall
-                                                                            .color(
-                                                                          (_model.vehicle2?.jsonBody ??
-                                                                              ''),
+                                                                        'state':
+                                                                            serializeParam(
+                                                                          UptimeFleetAppGroup
+                                                                              .getVehiclesByRegNoCall
+                                                                              .state(
+                                                                            (_model.vehicle2?.jsonBody ??
+                                                                                ''),
+                                                                          ),
+                                                                          ParamType
+                                                                              .String,
                                                                         ),
-                                                                        ParamType
-                                                                            .String,
-                                                                      ),
-                                                                      'image':
-                                                                          serializeParam(
-                                                                        UptimeFleetAppGroup
-                                                                            .getVehiclesByRegNoCall
-                                                                            .image(
-                                                                          (_model.vehicle2?.jsonBody ??
-                                                                              ''),
+                                                                        'id':
+                                                                            serializeParam(
+                                                                          UptimeFleetAppGroup
+                                                                              .getVehiclesByRegNoCall
+                                                                              .id(
+                                                                            (_model.vehicle2?.jsonBody ??
+                                                                                ''),
+                                                                          ),
+                                                                          ParamType
+                                                                              .String,
                                                                         ),
-                                                                        ParamType
-                                                                            .String,
-                                                                      ),
-                                                                      'id':
-                                                                          serializeParam(
-                                                                        UptimeFleetAppGroup
-                                                                            .getVehiclesByRegNoCall
-                                                                            .id(
-                                                                          (_model.vehicle2?.jsonBody ??
-                                                                              ''),
+                                                                        'additionalInfo':
+                                                                            serializeParam(
+                                                                          UptimeFleetAppGroup
+                                                                              .getVehiclesByRegNoCall
+                                                                              .details(
+                                                                                (_model.vehicle2?.jsonBody ?? ''),
+                                                                              )
+                                                                              .toString(),
+                                                                          ParamType
+                                                                              .String,
                                                                         ),
-                                                                        ParamType
-                                                                            .String,
-                                                                      ),
-                                                                    }.withoutNulls,
-                                                                  );
+                                                                        'notes':
+                                                                            serializeParam(
+                                                                          widget
+                                                                              .additionalInfo,
+                                                                          ParamType
+                                                                              .String,
+                                                                        ),
+                                                                        'color':
+                                                                            serializeParam(
+                                                                          UptimeFleetAppGroup
+                                                                              .getVehiclesByRegNoCall
+                                                                              .color(
+                                                                            (_model.vehicle2?.jsonBody ??
+                                                                                ''),
+                                                                          ),
+                                                                          ParamType
+                                                                              .String,
+                                                                        ),
+                                                                        'image':
+                                                                            serializeParam(
+                                                                          UptimeFleetAppGroup
+                                                                              .getVehiclesByRegNoCall
+                                                                              .image(
+                                                                            (_model.vehicle2?.jsonBody ??
+                                                                                ''),
+                                                                          ),
+                                                                          ParamType
+                                                                              .String,
+                                                                        ),
+                                                                      }.withoutNulls,
+                                                                    );
+                                                                  }
                                                                 } else {
                                                                   if (getJsonField(
                                                                         (_model.vehicle2?.jsonBody ??
@@ -546,9 +610,9 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                                           ),
                                                                         ),
                                                                         duration:
-                                                                            const Duration(milliseconds: 4000),
+                                                                            Duration(milliseconds: 4000),
                                                                         backgroundColor:
-                                                                            const Color(0xFFF50833),
+                                                                            Color(0xFFF50833),
                                                                       ),
                                                                     );
                                                                   } else {
@@ -572,9 +636,9 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                                           ),
                                                                         ),
                                                                         duration:
-                                                                            const Duration(milliseconds: 4000),
+                                                                            Duration(milliseconds: 4000),
                                                                         backgroundColor:
-                                                                            const Color(0xFFF50833),
+                                                                            Color(0xFFF50833),
                                                                       ),
                                                                     );
                                                                   }
@@ -589,14 +653,14 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                                 width: double
                                                                     .infinity,
                                                                 height: 50.0,
-                                                                padding: const EdgeInsetsDirectional
+                                                                padding: EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         24.0,
                                                                         0.0,
                                                                         24.0,
                                                                         0.0),
                                                                 iconPadding:
-                                                                    const EdgeInsetsDirectional
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             0.0,
@@ -619,7 +683,7 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                                     ),
                                                                 elevation: 3.0,
                                                                 borderSide:
-                                                                    const BorderSide(
+                                                                    BorderSide(
                                                                   color: Colors
                                                                       .transparent,
                                                                   width: 1.0,
@@ -633,7 +697,7 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         10.0,
@@ -658,13 +722,13 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                                   ),
                                                             ),
                                                           ),
-                                                        ].divide(const SizedBox(
+                                                        ].divide(SizedBox(
                                                             height: 5.0)),
                                                       ),
                                                     ),
                                                   Container(
                                                     width: double.infinity,
-                                                    decoration: const BoxDecoration(),
+                                                    decoration: BoxDecoration(),
                                                     child: Text(
                                                       'License Plate',
                                                       style:
@@ -687,7 +751,7 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                                 context)
                                                             .width *
                                                         0.9,
-                                                    decoration: const BoxDecoration(),
+                                                    decoration: BoxDecoration(),
                                                     child: Form(
                                                       key: _model.formKey,
                                                       autovalidateMode:
@@ -695,7 +759,7 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                               .disabled,
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     4.0,
@@ -728,7 +792,7 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                             enabledBorder:
                                                                 OutlineInputBorder(
                                                               borderSide:
-                                                                  const BorderSide(
+                                                                  BorderSide(
                                                                 color: Color(
                                                                     0xFFCBD5E1),
                                                                 width: 1.0,
@@ -784,7 +848,7 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                             fillColor:
                                                                 Colors.white,
                                                             contentPadding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         8.0,
                                                                         0.0,
@@ -812,7 +876,7 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                     ),
                                                   ),
                                                   Container(
-                                                    decoration: const BoxDecoration(),
+                                                    decoration: BoxDecoration(),
                                                     child: Column(
                                                       mainAxisSize:
                                                           MainAxisSize.max,
@@ -842,7 +906,7 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                                       .width *
                                                                   0.9,
                                                           decoration:
-                                                              const BoxDecoration(),
+                                                              BoxDecoration(),
                                                           child:
                                                               FlutterFlowDropDown<
                                                                   String>(
@@ -859,7 +923,7 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                                           .state
                                                                       : '  ',
                                                             ),
-                                                            options: const [
+                                                            options: [
                                                               'Alabama',
                                                               'Alaska',
                                                               'American Samoa',
@@ -926,6 +990,26 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                                         val),
                                                             width: 300.0,
                                                             height: 52.0,
+                                                            searchHintTextStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Yantramanav',
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                    ),
+                                                            searchTextStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Yantramanav',
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                    ),
                                                             textStyle:
                                                                 FlutterFlowTheme.of(
                                                                         context)
@@ -933,7 +1017,7 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                                     .override(
                                                                       fontFamily:
                                                                           'Yantramanav',
-                                                                      color: const Color(
+                                                                      color: Color(
                                                                           0xFF64748B),
                                                                       fontSize:
                                                                           16.0,
@@ -942,6 +1026,8 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                                     ),
                                                             hintText:
                                                                 'Enter state of registration',
+                                                            searchHintText:
+                                                                'Search for an item...',
                                                             icon: Icon(
                                                               Icons
                                                                   .keyboard_arrow_down_rounded,
@@ -961,7 +1047,7 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                             borderWidth: 2.0,
                                                             borderRadius: 18.0,
                                                             margin:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         16.0,
                                                                         4.0,
@@ -970,21 +1056,21 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                             hidesUnderline:
                                                                 true,
                                                             isOverButton: true,
-                                                            isSearchable: false,
+                                                            isSearchable: true,
                                                             isMultiSelect:
                                                                 false,
                                                           ),
                                                         ),
-                                                      ].divide(const SizedBox(
+                                                      ].divide(SizedBox(
                                                           height: 5.0)),
                                                     ),
                                                   ),
                                                   Container(
                                                     width: double.infinity,
-                                                    decoration: const BoxDecoration(),
+                                                    decoration: BoxDecoration(),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   10.0,
@@ -1064,41 +1150,145 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                                   ''),
                                                             )}';
                                                             safeSetState(() {});
-                                                            await showModalBottomSheet(
-                                                              isScrollControlled:
-                                                                  true,
-                                                              backgroundColor:
-                                                                  Colors
-                                                                      .transparent,
-                                                              enableDrag: false,
-                                                              context: context,
-                                                              builder:
-                                                                  (context) {
-                                                                return GestureDetector(
-                                                                  onTap: () =>
+                                                            if ((functions.checkNull(
+                                                                        UptimeFleetAppGroup
+                                                                            .getVehiclesCall
+                                                                            .make(
+                                                                      (_model.vehicle
+                                                                              ?.jsonBody ??
+                                                                          ''),
+                                                                    )) ==
+                                                                    false) &&
+                                                                (functions.checkNull(
+                                                                        UptimeFleetAppGroup
+                                                                            .getVehiclesCall
+                                                                            .model(
+                                                                      (_model.vehicle
+                                                                              ?.jsonBody ??
+                                                                          ''),
+                                                                    )) ==
+                                                                    false)) {
+                                                              await showModalBottomSheet(
+                                                                isScrollControlled:
+                                                                    true,
+                                                                backgroundColor:
+                                                                    Colors
+                                                                        .transparent,
+                                                                enableDrag:
+                                                                    false,
+                                                                context:
+                                                                    context,
+                                                                builder:
+                                                                    (context) {
+                                                                  return GestureDetector(
+                                                                    onTap: () {
                                                                       FocusScope.of(
                                                                               context)
-                                                                          .unfocus(),
-                                                                  child:
-                                                                      Padding(
-                                                                    padding: MediaQuery
-                                                                        .viewInsetsOf(
-                                                                            context),
+                                                                          .unfocus();
+                                                                      FocusManager
+                                                                          .instance
+                                                                          .primaryFocus
+                                                                          ?.unfocus();
+                                                                    },
                                                                     child:
-                                                                        ConfirmVehicleDetailsWidget(
-                                                                      vehicleReg: _model
-                                                                          .textController
-                                                                          .text,
-                                                                      service:
-                                                                          widget
-                                                                              .service!,
+                                                                        Padding(
+                                                                      padding: MediaQuery
+                                                                          .viewInsetsOf(
+                                                                              context),
+                                                                      child:
+                                                                          ConfirmVehicleDetailsWidget(
+                                                                        vehicleReg: _model
+                                                                            .textController
+                                                                            .text,
+                                                                        service:
+                                                                            widget.service!,
+                                                                      ),
                                                                     ),
+                                                                  );
+                                                                },
+                                                              ).then((value) =>
+                                                                  safeSetState(
+                                                                      () {}));
+                                                            } else {
+                                                              context.pushNamed(
+                                                                'vehicle_confirmation_manual',
+                                                                queryParameters:
+                                                                    {
+                                                                  'service':
+                                                                      serializeParam(
+                                                                    widget
+                                                                        .service,
+                                                                    ParamType
+                                                                        .String,
                                                                   ),
-                                                                );
-                                                              },
-                                                            ).then((value) =>
-                                                                safeSetState(
-                                                                    () {}));
+                                                                  'additionalInfo':
+                                                                      serializeParam(
+                                                                    widget
+                                                                        .additionalInfo,
+                                                                    ParamType
+                                                                        .String,
+                                                                  ),
+                                                                  'licensePlate':
+                                                                      serializeParam(
+                                                                    _model
+                                                                        .textController
+                                                                        .text,
+                                                                    ParamType
+                                                                        .String,
+                                                                  ),
+                                                                  'state':
+                                                                      serializeParam(
+                                                                    _model
+                                                                        .dropDownStateValue,
+                                                                    ParamType
+                                                                        .String,
+                                                                  ),
+                                                                  'notes':
+                                                                      serializeParam(
+                                                                    widget
+                                                                        .additionalInfo,
+                                                                    ParamType
+                                                                        .String,
+                                                                  ),
+                                                                  'color':
+                                                                      serializeParam(
+                                                                    UptimeFleetAppGroup
+                                                                        .getVehiclesCall
+                                                                        .color(
+                                                                      (_model.vehicle
+                                                                              ?.jsonBody ??
+                                                                          ''),
+                                                                    ),
+                                                                    ParamType
+                                                                        .String,
+                                                                  ),
+                                                                  'id':
+                                                                      serializeParam(
+                                                                    UptimeFleetAppGroup
+                                                                        .getVehiclesCall
+                                                                        .id(
+                                                                      (_model.vehicle
+                                                                              ?.jsonBody ??
+                                                                          ''),
+                                                                    ),
+                                                                    ParamType
+                                                                        .String,
+                                                                  ),
+                                                                  'image':
+                                                                      serializeParam(
+                                                                    UptimeFleetAppGroup
+                                                                        .getVehiclesCall
+                                                                        .image(
+                                                                      (_model.vehicle
+                                                                              ?.jsonBody ??
+                                                                          ''),
+                                                                    ),
+                                                                    ParamType
+                                                                        .String,
+                                                                  ),
+                                                                }.withoutNulls,
+                                                              );
+                                                            }
                                                           } else {
                                                             if (getJsonField(
                                                                   (_model.vehicle
@@ -1127,11 +1317,11 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                                           14.0,
                                                                     ),
                                                                   ),
-                                                                  duration: const Duration(
+                                                                  duration: Duration(
                                                                       milliseconds:
                                                                           4000),
                                                                   backgroundColor:
-                                                                      const Color(
+                                                                      Color(
                                                                           0xFFF50833),
                                                                 ),
                                                               );
@@ -1156,11 +1346,11 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                                           14.0,
                                                                     ),
                                                                   ),
-                                                                  duration: const Duration(
+                                                                  duration: Duration(
                                                                       milliseconds:
                                                                           4000),
                                                                   backgroundColor:
-                                                                      const Color(
+                                                                      Color(
                                                                           0xFFF50833),
                                                                 ),
                                                               );
@@ -1174,14 +1364,14 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                             FFButtonOptions(
                                                           height: 50.0,
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       24.0,
                                                                       0.0,
                                                                       24.0,
                                                                       0.0),
                                                           iconPadding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       0.0,
@@ -1205,7 +1395,7 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                                   ),
                                                           elevation: 3.0,
                                                           borderSide:
-                                                              const BorderSide(
+                                                              BorderSide(
                                                             color: Colors
                                                                 .transparent,
                                                             width: 1.0,
@@ -1218,21 +1408,21 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                       ),
                                                     ),
                                                   ),
-                                                ].divide(const SizedBox(height: 5.0)),
+                                                ].divide(SizedBox(height: 5.0)),
                                               );
                                             },
                                           ),
                                         ),
                                       ),
-                                    ].divide(const SizedBox(height: 20.0)),
+                                    ].divide(SizedBox(height: 20.0)),
                                   ),
                                 ),
-                              ].divide(const SizedBox(height: 20.0)),
+                              ].divide(SizedBox(height: 20.0)),
                             ),
                           ),
                         ),
                       ),
-                    ].divide(const SizedBox(height: 16.0)),
+                    ].divide(SizedBox(height: 16.0)),
                   ),
                 ),
               ),

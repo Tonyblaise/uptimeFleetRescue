@@ -15,9 +15,9 @@ class EmptyStateSimpleWidget extends StatefulWidget {
     String? body,
     this.action,
     bool? buttonVisible,
-  })  : title = title ?? 'No Comments',
-        body = body ?? 'There are no comments associated with this post.',
-        buttonVisible = buttonVisible ?? false;
+  })  : this.title = title ?? 'No Comments',
+        this.body = body ?? 'There are no comments associated with this post.',
+        this.buttonVisible = buttonVisible ?? false;
 
   final Widget? icon;
   final String title;
@@ -56,14 +56,14 @@ class _EmptyStateSimpleWidgetState extends State<EmptyStateSimpleWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: const AlignmentDirectional(0.0, -1.0),
+      alignment: AlignmentDirectional(0.0, -1.0),
       child: Column(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           widget.icon!,
           Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
             child: Text(
               widget.title,
               textAlign: TextAlign.center,
@@ -76,7 +76,7 @@ class _EmptyStateSimpleWidgetState extends State<EmptyStateSimpleWidget> {
           ),
           if (!widget.buttonVisible)
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
               child: InkWell(
                 splashColor: Colors.transparent,
                 focusColor: Colors.transparent,
@@ -93,7 +93,7 @@ class _EmptyStateSimpleWidgetState extends State<EmptyStateSimpleWidget> {
                         builder: (context) {
                           return Padding(
                             padding: MediaQuery.viewInsetsOf(context),
-                            child: const SelectVehicleWidget(),
+                            child: SelectVehicleWidget(),
                           );
                         },
                       ).then((value) => safeSetState(() {}));
@@ -112,7 +112,7 @@ class _EmptyStateSimpleWidgetState extends State<EmptyStateSimpleWidget> {
             ),
           if (widget.buttonVisible)
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 15.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 15.0),
               child: FFButtonWidget(
                 onPressed: () async {
                   await actions.runWidgetAction(
@@ -125,7 +125,7 @@ class _EmptyStateSimpleWidgetState extends State<EmptyStateSimpleWidget> {
                         builder: (context) {
                           return Padding(
                             padding: MediaQuery.viewInsetsOf(context),
-                            child: const SelectVehicleWidget(),
+                            child: SelectVehicleWidget(),
                           );
                         },
                       ).then((value) => safeSetState(() {}));
@@ -135,9 +135,9 @@ class _EmptyStateSimpleWidgetState extends State<EmptyStateSimpleWidget> {
                 text: 'Update Vehicle',
                 options: FFButtonOptions(
                   height: 40.0,
-                  padding: const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                   iconPadding:
-                      const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   color: FlutterFlowTheme.of(context).tertiary,
                   textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                         fontFamily: 'Yantramanav',
@@ -145,7 +145,7 @@ class _EmptyStateSimpleWidgetState extends State<EmptyStateSimpleWidget> {
                         letterSpacing: 0.0,
                       ),
                   elevation: 3.0,
-                  borderSide: const BorderSide(
+                  borderSide: BorderSide(
                     color: Colors.transparent,
                     width: 1.0,
                   ),
@@ -153,7 +153,7 @@ class _EmptyStateSimpleWidgetState extends State<EmptyStateSimpleWidget> {
                 ),
               ),
             ),
-        ].divide(const SizedBox(height: 15.0)),
+        ].divide(SizedBox(height: 15.0)),
       ),
     );
   }

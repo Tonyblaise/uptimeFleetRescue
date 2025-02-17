@@ -1,15 +1,20 @@
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/service_provider/request_notification/request_notification_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
-import '/flutter_flow/permissions_util.dart';
 import 'package:flutter/material.dart';
 import 'request_location_model.dart';
 export 'request_location_model.dart';
 
 class RequestLocationWidget extends StatefulWidget {
-  const RequestLocationWidget({super.key});
+  const RequestLocationWidget({
+    super.key,
+    required this.phone,
+  });
+
+  final String? phone;
 
   @override
   State<RequestLocationWidget> createState() => _RequestLocationWidgetState();
@@ -29,6 +34,7 @@ class _RequestLocationWidgetState extends State<RequestLocationWidget> {
     super.initState();
     _model = createModel(context, () => RequestLocationModel());
 
+    authManager.handlePhoneAuthStateChanges(context);
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -42,12 +48,12 @@ class _RequestLocationWidgetState extends State<RequestLocationWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: const AlignmentDirectional(0.0, 1.0),
+      alignment: AlignmentDirectional(0.0, 1.0),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 20.0),
+        padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 20.0),
         child: Container(
           width: double.infinity,
-          constraints: const BoxConstraints(
+          constraints: BoxConstraints(
             maxWidth: 500.0,
           ),
           decoration: BoxDecoration(
@@ -59,7 +65,7 @@ class _RequestLocationWidgetState extends State<RequestLocationWidget> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Align(
-                alignment: const AlignmentDirectional(0.0, 0.0),
+                alignment: AlignmentDirectional(0.0, 0.0),
                 child: Container(
                   width: double.infinity,
                   height: 80.0,
@@ -69,14 +75,14 @@ class _RequestLocationWidgetState extends State<RequestLocationWidget> {
                         FlutterFlowTheme.of(context).secondary,
                         FlutterFlowTheme.of(context).tertiary
                       ],
-                      stops: const [0.0, 1.0],
-                      begin: const AlignmentDirectional(0.0, -1.0),
-                      end: const AlignmentDirectional(0, 1.0),
+                      stops: [0.0, 1.0],
+                      begin: AlignmentDirectional(0.0, -1.0),
+                      end: AlignmentDirectional(0, 1.0),
                     ),
                     borderRadius: BorderRadius.circular(24.0),
                   ),
                   child: Align(
-                    alignment: const AlignmentDirectional(0.0, 0.0),
+                    alignment: AlignmentDirectional(0.0, 0.0),
                     child: Text(
                       'Allow location access',
                       textAlign: TextAlign.center,
@@ -96,10 +102,10 @@ class _RequestLocationWidgetState extends State<RequestLocationWidget> {
                 size: 56.0,
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                 child: Container(
                   width: MediaQuery.sizeOf(context).width * 0.9,
-                  decoration: const BoxDecoration(),
+                  decoration: BoxDecoration(),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -109,18 +115,18 @@ class _RequestLocationWidgetState extends State<RequestLocationWidget> {
                         textAlign: TextAlign.center,
                         style: FlutterFlowTheme.of(context).labelLarge.override(
                               fontFamily: 'Yantramanav',
-                              color: const Color(0xFF64748B),
+                              color: Color(0xFF64748B),
                               fontSize: 16.0,
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.w300,
                             ),
                       ),
-                    ].divide(const SizedBox(height: 8.0)),
+                    ].divide(SizedBox(height: 8.0)),
                   ),
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 20.0),
+                padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 20.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -133,9 +139,9 @@ class _RequestLocationWidgetState extends State<RequestLocationWidget> {
                         text: 'Cancel',
                         options: FFButtonOptions(
                           height: 56.0,
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               24.0, 0.0, 24.0, 0.0),
-                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).primary,
                           textStyle:
@@ -145,7 +151,7 @@ class _RequestLocationWidgetState extends State<RequestLocationWidget> {
                                     letterSpacing: 0.0,
                                   ),
                           elevation: 3.0,
-                          borderSide: const BorderSide(
+                          borderSide: BorderSide(
                             color: Colors.transparent,
                             width: 1.0,
                           ),
@@ -157,32 +163,104 @@ class _RequestLocationWidgetState extends State<RequestLocationWidget> {
                       child: FFButtonWidget(
                         onPressed: () async {
                           if (isAndroid || isiOS) {
-                            await requestPermission(locationPermission);
+                            await actions.openLocationSettings();
                           } else {
-                            await actions.getUserLocation();
+                            await actions.openLocationSettings();
+                          }
+
+                          _model.check1 =
+                              await UptimeFleetAppGroup.checkUserCall.call(
+                            phoneNumber: widget.phone,
+                          );
+
+                          if ((_model.check1?.succeeded ?? true)) {
+                            if (UptimeFleetAppGroup.checkUserCall.signUpType(
+                                  (_model.check1?.jsonBody ?? ''),
+                                ) !=
+                                'none') {
+                              final phoneNumberVal = widget.phone;
+                              if (phoneNumberVal == null ||
+                                  phoneNumberVal.isEmpty ||
+                                  !phoneNumberVal.startsWith('+')) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                        'Phone Number is required and has to start with +.'),
+                                  ),
+                                );
+                                return;
+                              }
+                              await authManager.beginPhoneAuth(
+                                context: context,
+                                phoneNumber: phoneNumberVal,
+                                onCodeSent: (context) async {
+                                  context.goNamedAuth(
+                                    'verify',
+                                    context.mounted,
+                                    queryParameters: {
+                                      'phoneNumber': serializeParam(
+                                        widget.phone,
+                                        ParamType.String,
+                                      ),
+                                      'signUpType': serializeParam(
+                                        UptimeFleetAppGroup.checkUserCall
+                                            .signUpType(
+                                          (_model.check1?.jsonBody ?? ''),
+                                        ),
+                                        ParamType.String,
+                                      ),
+                                      'signUp': serializeParam(
+                                        false,
+                                        ParamType.bool,
+                                      ),
+                                    }.withoutNulls,
+                                    ignoreRedirect: true,
+                                  );
+                                },
+                              );
+                            } else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                    'This account does not exist.',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 14.0,
+                                    ),
+                                  ),
+                                  duration: Duration(milliseconds: 4000),
+                                  backgroundColor:
+                                      FlutterFlowTheme.of(context).error,
+                                ),
+                              );
+                            }
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  'Something went wrong. Please try again later.',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 14.0,
+                                  ),
+                                ),
+                                duration: Duration(milliseconds: 4000),
+                                backgroundColor:
+                                    FlutterFlowTheme.of(context).error,
+                              ),
+                            );
                           }
 
                           Navigator.pop(context);
-                          await showModalBottomSheet(
-                            isScrollControlled: true,
-                            backgroundColor: Colors.transparent,
-                            isDismissible: false,
-                            enableDrag: false,
-                            context: context,
-                            builder: (context) {
-                              return Padding(
-                                padding: MediaQuery.viewInsetsOf(context),
-                                child: const RequestNotificationWidget(),
-                              );
-                            },
-                          ).then((value) => safeSetState(() {}));
+
+                          safeSetState(() {});
                         },
                         text: 'Allow access',
                         options: FFButtonOptions(
                           height: 56.0,
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               24.0, 0.0, 24.0, 0.0),
-                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).tertiary,
                           textStyle:
@@ -192,7 +270,7 @@ class _RequestLocationWidgetState extends State<RequestLocationWidget> {
                                     letterSpacing: 0.0,
                                   ),
                           elevation: 3.0,
-                          borderSide: const BorderSide(
+                          borderSide: BorderSide(
                             color: Colors.transparent,
                             width: 1.0,
                           ),
@@ -200,10 +278,10 @@ class _RequestLocationWidgetState extends State<RequestLocationWidget> {
                         ),
                       ),
                     ),
-                  ].divide(const SizedBox(width: 15.0)),
+                  ].divide(SizedBox(width: 15.0)),
                 ),
               ),
-            ].divide(const SizedBox(height: 32.0)),
+            ].divide(SizedBox(height: 32.0)),
           ),
         ),
       ),

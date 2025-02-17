@@ -9,9 +9,9 @@ import '/flutter_flow/flutter_flow_util.dart';
 
 class ServicesRecord extends FirestoreRecord {
   ServicesRecord._(
-    super.reference,
-    super.data,
-  ) {
+    DocumentReference reference,
+    Map<String, dynamic> data,
+  ) : super(reference, data) {
     _initializeFields();
   }
 
@@ -30,10 +30,16 @@ class ServicesRecord extends FirestoreRecord {
   String get selectedImage => _selectedImage ?? '';
   bool hasSelectedImage() => _selectedImage != null;
 
+  // "no" field.
+  int? _no;
+  int get no => _no ?? 0;
+  bool hasNo() => _no != null;
+
   void _initializeFields() {
     _name = snapshotData['name'] as String?;
     _defaultImage = snapshotData['defaultImage'] as String?;
     _selectedImage = snapshotData['selectedImage'] as String?;
+    _no = castToType<int>(snapshotData['no']);
   }
 
   static CollectionReference get collection =>
@@ -74,12 +80,14 @@ Map<String, dynamic> createServicesRecordData({
   String? name,
   String? defaultImage,
   String? selectedImage,
+  int? no,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'name': name,
       'defaultImage': defaultImage,
       'selectedImage': selectedImage,
+      'no': no,
     }.withoutNulls,
   );
 
@@ -93,12 +101,13 @@ class ServicesRecordDocumentEquality implements Equality<ServicesRecord> {
   bool equals(ServicesRecord? e1, ServicesRecord? e2) {
     return e1?.name == e2?.name &&
         e1?.defaultImage == e2?.defaultImage &&
-        e1?.selectedImage == e2?.selectedImage;
+        e1?.selectedImage == e2?.selectedImage &&
+        e1?.no == e2?.no;
   }
 
   @override
-  int hash(ServicesRecord? e) =>
-      const ListEquality().hash([e?.name, e?.defaultImage, e?.selectedImage]);
+  int hash(ServicesRecord? e) => const ListEquality()
+      .hash([e?.name, e?.defaultImage, e?.selectedImage, e?.no]);
 
   @override
   bool isValidKey(Object? o) => o is ServicesRecord;

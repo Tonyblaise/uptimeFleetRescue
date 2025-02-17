@@ -12,6 +12,7 @@ import '/flutter_flow/upload_data.dart';
 import '/service_provider/driver/chat/chat_thread_update_1/chat_thread_update1_widget.dart';
 import '/service_provider/driver/chat/empty_state_simple_1/empty_state_simple1_widget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'chat_thread_component1_model.dart';
 export 'chat_thread_component1_model.dart';
@@ -111,7 +112,7 @@ class _ChatThreadComponent1WidgetState
                 if (!snapshot.hasData) {
                   return Center(
                     child: Padding(
-                      padding: const EdgeInsets.all(16.0),
+                      padding: EdgeInsets.all(16.0),
                       child: SizedBox(
                         width: 50.0,
                         height: 50.0,
@@ -139,7 +140,7 @@ class _ChatThreadComponent1WidgetState
                 }
 
                 return ListView.builder(
-                  padding: const EdgeInsets.fromLTRB(
+                  padding: EdgeInsets.fromLTRB(
                     0,
                     12.0,
                     0,
@@ -152,7 +153,7 @@ class _ChatThreadComponent1WidgetState
                     final listViewChatMessagesRecord =
                         listViewChatMessagesRecordList[listViewIndex];
                     return Container(
-                      decoration: const BoxDecoration(),
+                      decoration: BoxDecoration(),
                       child: wrapWithModel(
                         model: _model.chatThreadUpdate1Models.getModel(
                           listViewChatMessagesRecord.reference.id,
@@ -177,7 +178,7 @@ class _ChatThreadComponent1WidgetState
             width: double.infinity,
             decoration: BoxDecoration(
               color: FlutterFlowTheme.of(context).secondaryBackground,
-              boxShadow: const [
+              boxShadow: [
                 BoxShadow(
                   blurRadius: 3.0,
                   color: Color(0x33000000),
@@ -197,7 +198,7 @@ class _ChatThreadComponent1WidgetState
                     children: [
                       Expanded(
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 12.0, 0.0, 0.0),
                           child: SingleChildScrollView(
                             scrollDirection: Axis.horizontal,
@@ -211,9 +212,9 @@ class _ChatThreadComponent1WidgetState
                                     borderRadius: BorderRadius.circular(8.0),
                                     child: CachedNetworkImage(
                                       fadeInDuration:
-                                          const Duration(milliseconds: 500),
+                                          Duration(milliseconds: 500),
                                       fadeOutDuration:
-                                          const Duration(milliseconds: 500),
+                                          Duration(milliseconds: 500),
                                       imageUrl: path,
                                       width: 120.0,
                                       height: 100.0,
@@ -232,7 +233,7 @@ class _ChatThreadComponent1WidgetState
                                   ),
                                 ),
                                 Align(
-                                  alignment: const AlignmentDirectional(-1.0, -1.0),
+                                  alignment: AlignmentDirectional(-1.0, -1.0),
                                   child: FlutterFlowIconButton(
                                     borderColor:
                                         FlutterFlowTheme.of(context).error,
@@ -258,9 +259,9 @@ class _ChatThreadComponent1WidgetState
                                   ),
                                 ),
                               ]
-                                  .divide(const SizedBox(width: 8.0))
-                                  .addToStart(const SizedBox(width: 16.0))
-                                  .addToEnd(const SizedBox(width: 16.0)),
+                                  .divide(SizedBox(width: 8.0))
+                                  .addToStart(SizedBox(width: 16.0))
+                                  .addToEnd(SizedBox(width: 16.0)),
                             ),
                           ),
                         ),
@@ -271,7 +272,7 @@ class _ChatThreadComponent1WidgetState
                   key: _model.formKey,
                   autovalidateMode: AutovalidateMode.disabled,
                   child: Padding(
-                    padding: const EdgeInsets.all(12.0),
+                    padding: EdgeInsets.all(12.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -366,9 +367,9 @@ class _ChatThreadComponent1WidgetState
                           child: Stack(
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     8.0, 0.0, 0.0, 0.0),
-                                child: SizedBox(
+                                child: Container(
                                   width: double.infinity,
                                   child: TextFormField(
                                     controller: _model.textController,
@@ -511,7 +512,7 @@ class _ChatThreadComponent1WidgetState
                                             BorderRadius.circular(24.0),
                                       ),
                                       contentPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
+                                          EdgeInsetsDirectional.fromSTEB(
                                               16.0, 16.0, 56.0, 16.0),
                                     ),
                                     style: FlutterFlowTheme.of(context)
@@ -530,9 +531,9 @@ class _ChatThreadComponent1WidgetState
                                 ),
                               ),
                               Align(
-                                alignment: const AlignmentDirectional(1.0, 0.0),
+                                alignment: AlignmentDirectional(1.0, 0.0),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 4.0, 6.0, 4.0),
                                   child: FlutterFlowIconButton(
                                     borderColor: FlutterFlowTheme.of(context)
@@ -699,7 +700,7 @@ class _ChatThreadComponent1WidgetState
                                                       e.id !=
                                                       currentUserReference?.id)
                                                   .toList()
-                                                  .first
+                                                  .firstOrNull!
                                             ],
                                             initialPageName: 'chat_2_Details_1',
                                             parameterData: {

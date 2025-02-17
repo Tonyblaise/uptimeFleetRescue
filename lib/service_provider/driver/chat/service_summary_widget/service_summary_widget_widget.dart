@@ -77,7 +77,7 @@ class _ServiceSummaryWidgetWidgetState
     super.initState();
     _model = createModel(context, () => ServiceSummaryWidgetModel());
 
-    getCurrentUserLocation(defaultLocation: const LatLng(0.0, 0.0), cached: true)
+    getCurrentUserLocation(defaultLocation: LatLng(0.0, 0.0), cached: true)
         .then((loc) => safeSetState(() => currentUserLocationValue = loc));
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -109,14 +109,14 @@ class _ServiceSummaryWidgetWidgetState
     }
 
     return Container(
-      decoration: const BoxDecoration(),
+      decoration: BoxDecoration(),
       child: Builder(
         builder: (context) {
           if (currentUserDocument?.activeRequest == null) {
             return Align(
-              alignment: const AlignmentDirectional(0.0, 0.0),
+              alignment: AlignmentDirectional(0.0, 0.0),
               child: Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                 child: StreamBuilder<RequestRecord>(
                   stream: RequestRecord.getDocument(functions
                       .convertStringToRequestDocRef(widget.firebaseId?.id)!),
@@ -140,10 +140,10 @@ class _ServiceSummaryWidgetWidgetState
 
                     return Container(
                       width: MediaQuery.sizeOf(context).width * 0.9,
-                      decoration: const BoxDecoration(),
+                      decoration: BoxDecoration(),
                       child: Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 30.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 30.0),
                         child: SingleChildScrollView(
                           primary: false,
                           child: Column(
@@ -155,7 +155,7 @@ class _ServiceSummaryWidgetWidgetState
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(18.0),
                                   border: Border.all(
-                                    color: const Color(0xFFCBD5E1),
+                                    color: Color(0xFFCBD5E1),
                                   ),
                                 ),
                                 child: Column(
@@ -171,14 +171,14 @@ class _ServiceSummaryWidgetWidgetState
                                             BorderRadius.circular(18.0),
                                       ),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             20.0, 10.0, 20.0, 10.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.min,
                                           children: [
                                             Container(
                                               width: double.infinity,
-                                              decoration: const BoxDecoration(),
+                                              decoration: BoxDecoration(),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.min,
                                                 crossAxisAlignment:
@@ -211,7 +211,7 @@ class _ServiceSummaryWidgetWidgetState
                                                           fontFamily:
                                                               'Yantramanav',
                                                           color:
-                                                              const Color(0xFF64748B),
+                                                              Color(0xFF64748B),
                                                           fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                         ),
@@ -221,7 +221,7 @@ class _ServiceSummaryWidgetWidgetState
                                             ),
                                             Container(
                                               width: double.infinity,
-                                              decoration: const BoxDecoration(),
+                                              decoration: BoxDecoration(),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
                                                 crossAxisAlignment:
@@ -254,7 +254,7 @@ class _ServiceSummaryWidgetWidgetState
                                                           fontFamily:
                                                               'Yantramanav',
                                                           color:
-                                                              const Color(0xFF64748B),
+                                                              Color(0xFF64748B),
                                                           fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                         ),
@@ -264,7 +264,7 @@ class _ServiceSummaryWidgetWidgetState
                                             ),
                                             Container(
                                               width: double.infinity,
-                                              decoration: const BoxDecoration(),
+                                              decoration: BoxDecoration(),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
                                                 crossAxisAlignment:
@@ -317,7 +317,7 @@ class _ServiceSummaryWidgetWidgetState
                                                           .override(
                                                             fontFamily:
                                                                 'Yantramanav',
-                                                            color: const Color(
+                                                            color: Color(
                                                                 0xFF64748B),
                                                             fontSize: 16.0,
                                                             letterSpacing: 0.0,
@@ -327,18 +327,18 @@ class _ServiceSummaryWidgetWidgetState
                                                 ],
                                               ),
                                             ),
-                                          ].divide(const SizedBox(height: 10.0)),
+                                          ].divide(SizedBox(height: 10.0)),
                                         ),
                                       ),
                                     ),
-                                  ].divide(const SizedBox(height: 5.0)),
+                                  ].divide(SizedBox(height: 5.0)),
                                 ),
                               ),
                               Container(
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(18.0),
                                   border: Border.all(
-                                    color: const Color(0xFFCBD5E1),
+                                    color: Color(0xFFCBD5E1),
                                   ),
                                 ),
                                 child: Column(
@@ -354,14 +354,14 @@ class _ServiceSummaryWidgetWidgetState
                                             BorderRadius.circular(18.0),
                                       ),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             20.0, 10.0, 20.0, 10.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.min,
                                           children: [
                                             Container(
                                               width: double.infinity,
-                                              decoration: const BoxDecoration(),
+                                              decoration: BoxDecoration(),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.min,
                                                 crossAxisAlignment:
@@ -394,7 +394,7 @@ class _ServiceSummaryWidgetWidgetState
                                                           fontFamily:
                                                               'Yantramanav',
                                                           color:
-                                                              const Color(0xFF64748B),
+                                                              Color(0xFF64748B),
                                                           fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                         ),
@@ -404,7 +404,7 @@ class _ServiceSummaryWidgetWidgetState
                                             ),
                                             Container(
                                               width: double.infinity,
-                                              decoration: const BoxDecoration(),
+                                              decoration: BoxDecoration(),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
                                                 crossAxisAlignment:
@@ -437,7 +437,7 @@ class _ServiceSummaryWidgetWidgetState
                                                           fontFamily:
                                                               'Yantramanav',
                                                           color:
-                                                              const Color(0xFF64748B),
+                                                              Color(0xFF64748B),
                                                           fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                         ),
@@ -447,7 +447,7 @@ class _ServiceSummaryWidgetWidgetState
                                             ),
                                             Container(
                                               width: double.infinity,
-                                              decoration: const BoxDecoration(),
+                                              decoration: BoxDecoration(),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
                                                 crossAxisAlignment:
@@ -480,7 +480,7 @@ class _ServiceSummaryWidgetWidgetState
                                                           fontFamily:
                                                               'Yantramanav',
                                                           color:
-                                                              const Color(0xFF64748B),
+                                                              Color(0xFF64748B),
                                                           fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                         ),
@@ -490,7 +490,7 @@ class _ServiceSummaryWidgetWidgetState
                                             ),
                                             Container(
                                               width: double.infinity,
-                                              decoration: const BoxDecoration(),
+                                              decoration: BoxDecoration(),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
                                                 crossAxisAlignment:
@@ -523,7 +523,7 @@ class _ServiceSummaryWidgetWidgetState
                                                           fontFamily:
                                                               'Yantramanav',
                                                           color:
-                                                              const Color(0xFF64748B),
+                                                              Color(0xFF64748B),
                                                           fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                         ),
@@ -534,7 +534,7 @@ class _ServiceSummaryWidgetWidgetState
                                             if (widget.eventType == 'Tow')
                                               Container(
                                                 width: double.infinity,
-                                                decoration: const BoxDecoration(),
+                                                decoration: BoxDecoration(),
                                                 child: Column(
                                                   mainAxisSize:
                                                       MainAxisSize.max,
@@ -567,7 +567,7 @@ class _ServiceSummaryWidgetWidgetState
                                                           .override(
                                                             fontFamily:
                                                                 'Yantramanav',
-                                                            color: const Color(
+                                                            color: Color(
                                                                 0xFF64748B),
                                                             fontSize: 16.0,
                                                             letterSpacing: 0.0,
@@ -576,18 +576,18 @@ class _ServiceSummaryWidgetWidgetState
                                                   ],
                                                 ),
                                               ),
-                                          ].divide(const SizedBox(height: 10.0)),
+                                          ].divide(SizedBox(height: 10.0)),
                                         ),
                                       ),
                                     ),
-                                  ].divide(const SizedBox(height: 5.0)),
+                                  ].divide(SizedBox(height: 5.0)),
                                 ),
                               ),
                               Container(
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(18.0),
                                   border: Border.all(
-                                    color: const Color(0xFFCBD5E1),
+                                    color: Color(0xFFCBD5E1),
                                   ),
                                 ),
                                 child: Column(
@@ -603,14 +603,14 @@ class _ServiceSummaryWidgetWidgetState
                                             BorderRadius.circular(18.0),
                                       ),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             20.0, 10.0, 20.0, 10.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.min,
                                           children: [
                                             Container(
                                               width: double.infinity,
-                                              decoration: const BoxDecoration(),
+                                              decoration: BoxDecoration(),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.min,
                                                 crossAxisAlignment:
@@ -644,7 +644,7 @@ class _ServiceSummaryWidgetWidgetState
                                                           fontFamily:
                                                               'Yantramanav',
                                                           color:
-                                                              const Color(0xFF64748B),
+                                                              Color(0xFF64748B),
                                                           fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                         ),
@@ -654,7 +654,7 @@ class _ServiceSummaryWidgetWidgetState
                                             ),
                                             Container(
                                               width: double.infinity,
-                                              decoration: const BoxDecoration(),
+                                              decoration: BoxDecoration(),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
                                                 crossAxisAlignment:
@@ -688,7 +688,7 @@ class _ServiceSummaryWidgetWidgetState
                                                           fontFamily:
                                                               'Yantramanav',
                                                           color:
-                                                              const Color(0xFF64748B),
+                                                              Color(0xFF64748B),
                                                           fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                         ),
@@ -698,7 +698,7 @@ class _ServiceSummaryWidgetWidgetState
                                             ),
                                             Container(
                                               width: double.infinity,
-                                              decoration: const BoxDecoration(),
+                                              decoration: BoxDecoration(),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
                                                 crossAxisAlignment:
@@ -736,7 +736,7 @@ class _ServiceSummaryWidgetWidgetState
                                                           fontFamily:
                                                               'Yantramanav',
                                                           color:
-                                                              const Color(0xFF64748B),
+                                                              Color(0xFF64748B),
                                                           fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                         ),
@@ -763,16 +763,16 @@ class _ServiceSummaryWidgetWidgetState
                                                 ),
                                               ),
                                             ),
-                                          ].divide(const SizedBox(height: 10.0)),
+                                          ].divide(SizedBox(height: 10.0)),
                                         ),
                                       ),
                                     ),
-                                  ].divide(const SizedBox(height: 5.0)),
+                                  ].divide(SizedBox(height: 5.0)),
                                 ),
                               ),
                               Container(
                                 width: double.infinity,
-                                decoration: const BoxDecoration(),
+                                decoration: BoxDecoration(),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment:
@@ -804,10 +804,10 @@ class _ServiceSummaryWidgetWidgetState
                                         options: FFButtonOptions(
                                           height: 56.0,
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   24.0, 0.0, 24.0, 0.0),
                                           iconPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
                                           color: FlutterFlowTheme.of(context)
                                               .primary,
@@ -822,7 +822,7 @@ class _ServiceSummaryWidgetWidgetState
                                                 letterSpacing: 0.0,
                                               ),
                                           elevation: 3.0,
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Colors.transparent,
                                             width: 1.0,
                                           ),
@@ -840,8 +840,8 @@ class _ServiceSummaryWidgetWidgetState
                                             'enrouteToTowDestination'))
                                       Align(
                                         alignment:
-                                            const AlignmentDirectional(0.0, 0.0),
-                                        child: SizedBox(
+                                            AlignmentDirectional(0.0, 0.0),
+                                        child: Container(
                                           width: 170.0,
                                           height: 56.0,
                                           child: custom_widgets
@@ -940,10 +940,10 @@ class _ServiceSummaryWidgetWidgetState
                                           ),
                                         ),
                                       ),
-                                  ].divide(const SizedBox(width: 15.0)),
+                                  ].divide(SizedBox(width: 15.0)),
                                 ),
                               ),
-                            ].divide(const SizedBox(height: 16.0)),
+                            ].divide(SizedBox(height: 16.0)),
                           ),
                         ),
                       ),
@@ -954,7 +954,7 @@ class _ServiceSummaryWidgetWidgetState
             );
           } else {
             return Container(
-              decoration: const BoxDecoration(),
+              decoration: BoxDecoration(),
               child: wrapWithModel(
                 model: _model.serviceUpdatesComponentSPModel,
                 updateCallback: () => safeSetState(() {}),

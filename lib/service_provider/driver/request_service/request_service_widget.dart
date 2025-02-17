@@ -2,6 +2,7 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
+import '/flutter_flow/flutter_flow_google_map.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -28,12 +29,15 @@ class _RequestServiceWidgetState extends State<RequestServiceWidget> {
   late RequestServiceModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  LatLng? currentUserLocationValue;
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => RequestServiceModel());
 
+    getCurrentUserLocation(defaultLocation: LatLng(0.0, 0.0), cached: true)
+        .then((loc) => safeSetState(() => currentUserLocationValue = loc));
     _model.fullnameTextController ??= TextEditingController();
     _model.fullnameFocusNode ??= FocusNode();
 
@@ -52,23 +56,44 @@ class _RequestServiceWidgetState extends State<RequestServiceWidget> {
 
   @override
   Widget build(BuildContext context) {
+    if (currentUserLocationValue == null) {
+      return Container(
+        color: FlutterFlowTheme.of(context).primaryBackground,
+        child: Center(
+          child: SizedBox(
+            width: 50.0,
+            height: 50.0,
+            child: CircularProgressIndicator(
+              valueColor: AlwaysStoppedAnimation<Color>(
+                FlutterFlowTheme.of(context).primary,
+              ),
+            ),
+          ),
+        ),
+      );
+    }
+
     return Title(
         title: 'request_service',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
+          onTap: () {
+            FocusScope.of(context).unfocus();
+            FocusManager.instance.primaryFocus?.unfocus();
+          },
           child: Scaffold(
             key: scaffoldKey,
+            resizeToAvoidBottomInset: false,
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
             body: SafeArea(
               top: true,
               child: Align(
-                alignment: const AlignmentDirectional(0.0, 0.0),
+                alignment: AlignmentDirectional(0.0, 0.0),
                 child: ClipRRect(
                   child: Container(
                     width: double.infinity,
                     height: double.infinity,
-                    constraints: const BoxConstraints(
+                    constraints: BoxConstraints(
                       maxWidth: 500.0,
                     ),
                     decoration: BoxDecoration(
@@ -76,41 +101,92 @@ class _RequestServiceWidgetState extends State<RequestServiceWidget> {
                     ),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(8.0),
-                          child: Image.asset(
-                            'assets/images/image_logo.png',
-                            width: 244.0,
-                            height: 64.0,
-                            fit: BoxFit.fitHeight,
+                        FutureBuilder<List<UsersRecord>>(
+                          future: queryUsersRecordOnce(
+                            queryBuilder: (usersRecord) => usersRecord.where(
+                              'onDuty',
+                              isEqualTo: true,
+                            ),
                           ),
+                          builder: (context, snapshot) {
+                            // Customize what your widget looks like when it's loading.
+                            if (!snapshot.hasData) {
+                              return Center(
+                                child: SizedBox(
+                                  width: 50.0,
+                                  height: 50.0,
+                                  child: CircularProgressIndicator(
+                                    valueColor: AlwaysStoppedAnimation<Color>(
+                                      FlutterFlowTheme.of(context).primary,
+                                    ),
+                                  ),
+                                ),
+                              );
+                            }
+                            List<UsersRecord> containerUsersRecordList =
+                                snapshot.data!
+                                    .where((u) => u.uid != currentUserUid)
+                                    .toList();
+
+                            return Container(
+                              width: double.infinity,
+                              height: MediaQuery.sizeOf(context).height * 0.6,
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                              ),
+                              child: FlutterFlowGoogleMap(
+                                controller: _model.googleMapsController,
+                                onCameraIdle: (latLng) =>
+                                    _model.googleMapsCenter = latLng,
+                                initialLocation: _model.googleMapsCenter ??=
+                                    currentUserLocationValue!,
+                                markers: containerUsersRecordList
+                                    .map((e) => e.technicianLastUpdatedLocation)
+                                    .withoutNulls
+                                    .toList()
+                                    .map(
+                                      (marker) => FlutterFlowMarker(
+                                        marker.serialize(),
+                                        marker,
+                                      ),
+                                    )
+                                    .toList(),
+                                markerColor: GoogleMarkerColor.violet,
+                                markerImage: MarkerImage(
+                                  imagePath:
+                                      'https://dd8c54a01d09ed2b89dfbd9e5dfe0b12.cdn.bubble.io/f1739621667111x130442481430978140/WhatsApp%20Image%202025-02-15%20at%2001.39.52.jpeg',
+                                  isAssetImage: false,
+                                  size: 20.0 ?? 20,
+                                ),
+                                mapType: MapType.normal,
+                                style: GoogleMapStyle.standard,
+                                initialZoom: 14.0,
+                                allowInteraction: true,
+                                allowZoom: true,
+                                showZoomControls: true,
+                                showLocation: true,
+                                showCompass: false,
+                                showMapToolbar: false,
+                                showTraffic: false,
+                                centerMapOnMarkerTap: true,
+                              ),
+                            );
+                          },
                         ),
                         Container(
                           width: MediaQuery.sizeOf(context).width * 0.9,
-                          decoration: const BoxDecoration(),
+                          decoration: BoxDecoration(),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Text(
-                                'Enter your phone number',
-                                textAlign: TextAlign.center,
-                                style: FlutterFlowTheme.of(context)
-                                    .labelLarge
-                                    .override(
-                                      fontFamily: 'Yantramanav',
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                      fontSize: 24.0,
-                                      letterSpacing: 0.0,
-                                    ),
-                              ),
                               Container(
                                 width: double.infinity,
                                 height: 85.0,
-                                decoration: const BoxDecoration(),
+                                decoration: BoxDecoration(),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -128,7 +204,7 @@ class _RequestServiceWidgetState extends State<RequestServiceWidget> {
                                     ),
                                     Expanded(
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 4.0, 0.0, 4.0),
                                         child: TextFormField(
                                           controller:
@@ -148,7 +224,7 @@ class _RequestServiceWidgetState extends State<RequestServiceWidget> {
                                                           FontWeight.normal,
                                                     ),
                                             enabledBorder: OutlineInputBorder(
-                                              borderSide: const BorderSide(
+                                              borderSide: BorderSide(
                                                 color: Color(0xFFCBD5E1),
                                                 width: 1.0,
                                               ),
@@ -189,7 +265,7 @@ class _RequestServiceWidgetState extends State<RequestServiceWidget> {
                                             filled: true,
                                             fillColor: Colors.white,
                                             contentPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     8.0, 0.0, 8.0, 0.0),
                                           ),
                                           style: FlutterFlowTheme.of(context)
@@ -216,7 +292,7 @@ class _RequestServiceWidgetState extends State<RequestServiceWidget> {
                                   borderRadius: BorderRadius.circular(18.0),
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 0.0, 0.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -227,7 +303,7 @@ class _RequestServiceWidgetState extends State<RequestServiceWidget> {
                                                 FormFieldController<String>(
                                           _model.dropDownValue ??= '+1',
                                         ),
-                                        options: const ['+1', '+254'],
+                                        options: ['+1', '+254'],
                                         onChanged: (val) => safeSetState(
                                             () => _model.dropDownValue = val),
                                         width: 62.0,
@@ -249,7 +325,7 @@ class _RequestServiceWidgetState extends State<RequestServiceWidget> {
                                         borderColor: Colors.transparent,
                                         borderWidth: 0.0,
                                         borderRadius: 8.0,
-                                        margin: const EdgeInsetsDirectional.fromSTEB(
+                                        margin: EdgeInsetsDirectional.fromSTEB(
                                             4.0, 4.0, 0.0, 4.0),
                                         hidesUnderline: true,
                                         isOverButton: true,
@@ -260,7 +336,7 @@ class _RequestServiceWidgetState extends State<RequestServiceWidget> {
                                         flex: 1,
                                         child: Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 4.0, 0.0, 4.0),
                                           child: TextFormField(
                                             controller: _model.textController2,
@@ -286,7 +362,7 @@ class _RequestServiceWidgetState extends State<RequestServiceWidget> {
                                               focusedErrorBorder:
                                                   InputBorder.none,
                                               contentPadding:
-                                                  const EdgeInsetsDirectional
+                                                  EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           8.0, 0.0, 8.0, 0.0),
                                             ),
@@ -307,15 +383,15 @@ class _RequestServiceWidgetState extends State<RequestServiceWidget> {
                                           ),
                                         ),
                                       ),
-                                    ].divide(const SizedBox(width: 5.0)),
+                                    ].divide(SizedBox(width: 5.0)),
                                   ),
                                 ),
                               ),
-                            ].divide(const SizedBox(height: 20.0)),
+                            ].divide(SizedBox(height: 10.0)),
                           ),
                         ),
                         Align(
-                          alignment: const AlignmentDirectional(0.0, 0.0),
+                          alignment: AlignmentDirectional(0.0, 0.0),
                           child: Container(
                             width: MediaQuery.sizeOf(context).width * 0.9,
                             height: 56.0,
@@ -325,21 +401,21 @@ class _RequestServiceWidgetState extends State<RequestServiceWidget> {
                                   FlutterFlowTheme.of(context).secondary,
                                   FlutterFlowTheme.of(context).tertiary
                                 ],
-                                stops: const [0.0, 1.0],
-                                begin: const AlignmentDirectional(0.0, -1.0),
-                                end: const AlignmentDirectional(0, 1.0),
+                                stops: [0.0, 1.0],
+                                begin: AlignmentDirectional(0.0, -1.0),
+                                end: AlignmentDirectional(0, 1.0),
                               ),
                               borderRadius: BorderRadius.circular(18.0),
                             ),
                             child: FFButtonWidget(
                               onPressed: () async {
+                                GoRouter.of(context).prepareAuthEvent();
+                                await authManager.signOut();
+                                GoRouter.of(context).clearRedirectLocation();
+
                                 _model.location3 =
                                     await actions.checkLocationPermissions();
                                 if (_model.location3 == true) {
-                                  GoRouter.of(context).prepareAuthEvent();
-                                  await authManager.signOut();
-                                  GoRouter.of(context).clearRedirectLocation();
-
                                   _model.check = await UptimeFleetAppGroup
                                       .checkUserCall
                                       .call(
@@ -359,8 +435,6 @@ class _RequestServiceWidgetState extends State<RequestServiceWidget> {
                                       if (user == null) {
                                         return;
                                       }
-                                      _model.token =
-                                          await actions.getFcmToken();
 
                                       var chatsRecordReference1 =
                                           ChatsRecord.collection.doc();
@@ -454,7 +528,7 @@ class _RequestServiceWidgetState extends State<RequestServiceWidget> {
                                         driverFleetManagerMessageThreadIdFirebaseId:
                                             _model.technicianChat?.reference,
                                       ));
-                                      await UptimeFleetAppGroup
+                                      _model.test = await UptimeFleetAppGroup
                                           .updateDriverIdCall
                                           .call(
                                         bubbleId: UptimeFleetAppGroup
@@ -481,7 +555,7 @@ class _RequestServiceWidgetState extends State<RequestServiceWidget> {
                                             ),
                                           ),
                                           duration:
-                                              const Duration(milliseconds: 4000),
+                                              Duration(milliseconds: 3200),
                                           backgroundColor:
                                               FlutterFlowTheme.of(context)
                                                   .error,
@@ -499,7 +573,7 @@ class _RequestServiceWidgetState extends State<RequestServiceWidget> {
                                             fontSize: 14.0,
                                           ),
                                         ),
-                                        duration: const Duration(milliseconds: 4000),
+                                        duration: Duration(milliseconds: 4000),
                                         backgroundColor:
                                             FlutterFlowTheme.of(context).error,
                                       ),
@@ -514,12 +588,18 @@ class _RequestServiceWidgetState extends State<RequestServiceWidget> {
                                     context: context,
                                     builder: (context) {
                                       return GestureDetector(
-                                        onTap: () =>
-                                            FocusScope.of(context).unfocus(),
+                                        onTap: () {
+                                          FocusScope.of(context).unfocus();
+                                          FocusManager.instance.primaryFocus
+                                              ?.unfocus();
+                                        },
                                         child: Padding(
                                           padding:
                                               MediaQuery.viewInsetsOf(context),
-                                          child: const RequestLocationWidget(),
+                                          child: RequestLocationWidget(
+                                            phone:
+                                                '${_model.dropDownValue}${_model.textController2.text}',
+                                          ),
                                         ),
                                       );
                                     },
@@ -532,9 +612,9 @@ class _RequestServiceWidgetState extends State<RequestServiceWidget> {
                               options: FFButtonOptions(
                                 width: MediaQuery.sizeOf(context).width * 0.9,
                                 height: 56.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     24.0, 0.0, 24.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context).tertiary,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -545,7 +625,7 @@ class _RequestServiceWidgetState extends State<RequestServiceWidget> {
                                       letterSpacing: 0.0,
                                     ),
                                 elevation: 3.0,
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Colors.transparent,
                                   width: 18.0,
                                 ),
@@ -554,7 +634,7 @@ class _RequestServiceWidgetState extends State<RequestServiceWidget> {
                             ),
                           ),
                         ),
-                      ].divide(const SizedBox(height: 20.0)),
+                      ].divide(SizedBox(height: 20.0)),
                     ),
                   ),
                 ),

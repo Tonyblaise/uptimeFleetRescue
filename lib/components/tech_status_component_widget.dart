@@ -55,16 +55,16 @@ class _TechStatusComponentWidgetState extends State<TechStatusComponentWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: const AlignmentDirectional(0.0, 0.0),
+      alignment: AlignmentDirectional(0.0, 0.0),
       child: Container(
         height: 300.0,
-        constraints: const BoxConstraints(
+        constraints: BoxConstraints(
           maxHeight: 300.0,
         ),
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           shape: BoxShape.rectangle,
         ),
-        alignment: const AlignmentDirectional(0.0, 0.0),
+        alignment: AlignmentDirectional(0.0, 0.0),
         child: Container(
           width: MediaQuery.sizeOf(context).width * 0.9,
           height: MediaQuery.sizeOf(context).height * 0.95,
@@ -73,13 +73,13 @@ class _TechStatusComponentWidgetState extends State<TechStatusComponentWidget> {
             borderRadius: BorderRadius.circular(24.0),
           ),
           child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Align(
-                  alignment: const AlignmentDirectional(0.0, 0.0),
+                  alignment: AlignmentDirectional(0.0, 0.0),
                   child: Container(
                     width: MediaQuery.sizeOf(context).width * 0.9,
                     height: 80.0,
@@ -89,14 +89,14 @@ class _TechStatusComponentWidgetState extends State<TechStatusComponentWidget> {
                           FlutterFlowTheme.of(context).secondary,
                           FlutterFlowTheme.of(context).tertiary
                         ],
-                        stops: const [0.0, 1.0],
-                        begin: const AlignmentDirectional(0.0, -1.0),
-                        end: const AlignmentDirectional(0, 1.0),
+                        stops: [0.0, 1.0],
+                        begin: AlignmentDirectional(0.0, -1.0),
+                        end: AlignmentDirectional(0, 1.0),
                       ),
                       borderRadius: BorderRadius.circular(24.0),
                     ),
                     child: Align(
-                      alignment: const AlignmentDirectional(0.0, 0.0),
+                      alignment: AlignmentDirectional(0.0, 0.0),
                       child: Text(
                         'Please set your status',
                         textAlign: TextAlign.center,
@@ -115,17 +115,17 @@ class _TechStatusComponentWidgetState extends State<TechStatusComponentWidget> {
                   constraints: BoxConstraints(
                     maxWidth: MediaQuery.sizeOf(context).width * 0.9,
                   ),
-                  decoration: const BoxDecoration(),
+                  decoration: BoxDecoration(),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             20.0, 0.0, 20.0, 0.0),
                         child: Container(
                           width: MediaQuery.sizeOf(context).width * 0.9,
-                          decoration: const BoxDecoration(),
+                          decoration: BoxDecoration(),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -137,7 +137,7 @@ class _TechStatusComponentWidgetState extends State<TechStatusComponentWidget> {
                                     .labelLarge
                                     .override(
                                       fontFamily: 'Yantramanav',
-                                      color: const Color(0xFF64748B),
+                                      color: Color(0xFF64748B),
                                       fontSize: 18.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.normal,
@@ -151,11 +151,11 @@ class _TechStatusComponentWidgetState extends State<TechStatusComponentWidget> {
                                       .secondaryBackground,
                                   borderRadius: BorderRadius.circular(60.0),
                                   border: Border.all(
-                                    color: const Color(0xFFE5E7EE),
+                                    color: Color(0xFFE5E7EE),
                                   ),
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsets.all(10.0),
+                                  padding: EdgeInsets.all(10.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     mainAxisAlignment:
@@ -197,23 +197,23 @@ class _TechStatusComponentWidgetState extends State<TechStatusComponentWidget> {
                                             FlutterFlowTheme.of(context)
                                                 .secondaryText,
                                       ),
-                                    ].divide(const SizedBox(width: 10.0)),
+                                    ].divide(SizedBox(width: 10.0)),
                                   ),
                                 ),
                               ),
-                            ].divide(const SizedBox(height: 5.0)),
+                            ].divide(SizedBox(height: 5.0)),
                           ),
                         ),
                       ),
-                    ].divide(const SizedBox(height: 8.0)),
+                    ].divide(SizedBox(height: 8.0)),
                   ),
                 ),
                 Expanded(
                   child: Align(
-                    alignment: const AlignmentDirectional(0.0, 0.0),
+                    alignment: AlignmentDirectional(0.0, 0.0),
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                       child: Container(
                         width: MediaQuery.sizeOf(context).width * 0.9,
                         height: 56.0,
@@ -231,7 +231,7 @@ class _TechStatusComponentWidgetState extends State<TechStatusComponentWidget> {
                           children: [
                             Flexible(
                               child: Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: InkWell(
                                   splashColor: Colors.transparent,
                                   focusColor: Colors.transparent,
@@ -245,11 +245,11 @@ class _TechStatusComponentWidgetState extends State<TechStatusComponentWidget> {
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(18.0),
                                       border: Border.all(
-                                        color: const Color(0xFF0CCA4A),
+                                        color: Color(0xFF0CCA4A),
                                       ),
                                     ),
                                     child: Align(
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                      alignment: AlignmentDirectional(0.0, 0.0),
                                       child: Text(
                                         'Cancel',
                                         style: FlutterFlowTheme.of(context)
@@ -269,7 +269,7 @@ class _TechStatusComponentWidgetState extends State<TechStatusComponentWidget> {
                             ),
                             Expanded(
                               child: Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: InkWell(
                                   splashColor: Colors.transparent,
                                   focusColor: Colors.transparent,
@@ -305,7 +305,7 @@ class _TechStatusComponentWidgetState extends State<TechStatusComponentWidget> {
                                             ),
                                           ),
                                           duration:
-                                              const Duration(milliseconds: 4000),
+                                              Duration(milliseconds: 4000),
                                           backgroundColor:
                                               FlutterFlowTheme.of(context)
                                                   .secondary,
@@ -325,8 +325,8 @@ class _TechStatusComponentWidgetState extends State<TechStatusComponentWidget> {
                                             ),
                                           ),
                                           duration:
-                                              const Duration(milliseconds: 4000),
-                                          backgroundColor: const Color(0xFFF50833),
+                                              Duration(milliseconds: 4000),
+                                          backgroundColor: Color(0xFFF50833),
                                         ),
                                       );
                                     }
@@ -336,7 +336,7 @@ class _TechStatusComponentWidgetState extends State<TechStatusComponentWidget> {
                                   child: Container(
                                     height: 56.0,
                                     decoration: BoxDecoration(
-                                      gradient: const LinearGradient(
+                                      gradient: LinearGradient(
                                         colors: [
                                           Color(0xFF7DEFA2),
                                           Color(0xFF0CCA4A)
@@ -351,9 +351,9 @@ class _TechStatusComponentWidgetState extends State<TechStatusComponentWidget> {
                                             .tertiary,
                                       ),
                                     ),
-                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                    alignment: AlignmentDirectional(0.0, 0.0),
                                     child: Align(
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                      alignment: AlignmentDirectional(0.0, 0.0),
                                       child: Text(
                                         'Confirm',
                                         style: FlutterFlowTheme.of(context)
@@ -369,13 +369,13 @@ class _TechStatusComponentWidgetState extends State<TechStatusComponentWidget> {
                                 ),
                               ),
                             ),
-                          ].divide(const SizedBox(width: 15.0)),
+                          ].divide(SizedBox(width: 15.0)),
                         ),
                       ),
                     ),
                   ),
                 ),
-              ].divide(const SizedBox(height: 32.0)),
+              ].divide(SizedBox(height: 32.0)),
             ),
           ),
         ),

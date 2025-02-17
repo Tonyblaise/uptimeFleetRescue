@@ -51,15 +51,15 @@ class _ImageDetails1WidgetState extends State<ImageDetails1Widget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(0.0, 30.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, 30.0),
+            end: Offset(0.0, 0.0),
           ),
           ScaleEffect(
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(0.7, 0.7),
-            end: const Offset(1.0, 1.0),
+            begin: Offset(0.7, 0.7),
+            end: Offset(1.0, 1.0),
           ),
         ],
       ),
@@ -78,15 +78,15 @@ class _ImageDetails1WidgetState extends State<ImageDetails1Widget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(0.0, 30.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, 30.0),
+            end: Offset(0.0, 0.0),
           ),
           TiltEffect(
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(-0.698, 0),
-            end: const Offset(0, 0),
+            begin: Offset(-0.698, 0),
+            end: Offset(0, 0),
           ),
         ],
       ),
@@ -108,7 +108,10 @@ class _ImageDetails1WidgetState extends State<ImageDetails1Widget>
         title: 'image_Details_1',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
+          onTap: () {
+            FocusScope.of(context).unfocus();
+            FocusManager.instance.primaryFocus?.unfocus();
+          },
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
@@ -129,7 +132,7 @@ class _ImageDetails1WidgetState extends State<ImageDetails1Widget>
                   context.pop();
                 },
               ),
-              actions: const [],
+              actions: [],
               centerTitle: false,
               elevation: 0.0,
             ),
@@ -140,15 +143,15 @@ class _ImageDetails1WidgetState extends State<ImageDetails1Widget>
                 children: [
                   Expanded(
                     child: Padding(
-                      padding: const EdgeInsets.all(12.0),
+                      padding: EdgeInsets.all(12.0),
                       child: Hero(
                         tag: widget.chatMessage!.image,
                         transitionOnUserGestures: true,
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(8.0),
                           child: CachedNetworkImage(
-                            fadeInDuration: const Duration(milliseconds: 500),
-                            fadeOutDuration: const Duration(milliseconds: 500),
+                            fadeInDuration: Duration(milliseconds: 500),
+                            fadeOutDuration: Duration(milliseconds: 500),
                             imageUrl: widget.chatMessage!.image,
                             width: double.infinity,
                             fit: BoxFit.fitWidth,
@@ -162,7 +165,7 @@ class _ImageDetails1WidgetState extends State<ImageDetails1Widget>
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 32.0),
+                        EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 32.0),
                     child: FutureBuilder<UsersRecord>(
                       future: FFAppState().userDocQuery(
                         uniqueQueryKey: widget.chatMessage?.reference.id,
@@ -192,7 +195,7 @@ class _ImageDetails1WidgetState extends State<ImageDetails1Widget>
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 4.0, 8.0, 16.0),
                               child: Container(
                                 width: 36.0,
@@ -207,14 +210,14 @@ class _ImageDetails1WidgetState extends State<ImageDetails1Widget>
                                   ),
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsets.all(2.0),
+                                  padding: EdgeInsets.all(2.0),
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(8.0),
                                     child: CachedNetworkImage(
                                       fadeInDuration:
-                                          const Duration(milliseconds: 200),
+                                          Duration(milliseconds: 200),
                                       fadeOutDuration:
-                                          const Duration(milliseconds: 200),
+                                          Duration(milliseconds: 200),
                                       imageUrl: otherUserUsersRecord.photoUrl,
                                       width: 44.0,
                                       height: 44.0,
@@ -226,7 +229,7 @@ class _ImageDetails1WidgetState extends State<ImageDetails1Widget>
                             ),
                             Flexible(
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 8.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
@@ -251,7 +254,7 @@ class _ImageDetails1WidgetState extends State<ImageDetails1Widget>
                                         )),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 4.0, 0.0, 0.0),
                                           child: Text(
                                             dateTimeFormat(
@@ -271,10 +274,10 @@ class _ImageDetails1WidgetState extends State<ImageDetails1Widget>
                                                 ),
                                           ),
                                         ),
-                                      ].divide(const SizedBox(width: 4.0)),
+                                      ].divide(SizedBox(width: 4.0)),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 4.0, 0.0, 0.0),
                                       child: SelectionArea(
                                           child: AutoSizeText(

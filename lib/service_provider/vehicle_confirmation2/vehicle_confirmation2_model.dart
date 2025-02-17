@@ -15,7 +15,7 @@ class VehicleConfirmation2Model
 
   String? state;
 
-  String? image = '';
+  String? image;
 
   String? details;
 

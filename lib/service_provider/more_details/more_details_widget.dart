@@ -53,16 +53,19 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
         title: 'more_details',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
+          onTap: () {
+            FocusScope.of(context).unfocus();
+            FocusManager.instance.primaryFocus?.unfocus();
+          },
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: Colors.white,
             appBar: AppBar(
               backgroundColor: Colors.white,
-              iconTheme: const IconThemeData(color: Color(0xFF1E293B)),
+              iconTheme: IconThemeData(color: Color(0xFF1E293B)),
               automaticallyImplyLeading: true,
               title: Container(
-                decoration: const BoxDecoration(),
+                decoration: BoxDecoration(),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -70,36 +73,36 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                       'Fill in details',
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Yantramanav',
-                            color: const Color(0xFF1E293B),
+                            color: Color(0xFF1E293B),
                             fontSize: 30.0,
                             letterSpacing: 0.0,
                             fontWeight: FontWeight.bold,
                           ),
                     ),
-                  ].divide(const SizedBox(width: 10.0)),
+                  ].divide(SizedBox(width: 10.0)),
                 ),
               ),
-              actions: const [],
+              actions: [],
               centerTitle: false,
               elevation: 1.0,
             ),
             body: SafeArea(
               top: true,
               child: Align(
-                alignment: const AlignmentDirectional(0.0, 0.0),
+                alignment: AlignmentDirectional(0.0, 0.0),
                 child: Container(
                   width: double.infinity,
                   height: double.infinity,
-                  constraints: const BoxConstraints(
+                  constraints: BoxConstraints(
                     maxWidth: 500.0,
                   ),
-                  decoration: const BoxDecoration(),
+                  decoration: BoxDecoration(),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Container(
-                        decoration: const BoxDecoration(),
+                        decoration: BoxDecoration(),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
@@ -112,11 +115,11 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                     FlutterFlowTheme.of(context).secondary,
                                     FlutterFlowTheme.of(context).tertiary
                                   ],
-                                  stops: const [0.0, 1.0],
-                                  begin: const AlignmentDirectional(0.0, -1.0),
-                                  end: const AlignmentDirectional(0, 1.0),
+                                  stops: [0.0, 1.0],
+                                  begin: AlignmentDirectional(0.0, -1.0),
+                                  end: AlignmentDirectional(0, 1.0),
                                 ),
-                                borderRadius: const BorderRadius.only(
+                                borderRadius: BorderRadius.only(
                                   bottomLeft: Radius.circular(36.0),
                                   bottomRight: Radius.circular(36.0),
                                   topLeft: Radius.circular(0.0),
@@ -124,7 +127,7 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                 ),
                               ),
                               child: Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: RichText(
                                   textScaler: MediaQuery.of(context).textScaler,
                                   text: TextSpan(
@@ -144,7 +147,7 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                               fontWeight: FontWeight.w300,
                                             ),
                                       ),
-                                      const TextSpan(
+                                      TextSpan(
                                         text: '\ndetails',
                                         style: TextStyle(
                                           color: Colors.black,
@@ -169,7 +172,7 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                       ),
                       Expanded(
                         child: Container(
-                          decoration: const BoxDecoration(),
+                          decoration: BoxDecoration(),
                           child: SingleChildScrollView(
                             child: Column(
                               mainAxisSize: MainAxisSize.min,
@@ -177,7 +180,7 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                               children: [
                                 if (widget.fault == 'Tow')
                                   Container(
-                                    decoration: const BoxDecoration(),
+                                    decoration: BoxDecoration(),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
@@ -186,12 +189,12 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                           autovalidateMode:
                                               AutovalidateMode.always,
                                           child: Container(
-                                            decoration: const BoxDecoration(),
+                                            decoration: BoxDecoration(),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
                                                 Container(
-                                                  decoration: const BoxDecoration(),
+                                                  decoration: BoxDecoration(),
                                                   child: Column(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
@@ -222,7 +225,7 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                                                     .width *
                                                                 0.9,
                                                         decoration:
-                                                            const BoxDecoration(),
+                                                            BoxDecoration(),
                                                         child:
                                                             FlutterFlowPlacePicker(
                                                           iOSGoogleMapsApiKey:
@@ -253,6 +256,8 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                                             color: FlutterFlowTheme
                                                                     .of(context)
                                                                 .secondaryBackground,
+                                                            textAlign: TextAlign
+                                                                .center,
                                                             textStyle:
                                                                 FlutterFlowTheme.of(
                                                                         context)
@@ -268,7 +273,7 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                                                     ),
                                                             elevation: 0.0,
                                                             borderSide:
-                                                                const BorderSide(
+                                                                BorderSide(
                                                               color: Color(
                                                                   0xFFCBD5E1),
                                                               width: 1.0,
@@ -281,11 +286,11 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                                         ),
                                                       ),
                                                     ].divide(
-                                                        const SizedBox(height: 5.0)),
+                                                        SizedBox(height: 5.0)),
                                                   ),
                                                 ),
                                                 Container(
-                                                  decoration: const BoxDecoration(),
+                                                  decoration: BoxDecoration(),
                                                   child: Column(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
@@ -316,10 +321,10 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                                                     .width *
                                                                 0.9,
                                                         decoration:
-                                                            const BoxDecoration(),
+                                                            BoxDecoration(),
                                                         child: Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       4.0,
@@ -334,6 +339,9 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                                             obscureText: false,
                                                             decoration:
                                                                 InputDecoration(
+                                                              isDense: false,
+                                                              alignLabelWithHint:
+                                                                  false,
                                                               hintText:
                                                                   'Enter drop off notes',
                                                               hintStyle:
@@ -351,7 +359,7 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                                               enabledBorder:
                                                                   OutlineInputBorder(
                                                                 borderSide:
-                                                                    const BorderSide(
+                                                                    BorderSide(
                                                                   color: Color(
                                                                       0xFFCBD5E1),
                                                                   width: 1.0,
@@ -407,7 +415,7 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                                               fillColor:
                                                                   Colors.white,
                                                               contentPadding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           10.0,
                                                                           10.0,
@@ -435,11 +443,11 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                                         ),
                                                       ),
                                                     ].divide(
-                                                        const SizedBox(height: 5.0)),
+                                                        SizedBox(height: 5.0)),
                                                   ),
                                                 ),
                                                 Container(
-                                                  decoration: const BoxDecoration(),
+                                                  decoration: BoxDecoration(),
                                                   child: Column(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
@@ -470,7 +478,7 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                                                     .width *
                                                                 0.9,
                                                         decoration:
-                                                            const BoxDecoration(),
+                                                            BoxDecoration(),
                                                         child:
                                                             FlutterFlowRadioButton(
                                                           options: ['Yes', 'No']
@@ -527,14 +535,14 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                                         ),
                                                       ),
                                                     ].divide(
-                                                        const SizedBox(height: 5.0)),
+                                                        SizedBox(height: 5.0)),
                                                   ),
                                                 ),
                                                 if (_model
                                                         .willyoubewaitingwiththevehicleValue ==
                                                     'No')
                                                   Container(
-                                                    decoration: const BoxDecoration(),
+                                                    decoration: BoxDecoration(),
                                                     child: Column(
                                                       mainAxisSize:
                                                           MainAxisSize.max,
@@ -564,10 +572,10 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                                                       .width *
                                                                   0.9,
                                                           decoration:
-                                                              const BoxDecoration(),
+                                                              BoxDecoration(),
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         4.0,
@@ -601,7 +609,7 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                                                 enabledBorder:
                                                                     OutlineInputBorder(
                                                                   borderSide:
-                                                                      const BorderSide(
+                                                                      BorderSide(
                                                                     color: Color(
                                                                         0xFFCBD5E1),
                                                                     width: 1.0,
@@ -658,7 +666,7 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                                                     Colors
                                                                         .white,
                                                                 contentPadding:
-                                                                    const EdgeInsetsDirectional
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             8.0,
                                                                             0.0,
@@ -686,45 +694,67 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                                             ),
                                                           ),
                                                         ),
-                                                      ].divide(const SizedBox(
+                                                      ].divide(SizedBox(
                                                           height: 5.0)),
                                                     ),
                                                   ),
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 0.0, 0.0, 20.0),
                                                   child: FFButtonWidget(
                                                     onPressed: () async {
-                                                      FFAppState()
-                                                              .requestAdditionalInfo =
-                                                          'Where would you like the vehicle towed to?/n${_model.wherewouldyoulikethevehicletowedtoValue.address}/n/nDrop off instructions/n${_model.dropOffInstructionsTextController.text}/n/nWill you be waiting with the vehicle?/n${_model.willyoubewaitingwiththevehicleValue}/n/nIf not, where will you leave the keys?/n${_model.ifnowherewillyouleavethekeysTextController.text}/n/n/';
-                                                      FFAppState()
-                                                              .dropOffLocation =
-                                                          _model
-                                                              .wherewouldyoulikethevehicletowedtoValue
-                                                              .latLng;
-                                                      FFAppState()
-                                                              .dropOffLocationAddress =
-                                                          '${_model.wherewouldyoulikethevehicletowedtoValue.zipCode} ${_model.wherewouldyoulikethevehicletowedtoValue.name},${_model.wherewouldyoulikethevehicletowedtoValue.city},${_model.wherewouldyoulikethevehicletowedtoValue.state} ,${_model.wherewouldyoulikethevehicletowedtoValue.country}';
-                                                      safeSetState(() {});
+                                                      if (_model.wherewouldyoulikethevehicletowedtoValue
+                                                                  .country !=
+                                                              '') {
+                                                        FFAppState()
+                                                                .requestAdditionalInfo =
+                                                            'Where would you like the vehicle towed to?/n${_model.wherewouldyoulikethevehicletowedtoValue.address}/n/nDrop off instructions/n${_model.dropOffInstructionsTextController.text}/n/nWill you be waiting with the vehicle?/n${_model.willyoubewaitingwiththevehicleValue}/n/nIf not, where will you leave the keys?/n${_model.ifnowherewillyouleavethekeysTextController.text}/n/n/';
+                                                        FFAppState()
+                                                                .dropOffLocation =
+                                                            _model
+                                                                .wherewouldyoulikethevehicletowedtoValue
+                                                                .latLng;
+                                                        FFAppState()
+                                                                .dropOffLocationAddress =
+                                                            '${_model.wherewouldyoulikethevehicletowedtoValue.zipCode} ${_model.wherewouldyoulikethevehicletowedtoValue.name},${_model.wherewouldyoulikethevehicletowedtoValue.city},${_model.wherewouldyoulikethevehicletowedtoValue.state} ,${_model.wherewouldyoulikethevehicletowedtoValue.country}';
+                                                        safeSetState(() {});
 
-                                                      context.pushNamed(
-                                                        'vehicle_confirmation',
-                                                        queryParameters: {
-                                                          'service':
-                                                              serializeParam(
-                                                            widget.fault,
-                                                            ParamType.String,
+                                                        context.pushNamed(
+                                                          'vehicle_confirmation3',
+                                                          queryParameters: {
+                                                            'service':
+                                                                serializeParam(
+                                                              widget.fault,
+                                                              ParamType.String,
+                                                            ),
+                                                          }.withoutNulls,
+                                                        );
+                                                      } else {
+                                                        ScaffoldMessenger.of(
+                                                                context)
+                                                            .showSnackBar(
+                                                          SnackBar(
+                                                            content: Text(
+                                                              'Towing location is required',
+                                                              style: TextStyle(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primary,
+                                                                fontSize: 14.0,
+                                                              ),
+                                                            ),
+                                                            duration: Duration(
+                                                                milliseconds:
+                                                                    4000),
+                                                            backgroundColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .error,
                                                           ),
-                                                          'additionalInfo':
-                                                              serializeParam(
-                                                            '',
-                                                            ParamType.String,
-                                                          ),
-                                                        }.withoutNulls,
-                                                      );
-                                                                                                        },
+                                                        );
+                                                      }
+                                                    },
                                                     text: 'Next',
                                                     options: FFButtonOptions(
                                                       width: MediaQuery.sizeOf(
@@ -733,14 +763,14 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                                           0.9,
                                                       height: 50.0,
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   24.0,
                                                                   0.0,
                                                                   24.0,
                                                                   0.0),
                                                       iconPadding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   0.0,
@@ -764,7 +794,7 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                                                     0.0,
                                                               ),
                                                       elevation: 3.0,
-                                                      borderSide: const BorderSide(
+                                                      borderSide: BorderSide(
                                                         color:
                                                             Colors.transparent,
                                                         width: 1.0,
@@ -775,16 +805,16 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                                     ),
                                                   ),
                                                 ),
-                                              ].divide(const SizedBox(height: 20.0)),
+                                              ].divide(SizedBox(height: 20.0)),
                                             ),
                                           ),
                                         ),
-                                      ].divide(const SizedBox(height: 20.0)),
+                                      ].divide(SizedBox(height: 20.0)),
                                     ),
                                   ),
                                 if (widget.fault == 'Lockout')
                                   Container(
-                                    decoration: const BoxDecoration(),
+                                    decoration: BoxDecoration(),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
@@ -793,12 +823,12 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                           autovalidateMode:
                                               AutovalidateMode.always,
                                           child: Container(
-                                            decoration: const BoxDecoration(),
+                                            decoration: BoxDecoration(),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
                                                 Container(
-                                                  decoration: const BoxDecoration(),
+                                                  decoration: BoxDecoration(),
                                                   child: Column(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
@@ -829,7 +859,7 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                                                     .width *
                                                                 0.9,
                                                         decoration:
-                                                            const BoxDecoration(),
+                                                            BoxDecoration(),
                                                         child:
                                                             FlutterFlowRadioButton(
                                                           options: [
@@ -889,11 +919,11 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                                         ),
                                                       ),
                                                     ].divide(
-                                                        const SizedBox(height: 5.0)),
+                                                        SizedBox(height: 5.0)),
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 0.0, 0.0, 20.0),
                                                   child: FFButtonWidget(
@@ -904,7 +934,7 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                                       safeSetState(() {});
 
                                                       context.pushNamed(
-                                                        'vehicle_confirmation',
+                                                        'vehicle_confirmation3',
                                                         queryParameters: {
                                                           'service':
                                                               serializeParam(
@@ -922,14 +952,14 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                                           0.9,
                                                       height: 50.0,
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   24.0,
                                                                   0.0,
                                                                   24.0,
                                                                   0.0),
                                                       iconPadding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   0.0,
@@ -953,7 +983,7 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                                                     0.0,
                                                               ),
                                                       elevation: 3.0,
-                                                      borderSide: const BorderSide(
+                                                      borderSide: BorderSide(
                                                         color:
                                                             Colors.transparent,
                                                         width: 1.0,
@@ -964,16 +994,16 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                                     ),
                                                   ),
                                                 ),
-                                              ].divide(const SizedBox(height: 20.0)),
+                                              ].divide(SizedBox(height: 20.0)),
                                             ),
                                           ),
                                         ),
-                                      ].divide(const SizedBox(height: 20.0)),
+                                      ].divide(SizedBox(height: 20.0)),
                                     ),
                                   ),
                                 if (widget.fault == 'Tire Change')
                                   Container(
-                                    decoration: const BoxDecoration(),
+                                    decoration: BoxDecoration(),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
@@ -982,12 +1012,12 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                           autovalidateMode:
                                               AutovalidateMode.always,
                                           child: Container(
-                                            decoration: const BoxDecoration(),
+                                            decoration: BoxDecoration(),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
                                                 Container(
-                                                  decoration: const BoxDecoration(),
+                                                  decoration: BoxDecoration(),
                                                   child: Column(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
@@ -1018,7 +1048,7 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                                                     .width *
                                                                 0.9,
                                                         decoration:
-                                                            const BoxDecoration(),
+                                                            BoxDecoration(),
                                                         child:
                                                             FlutterFlowRadioButton(
                                                           options: ['Yes', 'No']
@@ -1075,11 +1105,11 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                                         ),
                                                       ),
                                                     ].divide(
-                                                        const SizedBox(height: 5.0)),
+                                                        SizedBox(height: 5.0)),
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 0.0, 0.0, 20.0),
                                                   child: FFButtonWidget(
@@ -1090,7 +1120,7 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                                       safeSetState(() {});
 
                                                       context.pushNamed(
-                                                        'vehicle_confirmation',
+                                                        'vehicle_confirmation3',
                                                         queryParameters: {
                                                           'service':
                                                               serializeParam(
@@ -1108,14 +1138,14 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                                           0.9,
                                                       height: 50.0,
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   24.0,
                                                                   0.0,
                                                                   24.0,
                                                                   0.0),
                                                       iconPadding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   0.0,
@@ -1139,7 +1169,7 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                                                     0.0,
                                                               ),
                                                       elevation: 3.0,
-                                                      borderSide: const BorderSide(
+                                                      borderSide: BorderSide(
                                                         color:
                                                             Colors.transparent,
                                                         width: 1.0,
@@ -1150,19 +1180,19 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                                     ),
                                                   ),
                                                 ),
-                                              ].divide(const SizedBox(height: 20.0)),
+                                              ].divide(SizedBox(height: 20.0)),
                                             ),
                                           ),
                                         ),
-                                      ].divide(const SizedBox(height: 20.0)),
+                                      ].divide(SizedBox(height: 20.0)),
                                     ),
                                   ),
-                              ].divide(const SizedBox(height: 20.0)),
+                              ].divide(SizedBox(height: 20.0)),
                             ),
                           ),
                         ),
                       ),
-                    ].divide(const SizedBox(height: 16.0)),
+                    ].divide(SizedBox(height: 16.0)),
                   ),
                 ),
               ),

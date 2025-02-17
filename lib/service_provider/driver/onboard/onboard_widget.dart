@@ -76,18 +76,21 @@ class _OnboardWidgetState extends State<OnboardWidget> {
         title: 'onboard',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
+          onTap: () {
+            FocusScope.of(context).unfocus();
+            FocusManager.instance.primaryFocus?.unfocus();
+          },
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
             body: SafeArea(
               top: true,
               child: Align(
-                alignment: const AlignmentDirectional(0.0, 0.0),
+                alignment: AlignmentDirectional(0.0, 0.0),
                 child: Container(
                   width: double.infinity,
                   height: double.infinity,
-                  constraints: const BoxConstraints(
+                  constraints: BoxConstraints(
                     maxWidth: 500.0,
                   ),
                   decoration: BoxDecoration(
@@ -109,7 +112,7 @@ class _OnboardWidgetState extends State<OnboardWidget> {
                       Container(
                         width: MediaQuery.sizeOf(context).width * 0.9,
                         height: 84.0,
-                        decoration: const BoxDecoration(),
+                        decoration: BoxDecoration(),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -127,7 +130,7 @@ class _OnboardWidgetState extends State<OnboardWidget> {
                             ),
                             Expanded(
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 4.0, 0.0, 4.0),
                                 child: TextFormField(
                                   controller: _model.fullnameTextController,
@@ -144,7 +147,7 @@ class _OnboardWidgetState extends State<OnboardWidget> {
                                           fontWeight: FontWeight.normal,
                                         ),
                                     enabledBorder: OutlineInputBorder(
-                                      borderSide: const BorderSide(
+                                      borderSide: BorderSide(
                                         color: Color(0xFFCBD5E1),
                                         width: 1.0,
                                       ),
@@ -177,7 +180,7 @@ class _OnboardWidgetState extends State<OnboardWidget> {
                                     filled: true,
                                     fillColor: Colors.white,
                                     contentPadding:
-                                        const EdgeInsetsDirectional.fromSTEB(
+                                        EdgeInsetsDirectional.fromSTEB(
                                             8.0, 0.0, 8.0, 0.0),
                                   ),
                                   style: FlutterFlowTheme.of(context)
@@ -199,7 +202,7 @@ class _OnboardWidgetState extends State<OnboardWidget> {
                       Container(
                         width: MediaQuery.sizeOf(context).width * 0.9,
                         height: 84.0,
-                        decoration: const BoxDecoration(),
+                        decoration: BoxDecoration(),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -224,7 +227,7 @@ class _OnboardWidgetState extends State<OnboardWidget> {
                                   borderRadius: BorderRadius.circular(18.0),
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       8.0, 0.0, 0.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -235,7 +238,7 @@ class _OnboardWidgetState extends State<OnboardWidget> {
                                                 FormFieldController<String>(
                                           _model.dropDownValue ??= '+1',
                                         ),
-                                        options: const ['+1', '+254'],
+                                        options: ['+1', '+254'],
                                         onChanged: (val) => safeSetState(
                                             () => _model.dropDownValue = val),
                                         width: 62.0,
@@ -257,7 +260,7 @@ class _OnboardWidgetState extends State<OnboardWidget> {
                                         borderColor: Colors.transparent,
                                         borderWidth: 0.0,
                                         borderRadius: 8.0,
-                                        margin: const EdgeInsetsDirectional.fromSTEB(
+                                        margin: EdgeInsetsDirectional.fromSTEB(
                                             4.0, 4.0, 0.0, 4.0),
                                         hidesUnderline: true,
                                         isOverButton: true,
@@ -268,7 +271,7 @@ class _OnboardWidgetState extends State<OnboardWidget> {
                                         flex: 1,
                                         child: Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 4.0, 0.0, 4.0),
                                           child: TextFormField(
                                             controller: _model.textController2,
@@ -294,7 +297,7 @@ class _OnboardWidgetState extends State<OnboardWidget> {
                                               focusedErrorBorder:
                                                   InputBorder.none,
                                               contentPadding:
-                                                  const EdgeInsetsDirectional
+                                                  EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           8.0, 0.0, 8.0, 0.0),
                                             ),
@@ -315,7 +318,7 @@ class _OnboardWidgetState extends State<OnboardWidget> {
                                           ),
                                         ),
                                       ),
-                                    ].divide(const SizedBox(width: 5.0)),
+                                    ].divide(SizedBox(width: 5.0)),
                                   ),
                                 ),
                               ),
@@ -324,7 +327,7 @@ class _OnboardWidgetState extends State<OnboardWidget> {
                         ),
                       ),
                       Container(
-                        decoration: const BoxDecoration(),
+                        decoration: BoxDecoration(),
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
@@ -352,7 +355,7 @@ class _OnboardWidgetState extends State<OnboardWidget> {
                                           !phoneNumberVal.startsWith('+')) {
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(
-                                          const SnackBar(
+                                          SnackBar(
                                             content: Text(
                                                 'Phone Number is required and has to start with +.'),
                                           ),
@@ -412,7 +415,7 @@ class _OnboardWidgetState extends State<OnboardWidget> {
                                             ),
                                           ),
                                           duration:
-                                              const Duration(milliseconds: 4000),
+                                              Duration(milliseconds: 4000),
                                           backgroundColor:
                                               FlutterFlowTheme.of(context)
                                                   .secondary,
@@ -430,7 +433,7 @@ class _OnboardWidgetState extends State<OnboardWidget> {
                                             fontSize: 14.0,
                                           ),
                                         ),
-                                        duration: const Duration(milliseconds: 4000),
+                                        duration: Duration(milliseconds: 4000),
                                         backgroundColor:
                                             FlutterFlowTheme.of(context).error,
                                       ),
@@ -445,12 +448,18 @@ class _OnboardWidgetState extends State<OnboardWidget> {
                                     context: context,
                                     builder: (context) {
                                       return GestureDetector(
-                                        onTap: () =>
-                                            FocusScope.of(context).unfocus(),
+                                        onTap: () {
+                                          FocusScope.of(context).unfocus();
+                                          FocusManager.instance.primaryFocus
+                                              ?.unfocus();
+                                        },
                                         child: Padding(
                                           padding:
                                               MediaQuery.viewInsetsOf(context),
-                                          child: const RequestLocationWidget(),
+                                          child: RequestLocationWidget(
+                                            phone:
+                                                '${_model.dropDownValue}${_model.textController2.text}',
+                                          ),
                                         ),
                                       );
                                     },
@@ -463,9 +472,9 @@ class _OnboardWidgetState extends State<OnboardWidget> {
                               options: FFButtonOptions(
                                 width: MediaQuery.sizeOf(context).width * 0.9,
                                 height: 56.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     24.0, 0.0, 24.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context).tertiary,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -477,7 +486,7 @@ class _OnboardWidgetState extends State<OnboardWidget> {
                                       letterSpacing: 0.0,
                                     ),
                                 elevation: 3.0,
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
                                 ),
@@ -516,7 +525,7 @@ class _OnboardWidgetState extends State<OnboardWidget> {
                                   ),
                         ),
                       ),
-                    ].divide(const SizedBox(height: 10.0)),
+                    ].divide(SizedBox(height: 10.0)),
                   ),
                 ),
               ),

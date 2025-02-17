@@ -131,3 +131,20 @@ List<UsersRecord> getLocationFromUsers(List<UsersRecord> users) {
       .where((user) => user.technicianLastUpdatedLocation != null)
       .toList();
 }
+
+String? latLngToString(LatLng? latLng) {
+  if (latLng == null) {
+    return null;
+  }
+
+  // convert LatLng to "{lat},{lng}" string
+  String latLngString = '${latLng.latitude},${latLng.longitude}';
+
+  return latLngString;
+}
+
+String joinListofImagURLs(List<String> images) {
+  // Take a list of strings and return one string joined with ,
+  // join a list of strings with ,
+  return images.join(',');
+}

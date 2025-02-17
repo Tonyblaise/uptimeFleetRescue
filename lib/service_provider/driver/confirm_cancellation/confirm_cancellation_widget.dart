@@ -14,7 +14,7 @@ class ConfirmCancellationWidget extends StatefulWidget {
     super.key,
     required this.request,
     bool? driver,
-  }) : driver = driver ?? true;
+  }) : this.driver = driver ?? true;
 
   final String? request;
   final bool driver;
@@ -51,12 +51,12 @@ class _ConfirmCancellationWidgetState extends State<ConfirmCancellationWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: const AlignmentDirectional(0.0, 1.0),
+      alignment: AlignmentDirectional(0.0, 1.0),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(15.0, 20.0, 15.0, 20.0),
+        padding: EdgeInsetsDirectional.fromSTEB(15.0, 20.0, 15.0, 20.0),
         child: Container(
           width: double.infinity,
-          constraints: const BoxConstraints(
+          constraints: BoxConstraints(
             maxWidth: 500.0,
           ),
           decoration: BoxDecoration(
@@ -64,7 +64,7 @@ class _ConfirmCancellationWidgetState extends State<ConfirmCancellationWidget> {
             borderRadius: BorderRadius.circular(24.0),
           ),
           child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 20.0),
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 20.0),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -79,10 +79,10 @@ class _ConfirmCancellationWidgetState extends State<ConfirmCancellationWidget> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                   child: Container(
                     width: MediaQuery.sizeOf(context).width * 0.9,
-                    decoration: const BoxDecoration(),
+                    decoration: BoxDecoration(),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -93,23 +93,23 @@ class _ConfirmCancellationWidgetState extends State<ConfirmCancellationWidget> {
                           style:
                               FlutterFlowTheme.of(context).labelLarge.override(
                                     fontFamily: 'Yantramanav',
-                                    color: const Color(0xFF64748B),
+                                    color: Color(0xFF64748B),
                                     fontSize: 20.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w500,
                                   ),
                         ),
-                      ].divide(const SizedBox(height: 8.0)),
+                      ].divide(SizedBox(height: 8.0)),
                     ),
                   ),
                 ),
                 Align(
-                  alignment: const AlignmentDirectional(0.0, 0.0),
+                  alignment: AlignmentDirectional(0.0, 0.0),
                   child: Container(
-                    decoration: const BoxDecoration(),
+                    decoration: BoxDecoration(),
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -136,9 +136,9 @@ class _ConfirmCancellationWidgetState extends State<ConfirmCancellationWidget> {
                             options: FFButtonOptions(
                               width: 130.0,
                               height: 56.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context).tertiary,
                               textStyle: FlutterFlowTheme.of(context)
@@ -149,7 +149,7 @@ class _ConfirmCancellationWidgetState extends State<ConfirmCancellationWidget> {
                                     letterSpacing: 0.0,
                                   ),
                               elevation: 3.0,
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),
@@ -161,7 +161,7 @@ class _ConfirmCancellationWidgetState extends State<ConfirmCancellationWidget> {
                     ),
                   ),
                 ),
-              ].divide(const SizedBox(height: 20.0)),
+              ].divide(SizedBox(height: 20.0)),
             ),
           ),
         ),

@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'serialization_util.dart';
-import '../backend.dart';
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '../../flutter_flow/flutter_flow_util.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -12,7 +12,8 @@ import 'package:flutter/scheduler.dart';
 final _handledMessageIds = <String?>{};
 
 class PushNotificationsHandler extends StatefulWidget {
-  const PushNotificationsHandler({super.key, required this.child});
+  const PushNotificationsHandler({Key? key, required this.child})
+      : super(key: key);
 
   final Widget child;
 
@@ -102,7 +103,7 @@ class ParameterData {
       );
 
   static Future<ParameterData> Function(Map<String, dynamic>) none() =>
-      (data) async => const ParameterData();
+      (data) async => ParameterData();
 }
 
 final parametersBuilderMap =
@@ -229,6 +230,29 @@ final parametersBuilderMap =
           'color': getParameter<String>(data, 'color'),
           'id': getParameter<String>(data, 'id'),
           'image': getParameter<String>(data, 'image'),
+        },
+      ),
+  'request_service2': (data) async => ParameterData(
+        allParams: {
+          'fleetManagerId': getParameter<String>(data, 'fleetManagerId'),
+        },
+      ),
+  'vehicle_confirmation_manual': (data) async => ParameterData(
+        allParams: {
+          'service': getParameter<String>(data, 'service'),
+          'additionalInfo': getParameter<String>(data, 'additionalInfo'),
+          'licensePlate': getParameter<String>(data, 'licensePlate'),
+          'state': getParameter<String>(data, 'state'),
+          'notes': getParameter<String>(data, 'notes'),
+          'color': getParameter<String>(data, 'color'),
+          'id': getParameter<String>(data, 'id'),
+          'image': getParameter<String>(data, 'image'),
+        },
+      ),
+  'vehicle_confirmation3': (data) async => ParameterData(
+        allParams: {
+          'service': getParameter<String>(data, 'service'),
+          'additionalInfo': getParameter<String>(data, 'additionalInfo'),
         },
       ),
   'request_service': (data) async => ParameterData(

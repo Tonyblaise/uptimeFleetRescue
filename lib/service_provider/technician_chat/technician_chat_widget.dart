@@ -11,7 +11,7 @@ class TechnicianChatWidget extends StatefulWidget {
   const TechnicianChatWidget({
     super.key,
     int? state,
-  }) : state = state ?? 2;
+  }) : this.state = state ?? 2;
 
   final int state;
 
@@ -45,7 +45,10 @@ class _TechnicianChatWidgetState extends State<TechnicianChatWidget> {
         title: 'technicianChat',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
+          onTap: () {
+            FocusScope.of(context).unfocus();
+            FocusManager.instance.primaryFocus?.unfocus();
+          },
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: Colors.white,
@@ -55,7 +58,7 @@ class _TechnicianChatWidgetState extends State<TechnicianChatWidget> {
                   color: FlutterFlowTheme.of(context).primaryText),
               automaticallyImplyLeading: false,
               title: Container(
-                decoration: const BoxDecoration(),
+                decoration: BoxDecoration(),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -74,22 +77,22 @@ class _TechnicianChatWidgetState extends State<TechnicianChatWidget> {
                       ),
                     ),
                     Container(
-                      decoration: const BoxDecoration(),
+                      decoration: BoxDecoration(),
                       child: Text(
                         'Messages',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Yantramanav',
-                              color: const Color(0xFF1E293B),
+                              color: Color(0xFF1E293B),
                               fontSize: 30.0,
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.bold,
                             ),
                       ),
                     ),
-                  ].divide(const SizedBox(width: 15.0)),
+                  ].divide(SizedBox(width: 15.0)),
                 ),
               ),
-              actions: const [],
+              actions: [],
               centerTitle: false,
               elevation: 1.0,
             ),
@@ -98,19 +101,19 @@ class _TechnicianChatWidgetState extends State<TechnicianChatWidget> {
               child: Container(
                 width: double.infinity,
                 height: double.infinity,
-                decoration: const BoxDecoration(),
+                decoration: BoxDecoration(),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Container(
-                      decoration: const BoxDecoration(),
+                      decoration: BoxDecoration(),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Container(
                             width: double.infinity,
                             height: 48.0,
-                            decoration: const BoxDecoration(
+                            decoration: BoxDecoration(
                               color: Color(0xFFE2E8F0),
                             ),
                             child: Row(
@@ -132,14 +135,14 @@ class _TechnicianChatWidgetState extends State<TechnicianChatWidget> {
                                       decoration: BoxDecoration(
                                         color: valueOrDefault<Color>(
                                           _model.pageState == 2
-                                              ? const Color(0xFFE2E8F0)
+                                              ? Color(0xFFE2E8F0)
                                               : FlutterFlowTheme.of(context)
                                                   .secondaryBackground,
                                           FlutterFlowTheme.of(context)
                                               .secondaryBackground,
                                         ),
                                       ),
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                      alignment: AlignmentDirectional(0.0, 0.0),
                                       child: Text(
                                         'Manager',
                                         style: FlutterFlowTheme.of(context)
@@ -181,13 +184,13 @@ class _TechnicianChatWidgetState extends State<TechnicianChatWidget> {
                                       decoration: BoxDecoration(
                                         color: valueOrDefault<Color>(
                                           _model.pageState == 3
-                                              ? const Color(0xFFE2E8F0)
+                                              ? Color(0xFFE2E8F0)
                                               : FlutterFlowTheme.of(context)
                                                   .secondaryBackground,
                                           FlutterFlowTheme.of(context)
                                               .secondaryBackground,
                                         ),
-                                        boxShadow: const [
+                                        boxShadow: [
                                           BoxShadow(
                                             blurRadius: 1.0,
                                             color: Color(0x28000000),
@@ -199,7 +202,7 @@ class _TechnicianChatWidgetState extends State<TechnicianChatWidget> {
                                           )
                                         ],
                                       ),
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                      alignment: AlignmentDirectional(0.0, 0.0),
                                       child: Text(
                                         'Support',
                                         style: FlutterFlowTheme.of(context)
@@ -237,11 +240,11 @@ class _TechnicianChatWidgetState extends State<TechnicianChatWidget> {
                                   FlutterFlowTheme.of(context).secondary,
                                   FlutterFlowTheme.of(context).tertiary
                                 ],
-                                stops: const [0.0, 1.0],
-                                begin: const AlignmentDirectional(0.0, -1.0),
-                                end: const AlignmentDirectional(0, 1.0),
+                                stops: [0.0, 1.0],
+                                begin: AlignmentDirectional(0.0, -1.0),
+                                end: AlignmentDirectional(0, 1.0),
                               ),
-                              borderRadius: const BorderRadius.only(
+                              borderRadius: BorderRadius.only(
                                 bottomLeft: Radius.circular(36.0),
                                 bottomRight: Radius.circular(36.0),
                                 topLeft: Radius.circular(0.0),
@@ -249,7 +252,7 @@ class _TechnicianChatWidgetState extends State<TechnicianChatWidget> {
                               ),
                             ),
                             child: Align(
-                              alignment: const AlignmentDirectional(0.0, 0.0),
+                              alignment: AlignmentDirectional(0.0, 0.0),
                               child: RichText(
                                 textScaler: MediaQuery.of(context).textScaler,
                                 text: TextSpan(
@@ -266,7 +269,7 @@ class _TechnicianChatWidgetState extends State<TechnicianChatWidget> {
                                             fontWeight: FontWeight.w300,
                                           ),
                                     ),
-                                    const TextSpan(
+                                    TextSpan(
                                       text: '\n',
                                       style: TextStyle(
                                         color: Colors.black,
@@ -284,7 +287,7 @@ class _TechnicianChatWidgetState extends State<TechnicianChatWidget> {
                                           return 'your tech';
                                         }
                                       }(),
-                                      style: const TextStyle(),
+                                      style: TextStyle(),
                                     )
                                   ],
                                   style: FlutterFlowTheme.of(context)
@@ -327,7 +330,7 @@ class _TechnicianChatWidgetState extends State<TechnicianChatWidget> {
                             final containermanagerChatsRecord = snapshot.data!;
 
                             return Container(
-                              decoration: const BoxDecoration(),
+                              decoration: BoxDecoration(),
                               child: StreamBuilder<ChatsRecord>(
                                 stream: ChatsRecord.getDocument(
                                     currentUserDocument!
@@ -355,7 +358,7 @@ class _TechnicianChatWidgetState extends State<TechnicianChatWidget> {
 
                                   return Container(
                                     height: 200.0,
-                                    decoration: const BoxDecoration(),
+                                    decoration: BoxDecoration(),
                                     child: wrapWithModel(
                                       model: _model.chatThreadComponent1Model,
                                       updateCallback: () => safeSetState(() {}),
@@ -374,7 +377,7 @@ class _TechnicianChatWidgetState extends State<TechnicianChatWidget> {
                         ),
                       ),
                     ),
-                  ].divide(const SizedBox(height: 16.0)),
+                  ].divide(SizedBox(height: 16.0)),
                 ),
               ),
             ),

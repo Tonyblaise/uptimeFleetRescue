@@ -39,7 +39,10 @@ class _SettingsSpWidgetState extends State<SettingsSpWidget> {
         title: 'settingsSp',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
+          onTap: () {
+            FocusScope.of(context).unfocus();
+            FocusManager.instance.primaryFocus?.unfocus();
+          },
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: Colors.white,
@@ -47,14 +50,14 @@ class _SettingsSpWidgetState extends State<SettingsSpWidget> {
               backgroundColor: Colors.white,
               automaticallyImplyLeading: false,
               title: Container(
-                decoration: const BoxDecoration(),
+                decoration: BoxDecoration(),
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
                   child: Text(
                     'Settings',
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Yantramanav',
-                          color: const Color(0xFF1E293B),
+                          color: Color(0xFF1E293B),
                           fontSize: 30.0,
                           letterSpacing: 0.0,
                           fontWeight: FontWeight.bold,
@@ -62,37 +65,37 @@ class _SettingsSpWidgetState extends State<SettingsSpWidget> {
                   ),
                 ),
               ),
-              actions: const [],
+              actions: [],
               centerTitle: false,
               elevation: 1.0,
             ),
             body: SafeArea(
               top: true,
               child: Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                 child: Container(
                   width: double.infinity,
                   height: double.infinity,
-                  decoration: const BoxDecoration(),
+                  decoration: BoxDecoration(),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
                         child: wrapWithModel(
                           model: _model.settingsComponentModel,
                           updateCallback: () => safeSetState(() {}),
-                          child: const SettingsComponentWidget(),
+                          child: SettingsComponentWidget(),
                         ),
                       ),
                       wrapWithModel(
                         model: _model.bottomBarModel,
                         updateCallback: () => safeSetState(() {}),
-                        child: const BottomBarWidget(),
+                        child: BottomBarWidget(),
                       ),
-                    ].divide(const SizedBox(height: 20.0)),
+                    ].divide(SizedBox(height: 20.0)),
                   ),
                 ),
               ),

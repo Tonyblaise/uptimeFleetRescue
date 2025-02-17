@@ -15,7 +15,7 @@ class Chat2Details1Widget extends StatefulWidget {
     super.key,
     required this.chatRef,
     bool? driver,
-  }) : driver = driver ?? true;
+  }) : this.driver = driver ?? true;
 
   final ChatsRecord? chatRef;
   final bool driver;
@@ -66,7 +66,10 @@ class _Chat2Details1WidgetState extends State<Chat2Details1Widget> {
         title: 'chat_2_Details_1',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
+          onTap: () {
+            FocusScope.of(context).unfocus();
+            FocusManager.instance.primaryFocus?.unfocus();
+          },
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
@@ -105,7 +108,7 @@ class _Chat2Details1WidgetState extends State<Chat2Details1Widget> {
                       fontWeight: FontWeight.w600,
                     ),
               ),
-              actions: const [],
+              actions: [],
               centerTitle: false,
               elevation: 0.0,
             ),
