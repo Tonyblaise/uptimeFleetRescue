@@ -1,3 +1,5 @@
+import 'dart:isolate';
+
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
@@ -17,6 +19,45 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'dashboard_technician_model.dart';
 export 'dashboard_technician_model.dart';
+import 'package:flutter_foreground_task/flutter_foreground_task.dart';
+
+class MyTaskHandler extends TaskHandler {
+  SendPort? _sendPort;
+
+  @override
+  Future<void> onStart(DateTime timestamp, SendPort? sendPort) async {
+    _sendPort = sendPort;
+    print('Foreground service started');
+  }
+
+  @override
+  Future<void> onEvent(DateTime timestamp, SendPort? sendPort) async {
+    try {
+      final currentLocation =
+          await getCurrentUserLocation(defaultLocation: const LatLng(0.0, 0.0));
+
+      if (currentLocation != null) {
+        await UptimeFleetAppGroup
+            .updateTechnicianPositionUsingCurrentPostionCall
+            .call(
+          technicianId: valueOrDefault(currentUserDocument?.technicianId, ''),
+          position: currentLocation.toString(),
+        );
+
+        await currentUserReference?.update(createUsersRecordData(
+          technicianLastUpdatedLocation: currentLocation,
+        ));
+      }
+    } catch (e) {
+      print('Error in foreground task: $e');
+    }
+  }
+
+  @override
+  Future<void> onDestroy(DateTime timestamp, SendPort? sendPort) async {
+    print('Foreground service stopped');
+  }
+}
 
 class DashboardTechnicianWidget extends StatefulWidget {
   const DashboardTechnicianWidget({super.key});
@@ -26,8 +67,10 @@ class DashboardTechnicianWidget extends StatefulWidget {
       _DashboardTechnicianWidgetState();
 }
 
-class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
+class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget>
+    with WidgetsBindingObserver {
   late DashboardTechnicianModel _model;
+  bool _isRunning = false;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
   LatLng? currentUserLocationValue;
@@ -39,6 +82,11 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      super.initState();
+      WidgetsBinding.instance.addObserver(this);
+      _model = createModel(context, () => DashboardTechnicianModel());
+      _initForegroundTask();
+
       currentUserLocationValue =
           await getCurrentUserLocation(defaultLocation: LatLng(0.0, 0.0));
       await Future.wait([
@@ -93,11 +141,126 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
+  void _initForegroundTask() {
+    FlutterForegroundTask.init(
+      androidNotificationOptions: AndroidNotificationOptions(
+        channelId: 'foreground_service',
+        channelName: 'Foreground Service Notification',
+        channelDescription:
+            'This notification appears when the foreground service is running.',
+        channelImportance: NotificationChannelImportance.LOW,
+        priority: NotificationPriority.LOW,
+        iconData: const NotificationIconData(
+          resType: ResourceType.mipmap,
+          resPrefix: ResourcePrefix.ic,
+          name: 'launcher',
+        ),
+      ),
+      iosNotificationOptions: const IOSNotificationOptions(
+        showNotification: true,
+        playSound: false,
+      ),
+      foregroundTaskOptions: const ForegroundTaskOptions(
+        interval: 5000,
+        isOnceEvent: false,
+        autoRunOnBoot: true,
+        allowWakeLock: true,
+        allowWifiLock: true,
+      ),
+    );
+  }
+
+Future<void> runBackgroundService(bool status) async {
+  if (status) {
+    await _startForegroundTask();
+  } else {
+    await _stopForegroundTask();
+  }
+}
+
+  Future<void> _startForegroundTask() async {
+    if (!await FlutterForegroundTask.canDrawOverlays) {
+      final isGranted =
+          await FlutterForegroundTask.openSystemAlertWindowSettings();
+      if (!isGranted) {
+        print('SYSTEM_ALERT_WINDOW permission denied!');
+        return;
+      }
+    }
+
+    bool reqResult = await FlutterForegroundTask.startService(
+      notificationTitle: 'Foreground Service is running',
+      notificationText: 'Tap to return to the app',
+      callback: startCallback,
+    );
+
+    setState(() {
+      _isRunning = reqResult;
+    });
+  }
+Future<void> _stopForegroundTask() async {
+    bool reqResult = await FlutterForegroundTask.stopService();
+    setState(() {
+      _isRunning = !reqResult;
+    });
+  }
+
+  Future<void> _initializeLocation() async {
+    if (currentUserLocationValue == null) {
+      await requestPermission(locationPermission);
+      currentUserLocationValue =
+          await getCurrentUserLocation(defaultLocation: const LatLng(0.0, 0.0));
+    }
+
+    if (currentUserLocationValue != null) {
+      await _updateTechnicianLocation(currentUserLocationValue!);
+    }
+  }
+
+  Future<void> _updateTechnicianLocation(LatLng location) async {
+    _model.apiResultayo6 = await UptimeFleetAppGroup
+        .updateTechnicianPositionUsingCurrentPostionCall
+        .call(
+      technicianId: valueOrDefault(currentUserDocument?.technicianId, ''),
+      position: location.toString(),
+    );
+
+    await currentUserReference?.update(createUsersRecordData(
+      technicianLastUpdatedLocation: location,
+    ));
+  }
+
+  Future<void> _checkActiveRequest() async {
+    final activeRequest = currentUserDocument?.activeRequest;
+    if (activeRequest != null) {
+      _model.activeRequest = await RequestRecord.getDocumentOnce(activeRequest);
+      final bubbleId = _model.activeRequest?.bubbleId;
+      if (_model.activeRequest?.started == false &&
+          bubbleId != null &&
+          mounted) {
+        context.pushNamed(
+          'start_request',
+          queryParameters: {
+            'request': serializeParam(
+              bubbleId,
+              ParamType.String,
+            ),
+          }.withoutNulls,
+        );
+      }
+    }
+  }
+
   @override
   void dispose() {
     _model.dispose();
 
     super.dispose();
+  }
+
+  @pragma('vm:entry-point')
+  void startCallback() {
+    FlutterForegroundTask.setTaskHandler(MyTaskHandler());
   }
 
   @override
@@ -264,6 +427,7 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                                                           currentUserDocument
                                                                               ?.onDuty,
                                                                           false),
+                                                                          onDutyFunction: runBackgroundService,
                                                                     ),
                                                                   ),
                                                                 ),
@@ -355,9 +519,10 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                                                               builder:
                                                                   (context) {
                                                                 if (valueOrDefault(
-                                                                            currentUserDocument?.activeVehicle,
-                                                                            '') !=
-                                                                        '') {
+                                                                        currentUserDocument
+                                                                            ?.activeVehicle,
+                                                                        '') !=
+                                                                    '') {
                                                                   return Container(
                                                                     width: MediaQuery.sizeOf(context)
                                                                             .width *

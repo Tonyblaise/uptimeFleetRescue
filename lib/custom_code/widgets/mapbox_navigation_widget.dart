@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 // Begin custom widget code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-import 'dart:js_interop';
+
 
 // import '/service_provider/service_updates_component_s_p/service_updates_component_s_p_widget.dart'; // Imports other custom widgets
 

@@ -156,64 +156,7 @@ class _BottomBarWidgetState extends State<BottomBarWidget> {
                       ),
                     ),
                   ),
-                  InkWell(
-                    splashColor: Colors.transparent,
-                    focusColor: Colors.transparent,
-                    hoverColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    onTap: () async {
-                      await showModalBottomSheet(
-                        isScrollControlled: true,
-                        backgroundColor: Colors.transparent,
-                        enableDrag: false,
-                        context: context,
-                        builder: (context) {
-                          return Padding(
-                            padding: MediaQuery.viewInsetsOf(context),
-                            child: Container(
-                              height: 300.0,
-                              child: TechStatusComponentWidget(
-                                onDuty: valueOrDefault<bool>(
-                                    currentUserDocument?.onDuty, false),
-                              ),
-                            ),
-                          );
-                        },
-                      ).then((value) => safeSetState(() {}));
-                    },
-                    child: Container(
-                      height: 100.0,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                      ),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(0.0),
-                            child: SvgPicture.asset(
-                              'assets/images/image_setstatus_icon.svg',
-                              width: 20.0,
-                              height: 12.0,
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                          Text(
-                            'Set status',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Yantramanav',
-                                  color: Color(0xFF64748B),
-                                  fontSize: 10.0,
-                                  letterSpacing: 0.0,
-                                ),
-                          ),
-                        ].divide(SizedBox(height: 6.0)),
-                      ),
-                    ),
-                  ),
+                  
                   InkWell(
                     splashColor: Colors.transparent,
                     focusColor: Colors.transparent,

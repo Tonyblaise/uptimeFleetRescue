@@ -9,12 +9,11 @@ import 'tech_status_component_model.dart';
 export 'tech_status_component_model.dart';
 
 class TechStatusComponentWidget extends StatefulWidget {
-  const TechStatusComponentWidget({
-    super.key,
-    required this.onDuty,
-  });
+  const TechStatusComponentWidget(
+      {super.key, required this.onDuty, required this.onDutyFunction});
 
   final bool? onDuty;
+  final Function onDutyFunction;
 
   @override
   State<TechStatusComponentWidget> createState() =>
@@ -38,6 +37,7 @@ class _TechStatusComponentWidgetState extends State<TechStatusComponentWidget> {
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       _model.onDuty = widget.onDuty!;
+     
       safeSetState(() {});
     });
 
@@ -178,9 +178,11 @@ class _TechStatusComponentWidgetState extends State<TechStatusComponentWidget> {
                                               _model.switchValue = newValue);
                                           if (newValue) {
                                             _model.onDuty = true;
+                                             await widget.onDutyFunction(true);
                                             safeSetState(() {});
                                           } else {
                                             _model.onDuty = false;
+                                            await widget.onDutyFunction(false);
                                             safeSetState(() {});
                                           }
                                         },
