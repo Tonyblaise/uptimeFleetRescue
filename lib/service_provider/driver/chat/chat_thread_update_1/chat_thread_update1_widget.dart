@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_media_display.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_video_player.dart';
+import '/index.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -272,7 +273,7 @@ class _ChatThreadUpdate1WidgetState extends State<ChatThreadUpdate1Widget> {
                                             highlightColor: Colors.transparent,
                                             onTap: () async {
                                               context.pushNamed(
-                                                'image_Details_1',
+                                                ImageDetails1Widget.routeName,
                                                 queryParameters: {
                                                   'chatMessage': serializeParam(
                                                     widget.chatMessagesRef,
@@ -419,7 +420,7 @@ class _ChatThreadUpdate1WidgetState extends State<ChatThreadUpdate1Widget> {
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
                                     context.pushNamed(
-                                      'image_Details_1',
+                                      ImageDetails1Widget.routeName,
                                       queryParameters: {
                                         'chatMessage': serializeParam(
                                           widget.chatMessagesRef,

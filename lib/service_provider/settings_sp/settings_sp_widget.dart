@@ -9,6 +9,9 @@ export 'settings_sp_model.dart';
 class SettingsSpWidget extends StatefulWidget {
   const SettingsSpWidget({super.key});
 
+  static String routeName = 'settingsSp';
+  static String routePath = 'settings_sp';
+
   @override
   State<SettingsSpWidget> createState() => _SettingsSpWidgetState();
 }

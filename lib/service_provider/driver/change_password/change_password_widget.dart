@@ -14,6 +14,9 @@ class ChangePasswordWidget extends StatefulWidget {
 
   final double? dfdfg;
 
+  static String routeName = 'changePassword';
+  static String routePath = 'change_password';
+
   @override
   State<ChangePasswordWidget> createState() => _ChangePasswordWidgetState();
 }

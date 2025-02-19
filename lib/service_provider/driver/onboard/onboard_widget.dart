@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/service_provider/request_location/request_location_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'onboard_model.dart';
@@ -21,6 +22,9 @@ class OnboardWidget extends StatefulWidget {
 
   final String? fleetManagerId;
   final String? serviceProviderId;
+
+  static String routeName = 'onboard';
+  static String routePath = 'onboard';
 
   @override
   State<OnboardWidget> createState() => _OnboardWidgetState();
@@ -49,7 +53,7 @@ class _OnboardWidgetState extends State<OnboardWidget> {
               widget.fleetManagerId == '') &&
           (widget.serviceProviderId == null ||
               widget.serviceProviderId == '')) {
-        context.pushNamed('login');
+        context.pushNamed(LoginWidget.routeName);
       }
     });
 
@@ -367,7 +371,7 @@ class _OnboardWidgetState extends State<OnboardWidget> {
                                         phoneNumber: phoneNumberVal,
                                         onCodeSent: (context) async {
                                           context.goNamedAuth(
-                                            'verify',
+                                            VerifyWidget.routeName,
                                             context.mounted,
                                             queryParameters: {
                                               'phoneNumber': serializeParam(
@@ -503,7 +507,7 @@ class _OnboardWidgetState extends State<OnboardWidget> {
                         highlightColor: Colors.transparent,
                         onTap: () async {
                           context.pushNamed(
-                            'login',
+                            LoginWidget.routeName,
                             queryParameters: {
                               'fleetManagerId': serializeParam(
                                 widget.fleetManagerId,

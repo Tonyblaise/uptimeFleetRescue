@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/service_provider/driver/delete_account/delete_account_widget.dart';
 import '/service_provider/driver/log_out_confirmation/log_out_confirmation_widget.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'settings_component_model.dart';
 export 'settings_component_model.dart';
@@ -76,7 +77,7 @@ class _SettingsComponentWidgetState extends State<SettingsComponentWidget> {
             hoverColor: Colors.transparent,
             highlightColor: Colors.transparent,
             onTap: () async {
-              context.pushNamed('previousJobs');
+              context.pushNamed(PreviousJobsWidget.routeName);
             },
             child: Container(
               width: double.infinity,
@@ -190,7 +191,7 @@ class _SettingsComponentWidgetState extends State<SettingsComponentWidget> {
                 },
               ).then((value) => safeSetState(() {}));
 
-              context.pushNamed('login');
+              context.pushNamed(LoginWidget.routeName);
             },
             child: Container(
               width: double.infinity,

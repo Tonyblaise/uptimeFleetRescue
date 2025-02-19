@@ -8,10 +8,11 @@ import '/auth/base_auth_user_provider.dart';
 
 import '/backend/push_notifications/push_notifications_handler.dart'
     show PushNotificationsHandler;
-import '/index.dart';
 import '/main.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+
+import '/index.dart';
 
 export 'package:go_router/go_router.dart';
 export 'serialization_util.dart';
@@ -88,8 +89,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               appStateNotifier.loggedIn ? NavBarPage() : LoginWidget(),
           routes: [
             FFRoute(
-              name: 'login',
-              path: 'login',
+              name: LoginWidget.routeName,
+              path: LoginWidget.routePath,
               builder: (context, params) => LoginWidget(
                 fleetManagerId: params.getParam(
                   'fleetManagerId',
@@ -102,18 +103,18 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'forgotPassword',
-              path: 'forgotPassword',
+              name: ForgotPasswordWidget.routeName,
+              path: ForgotPasswordWidget.routePath,
               builder: (context, params) => ForgotPasswordWidget(),
             ),
             FFRoute(
-              name: 'checkYourEmail',
-              path: 'check_your_email',
+              name: CheckYourEmailWidget.routeName,
+              path: CheckYourEmailWidget.routePath,
               builder: (context, params) => CheckYourEmailWidget(),
             ),
             FFRoute(
-              name: 'changePassword',
-              path: 'change_password',
+              name: ChangePasswordWidget.routeName,
+              path: ChangePasswordWidget.routePath,
               builder: (context, params) => ChangePasswordWidget(
                 dfdfg: params.getParam(
                   'dfdfg',
@@ -122,18 +123,18 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'connectionProblem',
-              path: 'connection_problem',
+              name: ConnectionProblemWidget.routeName,
+              path: ConnectionProblemWidget.routePath,
               builder: (context, params) => ConnectionProblemWidget(),
             ),
             FFRoute(
-              name: 'dashboardDriver',
-              path: 'dashboard_driver',
+              name: DashboardDriverWidget.routeName,
+              path: DashboardDriverWidget.routePath,
               builder: (context, params) => DashboardDriverWidget(),
             ),
             FFRoute(
-              name: 'vehicle_confirmation',
-              path: 'vehicle_confirmation',
+              name: VehicleConfirmationWidget.routeName,
+              path: VehicleConfirmationWidget.routePath,
               builder: (context, params) => VehicleConfirmationWidget(
                 service: params.getParam(
                   'service',
@@ -146,8 +147,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'serviceConfirmation',
-              path: 'service_confirmation',
+              name: ServiceConfirmationWidget.routeName,
+              path: ServiceConfirmationWidget.routePath,
               builder: (context, params) => ServiceConfirmationWidget(
                 request: params.getParam(
                   'request',
@@ -156,8 +157,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'driverChat',
-              path: 'driver_chat',
+              name: DriverChatWidget.routeName,
+              path: DriverChatWidget.routePath,
               requireAuth: true,
               builder: (context, params) => params.isEmpty
                   ? NavBarPage(initialPage: 'driverChat')
@@ -169,8 +170,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                     ),
             ),
             FFRoute(
-              name: 'image_Details',
-              path: 'imageDetails',
+              name: ImageDetailsWidget.routeName,
+              path: ImageDetailsWidget.routePath,
               builder: (context, params) => ImageDetailsWidget(
                 chatRef: params.getParam(
                   'chatRef',
@@ -179,13 +180,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'dashboardTechnician',
-              path: 'dashboard_technician',
+              name: DashboardTechnicianWidget.routeName,
+              path: DashboardTechnicianWidget.routePath,
               builder: (context, params) => DashboardTechnicianWidget(),
             ),
             FFRoute(
-              name: 'service_summary',
-              path: 'service_summary',
+              name: ServiceSummaryWidget.routeName,
+              path: ServiceSummaryWidget.routePath,
               builder: (context, params) => ServiceSummaryWidget(
                 requestId: params.getParam(
                   'requestId',
@@ -194,25 +195,25 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'changeYourPhoto',
-              path: 'change_your_photo',
+              name: ChangeYourPhotoWidget.routeName,
+              path: ChangeYourPhotoWidget.routePath,
               builder: (context, params) => ChangeYourPhotoWidget(),
             ),
             FFRoute(
-              name: 'settings',
-              path: 'settings',
+              name: SettingsWidget.routeName,
+              path: SettingsWidget.routePath,
               builder: (context, params) => params.isEmpty
                   ? NavBarPage(initialPage: 'settings')
                   : SettingsWidget(),
             ),
             FFRoute(
-              name: 'settingsSp',
-              path: 'settings_sp',
+              name: SettingsSpWidget.routeName,
+              path: SettingsSpWidget.routePath,
               builder: (context, params) => SettingsSpWidget(),
             ),
             FFRoute(
-              name: 'selectLocation',
-              path: 'select_location',
+              name: SelectLocationWidget.routeName,
+              path: SelectLocationWidget.routePath,
               builder: (context, params) => SelectLocationWidget(
                 service: params.getParam(
                   'service',
@@ -233,8 +234,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'onboard',
-              path: 'onboard',
+              name: OnboardWidget.routeName,
+              path: OnboardWidget.routePath,
               builder: (context, params) => OnboardWidget(
                 fleetManagerId: params.getParam(
                   'fleetManagerId',
@@ -247,8 +248,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'start_request',
-              path: 'start_request',
+              name: StartRequestWidget.routeName,
+              path: StartRequestWidget.routePath,
               builder: (context, params) => StartRequestWidget(
                 request: params.getParam(
                   'request',
@@ -257,8 +258,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'verify',
-              path: 'verify',
+              name: VerifyWidget.routeName,
+              path: VerifyWidget.routePath,
               builder: (context, params) => VerifyWidget(
                 phoneNumber: params.getParam(
                   'phoneNumber',
@@ -287,13 +288,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'tech_status',
-              path: 'techStatus',
+              name: TechStatusWidget.routeName,
+              path: TechStatusWidget.routePath,
               builder: (context, params) => TechStatusWidget(),
             ),
             FFRoute(
-              name: 'technicianChat',
-              path: 'technician_chat',
+              name: TechnicianChatWidget.routeName,
+              path: TechnicianChatWidget.routePath,
               requireAuth: true,
               builder: (context, params) => TechnicianChatWidget(
                 state: params.getParam(
@@ -303,8 +304,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'chat_2_Details_1',
-              path: 'chat2Details1',
+              name: Chat2Details1Widget.routeName,
+              path: Chat2Details1Widget.routePath,
               asyncParams: {
                 'chatRef': getDoc(['chats'], ChatsRecord.fromSnapshot),
               },
@@ -320,8 +321,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'image_Details_1',
-              path: 'imageDetails1',
+              name: ImageDetails1Widget.routeName,
+              path: ImageDetails1Widget.routePath,
               asyncParams: {
                 'chatMessage':
                     getDoc(['chat_messages'], ChatMessagesRecord.fromSnapshot),
@@ -334,13 +335,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'previousJobs',
-              path: 'previousJobs',
+              name: PreviousJobsWidget.routeName,
+              path: PreviousJobsWidget.routePath,
               builder: (context, params) => PreviousJobsWidget(),
             ),
             FFRoute(
-              name: 'success',
-              path: 'success',
+              name: SuccessWidget.routeName,
+              path: SuccessWidget.routePath,
               builder: (context, params) => SuccessWidget(
                 driver: params.getParam(
                   'driver',
@@ -349,8 +350,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'tech_enroute',
-              path: 'techEnroute',
+              name: TechEnrouteWidget.routeName,
+              path: TechEnrouteWidget.routePath,
               asyncParams: {
                 'chat': getDoc(['chats'], ChatsRecord.fromSnapshot),
               },
@@ -368,8 +369,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'more_details',
-              path: 'more_details',
+              name: MoreDetailsWidget.routeName,
+              path: MoreDetailsWidget.routePath,
               builder: (context, params) => MoreDetailsWidget(
                 fault: params.getParam(
                   'fault',
@@ -378,16 +379,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'landing_page',
-              path: 'landing_page',
+              name: LandingPageWidget.routeName,
+              path: LandingPageWidget.routePath,
               requireAuth: true,
               builder: (context, params) => params.isEmpty
                   ? NavBarPage(initialPage: 'landing_page')
                   : LandingPageWidget(),
             ),
             FFRoute(
-              name: 'vehicle_confirmation2',
-              path: 'vehicle_confirmation2',
+              name: VehicleConfirmation2Widget.routeName,
+              path: VehicleConfirmation2Widget.routePath,
               builder: (context, params) => VehicleConfirmation2Widget(
                 service: params.getParam(
                   'service',
@@ -424,8 +425,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'request_service2',
-              path: 'request_service2',
+              name: RequestService2Widget.routeName,
+              path: RequestService2Widget.routePath,
               builder: (context, params) => RequestService2Widget(
                 fleetManagerId: params.getParam(
                   'fleetManagerId',
@@ -434,8 +435,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'vehicle_confirmation_manual',
-              path: 'vehicle_confirmation_manual',
+              name: VehicleConfirmationManualWidget.routeName,
+              path: VehicleConfirmationManualWidget.routePath,
               builder: (context, params) => VehicleConfirmationManualWidget(
                 service: params.getParam(
                   'service',
@@ -472,8 +473,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'vehicle_confirmation3',
-              path: 'vehicle_confirmation3',
+              name: VehicleConfirmation3Widget.routeName,
+              path: VehicleConfirmation3Widget.routePath,
               builder: (context, params) => VehicleConfirmation3Widget(
                 service: params.getParam(
                   'service',
@@ -486,8 +487,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'request_service',
-              path: 'request_service',
+              name: RequestServiceWidget.routeName,
+              path: RequestServiceWidget.routePath,
               builder: (context, params) => RequestServiceWidget(
                 fleetManagerId: params.getParam(
                   'fleetManagerId',
@@ -496,8 +497,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'test',
-              path: 'test',
+              name: TestWidget.routeName,
+              path: TestWidget.routePath,
               builder: (context, params) => TestWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),

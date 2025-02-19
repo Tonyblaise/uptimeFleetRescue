@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'tech_enroute_model.dart';
 export 'tech_enroute_model.dart';
@@ -18,6 +19,9 @@ class TechEnrouteWidget extends StatefulWidget {
 
   final ChatsRecord? chat;
   final DocumentReference? request;
+
+  static String routeName = 'tech_enroute';
+  static String routePath = 'techEnroute';
 
   @override
   State<TechEnrouteWidget> createState() => _TechEnrouteWidgetState();
@@ -466,7 +470,8 @@ class _TechEnrouteWidgetState extends State<TechEnrouteWidget> {
                                                   child: FFButtonWidget(
                                                     onPressed: () async {
                                                       context.pushNamed(
-                                                        'chat_2_Details_1',
+                                                        Chat2Details1Widget
+                                                            .routeName,
                                                         queryParameters: {
                                                           'chatRef':
                                                               serializeParam(

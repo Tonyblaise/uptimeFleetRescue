@@ -36,6 +36,9 @@ class VehicleConfirmationManualWidget extends StatefulWidget {
   final String? id;
   final String? image;
 
+  static String routeName = 'vehicle_confirmation_manual';
+  static String routePath = 'vehicle_confirmation_manual';
+
   @override
   State<VehicleConfirmationManualWidget> createState() =>
       _VehicleConfirmationManualWidgetState();

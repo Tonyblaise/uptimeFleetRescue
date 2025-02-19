@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/permissions_util.dart';
+import '/index.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -30,6 +31,9 @@ class VerifyWidget extends StatefulWidget {
   final String? fullName;
   final bool signUp;
 
+  static String routeName = 'verify';
+  static String routePath = 'verify';
+
   @override
   State<VerifyWidget> createState() => _VerifyWidgetState();
 }
@@ -52,6 +56,8 @@ class _VerifyWidgetState extends State<VerifyWidget> {
         await actions.getUserLocation();
       }
     });
+
+    _model.pinCodeFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -151,6 +157,7 @@ class _VerifyWidgetState extends State<VerifyWidget> {
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               enableActiveFill: false,
                               autoFocus: true,
+                              focusNode: _model.pinCodeFocusNode,
                               enablePinAutofill: false,
                               errorTextSpace: 16.0,
                               showCursor: true,
@@ -316,7 +323,7 @@ class _VerifyWidgetState extends State<VerifyWidget> {
                               );
 
                               context.goNamedAuth(
-                                  'landing_page', context.mounted);
+                                  LandingPageWidget.routeName, context.mounted);
                             } else if (widget.signUpType == 'technician') {
                               var chatsRecordReference3 =
                                   ChatsRecord.collection.doc();
@@ -424,7 +431,8 @@ class _VerifyWidgetState extends State<VerifyWidget> {
                               );
 
                               context.goNamedAuth(
-                                  'dashboardTechnician', context.mounted);
+                                  DashboardTechnicianWidget.routeName,
+                                  context.mounted);
                             } else {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
@@ -451,7 +459,7 @@ class _VerifyWidgetState extends State<VerifyWidget> {
                               );
 
                               context.goNamedAuth(
-                                  'landing_page', context.mounted);
+                                  LandingPageWidget.routeName, context.mounted);
                             } else if (widget.signUpType == 'technician') {
                               await UptimeFleetAppGroup.updateTechnicianCall
                                   .call(
@@ -461,7 +469,8 @@ class _VerifyWidgetState extends State<VerifyWidget> {
                               );
 
                               context.goNamedAuth(
-                                  'dashboardTechnician', context.mounted);
+                                  DashboardTechnicianWidget.routeName,
+                                  context.mounted);
                             }
                           }
 
@@ -497,7 +506,7 @@ class _VerifyWidgetState extends State<VerifyWidget> {
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
-                        context.pushNamed('landing_page');
+                        context.pushNamed(LandingPageWidget.routeName);
                       },
                       child: Text(
                         'Click here if not redirected after confirmation',

@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/service_provider/driver/cancel_request/cancel_request_widget.dart';
 import '/service_provider/driver/complete_request/complete_request_widget.dart';
+import '/index.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -172,7 +173,7 @@ class _ServiceUpdatesComponentWidgetState
                                               }
 
                                               context.pushNamed(
-                                                'chat_2_Details_1',
+                                                Chat2Details1Widget.routeName,
                                                 queryParameters: {
                                                   'chatRef': serializeParam(
                                                     containerChatsRecord,
@@ -502,7 +503,7 @@ class _ServiceUpdatesComponentWidgetState
                                     if (widget.request?.status ==
                                         'inProgress') {
                                       context.pushNamed(
-                                        'tech_enroute',
+                                        TechEnrouteWidget.routeName,
                                         queryParameters: {
                                           'chat': serializeParam(
                                             containerChatsRecord,
@@ -1336,7 +1337,8 @@ class _ServiceUpdatesComponentWidgetState
                                                     Colors.transparent,
                                                 onTap: () async {
                                                   context.pushNamed(
-                                                    'chat_2_Details_1',
+                                                    Chat2Details1Widget
+                                                        .routeName,
                                                     queryParameters: {
                                                       'chatRef': serializeParam(
                                                         container2ChatsRecord,

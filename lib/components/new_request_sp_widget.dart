@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'new_request_sp_model.dart';
@@ -703,7 +704,8 @@ class _NewRequestSpWidgetState extends State<NewRequestSpWidget> {
                                                       Navigator.pop(context);
 
                                                       context.pushNamed(
-                                                          'dashboardTechnician');
+                                                          DashboardTechnicianWidget
+                                                              .routeName);
 
                                                       safeSetState(() {});
                                                     },

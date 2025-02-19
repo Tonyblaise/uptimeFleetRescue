@@ -15,6 +15,9 @@ class ServiceSummaryWidget extends StatefulWidget {
 
   final String? requestId;
 
+  static String routeName = 'service_summary';
+  static String routePath = 'service_summary';
+
   @override
   State<ServiceSummaryWidget> createState() => _ServiceSummaryWidgetState();
 }

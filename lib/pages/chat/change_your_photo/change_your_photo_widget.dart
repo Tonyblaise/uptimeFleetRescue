@@ -8,6 +8,9 @@ export 'change_your_photo_model.dart';
 class ChangeYourPhotoWidget extends StatefulWidget {
   const ChangeYourPhotoWidget({super.key});
 
+  static String routeName = 'changeYourPhoto';
+  static String routePath = 'change_your_photo';
+
   @override
   State<ChangeYourPhotoWidget> createState() => _ChangeYourPhotoWidgetState();
 }

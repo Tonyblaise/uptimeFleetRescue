@@ -8,6 +8,9 @@ export 'connection_problem_model.dart';
 class ConnectionProblemWidget extends StatefulWidget {
   const ConnectionProblemWidget({super.key});
 
+  static String routeName = 'connectionProblem';
+  static String routePath = 'connection_problem';
+
   @override
   State<ConnectionProblemWidget> createState() =>
       _ConnectionProblemWidgetState();

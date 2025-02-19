@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/pages/chat/empty_state_simple/empty_state_simple_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import '/index.dart';
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'previous_jobs_model.dart';
@@ -12,6 +13,9 @@ export 'previous_jobs_model.dart';
 
 class PreviousJobsWidget extends StatefulWidget {
   const PreviousJobsWidget({super.key});
+
+  static String routeName = 'previousJobs';
+  static String routePath = 'previousJobs';
 
   @override
   State<PreviousJobsWidget> createState() => _PreviousJobsWidgetState();
@@ -182,7 +186,8 @@ class _PreviousJobsWidgetState extends State<PreviousJobsWidget>
                                                   Colors.transparent,
                                               onTap: () async {
                                                 context.pushNamed(
-                                                  'service_summary',
+                                                  ServiceSummaryWidget
+                                                      .routeName,
                                                   queryParameters: {
                                                     'requestId': serializeParam(
                                                       getJsonField(

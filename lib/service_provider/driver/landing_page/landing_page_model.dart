@@ -2,6 +2,7 @@ import '/flutter_flow/flutter_flow_google_map.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/service_provider/driver/confirm_cancellation/confirm_cancellation_widget.dart';
 import '/service_provider/driver/service_updates_component/service_updates_component_widget.dart';
+import '/index.dart';
 import 'landing_page_widget.dart' show LandingPageWidget;
 import 'package:flutter/material.dart';
 

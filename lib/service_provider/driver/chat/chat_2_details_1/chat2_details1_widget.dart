@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/service_provider/driver/chat/chat_thread_component_1/chat_thread_component1_widget.dart';
 import 'dart:async';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'chat2_details1_model.dart';
@@ -19,6 +20,9 @@ class Chat2Details1Widget extends StatefulWidget {
 
   final ChatsRecord? chatRef;
   final bool driver;
+
+  static String routeName = 'chat_2_Details_1';
+  static String routePath = 'chat2Details1';
 
   @override
   State<Chat2Details1Widget> createState() => _Chat2Details1WidgetState();
@@ -88,9 +92,9 @@ class _Chat2Details1WidgetState extends State<Chat2Details1Widget> {
                 ),
                 onPressed: () async {
                   if (widget.driver == true) {
-                    context.pushNamed('landing_page');
+                    context.pushNamed(LandingPageWidget.routeName);
                   } else {
-                    context.pushNamed('dashboardTechnician');
+                    context.pushNamed(DashboardTechnicianWidget.routeName);
                   }
                 },
               ),

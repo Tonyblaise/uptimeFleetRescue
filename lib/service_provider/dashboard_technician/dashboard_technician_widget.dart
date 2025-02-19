@@ -13,6 +13,7 @@ import '/service_provider/driver/confirm_cancellation/confirm_cancellation_widge
 import '/service_provider/select_vehicle/select_vehicle_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/permissions_util.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'dashboard_technician_model.dart';
@@ -20,6 +21,9 @@ export 'dashboard_technician_model.dart';
 
 class DashboardTechnicianWidget extends StatefulWidget {
   const DashboardTechnicianWidget({super.key});
+
+  static String routeName = 'dashboardTechnician';
+  static String routePath = 'dashboard_technician';
 
   @override
   State<DashboardTechnicianWidget> createState() =>
@@ -76,7 +80,7 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget> {
                 currentUserDocument!.activeRequest!);
             if (_model.activeRequest?.started == false) {
               context.pushNamed(
-                'start_request',
+                StartRequestWidget.routeName,
                 queryParameters: {
                   'request': serializeParam(
                     _model.activeRequest?.bubbleId,

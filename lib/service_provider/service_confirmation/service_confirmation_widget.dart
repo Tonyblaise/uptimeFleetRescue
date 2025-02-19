@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'service_confirmation_model.dart';
 export 'service_confirmation_model.dart';
@@ -17,6 +18,9 @@ class ServiceConfirmationWidget extends StatefulWidget {
   });
 
   final String? request;
+
+  static String routeName = 'serviceConfirmation';
+  static String routePath = 'service_confirmation';
 
   @override
   State<ServiceConfirmationWidget> createState() =>
@@ -747,7 +751,7 @@ class _ServiceConfirmationWidgetState extends State<ServiceConfirmationWidget> {
                                               ));
 
                                           context.pushNamed(
-                                            'success',
+                                            SuccessWidget.routeName,
                                             queryParameters: {
                                               'driver': serializeParam(
                                                 false,

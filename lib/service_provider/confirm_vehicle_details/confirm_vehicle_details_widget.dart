@@ -3,6 +3,7 @@ import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'confirm_vehicle_details_model.dart';
 export 'confirm_vehicle_details_model.dart';
@@ -344,7 +345,7 @@ class _ConfirmVehicleDetailsWidgetState
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
-                            context.pushNamed('landing_page');
+                            context.pushNamed(LandingPageWidget.routeName);
                           },
                           child: Container(
                             width: MediaQuery.sizeOf(context).width * 0.9,
@@ -374,7 +375,7 @@ class _ConfirmVehicleDetailsWidgetState
                                       Navigator.pop(context, false);
 
                                       context.pushNamed(
-                                        'vehicle_confirmation',
+                                        VehicleConfirmationWidget.routeName,
                                         queryParameters: {
                                           'service': serializeParam(
                                             widget.service,
@@ -424,7 +425,7 @@ class _ConfirmVehicleDetailsWidgetState
                                       Navigator.pop(context, true);
 
                                       context.pushNamed(
-                                        'vehicle_confirmation2',
+                                        VehicleConfirmation2Widget.routeName,
                                         queryParameters: {
                                           'service': serializeParam(
                                             widget.service,

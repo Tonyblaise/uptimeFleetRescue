@@ -36,6 +36,9 @@ class VehicleConfirmation2Widget extends StatefulWidget {
   final String? id;
   final String? image;
 
+  static String routeName = 'vehicle_confirmation2';
+  static String routePath = 'vehicle_confirmation2';
+
   @override
   State<VehicleConfirmation2Widget> createState() =>
       _VehicleConfirmation2WidgetState();

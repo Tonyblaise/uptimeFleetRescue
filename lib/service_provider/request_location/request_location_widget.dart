@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'request_location_model.dart';
 export 'request_location_model.dart';
@@ -195,7 +196,7 @@ class _RequestLocationWidgetState extends State<RequestLocationWidget> {
                                 phoneNumber: phoneNumberVal,
                                 onCodeSent: (context) async {
                                   context.goNamedAuth(
-                                    'verify',
+                                    VerifyWidget.routeName,
                                     context.mounted,
                                     queryParameters: {
                                       'phoneNumber': serializeParam(

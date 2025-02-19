@@ -16,6 +16,9 @@ class StartRequestWidget extends StatefulWidget {
 
   final String? request;
 
+  static String routeName = 'start_request';
+  static String routePath = 'start_request';
+
   @override
   State<StartRequestWidget> createState() => _StartRequestWidgetState();
 }

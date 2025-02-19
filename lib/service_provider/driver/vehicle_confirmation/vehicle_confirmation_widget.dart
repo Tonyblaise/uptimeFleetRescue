@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/service_provider/confirm_vehicle_details/confirm_vehicle_details_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'vehicle_confirmation_model.dart';
 export 'vehicle_confirmation_model.dart';
@@ -20,6 +21,9 @@ class VehicleConfirmationWidget extends StatefulWidget {
 
   final String? service;
   final String? additionalInfo;
+
+  static String routeName = 'vehicle_confirmation';
+  static String routePath = 'vehicle_confirmation';
 
   @override
   State<VehicleConfirmationWidget> createState() =>
@@ -497,7 +501,8 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                                   } else {
                                                                     context
                                                                         .pushNamed(
-                                                                      'vehicle_confirmation_manual',
+                                                                      VehicleConfirmationManualWidget
+                                                                          .routeName,
                                                                       queryParameters:
                                                                           {
                                                                         'service':
@@ -1211,7 +1216,8 @@ class _VehicleConfirmationWidgetState extends State<VehicleConfirmationWidget> {
                                                                       () {}));
                                                             } else {
                                                               context.pushNamed(
-                                                                'vehicle_confirmation_manual',
+                                                                VehicleConfirmationManualWidget
+                                                                    .routeName,
                                                                 queryParameters:
                                                                     {
                                                                   'service':

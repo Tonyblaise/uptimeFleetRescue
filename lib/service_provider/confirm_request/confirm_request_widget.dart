@@ -1,5 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'confirm_request_model.dart';
@@ -142,7 +143,7 @@ class _ConfirmRequestWidgetState extends State<ConfirmRequestWidget> {
                     hoverColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     onTap: () async {
-                      context.pushNamed('landing_page');
+                      context.pushNamed(LandingPageWidget.routeName);
                     },
                     child: Container(
                       width: MediaQuery.sizeOf(context).width * 0.9,

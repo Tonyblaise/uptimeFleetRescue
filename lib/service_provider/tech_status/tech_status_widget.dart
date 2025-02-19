@@ -10,6 +10,9 @@ export 'tech_status_model.dart';
 class TechStatusWidget extends StatefulWidget {
   const TechStatusWidget({super.key});
 
+  static String routeName = 'tech_status';
+  static String routePath = 'techStatus';
+
   @override
   State<TechStatusWidget> createState() => _TechStatusWidgetState();
 }

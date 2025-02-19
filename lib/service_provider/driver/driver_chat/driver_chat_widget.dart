@@ -15,6 +15,9 @@ class DriverChatWidget extends StatefulWidget {
 
   final int state;
 
+  static String routeName = 'driverChat';
+  static String routePath = 'driver_chat';
+
   @override
   State<DriverChatWidget> createState() => _DriverChatWidgetState();
 }

@@ -8,6 +8,9 @@ export 'test_model.dart';
 class TestWidget extends StatefulWidget {
   const TestWidget({super.key});
 
+  static String routeName = 'test';
+  static String routePath = 'test';
+
   @override
   State<TestWidget> createState() => _TestWidgetState();
 }
