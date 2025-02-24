@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'more_details_model.dart';
 export 'more_details_model.dart';
@@ -15,6 +16,9 @@ class MoreDetailsWidget extends StatefulWidget {
   });
 
   final String? fault;
+
+  static String routeName = 'more_details';
+  static String routePath = 'more_details';
 
   @override
   State<MoreDetailsWidget> createState() => _MoreDetailsWidgetState();
@@ -721,7 +725,8 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                                         safeSetState(() {});
 
                                                         context.pushNamed(
-                                                          'vehicle_confirmation3',
+                                                          VehicleConfirmation3Widget
+                                                              .routeName,
                                                           queryParameters: {
                                                             'service':
                                                                 serializeParam(
@@ -934,7 +939,8 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                                       safeSetState(() {});
 
                                                       context.pushNamed(
-                                                        'vehicle_confirmation3',
+                                                        VehicleConfirmation3Widget
+                                                            .routeName,
                                                         queryParameters: {
                                                           'service':
                                                               serializeParam(
@@ -1120,7 +1126,8 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                                       safeSetState(() {});
 
                                                       context.pushNamed(
-                                                        'vehicle_confirmation3',
+                                                        VehicleConfirmation3Widget
+                                                            .routeName,
                                                         queryParameters: {
                                                           'service':
                                                               serializeParam(

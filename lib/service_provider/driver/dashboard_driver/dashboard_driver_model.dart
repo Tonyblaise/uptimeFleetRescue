@@ -3,6 +3,7 @@ import '/components/user_details_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/service_provider/driver/service_updates_component/service_updates_component_widget.dart';
+import '/index.dart';
 import 'dashboard_driver_widget.dart' show DashboardDriverWidget;
 import 'package:flutter/material.dart';
 

@@ -1,7 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
-import '/components/tech_status_component_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'bottom_bar_model.dart';
@@ -68,7 +68,7 @@ class _BottomBarWidgetState extends State<BottomBarWidget> {
                     hoverColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     onTap: () async {
-                      context.pushNamed('dashboardTechnician');
+                      context.pushNamed(DashboardTechnicianWidget.routeName);
                     },
                     child: Container(
                       height: 100.0,
@@ -114,7 +114,7 @@ class _BottomBarWidgetState extends State<BottomBarWidget> {
                     highlightColor: Colors.transparent,
                     onTap: () async {
                       context.goNamed(
-                        'technicianChat',
+                        TechnicianChatWidget.routeName,
                         queryParameters: {
                           'state': serializeParam(
                             0,

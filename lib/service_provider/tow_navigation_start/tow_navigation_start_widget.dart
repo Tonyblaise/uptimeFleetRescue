@@ -3,6 +3,7 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'tow_navigation_start_model.dart';
@@ -187,7 +188,8 @@ class _TowNavigationStartWidgetState extends State<TowNavigationStartWidget> {
                             status: 'enrouteToTowDestination',
                           ));
 
-                          context.pushNamed('dashboardTechnician');
+                          context
+                              .pushNamed(DashboardTechnicianWidget.routeName);
 
                           safeSetState(() {});
                         },

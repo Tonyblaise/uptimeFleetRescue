@@ -4,6 +4,7 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'cancel_request_model.dart';
@@ -232,9 +233,11 @@ class _CancelRequestWidgetState extends State<CancelRequestWidget> {
                                 }
 
                                 if (widget.driver == true) {
-                                  context.pushNamed('landing_page');
+                                  context
+                                      .pushNamed(LandingPageWidget.routeName);
                                 } else {
-                                  context.pushNamed('dashboardTechnician');
+                                  context.pushNamed(
+                                      DashboardTechnicianWidget.routeName);
                                 }
 
                                 safeSetState(() {});

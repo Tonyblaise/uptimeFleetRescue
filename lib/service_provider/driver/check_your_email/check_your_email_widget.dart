@@ -7,6 +7,9 @@ export 'check_your_email_model.dart';
 class CheckYourEmailWidget extends StatefulWidget {
   const CheckYourEmailWidget({super.key});
 
+  static String routeName = 'checkYourEmail';
+  static String routePath = 'check_your_email';
+
   @override
   State<CheckYourEmailWidget> createState() => _CheckYourEmailWidgetState();
 }

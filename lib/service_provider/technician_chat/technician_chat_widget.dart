@@ -3,6 +3,7 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/service_provider/driver/chat/chat_thread_component_1/chat_thread_component1_widget.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'technician_chat_model.dart';
 export 'technician_chat_model.dart';
@@ -14,6 +15,9 @@ class TechnicianChatWidget extends StatefulWidget {
   }) : this.state = state ?? 2;
 
   final int state;
+
+  static String routeName = 'technicianChat';
+  static String routePath = 'technician_chat';
 
   @override
   State<TechnicianChatWidget> createState() => _TechnicianChatWidgetState();
@@ -68,7 +72,7 @@ class _TechnicianChatWidgetState extends State<TechnicianChatWidget> {
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
-                        context.pushNamed('dashboardTechnician');
+                        context.pushNamed(DashboardTechnicianWidget.routeName);
                       },
                       child: Icon(
                         Icons.arrow_back_rounded,

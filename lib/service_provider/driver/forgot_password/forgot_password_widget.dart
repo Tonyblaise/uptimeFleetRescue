@@ -1,12 +1,16 @@
 import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'forgot_password_model.dart';
 export 'forgot_password_model.dart';
 
 class ForgotPasswordWidget extends StatefulWidget {
   const ForgotPasswordWidget({super.key});
+
+  static String routeName = 'forgotPassword';
+  static String routePath = 'forgotPassword';
 
   @override
   State<ForgotPasswordWidget> createState() => _ForgotPasswordWidgetState();
@@ -281,7 +285,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
-                        context.pushNamed('login');
+                        context.pushNamed(LoginWidget.routeName);
                       },
                       child: Container(
                         width: MediaQuery.sizeOf(context).width * 0.9,

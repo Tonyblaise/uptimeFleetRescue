@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/service_provider/driver/service_updates_component/service_updates_component_widget.dart';
+import '/index.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -15,6 +16,9 @@ export 'dashboard_driver_model.dart';
 
 class DashboardDriverWidget extends StatefulWidget {
   const DashboardDriverWidget({super.key});
+
+  static String routeName = 'dashboardDriver';
+  static String routePath = 'dashboard_driver';
 
   @override
   State<DashboardDriverWidget> createState() => _DashboardDriverWidgetState();
@@ -33,7 +37,7 @@ class _DashboardDriverWidgetState extends State<DashboardDriverWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       if (valueOrDefault(currentUserDocument?.technicianId, '') != '') {
-        context.pushNamed('dashboardTechnician');
+        context.pushNamed(DashboardTechnicianWidget.routeName);
       }
     });
 
@@ -685,7 +689,7 @@ class _DashboardDriverWidgetState extends State<DashboardDriverWidget> {
                                           onTap: () async {
                                             if (_model.service == 'Tow') {
                                               context.pushNamed(
-                                                'more_details',
+                                                MoreDetailsWidget.routeName,
                                                 queryParameters: {
                                                   'fault': serializeParam(
                                                     'Tow',
@@ -696,7 +700,7 @@ class _DashboardDriverWidgetState extends State<DashboardDriverWidget> {
                                             } else if (_model.service ==
                                                 'Lockout') {
                                               context.pushNamed(
-                                                'more_details',
+                                                MoreDetailsWidget.routeName,
                                                 queryParameters: {
                                                   'fault': serializeParam(
                                                     'Lockout',
@@ -707,7 +711,7 @@ class _DashboardDriverWidgetState extends State<DashboardDriverWidget> {
                                             } else if (_model.service ==
                                                 'Tire Change') {
                                               context.pushNamed(
-                                                'more_details',
+                                                MoreDetailsWidget.routeName,
                                                 queryParameters: {
                                                   'fault': serializeParam(
                                                     'Tire Change',
@@ -718,7 +722,8 @@ class _DashboardDriverWidgetState extends State<DashboardDriverWidget> {
                                             } else if (_model.service ==
                                                 'Other') {
                                               context.pushNamed(
-                                                'vehicle_confirmation3',
+                                                VehicleConfirmation3Widget
+                                                    .routeName,
                                                 queryParameters: {
                                                   'service': serializeParam(
                                                     'Other',
@@ -728,7 +733,8 @@ class _DashboardDriverWidgetState extends State<DashboardDriverWidget> {
                                               );
                                             } else {
                                               context.pushNamed(
-                                                'vehicle_confirmation3',
+                                                VehicleConfirmation3Widget
+                                                    .routeName,
                                                 queryParameters: {
                                                   'service': serializeParam(
                                                     _model.service,

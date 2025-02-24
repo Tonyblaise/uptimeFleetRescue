@@ -8,6 +8,7 @@ import '/service_provider/driver/cancel_request/cancel_request_widget.dart';
 import '/service_provider/service_updates_component_s_p/service_updates_component_s_p_widget.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'service_summary_widget_model.dart';
@@ -935,7 +936,8 @@ class _ServiceSummaryWidgetWidgetState
                                               );
 
                                               context.pushNamed(
-                                                  'dashboardTechnician');
+                                                  DashboardTechnicianWidget
+                                                      .routeName);
                                             },
                                           ),
                                         ),

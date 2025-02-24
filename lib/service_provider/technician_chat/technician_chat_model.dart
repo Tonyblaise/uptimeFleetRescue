@@ -1,5 +1,6 @@
 import '/flutter_flow/flutter_flow_util.dart';
 import '/service_provider/driver/chat/chat_thread_component_1/chat_thread_component1_widget.dart';
+import '/index.dart';
 import 'technician_chat_widget.dart' show TechnicianChatWidget;
 import 'package:flutter/material.dart';
 

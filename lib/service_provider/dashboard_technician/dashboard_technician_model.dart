@@ -6,6 +6,7 @@ import '/pages/chat/empty_state_simple/empty_state_simple_widget.dart';
 import '/service_provider/bottom_bar/bottom_bar_widget.dart';
 import '/service_provider/driver/chat/service_summary_widget/service_summary_widget_widget.dart';
 import '/service_provider/driver/confirm_cancellation/confirm_cancellation_widget.dart';
+import '/index.dart';
 import 'dashboard_technician_widget.dart' show DashboardTechnicianWidget;
 import 'package:flutter/material.dart';
 

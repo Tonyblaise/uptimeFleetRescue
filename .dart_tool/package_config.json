@@ -519,9 +519,9 @@
     },
     {
       "name": "google_api_headers",
-      "rootUri": "file:///Users/tony.ashiuma/.pub-cache/hosted/pub.dev/google_api_headers-2.0.3",
+      "rootUri": "file:///Users/tony.ashiuma/.pub-cache/hosted/pub.dev/google_api_headers-4.3.4",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "3.6"
     },
     {
       "name": "google_fonts",
@@ -1274,7 +1274,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2025-02-24T07:23:34.494766Z",
+  "generated": "2025-02-24T07:55:29.322249Z",
   "generator": "pub",
   "generatorVersion": "3.5.4",
   "flutterRoot": "file:///Users/tony.ashiuma/development/flutter",

@@ -6,8 +6,8 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/service_provider/request_location/request_location_widget.dart';
-import 'dart:async';
 import '/custom_code/actions/index.dart' as actions;
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'login_model.dart';
 export 'login_model.dart';
@@ -21,6 +21,9 @@ class LoginWidget extends StatefulWidget {
 
   final String? fleetManagerId;
   final String? serviceProviderId;
+
+  static String routeName = 'login';
+  static String routePath = 'login';
 
   @override
   State<LoginWidget> createState() => _LoginWidgetState();
@@ -243,12 +246,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                             ),
                             child: FFButtonWidget(
                               onPressed: () async {
-                                unawaited(
-                                  () async {
-                                    _model.location = await actions
-                                        .checkLocationPermissions();
-                                  }(),
-                                );
+                                _model.location =
+                                    await actions.checkLocationPermissions();
                                 if (_model.location == true) {
                                   _model.check = await UptimeFleetAppGroup
                                       .checkUserCall
@@ -281,7 +280,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                         phoneNumber: phoneNumberVal,
                                         onCodeSent: (context) async {
                                           context.goNamedAuth(
-                                            'verify',
+                                            VerifyWidget.routeName,
                                             context.mounted,
                                             queryParameters: {
                                               'signUpType': serializeParam(

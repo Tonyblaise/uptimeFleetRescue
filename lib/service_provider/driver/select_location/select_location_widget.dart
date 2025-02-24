@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_place_picker.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'select_location_model.dart';
@@ -21,6 +22,9 @@ class SelectLocationWidget extends StatefulWidget {
   final String? additionalInfo;
   final String? address;
   final LatLng? dropOffLocation;
+
+  static String routeName = 'selectLocation';
+  static String routePath = 'select_location';
 
   @override
   State<SelectLocationWidget> createState() => _SelectLocationWidgetState();
@@ -291,7 +295,7 @@ class _SelectLocationWidgetState extends State<SelectLocationWidget> {
                                   onTap: () async {
                                     if (_model.addressView == true) {
                                       context.pushNamed(
-                                        'vehicle_confirmation',
+                                        VehicleConfirmationWidget.routeName,
                                         queryParameters: {
                                           'service': serializeParam(
                                             widget.service,

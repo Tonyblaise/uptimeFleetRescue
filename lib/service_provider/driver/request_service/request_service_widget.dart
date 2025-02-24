@@ -9,6 +9,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/service_provider/request_location/request_location_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'request_service_model.dart';
 export 'request_service_model.dart';
@@ -20,6 +21,9 @@ class RequestServiceWidget extends StatefulWidget {
   });
 
   final String? fleetManagerId;
+
+  static String routeName = 'request_service';
+  static String routePath = 'request_service';
 
   @override
   State<RequestServiceWidget> createState() => _RequestServiceWidgetState();
@@ -132,7 +136,7 @@ class _RequestServiceWidgetState extends State<RequestServiceWidget> {
 
                             return Container(
                               width: double.infinity,
-                              height: MediaQuery.sizeOf(context).height * 0.6,
+                              height: MediaQuery.sizeOf(context).height * 0.5,
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
@@ -167,10 +171,10 @@ class _RequestServiceWidgetState extends State<RequestServiceWidget> {
                                 allowInteraction: true,
                                 allowZoom: true,
                                 showZoomControls: true,
-                                showLocation: true,
-                                showCompass: false,
-                                showMapToolbar: false,
-                                showTraffic: false,
+                                showLocation: false,
+                                showCompass: true,
+                                showMapToolbar: true,
+                                showTraffic: true,
                                 centerMapOnMarkerTap: true,
                               ),
                             );
@@ -540,7 +544,8 @@ class _RequestServiceWidgetState extends State<RequestServiceWidget> {
                                       );
 
                                       context.goNamedAuth(
-                                          'landing_page', context.mounted);
+                                          LandingPageWidget.routeName,
+                                          context.mounted);
                                     } else {
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(

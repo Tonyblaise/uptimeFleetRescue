@@ -9,6 +9,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/service_provider/driver/confirm_cancellation/confirm_cancellation_widget.dart';
 import '/service_provider/driver/service_updates_component/service_updates_component_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
@@ -17,6 +18,9 @@ export 'landing_page_model.dart';
 
 class LandingPageWidget extends StatefulWidget {
   const LandingPageWidget({super.key});
+
+  static String routeName = 'landing_page';
+  static String routePath = 'landing_page';
 
   @override
   State<LandingPageWidget> createState() => _LandingPageWidgetState();
@@ -41,13 +45,13 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
         _model.latLng = currentUserLocationValue;
         safeSetState(() {});
         if (valueOrDefault(currentUserDocument?.technicianId, '') != '') {
-          context.pushNamed('dashboardTechnician');
+          context.pushNamed(DashboardTechnicianWidget.routeName);
         }
       } else {
         _model.latLng = currentUserLocationValue;
         safeSetState(() {});
         if (valueOrDefault(currentUserDocument?.technicianId, '') != '') {
-          context.pushNamed('dashboardTechnician');
+          context.pushNamed(DashboardTechnicianWidget.routeName);
         }
       }
     });
@@ -94,514 +98,711 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Expanded(
-                        child: Container(
-                          decoration: BoxDecoration(),
-                          child: Builder(
-                            builder: (context) {
-                              if (currentUserDocument?.activeRequest == null) {
-                                return Container(
-                                  width: double.infinity,
-                                  height: double.infinity,
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
+                        child: StreamBuilder<List<UsersRecord>>(
+                          stream: queryUsersRecord(
+                            queryBuilder: (usersRecord) => usersRecord.where(
+                              'onDuty',
+                              isEqualTo: true,
+                            ),
+                          ),
+                          builder: (context, snapshot) {
+                            // Customize what your widget looks like when it's loading.
+                            if (!snapshot.hasData) {
+                              return Center(
+                                child: SizedBox(
+                                  width: 50.0,
+                                  height: 50.0,
+                                  child: CircularProgressIndicator(
+                                    valueColor: AlwaysStoppedAnimation<Color>(
+                                      FlutterFlowTheme.of(context).primary,
+                                    ),
                                   ),
-                                  child: Stack(
-                                    children: [
-                                      Align(
-                                        alignment:
-                                            AlignmentDirectional(0.0, 0.0),
-                                        child: Container(
-                                          width: double.infinity,
-                                          height: double.infinity,
-                                          decoration: BoxDecoration(),
-                                          child: Builder(builder: (context) {
-                                            final _googleMapMarker =
-                                                _model.latLng;
-                                            return FlutterFlowGoogleMap(
-                                              controller: _model
-                                                  .googleMap6879sController,
-                                              onCameraIdle: (latLng) =>
-                                                  safeSetState(() => _model
-                                                          .googleMap6879sCenter =
-                                                      latLng),
-                                              initialLocation: _model
-                                                      .googleMap6879sCenter ??=
-                                                  _model.latLng!,
-                                              markers: [
-                                                if (_googleMapMarker != null)
-                                                  FlutterFlowMarker(
-                                                    _googleMapMarker
-                                                        .serialize(),
-                                                    _googleMapMarker,
-                                                  ),
-                                              ],
-                                              markerColor:
-                                                  GoogleMarkerColor.red,
-                                              mapType: MapType.normal,
-                                              style: GoogleMapStyle.standard,
-                                              initialZoom: 14.0,
-                                              allowInteraction: true,
-                                              allowZoom: true,
-                                              showZoomControls: true,
-                                              showLocation: true,
-                                              showCompass: true,
-                                              showMapToolbar: true,
-                                              showTraffic: true,
-                                              centerMapOnMarkerTap: true,
-                                            );
-                                          }),
-                                        ),
+                                ),
+                              );
+                            }
+                            List<UsersRecord> containerUsersRecordList =
+                                snapshot.data!
+                                    .where((u) => u.uid != currentUserUid)
+                                    .toList();
+
+                            return Container(
+                              decoration: BoxDecoration(),
+                              child: Builder(
+                                builder: (context) {
+                                  if (currentUserDocument?.activeRequest ==
+                                      null) {
+                                    return Container(
+                                      width: double.infinity,
+                                      height: double.infinity,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
                                       ),
-                                    ],
-                                  ),
-                                );
-                              } else {
-                                return AuthUserStreamWidget(
-                                  builder: (context) =>
-                                      StreamBuilder<RequestRecord>(
-                                    stream: RequestRecord.getDocument(
-                                        currentUserDocument!.activeRequest!),
-                                    builder: (context, snapshot) {
-                                      // Customize what your widget looks like when it's loading.
-                                      if (!snapshot.hasData) {
-                                        return Center(
-                                          child: SizedBox(
-                                            width: 50.0,
-                                            height: 50.0,
-                                            child: CircularProgressIndicator(
-                                              valueColor:
-                                                  AlwaysStoppedAnimation<Color>(
-                                                FlutterFlowTheme.of(context)
-                                                    .primary,
+                                      child: Stack(
+                                        children: [
+                                          Align(
+                                            alignment:
+                                                AlignmentDirectional(0.0, 0.0),
+                                            child: Container(
+                                              width: double.infinity,
+                                              height: double.infinity,
+                                              decoration: BoxDecoration(),
+                                              child: FlutterFlowGoogleMap(
+                                                controller: _model
+                                                    .googleMap6879sController,
+                                                onCameraIdle: (latLng) =>
+                                                    safeSetState(() => _model
+                                                            .googleMap6879sCenter =
+                                                        latLng),
+                                                initialLocation: _model
+                                                        .googleMap6879sCenter ??=
+                                                    _model.latLng!,
+                                                markers:
+                                                    containerUsersRecordList
+                                                        .map((e) => e
+                                                            .technicianLastUpdatedLocation)
+                                                        .withoutNulls
+                                                        .toList()
+                                                        .map(
+                                                          (marker) =>
+                                                              FlutterFlowMarker(
+                                                            marker.serialize(),
+                                                            marker,
+                                                          ),
+                                                        )
+                                                        .toList(),
+                                                markerColor:
+                                                    GoogleMarkerColor.violet,
+                                                markerImage: MarkerImage(
+                                                  imagePath:
+                                                      'assets/images/WhatsApp_Image_2025-02-15_at_01.39.52-removebg-preview.png',
+                                                  isAssetImage: true,
+                                                  size: 18.0 ?? 20,
+                                                ),
+                                                mapType: MapType.normal,
+                                                style: GoogleMapStyle.standard,
+                                                initialZoom: 18.0,
+                                                allowInteraction: true,
+                                                allowZoom: true,
+                                                showZoomControls: true,
+                                                showLocation: true,
+                                                showCompass: true,
+                                                showMapToolbar: true,
+                                                showTraffic: false,
+                                                centerMapOnMarkerTap: true,
                                               ),
                                             ),
                                           ),
-                                        );
-                                      }
+                                        ],
+                                      ),
+                                    );
+                                  } else {
+                                    return AuthUserStreamWidget(
+                                      builder: (context) =>
+                                          StreamBuilder<RequestRecord>(
+                                        stream: RequestRecord.getDocument(
+                                            currentUserDocument!
+                                                .activeRequest!),
+                                        builder: (context, snapshot) {
+                                          // Customize what your widget looks like when it's loading.
+                                          if (!snapshot.hasData) {
+                                            return Center(
+                                              child: SizedBox(
+                                                width: 50.0,
+                                                height: 50.0,
+                                                child:
+                                                    CircularProgressIndicator(
+                                                  valueColor:
+                                                      AlwaysStoppedAnimation<
+                                                          Color>(
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                                  ),
+                                                ),
+                                              ),
+                                            );
+                                          }
 
-                                      final containerRequestRecord =
-                                          snapshot.data!;
+                                          final containerRequestRecord =
+                                              snapshot.data!;
 
-                                      return Container(
-                                        width: double.infinity,
-                                        height: double.infinity,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                        ),
-                                        child: Builder(
-                                          builder: (context) {
-                                            if (containerRequestRecord
-                                                    .started ==
-                                                true) {
-                                              return Builder(
-                                                builder: (context) {
-                                                  if (containerRequestRecord
-                                                          .status !=
-                                                      'cancelled') {
-                                                    return Container(
-                                                      decoration:
-                                                          BoxDecoration(),
-                                                      child: StreamBuilder<
-                                                          UsersRecord>(
-                                                        stream: UsersRecord
-                                                            .getDocument(
-                                                                containerRequestRecord
-                                                                    .technician!),
-                                                        builder: (context,
-                                                            snapshot) {
-                                                          // Customize what your widget looks like when it's loading.
-                                                          if (!snapshot
-                                                              .hasData) {
-                                                            return Center(
-                                                              child: SizedBox(
-                                                                width: 50.0,
-                                                                height: 50.0,
-                                                                child:
-                                                                    CircularProgressIndicator(
-                                                                  valueColor:
-                                                                      AlwaysStoppedAnimation<
-                                                                          Color>(
-                                                                    FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .primary,
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                            );
-                                                          }
-
-                                                          final containerUsersRecord =
-                                                              snapshot.data!;
-
-                                                          return Container(
-                                                            height: 600.0,
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .primary,
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          24.0),
-                                                            ),
-                                                            child: Column(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              mainAxisAlignment:
-                                                                  MainAxisAlignment
-                                                                      .start,
-                                                              children: [
-                                                                Expanded(
+                                          return Container(
+                                            width: double.infinity,
+                                            height: double.infinity,
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                            ),
+                                            child: Builder(
+                                              builder: (context) {
+                                                if (containerRequestRecord
+                                                        .started ==
+                                                    true) {
+                                                  return Builder(
+                                                    builder: (context) {
+                                                      if (containerRequestRecord
+                                                              .status !=
+                                                          'cancelled') {
+                                                        return Container(
+                                                          decoration:
+                                                              BoxDecoration(),
+                                                          child: StreamBuilder<
+                                                              UsersRecord>(
+                                                            stream: UsersRecord
+                                                                .getDocument(
+                                                                    containerRequestRecord
+                                                                        .technician!),
+                                                            builder: (context,
+                                                                snapshot) {
+                                                              // Customize what your widget looks like when it's loading.
+                                                              if (!snapshot
+                                                                  .hasData) {
+                                                                return Center(
                                                                   child:
-                                                                      Container(
-                                                                    width: double
-                                                                        .infinity,
-                                                                    height: double
-                                                                        .infinity,
-                                                                    decoration:
-                                                                        BoxDecoration(
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .secondaryBackground,
-                                                                    ),
+                                                                      SizedBox(
+                                                                    width: 50.0,
+                                                                    height:
+                                                                        50.0,
                                                                     child:
-                                                                        Stack(
-                                                                      children: [
-                                                                        Align(
-                                                                          alignment: AlignmentDirectional(
-                                                                              0.0,
-                                                                              0.0),
-                                                                          child:
-                                                                              Container(
-                                                                            width:
-                                                                                double.infinity,
-                                                                            height:
-                                                                                double.infinity,
-                                                                            decoration:
-                                                                                BoxDecoration(),
-                                                                            child:
-                                                                                Padding(
-                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 145.0),
-                                                                              child: Builder(builder: (context) {
-                                                                                final _googleMapMarker = containerUsersRecord.technicianLastUpdatedLocation;
-                                                                                return FlutterFlowGoogleMap(
-                                                                                  controller: _model.googleMapsController,
-                                                                                  onCameraIdle: (latLng) => safeSetState(() => _model.googleMapsCenter = latLng),
-                                                                                  initialLocation: _model.googleMapsCenter ??= containerUsersRecord.technicianLastUpdatedLocation!,
-                                                                                  markers: [
-                                                                                    if (_googleMapMarker != null)
-                                                                                      FlutterFlowMarker(
-                                                                                        _googleMapMarker.serialize(),
-                                                                                        _googleMapMarker,
-                                                                                      ),
-                                                                                  ],
-                                                                                  markerColor: GoogleMarkerColor.violet,
-                                                                                  mapType: MapType.normal,
-                                                                                  style: GoogleMapStyle.standard,
-                                                                                  initialZoom: 14.0,
-                                                                                  allowInteraction: true,
-                                                                                  allowZoom: true,
-                                                                                  showZoomControls: true,
-                                                                                  showLocation: true,
-                                                                                  showCompass: true,
-                                                                                  showMapToolbar: true,
-                                                                                  showTraffic: true,
-                                                                                  centerMapOnMarkerTap: true,
-                                                                                );
-                                                                              }),
-                                                                            ),
-                                                                          ),
-                                                                        ),
-                                                                        Align(
-                                                                          alignment: AlignmentDirectional(
-                                                                              0.0,
-                                                                              0.9),
-                                                                          child:
-                                                                              Container(
-                                                                            decoration:
-                                                                                BoxDecoration(),
-                                                                            child:
-                                                                                Column(
-                                                                              mainAxisSize: MainAxisSize.min,
-                                                                              children: [
-                                                                                Align(
-                                                                                  alignment: AlignmentDirectional(0.0, 0.0),
-                                                                                  child: Padding(
-                                                                                    padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
-                                                                                    child: Container(
-                                                                                      width: MediaQuery.sizeOf(context).width * 0.9,
-                                                                                      height: 80.0,
-                                                                                      constraints: BoxConstraints(
-                                                                                        maxWidth: MediaQuery.sizeOf(context).width * 0.9,
-                                                                                      ),
-                                                                                      decoration: BoxDecoration(
-                                                                                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                        borderRadius: BorderRadius.circular(18.0),
-                                                                                        border: Border.all(
-                                                                                          color: FlutterFlowTheme.of(context).tertiary,
-                                                                                        ),
-                                                                                      ),
-                                                                                      child: Align(
-                                                                                        alignment: AlignmentDirectional(0.0, 0.0),
-                                                                                        child: Padding(
-                                                                                          padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
-                                                                                          child: Container(
-                                                                                            width: MediaQuery.sizeOf(context).width * 0.9,
-                                                                                            constraints: BoxConstraints(
-                                                                                              maxWidth: MediaQuery.sizeOf(context).width * 0.9,
-                                                                                            ),
-                                                                                            decoration: BoxDecoration(),
-                                                                                            child: Row(
-                                                                                              mainAxisSize: MainAxisSize.min,
-                                                                                              children: [
-                                                                                                Container(
-                                                                                                  width: 44.0,
-                                                                                                  height: 44.0,
-                                                                                                  decoration: BoxDecoration(
-                                                                                                    color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                                    image: DecorationImage(
-                                                                                                      fit: BoxFit.cover,
-                                                                                                      image: Image.asset(
-                                                                                                        'assets/images/image_avatar.jpg',
-                                                                                                      ).image,
-                                                                                                    ),
-                                                                                                    borderRadius: BorderRadius.circular(100.0),
-                                                                                                  ),
-                                                                                                ),
-                                                                                                Expanded(
-                                                                                                  child: Container(
-                                                                                                    width: 100.0,
-                                                                                                    height: 100.0,
-                                                                                                    decoration: BoxDecoration(),
-                                                                                                    child: Column(
-                                                                                                      mainAxisSize: MainAxisSize.max,
-                                                                                                      mainAxisAlignment: MainAxisAlignment.center,
-                                                                                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                                      children: [
-                                                                                                        Container(
-                                                                                                          width: double.infinity,
-                                                                                                          decoration: BoxDecoration(),
-                                                                                                          child: Container(
-                                                                                                            decoration: BoxDecoration(),
-                                                                                                            child: Row(
-                                                                                                              mainAxisSize: MainAxisSize.max,
-                                                                                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                                              children: [
-                                                                                                                Container(
-                                                                                                                  width: 100.0,
-                                                                                                                  decoration: BoxDecoration(
-                                                                                                                    color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                                                  ),
-                                                                                                                  child: Container(
-                                                                                                                    decoration: BoxDecoration(),
-                                                                                                                    child: Column(
-                                                                                                                      mainAxisSize: MainAxisSize.min,
-                                                                                                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                                                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                                                                                                                      children: [
-                                                                                                                        Text(
-                                                                                                                          containerUsersRecord.companyName,
-                                                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                                                fontFamily: 'Yantramanav',
-                                                                                                                                color: Color(0xFF0F172A),
-                                                                                                                                fontSize: 16.0,
-                                                                                                                                letterSpacing: 0.0,
-                                                                                                                                fontWeight: FontWeight.bold,
-                                                                                                                              ),
-                                                                                                                        ),
-                                                                                                                        Text(
-                                                                                                                          functions.convertToUppercase(containerUsersRecord.fullName)!,
-                                                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                                                fontFamily: 'Yantramanav',
-                                                                                                                                color: Color(0xFF64748B),
-                                                                                                                                fontSize: 12.0,
-                                                                                                                                letterSpacing: 0.0,
-                                                                                                                              ),
-                                                                                                                        ),
-                                                                                                                      ],
-                                                                                                                    ),
-                                                                                                                  ),
-                                                                                                                ),
-                                                                                                                Container(
-                                                                                                                  width: 100.0,
-                                                                                                                  decoration: BoxDecoration(),
-                                                                                                                  child: Column(
-                                                                                                                    mainAxisSize: MainAxisSize.min,
-                                                                                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                                                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                                                                                                                    children: [
-                                                                                                                      Text(
-                                                                                                                        'ETA:',
-                                                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                                              fontFamily: 'Yantramanav',
-                                                                                                                              color: Color(0xFF64748B),
-                                                                                                                              fontSize: 12.0,
-                                                                                                                              letterSpacing: 0.0,
-                                                                                                                            ),
-                                                                                                                      ),
-                                                                                                                      if (containerUsersRecord.technicianLastUpdatedLocation != null)
-                                                                                                                        FutureBuilder<ApiCallResponse>(
-                                                                                                                          future: MapboxCall.call(
-                                                                                                                            from: '${functions.getLng(containerUsersRecord.technicianLastUpdatedLocation!).toString()},${functions.getLat(containerUsersRecord.technicianLastUpdatedLocation!).toString()}',
-                                                                                                                            to: '${functions.getLng(containerRequestRecord.location!).toString()},${functions.getLat(containerRequestRecord.location!).toString()}',
-                                                                                                                          ),
-                                                                                                                          builder: (context, snapshot) {
-                                                                                                                            // Customize what your widget looks like when it's loading.
-                                                                                                                            if (!snapshot.hasData) {
-                                                                                                                              return Center(
-                                                                                                                                child: SizedBox(
-                                                                                                                                  width: 50.0,
-                                                                                                                                  height: 50.0,
-                                                                                                                                  child: CircularProgressIndicator(
-                                                                                                                                    valueColor: AlwaysStoppedAnimation<Color>(
-                                                                                                                                      FlutterFlowTheme.of(context).primary,
-                                                                                                                                    ),
-                                                                                                                                  ),
-                                                                                                                                ),
-                                                                                                                              );
-                                                                                                                            }
-                                                                                                                            final textMapboxResponse = snapshot.data!;
+                                                                        CircularProgressIndicator(
+                                                                      valueColor:
+                                                                          AlwaysStoppedAnimation<
+                                                                              Color>(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .primary,
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                );
+                                                              }
 
-                                                                                                                            return Text(
-                                                                                                                              functions.relativeTime(MapboxCall.durationSeconds(
-                                                                                                                                textMapboxResponse.jsonBody,
-                                                                                                                              ))!,
+                                                              final containerUsersRecord =
+                                                                  snapshot
+                                                                      .data!;
+
+                                                              return Container(
+                                                                height: 600.0,
+                                                                decoration:
+                                                                    BoxDecoration(
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primary,
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              24.0),
+                                                                ),
+                                                                child: Column(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  mainAxisAlignment:
+                                                                      MainAxisAlignment
+                                                                          .start,
+                                                                  children: [
+                                                                    Expanded(
+                                                                      child:
+                                                                          Container(
+                                                                        width: double
+                                                                            .infinity,
+                                                                        height:
+                                                                            double.infinity,
+                                                                        decoration:
+                                                                            BoxDecoration(
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).secondaryBackground,
+                                                                        ),
+                                                                        child:
+                                                                            Stack(
+                                                                          children: [
+                                                                            Align(
+                                                                              alignment: AlignmentDirectional(0.0, 0.0),
+                                                                              child: Container(
+                                                                                width: double.infinity,
+                                                                                height: double.infinity,
+                                                                                decoration: BoxDecoration(),
+                                                                                child: Padding(
+                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 145.0),
+                                                                                  child: Builder(builder: (context) {
+                                                                                    final _googleMapMarker = containerUsersRecord.technicianLastUpdatedLocation;
+                                                                                    return FlutterFlowGoogleMap(
+                                                                                      controller: _model.googleMapsController,
+                                                                                      onCameraIdle: (latLng) => safeSetState(() => _model.googleMapsCenter = latLng),
+                                                                                      initialLocation: _model.googleMapsCenter ??= containerUsersRecord.technicianLastUpdatedLocation!,
+                                                                                      markers: [
+                                                                                        if (_googleMapMarker != null)
+                                                                                          FlutterFlowMarker(
+                                                                                            _googleMapMarker.serialize(),
+                                                                                            _googleMapMarker,
+                                                                                          ),
+                                                                                      ],
+                                                                                      markerColor: GoogleMarkerColor.violet,
+                                                                                      mapType: MapType.normal,
+                                                                                      style: GoogleMapStyle.standard,
+                                                                                      initialZoom: 14.0,
+                                                                                      allowInteraction: true,
+                                                                                      allowZoom: true,
+                                                                                      showZoomControls: true,
+                                                                                      showLocation: true,
+                                                                                      showCompass: true,
+                                                                                      showMapToolbar: true,
+                                                                                      showTraffic: true,
+                                                                                      centerMapOnMarkerTap: true,
+                                                                                    );
+                                                                                  }),
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                            Align(
+                                                                              alignment: AlignmentDirectional(0.0, 0.9),
+                                                                              child: Container(
+                                                                                decoration: BoxDecoration(),
+                                                                                child: Column(
+                                                                                  mainAxisSize: MainAxisSize.min,
+                                                                                  children: [
+                                                                                    Align(
+                                                                                      alignment: AlignmentDirectional(0.0, 0.0),
+                                                                                      child: Padding(
+                                                                                        padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                                                                                        child: Container(
+                                                                                          width: MediaQuery.sizeOf(context).width * 0.9,
+                                                                                          height: 80.0,
+                                                                                          constraints: BoxConstraints(
+                                                                                            maxWidth: MediaQuery.sizeOf(context).width * 0.9,
+                                                                                          ),
+                                                                                          decoration: BoxDecoration(
+                                                                                            color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                            borderRadius: BorderRadius.circular(18.0),
+                                                                                            border: Border.all(
+                                                                                              color: FlutterFlowTheme.of(context).tertiary,
+                                                                                            ),
+                                                                                          ),
+                                                                                          child: Align(
+                                                                                            alignment: AlignmentDirectional(0.0, 0.0),
+                                                                                            child: Padding(
+                                                                                              padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
+                                                                                              child: Container(
+                                                                                                width: MediaQuery.sizeOf(context).width * 0.9,
+                                                                                                constraints: BoxConstraints(
+                                                                                                  maxWidth: MediaQuery.sizeOf(context).width * 0.9,
+                                                                                                ),
+                                                                                                decoration: BoxDecoration(),
+                                                                                                child: Row(
+                                                                                                  mainAxisSize: MainAxisSize.min,
+                                                                                                  children: [
+                                                                                                    Container(
+                                                                                                      width: 44.0,
+                                                                                                      height: 44.0,
+                                                                                                      decoration: BoxDecoration(
+                                                                                                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                                        image: DecorationImage(
+                                                                                                          fit: BoxFit.cover,
+                                                                                                          image: Image.asset(
+                                                                                                            'assets/images/image_avatar.jpg',
+                                                                                                          ).image,
+                                                                                                        ),
+                                                                                                        borderRadius: BorderRadius.circular(100.0),
+                                                                                                      ),
+                                                                                                    ),
+                                                                                                    Expanded(
+                                                                                                      child: Container(
+                                                                                                        width: 100.0,
+                                                                                                        height: 100.0,
+                                                                                                        decoration: BoxDecoration(),
+                                                                                                        child: Column(
+                                                                                                          mainAxisSize: MainAxisSize.max,
+                                                                                                          mainAxisAlignment: MainAxisAlignment.center,
+                                                                                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                                          children: [
+                                                                                                            Container(
+                                                                                                              width: double.infinity,
+                                                                                                              decoration: BoxDecoration(),
+                                                                                                              child: Container(
+                                                                                                                decoration: BoxDecoration(),
+                                                                                                                child: Row(
+                                                                                                                  mainAxisSize: MainAxisSize.max,
+                                                                                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                                                  children: [
+                                                                                                                    Container(
+                                                                                                                      width: 100.0,
+                                                                                                                      decoration: BoxDecoration(
+                                                                                                                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                                                      ),
+                                                                                                                      child: Container(
+                                                                                                                        decoration: BoxDecoration(),
+                                                                                                                        child: Column(
+                                                                                                                          mainAxisSize: MainAxisSize.min,
+                                                                                                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                                                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                                                                                                                          children: [
+                                                                                                                            Text(
+                                                                                                                              containerUsersRecord.companyName,
+                                                                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                                                    fontFamily: 'Yantramanav',
+                                                                                                                                    color: Color(0xFF0F172A),
+                                                                                                                                    fontSize: 16.0,
+                                                                                                                                    letterSpacing: 0.0,
+                                                                                                                                    fontWeight: FontWeight.bold,
+                                                                                                                                  ),
+                                                                                                                            ),
+                                                                                                                            Text(
+                                                                                                                              functions.convertToUppercase(containerUsersRecord.fullName)!,
                                                                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                                     fontFamily: 'Yantramanav',
                                                                                                                                     color: Color(0xFF64748B),
                                                                                                                                     fontSize: 12.0,
                                                                                                                                     letterSpacing: 0.0,
-                                                                                                                                    fontWeight: FontWeight.bold,
                                                                                                                                   ),
-                                                                                                                            );
-                                                                                                                          },
+                                                                                                                            ),
+                                                                                                                          ],
                                                                                                                         ),
-                                                                                                                    ],
-                                                                                                                  ),
+                                                                                                                      ),
+                                                                                                                    ),
+                                                                                                                    Container(
+                                                                                                                      width: 100.0,
+                                                                                                                      decoration: BoxDecoration(),
+                                                                                                                      child: Column(
+                                                                                                                        mainAxisSize: MainAxisSize.min,
+                                                                                                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                                                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                                                                                                                        children: [
+                                                                                                                          Text(
+                                                                                                                            'ETA:',
+                                                                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                                                  fontFamily: 'Yantramanav',
+                                                                                                                                  color: Color(0xFF64748B),
+                                                                                                                                  fontSize: 12.0,
+                                                                                                                                  letterSpacing: 0.0,
+                                                                                                                                ),
+                                                                                                                          ),
+                                                                                                                          if (containerUsersRecord.technicianLastUpdatedLocation != null)
+                                                                                                                            FutureBuilder<ApiCallResponse>(
+                                                                                                                              future: MapboxCall.call(
+                                                                                                                                from: '${functions.getLng(containerUsersRecord.technicianLastUpdatedLocation!).toString()},${functions.getLat(containerUsersRecord.technicianLastUpdatedLocation!).toString()}',
+                                                                                                                                to: '${functions.getLng(containerRequestRecord.location!).toString()},${functions.getLat(containerRequestRecord.location!).toString()}',
+                                                                                                                              ),
+                                                                                                                              builder: (context, snapshot) {
+                                                                                                                                // Customize what your widget looks like when it's loading.
+                                                                                                                                if (!snapshot.hasData) {
+                                                                                                                                  return Center(
+                                                                                                                                    child: SizedBox(
+                                                                                                                                      width: 50.0,
+                                                                                                                                      height: 50.0,
+                                                                                                                                      child: CircularProgressIndicator(
+                                                                                                                                        valueColor: AlwaysStoppedAnimation<Color>(
+                                                                                                                                          FlutterFlowTheme.of(context).primary,
+                                                                                                                                        ),
+                                                                                                                                      ),
+                                                                                                                                    ),
+                                                                                                                                  );
+                                                                                                                                }
+                                                                                                                                final textMapboxResponse = snapshot.data!;
+
+                                                                                                                                return Text(
+                                                                                                                                  functions.relativeTime(MapboxCall.durationSeconds(
+                                                                                                                                    textMapboxResponse.jsonBody,
+                                                                                                                                  ))!,
+                                                                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                                                        fontFamily: 'Yantramanav',
+                                                                                                                                        color: Color(0xFF64748B),
+                                                                                                                                        fontSize: 12.0,
+                                                                                                                                        letterSpacing: 0.0,
+                                                                                                                                        fontWeight: FontWeight.bold,
+                                                                                                                                      ),
+                                                                                                                                );
+                                                                                                                              },
+                                                                                                                            ),
+                                                                                                                        ],
+                                                                                                                      ),
+                                                                                                                    ),
+                                                                                                                  ],
                                                                                                                 ),
-                                                                                                              ],
+                                                                                                              ),
                                                                                                             ),
-                                                                                                          ),
+                                                                                                          ].divide(SizedBox(height: 6.0)),
                                                                                                         ),
-                                                                                                      ].divide(SizedBox(height: 6.0)),
+                                                                                                      ),
                                                                                                     ),
-                                                                                                  ),
+                                                                                                  ].divide(SizedBox(width: 16.0)),
                                                                                                 ),
-                                                                                              ].divide(SizedBox(width: 16.0)),
+                                                                                              ),
                                                                                             ),
                                                                                           ),
                                                                                         ),
                                                                                       ),
                                                                                     ),
-                                                                                  ),
-                                                                                ),
-                                                                                Padding(
-                                                                                  padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
-                                                                                  child: StreamBuilder<ChatsRecord>(
-                                                                                    stream: ChatsRecord.getDocument(containerRequestRecord.firebaseMessageThread!),
-                                                                                    builder: (context, snapshot) {
-                                                                                      // Customize what your widget looks like when it's loading.
-                                                                                      if (!snapshot.hasData) {
-                                                                                        return Center(
-                                                                                          child: SizedBox(
-                                                                                            width: 50.0,
-                                                                                            height: 50.0,
-                                                                                            child: CircularProgressIndicator(
-                                                                                              valueColor: AlwaysStoppedAnimation<Color>(
-                                                                                                FlutterFlowTheme.of(context).primary,
+                                                                                    Padding(
+                                                                                      padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                                                                                      child: StreamBuilder<ChatsRecord>(
+                                                                                        stream: ChatsRecord.getDocument(containerRequestRecord.firebaseMessageThread!),
+                                                                                        builder: (context, snapshot) {
+                                                                                          // Customize what your widget looks like when it's loading.
+                                                                                          if (!snapshot.hasData) {
+                                                                                            return Center(
+                                                                                              child: SizedBox(
+                                                                                                width: 50.0,
+                                                                                                height: 50.0,
+                                                                                                child: CircularProgressIndicator(
+                                                                                                  valueColor: AlwaysStoppedAnimation<Color>(
+                                                                                                    FlutterFlowTheme.of(context).primary,
+                                                                                                  ),
+                                                                                                ),
                                                                                               ),
-                                                                                            ),
-                                                                                          ),
-                                                                                        );
-                                                                                      }
+                                                                                            );
+                                                                                          }
 
-                                                                                      final buttonChatsRecord = snapshot.data!;
+                                                                                          final buttonChatsRecord = snapshot.data!;
 
-                                                                                      return FFButtonWidget(
-                                                                                        onPressed: () async {
-                                                                                          context.pushNamed(
-                                                                                            'chat_2_Details_1',
-                                                                                            queryParameters: {
-                                                                                              'chatRef': serializeParam(
-                                                                                                buttonChatsRecord,
-                                                                                                ParamType.Document,
-                                                                                              ),
-                                                                                              'driver': serializeParam(
-                                                                                                true,
-                                                                                                ParamType.bool,
-                                                                                              ),
-                                                                                            }.withoutNulls,
-                                                                                            extra: <String, dynamic>{
-                                                                                              'chatRef': buttonChatsRecord,
+                                                                                          return FFButtonWidget(
+                                                                                            onPressed: () async {
+                                                                                              context.pushNamed(
+                                                                                                Chat2Details1Widget.routeName,
+                                                                                                queryParameters: {
+                                                                                                  'chatRef': serializeParam(
+                                                                                                    buttonChatsRecord,
+                                                                                                    ParamType.Document,
+                                                                                                  ),
+                                                                                                  'driver': serializeParam(
+                                                                                                    true,
+                                                                                                    ParamType.bool,
+                                                                                                  ),
+                                                                                                }.withoutNulls,
+                                                                                                extra: <String, dynamic>{
+                                                                                                  'chatRef': buttonChatsRecord,
+                                                                                                },
+                                                                                              );
                                                                                             },
+                                                                                            text: 'Message Technician',
+                                                                                            options: FFButtonOptions(
+                                                                                              width: double.infinity,
+                                                                                              height: 50.0,
+                                                                                              padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                                                                                              iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                                                                              color: FlutterFlowTheme.of(context).tertiary,
+                                                                                              textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                                                                                                    fontFamily: 'Yantramanav',
+                                                                                                    color: FlutterFlowTheme.of(context).primary,
+                                                                                                    letterSpacing: 0.0,
+                                                                                                  ),
+                                                                                              elevation: 3.0,
+                                                                                              borderSide: BorderSide(
+                                                                                                color: Colors.transparent,
+                                                                                                width: 1.0,
+                                                                                              ),
+                                                                                              borderRadius: BorderRadius.circular(100.0),
+                                                                                            ),
                                                                                           );
                                                                                         },
-                                                                                        text: 'Message Technician',
-                                                                                        options: FFButtonOptions(
-                                                                                          width: double.infinity,
-                                                                                          height: 50.0,
-                                                                                          padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                                                                                          iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                                                                          color: FlutterFlowTheme.of(context).tertiary,
-                                                                                          textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                                                                                                fontFamily: 'Yantramanav',
-                                                                                                color: FlutterFlowTheme.of(context).primary,
-                                                                                                letterSpacing: 0.0,
-                                                                                              ),
-                                                                                          elevation: 3.0,
-                                                                                          borderSide: BorderSide(
-                                                                                            color: Colors.transparent,
-                                                                                            width: 1.0,
-                                                                                          ),
-                                                                                          borderRadius: BorderRadius.circular(100.0),
-                                                                                        ),
-                                                                                      );
-                                                                                    },
-                                                                                  ),
+                                                                                      ),
+                                                                                    ),
+                                                                                  ].divide(SizedBox(height: 16.0)),
                                                                                 ),
-                                                                              ].divide(SizedBox(height: 16.0)),
+                                                                              ),
                                                                             ),
-                                                                          ),
+                                                                          ],
                                                                         ),
-                                                                      ],
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              );
+                                                            },
+                                                          ),
+                                                        );
+                                                      } else {
+                                                        return Align(
+                                                          alignment:
+                                                              AlignmentDirectional(
+                                                                  0.0, 0.0),
+                                                          child: Container(
+                                                            width:
+                                                                double.infinity,
+                                                            height: 450.0,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .secondaryBackground,
+                                                            ),
+                                                            alignment:
+                                                                AlignmentDirectional(
+                                                                    0.0, 0.0),
+                                                            child: Align(
+                                                              alignment:
+                                                                  AlignmentDirectional(
+                                                                      0.0,
+                                                                      -1.0),
+                                                              child:
+                                                                  wrapWithModel(
+                                                                model: _model
+                                                                    .confirmCancellationModel1,
+                                                                updateCallback: () =>
+                                                                    safeSetState(
+                                                                        () {}),
+                                                                child:
+                                                                    ConfirmCancellationWidget(
+                                                                  request:
+                                                                      containerRequestRecord
+                                                                          .reference
+                                                                          .id,
+                                                                  driver: true,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        );
+                                                      }
+                                                    },
+                                                  );
+                                                } else {
+                                                  return Builder(
+                                                    builder: (context) {
+                                                      if (containerRequestRecord
+                                                              .status !=
+                                                          'cancelled') {
+                                                        return StreamBuilder<
+                                                            List<UsersRecord>>(
+                                                          stream:
+                                                              queryUsersRecord(
+                                                            queryBuilder:
+                                                                (usersRecord) =>
+                                                                    usersRecord
+                                                                        .where(
+                                                              'onDuty',
+                                                              isEqualTo: true,
+                                                            ),
+                                                          ),
+                                                          builder: (context,
+                                                              snapshot) {
+                                                            // Customize what your widget looks like when it's loading.
+                                                            if (!snapshot
+                                                                .hasData) {
+                                                              return Center(
+                                                                child: SizedBox(
+                                                                  width: 50.0,
+                                                                  height: 50.0,
+                                                                  child:
+                                                                      CircularProgressIndicator(
+                                                                    valueColor:
+                                                                        AlwaysStoppedAnimation<
+                                                                            Color>(
+                                                                      FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primary,
                                                                     ),
                                                                   ),
                                                                 ),
-                                                              ],
-                                                            ),
-                                                          );
-                                                        },
-                                                      ),
-                                                    );
-                                                  } else {
-                                                    return Align(
-                                                      alignment:
-                                                          AlignmentDirectional(
-                                                              0.0, 0.0),
-                                                      child: Container(
-                                                        width: double.infinity,
-                                                        height: 450.0,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
-                                                        ),
-                                                        alignment:
-                                                            AlignmentDirectional(
-                                                                0.0, 0.0),
-                                                        child: Align(
-                                                          alignment:
-                                                              AlignmentDirectional(
-                                                                  0.0, -1.0),
+                                                              );
+                                                            }
+                                                            List<UsersRecord>
+                                                                containerUsersRecordList =
+                                                                snapshot.data!;
+
+                                                            return Container(
+                                                              width: 100.0,
+                                                              height: 100.0,
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryBackground,
+                                                              ),
+                                                              child: Align(
+                                                                alignment:
+                                                                    AlignmentDirectional(
+                                                                        0.0,
+                                                                        0.0),
+                                                                child:
+                                                                    Container(
+                                                                  width: double
+                                                                      .infinity,
+                                                                  height: double
+                                                                      .infinity,
+                                                                  decoration:
+                                                                      BoxDecoration(),
+                                                                  child:
+                                                                      FlutterFlowGoogleMap(
+                                                                    controller:
+                                                                        _model
+                                                                            .googleMaponesController,
+                                                                    onCameraIdle:
+                                                                        (latLng) =>
+                                                                            safeSetState(() =>
+                                                                                _model.googleMaponesCenter = latLng),
+                                                                    initialLocation: _model
+                                                                            .googleMaponesCenter ??=
+                                                                        containerRequestRecord
+                                                                            .location!,
+                                                                    markers: containerUsersRecordList
+                                                                        .map((e) => e.technicianLastUpdatedLocation)
+                                                                        .withoutNulls
+                                                                        .toList()
+                                                                        .map(
+                                                                          (marker) =>
+                                                                              FlutterFlowMarker(
+                                                                            marker.serialize(),
+                                                                            marker,
+                                                                          ),
+                                                                        )
+                                                                        .toList(),
+                                                                    markerColor:
+                                                                        GoogleMarkerColor
+                                                                            .red,
+                                                                    markerImage:
+                                                                        MarkerImage(
+                                                                      imagePath:
+                                                                          'assets/images/WhatsApp_Image_2025-02-15_at_01.39.52-removebg-preview.png',
+                                                                      isAssetImage:
+                                                                          true,
+                                                                      size:
+                                                                          18.0 ??
+                                                                              20,
+                                                                    ),
+                                                                    mapType: MapType
+                                                                        .normal,
+                                                                    style: GoogleMapStyle
+                                                                        .standard,
+                                                                    initialZoom:
+                                                                        14.0,
+                                                                    allowInteraction:
+                                                                        true,
+                                                                    allowZoom:
+                                                                        true,
+                                                                    showZoomControls:
+                                                                        true,
+                                                                    showLocation:
+                                                                        true,
+                                                                    showCompass:
+                                                                        true,
+                                                                    showMapToolbar:
+                                                                        true,
+                                                                    showTraffic:
+                                                                        true,
+                                                                    centerMapOnMarkerTap:
+                                                                        true,
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            );
+                                                          },
+                                                        );
+                                                      } else {
+                                                        return Container(
+                                                          width:
+                                                              double.infinity,
+                                                          height:
+                                                              double.infinity,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .secondaryBackground,
+                                                          ),
                                                           child: wrapWithModel(
                                                             model: _model
-                                                                .confirmCancellationModel1,
+                                                                .confirmCancellationModel2,
                                                             updateCallback: () =>
                                                                 safeSetState(
                                                                     () {}),
@@ -614,166 +815,22 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                                               driver: true,
                                                             ),
                                                           ),
-                                                        ),
-                                                      ),
-                                                    );
-                                                  }
-                                                },
-                                              );
-                                            } else {
-                                              return Builder(
-                                                builder: (context) {
-                                                  if (containerRequestRecord
-                                                          .status !=
-                                                      'cancelled') {
-                                                    return StreamBuilder<
-                                                        List<UsersRecord>>(
-                                                      stream: queryUsersRecord(
-                                                        queryBuilder:
-                                                            (usersRecord) =>
-                                                                usersRecord
-                                                                    .where(
-                                                          'onDuty',
-                                                          isEqualTo: true,
-                                                        ),
-                                                      ),
-                                                      builder:
-                                                          (context, snapshot) {
-                                                        // Customize what your widget looks like when it's loading.
-                                                        if (!snapshot.hasData) {
-                                                          return Center(
-                                                            child: SizedBox(
-                                                              width: 50.0,
-                                                              height: 50.0,
-                                                              child:
-                                                                  CircularProgressIndicator(
-                                                                valueColor:
-                                                                    AlwaysStoppedAnimation<
-                                                                        Color>(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primary,
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          );
-                                                        }
-                                                        List<UsersRecord>
-                                                            containerUsersRecordList =
-                                                            snapshot.data!;
-
-                                                        return Container(
-                                                          width: 100.0,
-                                                          height: 100.0,
-                                                          decoration:
-                                                              BoxDecoration(
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondaryBackground,
-                                                          ),
-                                                          child: Align(
-                                                            alignment:
-                                                                AlignmentDirectional(
-                                                                    0.0, 0.0),
-                                                            child: Container(
-                                                              width: double
-                                                                  .infinity,
-                                                              height: double
-                                                                  .infinity,
-                                                              decoration:
-                                                                  BoxDecoration(),
-                                                              child:
-                                                                  FlutterFlowGoogleMap(
-                                                                controller: _model
-                                                                    .googleMaponesController,
-                                                                onCameraIdle: (latLng) =>
-                                                                    safeSetState(() =>
-                                                                        _model.googleMaponesCenter =
-                                                                            latLng),
-                                                                initialLocation: _model
-                                                                        .googleMaponesCenter ??=
-                                                                    containerRequestRecord
-                                                                        .location!,
-                                                                markers: containerUsersRecordList
-                                                                    .map((e) => e.technicianLastUpdatedLocation)
-                                                                    .withoutNulls
-                                                                    .toList()
-                                                                    .map(
-                                                                      (marker) =>
-                                                                          FlutterFlowMarker(
-                                                                        marker
-                                                                            .serialize(),
-                                                                        marker,
-                                                                      ),
-                                                                    )
-                                                                    .toList(),
-                                                                markerColor:
-                                                                    GoogleMarkerColor
-                                                                        .red,
-                                                                mapType: MapType
-                                                                    .normal,
-                                                                style:
-                                                                    GoogleMapStyle
-                                                                        .standard,
-                                                                initialZoom:
-                                                                    14.0,
-                                                                allowInteraction:
-                                                                    true,
-                                                                allowZoom: true,
-                                                                showZoomControls:
-                                                                    true,
-                                                                showLocation:
-                                                                    true,
-                                                                showCompass:
-                                                                    true,
-                                                                showMapToolbar:
-                                                                    true,
-                                                                showTraffic:
-                                                                    true,
-                                                                centerMapOnMarkerTap:
-                                                                    true,
-                                                              ),
-                                                            ),
-                                                          ),
                                                         );
-                                                      },
-                                                    );
-                                                  } else {
-                                                    return Container(
-                                                      width: double.infinity,
-                                                      height: double.infinity,
-                                                      decoration: BoxDecoration(
-                                                        color: FlutterFlowTheme
-                                                                .of(context)
-                                                            .secondaryBackground,
-                                                      ),
-                                                      child: wrapWithModel(
-                                                        model: _model
-                                                            .confirmCancellationModel2,
-                                                        updateCallback: () =>
-                                                            safeSetState(() {}),
-                                                        child:
-                                                            ConfirmCancellationWidget(
-                                                          request:
-                                                              containerRequestRecord
-                                                                  .reference.id,
-                                                          driver: true,
-                                                        ),
-                                                      ),
-                                                    );
-                                                  }
-                                                },
-                                              );
-                                            }
-                                          },
-                                        ),
-                                      );
-                                    },
-                                  ),
-                                );
-                              }
-                            },
-                          ),
+                                                      }
+                                                    },
+                                                  );
+                                                }
+                                              },
+                                            ),
+                                          );
+                                        },
+                                      ),
+                                    );
+                                  }
+                                },
+                              ),
+                            );
+                          },
                         ),
                       ),
                       Container(
@@ -975,7 +1032,8 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                                   safeSetState(() {});
 
                                                   context.pushNamed(
-                                                      'dashboardDriver');
+                                                      DashboardDriverWidget
+                                                          .routeName);
                                                 } else {
                                                   FFAppState().location =
                                                       _model.latLng;
@@ -994,7 +1052,8 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                                   safeSetState(() {});
 
                                                   context.pushNamed(
-                                                      'dashboardDriver');
+                                                      DashboardDriverWidget
+                                                          .routeName);
                                                 }
                                               } else {
                                                 await _model
@@ -1021,7 +1080,8 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                                 safeSetState(() {});
 
                                                 context.pushNamed(
-                                                    'dashboardDriver');
+                                                    DashboardDriverWidget
+                                                        .routeName);
                                               }
                                             },
                                             child: Container(

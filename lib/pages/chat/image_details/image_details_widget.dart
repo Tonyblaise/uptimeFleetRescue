@@ -16,6 +16,9 @@ class ImageDetailsWidget extends StatefulWidget {
 
   final String? chatRef;
 
+  static String routeName = 'image_Details';
+  static String routePath = 'imageDetails';
+
   @override
   State<ImageDetailsWidget> createState() => _ImageDetailsWidgetState();
 }

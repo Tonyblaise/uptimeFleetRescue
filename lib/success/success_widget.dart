@@ -2,6 +2,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'success_model.dart';
 export 'success_model.dart';
@@ -13,6 +14,9 @@ class SuccessWidget extends StatefulWidget {
   });
 
   final bool? driver;
+
+  static String routeName = 'success';
+  static String routePath = 'success';
 
   @override
   State<SuccessWidget> createState() => _SuccessWidgetState();
@@ -130,9 +134,10 @@ class _SuccessWidgetState extends State<SuccessWidget> {
                         FFButtonWidget(
                           onPressed: () async {
                             if (widget.driver == true) {
-                              context.pushNamed('landing_page');
+                              context.pushNamed(LandingPageWidget.routeName);
                             } else {
-                              context.pushNamed('dashboardTechnician');
+                              context.pushNamed(
+                                  DashboardTechnicianWidget.routeName);
                             }
                           },
                           text: 'Go Home',

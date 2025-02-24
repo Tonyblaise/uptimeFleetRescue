@@ -1,4 +1,5 @@
 import '/flutter_flow/flutter_flow_util.dart';
+import '/index.dart';
 import 'image_details_widget.dart' show ImageDetailsWidget;
 import 'package:flutter/material.dart';
 

@@ -2,6 +2,7 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'delete_account_model.dart';
@@ -208,7 +209,7 @@ class _DeleteAccountWidgetState extends State<DeleteAccountWidget> {
                                   Navigator.pop(context);
                                   await currentUserReference!.delete();
 
-                                  context.pushNamed('login');
+                                  context.pushNamed(LoginWidget.routeName);
                                 } else {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(

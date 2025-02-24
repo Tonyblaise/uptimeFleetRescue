@@ -12,6 +12,7 @@ import '/service_provider/tow_navigation_start/tow_navigation_start_widget.dart'
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/permissions_util.dart';
+import '/index.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -242,7 +243,7 @@ class _ServiceUpdatesComponentSPWidgetState
                                           highlightColor: Colors.transparent,
                                           onTap: () async {
                                             context.pushNamed(
-                                              'service_summary',
+                                              ServiceSummaryWidget.routeName,
                                               queryParameters: {
                                                 'requestId': serializeParam(
                                                   containerRequestRecord
@@ -630,7 +631,8 @@ class _ServiceUpdatesComponentSPWidgetState
                                                           );
 
                                                           context.pushNamed(
-                                                              'dashboardTechnician');
+                                                              DashboardTechnicianWidget
+                                                                  .routeName);
                                                         }
 
                                                         safeSetState(() {});
@@ -932,7 +934,8 @@ class _ServiceUpdatesComponentSPWidgetState
                                                   safeSetState(() {}));
                                             } else {
                                               context.pushNamed(
-                                                'serviceConfirmation',
+                                                ServiceConfirmationWidget
+                                                    .routeName,
                                                 queryParameters: {
                                                   'request': serializeParam(
                                                     containerRequestRecord
@@ -1394,7 +1397,8 @@ class _ServiceUpdatesComponentSPWidgetState
                                             highlightColor: Colors.transparent,
                                             onTap: () async {
                                               context.pushNamed(
-                                                'serviceConfirmation',
+                                                ServiceConfirmationWidget
+                                                    .routeName,
                                                 queryParameters: {
                                                   'request': serializeParam(
                                                     containerRequestRecord
@@ -1718,7 +1722,8 @@ class _ServiceUpdatesComponentSPWidgetState
                                                               }
 
                                                               context.pushNamed(
-                                                                'chat_2_Details_1',
+                                                                Chat2Details1Widget
+                                                                    .routeName,
                                                                 queryParameters:
                                                                     {
                                                                   'chatRef':

@@ -1,5 +1,6 @@
 import '/flutter_flow/flutter_flow_google_map.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/index.dart';
 import 'select_location_widget.dart' show SelectLocationWidget;
 import 'package:flutter/material.dart';
 

@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/service_provider/request_location/request_location_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'request_service2_model.dart';
 export 'request_service2_model.dart';
@@ -19,6 +20,9 @@ class RequestService2Widget extends StatefulWidget {
   });
 
   final String? fleetManagerId;
+
+  static String routeName = 'request_service2';
+  static String routePath = 'request_service2';
 
   @override
   State<RequestService2Widget> createState() => _RequestService2WidgetState();
@@ -467,7 +471,8 @@ class _RequestService2WidgetState extends State<RequestService2Widget> {
                                       );
 
                                       context.goNamedAuth(
-                                          'landing_page', context.mounted);
+                                          LandingPageWidget.routeName,
+                                          context.mounted);
                                     } else {
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(
