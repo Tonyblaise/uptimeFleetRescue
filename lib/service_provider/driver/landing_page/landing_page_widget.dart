@@ -137,7 +137,7 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                                   ),
                                               ],
                                               markerColor:
-                                                  GoogleMarkerColor.violet,
+                                                  GoogleMarkerColor.red,
                                               mapType: MapType.normal,
                                               style: GoogleMapStyle.standard,
                                               initialZoom: 14.0,

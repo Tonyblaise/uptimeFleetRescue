@@ -1,8 +1,5 @@
 import 'dart:isolate';
-import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter_foreground_task/flutter_foreground_task.dart';
-import 'package:geolocator/geolocator.dart';
+
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
@@ -18,38 +15,26 @@ import '/service_provider/driver/confirm_cancellation/confirm_cancellation_widge
 import '/service_provider/select_vehicle/select_vehicle_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/permissions_util.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'dashboard_technician_model.dart';
+export 'dashboard_technician_model.dart';
+import 'package:flutter_foreground_task/flutter_foreground_task.dart';
 
-// Task Handler for Background Location Updates
-@pragma('vm:entry-point')
-class LocationTaskHandler extends TaskHandler {
+class MyTaskHandler extends TaskHandler {
   SendPort? _sendPort;
 
   @override
   Future<void> onStart(DateTime timestamp, SendPort? sendPort) async {
     _sendPort = sendPort;
-    print('Foreground service started at $timestamp');
-    
-    // Request location permissions
-    bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
-    if (!serviceEnabled) {
-      await Geolocator.openLocationSettings();
-      return;
-    }
-
-    LocationPermission permission = await Geolocator.checkPermission();
-    if (permission == LocationPermission.denied) {
-      permission = await Geolocator.requestPermission();
-      if (permission == LocationPermission.denied) {
-        return;
-      }
-    }
+    print('Foreground service started');
   }
 
   @override
   Future<void> onEvent(DateTime timestamp, SendPort? sendPort) async {
     try {
-      final currentLocation = await getCurrentUserLocation(
-          defaultLocation: const LatLng(0.0, 0.0));
+      final currentLocation =
+          await getCurrentUserLocation(defaultLocation: const LatLng(0.0, 0.0));
 
       if (currentLocation != null) {
         await UptimeFleetAppGroup
@@ -64,26 +49,18 @@ class LocationTaskHandler extends TaskHandler {
         ));
       }
     } catch (e) {
-      print('Error in background task: $e');
+      print('Error in foreground task: $e');
     }
   }
 
   @override
   Future<void> onDestroy(DateTime timestamp, SendPort? sendPort) async {
-    print('Foreground service stopped at $timestamp');
-  }
-
-  @override
-  void onButtonPressed(String id) {
-    print('Button pressed in notification: $id');
+    print('Foreground service stopped');
   }
 }
 
 class DashboardTechnicianWidget extends StatefulWidget {
   const DashboardTechnicianWidget({super.key});
-
-  static String routeName = 'dashboardTechnician';
-  static String routePath = 'dashboard_technician';
 
   @override
   State<DashboardTechnicianWidget> createState() =>
@@ -101,47 +78,69 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget>
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addObserver(this);
     _model = createModel(context, () => DashboardTechnicianModel());
-    _initForegroundTask();
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      super.initState();
+      WidgetsBinding.instance.addObserver(this);
+      _model = createModel(context, () => DashboardTechnicianModel());
+      _initForegroundTask();
+
       currentUserLocationValue =
-          await getCurrentUserLocation(defaultLocation: const LatLng(0.0, 0.0));
+          await getCurrentUserLocation(defaultLocation: LatLng(0.0, 0.0));
       await Future.wait([
-        _initializeLocation(),
-        _checkActiveRequest(),
+        Future(() async {
+          if (currentUserLocationValue != null) {
+            _model.apiResultayo6 = await UptimeFleetAppGroup
+                .updateTechnicianPositionUsingCurrentPostionCall
+                .call(
+              technicianId:
+                  valueOrDefault(currentUserDocument?.technicianId, ''),
+              position: currentUserLocationValue?.toString(),
+            );
+
+            await currentUserReference!.update(createUsersRecordData(
+              technicianLastUpdatedLocation: currentUserLocationValue,
+            ));
+          } else {
+            await requestPermission(locationPermission);
+            _model.apiResultayoo = await UptimeFleetAppGroup
+                .updateTechnicianPositionUsingCurrentPostionCall
+                .call(
+              technicianId:
+                  valueOrDefault(currentUserDocument?.technicianId, ''),
+              position: currentUserLocationValue?.toString(),
+            );
+
+            await currentUserReference!.update(createUsersRecordData(
+              technicianLastUpdatedLocation: currentUserLocationValue,
+            ));
+          }
+        }),
+        Future(() async {
+          if (currentUserDocument?.activeRequest != null) {
+            _model.activeRequest = await RequestRecord.getDocumentOnce(
+                currentUserDocument!.activeRequest!);
+            if (_model.activeRequest?.started == false) {
+              context.pushNamed(
+                'start_request',
+                queryParameters: {
+                  'request': serializeParam(
+                    _model.activeRequest?.bubbleId,
+                    ParamType.String,
+                  ),
+                }.withoutNulls,
+              );
+            }
+          }
+        }),
       ]);
     });
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
-  @override
-  void dispose() {
-    WidgetsBinding.instance.removeObserver(this);
-    _model.dispose();
-    super.dispose();
-  }
-
-  @override
-  void didChangeAppLifecycleState(AppLifecycleState state) {
-    switch (state) {
-      case AppLifecycleState.resumed:
-        print("App in resumed");
-        break;
-      case AppLifecycleState.inactive:
-        print("App in inactive");
-        break;
-      case AppLifecycleState.paused:
-        print("App in paused");
-        break;
-      case AppLifecycleState.detached:
-        print("App in detached");
-        break;
-    }
-  }
-
-  // Initialize foreground task configuration
   void _initForegroundTask() {
     FlutterForegroundTask.init(
       androidNotificationOptions: AndroidNotificationOptions(
@@ -156,19 +155,13 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget>
           resPrefix: ResourcePrefix.ic,
           name: 'launcher',
         ),
-        buttons: [
-          NotificationButton(
-            id: 'stopService',
-            text: 'Stop Service',
-          ),
-        ],
       ),
       iosNotificationOptions: const IOSNotificationOptions(
         showNotification: true,
         playSound: false,
       ),
       foregroundTaskOptions: const ForegroundTaskOptions(
-        interval: 300000, // 5 minutes
+        interval: 5000,
         isOnceEvent: false,
         autoRunOnBoot: true,
         allowWakeLock: true,
@@ -177,7 +170,14 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget>
     );
   }
 
-  // Start the foreground service
+Future<void> runBackgroundService(bool status) async {
+  if (status) {
+    await _startForegroundTask();
+  } else {
+    await _stopForegroundTask();
+  }
+}
+
   Future<void> _startForegroundTask() async {
     if (!await FlutterForegroundTask.canDrawOverlays) {
       final isGranted =
@@ -189,7 +189,7 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget>
     }
 
     bool reqResult = await FlutterForegroundTask.startService(
-      notificationTitle: 'Location Tracking Active',
+      notificationTitle: 'Foreground Service is running',
       notificationText: 'Tap to return to the app',
       callback: startCallback,
     );
@@ -198,38 +198,28 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget>
       _isRunning = reqResult;
     });
   }
-
-  // Stop the foreground service
-  Future<void> _stopForegroundTask() async {
+Future<void> _stopForegroundTask() async {
     bool reqResult = await FlutterForegroundTask.stopService();
     setState(() {
       _isRunning = !reqResult;
     });
   }
 
-  Future<void> runBackgroundService(bool status) async {
-    if (status) {
-      await _startForegroundTask();
-    } else {
-      await _stopForegroundTask();
-    }
-  }
-
   Future<void> _initializeLocation() async {
-    if (!await requestPermission(locationPermission)) {
-      print('Location permission denied');
-      return;
+    if (currentUserLocationValue == null) {
+      await requestPermission(locationPermission);
+      currentUserLocationValue =
+          await getCurrentUserLocation(defaultLocation: const LatLng(0.0, 0.0));
     }
 
-    currentUserLocationValue =
-        await getCurrentUserLocation(defaultLocation: const LatLng(0.0, 0.0));
     if (currentUserLocationValue != null) {
       await _updateTechnicianLocation(currentUserLocationValue!);
     }
   }
 
   Future<void> _updateTechnicianLocation(LatLng location) async {
-    await UptimeFleetAppGroup.updateTechnicianPositionUsingCurrentPostionCall
+    _model.apiResultayo6 = await UptimeFleetAppGroup
+        .updateTechnicianPositionUsingCurrentPostionCall
         .call(
       technicianId: valueOrDefault(currentUserDocument?.technicianId, ''),
       position: location.toString(),
@@ -241,53 +231,57 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget>
   }
 
   Future<void> _checkActiveRequest() async {
-    if (currentUserDocument?.activeRequest != null) {
-      final activeRequest = await RequestRecord.getDocumentOnce(
-          currentUserDocument!.activeRequest!);
-      if (activeRequest?.started == false) {
-        if (mounted) {
-          context.pushNamed(
-            'start_request',
-            queryParameters: {
-              'request': serializeParam(
-                activeRequest?.bubbleId,
-                ParamType.String,
-              ),
-            }.withoutNulls,
-          );
-        }
+    final activeRequest = currentUserDocument?.activeRequest;
+    if (activeRequest != null) {
+      _model.activeRequest = await RequestRecord.getDocumentOnce(activeRequest);
+      final bubbleId = _model.activeRequest?.bubbleId;
+      if (_model.activeRequest?.started == false &&
+          bubbleId != null &&
+          mounted) {
+        context.pushNamed(
+          'start_request',
+          queryParameters: {
+            'request': serializeParam(
+              bubbleId,
+              ParamType.String,
+            ),
+          }.withoutNulls,
+        );
       }
     }
   }
 
+  @override
+  void dispose() {
+    _model.dispose();
+
+    super.dispose();
+  }
+
   @pragma('vm:entry-point')
   void startCallback() {
-    FlutterForegroundTask.setTaskHandler(LocationTaskHandler());
+    FlutterForegroundTask.setTaskHandler(MyTaskHandler());
   }
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async {
-        if (await FlutterForegroundTask.isRunningService) {
-          moveTaskToBack();
-          return false;
-        }
-        return true;
-      },
-      child: WithForegroundTask(
-        child: Title(
-          title: 'dashboardTechnician',
-          color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
-          child: GestureDetector(
-            onTap: () => FocusScope.of(context).unfocus(),
-            child: Scaffold(
-              key: scaffoldKey,
+    return Title(
+        title: 'dashboardTechnician',
+        color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
+        child: GestureDetector(
+          onTap: () {
+            FocusScope.of(context).unfocus();
+            FocusManager.instance.primaryFocus?.unfocus();
+          },
+          child: Scaffold(
+            key: scaffoldKey,
+            backgroundColor: Colors.white,
+            appBar: AppBar(
               backgroundColor: Colors.white,
-              appBar: AppBar(
-                backgroundColor: Colors.white,
-                automaticallyImplyLeading: false,
-                title: Text(
+              automaticallyImplyLeading: false,
+              title: Container(
+                decoration: BoxDecoration(),
+                child: Text(
                   'Dashboard',
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Yantramanav',
@@ -297,9 +291,12 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget>
                         fontWeight: FontWeight.bold,
                       ),
                 ),
-                elevation: 1.0,
               ),
-             body: SafeArea(
+              actions: [],
+              centerTitle: false,
+              elevation: 1.0,
+            ),
+            body: SafeArea(
               top: true,
               child: Container(
                 width: double.infinity,
@@ -1000,28 +997,3 @@ class _DashboardTechnicianWidgetState extends State<DashboardTechnicianWidget>
         ));
   }
 }
-// Don't forget to add these to your AndroidManifest.xml:
-/*
-<uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-<uses-permission android:name="android.permission.WAKE_LOCK" />
-<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-<uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
-*/
-
-// And to your Info.plist:
-/*
-<key>UIBackgroundModes</key>
-<array>
-    <string>location</string>
-    <string>fetch</string>
-    <string>processing</string>
-</array>
-<key>NSLocationWhenInUseUsageDescription</key>
-<string>Location is required to find out where you are</string>
-<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-<string>Location is required to find out where you are</string>
-*/
-
-
