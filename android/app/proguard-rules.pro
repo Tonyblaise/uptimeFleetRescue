@@ -8,5 +8,8 @@
 -dontwarn javax.annotation.concurrent.GuardedBy
 -dontwarn org.bouncycastle.jce.provider.BouncyCastleProvider
 -dontwarn org.bouncycastle.pqc.jcajce.provider.BouncyCastlePQCProvider
-
+-keep class com.mapbox.android.core.** { *; }
+-keep class com.mapbox.android.telemetry.** { *; }
+-dontwarn com.mapbox.android.core.**
+-dontwarn com.mapbox.android.telemetry.**
 
