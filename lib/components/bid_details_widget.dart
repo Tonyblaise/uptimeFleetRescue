@@ -196,7 +196,7 @@ class _BidDetailsWidgetState extends State<BidDetailsWidget> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          'ETA',
+                                          'ETA (mins)',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
@@ -230,7 +230,7 @@ class _BidDetailsWidgetState extends State<BidDetailsWidget> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          'Distance',
+                                          'Distance (miles)',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
@@ -265,7 +265,7 @@ class _BidDetailsWidgetState extends State<BidDetailsWidget> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          'Pricing',
+                                          'Pricing (\$)',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
@@ -311,7 +311,7 @@ class _BidDetailsWidgetState extends State<BidDetailsWidget> {
                                     Expanded(
                                       child: FFButtonWidget(
                                         onPressed: () async {},
-                                        text: 'Cancel',
+                                        text: 'Close',
                                         options: FFButtonOptions(
                                           height: 56.0,
                                           padding:
