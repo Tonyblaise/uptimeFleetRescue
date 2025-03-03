@@ -12,4 +12,7 @@
 -keep class com.mapbox.android.telemetry.** { *; }
 -dontwarn com.mapbox.android.core.**
 -dontwarn com.mapbox.android.telemetry.**
+-keep class org.xmlpull.v1.** { *; }
+
+
 

@@ -75,6 +75,11 @@ class RequestRecord extends FirestoreRecord {
   bool get started => _started ?? false;
   bool hasStarted() => _started != null;
 
+  // "successfulBid" field.
+  DocumentReference? _successfulBid;
+  DocumentReference? get successfulBid => _successfulBid;
+  bool hasSuccessfulBid() => _successfulBid != null;
+
   void _initializeFields() {
     _status = snapshotData['status'] as String?;
     _bubbleId = snapshotData['bubbleId'] as String?;
@@ -89,6 +94,7 @@ class RequestRecord extends FirestoreRecord {
     _dropOffLocationLatLng = snapshotData['dropOffLocationLatLng'] as LatLng?;
     _requestPending = snapshotData['requestPending'] as bool?;
     _started = snapshotData['started'] as bool?;
+    _successfulBid = snapshotData['successfulBid'] as DocumentReference?;
   }
 
   static CollectionReference get collection =>
@@ -138,6 +144,7 @@ Map<String, dynamic> createRequestRecordData({
   LatLng? dropOffLocationLatLng,
   bool? requestPending,
   bool? started,
+  DocumentReference? successfulBid,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -153,6 +160,7 @@ Map<String, dynamic> createRequestRecordData({
       'dropOffLocationLatLng': dropOffLocationLatLng,
       'requestPending': requestPending,
       'started': started,
+      'successfulBid': successfulBid,
     }.withoutNulls,
   );
 
@@ -175,7 +183,8 @@ class RequestRecordDocumentEquality implements Equality<RequestRecord> {
         e1?.distance == e2?.distance &&
         e1?.dropOffLocationLatLng == e2?.dropOffLocationLatLng &&
         e1?.requestPending == e2?.requestPending &&
-        e1?.started == e2?.started;
+        e1?.started == e2?.started &&
+        e1?.successfulBid == e2?.successfulBid;
   }
 
   @override
@@ -191,7 +200,8 @@ class RequestRecordDocumentEquality implements Equality<RequestRecord> {
         e?.distance,
         e?.dropOffLocationLatLng,
         e?.requestPending,
-        e?.started
+        e?.started,
+        e?.successfulBid
       ]);
 
   @override

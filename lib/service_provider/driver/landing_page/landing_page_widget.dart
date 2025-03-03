@@ -1,6 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
+import '/components/bid_details_widget.dart';
 import '/flutter_flow/flutter_flow_google_map.dart';
 import '/flutter_flow/flutter_flow_place_picker.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -663,14 +664,14 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                                               .status !=
                                                           'cancelled') {
                                                         return StreamBuilder<
-                                                            List<UsersRecord>>(
+                                                            List<BidsRecord>>(
                                                           stream:
-                                                              queryUsersRecord(
+                                                              queryBidsRecord(
                                                             queryBuilder:
-                                                                (usersRecord) =>
-                                                                    usersRecord
+                                                                (bidsRecord) =>
+                                                                    bidsRecord
                                                                         .where(
-                                                              'onDuty',
+                                                              'accepted',
                                                               isEqualTo: true,
                                                             ),
                                                           ),
@@ -696,8 +697,8 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                                                 ),
                                                               );
                                                             }
-                                                            List<UsersRecord>
-                                                                containerUsersRecordList =
+                                                            List<BidsRecord>
+                                                                containerBidsRecordList =
                                                                 snapshot.data!;
 
                                                             return Container(
@@ -714,75 +715,131 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                                                     AlignmentDirectional(
                                                                         0.0,
                                                                         0.0),
-                                                                child:
-                                                                    Container(
-                                                                  width: double
-                                                                      .infinity,
-                                                                  height: double
-                                                                      .infinity,
-                                                                  decoration:
-                                                                      BoxDecoration(),
-                                                                  child:
-                                                                      FlutterFlowGoogleMap(
-                                                                    controller:
-                                                                        _model
-                                                                            .googleMaponesController,
-                                                                    onCameraIdle:
-                                                                        (latLng) =>
-                                                                            safeSetState(() =>
-                                                                                _model.googleMaponesCenter = latLng),
-                                                                    initialLocation: _model
-                                                                            .googleMaponesCenter ??=
-                                                                        containerRequestRecord
-                                                                            .location!,
-                                                                    markers: containerUsersRecordList
-                                                                        .map((e) => e.technicianLastUpdatedLocation)
-                                                                        .withoutNulls
-                                                                        .toList()
-                                                                        .map(
-                                                                          (marker) =>
-                                                                              FlutterFlowMarker(
-                                                                            marker.serialize(),
-                                                                            marker,
-                                                                          ),
-                                                                        )
-                                                                        .toList(),
-                                                                    markerColor:
-                                                                        GoogleMarkerColor
-                                                                            .red,
-                                                                    markerImage:
-                                                                        MarkerImage(
-                                                                      imagePath:
-                                                                          'assets/images/WhatsApp_Image_2025-02-15_at_01.39.52-removebg-preview.png',
-                                                                      isAssetImage:
-                                                                          true,
-                                                                      size:
-                                                                          18.0 ??
-                                                                              20,
-                                                                    ),
-                                                                    mapType: MapType
-                                                                        .normal,
-                                                                    style: GoogleMapStyle
-                                                                        .standard,
-                                                                    initialZoom:
-                                                                        14.0,
-                                                                    allowInteraction:
-                                                                        true,
-                                                                    allowZoom:
-                                                                        true,
-                                                                    showZoomControls:
-                                                                        true,
-                                                                    showLocation:
-                                                                        true,
-                                                                    showCompass:
-                                                                        true,
-                                                                    showMapToolbar:
-                                                                        true,
-                                                                    showTraffic:
-                                                                        true,
-                                                                    centerMapOnMarkerTap:
-                                                                        true,
+                                                                child: StreamBuilder<
+                                                                    List<
+                                                                        UsersRecord>>(
+                                                                  stream:
+                                                                      queryUsersRecord(
+                                                                    queryBuilder: (usersRecord) => usersRecord.whereIn(
+                                                                        'technicianId',
+                                                                        containerBidsRecordList
+                                                                            .map((e) =>
+                                                                                e.reference.id)
+                                                                            .toList()),
                                                                   ),
+                                                                  builder: (context,
+                                                                      snapshot) {
+                                                                    // Customize what your widget looks like when it's loading.
+                                                                    if (!snapshot
+                                                                        .hasData) {
+                                                                      return Center(
+                                                                        child:
+                                                                            SizedBox(
+                                                                          width:
+                                                                              50.0,
+                                                                          height:
+                                                                              50.0,
+                                                                          child:
+                                                                              CircularProgressIndicator(
+                                                                            valueColor:
+                                                                                AlwaysStoppedAnimation<Color>(
+                                                                              FlutterFlowTheme.of(context).primary,
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      );
+                                                                    }
+                                                                    List<UsersRecord>
+                                                                        containerUsersRecordList =
+                                                                        snapshot
+                                                                            .data!;
+
+                                                                    return Container(
+                                                                      width: double
+                                                                          .infinity,
+                                                                      height: double
+                                                                          .infinity,
+                                                                      decoration:
+                                                                          BoxDecoration(),
+                                                                      child:
+                                                                          FlutterFlowGoogleMap(
+                                                                        controller:
+                                                                            _model.googleMaponesController,
+                                                                        onCameraIdle:
+                                                                            (latLng) =>
+                                                                                safeSetState(() => _model.googleMaponesCenter = latLng),
+                                                                        initialLocation:
+                                                                            _model.googleMaponesCenter ??=
+                                                                                containerRequestRecord.location!,
+                                                                        markers: containerUsersRecordList
+                                                                            .map((e) => e.technicianLastUpdatedLocation)
+                                                                            .withoutNulls
+                                                                            .toList()
+                                                                            .map(
+                                                                              (marker) => FlutterFlowMarker(
+                                                                                marker.serialize(),
+                                                                                marker,
+                                                                                () async {
+                                                                                  await showModalBottomSheet(
+                                                                                    isScrollControlled: true,
+                                                                                    backgroundColor: Colors.transparent,
+                                                                                    enableDrag: false,
+                                                                                    context: context,
+                                                                                    builder: (context) {
+                                                                                      return GestureDetector(
+                                                                                        onTap: () {
+                                                                                          FocusScope.of(context).unfocus();
+                                                                                          FocusManager.instance.primaryFocus?.unfocus();
+                                                                                        },
+                                                                                        child: Padding(
+                                                                                          padding: MediaQuery.viewInsetsOf(context),
+                                                                                          child: BidDetailsWidget(
+                                                                                            bid: containerBidsRecordList.where((e) => e.technician == containerUsersRecordList.where((e) => e.technicianLastUpdatedLocation == _model.placePickerValue.latLng).toList().firstOrNull?.reference).toList().firstOrNull!,
+                                                                                          ),
+                                                                                        ),
+                                                                                      );
+                                                                                    },
+                                                                                  ).then((value) => safeSetState(() {}));
+                                                                                },
+                                                                              ),
+                                                                            )
+                                                                            .toList(),
+                                                                        markerColor:
+                                                                            GoogleMarkerColor.red,
+                                                                        markerImage:
+                                                                            MarkerImage(
+                                                                          imagePath:
+                                                                              'assets/images/WhatsApp_Image_2025-02-15_at_01.39.52-removebg-preview.png',
+                                                                          isAssetImage:
+                                                                              true,
+                                                                          size: 22.0 ??
+                                                                              20,
+                                                                        ),
+                                                                        mapType:
+                                                                            MapType.normal,
+                                                                        style: GoogleMapStyle
+                                                                            .standard,
+                                                                        initialZoom:
+                                                                            14.0,
+                                                                        allowInteraction:
+                                                                            true,
+                                                                        allowZoom:
+                                                                            true,
+                                                                        showZoomControls:
+                                                                            true,
+                                                                        showLocation:
+                                                                            true,
+                                                                        showCompass:
+                                                                            true,
+                                                                        showMapToolbar:
+                                                                            true,
+                                                                        showTraffic:
+                                                                            true,
+                                                                        centerMapOnMarkerTap:
+                                                                            true,
+                                                                      ),
+                                                                    );
+                                                                  },
                                                                 ),
                                                               ),
                                                             );
