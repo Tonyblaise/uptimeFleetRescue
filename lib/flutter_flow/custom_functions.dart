@@ -148,3 +148,57 @@ String joinListofImagURLs(List<String> images) {
   // join a list of strings with ,
   return images.join(',');
 }
+
+BidsRecord? compareLatLngToBidsLng(
+  LatLng? latLng,
+  List<BidsRecord>? bids,
+) {
+  // function that takes a lat lng and a list of bids document then takes the lat lng and compares it to the position field of the bids documents which is a latlng. It then return the one that matches the closest
+  if (latLng == null || bids == null || bids.isEmpty) {
+    return null;
+  }
+
+  BidsRecord closestBid = bids.first;
+  double minDistance = double.infinity;
+
+  // Helper function to calculate distance between two points using Haversine formula
+  double calculateDistance(
+    double lat1,
+    double lon1,
+    double lat2,
+    double lon2,
+  ) {
+    const double earthRadius = 6371000; // meters
+    double latRad1 = lat1 * math.pi / 180;
+    double latRad2 = lat2 * math.pi / 180;
+    double deltaLat = (lat2 - lat1) * math.pi / 180;
+    double deltaLon = (lon2 - lon1) * math.pi / 180;
+
+    double a = math.sin(deltaLat / 2) * math.sin(deltaLat / 2) +
+        math.cos(latRad1) *
+            math.cos(latRad2) *
+            math.sin(deltaLon / 2) *
+            math.sin(deltaLon / 2);
+    double c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a));
+
+    return earthRadius * c; // distance in meters
+  }
+
+  for (var bid in bids) {
+    if (bid.position != null) {
+      double distance = calculateDistance(
+        latLng.latitude,
+        latLng.longitude,
+        bid.position!.latitude,
+        bid.position!.longitude,
+      );
+
+      if (distance < minDistance) {
+        minDistance = distance;
+        closestBid = bid;
+      }
+    }
+  }
+
+  return closestBid;
+}

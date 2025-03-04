@@ -671,9 +671,15 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                                                 (bidsRecord) =>
                                                                     bidsRecord
                                                                         .where(
-                                                              'accepted',
-                                                              isEqualTo: true,
-                                                            ),
+                                                                          'accepted',
+                                                                          isEqualTo:
+                                                                              true,
+                                                                        )
+                                                                        .where(
+                                                                          'requestId',
+                                                                          isEqualTo:
+                                                                              currentUserDocument?.activeRequest,
+                                                                        ),
                                                           ),
                                                           builder: (context,
                                                               snapshot) {
@@ -760,7 +766,7 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                                                                     child: Padding(
                                                                                       padding: MediaQuery.viewInsetsOf(context),
                                                                                       child: BidDetailsWidget(
-                                                                                        bid: containerBidsRecordList.where((e) => e.position == _model.placePickerValue.latLng).toList().firstOrNull!,
+                                                                                        bid: functions.compareLatLngToBidsLng(_model.placePickerValue.latLng, containerBidsRecordList.toList())!,
                                                                                       ),
                                                                                     ),
                                                                                   );

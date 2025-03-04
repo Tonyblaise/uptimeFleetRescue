@@ -50,11 +50,6 @@ class BidsRecord extends FirestoreRecord {
   double get pricing => _pricing ?? 0.0;
   bool hasPricing() => _pricing != null;
 
-  // "requestId" field.
-  String? _requestId;
-  String get requestId => _requestId ?? '';
-  bool hasRequestId() => _requestId != null;
-
   // "technician" field.
   DocumentReference? _technician;
   DocumentReference? get technician => _technician;
@@ -80,6 +75,11 @@ class BidsRecord extends FirestoreRecord {
   LatLng? get position => _position;
   bool hasPosition() => _position != null;
 
+  // "requestId" field.
+  DocumentReference? _requestId;
+  DocumentReference? get requestId => _requestId;
+  bool hasRequestId() => _requestId != null;
+
   void _initializeFields() {
     _accepted = snapshotData['accepted'] as bool?;
     _distance = castToType<double>(snapshotData['distance']);
@@ -88,12 +88,12 @@ class BidsRecord extends FirestoreRecord {
     _lat = snapshotData['lat'] as String?;
     _lng = snapshotData['lng'] as String?;
     _pricing = castToType<double>(snapshotData['pricing']);
-    _requestId = snapshotData['requestId'] as String?;
     _technician = snapshotData['technician'] as DocumentReference?;
     _status = snapshotData['status'] as String?;
     _technicianName = snapshotData['technicianName'] as String?;
     _fleetCompanyName = snapshotData['FleetCompanyName'] as String?;
     _position = snapshotData['position'] as LatLng?;
+    _requestId = snapshotData['requestId'] as DocumentReference?;
   }
 
   static CollectionReference get collection =>
@@ -137,12 +137,12 @@ Map<String, dynamic> createBidsRecordData({
   String? lat,
   String? lng,
   double? pricing,
-  String? requestId,
   DocumentReference? technician,
   String? status,
   String? technicianName,
   String? fleetCompanyName,
   LatLng? position,
+  DocumentReference? requestId,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -153,12 +153,12 @@ Map<String, dynamic> createBidsRecordData({
       'lat': lat,
       'lng': lng,
       'pricing': pricing,
-      'requestId': requestId,
       'technician': technician,
       'status': status,
       'technicianName': technicianName,
       'FleetCompanyName': fleetCompanyName,
       'position': position,
+      'requestId': requestId,
     }.withoutNulls,
   );
 
@@ -177,12 +177,12 @@ class BidsRecordDocumentEquality implements Equality<BidsRecord> {
         e1?.lat == e2?.lat &&
         e1?.lng == e2?.lng &&
         e1?.pricing == e2?.pricing &&
-        e1?.requestId == e2?.requestId &&
         e1?.technician == e2?.technician &&
         e1?.status == e2?.status &&
         e1?.technicianName == e2?.technicianName &&
         e1?.fleetCompanyName == e2?.fleetCompanyName &&
-        e1?.position == e2?.position;
+        e1?.position == e2?.position &&
+        e1?.requestId == e2?.requestId;
   }
 
   @override
@@ -194,12 +194,12 @@ class BidsRecordDocumentEquality implements Equality<BidsRecord> {
         e?.lat,
         e?.lng,
         e?.pricing,
-        e?.requestId,
         e?.technician,
         e?.status,
         e?.technicianName,
         e?.fleetCompanyName,
-        e?.position
+        e?.position,
+        e?.requestId
       ]);
 
   @override
