@@ -1,3 +1,4 @@
+import '';
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/page_title_widget.dart';
@@ -788,61 +789,101 @@ class _DashboardDriverWidgetState extends State<DashboardDriverWidget> {
                                   ),
                                 );
                               } else {
-                                return Container(
-                                  width: double.infinity,
-                                  height: 477.0,
-                                  constraints: BoxConstraints(
-                                    maxWidth: 500.0,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                  ),
-                                  child: AuthUserStreamWidget(
-                                    builder: (context) =>
-                                        StreamBuilder<RequestRecord>(
-                                      stream: RequestRecord.getDocument(
-                                          currentUserDocument!.activeRequest!),
-                                      builder: (context, snapshot) {
-                                        // Customize what your widget looks like when it's loading.
-                                        if (!snapshot.hasData) {
-                                          return Center(
-                                            child: SizedBox(
-                                              width: 50.0,
-                                              height: 50.0,
-                                              child: CircularProgressIndicator(
-                                                valueColor:
-                                                    AlwaysStoppedAnimation<
-                                                        Color>(
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                                ),
+                                return AuthUserStreamWidget(
+                                  builder: (context) =>
+                                      StreamBuilder<List<BidsRecord>>(
+                                    stream: queryBidsRecord(
+                                      queryBuilder: (bidsRecord) => bidsRecord
+                                          .where(
+                                            'accepted',
+                                            isEqualTo: true,
+                                          )
+                                          .where(
+                                            'requestId',
+                                            isEqualTo: currentUserDocument
+                                                ?.activeRequest,
+                                          ),
+                                    ),
+                                    builder: (context, snapshot) {
+                                      // Customize what your widget looks like when it's loading.
+                                      if (!snapshot.hasData) {
+                                        return Center(
+                                          child: SizedBox(
+                                            width: 50.0,
+                                            height: 50.0,
+                                            child: CircularProgressIndicator(
+                                              valueColor:
+                                                  AlwaysStoppedAnimation<Color>(
+                                                FlutterFlowTheme.of(context)
+                                                    .primary,
                                               ),
-                                            ),
-                                          );
-                                        }
-
-                                        final containerRequestRecord =
-                                            snapshot.data!;
-
-                                        return Container(
-                                          decoration: BoxDecoration(),
-                                          child: wrapWithModel(
-                                            model: _model
-                                                .serviceUpdatesComponentModel,
-                                            updateCallback: () =>
-                                                safeSetState(() {}),
-                                            updateOnChange: true,
-                                            child:
-                                                ServiceUpdatesComponentWidget(
-                                              request: containerRequestRecord,
-                                              chat: containerRequestRecord
-                                                  .firebaseMessageThread!,
                                             ),
                                           ),
                                         );
-                                      },
-                                    ),
+                                      }
+                                      List<BidsRecord> containerBidsRecordList =
+                                          snapshot.data!;
+
+                                      return Container(
+                                        width: double.infinity,
+                                        height: 477.0,
+                                        constraints: BoxConstraints(
+                                          maxWidth: 500.0,
+                                        ),
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                        ),
+                                        child: StreamBuilder<RequestRecord>(
+                                          stream: RequestRecord.getDocument(
+                                              currentUserDocument!
+                                                  .activeRequest!),
+                                          builder: (context, snapshot) {
+                                            // Customize what your widget looks like when it's loading.
+                                            if (!snapshot.hasData) {
+                                              return Center(
+                                                child: SizedBox(
+                                                  width: 50.0,
+                                                  height: 50.0,
+                                                  child:
+                                                      CircularProgressIndicator(
+                                                    valueColor:
+                                                        AlwaysStoppedAnimation<
+                                                            Color>(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primary,
+                                                    ),
+                                                  ),
+                                                ),
+                                              );
+                                            }
+
+                                            final containerRequestRecord =
+                                                snapshot.data!;
+
+                                            return Container(
+                                              decoration: BoxDecoration(),
+                                              child: wrapWithModel(
+                                                model: _model
+                                                    .serviceUpdatesComponentModel,
+                                                updateCallback: () =>
+                                                    safeSetState(() {}),
+                                                updateOnChange: true,
+                                                child:
+                                                    ServiceUpdatesComponentWidget(
+                                                  request:
+                                                      containerRequestRecord,
+                                                  chat: containerRequestRecord
+                                                      .firebaseMessageThread!,
+                                                  bids: containerBidsRecordList,
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                        ),
+                                      );
+                                    },
                                   ),
                                 );
                               }
