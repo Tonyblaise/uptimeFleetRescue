@@ -202,3 +202,8 @@ BidsRecord? compareLatLngToBidsLng(
 
   return closestBid;
 }
+
+int divideNumberByTwo(int no) {
+  // function to modulo number by 2
+  return no % 2;
+}

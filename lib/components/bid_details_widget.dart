@@ -329,7 +329,7 @@ class _BidDetailsWidgetState extends State<BidDetailsWidget> {
                                                 fontFamily: 'Yantramanav',
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .secondary,
+                                                        .primaryText,
                                                 letterSpacing: 0.0,
                                               ),
                                           elevation: 3.0,
