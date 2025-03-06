@@ -310,7 +310,9 @@ class _BidDetailsWidgetState extends State<BidDetailsWidget> {
                                   children: [
                                     Expanded(
                                       child: FFButtonWidget(
-                                        onPressed: () async {},
+                                        onPressed: () async {
+                                          Navigator.pop(context);
+                                        },
                                         text: 'Close',
                                         options: FFButtonOptions(
                                           height: 56.0,
