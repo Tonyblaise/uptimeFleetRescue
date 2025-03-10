@@ -297,7 +297,8 @@ class _ServiceUpdatesComponentWidgetState
                             ],
                           ),
                           if ((widget.request?.status == 'newCase') &&
-                              (widget.bids?.firstOrNull != null))
+                              (widget.bids?.firstOrNull != null) &&
+                              (widget.request?.technician == null))
                             Container(
                               decoration: BoxDecoration(),
                               child: Column(
@@ -587,11 +588,21 @@ class _ServiceUpdatesComponentWidgetState
                                                       fontFamily: 'Yantramanav',
                                                       color:
                                                           valueOrDefault<Color>(
-                                                        widget.request
-                                                                    ?.status ==
-                                                                'inProgress'
-                                                            ? Colors.black
-                                                            : Color(0xFFE5E7EE),
+                                                        () {
+                                                          if (widget.request
+                                                                  ?.status ==
+                                                              'inProgress') {
+                                                            return Colors.black;
+                                                          } else if (widget
+                                                                  .request
+                                                                  ?.technician !=
+                                                              null) {
+                                                            return Colors.black;
+                                                          } else {
+                                                            return Color(
+                                                                0xFFE5E7EE);
+                                                          }
+                                                        }(),
                                                         Color(0xFFE5E7EE),
                                                       ),
                                                       fontSize: 24.0,
@@ -644,7 +655,11 @@ class _ServiceUpdatesComponentWidgetState
                                                               .start,
                                                       children: [
                                                         Text(
-                                                          'Request In Process',
+                                                          widget.request
+                                                                      ?.technician !=
+                                                                  null
+                                                              ? 'Technican has been assigned'
+                                                              : 'Request In Process',
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyMedium
@@ -654,13 +669,24 @@ class _ServiceUpdatesComponentWidgetState
                                                                 color:
                                                                     valueOrDefault<
                                                                         Color>(
-                                                                  widget.request
-                                                                              ?.status ==
-                                                                          'newCase'
-                                                                      ? Colors
-                                                                          .black
-                                                                      : Color(
-                                                                          0xFFE5E7EE),
+                                                                  () {
+                                                                    if (widget
+                                                                            .request
+                                                                            ?.status ==
+                                                                        'newCase') {
+                                                                      return Colors
+                                                                          .black;
+                                                                    } else if (widget
+                                                                            .request
+                                                                            ?.technician !=
+                                                                        null) {
+                                                                      return Colors
+                                                                          .black;
+                                                                    } else {
+                                                                      return Color(
+                                                                          0xFFE5E7EE);
+                                                                    }
+                                                                  }(),
                                                                   Color(
                                                                       0xFFE5E7EE),
                                                                 ),
@@ -683,13 +709,24 @@ class _ServiceUpdatesComponentWidgetState
                                                                 color:
                                                                     valueOrDefault<
                                                                         Color>(
-                                                                  widget.request
-                                                                              ?.status ==
-                                                                          'newCase'
-                                                                      ? Color(
-                                                                          0xFF64748B)
-                                                                      : Color(
-                                                                          0xFFE5E7EE),
+                                                                  () {
+                                                                    if (widget
+                                                                            .request
+                                                                            ?.status ==
+                                                                        'newCase') {
+                                                                      return Colors
+                                                                          .black;
+                                                                    } else if (widget
+                                                                            .request
+                                                                            ?.technician !=
+                                                                        null) {
+                                                                      return Colors
+                                                                          .black;
+                                                                    } else {
+                                                                      return Color(
+                                                                          0xFFE5E7EE);
+                                                                    }
+                                                                  }(),
                                                                   Color(
                                                                       0xFFE5E7EE),
                                                                 ),

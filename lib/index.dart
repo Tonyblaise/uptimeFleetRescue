@@ -61,3 +61,5 @@ export '/service_provider/driver/vehicle_confirmation3/vehicle_confirmation3_wid
 export '/service_provider/driver/request_service/request_service_widget.dart'
     show RequestServiceWidget;
 export '/test/test_widget.dart' show TestWidget;
+export '/service_provider/driver/vehicle_confirmation_details/vehicle_confirmation_details_widget.dart'
+    show VehicleConfirmationDetailsWidget;

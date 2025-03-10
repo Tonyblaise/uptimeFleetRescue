@@ -136,7 +136,7 @@ class _RequestServiceWidgetState extends State<RequestServiceWidget> {
 
                             return Container(
                               width: double.infinity,
-                              height: MediaQuery.sizeOf(context).height * 0.5,
+                              height: MediaQuery.sizeOf(context).height * 0.35,
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context)
                                     .secondaryBackground,

@@ -480,6 +480,18 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   'service',
                   ParamType.String,
                 ),
+                licensePlate: params.getParam(
+                  'licensePlate',
+                  ParamType.String,
+                ),
+                state: params.getParam(
+                  'state',
+                  ParamType.String,
+                ),
+                id: params.getParam(
+                  'id',
+                  ParamType.String,
+                ),
                 additionalInfo: params.getParam(
                   'additionalInfo',
                   ParamType.String,
@@ -500,6 +512,20 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: TestWidget.routeName,
               path: TestWidget.routePath,
               builder: (context, params) => TestWidget(),
+            ),
+            FFRoute(
+              name: VehicleConfirmationDetailsWidget.routeName,
+              path: VehicleConfirmationDetailsWidget.routePath,
+              builder: (context, params) => VehicleConfirmationDetailsWidget(
+                service: params.getParam(
+                  'service',
+                  ParamType.String,
+                ),
+                additionalInfo: params.getParam(
+                  'additionalInfo',
+                  ParamType.String,
+                ),
+              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

@@ -21,10 +21,16 @@ class VehicleConfirmation3Widget extends StatefulWidget {
   const VehicleConfirmation3Widget({
     super.key,
     required this.service,
-    this.additionalInfo,
+    required this.licensePlate,
+    required this.state,
+    required this.id,
+    required this.additionalInfo,
   });
 
   final String? service;
+  final String? licensePlate;
+  final String? state;
+  final String? id;
   final String? additionalInfo;
 
   static String routeName = 'vehicle_confirmation3';
@@ -210,60 +216,142 @@ class _VehicleConfirmation3WidgetState
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
-                                                  Container(
-                                                    decoration: BoxDecoration(),
-                                                    child: Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Text(
-                                                          'License Plate',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .labelLarge
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Yantramanav',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryText,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
-                                                        ),
-                                                        Container(
-                                                          width:
-                                                              MediaQuery.sizeOf(
+                                                  if (widget.licensePlate ==
+                                                          null ||
+                                                      widget.licensePlate ==
+                                                          '')
+                                                    Container(
+                                                      decoration:
+                                                          BoxDecoration(),
+                                                      child: Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Text(
+                                                            'License Plate',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .labelLarge
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Yantramanav',
+                                                                  color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .width *
-                                                                  0.9,
-                                                          decoration:
-                                                              BoxDecoration(),
-                                                          child: Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0.0,
-                                                                        4.0,
-                                                                        0.0,
-                                                                        4.0),
-                                                            child:
-                                                                TextFormField(
-                                                              controller: _model
-                                                                  .textFieldLicense2TextController,
-                                                              focusNode: _model
-                                                                  .textFieldLicense2FocusNode,
-                                                              autofocus: true,
-                                                              obscureText:
-                                                                  false,
-                                                              decoration:
-                                                                  InputDecoration(
-                                                                hintText:
-                                                                    'Enter vehicle license plate',
-                                                                hintStyle: FlutterFlowTheme.of(
+                                                                      .primaryText,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
+                                                          ),
+                                                          Container(
+                                                            width: MediaQuery
+                                                                        .sizeOf(
+                                                                            context)
+                                                                    .width *
+                                                                0.9,
+                                                            decoration:
+                                                                BoxDecoration(),
+                                                            child: Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          4.0,
+                                                                          0.0,
+                                                                          4.0),
+                                                              child:
+                                                                  TextFormField(
+                                                                controller: _model
+                                                                    .textFieldLicense2TextController,
+                                                                focusNode: _model
+                                                                    .textFieldLicense2FocusNode,
+                                                                autofocus: true,
+                                                                obscureText:
+                                                                    false,
+                                                                decoration:
+                                                                    InputDecoration(
+                                                                  hintText:
+                                                                      'Enter vehicle license plate',
+                                                                  hintStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelLarge
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Yantramanav',
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        fontWeight:
+                                                                            FontWeight.normal,
+                                                                      ),
+                                                                  enabledBorder:
+                                                                      OutlineInputBorder(
+                                                                    borderSide:
+                                                                        BorderSide(
+                                                                      color: Color(
+                                                                          0xFFCBD5E1),
+                                                                      width:
+                                                                          1.0,
+                                                                    ),
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            18.0),
+                                                                  ),
+                                                                  focusedBorder:
+                                                                      OutlineInputBorder(
+                                                                    borderSide:
+                                                                        BorderSide(
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primary,
+                                                                      width:
+                                                                          1.0,
+                                                                    ),
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            18.0),
+                                                                  ),
+                                                                  errorBorder:
+                                                                      OutlineInputBorder(
+                                                                    borderSide:
+                                                                        BorderSide(
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .error,
+                                                                      width:
+                                                                          1.0,
+                                                                    ),
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            18.0),
+                                                                  ),
+                                                                  focusedErrorBorder:
+                                                                      OutlineInputBorder(
+                                                                    borderSide:
+                                                                        BorderSide(
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .error,
+                                                                      width:
+                                                                          1.0,
+                                                                    ),
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            18.0),
+                                                                  ),
+                                                                  filled: true,
+                                                                  fillColor:
+                                                                      Colors
+                                                                          .white,
+                                                                  contentPadding:
+                                                                      EdgeInsetsDirectional.fromSTEB(
+                                                                          8.0,
+                                                                          0.0,
+                                                                          8.0,
+                                                                          0.0),
+                                                                ),
+                                                                style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .labelLarge
                                                                     .override(
@@ -275,278 +363,205 @@ class _VehicleConfirmation3WidgetState
                                                                           FontWeight
                                                                               .normal,
                                                                     ),
-                                                                enabledBorder:
-                                                                    OutlineInputBorder(
-                                                                  borderSide:
-                                                                      BorderSide(
-                                                                    color: Color(
-                                                                        0xFFCBD5E1),
-                                                                    width: 1.0,
-                                                                  ),
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              18.0),
-                                                                ),
-                                                                focusedBorder:
-                                                                    OutlineInputBorder(
-                                                                  borderSide:
-                                                                      BorderSide(
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .primary,
-                                                                    width: 1.0,
-                                                                  ),
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              18.0),
-                                                                ),
-                                                                errorBorder:
-                                                                    OutlineInputBorder(
-                                                                  borderSide:
-                                                                      BorderSide(
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .error,
-                                                                    width: 1.0,
-                                                                  ),
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              18.0),
-                                                                ),
-                                                                focusedErrorBorder:
-                                                                    OutlineInputBorder(
-                                                                  borderSide:
-                                                                      BorderSide(
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .error,
-                                                                    width: 1.0,
-                                                                  ),
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              18.0),
-                                                                ),
-                                                                filled: true,
-                                                                fillColor:
-                                                                    Colors
-                                                                        .white,
-                                                                contentPadding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            8.0,
-                                                                            0.0,
-                                                                            8.0,
-                                                                            0.0),
+                                                                validator: _model
+                                                                    .textFieldLicense2TextControllerValidator
+                                                                    .asValidator(
+                                                                        context),
                                                               ),
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .labelLarge
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Yantramanav',
-                                                                    letterSpacing:
-                                                                        0.0,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .normal,
-                                                                  ),
-                                                              validator: _model
-                                                                  .textFieldLicense2TextControllerValidator
-                                                                  .asValidator(
-                                                                      context),
                                                             ),
                                                           ),
-                                                        ),
-                                                      ].divide(SizedBox(
-                                                          height: 5.0)),
+                                                        ].divide(SizedBox(
+                                                            height: 5.0)),
+                                                      ),
                                                     ),
-                                                  ),
-                                                  Container(
-                                                    decoration: BoxDecoration(),
-                                                    child: Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Text(
-                                                          'State',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .labelLarge
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Yantramanav',
+                                                  if (widget.state == null ||
+                                                      widget.state == '')
+                                                    Container(
+                                                      decoration:
+                                                          BoxDecoration(),
+                                                      child: Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Text(
+                                                            'State',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .labelLarge
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Yantramanav',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
+                                                          ),
+                                                          Container(
+                                                            width: MediaQuery
+                                                                        .sizeOf(
+                                                                            context)
+                                                                    .width *
+                                                                0.9,
+                                                            decoration:
+                                                                BoxDecoration(),
+                                                            child:
+                                                                FlutterFlowDropDown<
+                                                                    String>(
+                                                              controller: _model
+                                                                      .dropDownState2ValueController ??=
+                                                                  FormFieldController<
+                                                                          String>(
+                                                                      null),
+                                                              options: [
+                                                                'Alabama',
+                                                                'Alaska',
+                                                                'American Samoa',
+                                                                'Arizona',
+                                                                'Arkansas',
+                                                                'California',
+                                                                'Colorado',
+                                                                'Connecticut',
+                                                                'Delaware',
+                                                                'District Of Columbia',
+                                                                'Federated States Of Micronesia',
+                                                                'Florida',
+                                                                'Georgia',
+                                                                'Guam',
+                                                                'Hawaii',
+                                                                'Idaho',
+                                                                'Illinois',
+                                                                'Indiana',
+                                                                'Iowa',
+                                                                'Kansas',
+                                                                'Kentucky',
+                                                                'Louisiana',
+                                                                'Maine',
+                                                                'Marshall Islands',
+                                                                'Maryland',
+                                                                'Massachusetts',
+                                                                'Michigan',
+                                                                'Minnesota',
+                                                                'Mississippi',
+                                                                'Missouri',
+                                                                'Montana',
+                                                                'Nebraska',
+                                                                'Nevada',
+                                                                'New Hampshire',
+                                                                'New Jersey',
+                                                                'New Mexico',
+                                                                'New York',
+                                                                'North Carolina',
+                                                                'North Dakota',
+                                                                'Northern Mariana Islands',
+                                                                'Ohio',
+                                                                'Oklahoma',
+                                                                'Oregon',
+                                                                'Palau',
+                                                                'Pennsylvania',
+                                                                'Puerto Rico',
+                                                                'Rhode Island',
+                                                                'South Carolina',
+                                                                'South Dakota',
+                                                                'Tennessee',
+                                                                'Texas',
+                                                                'Utah',
+                                                                'Vermont',
+                                                                'Virgin Islands',
+                                                                'Virginia',
+                                                                'Washington',
+                                                                'West Virginia',
+                                                                'Wisconsin',
+                                                                'Wyoming'
+                                                              ],
+                                                              onChanged: (val) =>
+                                                                  safeSetState(() =>
+                                                                      _model.dropDownState2Value =
+                                                                          val),
+                                                              width: 300.0,
+                                                              height: 52.0,
+                                                              searchHintTextStyle:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Yantramanav',
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                      ),
+                                                              searchTextStyle:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Yantramanav',
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                      ),
+                                                              textStyle:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Yantramanav',
+                                                                        color: Color(
+                                                                            0xFF64748B),
+                                                                        fontSize:
+                                                                            16.0,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                      ),
+                                                              hintText:
+                                                                  'Enter state of registration',
+                                                              searchHintText:
+                                                                  'Search for a state',
+                                                              icon: Icon(
+                                                                Icons
+                                                                    .keyboard_arrow_down_rounded,
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .primaryText,
-                                                                letterSpacing:
-                                                                    0.0,
+                                                                    .secondaryText,
+                                                                size: 24.0,
                                                               ),
-                                                        ),
-                                                        Container(
-                                                          width:
-                                                              MediaQuery.sizeOf(
-                                                                          context)
-                                                                      .width *
-                                                                  0.9,
-                                                          decoration:
-                                                              BoxDecoration(),
-                                                          child:
-                                                              FlutterFlowDropDown<
-                                                                  String>(
-                                                            controller: _model
-                                                                    .dropDownState2ValueController ??=
-                                                                FormFieldController<
-                                                                        String>(
-                                                                    null),
-                                                            options: [
-                                                              'Alabama',
-                                                              'Alaska',
-                                                              'American Samoa',
-                                                              'Arizona',
-                                                              'Arkansas',
-                                                              'California',
-                                                              'Colorado',
-                                                              'Connecticut',
-                                                              'Delaware',
-                                                              'District Of Columbia',
-                                                              'Federated States Of Micronesia',
-                                                              'Florida',
-                                                              'Georgia',
-                                                              'Guam',
-                                                              'Hawaii',
-                                                              'Idaho',
-                                                              'Illinois',
-                                                              'Indiana',
-                                                              'Iowa',
-                                                              'Kansas',
-                                                              'Kentucky',
-                                                              'Louisiana',
-                                                              'Maine',
-                                                              'Marshall Islands',
-                                                              'Maryland',
-                                                              'Massachusetts',
-                                                              'Michigan',
-                                                              'Minnesota',
-                                                              'Mississippi',
-                                                              'Missouri',
-                                                              'Montana',
-                                                              'Nebraska',
-                                                              'Nevada',
-                                                              'New Hampshire',
-                                                              'New Jersey',
-                                                              'New Mexico',
-                                                              'New York',
-                                                              'North Carolina',
-                                                              'North Dakota',
-                                                              'Northern Mariana Islands',
-                                                              'Ohio',
-                                                              'Oklahoma',
-                                                              'Oregon',
-                                                              'Palau',
-                                                              'Pennsylvania',
-                                                              'Puerto Rico',
-                                                              'Rhode Island',
-                                                              'South Carolina',
-                                                              'South Dakota',
-                                                              'Tennessee',
-                                                              'Texas',
-                                                              'Utah',
-                                                              'Vermont',
-                                                              'Virgin Islands',
-                                                              'Virginia',
-                                                              'Washington',
-                                                              'West Virginia',
-                                                              'Wisconsin',
-                                                              'Wyoming'
-                                                            ],
-                                                            onChanged: (val) =>
-                                                                safeSetState(() =>
-                                                                    _model.dropDownState2Value =
-                                                                        val),
-                                                            width: 300.0,
-                                                            height: 52.0,
-                                                            searchHintTextStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Yantramanav',
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                    ),
-                                                            searchTextStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Yantramanav',
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                    ),
-                                                            textStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Yantramanav',
-                                                                      color: Color(
-                                                                          0xFF64748B),
-                                                                      fontSize:
-                                                                          16.0,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                    ),
-                                                            hintText:
-                                                                'Enter state of registration',
-                                                            searchHintText:
-                                                                'Search for a state',
-                                                            icon: Icon(
-                                                              Icons
-                                                                  .keyboard_arrow_down_rounded,
-                                                              color: FlutterFlowTheme
+                                                              fillColor: FlutterFlowTheme
                                                                       .of(context)
-                                                                  .secondaryText,
-                                                              size: 24.0,
+                                                                  .secondaryBackground,
+                                                              elevation: 2.0,
+                                                              borderColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .alternate,
+                                                              borderWidth: 2.0,
+                                                              borderRadius:
+                                                                  18.0,
+                                                              margin:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          16.0,
+                                                                          4.0,
+                                                                          16.0,
+                                                                          4.0),
+                                                              hidesUnderline:
+                                                                  true,
+                                                              isOverButton:
+                                                                  true,
+                                                              isSearchable:
+                                                                  true,
+                                                              isMultiSelect:
+                                                                  false,
                                                             ),
-                                                            fillColor: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondaryBackground,
-                                                            elevation: 2.0,
-                                                            borderColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .alternate,
-                                                            borderWidth: 2.0,
-                                                            borderRadius: 18.0,
-                                                            margin:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        16.0,
-                                                                        4.0,
-                                                                        16.0,
-                                                                        4.0),
-                                                            hidesUnderline:
-                                                                true,
-                                                            isOverButton: true,
-                                                            isSearchable: true,
-                                                            isMultiSelect:
-                                                                false,
                                                           ),
-                                                        ),
-                                                      ].divide(SizedBox(
-                                                          height: 5.0)),
+                                                        ].divide(SizedBox(
+                                                            height: 5.0)),
+                                                      ),
                                                     ),
-                                                  ),
                                                   Container(
                                                     decoration: BoxDecoration(),
                                                     child: Column(
@@ -856,7 +871,7 @@ class _VehicleConfirmation3WidgetState
                                                           title:
                                                               'Upload vehicle images',
                                                           body:
-                                                              'Click here to upload vehicle image',
+                                                              'Click here to upload vehicle license plate or images',
                                                           action: () async {},
                                                         ),
                                                       ),
@@ -1027,20 +1042,6 @@ class _VehicleConfirmation3WidgetState
                                                             },
                                                           ),
                                                         }, chatsRecordReference);
-                                                        _model.vehicle =
-                                                            await UptimeFleetAppGroup
-                                                                .getVehiclesCall
-                                                                .call(
-                                                          vehicleRegNo: _model
-                                                              .textFieldLicense2TextController
-                                                              .text,
-                                                          driverId: valueOrDefault(
-                                                              currentUserDocument
-                                                                  ?.driverId,
-                                                              ''),
-                                                          state: _model
-                                                              .dropDownState2Value,
-                                                        );
 
                                                         var requestRecordReference =
                                                             RequestRecord
@@ -1100,14 +1101,7 @@ class _VehicleConfirmation3WidgetState
                                                               ''),
                                                           fault:
                                                               widget.service,
-                                                          vehicleId:
-                                                              UptimeFleetAppGroup
-                                                                  .getVehiclesCall
-                                                                  .id(
-                                                            (_model.vehicle
-                                                                    ?.jsonBody ??
-                                                                ''),
-                                                          ),
+                                                          vehicleId: widget.id,
                                                           additionalInfo: widget
                                                                           .additionalInfo !=
                                                                       null &&
@@ -1210,7 +1204,7 @@ class _VehicleConfirmation3WidgetState
                                                                   height: MediaQuery.sizeOf(
                                                                               context)
                                                                           .height *
-                                                                      0.6,
+                                                                      0.8,
                                                                   child:
                                                                       ConfirmRequestWidget(),
                                                                 ),

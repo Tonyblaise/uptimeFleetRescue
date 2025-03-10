@@ -260,6 +260,9 @@ final parametersBuilderMap =
   'vehicle_confirmation3': (data) async => ParameterData(
         allParams: {
           'service': getParameter<String>(data, 'service'),
+          'licensePlate': getParameter<String>(data, 'licensePlate'),
+          'state': getParameter<String>(data, 'state'),
+          'id': getParameter<String>(data, 'id'),
           'additionalInfo': getParameter<String>(data, 'additionalInfo'),
         },
       ),
@@ -269,6 +272,12 @@ final parametersBuilderMap =
         },
       ),
   'test': ParameterData.none(),
+  'vehicle_confirmation_details': (data) async => ParameterData(
+        allParams: {
+          'service': getParameter<String>(data, 'service'),
+          'additionalInfo': getParameter<String>(data, 'additionalInfo'),
+        },
+      ),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

@@ -725,7 +725,7 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                                         safeSetState(() {});
 
                                                         context.pushNamed(
-                                                          VehicleConfirmation3Widget
+                                                          VehicleConfirmationDetailsWidget
                                                               .routeName,
                                                           queryParameters: {
                                                             'service':
@@ -939,7 +939,7 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                                       safeSetState(() {});
 
                                                       context.pushNamed(
-                                                        VehicleConfirmation3Widget
+                                                        VehicleConfirmationDetailsWidget
                                                             .routeName,
                                                         queryParameters: {
                                                           'service':
@@ -1126,7 +1126,7 @@ class _MoreDetailsWidgetState extends State<MoreDetailsWidget> {
                                                       safeSetState(() {});
 
                                                       context.pushNamed(
-                                                        VehicleConfirmation3Widget
+                                                        VehicleConfirmationDetailsWidget
                                                             .routeName,
                                                         queryParameters: {
                                                           'service':
