@@ -1055,7 +1055,8 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                                     false) {
                                                   FFAppState().location =
                                                       _model.latLng;
-                                                  FFAppState().address = '';
+                                                  FFAppState().address =
+                                                      FFAppState().address;
                                                   safeSetState(() {});
                                                   _model.latLng =
                                                       currentUserLocationValue;

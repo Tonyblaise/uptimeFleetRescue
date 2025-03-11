@@ -183,7 +183,7 @@ class _NavBarPageState extends State<NavBarPage> {
               Icons.chat_outlined,
               size: 24.0,
             ),
-            label: 'messages',
+            label: 'Messages',
             tooltip: '',
           ),
           BottomNavigationBarItem(

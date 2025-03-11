@@ -425,14 +425,10 @@ class _ConfirmVehicleDetailsWidgetState
                                       Navigator.pop(context, true);
 
                                       context.pushNamed(
-                                        VehicleConfirmation2Widget.routeName,
+                                        VehicleConfirmation3Widget.routeName,
                                         queryParameters: {
                                           'service': serializeParam(
                                             widget.service,
-                                            ParamType.String,
-                                          ),
-                                          'additionalInfo': serializeParam(
-                                            '',
                                             ParamType.String,
                                           ),
                                           'licensePlate': serializeParam(
@@ -453,25 +449,6 @@ class _ConfirmVehicleDetailsWidgetState
                                             ),
                                             ParamType.String,
                                           ),
-                                          'notes': serializeParam(
-                                            UptimeFleetAppGroup
-                                                .getVehiclesByRegNoCall
-                                                .details(
-                                                  containerGetVehiclesByRegNoResponse
-                                                      .jsonBody,
-                                                )
-                                                .toString(),
-                                            ParamType.String,
-                                          ),
-                                          'color': serializeParam(
-                                            UptimeFleetAppGroup
-                                                .getVehiclesByRegNoCall
-                                                .color(
-                                              containerGetVehiclesByRegNoResponse
-                                                  .jsonBody,
-                                            ),
-                                            ParamType.String,
-                                          ),
                                           'id': serializeParam(
                                             UptimeFleetAppGroup
                                                 .getVehiclesByRegNoCall
@@ -479,6 +456,10 @@ class _ConfirmVehicleDetailsWidgetState
                                               containerGetVehiclesByRegNoResponse
                                                   .jsonBody,
                                             ),
+                                            ParamType.String,
+                                          ),
+                                          'additionalInfo': serializeParam(
+                                            '',
                                             ParamType.String,
                                           ),
                                         }.withoutNulls,

@@ -48,8 +48,6 @@ class VehicleConfirmation3Model
   late EmptyImageModel emptyImageModel;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
   ChatsRecord? chatId;
-  // Stores action output result for [Backend Call - API (Get vehicles)] action in Button widget.
-  ApiCallResponse? vehicle;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
   RequestRecord? request;
   // Stores action output result for [Backend Call - API (Create a request)] action in Button widget.

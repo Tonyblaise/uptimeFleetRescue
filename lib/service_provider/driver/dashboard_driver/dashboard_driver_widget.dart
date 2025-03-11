@@ -723,7 +723,7 @@ class _DashboardDriverWidgetState extends State<DashboardDriverWidget> {
                                             } else if (_model.service ==
                                                 'Other') {
                                               context.pushNamed(
-                                                VehicleConfirmation3Widget
+                                                VehicleConfirmationDetailsWidget
                                                     .routeName,
                                                 queryParameters: {
                                                   'service': serializeParam(
@@ -734,7 +734,7 @@ class _DashboardDriverWidgetState extends State<DashboardDriverWidget> {
                                               );
                                             } else {
                                               context.pushNamed(
-                                                VehicleConfirmation3Widget
+                                                VehicleConfirmationDetailsWidget
                                                     .routeName,
                                                 queryParameters: {
                                                   'service': serializeParam(
