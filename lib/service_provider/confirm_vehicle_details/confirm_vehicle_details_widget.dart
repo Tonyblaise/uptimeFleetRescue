@@ -375,10 +375,41 @@ class _ConfirmVehicleDetailsWidgetState
                                       Navigator.pop(context, false);
 
                                       context.pushNamed(
-                                        VehicleConfirmationWidget.routeName,
+                                        VehicleConfirmation3Widget.routeName,
                                         queryParameters: {
                                           'service': serializeParam(
                                             widget.service,
+                                            ParamType.String,
+                                          ),
+                                          'licensePlate': serializeParam(
+                                            UptimeFleetAppGroup
+                                                .getVehiclesByRegNoCall
+                                                .licensePlate(
+                                              containerGetVehiclesByRegNoResponse
+                                                  .jsonBody,
+                                            ),
+                                            ParamType.String,
+                                          ),
+                                          'state': serializeParam(
+                                            UptimeFleetAppGroup
+                                                .getVehiclesByRegNoCall
+                                                .state(
+                                              containerGetVehiclesByRegNoResponse
+                                                  .jsonBody,
+                                            ),
+                                            ParamType.String,
+                                          ),
+                                          'id': serializeParam(
+                                            UptimeFleetAppGroup
+                                                .getVehiclesByRegNoCall
+                                                .id(
+                                              containerGetVehiclesByRegNoResponse
+                                                  .jsonBody,
+                                            ),
+                                            ParamType.String,
+                                          ),
+                                          'additionalInfo': serializeParam(
+                                            '',
                                             ParamType.String,
                                           ),
                                         }.withoutNulls,
