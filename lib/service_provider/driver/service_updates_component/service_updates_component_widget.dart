@@ -259,7 +259,15 @@ class _ServiceUpdatesComponentWidgetState
                                                         AlignmentDirectional(
                                                             0.0, 0.0),
                                                     child: Text(
-                                                      '1',
+                                                      containerChatMessagesRecordList
+                                                          .where((e) =>
+                                                              (e.user?.id ==
+                                                                  currentUserReference
+                                                                      ?.id) &&
+                                                              (e.read == false))
+                                                          .toList()
+                                                          .length
+                                                          .toString(),
                                                       textAlign:
                                                           TextAlign.center,
                                                       style: FlutterFlowTheme

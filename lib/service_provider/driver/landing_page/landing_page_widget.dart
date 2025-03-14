@@ -535,70 +535,6 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                                                                         ),
                                                                                       ),
                                                                                     ),
-                                                                                    Padding(
-                                                                                      padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
-                                                                                      child: StreamBuilder<ChatsRecord>(
-                                                                                        stream: ChatsRecord.getDocument(containerRequestRecord.firebaseMessageThread!),
-                                                                                        builder: (context, snapshot) {
-                                                                                          // Customize what your widget looks like when it's loading.
-                                                                                          if (!snapshot.hasData) {
-                                                                                            return Center(
-                                                                                              child: SizedBox(
-                                                                                                width: 50.0,
-                                                                                                height: 50.0,
-                                                                                                child: CircularProgressIndicator(
-                                                                                                  valueColor: AlwaysStoppedAnimation<Color>(
-                                                                                                    FlutterFlowTheme.of(context).primary,
-                                                                                                  ),
-                                                                                                ),
-                                                                                              ),
-                                                                                            );
-                                                                                          }
-
-                                                                                          final buttonChatsRecord = snapshot.data!;
-
-                                                                                          return FFButtonWidget(
-                                                                                            onPressed: () async {
-                                                                                              context.pushNamed(
-                                                                                                Chat2Details1Widget.routeName,
-                                                                                                queryParameters: {
-                                                                                                  'chatRef': serializeParam(
-                                                                                                    buttonChatsRecord,
-                                                                                                    ParamType.Document,
-                                                                                                  ),
-                                                                                                  'driver': serializeParam(
-                                                                                                    true,
-                                                                                                    ParamType.bool,
-                                                                                                  ),
-                                                                                                }.withoutNulls,
-                                                                                                extra: <String, dynamic>{
-                                                                                                  'chatRef': buttonChatsRecord,
-                                                                                                },
-                                                                                              );
-                                                                                            },
-                                                                                            text: 'Message Technician',
-                                                                                            options: FFButtonOptions(
-                                                                                              width: double.infinity,
-                                                                                              height: 50.0,
-                                                                                              padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                                                                                              iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                                                                              color: FlutterFlowTheme.of(context).tertiary,
-                                                                                              textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                                                                                                    fontFamily: 'Yantramanav',
-                                                                                                    color: FlutterFlowTheme.of(context).primary,
-                                                                                                    letterSpacing: 0.0,
-                                                                                                  ),
-                                                                                              elevation: 3.0,
-                                                                                              borderSide: BorderSide(
-                                                                                                color: Colors.transparent,
-                                                                                                width: 1.0,
-                                                                                              ),
-                                                                                              borderRadius: BorderRadius.circular(100.0),
-                                                                                            ),
-                                                                                          );
-                                                                                        },
-                                                                                      ),
-                                                                                    ),
                                                                                   ].divide(SizedBox(height: 16.0)),
                                                                                 ),
                                                                               ),
@@ -1056,7 +992,14 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                                   FFAppState().location =
                                                       _model.latLng;
                                                   FFAppState().address =
-                                                      FFAppState().address;
+                                                      valueOrDefault<String>(
+                                                    ConvertLatLngToAddressCall
+                                                        .formattedAddress(
+                                                      columnConvertLatLngToAddressResponse
+                                                          .jsonBody,
+                                                    )?.firstOrNull,
+                                                    'Austin, Tx, USA',
+                                                  );
                                                   safeSetState(() {});
                                                   _model.latLng =
                                                       currentUserLocationValue;
@@ -1075,7 +1018,7 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                                                       columnConvertLatLngToAddressResponse
                                                           .jsonBody,
                                                     )?.firstOrNull,
-                                                    '.',
+                                                    'Austin, Tx, USA',
                                                   );
                                                   safeSetState(() {});
                                                   _model.latLng =
